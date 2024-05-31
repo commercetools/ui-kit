@@ -24,7 +24,7 @@ const getButtonStyles = (isDisabled: boolean) => {
   const baseButtonStyles = css`
     display: flex;
     align-items: center;
-    height: ${designTokens.heightForButtonAsMedium};
+    height: ${designTokens.heightForButtonAs30};
   `;
   if (isDisabled) {
     return [
@@ -189,7 +189,7 @@ const Options = styled.div`
   z-index: 5;
   width: 100%;
   top: calc(
-    ${designTokens.spacing20} + ${designTokens.heightForButtonAsMedium}
+    ${designTokens.spacing20} + ${designTokens.heightForButtonAs30}
   );
   border: 1px solid ${designTokens.colorSurface};
   border-radius: ${designTokens.borderRadius4};
@@ -282,7 +282,7 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         align-items: column;
 
         > :first-of-type > button {
-          height: ${designTokens.heightForButtonAsBig};
+          height: ${designTokens.heightForButtonAs40};
         }
       `}
     >

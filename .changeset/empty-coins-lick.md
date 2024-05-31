@@ -9,4 +9,4 @@
 '@commercetools-uikit/design-system': patch
 ---
 
-New size and size-names introduced for icons, buttons & IconButtons
+Introduced new sizes and size-names for icons, buttons & IconButtons ('small', 'medium' & 'big' got deprecated in favor of numeric size tokens: '10', '20', etc.)

@@ -20,29 +20,23 @@ import { getButtonStyles } from './primary-button.styles';
 const propsToOmit = ['type'];
 
 /**
- * @deprecated Use '10' from `TSizes` instead.
- */
-type TSmall = 'small';
-
-/**
- * @deprecated Use '10' from `TSizes` instead.
- */
-type TMedium = 'medium';
-
-/**
- * @deprecated Use '20' from `TSizes` instead.
- */
-type TBig = 'big';
-
-/**
  * @deprecated Use sizes from `TSizes` instead.
  */
-type TLegacySizes = TSmall | TMedium | TBig;
+type TLegacySizes = 'small' | 'medium' | 'big';
 
 /**
  * Available sizes for the PrimaryButton.
  */
 type TSizes = '10' | '20';
+
+/**
+ * Mapping of legacy sizes to new sizes.
+ */
+const sizeMapping: Record<TLegacySizes, TSizes> = {
+  small: '10',
+  medium: '10',
+  big: '20',
+};
 
 export type TPrimaryButtonProps<
   TStringOrComponent extends ElementType = 'button'
@@ -124,8 +118,12 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
   };
 
   useWarning(
-    !Boolean(props.size === 'small'),
-    'PrimaryButton `small` value for `size` property has been renamed to `medium`. Please update that value when using this component'
+    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
+    `PrimaryButton '${
+      props.size
+    }' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[props.size as TLegacySizes]
+    }' Please update that value when using this component`
   );
 
   const isActive = Boolean(props.isToggleButton && props.isToggled);

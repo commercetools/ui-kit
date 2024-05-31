@@ -8,7 +8,11 @@ import {
 } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
+import {
+  filterInvalidAttributes,
+  useWarning,
+  warning,
+} from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
   getShapeStyles,
@@ -19,29 +23,23 @@ import {
 } from './icon-button.styles';
 
 /**
- * @deprecated Use '10' from `TSizes` instead.
- */
-type TSmall = 'small';
-
-/**
- * @deprecated Use '30' from `TSizes` instead.
- */
-type TMedium = 'medium';
-
-/**
- * @deprecated Use '40' from `TSizes` instead.
- */
-type TBig = 'big';
-
-/**
  * @deprecated Use sizes from `TSizes` instead.
  */
-type TLegacySizes = TSmall | TMedium | TBig;
+type TLegacySizes = 'small' | 'medium' | 'big';
 
 /**
  * Available sizes for the IconButton.
  */
 type TSizes = '10' | '20' | '30' | '40';
+
+/**
+ * Mapping of legacy sizes to new sizes.
+ */
+const sizeMapping: Record<TLegacySizes, TSizes> = {
+  small: '10',
+  medium: '30',
+  big: '40',
+};
 
 export type TIconButtonProps<
   TStringOrComponent extends ElementType = 'button'
@@ -118,6 +116,15 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
   warning(
     !(props.theme !== 'default' && !props.isToggleButton),
     `Invalid prop \`theme\` supplied to \`IconButton\`. Only toggle buttons may have a theme.`
+  );
+
+  useWarning(
+    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
+    `IconButton '${
+      props.size
+    }' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[props.size as TLegacySizes]
+    }' Please update that value when using this component`
   );
 
   const buttonAttributes = {

@@ -11,7 +11,11 @@ import { Link } from 'react-router-dom';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Inline from '@commercetools-uikit/spacings-inline';
-import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
+import {
+  filterInvalidAttributes,
+  useWarning,
+  warning,
+} from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
   getStateStyles,
@@ -21,29 +25,23 @@ import {
 } from './secondary-button.styles';
 
 /**
- * @deprecated Use '10' from `TSizes` instead.
- */
-type TSmall = 'small';
-
-/**
- * @deprecated Use '10' from `TSizes` instead.
- */
-type TMedium = 'medium';
-
-/**
- * @deprecated Use '20' from `TSizes` instead.
- */
-type TBig = 'big';
-
-/**
  * @deprecated Use sizes from `TSizes` instead.
  */
-type TLegacySizes = TSmall | TMedium | TBig;
+type TLegacySizes = 'small' | 'medium' | 'big';
 
 /**
  * Available sizes for the SecondaryButton.
  */
 type TSizes = '10' | '20';
+
+/**
+ * Mapping of legacy sizes to new sizes.
+ */
+const sizeMapping: Record<TLegacySizes, TSizes> = {
+  small: '10',
+  medium: '10',
+  big: '20',
+};
 
 export type TSecondaryButtonProps<
   TStringOrComponent extends ElementType = 'button'
@@ -153,12 +151,21 @@ export const SecondaryButton = <
     `Invalid prop \`theme\` supplied to \`SecondaryButton\`. Only toggle buttons may have a theme.`
   );
 
+  useWarning(
+    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
+    `SecondaryButton '${
+      props.size
+    }' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[props.size as TLegacySizes]
+    }' Please update that value when using this component`
+  );
+
   const containerStyles = [
     css`
       display: flex;
       align-items: center;
       padding: 0 ${designTokens.spacing30};
-      height: ${designTokens.heightForButtonAsBig};
+      height: ${designTokens.heightForButtonAs40};
     `,
     css`
       display: inline-flex;
