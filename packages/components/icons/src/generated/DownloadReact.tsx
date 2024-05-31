@@ -16,6 +16,9 @@ export type Props = {
     | 'warning'
     | 'error'
     | 'success';
+  /**
+   * The size of the icon. 'small', 'medium', 'big' have been deprecated in favor of '10', '20', '30', '40'.
+   */
   size?: 'small' | 'medium' | 'big' | 'scale' | '10' | '20' | '30' | '40';
 };
 export type SVGProps = Props & {
@@ -50,8 +53,8 @@ const getSizeDimensions = (size: Props['size']) => {
       };
     default:
       return {
-        width: `${iconSizes.big}px`,
-        height: `${iconSizes.big}px`,
+        width: `${iconSizes['40']}px`,
+        height: `${iconSizes['40']}px`,
       };
   }
 };
