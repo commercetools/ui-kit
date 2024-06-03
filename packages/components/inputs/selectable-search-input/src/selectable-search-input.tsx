@@ -504,7 +504,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             !props.isReadOnly && (
               <SecondaryIconButton
                 icon={<CloseIcon />}
-                size={props.isCondensed ? 'small' : 'medium'}
+                size={props.isCondensed ? '10' : '30'}
                 label={'clear-button'}
                 onClick={handleClear}
                 css={getClearIconButtonStyles(props)}
@@ -513,7 +513,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
           {props.showSubmitButton && (
             <SecondaryIconButton
               icon={<SearchIcon />}
-              size={props.isCondensed ? 'medium' : 'big'}
+              size={props.isCondensed ? '30' : '40'}
               label={'search-button'}
               onClick={handleSubmit}
               css={getSearchIconButtonStyles(props)}
