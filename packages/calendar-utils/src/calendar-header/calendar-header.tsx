@@ -79,7 +79,7 @@ const CalendarHeader = (props: TCalendarHeader) => {
             label="show next month"
             onClick={props.onNextMonthClick}
             icon={<AngleRightIcon />}
-            size="medium"
+            size="30"
           />
         </Tooltip>
         <Text.Body as="span" fontWeight="bold">
