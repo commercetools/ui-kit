@@ -372,7 +372,7 @@ const placeholderStyles = (props: TProps) => (base: TBase) => {
 const valueContainerStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    flexWrap: 'nowrap',
+    ...(!props.isMulti && { flexWrap: 'nowrap' }),
     padding: '0',
     backgroundColor: 'none',
     overflow: 'hidden',
