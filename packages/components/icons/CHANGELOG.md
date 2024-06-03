@@ -1,5 +1,13 @@
 # @commercetools-uikit/icons
 
+## 19.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.5.0
+  - @commercetools-uikit/utils@19.5.0
+
 ## 19.4.0
 
 ### Minor Changes

@@ -1,5 +1,19 @@
 # @commercetools-uikit/search-text-input
 
+## 19.5.0
+
+### Patch Changes
+
+- [#2827](https://github.com/commercetools/ui-kit/pull/2827) [`35daa95`](https://github.com/commercetools/ui-kit/commit/35daa9588d7665abb8a983ea69f227cc0b0c4ab2) Thanks [@misama-ct](https://github.com/misama-ct)! - puts the magnifier-icon/button in front of the input
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.5.0
+  - @commercetools-uikit/secondary-icon-button@19.5.0
+  - @commercetools-uikit/constraints@19.5.0
+  - @commercetools-uikit/icons@19.5.0
+  - @commercetools-uikit/input-utils@19.5.0
+  - @commercetools-uikit/utils@19.5.0
+
 ## 19.4.0
 
 ### Patch Changes

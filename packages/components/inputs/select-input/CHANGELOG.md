@@ -1,5 +1,16 @@
 # @commercetools-uikit/select-input
 
+## 19.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`625ebba`](https://github.com/commercetools/ui-kit/commit/625ebbaafcc93ad2802cb36559a5d769fb4e1556), [`3036c24`](https://github.com/commercetools/ui-kit/commit/3036c248670819c081479ebeec1922614c5500db)]:
+  - @commercetools-uikit/select-utils@19.5.0
+  - @commercetools-uikit/design-system@19.5.0
+  - @commercetools-uikit/constraints@19.5.0
+  - @commercetools-uikit/icons@19.5.0
+  - @commercetools-uikit/utils@19.5.0
+
 ## 19.4.0
 
 ### Patch Changes
