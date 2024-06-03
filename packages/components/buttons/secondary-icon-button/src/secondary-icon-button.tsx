@@ -123,7 +123,7 @@ SecondaryIconButton.displayName = 'SecondaryIconButton';
 SecondaryIconButton.defaultProps = {
   color: 'solid',
   type: 'button',
-  size: 'big',
+  size: '40',
   isDisabled: false,
 };
 
