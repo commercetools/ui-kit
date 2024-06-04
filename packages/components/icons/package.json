@@ -39,7 +39,7 @@
     "@types/dompurify": "^2.4.0",
     "dompurify": "2.5.5",
     "prop-types": "15.8.1",
-    "react-from-dom": "0.7.3"
+    "react-from-dom": "0.6.2"
   },
   "devDependencies": {
     "react": "17.0.2"
