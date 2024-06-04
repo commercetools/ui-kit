@@ -1,5 +1,16 @@
 # @commercetools-uikit/primary-button
 
+## 19.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.5.0
+  - @commercetools-uikit/accessible-button@19.5.0
+  - @commercetools-uikit/spacings-inline@19.5.0
+  - @commercetools-uikit/text@19.5.0
+  - @commercetools-uikit/utils@19.5.0
+
 ## 19.4.0
 
 ### Patch Changes

@@ -1,5 +1,24 @@
 # @commercetools-uikit/selectable-search-input
 
+## 19.5.0
+
+### Minor Changes
+
+- [#2831](https://github.com/commercetools/ui-kit/pull/2831) [`e790eab`](https://github.com/commercetools/ui-kit/commit/e790eab18b2ef02b855f8ee0c29d0115c95cca1f) Thanks [@ddouglasz](https://github.com/ddouglasz)! - We're introducing a new property, `selectCustomComponents` so consumers can customize the different parts of the select element in this component.
+  You can learn more about how this customization works in the `react-select` library [docs](https://react-select.com/components) we use under the hood
+
+### Patch Changes
+
+- Updated dependencies [[`625ebba`](https://github.com/commercetools/ui-kit/commit/625ebbaafcc93ad2802cb36559a5d769fb4e1556), [`3036c24`](https://github.com/commercetools/ui-kit/commit/3036c248670819c081479ebeec1922614c5500db)]:
+  - @commercetools-uikit/select-utils@19.5.0
+  - @commercetools-uikit/design-system@19.5.0
+  - @commercetools-uikit/secondary-icon-button@19.5.0
+  - @commercetools-uikit/constraints@19.5.0
+  - @commercetools-uikit/icons@19.5.0
+  - @commercetools-uikit/input-utils@19.5.0
+  - @commercetools-uikit/hooks@19.5.0
+  - @commercetools-uikit/utils@19.5.0
+
 ## 19.4.0
 
 ### Minor Changes

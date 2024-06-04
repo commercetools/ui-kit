@@ -1,5 +1,21 @@
 # @commercetools-uikit/radio-input
 
+## 19.5.0
+
+### Patch Changes
+
+- [#2832](https://github.com/commercetools/ui-kit/pull/2832) [`42fd117`](https://github.com/commercetools/ui-kit/commit/42fd1175d7769f436122214bfb937859687612ae) Thanks [@misama-ct](https://github.com/misama-ct)! - The focus outline for checkbox and radio labels is now only visible to keyboard users.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.5.0
+  - @commercetools-uikit/constraints@19.5.0
+  - @commercetools-uikit/icons@19.5.0
+  - @commercetools-uikit/input-utils@19.5.0
+  - @commercetools-uikit/spacings-inline@19.5.0
+  - @commercetools-uikit/spacings-inset@19.5.0
+  - @commercetools-uikit/spacings-stack@19.5.0
+  - @commercetools-uikit/utils@19.5.0
+
 ## 19.4.0
 
 ### Patch Changes
