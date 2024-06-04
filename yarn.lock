@@ -17221,12 +17221,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-from-dom@npm:0.7.3":
-  version: 0.7.3
-  resolution: "react-from-dom@npm:0.7.3"
+"react-from-dom@npm:0.6.2":
+  version: 0.6.2
+  resolution: "react-from-dom@npm:0.6.2"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: c2dd74dbdae570ce3ce2f7466643ac8e27de2511cb73cb3027fdfc572bed7bb058e1c459ffb32d02e2c41e4c21b0ca490d0dc861f30452fe3689d2e938ad7277
+  checksum: 5d66b0c1eb591247a73bed9487a04e390abb4ad6c65e6cea7bfdd35070685b90a5da720de30915b963aba3f4628135d6db4c93da40cd5114c8bbe34a9725a83e
   languageName: node
   linkType: hard
 
