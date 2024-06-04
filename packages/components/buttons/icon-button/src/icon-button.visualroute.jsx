@@ -158,7 +158,7 @@ export const component = () => (
       <IconButton
         icon={<InformationIcon />}
         shape="square"
-        size="10"
+        size="20"
         label="A label text"
         onClick={() => {}}
       />
