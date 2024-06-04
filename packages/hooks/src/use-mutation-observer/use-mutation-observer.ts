@@ -1,14 +1,12 @@
 // NOTE: This React hook is essentially the same as the [@react-hook/intersection-observer](https://www.npmjs.com/package/@react-hook/intersection-observer)
 // except for the usage of `MutationObserver` instead of `IntersectionObserver`.
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { MutableRefObject, useEffect, useLayoutEffect, useRef } from 'react';
 import rafSchd from 'raf-schd';
 
 export type TUseMutationObserverCallback = (
   mutationsList: MutationRecord[],
   observer: MutationObserver
 ) => void;
-
-let _mutationObserver: ReturnType<typeof createMutationObserver>;
 
 const useLatest = <T>(current: T) => {
   const storedValue = useRef(current);
@@ -18,7 +16,10 @@ const useLatest = <T>(current: T) => {
   return storedValue;
 };
 
-function createMutationObserver() {
+function createMutationObserver(
+  containerRef: MutableRefObject<HTMLElement>,
+  options?: MutationObserverInit & { parentTargetSelector?: string }
+) {
   const callbacks = new Map<Node, TUseMutationObserverCallback[]>();
   const observer = new MutationObserver(
     rafSchd((mutationsList, observer) => {
@@ -33,7 +34,16 @@ function createMutationObserver() {
       }, new Map());
 
       mutationsByTarget.forEach((mutations, target) => {
-        const targetCallbacks = callbacks.get(target);
+        let targetCallbacks = callbacks.get(target);
+
+        // If we're observing the subtree we need to check whether the mutated
+        // element is a child of the target
+        if (!targetCallbacks && options?.subtree && containerRef.current) {
+          if (containerRef.current.contains(target)) {
+            targetCallbacks = callbacks.get(containerRef.current);
+          }
+        }
+
         targetCallbacks?.forEach((cb) => cb(mutations, observer));
       });
     })
@@ -65,17 +75,12 @@ function createMutationObserver() {
   };
 }
 
-const getMutationObserver = () =>
-  !_mutationObserver
-    ? (_mutationObserver = createMutationObserver())
-    : _mutationObserver;
-
-function useMutationObserver<T extends HTMLElement>(
-  target: React.RefObject<T> | T | null,
+function useMutationObserver<T extends HTMLElement = HTMLElement>(
+  target: MutableRefObject<T>,
   callback: TUseMutationObserverCallback,
   options?: MutationObserverInit
 ): MutationObserver {
-  const mutationObserver = getMutationObserver();
+  const mutationObserver = createMutationObserver(target, options);
   const storedCallback = useLatest(callback);
   const storedOptions = useLatest(options);
 
