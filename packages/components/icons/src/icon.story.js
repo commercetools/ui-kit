@@ -228,7 +228,7 @@ storiesOf('Components|Icons', module)
         {Object.values(icons).map((Icon, index) => {
           const sizeValue = select(
             'size',
-            ['small', 'medium', 'big', 'scale'],
+            ['10', '20', '30', '40', 'scale'],
             'big'
           );
           const containerWidth =

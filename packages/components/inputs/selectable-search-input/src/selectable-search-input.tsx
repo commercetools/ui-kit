@@ -513,7 +513,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
           {props.showSubmitButton && (
             <SecondaryIconButton
               icon={<SearchIcon />}
-              size={props.isCondensed ? '30' : '40'}
+              size={props.isCondensed ? '20' : '40'}
               label={'search-button'}
               onClick={handleSubmit}
               css={getSearchIconButtonStyles(props)}
