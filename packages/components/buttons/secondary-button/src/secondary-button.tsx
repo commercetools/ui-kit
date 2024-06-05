@@ -208,10 +208,7 @@ export const SecondaryButton = <
             {props.iconLeft &&
               cloneElement(props.iconLeft, {
                 color: getIconColor(props),
-                size:
-                  props.size === 'big' || props.size === '20'
-                    ? 'big'
-                    : 'medium',
+                size: props.size === 'big' || props.size === '20' ? '40' : '20',
               })}
           </span>
         )}
