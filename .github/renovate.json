@@ -34,6 +34,14 @@
     {
       "matchPackageNames": ["react-textarea-autosize"],
       "allowedVersions": "<8.4.1"
+    },
+    {
+      "matchPackageNames": ["react-from-dom"],
+      "allowedVersions": "<=0.6.2"
+    },
+    {
+      "matchPackageNames": ["node-fetch"],
+      "allowedVersions": "<3.0.0"
     }
   ],
   "lockFileMaintenance": {

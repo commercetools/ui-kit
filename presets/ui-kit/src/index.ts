@@ -9,6 +9,9 @@ export * from '@commercetools-uikit/fields';
 export * from '@commercetools-uikit/icons';
 export * from '@commercetools-uikit/inputs';
 
+export { default as LeadingIcon } from '@commercetools-uikit/icons/leading-icon';
+export { default as CustomIcon } from '@commercetools-uikit/icons/custom-icon';
+export { default as InlineSvg } from '@commercetools-uikit/icons/inline-svg';
 export { default as AccessibleHidden } from '@commercetools-uikit/accessible-hidden';
 export { default as Avatar } from '@commercetools-uikit/avatar';
 export { default as Card } from '@commercetools-uikit/card';
