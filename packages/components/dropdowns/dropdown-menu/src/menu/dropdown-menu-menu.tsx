@@ -26,7 +26,6 @@ export function getDropdownMenuBaseStyles(params: {
     border-radius: ${designTokens.borderRadius4};
     box-shadow: 0 2px ${boxShadowBottomSize} 0px rgba(0, 0, 0, 0.15);
     display: ${params.isOpen ? 'block' : 'none'};
-    margin-top: ${marginTop};
     max-width: ${Constraints.getMaxPropTokenValue(params.horizontalConstraint)};
     overflow-y: auto;
     position: fixed;
@@ -48,30 +47,101 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    // Update the position of the menu when it is open
-    if (props.isOpen && props.triggerElementRef.current && menuRef.current) {
-      const triggerElementCoordinates =
-        props.triggerElementRef.current.getBoundingClientRect();
-
-      menuRef.current.style.top = `${
-        triggerElementCoordinates.top + triggerElementCoordinates.height
-      }px`;
-      if (props.menuPosition === 'left') {
-        menuRef.current.style.left = `${triggerElementCoordinates.left}px`;
-        menuRef.current.style.removeProperty('right');
-      } else {
-        menuRef.current.style.right = `${
-          window.innerWidth - triggerElementCoordinates.right
-        }px`;
-        menuRef.current.style.removeProperty('left');
-      }
-      menuRef.current.style.maxHeight = props.menuMaxHeight
-        ? `${props.menuMaxHeight}px`
-        : `calc(${
-            window.innerHeight -
-            (triggerElementCoordinates.top + triggerElementCoordinates.height)
-          }px - ${marginTop} - ${boxShadowBottomSize})`;
+    if (!props.isOpen || !props.triggerElementRef.current || !menuRef.current) {
+      return;
     }
+
+    const triggerElementCoordinates =
+      props.triggerElementRef.current.getBoundingClientRect();
+
+    const menuClientRect = menuRef.current.getBoundingClientRect();
+
+    const physicalMenuHeight = menuClientRect.height;
+
+    const desiredMenuHeight =
+      props.menuMaxHeight && props.menuMaxHeight > 0
+        ? props.menuMaxHeight
+        : physicalMenuHeight;
+
+    const availableSpaceTop = triggerElementCoordinates.top;
+    const availableSpaceBottom =
+      window.innerHeight - triggerElementCoordinates.bottom;
+
+    // Prefer rendering below the trigger element if there is enough space
+    // to display the whole menu, otherwise render wherever there is more space
+    const menuYPosition =
+      availableSpaceBottom >= desiredMenuHeight
+        ? 'below'
+        : availableSpaceBottom > availableSpaceTop
+        ? 'below'
+        : 'above';
+
+    // Since the scorlling will be disabled by another hook,
+    // the width my change, thus, the positioning of the menu would
+    // be affected. We need to get the scroll width before the menu
+    const scrollWidthBefore = document.body.scrollWidth;
+
+    // Using setTimeout allows us to get the correct
+    // dimensions & positions of the trigger element and the menu first before doing
+    // the calculations for positioning the menu correctly
+    setTimeout(() => {
+      if (!menuRef.current) return;
+
+      const menu = menuRef.current;
+
+      // If there is a scrollWidthDiff, it means that the width of the body has changed
+      // due to removed scorllbars and we need to adjust the position of the menu to
+      // be still properly aligned with the trigger
+      const scrollWidthDiff =
+        (document.body.scrollWidth - scrollWidthBefore) * 0.5;
+
+      if (menuYPosition === 'below') {
+        menu.style.top = `calc(${
+          triggerElementCoordinates.top + triggerElementCoordinates.height
+        }px + ${marginTop})`;
+      } else {
+        menu.style.top = `calc(${
+          triggerElementCoordinates.top - desiredMenuHeight
+        }px - ${marginTop})`;
+      }
+
+      if (props.menuPosition === 'left') {
+        menu.style.left = `${
+          triggerElementCoordinates.left + scrollWidthDiff
+        }px`;
+        menu.style.removeProperty('right');
+      } else {
+        menu.style.right = `${
+          window.innerWidth - triggerElementCoordinates.right - scrollWidthDiff
+        }px`;
+        menu.style.removeProperty('left');
+      }
+
+      if (props.menuMaxHeight && props.menuMaxHeight > 0) {
+        // Apply the manual max-width
+        menu.style.maxHeight = props.menuMaxHeight + 'px';
+      } else {
+        // Max-Height can not exceed the available top- or bottom-space
+        menu.style.maxHeight =
+          menuYPosition === 'below'
+            ? `calc(${
+                window.innerHeight - triggerElementCoordinates.bottom
+              }px - ${marginTop} - ${boxShadowBottomSize})`
+            : `calc(${triggerElementCoordinates.top}px - ${marginTop} - ${boxShadowBottomSize})`;
+      }
+    }, 0);
+
+    return () => {
+      const menu = menuRef.current;
+      if (!menu) return;
+      menu.style.removeProperty('top');
+      menu.style.removeProperty('left');
+      menu.style.removeProperty('right');
+      menu.style.removeProperty('bottom');
+      menu.style.removeProperty('height');
+      menu.style.removeProperty('outline');
+      menu.style.removeProperty('maxHeight');
+    };
   }, [
     props.isOpen,
     props.menuPosition,
