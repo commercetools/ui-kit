@@ -56,12 +56,11 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
 
     const menuClientRect = menuRef.current.getBoundingClientRect();
 
-    const physicalMenuHeight = menuClientRect.height;
-
-    const desiredMenuHeight =
+    let desiredMenuHeight =
       props.menuMaxHeight && props.menuMaxHeight > 0
         ? props.menuMaxHeight
-        : physicalMenuHeight;
+        : menuClientRect.height;
+    const menuWidth = menuClientRect.width;
 
     const availableSpaceTop = triggerElementCoordinates.top;
     const availableSpaceBottom =
@@ -76,6 +75,22 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
         ? 'below'
         : 'above';
 
+    let menuXPosition: 'left' | 'right';
+
+    if (props.menuPosition === 'left') {
+      const distanceToRightEdge =
+        window.innerWidth - triggerElementCoordinates.left;
+
+      const isEnoughToDisplayMenu = distanceToRightEdge >= menuWidth;
+
+      menuXPosition = isEnoughToDisplayMenu ? 'left' : 'right';
+    }
+    if (props.menuPosition === 'right') {
+      const distanceToLeftEdge =
+        triggerElementCoordinates.left + triggerElementCoordinates.width;
+      const isEnoughToDisplayMenu = distanceToLeftEdge >= menuWidth;
+      menuXPosition = isEnoughToDisplayMenu ? 'right' : 'left';
+    }
     // Since the scorlling will be disabled by another hook,
     // the width my change, thus, the positioning of the menu would
     // be affected. We need to get the scroll width before the menu
@@ -95,17 +110,7 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
       const scrollWidthDiff =
         (document.body.scrollWidth - scrollWidthBefore) * 0.5;
 
-      if (menuYPosition === 'below') {
-        menu.style.top = `calc(${
-          triggerElementCoordinates.top + triggerElementCoordinates.height
-        }px + ${marginTop})`;
-      } else {
-        menu.style.top = `calc(${
-          triggerElementCoordinates.top - desiredMenuHeight
-        }px - ${marginTop})`;
-      }
-
-      if (props.menuPosition === 'left') {
+      if (menuXPosition === 'left') {
         menu.style.left = `${
           triggerElementCoordinates.left + scrollWidthDiff
         }px`;
@@ -117,11 +122,28 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
         menu.style.removeProperty('left');
       }
 
+      if (menuYPosition === 'below') {
+        menu.style.top = `calc(${
+          triggerElementCoordinates.top + triggerElementCoordinates.height
+        }px + ${marginTop})`;
+      } else {
+        let desiredMenuHeight =
+          props.menuMaxHeight && props.menuMaxHeight > 0
+            ? props.menuMaxHeight
+            : // Need to re-request getBoundingClientRect() because the menu height
+              //might have changed when the dropdown is in 'auto' mode
+              menuRef.current.getBoundingClientRect().height;
+
+        menu.style.top = `calc(${
+          triggerElementCoordinates.top - desiredMenuHeight
+        }px - ${marginTop})`;
+      }
+
       if (props.menuMaxHeight && props.menuMaxHeight > 0) {
         // Apply the manual max-width
         menu.style.maxHeight = props.menuMaxHeight + 'px';
       } else {
-        // Max-Height can not exceed the available top- or bottom-space
+        // MAke sure max-height does not exceed the available top- or bottom-space
         menu.style.maxHeight =
           menuYPosition === 'below'
             ? `calc(${
