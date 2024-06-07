@@ -30,7 +30,7 @@ export function getDropdownMenuBaseStyles(params: {
     overflow-y: auto;
     position: fixed;
     width: ${params.horizontalConstraint === 'auto' ? 'auto' : '100%'};
-    z-index: 5;
+    z-index: 1;
   `;
 }
 
@@ -151,7 +151,7 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
         // Apply the manual max-width
         menu.style.maxHeight = props.menuMaxHeight + 'px';
       } else {
-        // MAke sure max-height does not exceed the available top- or bottom-space
+        // Make sure max-height does not exceed the available top- or bottom-space
         menu.style.maxHeight =
           menuYPosition === 'below'
             ? `calc(${
