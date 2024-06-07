@@ -51,11 +51,21 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
       return;
     }
 
+    const menu = menuRef.current;
+
     const triggerElementCoordinates =
       props.triggerElementRef.current.getBoundingClientRect();
 
     const menuClientRect = menuRef.current.getBoundingClientRect();
 
+    let menuIsExceedingViewport = false;
+
+    if (menuClientRect.width >= document.body.scrollWidth) {
+      // If the menu width is greater than the body width, we need to set the width of the menu to the body width
+      // to prevent the menu from overflowing
+      menuRef.current.style.width = `calc(${document.body.scrollWidth}px - 2 * ${marginTop})`;
+      menuIsExceedingViewport = true;
+    }
     let desiredMenuHeight =
       props.menuMaxHeight && props.menuMaxHeight > 0
         ? props.menuMaxHeight
@@ -100,17 +110,15 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
     // dimensions & positions of the trigger element and the menu first before doing
     // the calculations for positioning the menu correctly
     setTimeout(() => {
-      if (!menuRef.current) return;
-
-      const menu = menuRef.current;
-
       // If there is a scrollWidthDiff, it means that the width of the body has changed
       // due to removed scorllbars and we need to adjust the position of the menu to
       // be still properly aligned with the trigger
       const scrollWidthDiff =
         (document.body.scrollWidth - scrollWidthBefore) * 0.5;
 
-      if (menuXPosition === 'left') {
+      if (menuIsExceedingViewport) {
+        menu.style.left = `calc( ${marginTop} + ${scrollWidthDiff}px)`;
+      } else if (menuXPosition === 'left') {
         menu.style.left = `${
           triggerElementCoordinates.left + scrollWidthDiff
         }px`;
@@ -132,7 +140,7 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
             ? props.menuMaxHeight
             : // Need to re-request getBoundingClientRect() because the menu height
               //might have changed when the dropdown is in 'auto' mode
-              menuRef.current.getBoundingClientRect().height;
+              menu.getBoundingClientRect().height;
 
         menu.style.top = `calc(${
           triggerElementCoordinates.top - desiredMenuHeight
@@ -154,12 +162,11 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
     }, 0);
 
     return () => {
-      const menu = menuRef.current;
-      if (!menu) return;
       menu.style.removeProperty('top');
       menu.style.removeProperty('left');
       menu.style.removeProperty('right');
       menu.style.removeProperty('bottom');
+      menu.style.removeProperty('width');
       menu.style.removeProperty('height');
       menu.style.removeProperty('outline');
       menu.style.removeProperty('maxHeight');
