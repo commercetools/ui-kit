@@ -6,8 +6,12 @@ import {
   useState,
   useCallback,
   useRef,
+  ReactElement,
 } from 'react';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import IconButton, {
+  type TIconButtonProps,
+} from '@commercetools-uikit/icon-button';
 import Constraints from '@commercetools-uikit/constraints';
 import { SearchIcon, CloseIcon } from '@commercetools-uikit/icons';
 import {
@@ -227,6 +231,15 @@ export type TSelectableSearchInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   selectCustomComponents?: ReactSelectProps['components'];
+
+  /**
+   * Custom action icon to be displayed on the right side of the input.
+   */
+  rightActionIcon?: ReactElement;
+  /**
+   * Props for the right-action icon-button.
+   */
+  rightActionProps?: TIconButtonProps;
 };
 
 const defaultProps: Pick<
@@ -286,6 +299,12 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     (option) => option.value === searchInputOption
   );
 
+  if (props.rightActionIcon && !props.rightActionProps) {
+    warning(
+      false,
+      'SelectableSearchInput: `rightActionIcon` is provided but `rightActionProps` is missing. Provide an object with a `label` and `onClick` property.'
+    );
+  }
   const selectablSearchInputId = useFieldId(
     props.id,
     selectableSearchInputSequentialId
@@ -519,6 +538,23 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
               css={getSearchIconButtonStyles(props)}
               isDisabled={props.isDisabled}
             />
+          )}
+
+          {props.rightActionIcon && props.rightActionProps && (
+            <div
+              css={css`
+                order: 4;
+                margin-left: ${designTokens.spacing30};
+              `}
+            >
+              <IconButton
+                theme="primary"
+                isDisabled={props.isDisabled || props.isReadOnly}
+                size={props.isCondensed ? '10' : '20'}
+                icon={props.rightActionIcon}
+                {...props.rightActionProps}
+              />
+            </div>
           )}
         </div>
       </Container>
