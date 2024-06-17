@@ -65,6 +65,7 @@ export default Example;
 | `aria-errormessage`        | `string`                                                                               |          |           | HTML ID of an element containing an error message related to the input.                                                                                                                                                                                                                                                                                                                  |
 | `name`                     | `string`                                                                               |          |           | Used as HTML name of the input component property.                                                                                                                                                                                                                                                                                                                                       |
 | `value`                    | `Object`<br/>[See signature.](#signature-value)                                        |    ✅    |           | Value of the input. Consists of text input and selected option.                                                                                                                                                                                                                                                                                                                          |
+| `_experimentalValue`       | `Object`<br/>[See signature.](#signature-_experimentalValue)                           |          |           |                                                                                                                                                                                                                                                                                                                                                                                          |
 | `onChange`                 | `Function`<br/>[See signature.](#signature-onChange)                                   |          |           | Called with the event of the input or dropdown when either the selectable dropdown or the text input have changed.&#xA;The change event from the text input has a suffix of `.textInput` and the change event from the dropdown has a suffix of `.dropdown`.                                                                                                                             |
 | `onBlur`                   | `Function`<br/>[See signature.](#signature-onBlur)                                     |          |           | Called when input is blurred                                                                                                                                                                                                                                                                                                                                                             |
 | `onFocus`                  | `Function`<br/>[See signature.](#signature-onFocus)                                    |          |           | Called when input is focused                                                                                                                                                                                                                                                                                                                                                             |
@@ -97,6 +98,15 @@ export default Example;
 ## Signatures
 
 ### Signature `value`
+
+```ts
+{
+  text: string;
+  option: string;
+}
+```
+
+### Signature `_experimentalValue`
 
 ```ts
 {

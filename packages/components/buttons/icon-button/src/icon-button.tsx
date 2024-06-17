@@ -8,7 +8,11 @@ import {
 } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
+import {
+  filterInvalidAttributes,
+  useWarning,
+  warning,
+} from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
   getShapeStyles,
@@ -17,6 +21,25 @@ import {
   getIconThemeColor,
   getHoverStyles,
 } from './icon-button.styles';
+
+/**
+ * @deprecated Use sizes from `TSizes` instead.
+ */
+type TLegacySizes = 'small' | 'medium' | 'big';
+
+/**
+ * Available sizes for the IconButton.
+ */
+type TSizes = '10' | '20' | '30' | '40';
+
+/**
+ * Mapping of legacy sizes to new sizes.
+ */
+const sizeMapping: Record<TLegacySizes, TSizes> = {
+  small: '10',
+  medium: '30',
+  big: '40',
+};
 
 export type TIconButtonProps<
   TStringOrComponent extends ElementType = 'button'
@@ -67,9 +90,9 @@ export type TIconButtonProps<
    */
   theme?: 'default' | 'primary' | 'info';
   /**
-   * Indicates the size of the icon.
+   * Indicates the size of the icon. Available sizes are '10', '20', '30', '40'.
    */
-  size?: 'small' | 'medium' | 'big';
+  size?: TLegacySizes | TSizes;
 } & /**
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
@@ -82,7 +105,7 @@ const defaultProps: Pick<
 > = {
   type: 'button',
   theme: 'default',
-  size: 'big',
+  size: '40',
   shape: 'round',
   isToggleButton: false,
 };
@@ -93,6 +116,15 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
   warning(
     !(props.theme !== 'default' && !props.isToggleButton),
     `Invalid prop \`theme\` supplied to \`IconButton\`. Only toggle buttons may have a theme.`
+  );
+
+  useWarning(
+    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
+    `IconButton '${
+      props.size
+    }' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[props.size as TLegacySizes]
+    }' Please update that value when using this component`
   );
 
   const buttonAttributes = {

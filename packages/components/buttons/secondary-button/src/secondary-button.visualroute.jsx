@@ -93,6 +93,14 @@ export const component = () => (
       <SecondaryButton label="A label text" onClick={() => {}} size="medium" />
     </Spec>
 
+    <Spec label='size - when "20"'>
+      <SecondaryButton label="A label text" onClick={() => {}} size="20" />
+    </Spec>
+
+    <Spec label='size - when "10"'>
+      <SecondaryButton label="A label text" onClick={() => {}} size="10" />
+    </Spec>
+
     <Spec label="when used as link">
       <SecondaryButton label="A label text" to="/" />
     </Spec>

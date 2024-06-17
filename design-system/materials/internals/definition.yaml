@@ -300,6 +300,14 @@ variants:
     description: 'To differentiate component big size'
   secondary:
     description: 'To differentiate component secondary type'
+  '10':
+    description: 'To differentiate component small size'
+  '20':
+    description: 'To differentiate component medium size'
+  '30':
+    description: 'To differentiate component between big and medium size'
+  '40':
+    description: 'To differentiate component big size'
 
 componentGroups:
   button:
@@ -391,6 +399,14 @@ decisionGroupsByTheme:
           choice: '16px'
         height-for-button-as-medium:
           choice: '32px'
+        height-for-button-as-40:
+          choice: '40px'
+        height-for-button-as-30:
+          choice: '32px'
+        height-for-button-as-20:
+          choice: '24px'
+        height-for-button-as-10:
+          choice: '16px'
         height-for-input:
           choice: '40px'
         # This is a temporary one to be able to remove the legay 'size-height-for-input'

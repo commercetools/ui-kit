@@ -7,11 +7,33 @@ import {
   cloneElement,
 } from 'react';
 import omit from 'lodash/omit';
-import { filterInvalidAttributes } from '@commercetools-uikit/utils';
+import {
+  filterInvalidAttributes,
+  useWarning,
+} from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getBaseStyles } from './secondary-icon-button.styles';
 
 const propsToOmit = ['type'];
+
+/**
+ * @deprecated Use sizes from `TSizes` instead.
+ */
+type TLegacySizes = 'small' | 'medium' | 'big';
+
+/**
+ * Available sizes for the SecondaryIconButton.
+ */
+type TSizes = '10' | '20' | '30' | '40';
+
+/**
+ * Mapping of legacy sizes to new sizes.
+ */
+const sizeMapping: Record<TLegacySizes, TSizes> = {
+  small: '10',
+  medium: '30',
+  big: '40',
+};
 
 export type TSecondaryButtonIconProps<
   TStringOrComponent extends ElementType = 'button'
@@ -44,9 +66,9 @@ export type TSecondaryButtonIconProps<
    */
   isDisabled?: boolean;
   /**
-   * Indicates the size of the icon.
+   * Indicates the size of the icon. Available sizes are '10', '20', '30', '40'.
    */
-  size?: 'small' | 'medium' | 'big';
+  size?: TLegacySizes | TSizes;
   /**
    * Handler when the button is clicked.
    */
@@ -69,6 +91,16 @@ const SecondaryIconButton = <TStringOrComponent extends ElementType = 'button'>(
     // we fall back to `isDisabled`
     disabled: props.isDisabled,
   };
+
+  useWarning(
+    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
+    `SecondaryIconButton '${
+      props.size
+    }' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[props.size as TLegacySizes]
+    }' Please update that value when using this component`
+  );
+
   return (
     <AccessibleButton
       as={props.as}
@@ -91,7 +123,7 @@ SecondaryIconButton.displayName = 'SecondaryIconButton';
 SecondaryIconButton.defaultProps = {
   color: 'solid',
   type: 'button',
-  size: 'big',
+  size: '40',
   isDisabled: false,
 };
 

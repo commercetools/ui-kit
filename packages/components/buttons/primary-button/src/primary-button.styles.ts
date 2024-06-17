@@ -6,15 +6,16 @@ import type { TPrimaryButtonProps } from './primary-button';
 const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
   switch (size) {
     // rendering the same style for now to not introduce a breaking change
+    case '10':
     case 'small':
     case 'medium':
       return css`
-        height: ${designTokens.heightForButtonAsMedium};
+        height: ${designTokens.heightForButtonAs30};
       `;
-
+    case '20':
     case 'big':
       return css`
-        height: ${designTokens.heightForButtonAsBig};
+        height: ${designTokens.heightForButtonAs40};
       `;
 
     default:

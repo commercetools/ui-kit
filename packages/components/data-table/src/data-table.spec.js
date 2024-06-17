@@ -165,7 +165,7 @@ describe('DataTable', () => {
           <IconButton
             icon={<InformationIcon />}
             label="ID Info"
-            size="medium"
+            size="30"
             onClick={() => jest.fn()}
           />
         ),

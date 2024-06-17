@@ -29,7 +29,7 @@ storiesOf('Components|Buttons', module)
             to={to}
             type={select('type', ['submit', 'reset', 'button'], 'button')}
             shape={select('shape', ['round', 'square'], 'round')}
-            size={select('size', ['big', 'medium', 'small'], 'big')}
+            size={select('size', ['10', '20', '30', '40'], '40')}
             theme={select('theme', ['primary', 'info', 'default'], 'default')}
             icon={createElement(icons[select('icon', iconNames, iconNames[0])])}
             onClick={action('onClick')}

@@ -70,10 +70,42 @@ export const component = () => (
         onClick={() => {}}
       />
     </Spec>
-    <Spec label="sizes when big (default)">
+    <Spec label="sizes when big">
       <SecondaryIconButton
         icon={<InformationIcon />}
         size="big"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
+    <Spec label="size when 10">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        size="10"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
+    <Spec label="size when 20">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        size="20"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
+    <Spec label="size when 30">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        size="30"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
+    <Spec label="size when 40 (default)">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        size="40"
         label="A label text"
         onClick={() => {}}
       />
