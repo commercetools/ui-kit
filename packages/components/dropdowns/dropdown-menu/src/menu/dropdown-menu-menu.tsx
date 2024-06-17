@@ -14,7 +14,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 // but also for calculating the default max height of the dropdown menu so we make sure it fits
 // within the viewport.
 const boxShadowBottomSize = '5px';
-const marginTop = designTokens.spacing20;
+const outerMargin = designTokens.spacing20;
 
 export function getDropdownMenuBaseStyles(params: {
   isOpen: boolean;
@@ -51,30 +51,30 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
       return;
     }
 
-    const menu = menuRef.current;
+    const menuMaxHeight = props.menuMaxHeight;
+    const menuEl = menuRef.current;
+    const menuTriggerEl = props.triggerElementRef.current;
 
-    const triggerElementCoordinates =
-      props.triggerElementRef.current.getBoundingClientRect();
+    const menuDOMRect = menuEl.getBoundingClientRect();
+    const triggerDOMRect = menuTriggerEl.getBoundingClientRect();
 
-    const menuClientRect = menuRef.current.getBoundingClientRect();
-
+    // By default, the menu is not exceeding the viewport, this can change though
     let menuIsExceedingViewport = false;
 
-    if (menuClientRect.width >= document.body.scrollWidth) {
+    if (menuDOMRect.width >= document.body.scrollWidth) {
       // If the menu width is greater than the body width, we need to set the width of the menu to the body width
-      // to prevent the menu from overflowing
-      menuRef.current.style.width = `calc(${document.body.scrollWidth}px - 2 * ${marginTop})`;
+      // to prevent the menu from overflowing, this happens usually when the horizontalConstraint is set to 'auto'
+      menuEl.style.width = `calc(${document.body.scrollWidth}px - 2 * ${outerMargin})`;
       menuIsExceedingViewport = true;
     }
-    let desiredMenuHeight =
-      props.menuMaxHeight && props.menuMaxHeight > 0
-        ? props.menuMaxHeight
-        : menuClientRect.height;
-    const menuWidth = menuClientRect.width;
 
-    const availableSpaceTop = triggerElementCoordinates.top;
-    const availableSpaceBottom =
-      window.innerHeight - triggerElementCoordinates.bottom;
+    // The preferred/ideal height of the menu (which might change later if there is
+    // not enough screen estate)
+    let desiredMenuHeight = menuMaxHeight || menuDOMRect.height;
+    const menuWidth = menuDOMRect.width;
+
+    const availableSpaceTop = triggerDOMRect.top;
+    const availableSpaceBottom = window.innerHeight - triggerDOMRect.bottom;
 
     // Prefer rendering below the trigger element if there is enough space
     // to display the whole menu, otherwise render wherever there is more space
@@ -88,88 +88,84 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
     let menuXPosition: 'left' | 'right';
 
     if (props.menuPosition === 'left') {
-      const distanceToRightEdge =
-        window.innerWidth - triggerElementCoordinates.left;
-
-      const isEnoughToDisplayMenu = distanceToRightEdge >= menuWidth;
-
-      menuXPosition = isEnoughToDisplayMenu ? 'left' : 'right';
+      const distanceToRightEdge = window.innerWidth - triggerDOMRect.left;
+      menuXPosition = distanceToRightEdge >= menuWidth ? 'left' : 'right';
     }
+
     if (props.menuPosition === 'right') {
-      const distanceToLeftEdge =
-        triggerElementCoordinates.left + triggerElementCoordinates.width;
-      const isEnoughToDisplayMenu = distanceToLeftEdge >= menuWidth;
-      menuXPosition = isEnoughToDisplayMenu ? 'right' : 'left';
+      const distanceToLeftEdge = triggerDOMRect.left + triggerDOMRect.width;
+      menuXPosition = distanceToLeftEdge >= menuWidth ? 'right' : 'left';
     }
-    // Since the scorlling will be disabled by another hook,
-    // the width my change, thus, the positioning of the menu would
-    // be affected. We need to get the scroll width before the menu
+    // Since scrolling will be disabled by a hook, possibly on the body-element,
+    // the available viewport-width might change, thus, the positioning of the
+    // menu would be affected, hence we need to get the scroll-width before the
+    // menu renders
     const scrollWidthBefore = document.body.scrollWidth;
 
-    // Using setTimeout allows us to get the correct
-    // dimensions & positions of the trigger element and the menu first before doing
-    // the calculations for positioning the menu correctly
+    // Using setTimeout allows us to get the correct dimensions & positions
+    // of the trigger- & menu-element first before doing the calculations for
+    // positioning the menu correctly
     setTimeout(() => {
-      // If there is a scrollWidthDiff, it means that the width of the body has changed
-      // due to removed scorllbars and we need to adjust the position of the menu to
-      // be still properly aligned with the trigger
+      // If there is a scrollWidthDiff, it means that the width of the
+      // viewports has changed due to removed scrollbars, and we need to
+      // adjust the position of the menu to be still properly aligned with
+      // the trigger
       const scrollWidthDiff =
         (document.body.scrollWidth - scrollWidthBefore) * 0.5;
 
       if (menuIsExceedingViewport) {
-        menu.style.left = `calc( ${marginTop} + ${scrollWidthDiff}px)`;
+        menuEl.style.left = `calc( ${outerMargin} + ${scrollWidthDiff}px)`;
       } else if (menuXPosition === 'left') {
-        menu.style.left = `${
-          triggerElementCoordinates.left + scrollWidthDiff
-        }px`;
-        menu.style.removeProperty('right');
+        menuEl.style.left = `${triggerDOMRect.left + scrollWidthDiff}px`;
+        menuEl.style.removeProperty('right');
       } else {
-        menu.style.right = `${
-          window.innerWidth - triggerElementCoordinates.right - scrollWidthDiff
+        menuEl.style.right = `${
+          window.innerWidth - triggerDOMRect.right - scrollWidthDiff
         }px`;
-        menu.style.removeProperty('left');
+        menuEl.style.removeProperty('left');
       }
 
       if (menuYPosition === 'below') {
-        menu.style.top = `calc(${
-          triggerElementCoordinates.top + triggerElementCoordinates.height
-        }px + ${marginTop})`;
+        menuEl.style.top = `calc(${
+          triggerDOMRect.top + triggerDOMRect.height
+        }px + ${outerMargin})`;
       } else {
+        // Need to re-request getBoundingClientRect() because the menu height
+        // might have changed when the dropdown is in 'auto' mode;
         let desiredMenuHeight =
-          props.menuMaxHeight && props.menuMaxHeight > 0
-            ? props.menuMaxHeight
-            : // Need to re-request getBoundingClientRect() because the menu height
-              //might have changed when the dropdown is in 'auto' mode
-              menu.getBoundingClientRect().height;
+          menuMaxHeight || menuEl.getBoundingClientRect().height;
 
-        menu.style.top = `calc(${
-          triggerElementCoordinates.top - desiredMenuHeight
-        }px - ${marginTop})`;
+        menuEl.style.top = `calc(${
+          triggerDOMRect.top - desiredMenuHeight
+        }px - ${outerMargin})`;
       }
 
-      if (props.menuMaxHeight && props.menuMaxHeight > 0) {
+      if (menuMaxHeight) {
         // Apply the manual max-width
-        menu.style.maxHeight = props.menuMaxHeight + 'px';
+        menuEl.style.maxHeight = menuMaxHeight + 'px';
       } else {
         // Make sure max-height does not exceed the available top- or bottom-space
-        menu.style.maxHeight =
+        menuEl.style.maxHeight =
           menuYPosition === 'below'
             ? `calc(${
-                window.innerHeight - triggerElementCoordinates.bottom
-              }px - ${marginTop} - ${boxShadowBottomSize})`
-            : `calc(${triggerElementCoordinates.top}px - ${marginTop} - ${boxShadowBottomSize})`;
+                window.innerHeight - triggerDOMRect.bottom
+              }px - ${outerMargin} - ${boxShadowBottomSize})`
+            : `calc(${triggerDOMRect.top}px - ${outerMargin} - ${boxShadowBottomSize})`;
       }
     }, 0);
 
     return () => {
-      menu.style.removeProperty('top');
-      menu.style.removeProperty('left');
-      menu.style.removeProperty('right');
-      menu.style.removeProperty('bottom');
-      menu.style.removeProperty('width');
-      menu.style.removeProperty('height');
-      menu.style.removeProperty('outline');
-      menu.style.removeProperty('maxHeight');
+      [
+        'top',
+        'left',
+        'right',
+        'bottom',
+        'width',
+        'height',
+        'maxHeight',
+      ].forEach((prop) => {
+        menuEl.style.removeProperty(prop);
+      });
     };
   }, [
     props.isOpen,
