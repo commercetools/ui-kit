@@ -1,7 +1,12 @@
 import { useMemo, cloneElement } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings from './data-table-settings';
-import type { TRow, TColumnProps, TDataTableManagerProps } from './types';
+import type {
+  TRow,
+  TColumnProps,
+  TDataTableManagerProps,
+  TColumnManagerProps,
+} from './types';
 import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
 
 const DataTableManager = <Row extends TRow = TRow>(
@@ -18,6 +23,9 @@ const DataTableManager = <Row extends TRow = TRow>(
     props.onSettingsChange || dataTableManagerContext.onSettingsChange;
   const columnManager =
     props.columnManager || dataTableManagerContext.columnManager;
+
+  const nestedColumnManager =
+    props.nestedColumnManager || dataTableManagerContext.nestedColumnManager;
 
   const areDisplaySettingsEnabled = Boolean(
     displaySettings && !displaySettings.disableDisplaySettings
@@ -45,11 +53,12 @@ const DataTableManager = <Row extends TRow = TRow>(
   return (
     <Spacings.Stack>
       <DataTableSettings
+        columnManager={columnManager as TColumnManagerProps}
         topBar={topBar}
         onSettingsChange={onSettingsChange}
-        columnManager={columnManager}
         displaySettings={displaySettings}
         managerTheme="light"
+        nestedColumnManager={nestedColumnManager as TColumnManagerProps[]}
       />
       {props.children
         ? cloneElement(props.children, {

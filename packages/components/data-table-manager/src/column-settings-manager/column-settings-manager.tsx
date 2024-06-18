@@ -27,6 +27,7 @@ import DroppablePanel from '../droppable-panel';
 import SettingsContainer from '../settings-container';
 import messages from './messages';
 import { HIDDEN_COLUMNS_PANEL, SELECTED_COLUMNS_PANEL } from './constants';
+import { type MessageDescriptor } from 'react-intl';
 
 // 'searchHiddenColums' is only required if 'areHiddenColumnsSearchable' is true
 // but that callback is used in AsyncSelectInput.loadOptions which is required
@@ -42,6 +43,9 @@ export type TColumnData = {
 };
 
 export type TColumnSettingsManagerProps = {
+  title?: MessageDescriptor & {
+    values?: Record<string, React.ReactNode>;
+  };
   availableColumns: TColumnData[];
   selectedColumns: TColumnData[];
   onUpdateColumns: (updatedColums: TColumnData[]) => void;
@@ -178,7 +182,8 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
 
   return (
     <SettingsContainer
-      title={messages.title}
+      // @ts-ignore
+      title={props.title}
       closeButtonLabel={messages.closeButtonLabel}
       onClose={props.onClose}
       primaryButton={props.primaryButton}

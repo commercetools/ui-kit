@@ -39,10 +39,12 @@ export const getDropdownOptions = ({
   areColumnSettingsEnabled,
   areDisplaySettingsEnabled,
   formatMessage,
+  nestedColumnManager,
 }: {
   areColumnSettingsEnabled: boolean;
   areDisplaySettingsEnabled: boolean;
   formatMessage: (message: MessageDescriptor) => string;
+  nestedColumnManager: TDataTableSettingsProps['nestedColumnManager'];
 }) => [
   ...(areColumnSettingsEnabled
     ? [
@@ -51,6 +53,14 @@ export const getDropdownOptions = ({
           label: formatMessage(messages.columnManagerOption),
         },
       ]
+    : []),
+  ...(nestedColumnManager
+    ? nestedColumnManager.map((nestedColumns) => {
+        return {
+          value: nestedColumns.value,
+          label: nestedColumns.label,
+        };
+      })
     : []),
   ...(areDisplaySettingsEnabled
     ? [
@@ -94,10 +104,12 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   const [openedPanelId, setOpenedPanelId] = useState<string | null | undefined>(
     null
   );
+  // @ts-ignore
   const dropdownOptions: TDropdownOption[] = getDropdownOptions({
     areDisplaySettingsEnabled,
     areColumnSettingsEnabled,
     formatMessage: intl.formatMessage,
+    nestedColumnManager: props.nestedColumnManager,
   });
 
   const mappedColumns = getMappedColumns(
@@ -166,24 +178,56 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
           managerTheme={props.managerTheme}
         />
       )}
-      {openedPanelId === COLUMN_MANAGER && (
-        <ColumnSettingsManager
-          {...(props.columnManager || {})}
-          availableColumns={props.columnManager?.hideableColumns ?? []}
-          selectedColumns={selectedColumns}
-          onClose={handleSettingsPanelChange}
-          onUpdateColumns={(nextVisibleColumns) => {
-            const keysOfVisibleColumns = nextVisibleColumns.map(
-              (visibleColumn) => visibleColumn.key
-            );
-            props.onSettingsChange?.(
-              UPDATE_ACTIONS.COLUMNS_UPDATE,
-              keysOfVisibleColumns
-            );
-          }}
-          managerTheme={props.managerTheme}
-        />
-      )}
+      {props.nestedColumnManager
+        ? props.nestedColumnManager.map(
+            (nestedManager) =>
+              openedPanelId === nestedManager.value && (
+                <ColumnSettingsManager
+                  key={nestedManager.value}
+                  {...(nestedManager || {})}
+                  availableColumns={nestedManager.hideableColumns ?? []}
+                  title={nestedManager.label}
+                  selectedColumns={
+                    props.nestedColumnManager
+                      ? getSelectedColumns(
+                          mappedColumns,
+                          // @ts-ignore
+                          props.nestedColumnManager!.visibleColumnKeys
+                        )
+                      : selectedColumns
+                  }
+                  onClose={handleSettingsPanelChange}
+                  onUpdateColumns={(nextVisibleColumns) => {
+                    const keysOfVisibleColumns = nextVisibleColumns.map(
+                      (visibleColumn) => visibleColumn.key
+                    );
+                    props.onSettingsChange?.(
+                      UPDATE_ACTIONS.COLUMNS_UPDATE,
+                      keysOfVisibleColumns
+                    );
+                  }}
+                  managerTheme={props.managerTheme}
+                />
+              )
+          )
+        : openedPanelId === COLUMN_MANAGER && (
+            <ColumnSettingsManager
+              {...(props.columnManager || {})}
+              availableColumns={props.columnManager?.hideableColumns ?? []}
+              selectedColumns={selectedColumns}
+              onClose={handleSettingsPanelChange}
+              onUpdateColumns={(nextVisibleColumns) => {
+                const keysOfVisibleColumns = nextVisibleColumns.map(
+                  (visibleColumn) => visibleColumn.key
+                );
+                props.onSettingsChange?.(
+                  UPDATE_ACTIONS.COLUMNS_UPDATE,
+                  keysOfVisibleColumns
+                );
+              }}
+              managerTheme={props.managerTheme}
+            />
+          )}
     </Spacings.Stack>
   );
 };

@@ -45,7 +45,7 @@ const SettingsContainer = (props: TSettingsContainerProps) => {
           <CardContentWrapper>
             <Spacings.Stack scale="xl">
               <HeaderContainer>
-                <Text.Headline as="h2" intlMessage={props.title} />
+                <Text.Headline as="h2">{props.title}</Text.Headline>
                 <AccessibleButton
                   onClick={props.onClose}
                   label={intl.formatMessage(props.closeButtonLabel)}
