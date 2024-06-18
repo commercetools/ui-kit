@@ -30,7 +30,7 @@ storiesOf('Components|Buttons', module)
           <SecondaryButton
             type={select('type', ['button', 'reset', 'submit'], 'button')}
             tone={select('tone', ['info', 'secondary'], 'secondary')}
-            size={select('size', ['medium', 'big'], 'big')}
+            size={select('size', ['10', '20'], '20')}
             iconLeft={createElement(
               icons[select('iconLeft', iconNames, iconNames[0])]
             )}

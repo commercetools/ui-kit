@@ -19,6 +19,25 @@ import { getButtonStyles } from './primary-button.styles';
 
 const propsToOmit = ['type'];
 
+/**
+ * @deprecated Use sizes from `TSizes` instead.
+ */
+type TLegacySizes = 'small' | 'medium' | 'big';
+
+/**
+ * Available sizes for the PrimaryButton.
+ */
+type TSizes = '10' | '20';
+
+/**
+ * Mapping of legacy sizes to new sizes.
+ */
+const sizeMapping: Record<TLegacySizes, TSizes> = {
+  small: '10',
+  medium: '10',
+  big: '20',
+};
+
 export type TPrimaryButtonProps<
   TStringOrComponent extends ElementType = 'button'
 > = {
@@ -62,11 +81,11 @@ export type TPrimaryButtonProps<
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * Indicates the size of the button.
+   * Sets the size of the button.
    * <br />
-   * `small` value has been deprecated. Please use `medium` value instead as a replacement.
+   * `small`, `medium`, and `big` are deprecated. Use `10`, `20`, instead.
    */
-  size?: 'small' | 'medium' | 'big';
+  size?: TLegacySizes | TSizes;
   /**
    * Indicates the color scheme of the button.
    */
@@ -82,7 +101,7 @@ const defaultProps: Pick<
   'type' | 'tone' | 'size' | 'isToggleButton'
 > = {
   type: 'button',
-  size: 'big',
+  size: '20',
   isToggleButton: false,
   tone: 'primary',
 };
@@ -99,8 +118,12 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
   };
 
   useWarning(
-    !Boolean(props.size === 'small'),
-    'PrimaryButton `small` value for `size` property has been renamed to `medium`. Please update that value when using this component'
+    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
+    `PrimaryButton '${
+      props.size
+    }' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[props.size as TLegacySizes]
+    }' Please update that value when using this component`
   );
 
   const isActive = Boolean(props.isToggleButton && props.isToggled);
@@ -129,7 +152,7 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
             {props.iconLeft &&
               cloneElement(props.iconLeft, {
                 color: props.isDisabled ? 'neutral60' : 'surface',
-                size: props.size === 'big' ? 'big' : 'medium',
+                size: props.size === 'big' || props.size === '20' ? '40' : '20',
               })}
           </span>
         )}

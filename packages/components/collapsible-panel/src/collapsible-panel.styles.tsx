@@ -57,7 +57,7 @@ const getHeaderContainerStyles = (
     !props.condensed &&
       // To understand why this min-height see: https://github.com/commercetools/ui-kit/pull/616
       css`
-        min-height: ${designTokens.heightForButtonAsMedium};
+        min-height: ${designTokens.heightForButtonAs30};
         box-sizing: content-box; /* makes the padding extend beyond the min-height */
       `,
   ];

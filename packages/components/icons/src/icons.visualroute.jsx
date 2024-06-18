@@ -44,7 +44,7 @@ const IconContainer = styled.div`
 
 const allIconNames = Object.keys(icons).sort();
 
-const sizes = ['small', 'medium', 'big', 'scale'];
+const sizes = ['10', '20', '30', '40', 'scale'];
 const colors = [
   'solid',
   'neutral60',
