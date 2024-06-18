@@ -2,4 +2,4 @@
 '@commercetools-uikit/selectable-search-input': minor
 ---
 
-support for an additional action added + minor visual changes
+Support for an optional custom action icon to be displayed on the right side of the selectable search input.
