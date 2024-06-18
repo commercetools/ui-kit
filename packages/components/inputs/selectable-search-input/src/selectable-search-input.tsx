@@ -234,10 +234,14 @@ export type TSelectableSearchInputProps = {
 
   /**
    * Custom action icon to be displayed on the right side of the input.
+   * [Available Icons](/?path=/story/components-icons--all-icons)
    */
   rightActionIcon?: ReactElement;
   /**
-   * Props for the right-action icon-button.
+   * Props for the right-action icon-button. Required when rightActionIcon is provided.
+   * At least a label and an onClick function need to be provided.
+   * [Check the IconButton docs](/?path=/story/components-buttons--iconbutton)
+   * for more details on available IconButton props.
    */
   rightActionProps?: TIconButtonProps;
 };
