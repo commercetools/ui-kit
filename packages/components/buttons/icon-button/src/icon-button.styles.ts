@@ -5,25 +5,25 @@ import type { TIconButtonProps } from './icon-button';
 
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 const getIconThemeColor = (
-  props: Pick<
-    TIconButtonProps,
-    'isToggleButton' | 'isToggled' | 'theme' | 'isDisabled' | 'icon'
-  >
+  props: Pick<TIconButtonProps, 'theme' | 'isDisabled'>
 ) => {
-  const isActive = props.isToggleButton && props.isToggled;
+  let iconColor: string = '';
 
-  // if button has a theme, icon should be white when hovering/clicking
-  if (props.theme !== 'default' && isActive) {
-    if (props.isDisabled) {
-      return 'neutral60';
-    }
-    return 'surface';
+  switch (true) {
+    case props.isDisabled:
+      iconColor = 'neutral60';
+      break;
+    case props.theme === 'primary':
+      iconColor = 'surface';
+      break;
+    case props.theme === 'info':
+      iconColor = 'surface';
+      break;
+    default:
+      iconColor = 'primary';
   }
 
-  // if button is disabled, icon should be neutral60
-  if (props.isDisabled) return 'neutral60';
-  // if button is not disabled nor has a theme, return icon's default color
-  return props.icon?.props.theme;
+  return iconColor;
 };
 
 const getShapeStyles = (
@@ -118,6 +118,7 @@ const getBaseStyles = (
 
   if (!theme || theme === 'default') {
     return css`
+      background-color: transparent;
       &:hover {
         background-color: ${designTokens.backgroundColorForButtonWhenHovered};
         box-shadow: ${designTokens.shadow0};
@@ -138,13 +139,15 @@ const getBaseStyles = (
     // #057FCC -> color-info with 10% black opacity
     case 'primary':
       return css`
+        background-color: ${designTokens.colorPrimary};
+
         &:hover {
           background-color: ${designTokens.colorPrimary40};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
-          background-color: ${designTokens.colorPrimary};
+          background-color: ${designTokens.colorPrimary25};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
@@ -155,13 +158,15 @@ const getBaseStyles = (
       `;
     case 'info':
       return css`
+        background-color: ${designTokens.colorInfo};
+
         &:hover {
-          background-color: ${designTokens.colorInfo};
+          background-color: ${designTokens.colorInfo40};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
-          background-color: #057fcc;
+          background-color: ${designTokens.colorInfo};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
