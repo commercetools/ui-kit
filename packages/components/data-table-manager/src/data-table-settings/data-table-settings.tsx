@@ -179,8 +179,8 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
         />
       )}
       {props.nestedColumnManager
-        ? props.nestedColumnManager.map(
-            (nestedManager) =>
+        ? props.nestedColumnManager.map((nestedManager) => {
+            return (
               openedPanelId === nestedManager.value && (
                 <ColumnSettingsManager
                   key={nestedManager.value}
@@ -190,9 +190,8 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
                   selectedColumns={
                     props.nestedColumnManager
                       ? getSelectedColumns(
-                          mappedColumns,
-                          // @ts-ignore
-                          props.nestedColumnManager!.visibleColumnKeys
+                          getMappedColumns(nestedManager.hideableColumns),
+                          nestedManager.visibleColumnKeys
                         )
                       : selectedColumns
                   }
@@ -209,7 +208,8 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
                   managerTheme={props.managerTheme}
                 />
               )
-          )
+            );
+          })
         : openedPanelId === COLUMN_MANAGER && (
             <ColumnSettingsManager
               {...(props.columnManager || {})}
