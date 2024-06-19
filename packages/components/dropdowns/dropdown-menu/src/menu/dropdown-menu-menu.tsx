@@ -29,6 +29,7 @@ export function getDropdownMenuBaseStyles(params: {
     max-width: ${Constraints.getMaxPropTokenValue(params.horizontalConstraint)};
     overflow-y: auto;
     position: fixed;
+    visibility: hidden;
     width: ${params.horizontalConstraint === 'auto' ? 'auto' : '100%'};
     z-index: 1;
   `;
@@ -152,6 +153,9 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
               }px - ${outerMargin} - ${boxShadowBottomSize})`
             : `calc(${triggerDOMRect.top}px - ${outerMargin} - ${boxShadowBottomSize})`;
       }
+
+      // All positioning operations done, make menu visible again
+      menuEl.style.visibility = 'visible';
     }, 0);
 
     return () => {
