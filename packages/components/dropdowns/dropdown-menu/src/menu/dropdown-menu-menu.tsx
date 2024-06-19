@@ -167,6 +167,7 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
         'width',
         'height',
         'maxHeight',
+        'visibility',
       ].forEach((prop) => {
         menuEl.style.removeProperty(prop);
       });
