@@ -92,7 +92,7 @@ const getSelectableSearchInputStyles = (props: TInputProps) => [
     width: 100%;
     color: ${getInputFontColor(props)};
     order: 2;
-    margin-left: 4px;
+    margin-left: ${designTokens.spacing10};
     padding-left: 0;
     padding-right: 0;
   `,
