@@ -94,6 +94,7 @@ export const component = () => (
         onChange={() => {}}
         horizontalConstraint={7}
         rightActionIcon={<InfoIcon />}
+        isCondensed={true}
         rightActionProps={{
           label: 'Click me',
           onClick: () => {},
