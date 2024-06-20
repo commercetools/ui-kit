@@ -1,3 +1,4 @@
+import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
@@ -8,6 +9,9 @@ import NeighbouringStackingContext from '../../../../../docs/.storybook/decorato
 import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import SelectableSearchInput from './selectable-search-input';
+import * as icons from '@commercetools-uikit/icons';
+
+const iconNames = Object.keys(icons);
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
@@ -119,6 +123,16 @@ storiesOf('Components|Inputs', module)
             isCondensed={boolean('isCondensed', false)}
             showSubmitButton={boolean('showSubmitButton', true)}
             hasError={boolean('hasError', false)}
+            rightActionIcon={
+              boolean('hasRightAction') &&
+              createElement(
+                icons[select('rightActionIcon', iconNames, iconNames[0])]
+              )
+            }
+            rightActionProps={{
+              label: 'Right action',
+              onClick: action('rightAction onClick'),
+            }}
             hasWarning={boolean('hasWarning', false)}
             placeholder={text('placeholder', 'Placeholder')}
             horizontalConstraint={select(
