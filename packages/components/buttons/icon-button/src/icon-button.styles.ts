@@ -161,12 +161,12 @@ const getBaseStyles = (
         background-color: ${designTokens.colorInfo};
 
         &:hover {
-          background-color: ${designTokens.colorInfo40};
+          background-color: ${designTokens.colorInfo50};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
-          background-color: ${designTokens.colorInfo};
+          background-color: ${designTokens.colorInfo40};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
