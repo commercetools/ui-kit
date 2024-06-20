@@ -76,7 +76,7 @@ export const component = () => (
     </Spec>
     <Spec label="with right action">
       <MultilineTextInput
-         value={value}
+        value={value}
         placeholder="Enter a text"
         onChange={() => {}}
         horizontalConstraint={7}
@@ -89,10 +89,10 @@ export const component = () => (
     </Spec>
     <Spec label="with right action and condensed">
       <MultilineTextInput
-         value={value}
-         placeholder="Enter a text"
-         onChange={() => {}}
-         horizontalConstraint={7}
+        value={value}
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint={7}
         rightActionIcon={<InfoIcon />}
         rightActionProps={{
           label: 'Click me',
@@ -102,11 +102,11 @@ export const component = () => (
     </Spec>
     <Spec label="with max rows">
       <MultilineTextInput
-         value={value}
-         placeholder="Enter a text"
-         onChange={() => {}}
-         horizontalConstraint={7}
-         maxRows={3}
+        value={value}
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint={7}
+        maxRows={3}
         rightActionIcon={<InfoIcon />}
         rightActionProps={{
           label: 'Click me',

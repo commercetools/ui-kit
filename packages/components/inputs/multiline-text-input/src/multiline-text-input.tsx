@@ -5,9 +5,9 @@ import {
   type FocusEventHandler,
   ReactElement,
 } from 'react';
-import IconButton, {
-  type TIconButtonProps,
-} from '@commercetools-uikit/icon-button';
+import SecondaryIconButton, {
+  type TSecondaryButtonIconProps,
+} from '@commercetools-uikit/secondary-icon-button';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/react';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
@@ -117,7 +117,7 @@ export type TMultilineTextInputProps = {
    * Props for the right-action icon-button. Required when rightActionIcon is provided.
    * At least a `label` and an `onClick` prop/function need to be provided.
    */
-  rightActionProps?: TIconButtonProps;
+  rightActionProps?: TSecondaryButtonIconProps;
   /**
    * Set this to `true` to reduce the paddings of the input allowing the input to display
    * more data in less space.
@@ -193,7 +193,9 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
             isAutofocussed={props.isAutofocussed}
             isOpen={isOpen}
             css={css`
-              padding-right: ${designTokens.spacing60};
+              padding-right: ${props.rightActionIcon &&
+              props.rightActionProps &&
+              designTokens.spacing50};
             `}
             isCondensed={props.isCondensed}
             maxRows={props.maxRows}
@@ -203,11 +205,11 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
             aria-errormessage={props['aria-errormessage']}
           />
           {props.rightActionIcon && props.rightActionProps && (
-            <div css={getMultilineTextInputActionIconStyles()}>
-              <IconButton
-                theme="primary"
+            <div css={getMultilineTextInputActionIconStyles(props)}>
+              <SecondaryIconButton
+                color="info"
                 isDisabled={props.isDisabled || props.isReadOnly}
-                size={props.isCondensed ? '10' : '20'}
+                size={props.isCondensed ? '30' : '40'}
                 icon={props.rightActionIcon}
                 {...props.rightActionProps}
               />
