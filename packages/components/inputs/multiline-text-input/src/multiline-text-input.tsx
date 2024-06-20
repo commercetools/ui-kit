@@ -128,7 +128,7 @@ export type TMultilineTextInputProps = {
    * Set this to value to determine the maximum text rows of the text area.
    * Any text overflow past this row number would implement a scroll
    */
-  maxRows: number;
+  maxRows?: number;
 };
 
 const defaultProps: Pick<

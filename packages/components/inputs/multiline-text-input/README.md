@@ -70,7 +70,7 @@ export default Example;
 | `rightActionIcon`            | `ReactElement`                                                                               |          |         | Custom action icon to be displayed on the right side of the input.                                                                                            |
 | `rightActionProps`           | `TSecondaryButtonIconProps`                                                                  |          |         | Props for the right-action icon-button. Required when rightActionIcon is provided.&#xA;At least a `label` and an `onClick` prop/function need to be provided. |
 | `isCondensed`                | `boolean`                                                                                    |          |         | Set this to `true` to reduce the paddings of the input allowing the input to display&#xA;more data in less space.                                             |
-| `maxRows`                    | `number`                                                                                     |    ✅    |         | Set this to value to determine the maximum text rows of the text area.&#xA;Any text overflow past this row number would implement a scroll                    |
+| `maxRows`                    | `number`                                                                                     |          |         | Set this to value to determine the maximum text rows of the text area.&#xA;Any text overflow past this row number would implement a scroll                    |
 
 ## Static methods
 
