@@ -1,5 +1,6 @@
 import { SelectableSearchInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
+import { CodeViewIcon } from '@commercetools-uikit/icons';
 
 export const routePath = '/selectable-search-input';
 
@@ -161,6 +162,37 @@ export const component = () => (
         onSubmit={() => {}}
         onReset={() => {}}
         options={options}
+      />
+    </Spec>
+    <Spec label="with right action">
+      <SelectableSearchInput
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={16}
+        onSubmit={() => {}}
+        onReset={() => {}}
+        options={options}
+        rightActionIcon={<CodeViewIcon />}
+        rightActionProps={{
+          label: 'Click me',
+          onClick: () => {},
+        }}
+      />
+    </Spec>
+    <Spec label="with right action + condensed">
+      <SelectableSearchInput
+        value={value}
+        onChange={() => {}}
+        isCondensed={true}
+        horizontalConstraint={16}
+        onSubmit={() => {}}
+        onReset={() => {}}
+        options={options}
+        rightActionIcon={<CodeViewIcon />}
+        rightActionProps={{
+          label: 'Click me',
+          onClick: () => {},
+        }}
       />
     </Spec>
   </Suite>
