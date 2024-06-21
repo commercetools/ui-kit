@@ -8,8 +8,14 @@ const getMultilineTextInputActionIconStyles = (
 ) => css`
   position: absolute;
   right: ${designTokens.spacing30};
-  top: ${props.isCondensed ? '7px' : designTokens.spacing20};
+  top: 0;
+  height: ${props.isCondensed
+    ? `${designTokens.heightForInputAsSmall}`
+    : `${designTokens.heightForInput}`};
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const MultilineInputWrapper = styled.div`

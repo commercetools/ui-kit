@@ -87,6 +87,15 @@ export const component = () => (
         }}
       />
     </Spec>
+    <Spec label="with isCondensed">
+      <MultilineTextInput
+        value={value}
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint={7}
+        isCondensed={true}
+      />
+    </Spec>
     <Spec label="with right action and condensed">
       <MultilineTextInput
         value={value}
