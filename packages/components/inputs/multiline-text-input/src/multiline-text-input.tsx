@@ -192,6 +192,7 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
             isReadOnly={props.isReadOnly}
             isAutofocussed={props.isAutofocussed}
             isOpen={isOpen}
+            cacheMeasurements={false}
             css={css`
               padding-right: ${props.rightActionIcon &&
               props.rightActionProps &&
