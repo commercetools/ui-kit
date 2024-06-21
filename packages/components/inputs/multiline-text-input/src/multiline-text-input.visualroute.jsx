@@ -96,7 +96,7 @@ export const component = () => (
         isCondensed={true}
       />
     </Spec>
-    <Spec label="with right action and condensed">
+    <Spec label="with right action and isCondensed">
       <MultilineTextInput
         value={value}
         placeholder="Enter a text"
