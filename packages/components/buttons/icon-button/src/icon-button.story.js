@@ -34,8 +34,8 @@ storiesOf('Components|Buttons', module)
             icon={createElement(icons[select('icon', iconNames, iconNames[0])])}
             onClick={action('onClick')}
             label={text('label', 'Accessibility text')}
-            isToggleButton={boolean('isToggleButton', true)}
-            isToggled={boolean('isToggled', true)}
+            isToggleButton={boolean('isToggleButton', false)}
+            isToggled={boolean('isToggled', false)}
             isDisabled={boolean('isDisabled?', false)}
           />
         </MemoryRouter>

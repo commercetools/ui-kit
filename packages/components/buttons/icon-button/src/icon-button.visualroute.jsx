@@ -183,5 +183,25 @@ export const component = () => (
         onClick={() => {}}
       />
     </Spec>
+
+    <Spec label="primary icon-button">
+      <IconButton
+        icon={<InformationIcon />}
+        onClick={() => {}}
+        size="40"
+        theme="primary"
+        label="primary icon-button demo"
+      />
+    </Spec>
+
+    <Spec label="info icon-button">
+      <IconButton
+        icon={<InformationIcon />}
+        onClick={() => {}}
+        size="40"
+        theme="info"
+        label="info icon-button demo"
+      />
+    </Spec>
   </Suite>
 );
