@@ -3,19 +3,28 @@ import {
   useCallback,
   type ChangeEventHandler,
   type FocusEventHandler,
+  ReactElement,
 } from 'react';
+import SecondaryIconButton, {
+  type TSecondaryButtonIconProps,
+} from '@commercetools-uikit/secondary-icon-button';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/react';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { useToggleState } from '@commercetools-uikit/hooks';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
+import { designTokens } from '@commercetools-uikit/design-system';
 import {
   MultilineInput,
   messagesMultilineInput,
 } from '@commercetools-uikit/input-utils';
+import {
+  MultilineInputWrapper,
+  getMultilineTextInputActionIconStyles,
+} from './multiline-text-input.styles';
 
 export type TMultilineTextInputProps = {
   /**
@@ -99,6 +108,27 @@ export type TMultilineTextInputProps = {
     | 16
     | 'scale'
     | 'auto';
+
+  /**
+   * Custom action icon to be displayed on the right side of the input.
+   */
+  rightActionIcon?: ReactElement;
+  /**
+   * Props for the right-action icon-button. Required when rightActionIcon is provided.
+   * At least a `label` and an `onClick` prop/function need to be provided.
+   */
+  rightActionProps?: TSecondaryButtonIconProps;
+  /**
+   * Set this to `true` to reduce the paddings of the input allowing the input to display
+   * more data in less space.
+   *
+   */
+  isCondensed?: boolean;
+  /**
+   * Set this to value to determine the maximum text rows of the text area.
+   * Any text overflow past this row number would implement a scroll
+   */
+  maxRows?: number;
 };
 
 const defaultProps: Pick<
@@ -135,30 +165,58 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
     [setShouldRenderToggleButton]
   );
 
+  if (props.rightActionIcon && !props.rightActionProps) {
+    warning(
+      false,
+      'SelectableSearchInput: `rightActionIcon` is provided but `rightActionProps` is missing. Provide an object with a `label` and `onClick` property.'
+    );
+  }
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
-        <MultilineInput
-          name={props.name}
-          autoComplete={props.autoComplete}
-          value={props.value}
-          onChange={props.onChange}
-          onHeightChange={handleHeightChange}
-          id={props.id}
-          onBlur={props.onBlur}
-          onFocus={handleFocus}
-          isDisabled={props.isDisabled}
-          hasError={props.hasError}
-          hasWarning={props.hasWarning}
-          placeholder={props.placeholder}
-          isReadOnly={props.isReadOnly}
-          isAutofocussed={props.isAutofocussed}
-          isOpen={isOpen}
-          {...filterDataAttributes(props)}
-          /* ARIA */
-          aria-invalid={props['aria-invalid']}
-          aria-errormessage={props['aria-errormessage']}
-        />
+        <MultilineInputWrapper>
+          <MultilineInput
+            name={props.name}
+            autoComplete={props.autoComplete}
+            value={props.value}
+            onChange={props.onChange}
+            onHeightChange={handleHeightChange}
+            id={props.id}
+            onBlur={props.onBlur}
+            onFocus={handleFocus}
+            isDisabled={props.isDisabled}
+            hasError={props.hasError}
+            hasWarning={props.hasWarning}
+            placeholder={props.placeholder}
+            isReadOnly={props.isReadOnly}
+            isAutofocussed={props.isAutofocussed}
+            isOpen={isOpen}
+            cacheMeasurements={false}
+            css={css`
+              padding-right: ${props.rightActionIcon &&
+              props.rightActionProps &&
+              designTokens.spacing50};
+            `}
+            isCondensed={props.isCondensed}
+            maxRows={props.maxRows}
+            {...filterDataAttributes(props)}
+            /* ARIA */
+            aria-invalid={props['aria-invalid']}
+            aria-errormessage={props['aria-errormessage']}
+          />
+          {props.rightActionIcon && props.rightActionProps && (
+            <div css={getMultilineTextInputActionIconStyles(props)}>
+              <SecondaryIconButton
+                color="info"
+                isDisabled={props.isDisabled || props.isReadOnly}
+                size={props.isCondensed ? '30' : '40'}
+                icon={props.rightActionIcon}
+                {...props.rightActionProps}
+              />
+            </div>
+          )}
+        </MultilineInputWrapper>
         {shouldRenderToggleButton && (
           <div
             css={css`

@@ -26,6 +26,7 @@ export type TMultiLineInputProps = {
   isOpen: boolean;
   cacheMeasurements?: boolean;
   onHeightChange?: (height: number, rowCount: number) => void;
+  maxRows?: number;
   /**
    * Indicate if the value entered in the input is invalid.
    */
@@ -104,7 +105,7 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       aria-errormessage={props['aria-errormessage']}
       role="textbox"
       minRows={MIN_ROW_COUNT}
-      maxRows={props.isOpen ? undefined : MIN_ROW_COUNT}
+      maxRows={props.isOpen ? props.maxRows : MIN_ROW_COUNT}
       cacheMeasurements={props.cacheMeasurements}
       {...filterDataAttributes(props)}
     />
