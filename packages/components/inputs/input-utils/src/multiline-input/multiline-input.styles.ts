@@ -23,6 +23,7 @@ const getTextareaStyles = (props: TMultiLineInputProps) => {
       word-break: break-word;
       white-space: pre-wrap;
       resize: none;
+      overflow: auto;
     `,
   ];
   return baseStyles;

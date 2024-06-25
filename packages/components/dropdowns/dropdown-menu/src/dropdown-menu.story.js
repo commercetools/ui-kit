@@ -72,6 +72,8 @@ storiesOf('Components|Dropdowns|DropdownMenu', module)
                   <SelectInput
                     appearance="quiet"
                     value={value}
+                    menuPortalTarget={document.body}
+                    menuPortalZIndex={5}
                     onChange={(event) => onChange(event.target.value)}
                     options={[
                       { value: 'is', label: 'is' },
@@ -87,6 +89,8 @@ storiesOf('Components|Dropdowns|DropdownMenu', module)
               <SelectInput
                 value={value}
                 onChange={(event) => onChange(event.target.value)}
+                menuPortalTarget={document.body}
+                menuPortalZIndex={5}
                 options={[
                   { value: 'laval', label: 'Laval Montreal' },
                   { value: 'forest', label: 'Forest Ottawa' },
@@ -111,4 +115,72 @@ storiesOf('Components|Dropdowns|DropdownMenu', module)
         </SpacingsStack>
       </DropdownMenu>
     </Section>
-  ));
+  ))
+  .add('DropdownMenu - Reposition menu if necessary', () => {
+    const optionsCount = number('Options count', 5);
+    return (
+      <Section align="center">
+        <div>
+          {[
+            {
+              id: 1,
+              position: 'absolute',
+              top: 24,
+              left: 24,
+            },
+            {
+              id: 2,
+              position: 'absolute',
+              top: 24,
+              right: 24,
+            },
+            {
+              id: 3,
+              position: 'absolute',
+              bottom: 24,
+              right: 24,
+            },
+            {
+              id: 4,
+              position: 'absolute',
+              bottom: 24,
+              left: 24,
+            },
+            {
+              id: 5,
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+            },
+          ].map((css) => (
+            <div key={css.id} style={{ ...css }}>
+              <DropdownMenu
+                triggerElement={
+                  <IconButton icon={<ColumnsIcon />} label="list" />
+                }
+                menuHorizontalConstraint={select(
+                  'menu horizontalConstraint',
+                  Constraints.getAcceptedMaxPropValues(),
+                  6
+                )}
+                menuPosition={select(
+                  'Menu position',
+                  ['left', 'right'],
+                  'left'
+                )}
+                menuMaxHeight={number('menuMaxHeight', 0)}
+                menuType="list"
+              >
+                {new Array(optionsCount).fill().map((_, index) => (
+                  <DropdownMenu.ListMenuItem
+                    key={index}
+                    onClick={action('onClick')}
+                  >{`Option ${index + 1}`}</DropdownMenu.ListMenuItem>
+                ))}
+              </DropdownMenu>
+            </div>
+          ))}
+        </div>
+      </Section>
+    );
+  });

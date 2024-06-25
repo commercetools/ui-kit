@@ -1,5 +1,6 @@
 import { MultilineTextInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
+import { InfoIcon } from '@commercetools-uikit/icons';
 
 const value =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
@@ -71,6 +72,56 @@ export const component = () => (
         horizontalConstraint={7}
         hasError={true}
         hasWarning={true}
+      />
+    </Spec>
+    <Spec label="with right action">
+      <MultilineTextInput
+        value={value}
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint={7}
+        rightActionIcon={<InfoIcon />}
+        rightActionProps={{
+          label: 'Click me',
+          onClick: () => {},
+        }}
+      />
+    </Spec>
+    <Spec label="with isCondensed">
+      <MultilineTextInput
+        value={value}
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint={7}
+        isCondensed={true}
+      />
+    </Spec>
+    <Spec label="with right action and isCondensed">
+      <MultilineTextInput
+        value={value}
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint={7}
+        rightActionIcon={<InfoIcon />}
+        isCondensed={true}
+        rightActionProps={{
+          label: 'Click me',
+          onClick: () => {},
+        }}
+      />
+    </Spec>
+    <Spec label="with max rows">
+      <MultilineTextInput
+        value={value}
+        placeholder="Enter a text"
+        onChange={() => {}}
+        horizontalConstraint={7}
+        maxRows={3}
+        rightActionIcon={<InfoIcon />}
+        rightActionProps={{
+          label: 'Click me',
+          onClick: () => {},
+        }}
       />
     </Spec>
     {/* <Spec label="when expanded by default">

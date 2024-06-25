@@ -1,5 +1,16 @@
 # @commercetools-uikit/design-system
 
+## 19.6.0
+
+### Patch Changes
+
+- [#2830](https://github.com/commercetools/ui-kit/pull/2830) [`f09213e`](https://github.com/commercetools/ui-kit/commit/f09213e1836b68fef1982503adabb3576f195a54) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Introduced new sizes and size-names for icons, buttons & IconButtons ('small', 'medium' & 'big' got deprecated in favor of numeric size tokens: '10', '20', etc.)
+
+- [#2843](https://github.com/commercetools/ui-kit/pull/2843) [`061fe2a`](https://github.com/commercetools/ui-kit/commit/061fe2a32d78a7b845314735ef5de528c8104d0a) Thanks [@misama-ct](https://github.com/misama-ct)! - new info-color token added (color-info-50)
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@19.6.0
+
 ## 19.5.0
 
 ### Patch Changes
