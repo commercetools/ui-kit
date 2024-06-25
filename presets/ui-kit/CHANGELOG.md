@@ -1,5 +1,51 @@
 # @commercetools-frontend/ui-kit
 
+## 19.6.0
+
+### Minor Changes
+
+- [#2834](https://github.com/commercetools/ui-kit/pull/2834) [`47d9410`](https://github.com/commercetools/ui-kit/commit/47d94102a312424eaa46083e9e64c235ca6a3bfe) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Export `LeadingIcon`, `CustomIcon`, and `InlineSvg` from the global preset, allowing users to access them from `@commercetools-frontend/ui-kit` .
+
+### Patch Changes
+
+- Updated dependencies [[`f09213e`](https://github.com/commercetools/ui-kit/commit/f09213e1836b68fef1982503adabb3576f195a54), [`48dc716`](https://github.com/commercetools/ui-kit/commit/48dc716c4f5e1d62c9a6e322c1195529fad2e1a0), [`e361bd0`](https://github.com/commercetools/ui-kit/commit/e361bd0d0309a0244ab7947bf490c64a8ff56bcb), [`061fe2a`](https://github.com/commercetools/ui-kit/commit/061fe2a32d78a7b845314735ef5de528c8104d0a), [`6b4d378`](https://github.com/commercetools/ui-kit/commit/6b4d378d1b7f0c8b8eca600ca30b27f6d5da7e48)]:
+  - @commercetools-uikit/icons@19.6.0
+  - @commercetools-uikit/design-system@19.6.0
+  - @commercetools-uikit/selectable-search-input@19.6.0
+  - @commercetools-uikit/dropdown-menu@19.6.0
+  - @commercetools-uikit/data-table@19.6.0
+  - @commercetools-uikit/data-table-manager@19.6.0
+  - @commercetools-uikit/field-label@19.6.0
+  - @commercetools-uikit/pagination@19.6.0
+  - @commercetools-uikit/buttons@19.6.0
+  - @commercetools-uikit/inputs@19.6.0
+  - @commercetools-uikit/collapsible-panel@19.6.0
+  - @commercetools-uikit/link@19.6.0
+  - @commercetools-uikit/notifications@19.6.0
+  - @commercetools-uikit/primary-action-dropdown@19.6.0
+  - @commercetools-uikit/tag@19.6.0
+  - @commercetools-uikit/avatar@19.6.0
+  - @commercetools-uikit/card@19.6.0
+  - @commercetools-uikit/constraints@19.6.0
+  - @commercetools-uikit/label@19.6.0
+  - @commercetools-uikit/loading-spinner@19.6.0
+  - @commercetools-uikit/progress-bar@19.6.0
+  - @commercetools-uikit/stamp@19.6.0
+  - @commercetools-uikit/text@19.6.0
+  - @commercetools-uikit/tooltip@19.6.0
+  - @commercetools-uikit/view-switcher@19.6.0
+  - @commercetools-uikit/fields@19.6.0
+  - @commercetools-uikit/spacings@19.6.0
+  - @commercetools-uikit/messages@19.6.0
+  - @commercetools-uikit/field-errors@19.6.0
+  - @commercetools-uikit/accessible-hidden@19.6.0
+  - @commercetools-uikit/collapsible@19.6.0
+  - @commercetools-uikit/collapsible-motion@19.6.0
+  - @commercetools-uikit/grid@19.6.0
+  - @commercetools-uikit/hooks@19.6.0
+  - @commercetools-uikit/i18n@19.6.0
+  - @commercetools-uikit/utils@19.6.0
+
 ## 19.5.0
 
 ### Patch Changes

@@ -1,5 +1,27 @@
 # @commercetools-uikit/rich-text-input
 
+## 19.6.0
+
+### Minor Changes
+
+- [#2814](https://github.com/commercetools/ui-kit/pull/2814) [`e361bd0`](https://github.com/commercetools/ui-kit/commit/e361bd0d0309a0244ab7947bf490c64a8ff56bcb) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`f09213e`](https://github.com/commercetools/ui-kit/commit/f09213e1836b68fef1982503adabb3576f195a54), [`e361bd0`](https://github.com/commercetools/ui-kit/commit/e361bd0d0309a0244ab7947bf490c64a8ff56bcb), [`061fe2a`](https://github.com/commercetools/ui-kit/commit/061fe2a32d78a7b845314735ef5de528c8104d0a), [`3df5448`](https://github.com/commercetools/ui-kit/commit/3df5448add57a4b83529ac8503bc836f2e7ced9e)]:
+  - @commercetools-uikit/rich-text-utils@19.6.0
+  - @commercetools-uikit/icons@19.6.0
+  - @commercetools-uikit/design-system@19.6.0
+  - @commercetools-uikit/input-utils@19.6.0
+  - @commercetools-uikit/flat-button@19.6.0
+  - @commercetools-uikit/constraints@19.6.0
+  - @commercetools-uikit/spacings-inline@19.6.0
+  - @commercetools-uikit/spacings-stack@19.6.0
+  - @commercetools-uikit/tooltip@19.6.0
+  - @commercetools-uikit/collapsible-motion@19.6.0
+  - @commercetools-uikit/hooks@19.6.0
+  - @commercetools-uikit/utils@19.6.0
+
 ## 19.5.0
 
 ### Patch Changes

@@ -1,5 +1,21 @@
 # @commercetools-uikit/dropdown-menu
 
+## 19.6.0
+
+### Patch Changes
+
+- [#2837](https://github.com/commercetools/ui-kit/pull/2837) [`6b4d378`](https://github.com/commercetools/ui-kit/commit/6b4d378d1b7f0c8b8eca600ca30b27f6d5da7e48) Thanks [@misama-ct](https://github.com/misama-ct)! - improved positioning logic of DropdownMenu's floating panel
+
+- Updated dependencies [[`f09213e`](https://github.com/commercetools/ui-kit/commit/f09213e1836b68fef1982503adabb3576f195a54), [`061fe2a`](https://github.com/commercetools/ui-kit/commit/061fe2a32d78a7b845314735ef5de528c8104d0a)]:
+  - @commercetools-uikit/secondary-button@19.6.0
+  - @commercetools-uikit/design-system@19.6.0
+  - @commercetools-uikit/accessible-button@19.6.0
+  - @commercetools-uikit/constraints@19.6.0
+  - @commercetools-uikit/spacings-inline@19.6.0
+  - @commercetools-uikit/spacings-stack@19.6.0
+  - @commercetools-uikit/hooks@19.6.0
+  - @commercetools-uikit/utils@19.6.0
+
 ## 19.5.0
 
 ### Patch Changes

@@ -1,5 +1,33 @@
 # @commercetools-uikit/data-table-manager
 
+## 19.6.0
+
+### Patch Changes
+
+- Updated dependencies [[`f09213e`](https://github.com/commercetools/ui-kit/commit/f09213e1836b68fef1982503adabb3576f195a54), [`e361bd0`](https://github.com/commercetools/ui-kit/commit/e361bd0d0309a0244ab7947bf490c64a8ff56bcb), [`061fe2a`](https://github.com/commercetools/ui-kit/commit/061fe2a32d78a7b845314735ef5de528c8104d0a), [`061fe2a`](https://github.com/commercetools/ui-kit/commit/061fe2a32d78a7b845314735ef5de528c8104d0a), [`6b4d378`](https://github.com/commercetools/ui-kit/commit/6b4d378d1b7f0c8b8eca600ca30b27f6d5da7e48)]:
+  - @commercetools-uikit/secondary-icon-button@19.6.0
+  - @commercetools-uikit/secondary-button@19.6.0
+  - @commercetools-uikit/primary-button@19.6.0
+  - @commercetools-uikit/icon-button@19.6.0
+  - @commercetools-uikit/icons@19.6.0
+  - @commercetools-uikit/design-system@19.6.0
+  - @commercetools-uikit/dropdown-menu@19.6.0
+  - @commercetools-uikit/field-label@19.6.0
+  - @commercetools-uikit/async-select-input@19.6.0
+  - @commercetools-uikit/radio-input@19.6.0
+  - @commercetools-uikit/select-input@19.6.0
+  - @commercetools-uikit/tag@19.6.0
+  - @commercetools-uikit/accessible-button@19.6.0
+  - @commercetools-uikit/card@19.6.0
+  - @commercetools-uikit/text@19.6.0
+  - @commercetools-uikit/tooltip@19.6.0
+  - @commercetools-uikit/spacings@19.6.0
+  - @commercetools-uikit/accessible-hidden@19.6.0
+  - @commercetools-uikit/collapsible-motion@19.6.0
+  - @commercetools-uikit/grid@19.6.0
+  - @commercetools-uikit/hooks@19.6.0
+  - @commercetools-uikit/utils@19.6.0
+
 ## 19.5.0
 
 ### Patch Changes
