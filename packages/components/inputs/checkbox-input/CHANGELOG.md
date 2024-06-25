@@ -1,5 +1,18 @@
 # @commercetools-uikit/checkbox-input
 
+## 19.6.0
+
+### Patch Changes
+
+- [#2830](https://github.com/commercetools/ui-kit/pull/2830) [`f09213e`](https://github.com/commercetools/ui-kit/commit/f09213e1836b68fef1982503adabb3576f195a54) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Introduced new sizes and size-names for icons, buttons & IconButtons ('small', 'medium' & 'big' got deprecated in favor of numeric size tokens: '10', '20', etc.)
+
+- Updated dependencies [[`f09213e`](https://github.com/commercetools/ui-kit/commit/f09213e1836b68fef1982503adabb3576f195a54), [`e361bd0`](https://github.com/commercetools/ui-kit/commit/e361bd0d0309a0244ab7947bf490c64a8ff56bcb), [`061fe2a`](https://github.com/commercetools/ui-kit/commit/061fe2a32d78a7b845314735ef5de528c8104d0a), [`3df5448`](https://github.com/commercetools/ui-kit/commit/3df5448add57a4b83529ac8503bc836f2e7ced9e)]:
+  - @commercetools-uikit/icons@19.6.0
+  - @commercetools-uikit/design-system@19.6.0
+  - @commercetools-uikit/input-utils@19.6.0
+  - @commercetools-uikit/select-utils@19.6.0
+  - @commercetools-uikit/utils@19.6.0
+
 ## 19.5.0
 
 ### Patch Changes
