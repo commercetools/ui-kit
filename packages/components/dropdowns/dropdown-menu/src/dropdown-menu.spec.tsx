@@ -4,6 +4,14 @@ import { act, screen, render } from '../../../../../test/test-utils';
 import DropdownMenu from './dropdown-menu';
 
 describe('DropdownMenu', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+
   it('should render list menu', async () => {
     const firstOptionOnClick = jest.fn();
     const secondOptionOnClick = jest.fn();
@@ -27,6 +35,7 @@ describe('DropdownMenu', () => {
 
     // Open the dropdown
     screen.getByLabelText('Trigger').click();
+    await jest.runAllTimersAsync();
     expect(await screen.findByText('Option 1')).toBeVisible();
     expect(screen.getByText('Option 2')).toBeVisible();
 
@@ -56,6 +65,7 @@ describe('DropdownMenu', () => {
 
     // Open the dropdown
     screen.getByLabelText('Trigger').click();
+    await jest.runAllTimersAsync();
     expect(await screen.findByText('Content')).toBeVisible();
 
     // Clicking outside the dropdown should close it
