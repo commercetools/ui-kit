@@ -809,11 +809,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
             inputId={MoneyInput.getCurrencyDropdownId(moneyInputId)}
             name={getCurrencyDropdownName(props.name)}
             value={option}
-            isDisabled={
-              props.isCurrencyInputDisabled
-                ? props.isCurrencyInputDisabled
-                : props.isDisabled
-            }
+            isDisabled={props.isCurrencyInputDisabled || props.isDisabled}
             isSearchable={false}
             components={
               {
