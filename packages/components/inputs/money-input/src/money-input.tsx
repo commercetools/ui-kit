@@ -534,6 +534,10 @@ type TMoneyInputProps = {
     | 16
     | 'scale'
     | 'auto';
+  /**
+   * Indicates that the currency input cannot be modified.
+   */
+  isCurrencyInputDisabled?: boolean;
 };
 
 const defaultProps: Pick<
@@ -805,7 +809,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
             inputId={MoneyInput.getCurrencyDropdownId(moneyInputId)}
             name={getCurrencyDropdownName(props.name)}
             value={option}
-            isDisabled={props.isDisabled}
+            isDisabled={props.isCurrencyInputDisabled || props.isDisabled}
             isSearchable={false}
             components={
               {
@@ -818,7 +822,9 @@ const MoneyInput = (props: TMoneyInputProps) => {
                 Input: (ownProps) => (
                   <components.Input {...ownProps} readOnly={props.isReadOnly} />
                 ),
-                DropdownIndicator,
+                DropdownIndicator: props.isCurrencyInputDisabled
+                  ? null
+                  : DropdownIndicator,
               } as ReactSelectProps['components']
             }
             options={options}

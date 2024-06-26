@@ -72,6 +72,10 @@ class MoneyInputStory extends Component {
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               isAutofocussed={boolean('isAutofocussed', false)}
+              isCurrencyInputDisabled={boolean(
+                'isCurrencyInputDisabled',
+                false
+              )}
               onChange={(event) => {
                 action('onChange')(event);
 
