@@ -1,5 +1,24 @@
 # @commercetools-uikit/localized-money-input
 
+## 19.7.0
+
+### Patch Changes
+
+- Updated dependencies [[`d30d6e3`](https://github.com/commercetools/ui-kit/commit/d30d6e3f57dc648f7c8d35006988cc475e3f120b)]:
+  - @commercetools-uikit/money-input@19.7.0
+  - @commercetools-uikit/design-system@19.7.0
+  - @commercetools-uikit/flat-button@19.7.0
+  - @commercetools-uikit/constraints@19.7.0
+  - @commercetools-uikit/icons@19.7.0
+  - @commercetools-uikit/input-utils@19.7.0
+  - @commercetools-uikit/select-utils@19.7.0
+  - @commercetools-uikit/messages@19.7.0
+  - @commercetools-uikit/spacings-stack@19.7.0
+  - @commercetools-uikit/tooltip@19.7.0
+  - @commercetools-uikit/hooks@19.7.0
+  - @commercetools-uikit/localized-utils@19.7.0
+  - @commercetools-uikit/utils@19.7.0
+
 ## 19.6.0
 
 ### Patch Changes

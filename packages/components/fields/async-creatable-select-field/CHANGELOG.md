@@ -1,5 +1,19 @@
 # @commercetools-uikit/async-creatable-select-field
 
+## 19.7.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.7.0
+  - @commercetools-uikit/constraints@19.7.0
+  - @commercetools-uikit/field-errors@19.7.0
+  - @commercetools-uikit/field-label@19.7.0
+  - @commercetools-uikit/field-warnings@19.7.0
+  - @commercetools-uikit/async-creatable-select-input@19.7.0
+  - @commercetools-uikit/utils@19.7.0
+  - @commercetools-uikit/spacings@19.7.0
+
 ## 19.6.0
 
 ### Patch Changes

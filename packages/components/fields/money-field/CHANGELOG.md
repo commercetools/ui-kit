@@ -1,5 +1,23 @@
 # @commercetools-uikit/money-field
 
+## 19.7.0
+
+### Minor Changes
+
+- [#2847](https://github.com/commercetools/ui-kit/pull/2847) [`d30d6e3`](https://github.com/commercetools/ui-kit/commit/d30d6e3f57dc648f7c8d35006988cc475e3f120b) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Introduced a new property (`isCurrencyInputDisabled`) which can be used to lock the currency selector element in the component so users can't change its value.
+
+### Patch Changes
+
+- Updated dependencies [[`d30d6e3`](https://github.com/commercetools/ui-kit/commit/d30d6e3f57dc648f7c8d35006988cc475e3f120b)]:
+  - @commercetools-uikit/money-input@19.7.0
+  - @commercetools-uikit/design-system@19.7.0
+  - @commercetools-uikit/constraints@19.7.0
+  - @commercetools-uikit/field-errors@19.7.0
+  - @commercetools-uikit/field-label@19.7.0
+  - @commercetools-uikit/field-warnings@19.7.0
+  - @commercetools-uikit/utils@19.7.0
+  - @commercetools-uikit/spacings@19.7.0
+
 ## 19.6.0
 
 ### Patch Changes

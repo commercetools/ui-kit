@@ -1,5 +1,14 @@
 # @commercetools-uikit/view-switcher
 
+## 19.7.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.7.0
+  - @commercetools-uikit/accessible-button@19.7.0
+  - @commercetools-uikit/utils@19.7.0
+
 ## 19.6.0
 
 ### Patch Changes

@@ -1,5 +1,7 @@
 # @commercetools-uikit/accessible-hidden
 
+## 19.7.0
+
 ## 19.6.0
 
 ## 19.5.0
