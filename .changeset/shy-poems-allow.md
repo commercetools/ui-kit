@@ -3,4 +3,4 @@
 '@commercetools-uikit/money-input': minor
 ---
 
-This change provides the option to be able to set a fixed currency that cannot be modified from the currency select dropdown.
+Introduced a new property (`isCurrencyInputDisabled`) which can be used to lock the currency selector element in the component so users can't change its value.
