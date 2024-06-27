@@ -67,7 +67,7 @@
     ]
   },
   "dependencies": {
-    "@babel/core": "7.24.6",
+    "@babel/core": "7.24.7",
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.5",
     "@commercetools-frontend/babel-preset-mc-app": "21.25.2",
@@ -94,14 +94,14 @@
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "8.0.1",
     "@types/is-hotkey": "^0.1.7",
-    "@types/node": "18.19.34",
+    "@types/node": "18.19.38",
     "@types/prettier": "^2.7.3",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "babel-jest": "29.7.0",
     "babel-loader": "8.3.0",
     "babel-plugin-typescript-to-proptypes": "1.4.2",
-    "browserslist": "4.23.0",
+    "browserslist": "4.23.1",
     "bundlesize": "0.18.2",
     "cac": "6.7.14",
     "colors": "1.4.0",
@@ -151,11 +151,11 @@
     "stylelint-config-prettier": "9.0.5",
     "stylelint-config-standard": "34.0.0",
     "stylelint-order": "5.0.0",
-    "ts-jest": "29.1.4",
+    "ts-jest": "29.1.5",
     "ts-node": "10.9.2",
     "tsc-files": "1.1.4",
-    "typescript": "5.4.5",
-    "webpack": "5.91.0"
+    "typescript": "5.5.2",
+    "webpack": "5.92.1"
   },
   "resolutions": {
     "@babel/preset-env": "^7.18.6",

@@ -46,6 +46,16 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
+    <Spec label="when only the currency select input is disabled">
+      <MoneyField
+        title="Price"
+        horizontalConstraint={7}
+        value={value}
+        onChange={() => {}}
+        currencies={currencies}
+        isCurrencyInputDisabled={true}
+      />
+    </Spec>
     <Spec label="with description">
       <MoneyField
         title="Price"

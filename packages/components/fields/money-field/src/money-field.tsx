@@ -215,6 +215,10 @@ export type TMoneyFieldProps = {
    * Shows high precision badge in case current value uses high precision.
    */
   hasHighPrecisionBadge?: boolean;
+  /**
+   * Indicates that the currency input cannot be modified.
+   */
+  isCurrencyInputDisabled?: boolean;
 };
 
 type TMoneyFieldState = Pick<TMoneyFieldProps, 'id'>;
@@ -314,6 +318,7 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
             aria-errormessage={sequentialErrorsId}
+            isCurrencyInputDisabled={this.props.isCurrencyInputDisabled}
           />
           <FieldErrors
             id={sequentialErrorsId}

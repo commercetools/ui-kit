@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/progress-bar",
   "description": "A progress bar component used to visualize the progression of an extended operation",
-  "version": "19.5.0",
+  "version": "19.6.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,12 +21,12 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/constraints": "19.5.0",
-    "@commercetools-uikit/design-system": "19.5.0",
-    "@commercetools-uikit/spacings-inline": "19.5.0",
-    "@commercetools-uikit/spacings-stack": "19.5.0",
-    "@commercetools-uikit/text": "19.5.0",
-    "@commercetools-uikit/utils": "19.5.0",
+    "@commercetools-uikit/constraints": "19.6.0",
+    "@commercetools-uikit/design-system": "19.6.0",
+    "@commercetools-uikit/spacings-inline": "19.6.0",
+    "@commercetools-uikit/spacings-stack": "19.6.0",
+    "@commercetools-uikit/text": "19.6.0",
+    "@commercetools-uikit/utils": "19.6.0",
     "@emotion/react": "^11.10.5",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
