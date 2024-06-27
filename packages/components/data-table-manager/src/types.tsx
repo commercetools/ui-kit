@@ -1,4 +1,5 @@
 import type { ReactNode, MouseEventHandler, ReactElement } from 'react';
+import { MessageDescriptor } from 'react-intl';
 
 export type TColumnData = {
   key: string;
@@ -42,6 +43,10 @@ export type TDisplaySettingsProps = {
 };
 
 export type TColumnManagerProps = {
+  value?: string;
+  label?: MessageDescriptor & {
+    values?: Record<string, React.ReactNode>;
+  };
   /**
    * Set this to `true` to show a search input for the hidden columns panel.
    */
@@ -93,6 +98,7 @@ export type TDataTableSettingsProps = {
   ) => void;
   displaySettings?: TDisplaySettingsProps;
   columnManager?: TColumnManagerProps;
+  nestedColumnManager?: TColumnManagerProps[];
   managerTheme?: 'light' | 'dark';
 };
 
@@ -230,4 +236,5 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    * Sets the background theme of the Card that contains the settings
    */
   managerTheme?: 'light' | 'dark';
+  nestedColumnManager?: TDataTableSettingsProps['nestedColumnManager'];
 };

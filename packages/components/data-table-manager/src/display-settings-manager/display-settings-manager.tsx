@@ -44,7 +44,9 @@ const DensityManager = (props: TDensityManagerProps) => {
 
   return (
     <SettingsContainer
-      title={messages.title}
+      // Keeping it simple for the purpose of the POC
+      // @ts-ignore
+      title="Display settings"
       closeButtonLabel={messages.closeButtonLabel}
       onClose={props.onClose}
       primaryButton={props.primaryButton}

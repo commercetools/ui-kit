@@ -33,6 +33,7 @@ export const DataTableManagerProvider = ({
   topBar,
   onSettingsChange,
   columnManager,
+  nestedColumnManager,
 }: {
   children: React.ReactNode;
   columns: TDataTableManagerColumnProps[];
@@ -40,6 +41,7 @@ export const DataTableManagerProvider = ({
   topBar: string;
   onSettingsChange: () => void;
   columnManager: TColumnManagerProps;
+  nestedColumnManager: TColumnManagerProps[];
 }) => {
   const decoupledDataTableManagerContext = useMemo(() => {
     const areDisplaySettingsEnabled = Boolean(
@@ -60,9 +62,17 @@ export const DataTableManagerProvider = ({
       topBar,
       onSettingsChange,
       columnManager,
+      nestedColumnManager,
       isCondensed: areDisplaySettingsEnabled && displaySettings!.isCondensed,
     };
-  }, [columns, displaySettings, topBar, onSettingsChange, columnManager]);
+  }, [
+    displaySettings,
+    columns,
+    topBar,
+    onSettingsChange,
+    columnManager,
+    nestedColumnManager,
+  ]);
 
   return (
     <DataTableManagerContext.Provider value={decoupledDataTableManagerContext}>

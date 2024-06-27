@@ -431,6 +431,7 @@ storiesOf('Components|DataTable', module)
       ...displaySettingsButtons,
     };
 
+    // We either provide the columnManager or the nestedColumnManager for backwards compatibility
     const columnManager = {
       areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
       searchHiddenColumns: (searchTerm) => {
@@ -451,6 +452,52 @@ storiesOf('Components|DataTable', module)
       ...columnManagerButtons,
     };
 
+    //  In a case where we have a nested table, we want to provide multiple table settings
+    const nestedColumnManager = [
+      {
+        label: 'Column manager 1',
+        value: 'column_manager_1',
+        areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
+        searchHiddenColumns: (searchTerm) => {
+          setTableData({
+            ...tableData,
+            columns: initialColumnsState.filter(
+              (column) =>
+                tableData.visibleColumnKeys.includes(column.key) ||
+                column.label
+                  .toLocaleLowerCase()
+                  .includes(searchTerm.toLocaleLowerCase())
+            ),
+          });
+        },
+        disableColumnManager: boolean('disableColumnManager', false),
+        visibleColumnKeys: tableData.visibleColumnKeys,
+        hideableColumns: tableData.columns,
+        ...columnManagerButtons,
+      },
+      {
+        label: 'Column manager 2',
+        value: 'column_manager_2',
+        areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
+        searchHiddenColumns: (searchTerm) => {
+          setTableData({
+            ...tableData,
+            columns: initialColumnsState.filter(
+              (column) =>
+                tableData.visibleColumnKeys.includes(column.key) ||
+                column.label
+                  .toLocaleLowerCase()
+                  .includes(searchTerm.toLocaleLowerCase())
+            ),
+          });
+        },
+        disableColumnManager: boolean('disableColumnManager', false),
+        visibleColumnKeys: tableData.visibleColumnKeys,
+        hideableColumns: tableData.columns,
+        ...columnManagerButtons,
+      },
+    ];
+
     return (
       <DataTableManagerProvider
         columns={withRowSelection ? columnsWithSelect : visibleColumns}
@@ -458,7 +505,9 @@ storiesOf('Components|DataTable', module)
         onSettingsChange={(action, nextValue) => {
           tableSettingsChangeHandler[action](nextValue);
         }}
-        columnManager={columnManager}
+        // We either provide the columnManager or the nestedColumnManager for backwards compatibility
+        // columnManager={columnManager}
+        nestedColumnManager={nestedColumnManager}
       >
         <Spacings.Stack>
           <header>
