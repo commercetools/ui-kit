@@ -16,7 +16,8 @@ import Readme from '../README.md';
 
 // Create our initial value...
 
-const initialValue = '<h1>H1 <u>heading</u></h1>';
+const initialValue =
+  '<h1>Heading</h1><p>This is a paragraph.<br/><br/>New sentence, <strong>same</strong> paragraph, but with <u>soft</u>-linebreak (<em>Shift + Enter</em>).</p>';
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
@@ -92,8 +93,12 @@ storiesOf('Components|Inputs', module)
             onChange={onChange}
             value={value}
           />
-          <Text.Headline as="h3">Output</Text.Headline>
-          <pre>{value}</pre>
+          <Text.Headline as="h3">
+            {value === initialValue ? 'Initial HTML-Input:' : 'HTML-Output:'}
+          </Text.Headline>
+          <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+            {value}
+          </pre>
         </Spacings.Stack>
       </Section>
     );

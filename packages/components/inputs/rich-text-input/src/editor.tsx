@@ -24,6 +24,7 @@ import {
   HiddenInput,
   Element,
   Leaf,
+  Softbreaker,
   toggleMark,
   resetEditor,
   focusEditor,
@@ -132,10 +133,10 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
     },
     [editor]
   );
-  /* 
+  /*
   Resetting the editor requires access to `editor` object returned from `useSlate` hook.
   Therefore, `reset` function is attached to the passed `ref` object via `useImperativeHandle` hook
-  to be called from the parent component. 
+  to be called from the parent component.
   e.g. <button onMouseDown={() => ref.current?.resetValue("<p><strong>Value after reset</strong></p>")}>Reset</button>
   */
   useImperativeHandle(forwardedRef, () => {
@@ -204,6 +205,11 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                             toggleMark(editor, mark);
                             break;
                           }
+                        }
+
+                        if (event.shiftKey && event.key === 'Enter') {
+                          event.preventDefault();
+                          editor.insertText(Softbreaker.placeholderCharacter);
                         }
                       }}
                     />

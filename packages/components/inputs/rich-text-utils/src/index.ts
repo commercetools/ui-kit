@@ -7,6 +7,7 @@ export { default as version } from './version';
 export {
   Element,
   Leaf,
+  Softbreaker,
   isMarkActive,
   isBlockActive,
   toggleMark,
