@@ -1,46 +1,6 @@
 import fs from 'fs';
-import { type } from 'os';
 import path from 'path';
-import pkg from '@lmstudio/sdk';
-const { LMStudioClient } = pkg;
-
-const client = new LMStudioClient();
-
-async function main({ fileContents, filePath }) {
-  //const modelPath = 'second-state/StarCoder2-15B-GGUF/starcoder2-15b-Q8_0.gguf';
-  const modelPath =
-    'QuantFactory/Meta-Llama-3-8B-Instruct-GGUF/Meta-Llama-3-8B-Instruct.Q8_0.gguf';
-  //const modelPath =    'MaziyarPanahi/Meta-Llama-3-70B-Instruct-GGUF/Meta-Llama-3-70B-Instruct.IQ1_M.gguf';
-  const llama3 = await client.llm.load(modelPath, {
-    config: { gpuOffload: 'max', stream: false },
-  });
-  const prediction = llama3.respond(
-    [
-      {
-        role: 'system',
-        content: 'Be a helpful assistant',
-      },
-      {
-        role: 'user',
-        content: `
-Parse the componentName and the importPath of the component that is being tested here, return a JSON-object.
-
-${fileContents}
-      `,
-      },
-    ],
-    {
-      maxPredictedTokens: 512,
-    }
-  );
-
-  for await (const text of prediction) {
-    process.stdout.write(text);
-  }
-
-  const { stats } = await prediction;
-  console.log(stats);
-}
+import { Keyboard } from 'puppeteer';
 
 function findStoryFiles(directory) {
   const storyFiles = [];
@@ -85,14 +45,81 @@ const createBaseStory = async ({ filePath, fileContent }) => {
 (async () => {
   const componentsDir = '/Volumes/Code/ui-kit/packages/components';
   const storyFiles = findStoryFiles(componentsDir);
-  console.log('Waiting for response...');
+
+  const result = [];
 
   for (const storyFile of storyFiles) {
-    const fileContents = await fs.promises.readFile(storyFile.filePath, 'utf8');
-    const pred = await main({ fileContents, fileNames: storyFile.fileName });
-    const data = await createBaseStory(storyFile);
-    console.log(data);
+    result.push(await createBaseStory(storyFile));
+  }
+
+  // 1. Create stories.tsx file
+  // 2. Fill with example data
+
+  const templateFn = ({ componentName, category }) => {
+    return `import type { Meta, StoryObj } from '@storybook/react';
+import ${componentName} from './${pascalToKebabCase(componentName)}';
+
+const meta: Meta<typeof ${componentName}> = {
+  title: 'unported/${category ? category + '/' : ''}${componentName}',
+  component: ${componentName},
+};
+export default meta;
+
+type Story = StoryObj<typeof ${componentName}>;
+
+export const Basic: Story = {};
+`;
+  };
+
+  const mdxTemplateFn = ({ componentName, category }) => {
+    const storyComponent =
+      componentName +
+      (category ? transformFirstLetterUppercase(category) : '') +
+      'Stories';
+    const storyImport = `'./${pascalToKebabCase(componentName)}${
+      category ? '.' + category : ''
+    }.stories'`;
+
+    return `import { Canvas, Meta, Controls } from '@storybook/blocks';
+
+import * as ${storyComponent} from ${storyImport};
+
+<Meta name="Documentation" of={${storyComponent}} />
+
+# ${componentName}
+
+Use ${componentName} to ...
+
+## Basic Example
+
+<Canvas of={${storyComponent}.Basic} />
+
+<Controls of={${storyComponent}.Basic} />
+`;
+  };
+
+  for (const storyFile of result) {
+    const newFilePath = storyFile.filePath.replace('.story.js', '.stories.tsx');
+    //const mdxFilePath = storyFile.filePath.replace('.story.js', '.mdx');
+
+    const arr = path.basename(newFilePath).split('.');
+    const category = arr.length > 3 ? arr[1] : null;
+
+    const tsxContent = templateFn({ ...storyFile, category });
+    //const mdxContent = mdxTemplateFn({ ...storyFile, category });
+
+    //console.log('fileName', category, fileName);
+    fs.writeFileSync(newFilePath, tsxContent);
+    //fs.writeFileSync(mdxFilePath, mdxContent);
+    //console.log(`File ${newFilePath} created.`);
+    //console.log(tsxContent);
   }
 })();
 
-//console.log(storyFiles);
+function pascalToKebabCase(str) {
+  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+function transformFirstLetterUppercase(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}

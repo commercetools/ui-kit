@@ -51,8 +51,7 @@
     "packages/components/inputs/*",
     "packages/components/spacings/*",
     "presets/*",
-    "visual-testing-app",
-    "storybook"
+    "visual-testing-app"
   ],
   "preconstruct": {
     "packages": [

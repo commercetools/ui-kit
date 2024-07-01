@@ -28,6 +28,7 @@ const preview: Preview = {
   //   onInputChange: { action: 'onInputChange' },
   // },
   decorators: [withThemeDecorator, withIntlDecorator],
+  tags: ['autodocs'],
 };
 
 export default preview;
