@@ -20,6 +20,20 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    options: {
+      storySort: {
+        method: 'configure',
+        includeNames: true,
+        order: [
+          'components',
+          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
+          'form',
+          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
+          'unported',
+          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
+        ],
+      },
+    },
   },
   // argTypes: {
   //   onBlur: { action: 'onBlur' },

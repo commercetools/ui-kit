@@ -67,7 +67,7 @@ export default meta;
 
 type Story = StoryObj<typeof ${componentName}>;
 
-export const Basic: Story = {};
+export const BasicExample: Story = {};
 `;
   };
 
@@ -80,37 +80,33 @@ export const Basic: Story = {};
       category ? '.' + category : ''
     }.stories'`;
 
-    return `import { Canvas, Meta, Controls } from '@storybook/blocks';
+    return `import { Meta, Markdown } from '@storybook/blocks';
+import ReadMe from './../README.md?raw';
 
-import * as ${storyComponent} from ${storyImport};
+<Meta title="unported/${
+      category ? category + '/' : ''
+    }${componentName}/Readme" />
 
-<Meta name="Documentation" of={${storyComponent}} />
-
-# ${componentName}
-
-Use ${componentName} to ...
-
-## Basic Example
-
-<Canvas of={${storyComponent}.Basic} />
-
-<Controls of={${storyComponent}.Basic} />
+<Markdown>{ReadMe}</Markdown>
 `;
   };
 
   for (const storyFile of result) {
     const newFilePath = storyFile.filePath.replace('.story.js', '.stories.tsx');
-    //const mdxFilePath = storyFile.filePath.replace('.story.js', '.mdx');
+    const readmeFilePath = storyFile.filePath.replace(
+      '.story.js',
+      '.readme.mdx'
+    );
 
     const arr = path.basename(newFilePath).split('.');
     const category = arr.length > 3 ? arr[1] : null;
 
     const tsxContent = templateFn({ ...storyFile, category });
-    //const mdxContent = mdxTemplateFn({ ...storyFile, category });
+    const readmeContent = mdxTemplateFn({ ...storyFile, category });
 
     //console.log('fileName', category, fileName);
     fs.writeFileSync(newFilePath, tsxContent);
-    //fs.writeFileSync(mdxFilePath, mdxContent);
+    fs.writeFileSync(readmeFilePath, readmeContent);
     //console.log(`File ${newFilePath} created.`);
     //console.log(tsxContent);
   }
