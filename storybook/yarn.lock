@@ -1491,6 +1491,7 @@ __metadata:
   resolution: "@commercetools-local/storybook@workspace:."
   dependencies:
     "@chromatic-com/storybook": ^1.6.0
+    "@storybook/addon-a11y": ^8.1.11
     "@storybook/addon-essentials": ^8.1.11
     "@storybook/addon-interactions": ^8.1.11
     "@storybook/addon-links": ^8.1.11
@@ -2157,6 +2158,16 @@ __metadata:
   version: 2.3.0
   resolution: "@sindresorhus/merge-streams@npm:2.3.0"
   checksum: e989d53dee68d7e49b4ac02ae49178d561c461144cea83f66fa91ff012d981ad0ad2340cbd13f2fdb57989197f5c987ca22a74eb56478626f04e79df84291159
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-a11y@npm:^8.1.11":
+  version: 8.1.11
+  resolution: "@storybook/addon-a11y@npm:8.1.11"
+  dependencies:
+    "@storybook/addon-highlight": 8.1.11
+    axe-core: ^4.2.0
+  checksum: bbe4e822e3bb401bea46a170368a72ce7229248389ca7e74e6bffdd1582dc92878971adf1ec0e2806d4e470632b2941610c1e81126d334bafeb1033447ac9617
   languageName: node
   linkType: hard
 
@@ -4179,6 +4190,13 @@ __metadata:
   dependencies:
     possible-typed-array-names: ^1.0.0
   checksum: 1aa3ffbfe6578276996de660848b6e95669d9a95ad149e3dd0c0cda77db6ee1dbd9d1dd723b65b6d277b882dd0c4b91a654ae9d3cf9e1254b7e93e4908d78fd3
+  languageName: node
+  linkType: hard
+
+"axe-core@npm:^4.2.0":
+  version: 4.9.1
+  resolution: "axe-core@npm:4.9.1"
+  checksum: 41d9227871781f96c2952e2a777fca73624959dd0e98864f6d82806a77602f82b4fc490852082a7e524d8cd864e50d8b4d9931819b4a150112981d8c932110c5
   languageName: node
   linkType: hard
 
