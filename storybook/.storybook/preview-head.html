@@ -8,6 +8,11 @@
     font-family: 'Inter', monospace !important;
   }
 
+  /* fixes an issue with positioned: fixed elements */
+  .docs-story :not(.sb-story *) {
+     transform: none;
+  }
+
 </style>
 <script>
   //document.title = "UI Kit"; window.STORYBOOK_GA_ID = "UA-38285631-31";
