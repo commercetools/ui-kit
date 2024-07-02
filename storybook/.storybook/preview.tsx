@@ -1,7 +1,6 @@
 import type { Preview } from '@storybook/react';
 
 //import intlGlobalType from './global-types/intl-global';
-
 //import withIntlDecorator from './decorators/intl-decorator';
 
 import '../../design-system/materials/resets.css';
@@ -16,8 +15,8 @@ const preview: Preview = {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/,
+        //color: /(background|color)$/i,
+        //date: /Date$/,
       },
     },
     options: {

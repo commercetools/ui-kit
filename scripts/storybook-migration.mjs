@@ -72,14 +72,6 @@ export const BasicExample: Story = {};
   };
 
   const mdxTemplateFn = ({ componentName, category }) => {
-    const storyComponent =
-      componentName +
-      (category ? transformFirstLetterUppercase(category) : '') +
-      'Stories';
-    const storyImport = `'./${pascalToKebabCase(componentName)}${
-      category ? '.' + category : ''
-    }.stories'`;
-
     return `import { Meta, Markdown } from '@storybook/blocks';
 import ReadMe from './../README.md?raw';
 
