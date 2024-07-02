@@ -1,23 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Avatar from './avatar';
+import { iconArgType } from '@/storybook-helpers';
 
-// Export a default export named 'default' (if applicable)
 const meta: Meta<typeof Avatar> = {
-  title: 'UNSORTED/Avatar',
+  title: 'components/Avatar',
   component: Avatar,
+  argTypes: {
+    icon: iconArgType,
+  },
 };
+export default meta;
 
 type Story = StoryObj<typeof Avatar>;
-// Define your stories using the 'args' pattern
-export const BasicExample: Story = (args) => <Avatar {...args} />;
 
-// Optionally, provide default values for your component props
-BasicExample.args = {
-  // Define your component's props here
-  firstName: 'John',
-  lastName: 'Doe',
-  size: 'm',
-  color: 'accent',
+export const BasicExample: Story = {
+  args: {
+    firstName: 'John',
+    lastName: 'Doe',
+    size: 'm',
+  },
 };
-
-export default meta;
