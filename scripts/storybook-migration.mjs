@@ -96,18 +96,15 @@ import ReadMe from './../README.md?raw';
     const tsxContent = templateFn({ ...storyFile, category });
     const readmeContent = mdxTemplateFn({ ...storyFile, category });
 
-    //console.log('fileName', category, fileName);
-    fs.writeFileSync(newFilePath, tsxContent);
-    fs.writeFileSync(readmeFilePath, readmeContent);
-    //console.log(`File ${newFilePath} created.`);
-    //console.log(tsxContent);
+    if (!fs.existsSync(newFilePath)) {
+      fs.writeFileSync(newFilePath, tsxContent);
+    }
+    if (!fs.existsSync(readmeFilePath)) {
+      fs.writeFileSync(readmeFilePath, readmeContent);
+    }
   }
 })();
 
 function pascalToKebabCase(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-}
-
-function transformFirstLetterUppercase(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
 }
