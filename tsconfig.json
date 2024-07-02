@@ -39,7 +39,8 @@
     "paths": {
       // Original: docs/node_modules/@storybook/api/node_modules/@emotion/core/types/index.d.ts
       // Since `@emotion/core` does not exist anymore, let's resolve it to `@emotion/react`.
-      "@emotion/core": ["./node_modules/@emotion/react"]
+      "@emotion/core": ["./node_modules/@emotion/react"],
+      "@/storybook-helpers": ["./storybook/src/helpers/index"]
     }
   }
 }

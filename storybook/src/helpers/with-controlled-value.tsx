@@ -19,6 +19,7 @@ const withControlledValue = <T extends {}>(
   Component: FunctionComponent<T & TControlledComponentProps>
 ) => {
   const withControlledValue: StoryObj['render'] = (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [{ value, onChange }, updateArgs] = useArgs();
 
     const _onChange = (event: TCustomEvent) => {
