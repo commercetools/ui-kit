@@ -24,6 +24,8 @@ const preview: Preview = {
         method: 'configure',
         includeNames: true,
         order: [
+          'Text & Media',
+          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
           'components',
           ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
           'form',
