@@ -25,7 +25,14 @@ const preview: Preview = {
         includeNames: true,
         order: [
           'Text & Media',
-          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
+          [
+            'Text',
+            ['Readme', 'Props', '*'],
+            'Icons',
+            ['Readme', 'All Icons', '*'],
+            '*',
+            ['Readme', 'Props', '*', ['Readme', 'Props', '*']],
+          ],
           'components',
           ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
           'form',
