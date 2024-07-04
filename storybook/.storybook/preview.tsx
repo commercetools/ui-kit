@@ -33,6 +33,8 @@ const preview: Preview = {
             '*',
             ['Readme', 'Props', '*', ['Readme', 'Props', '*']],
           ],
+          'layout',
+          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
           'components',
           ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
           'form',

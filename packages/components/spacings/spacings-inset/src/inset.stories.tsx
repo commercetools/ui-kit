@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import SpacingInset, { TInsetProps } from './inset';
 
 const meta: Meta<typeof SpacingInset> = {
-  title: 'components/Spacings/SpacingsInset',
+  title: 'layout/Spacings/SpacingsInset',
   component: SpacingInset,
 };
 export default meta;

@@ -8,7 +8,7 @@ import { getAcceptedMaxPropValues, getMaxPropTokenValue } from '../helpers';
 type ConstraintsHorizontalProps = ComponentProps<typeof Constraints.Horizontal>;
 
 const meta: Meta<ConstraintsHorizontalProps> = {
-  title: 'components/Constraints/Horizontal',
+  title: 'layout/Constraints/Horizontal',
   component: Constraints.Horizontal,
 };
 export default meta;

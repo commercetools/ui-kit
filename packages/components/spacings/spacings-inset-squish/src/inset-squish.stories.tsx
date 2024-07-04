@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import SpacingInsetSquish, { TInsetSquishProps } from './inset-squish';
 
 const meta: Meta<typeof SpacingInsetSquish> = {
-  title: 'components/Spacings/SpacingsInsetSquish',
+  title: 'layout/Spacings/SpacingsInsetSquish',
   component: SpacingInsetSquish,
 };
 export default meta;

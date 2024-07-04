@@ -3,7 +3,7 @@ import Stack, { TStackProps } from './stack';
 import styled from '@emotion/styled';
 
 const meta: Meta<typeof Stack> = {
-  title: 'components/Spacings/SpacingsStack',
+  title: 'layout/Spacings/SpacingsStack',
   component: Stack,
 };
 export default meta;

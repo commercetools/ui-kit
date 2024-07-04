@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Inline, { TInlineProps } from './inline';
 
 const meta: Meta<typeof Inline> = {
-  title: 'components/Spacings/SpacingsInline',
+  title: 'layout/Spacings/SpacingsInline',
   component: Inline,
 };
 export default meta;
