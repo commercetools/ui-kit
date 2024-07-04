@@ -21,7 +21,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        method: 'configure',
+        method: 'alphabetical',
         includeNames: true,
         order: [
           'Text & Media',
