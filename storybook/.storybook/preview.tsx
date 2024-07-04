@@ -1,15 +1,14 @@
 import type { Preview } from '@storybook/react';
 
-//import intlGlobalType from './global-types/intl-global';
-//import withIntlDecorator from './decorators/intl-decorator';
+import intlGlobalType from './../src/global-types/intl-global';
 
 import '../../design-system/materials/resets.css';
-import { withIntlDecorator } from '../src/decorators/intl-decorator';
+import { WithIntlDecorator } from '../src/decorators/intl-decorator';
 import { withThemeDecorator } from '../src/decorators/theme-decorator';
 
 const preview: Preview = {
   globalTypes: {
-    //locale: intlGlobalType,
+    locale: intlGlobalType,
   },
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -51,7 +50,7 @@ const preview: Preview = {
   //   onFocus: { action: 'onFocus' },
   //   onInputChange: { action: 'onInputChange' },
   // },
-  decorators: [withThemeDecorator, withIntlDecorator],
+  decorators: [withThemeDecorator, WithIntlDecorator],
   tags: ['autodocs'],
 };
 

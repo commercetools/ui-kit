@@ -2,13 +2,38 @@ import type { Decorator } from '@storybook/react';
 // @ts-ignore
 import React, { useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
+import { default as en } from '../../../packages/i18n/data/en.json';
 
 export const locales = ['en', 'en-GB', 'de', 'es', 'fr-FR', 'zh-CN'];
 
-const getMessagesForLocale = (locale: string) => {
+interface TranslationItem {
+  developer_comment: string;
+  string: string;
+}
+interface TranslationFile {
+  [key: string]: TranslationItem;
+}
+
+interface TranslationObject {
+  [key: string]: string;
+}
+
+const formatTranslations = (messages: TranslationFile) => {
+  return Object.entries(messages).reduce(
+    (messages, [messageKey, messageValue]) => ({
+      ...messages,
+      [messageKey]: messageValue.string ?? messageValue,
+    }),
+    {}
+  );
+};
+
+const getMessagesForLocale = (
+  locale: string
+): Promise<{ default: TranslationFile }> => {
   switch (locale) {
-    case 'en': // This is american english
-      return import('../../../packages/i18n/data/en.json');
+    case 'en':
+      return new Promise((resolve) => resolve({ default: en }));
     case 'en-GB':
       return import('../../../packages/i18n/data/en.json');
     case 'es':
@@ -24,19 +49,26 @@ const getMessagesForLocale = (locale: string) => {
   }
 };
 
-export const withIntlDecorator: Decorator = (Story, context) => {
-  const [messages, setMessages] = useState({});
+export const WithIntlDecorator: Decorator = (Story, context) => {
   const locale = context.globals.locale || 'en';
+  const [messages, setMessages] = useState<TranslationObject>(
+    formatTranslations(en)
+  );
 
   useEffect(() => {
-    getMessagesForLocale(locale).then((_messages) =>
-      setMessages(_messages.default)
-    );
+    async function fetchLocale(locale: string) {
+      const { default: messagesForLocale } = await getMessagesForLocale(locale);
+
+      const normalizedMessages = formatTranslations(messagesForLocale);
+      setMessages(normalizedMessages);
+    }
+
+    fetchLocale(locale);
   }, [locale]);
 
   return (
-    <IntlProvider locale={locale} messages={messages}>
-      <Story />
+    <IntlProvider locale={locale} messages={messages} defaultLocale="en">
+      <Story {...context} />
     </IntlProvider>
   );
 };
