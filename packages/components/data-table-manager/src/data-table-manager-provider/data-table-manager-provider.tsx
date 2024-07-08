@@ -1,5 +1,9 @@
 import { createContext, useContext, useMemo } from 'react';
-import type { TDataTableSettingsProps, TColumnManagerProps } from '../types';
+import type {
+  TDataTableSettingsProps,
+  TColumnManagerProps,
+  TCustomSettingsProps,
+} from '../types';
 import type { TDataTableManagerColumnProps, TRow } from './types';
 
 export type TDataTableManagerContext<Row extends TRow = TRow> =
@@ -33,6 +37,7 @@ export const DataTableManagerProvider = ({
   topBar,
   onSettingsChange,
   columnManager,
+  customSettings,
 }: {
   children: React.ReactNode;
   columns: TDataTableManagerColumnProps[];
@@ -40,6 +45,7 @@ export const DataTableManagerProvider = ({
   topBar: string;
   onSettingsChange: () => void;
   columnManager: TColumnManagerProps;
+  customSettings?: TCustomSettingsProps[];
 }) => {
   const decoupledDataTableManagerContext = useMemo(() => {
     const areDisplaySettingsEnabled = Boolean(
@@ -60,9 +66,17 @@ export const DataTableManagerProvider = ({
       topBar,
       onSettingsChange,
       columnManager,
+      customSettings,
       isCondensed: areDisplaySettingsEnabled && displaySettings!.isCondensed,
     };
-  }, [columns, displaySettings, topBar, onSettingsChange, columnManager]);
+  }, [
+    displaySettings,
+    columns,
+    topBar,
+    onSettingsChange,
+    columnManager,
+    customSettings,
+  ]);
 
   return (
     <DataTableManagerContext.Provider value={decoupledDataTableManagerContext}>

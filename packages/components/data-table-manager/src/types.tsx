@@ -85,6 +85,13 @@ export type TColumnManagerProps = {
   secondaryButton?: ReactElement;
 };
 
+export type TCustomSettingsProps = {
+  title: string;
+  label: ReactNode;
+  value: string;
+  customComponent?: ReactNode;
+};
+
 export type TDataTableSettingsProps = {
   topBar?: ReactNode;
   onSettingsChange?: (
@@ -93,6 +100,7 @@ export type TDataTableSettingsProps = {
   ) => void;
   displaySettings?: TDisplaySettingsProps;
   columnManager?: TColumnManagerProps;
+  customSettings?: TCustomSettingsProps[];
   managerTheme?: 'light' | 'dark';
 };
 
@@ -230,4 +238,9 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    * Sets the background theme of the Card that contains the settings
    */
   managerTheme?: 'light' | 'dark';
+
+  /**
+   * Manage custom settings for the table
+   */
+  customSettings?: TDataTableSettingsProps['customSettings'];
 };

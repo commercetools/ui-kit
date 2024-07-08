@@ -10,11 +10,16 @@ import DisplaySettingsManager, {
   SHOW_HIDE_ON_DEMAND,
 } from '../display-settings-manager';
 import ColumnSettingsManager from '../column-settings-manager';
+import CustomSettingsManager from '../custom-settings-manager';
 import messages from './messages';
 import DropdownMenu from '@commercetools-uikit/dropdown-menu';
 import IconButton from '@commercetools-uikit/icon-button';
 import Tooltip from '@commercetools-uikit/tooltip';
-import { TColumnData, TDataTableSettingsProps } from '../types';
+import {
+  TColumnData,
+  TDataTableSettingsProps,
+  TCustomSettingsProps,
+} from '../types';
 
 export type TSelectChangeEvent = {
   target: {
@@ -38,10 +43,12 @@ const TopBarContainer = styled.div`
 export const getDropdownOptions = ({
   areColumnSettingsEnabled,
   areDisplaySettingsEnabled,
+  customSettings,
   formatMessage,
 }: {
   areColumnSettingsEnabled: boolean;
   areDisplaySettingsEnabled: boolean;
+  customSettings?: TCustomSettingsProps[];
   formatMessage: (message: MessageDescriptor) => string;
 }) => [
   ...(areColumnSettingsEnabled
@@ -59,6 +66,14 @@ export const getDropdownOptions = ({
           label: formatMessage(messages.displaySettingsOption),
         },
       ]
+    : []),
+  ...(customSettings
+    ? customSettings.map((customSetting) => {
+        return {
+          value: customSetting.value,
+          label: customSetting.label,
+        };
+      })
     : []),
 ];
 
@@ -83,6 +98,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   const areColumnSettingsEnabled = Boolean(
     props.columnManager && !props.columnManager.disableColumnManager
   );
+
   warning(
     areDisplaySettingsEnabled || areColumnSettingsEnabled
       ? typeof props.onSettingsChange === 'function'
@@ -94,9 +110,11 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   const [openedPanelId, setOpenedPanelId] = useState<string | null | undefined>(
     null
   );
+  // @ts-ignore - TODO
   const dropdownOptions: TDropdownOption[] = getDropdownOptions({
     areDisplaySettingsEnabled,
     areColumnSettingsEnabled,
+    customSettings: props.customSettings,
     formatMessage: intl.formatMessage,
   });
 
@@ -184,6 +202,21 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
           managerTheme={props.managerTheme}
         />
       )}
+      {props.customSettings &&
+        props.customSettings.map(
+          (customSetting) =>
+            customSetting.value === openedPanelId && (
+              <>
+                <CustomSettingsManager
+                  {...(customSetting || {})}
+                  onClose={handleSettingsPanelChange}
+                  managerTheme={props.managerTheme}
+                >
+                  {customSetting.customComponent}
+                </CustomSettingsManager>
+              </>
+            )
+        )}
     </Spacings.Stack>
   );
 };

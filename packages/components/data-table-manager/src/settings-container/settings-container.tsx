@@ -10,7 +10,7 @@ import { CloseIcon } from '@commercetools-uikit/icons';
 import { designTokens } from '@commercetools-uikit/design-system';
 
 type TSettingsContainerProps = {
-  title: MessageDescriptor & {
+  title?: MessageDescriptor & {
     values?: Record<string, React.ReactNode>;
   };
   closeButtonLabel: MessageDescriptor & {
@@ -23,6 +23,7 @@ type TSettingsContainerProps = {
   secondaryButton?: ReactElement;
   children: ReactNode;
   containerTheme?: 'light' | 'dark';
+  customSettingsTitle?: string;
 };
 
 const HeaderContainer = styled.div`
@@ -45,7 +46,13 @@ const SettingsContainer = (props: TSettingsContainerProps) => {
           <CardContentWrapper>
             <Spacings.Stack scale="xl">
               <HeaderContainer>
-                <Text.Headline as="h2" intlMessage={props.title} />
+                {props.customSettingsTitle ? (
+                  <Text.Headline as="h2">
+                    {props.customSettingsTitle}
+                  </Text.Headline>
+                ) : (
+                  <Text.Headline as="h2" intlMessage={props.title} />
+                )}
                 <AccessibleButton
                   onClick={props.onClose}
                   label={intl.formatMessage(props.closeButtonLabel)}
