@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { defineMessages, injectIntl } from 'react-intl';
 import { text, boolean, select, withKnobs } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
 import times from 'lodash/times';
@@ -330,291 +329,276 @@ storiesOf('Components|DataTable', module)
       </>
     );
   })
-  .add('DetachedDataTableManager', () => <Story />);
+  .add('DetachedDataTableManager', () => {
+    const [tableData, setTableData] = useState({
+      columns: initialColumnsState,
+      visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
+    });
 
-const Story = injectIntl((props) => {
-  const [tableData, setTableData] = useState({
-    columns: initialColumnsState,
-    visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
-  });
+    const [isCondensed, setIsCondensed] = useState(true);
+    const [isWrappingText, setIsWrappingText] = useState(false);
+    const [phoneNumberTextColor, setPhoneNumberTextColor] = useState();
+    const [radioInputValue, setRadioInputValue] = useState('show');
+    const [imageSize, setImageSize] = useState();
 
-  const [isCondensed, setIsCondensed] = useState(true);
-  const [isWrappingText, setIsWrappingText] = useState(false);
-  const [phoneNumberTextColor, setPhoneNumberTextColor] = useState();
-  const [radioInputValue, setRadioInputValue] = useState('show');
-  const [imageSize, setImageSize] = useState();
+    const {
+      items: rows,
+      sortedBy,
+      sortDirection,
+      onSortChange,
+    } = useSorting(items);
 
-  const {
-    items: rows,
-    sortedBy,
-    sortDirection,
-    onSortChange,
-  } = useSorting(items);
+    const withRowSelection = boolean('withRowSelection', true);
+    const showDisplaySettingsConfirmationButtons = boolean(
+      'showDisplaySettingsConfirmationButtons',
+      false
+    );
+    const showColumnManagerConfirmationButtons = boolean(
+      'showColumnManagerConfirmationButtons',
+      false
+    );
 
-  const withRowSelection = boolean('withRowSelection', true);
-  const showDisplaySettingsConfirmationButtons = boolean(
-    'showDisplaySettingsConfirmationButtons',
-    false
-  );
-  const showColumnManagerConfirmationButtons = boolean(
-    'showColumnManagerConfirmationButtons',
-    false
-  );
+    const {
+      rows: rowsWithSelection,
+      toggleRow,
+      selectAllRows,
+      deselectAllRows,
+      getIsRowSelected,
+      getNumberOfSelectedRows,
+    } = useRowSelection('checkbox', rows);
 
-  const {
-    rows: rowsWithSelection,
-    toggleRow,
-    selectAllRows,
-    deselectAllRows,
-    getIsRowSelected,
-    getNumberOfSelectedRows,
-  } = useRowSelection('checkbox', rows);
+    const countSelectedRows = getNumberOfSelectedRows();
+    const isSelectColumnHeaderIndeterminate =
+      countSelectedRows > 0 && countSelectedRows < rowsWithSelection.length;
+    const handleSelectColumnHeaderChange =
+      countSelectedRows === 0 ? selectAllRows : deselectAllRows;
 
-  const countSelectedRows = getNumberOfSelectedRows();
-  const isSelectColumnHeaderIndeterminate =
-    countSelectedRows > 0 && countSelectedRows < rowsWithSelection.length;
-  const handleSelectColumnHeaderChange =
-    countSelectedRows === 0 ? selectAllRows : deselectAllRows;
-
-  const mappedColumns = tableData.columns.reduce(
-    (columns, column) => ({
-      ...columns,
-      [column.key]: column,
-    }),
-    {}
-  );
-  const visibleColumns = tableData.visibleColumnKeys.map(
-    (columnKey) => mappedColumns[columnKey]
-  );
-
-  const columnsWithSelect = [
-    {
-      key: 'checkbox',
-      label: (
-        <CheckboxInput
-          isIndeterminate={isSelectColumnHeaderIndeterminate}
-          isChecked={countSelectedRows !== 0}
-          onChange={handleSelectColumnHeaderChange}
-        />
-      ),
-      shouldIgnoreRowClick: true,
-      align: 'center',
-      renderItem: (row) => (
-        <CheckboxInput
-          isChecked={getIsRowSelected(row.id)}
-          onChange={() => toggleRow(row.id)}
-        />
-      ),
-      disableResizing: true,
-    },
-    ...visibleColumns,
-  ];
-
-  const tableSettingsChangeHandler = {
-    [UPDATE_ACTIONS.COLUMNS_UPDATE]: (visibleColumnKeys) =>
-      setTableData({
-        ...tableData,
-        visibleColumnKeys,
+    const mappedColumns = tableData.columns.reduce(
+      (columns, column) => ({
+        ...columns,
+        [column.key]: column,
       }),
-    [UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE]: setIsCondensed,
-    [UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE]: setIsWrappingText,
-  };
+      {}
+    );
+    const visibleColumns = tableData.visibleColumnKeys.map(
+      (columnKey) => mappedColumns[columnKey]
+    );
 
-  const displaySettingsButtons = showDisplaySettingsConfirmationButtons
-    ? {
-        primaryButton: <FooterPrimaryButton />,
-        secondaryButton: <FooterSecondaryButton />,
-      }
-    : {};
-
-  const columnManagerButtons = showColumnManagerConfirmationButtons
-    ? {
-        primaryButton: <FooterPrimaryButton />,
-        secondaryButton: <FooterSecondaryButton />,
-      }
-    : {};
-
-  const displaySettings = {
-    disableDisplaySettings: boolean('disableDisplaySettings', false),
-    isCondensed,
-    isWrappingText,
-    ...displaySettingsButtons,
-  };
-
-  const columnManager = {
-    areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
-    searchHiddenColumns: (searchTerm) => {
-      setTableData({
-        ...tableData,
-        columns: initialColumnsState.filter(
-          (column) =>
-            tableData.visibleColumnKeys.includes(column.key) ||
-            column.label
-              .toLocaleLowerCase()
-              .includes(searchTerm.toLocaleLowerCase())
+    const columnsWithSelect = [
+      {
+        key: 'checkbox',
+        label: (
+          <CheckboxInput
+            isIndeterminate={isSelectColumnHeaderIndeterminate}
+            isChecked={countSelectedRows !== 0}
+            onChange={handleSelectColumnHeaderChange}
+          />
         ),
-      });
-    },
-    disableColumnManager: boolean('disableColumnManager', false),
-    visibleColumnKeys: tableData.visibleColumnKeys,
-    hideableColumns: tableData.columns,
-    ...columnManagerButtons,
-  };
+        shouldIgnoreRowClick: true,
+        align: 'center',
+        renderItem: (row) => (
+          <CheckboxInput
+            isChecked={getIsRowSelected(row.id)}
+            onChange={() => toggleRow(row.id)}
+          />
+        ),
+        disableResizing: true,
+      },
+      ...visibleColumns,
+    ];
 
-  const FirstCustomComponent = () => {
+    const tableSettingsChangeHandler = {
+      [UPDATE_ACTIONS.COLUMNS_UPDATE]: (visibleColumnKeys) =>
+        setTableData({
+          ...tableData,
+          visibleColumnKeys,
+        }),
+      [UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE]: setIsCondensed,
+      [UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE]: setIsWrappingText,
+    };
+
+    const displaySettingsButtons = showDisplaySettingsConfirmationButtons
+      ? {
+          primaryButton: <FooterPrimaryButton />,
+          secondaryButton: <FooterSecondaryButton />,
+        }
+      : {};
+
+    const columnManagerButtons = showColumnManagerConfirmationButtons
+      ? {
+          primaryButton: <FooterPrimaryButton />,
+          secondaryButton: <FooterSecondaryButton />,
+        }
+      : {};
+
+    const displaySettings = {
+      disableDisplaySettings: boolean('disableDisplaySettings', false),
+      isCondensed,
+      isWrappingText,
+      ...displaySettingsButtons,
+    };
+
+    const columnManager = {
+      areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
+      searchHiddenColumns: (searchTerm) => {
+        setTableData({
+          ...tableData,
+          columns: initialColumnsState.filter(
+            (column) =>
+              tableData.visibleColumnKeys.includes(column.key) ||
+              column.label
+                .toLocaleLowerCase()
+                .includes(searchTerm.toLocaleLowerCase())
+          ),
+        });
+      },
+      disableColumnManager: boolean('disableColumnManager', false),
+      visibleColumnKeys: tableData.visibleColumnKeys,
+      hideableColumns: tableData.columns,
+      ...columnManagerButtons,
+    };
+
+    const FirstCustomComponent = () => {
+      return (
+        <>
+          <Grid
+            gridGap={designTokens.spacing30}
+            gridTemplateColumns="repeat(2, 1fr)"
+          >
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Color Settings</div>
+                <SelectInput
+                  appearance="quiet"
+                  value={phoneNumberTextColor}
+                  onChange={(event) =>
+                    setPhoneNumberTextColor(event.target.value)
+                  }
+                  options={[
+                    { value: 'black', label: 'black' },
+                    { value: 'red', label: 'Red' },
+                    { value: 'green', label: 'Green' },
+                  ]}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Toggle display</div>
+                <RadioInput.Group
+                  id="toggle-display"
+                  name="toggle-display"
+                  value={radioInputValue}
+                  onChange={(event) => setRadioInputValue(event.target.value)}
+                >
+                  <RadioInput.Option value={'show'}>
+                    Show texts for a given column or row
+                  </RadioInput.Option>
+                  <RadioInput.Option value={'hide'}>
+                    Hide texts for a given column or row
+                  </RadioInput.Option>
+                </RadioInput.Group>
+              </Spacings.Stack>
+            </Grid.Item>
+          </Grid>
+        </>
+      );
+    };
+
+    const SecondCustomComponent = () => {
+      return (
+        <>
+          <Grid
+            gridGap={designTokens.spacing30}
+            gridTemplateColumns="repeat(2, 1fr)"
+          >
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Choose Image size</div>
+                <SelectInput
+                  value={imageSize}
+                  onChange={(event) => setImageSize(event.target.value)}
+                  options={[
+                    { value: 'large', label: 'Large' },
+                    { value: 'medium', label: 'Medium' },
+                    { value: 'small', label: 'Small' },
+                  ]}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Toggle display</div>
+                <RadioInput.Group
+                  id="toggle-display"
+                  name="toggle-display"
+                  value={radioInputValue}
+                  onChange={(event) => setRadioInputValue(event.target.value)}
+                >
+                  <RadioInput.Option value={'show'}>
+                    Show texts for a given column or row
+                  </RadioInput.Option>
+                  <RadioInput.Option value={'hide'}>
+                    Hide texts for a given column or row
+                  </RadioInput.Option>
+                </RadioInput.Group>
+              </Spacings.Stack>
+            </Grid.Item>
+          </Grid>
+        </>
+      );
+    };
+
+    const customSettings = [
+      {
+        title: 'Custom Settings 1',
+        label: 'Custom Settings 1',
+        value: 'customSettings1',
+        customComponent: <FirstCustomComponent />,
+        phoneNumberTextColor,
+        radioInputValue,
+      },
+      {
+        title: 'Custom Settings 2',
+        label: 'Custom Settings 2',
+        value: 'customSettings2',
+        customComponent: <SecondCustomComponent />,
+        imageSize,
+        radioInputValue,
+      },
+    ];
+
     return (
-      <>
-        <Grid
-          gridGap={designTokens.spacing30}
-          gridTemplateColumns="repeat(2, 1fr)"
-        >
-          <Grid.Item>
-            <Spacings.Stack scale={'l'}>
-              <div>Color Settings</div>
-              <SelectInput
-                appearance="quiet"
-                value={phoneNumberTextColor}
-                onChange={(event) =>
-                  setPhoneNumberTextColor(event.target.value)
-                }
-                options={[
-                  { value: 'black', label: 'black' },
-                  { value: 'red', label: 'Red' },
-                  { value: 'green', label: 'Green' },
-                ]}
-              />
-            </Spacings.Stack>
-          </Grid.Item>
-          <Grid.Item>
-            <Spacings.Stack scale={'l'}>
-              <div>Toggle display</div>
-              <RadioInput.Group
-                id="toggle-display"
-                name="toggle-display"
-                value={radioInputValue}
-                onChange={(event) => setRadioInputValue(event.target.value)}
-              >
-                <RadioInput.Option value={'show'}>
-                  Show texts for a given column or row
-                </RadioInput.Option>
-                <RadioInput.Option value={'hide'}>
-                  Hide texts for a given column or row
-                </RadioInput.Option>
-              </RadioInput.Group>
-            </Spacings.Stack>
-          </Grid.Item>
-        </Grid>
-      </>
+      <DataTableManagerProvider
+        columns={withRowSelection ? columnsWithSelect : visibleColumns}
+        displaySettings={displaySettings}
+        onSettingsChange={(action, nextValue) => {
+          tableSettingsChangeHandler[action](nextValue);
+        }}
+        columnManager={columnManager}
+        customSettings={customSettings}
+      >
+        <Spacings.Stack>
+          <header>
+            <Spacings.Inline justifyContent="flex-end">
+              <DataTableManager />
+            </Spacings.Inline>
+            <SearchTextInput
+              placeholder={text('placeholder', 'Dummy search component')}
+              isReadOnly
+            />
+          </header>
+          <main>
+            <DataTable
+              rows={withRowSelection ? rowsWithSelection : rows}
+              sortedBy={sortedBy}
+              onSortChange={onSortChange}
+              sortDirection={sortDirection}
+            />
+          </main>
+          <br />
+          <hr />
+        </Spacings.Stack>
+      </DataTableManagerProvider>
     );
-  };
-
-  const SecondCustomComponent = () => {
-    return (
-      <>
-        <Grid
-          gridGap={designTokens.spacing30}
-          gridTemplateColumns="repeat(2, 1fr)"
-        >
-          <Grid.Item>
-            <Spacings.Stack scale={'l'}>
-              <div>Choose Image size</div>
-              <SelectInput
-                value={imageSize}
-                onChange={(event) => setImageSize(event.target.value)}
-                options={[
-                  { value: 'large', label: 'Large' },
-                  { value: 'medium', label: 'Medium' },
-                  { value: 'small', label: 'Small' },
-                ]}
-              />
-            </Spacings.Stack>
-          </Grid.Item>
-          <Grid.Item>
-            <Spacings.Stack scale={'l'}>
-              <div>Toggle display</div>
-              <RadioInput.Group
-                id="toggle-display"
-                name="toggle-display"
-                value={radioInputValue}
-                onChange={(event) => setRadioInputValue(event.target.value)}
-              >
-                <RadioInput.Option value={'show'}>
-                  Show texts for a given column or row
-                </RadioInput.Option>
-                <RadioInput.Option value={'hide'}>
-                  Hide texts for a given column or row
-                </RadioInput.Option>
-              </RadioInput.Group>
-            </Spacings.Stack>
-          </Grid.Item>
-        </Grid>
-      </>
-    );
-  };
-
-  const messages = defineMessages({
-    customSettings1Title: {
-      id: 'customSettings1.title',
-      description: 'Additional custom Settings 1',
-      defaultMessage: 'Custom Settings 1',
-    },
-    customSettings2Title: {
-      id: 'customSettings2.title',
-      description: 'Additional custom Settings 2',
-      defaultMessage: 'Custom Settings 2',
-    },
   });
-
-  const customSettings = [
-    {
-      title: props.intl.formatMessage(messages.customSettings1Title),
-      label: 'Custom Settings 1',
-      value: 'customSettings1',
-      customComponent: <FirstCustomComponent />,
-      phoneNumberTextColor,
-      radioInputValue,
-    },
-    {
-      title: props.intl.formatMessage(messages.customSettings2Title),
-      label: 'Custom Settings 2',
-      value: 'customSettings2',
-      customComponent: <SecondCustomComponent />,
-      imageSize,
-      radioInputValue,
-    },
-  ];
-
-  return (
-    <DataTableManagerProvider
-      columns={withRowSelection ? columnsWithSelect : visibleColumns}
-      displaySettings={displaySettings}
-      onSettingsChange={(action, nextValue) => {
-        tableSettingsChangeHandler[action](nextValue);
-      }}
-      columnManager={columnManager}
-      customSettings={customSettings}
-    >
-      <Spacings.Stack>
-        <header>
-          <Spacings.Inline justifyContent="flex-end">
-            <DataTableManager />
-          </Spacings.Inline>
-          <SearchTextInput
-            placeholder={text('placeholder', 'Dummy search component')}
-            isReadOnly
-          />
-        </header>
-        <main>
-          <DataTable
-            rows={withRowSelection ? rowsWithSelection : rows}
-            sortedBy={sortedBy}
-            onSortChange={onSortChange}
-            sortDirection={sortDirection}
-          />
-        </main>
-        <br />
-        <hr />
-      </Spacings.Stack>
-    </DataTableManagerProvider>
-  );
-});

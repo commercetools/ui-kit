@@ -87,7 +87,7 @@ export type TColumnManagerProps = {
 
 export type TCustomSettingsProps = {
   title: string;
-  label: ReactNode;
+  label: string;
   value: string;
   customComponent?: ReactNode;
 };

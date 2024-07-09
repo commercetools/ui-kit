@@ -110,7 +110,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   const [openedPanelId, setOpenedPanelId] = useState<string | null | undefined>(
     null
   );
-  // @ts-ignore - TODO
+
   const dropdownOptions: TDropdownOption[] = getDropdownOptions({
     areDisplaySettingsEnabled,
     areColumnSettingsEnabled,
@@ -206,7 +206,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
         props.customSettings.map(
           (customSetting) =>
             customSetting.value === openedPanelId && (
-              <>
+              <div key={customSetting.value}>
                 <CustomSettingsManager
                   {...(customSetting || {})}
                   onClose={handleSettingsPanelChange}
@@ -214,7 +214,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
                 >
                   {customSetting.customComponent}
                 </CustomSettingsManager>
-              </>
+              </div>
             )
         )}
     </Spacings.Stack>
