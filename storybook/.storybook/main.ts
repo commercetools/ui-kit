@@ -85,6 +85,12 @@ const config: StorybookConfig = {
       })
     );
 
+    // todo: Figure out why adding this, fixes issues with all react-select dependent components
+    config.optimizeDeps = {
+      ...config.optimizeDeps,
+      exclude: ['@commercetools-uikit/icons'],
+    };
+
     return config;
   },
 };
