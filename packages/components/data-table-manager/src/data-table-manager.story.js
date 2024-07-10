@@ -177,6 +177,9 @@ storiesOf('Components|DataTable', module)
 
     const [isCondensed, setIsCondensed] = useState(true);
     const [isWrappingText, setIsWrappingText] = useState(false);
+    const [phoneNumberTextColor, setPhoneNumberTextColor] = useState();
+    const [radioInputValue, setRadioInputValue] = useState('show');
+    const [imageSize, setImageSize] = useState();
 
     const {
       items: rows,
@@ -297,6 +300,116 @@ storiesOf('Components|DataTable', module)
       ...columnManagerButtons,
     };
 
+    const FirstCustomComponent = () => {
+      return (
+        <>
+          <Grid
+            gridGap={designTokens.spacing30}
+            gridTemplateColumns="repeat(2, 1fr)"
+          >
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Color Settings</div>
+                <SelectInput
+                  appearance="quiet"
+                  value={phoneNumberTextColor}
+                  onChange={(event) =>
+                    setPhoneNumberTextColor(event.target.value)
+                  }
+                  options={[
+                    { value: 'black', label: 'black' },
+                    { value: 'red', label: 'Red' },
+                    { value: 'green', label: 'Green' },
+                  ]}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Toggle display</div>
+                <RadioInput.Group
+                  id="toggle-display"
+                  name="toggle-display"
+                  value={radioInputValue}
+                  onChange={(event) => setRadioInputValue(event.target.value)}
+                >
+                  <RadioInput.Option value={'show'}>
+                    Show texts for a given column or row
+                  </RadioInput.Option>
+                  <RadioInput.Option value={'hide'}>
+                    Hide texts for a given column or row
+                  </RadioInput.Option>
+                </RadioInput.Group>
+              </Spacings.Stack>
+            </Grid.Item>
+          </Grid>
+        </>
+      );
+    };
+
+    const SecondCustomComponent = () => {
+      return (
+        <>
+          <Grid
+            gridGap={designTokens.spacing30}
+            gridTemplateColumns="repeat(2, 1fr)"
+          >
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Choose Image size</div>
+                <SelectInput
+                  value={imageSize}
+                  onChange={(event) => setImageSize(event.target.value)}
+                  options={[
+                    { value: 'large', label: 'Large' },
+                    { value: 'medium', label: 'Medium' },
+                    { value: 'small', label: 'Small' },
+                  ]}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Toggle display</div>
+                <RadioInput.Group
+                  id="toggle-display"
+                  name="toggle-display"
+                  value={radioInputValue}
+                  onChange={(event) => setRadioInputValue(event.target.value)}
+                >
+                  <RadioInput.Option value={'show'}>
+                    Show texts for a given column or row
+                  </RadioInput.Option>
+                  <RadioInput.Option value={'hide'}>
+                    Hide texts for a given column or row
+                  </RadioInput.Option>
+                </RadioInput.Group>
+              </Spacings.Stack>
+            </Grid.Item>
+          </Grid>
+        </>
+      );
+    };
+
+    const customSettings = [
+      {
+        title: 'Custom Settings 1',
+        label: 'Custom Settings 1',
+        value: 'customSettings1',
+        customComponent: <FirstCustomComponent />,
+        phoneNumberTextColor,
+        radioInputValue,
+      },
+      {
+        title: 'Custom Settings 2',
+        label: 'Custom Settings 2',
+        value: 'customSettings2',
+        customComponent: <SecondCustomComponent />,
+        imageSize,
+        radioInputValue,
+      },
+    ];
+
     return (
       <>
         <DataTableManager
@@ -307,6 +420,7 @@ storiesOf('Components|DataTable', module)
           }}
           columnManager={columnManager}
           displaySettings={displaySettings}
+          customSettings={customSettings}
           managerTheme={select(
             'managerTheme',
             {
