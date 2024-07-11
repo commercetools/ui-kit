@@ -7,6 +7,10 @@ export type TColumnData = {
 
 export type TDisplaySettingsProps = {
   /**
+   * Set this to override the default label of the display settings.
+   */
+  displaySettingsLabel?: string;
+  /**
    * Set this flag to `false` to show the display settings panel option.
    *
    * @@defaultValue@@: true
@@ -42,6 +46,10 @@ export type TDisplaySettingsProps = {
 };
 
 export type TColumnManagerProps = {
+  /**
+   * Set this to override the default label of the column manager.
+   */
+  columnManagerLabel?: string;
   /**
    * Set this to `true` to show a search input for the hidden columns panel.
    */

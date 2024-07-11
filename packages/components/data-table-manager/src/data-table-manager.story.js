@@ -274,6 +274,7 @@ storiesOf('Components|DataTable', module)
       : {};
 
     const displaySettings = {
+      displaySettingsLabel: 'Display Settings Label',
       disableDisplaySettings: boolean('disableDisplaySettings', false),
       isCondensed,
       isWrappingText,
@@ -281,6 +282,7 @@ storiesOf('Components|DataTable', module)
     };
 
     const columnManager = {
+      columnManagerLabel: 'Column Manager Label',
       areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
       searchHiddenColumns: (searchTerm) => {
         setTableData({
@@ -554,6 +556,7 @@ storiesOf('Components|DataTable', module)
       : {};
 
     const displaySettings = {
+      displaySettingsLabel: 'Display Settings Label',
       disableDisplaySettings: boolean('disableDisplaySettings', false),
       isCondensed,
       isWrappingText,
@@ -561,6 +564,7 @@ storiesOf('Components|DataTable', module)
     };
 
     const columnManager = {
+      columnManagerLabel: 'Column Manager Label',
       areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
       searchHiddenColumns: (searchTerm) => {
         setTableData({

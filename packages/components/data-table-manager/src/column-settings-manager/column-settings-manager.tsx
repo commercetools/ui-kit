@@ -42,6 +42,7 @@ export type TColumnData = {
 };
 
 export type TColumnSettingsManagerProps = {
+  title?: string;
   availableColumns: TColumnData[];
   selectedColumns: TColumnData[];
   onUpdateColumns: (updatedColums: TColumnData[]) => void;
@@ -178,6 +179,7 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
 
   return (
     <SettingsContainer
+      customSettingsTitle={props.title}
       title={messages.title}
       closeButtonLabel={messages.closeButtonLabel}
       onClose={props.onClose}

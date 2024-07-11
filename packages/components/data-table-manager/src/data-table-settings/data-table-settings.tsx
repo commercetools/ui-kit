@@ -44,38 +44,48 @@ export const getDropdownOptions = ({
   areColumnSettingsEnabled,
   areDisplaySettingsEnabled,
   customSettings,
+  columnManagerLabel,
+  displaySettingsLabel,
   formatMessage,
 }: {
   areColumnSettingsEnabled: boolean;
   areDisplaySettingsEnabled: boolean;
   customSettings?: TCustomSettingsProps[];
+  columnManagerLabel?: string;
+  displaySettingsLabel?: string;
   formatMessage: (message: MessageDescriptor) => string;
-}) => [
-  ...(areColumnSettingsEnabled
-    ? [
-        {
-          value: COLUMN_MANAGER,
-          label: formatMessage(messages.columnManagerOption),
-        },
-      ]
-    : []),
-  ...(areDisplaySettingsEnabled
-    ? [
-        {
-          value: DISPLAY_SETTINGS,
-          label: formatMessage(messages.displaySettingsOption),
-        },
-      ]
-    : []),
-  ...(customSettings
-    ? customSettings.map((customSetting) => {
-        return {
-          value: customSetting.value,
-          label: customSetting.label,
-        };
-      })
-    : []),
-];
+}) => {
+  return [
+    ...(areColumnSettingsEnabled
+      ? [
+          {
+            value: COLUMN_MANAGER,
+            label: columnManagerLabel
+              ? columnManagerLabel
+              : formatMessage(messages.columnManagerOption),
+          },
+        ]
+      : []),
+    ...(customSettings
+      ? customSettings.map((customSetting) => {
+          return {
+            value: customSetting.value,
+            label: customSetting.label,
+          };
+        })
+      : []),
+    ...(areDisplaySettingsEnabled
+      ? [
+          {
+            value: DISPLAY_SETTINGS,
+            label: displaySettingsLabel
+              ? displaySettingsLabel
+              : formatMessage(messages.displaySettingsOption),
+          },
+        ]
+      : []),
+  ];
+};
 
 export const getMappedColumns = (columns: TColumnData[] = []) =>
   columns.reduce<MappedColumns>(
@@ -115,6 +125,8 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
     areDisplaySettingsEnabled,
     areColumnSettingsEnabled,
     customSettings: props.customSettings,
+    columnManagerLabel: props.columnManager?.columnManagerLabel,
+    displaySettingsLabel: props.displaySettings?.displaySettingsLabel,
     formatMessage: intl.formatMessage,
   });
 
@@ -168,6 +180,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
       {openedPanelId === DISPLAY_SETTINGS && (
         <DisplaySettingsManager
           {...(props.displaySettings || {})}
+          title={props.displaySettings?.displaySettingsLabel}
           onClose={handleSettingsPanelChange}
           onDensityDisplayChange={(event) => {
             props.onSettingsChange?.(
@@ -187,6 +200,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
       {openedPanelId === COLUMN_MANAGER && (
         <ColumnSettingsManager
           {...(props.columnManager || {})}
+          title={props.columnManager?.columnManagerLabel}
           availableColumns={props.columnManager?.hideableColumns ?? []}
           selectedColumns={selectedColumns}
           onClose={handleSettingsPanelChange}
