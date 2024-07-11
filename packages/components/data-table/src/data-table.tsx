@@ -20,10 +20,7 @@ import HeaderCell from './header-cell';
 import DataRow from './data-row';
 import useManualColumnResizing from './use-manual-column-resizing-reducer';
 import ColumnResizingContext from './column-resizing-context';
-import {
-  useDataTableManagerContext,
-  type TDataTableManagerContext,
-} from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
+import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
 export interface TRow {
   id: string;
 }
@@ -242,19 +239,20 @@ export type TDataTableProps<Row extends TRow = TRow> = {
   /**
    * Manage custom settings for the table
    */
-  customSettings?: TDataTableManagerContext['customSettings'];
+  customSettingsPayload?: Record<string, unknown>;
 };
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
-  const { columns, isCondensed, customSettings } = useDataTableManagerContext();
+  const { columns, isCondensed, customSettingsPayload, debug } =
+    useDataTableManagerContext();
   const isValueFromProvider = Boolean(columns && columns.length !== 0);
   const columnsData = isValueFromProvider ? columns : props.columns;
   const isCustomSettingsFromProvider = Boolean(
-    customSettings && customSettings.length !== 0
+    customSettingsPayload && customSettingsPayload.length !== 0
   );
   const customSettingsData = isCustomSettingsFromProvider
-    ? customSettings
-    : props.customSettings;
+    ? customSettingsPayload
+    : props.customSettingsPayload;
   const condensedValue =
     isValueFromProvider && isCondensed !== undefined
       ? isCondensed
@@ -264,7 +262,12 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
     columnsData.length > 0,
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
   );
-  console.log({ customSettingsData });
+
+  // TODO - remove when nexted rows are implemented
+  if (debug) {
+    console.log({ customSettingsData });
+  }
+
   const tableRef = useRef<HTMLTableElement>();
   const columnResizingReducer = useManualColumnResizing(tableRef);
 

@@ -86,10 +86,12 @@ export type TColumnManagerProps = {
 };
 
 export type TCustomSettingsProps = {
+  id: string;
   title: string;
   label: string;
   value: string;
   customComponent?: ReactNode;
+  payload: Record<string, unknown>;
 };
 
 export type TDataTableSettingsProps = {

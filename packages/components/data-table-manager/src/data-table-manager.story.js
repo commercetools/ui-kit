@@ -393,20 +393,26 @@ storiesOf('Components|DataTable', module)
 
     const customSettings = [
       {
+        id: 'customSettings1',
         title: 'Custom Settings 1',
         label: 'Custom Settings 1',
         value: 'customSettings1',
         customComponent: <FirstCustomComponent />,
-        phoneNumberTextColor,
-        radioInputValue,
+        payload: {
+          phoneNumberTextColor,
+          radioInputValue,
+        },
       },
       {
+        id: 'customSettings2',
         title: 'Custom Settings 2',
         label: 'Custom Settings 2',
         value: 'customSettings2',
         customComponent: <SecondCustomComponent />,
-        imageSize,
-        radioInputValue,
+        payload: {
+          imageSize,
+          radioInputValue,
+        },
       },
     ];
 
@@ -471,6 +477,8 @@ storiesOf('Components|DataTable', module)
       'showColumnManagerConfirmationButtons',
       false
     );
+    // TODO - remove when nexted rows are implemented
+    const debug = boolean('logCustomSettings', false);
 
     const {
       rows: rowsWithSelection,
@@ -665,20 +673,26 @@ storiesOf('Components|DataTable', module)
 
     const customSettings = [
       {
+        id: 'customSettings1',
         title: 'Custom Settings 1',
         label: 'Custom Settings 1',
         value: 'customSettings1',
         customComponent: <FirstCustomComponent />,
-        phoneNumberTextColor,
-        radioInputValue,
+        payload: {
+          phoneNumberTextColor,
+          radioInputValue,
+        },
       },
       {
+        id: 'customSettings2',
         title: 'Custom Settings 2',
         label: 'Custom Settings 2',
         value: 'customSettings2',
         customComponent: <SecondCustomComponent />,
-        imageSize,
-        radioInputValue,
+        payload: {
+          imageSize,
+          radioInputValue,
+        },
       },
     ];
 
@@ -691,6 +705,8 @@ storiesOf('Components|DataTable', module)
         }}
         columnManager={columnManager}
         customSettings={customSettings}
+        // TODO - remove when nexted rows are implemented
+        debug={debug}
       >
         <Spacings.Stack>
           <header>

@@ -10,12 +10,15 @@ export type TDataTableManagerContext<Row extends TRow = TRow> =
   TDataTableSettingsProps & {
     columns: TDataTableManagerColumnProps<Row>[];
     isCondensed?: boolean;
+    customSettingsPayload?: Record<string, unknown>;
+    debug: boolean; // TODO - remove when nexted rows are implemented
   };
 
 const DataTableManagerContext = createContext<TDataTableManagerContext>({
   columns: [],
   displaySettings: undefined,
   isCondensed: true,
+  debug: false, // TODO - remove when nexted rows are implemented
 });
 
 export const useDataTableManagerContext = () => {
@@ -38,6 +41,7 @@ export const DataTableManagerProvider = ({
   onSettingsChange,
   columnManager,
   customSettings,
+  debug, // TODO - remove when nexted rows are implemented
 }: {
   children: React.ReactNode;
   columns: TDataTableManagerColumnProps[];
@@ -46,6 +50,7 @@ export const DataTableManagerProvider = ({
   onSettingsChange: () => void;
   columnManager: TColumnManagerProps;
   customSettings?: TCustomSettingsProps[];
+  debug: boolean;
 }) => {
   const decoupledDataTableManagerContext = useMemo(() => {
     const areDisplaySettingsEnabled = Boolean(
@@ -54,6 +59,12 @@ export const DataTableManagerProvider = ({
 
     const isWrappingText =
       areDisplaySettingsEnabled && displaySettings!.isWrappingText;
+
+    const customSettingsPayload = {} as Record<string, unknown>;
+
+    customSettings?.forEach(({ id, payload }) => {
+      customSettingsPayload[id] = payload;
+    });
 
     return {
       columns: columns.map((column) => ({
@@ -67,15 +78,18 @@ export const DataTableManagerProvider = ({
       onSettingsChange,
       columnManager,
       customSettings,
+      customSettingsPayload,
       isCondensed: areDisplaySettingsEnabled && displaySettings!.isCondensed,
+      debug, // TODO - remove when nexted rows are implemented
     };
   }, [
     displaySettings,
+    customSettings,
     columns,
     topBar,
     onSettingsChange,
     columnManager,
-    customSettings,
+    debug,
   ]);
 
   return (

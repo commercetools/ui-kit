@@ -33,6 +33,11 @@ const DataTableManager = <Row extends TRow = TRow>(
   const isWrappingText =
     areDisplaySettingsEnabled && displaySettings!.isWrappingText;
 
+  const customSettingsPayload = {} as Record<string, unknown>;
+  props.customSettings?.forEach(({ id, payload }) => {
+    customSettingsPayload[id] = payload;
+  });
+
   if (!dataTableColumns) {
     throw new Error(
       'ui-kit/DataTableManager: missing `columns` prop. If you do not provide it to the component, then you should use the DataTableManagerProvider component.'
@@ -65,6 +70,7 @@ const DataTableManager = <Row extends TRow = TRow>(
             columns,
             isCondensed:
               areDisplaySettingsEnabled && props.displaySettings!.isCondensed,
+            customSettingsPayload,
           })
         : null}
     </Spacings.Stack>
