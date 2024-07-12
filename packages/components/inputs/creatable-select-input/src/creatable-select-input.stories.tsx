@@ -118,7 +118,6 @@ export const BasicExample: Story = (args) => {
   useEffect(() => {
     setValue(args.isMulti ? [] : undefined);
   }, [args.isMulti]);
-  console.log('render');
 
   return (
     <div style={{ minHeight: 350 }}>
