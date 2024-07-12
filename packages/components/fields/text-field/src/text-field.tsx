@@ -166,6 +166,10 @@ export type TTextFieldProps = {
    * Badge to be displayed beside the label. Might be used to display additional information about the content of the field (E.g verified email)
    */
   badge?: ReactNode;
+  /**
+   * Maximum number of characters allowed in the input.
+   */
+  maxLength?: number;
 };
 
 type TTextFieldState = Pick<TTextFieldProps, 'id'>;
@@ -247,6 +251,7 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
             hasWarning={hasWarning}
             hasError={hasError}
             placeholder={this.props.placeholder}
+            maxLength={this.props.maxLength}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
             /* ARIA */
