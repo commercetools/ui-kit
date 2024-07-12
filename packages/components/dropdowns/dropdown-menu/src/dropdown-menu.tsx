@@ -7,6 +7,7 @@ import {
   type ReactNode,
   type RefObject,
 } from 'react';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import { type TMaxProp } from '@commercetools-uikit/constraints';
 import styled from '@emotion/styled';
@@ -158,6 +159,7 @@ function DropdownMenu(props: TDropdownMenuProps) {
           menuPosition={props.menuPosition!}
           menuMaxHeight={props.menuMaxHeight}
           triggerElementRef={triggerRef}
+          {...filterDataAttributes(props)}
         >
           {props.children}
         </Menu>

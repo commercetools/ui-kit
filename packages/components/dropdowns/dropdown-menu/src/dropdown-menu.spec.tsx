@@ -74,4 +74,39 @@ describe('DropdownMenu', () => {
     });
     expect(await screen.findByText('Content')).not.toBeVisible();
   });
+
+  it('should pass data attributes without menuType', async () => {
+    await render(
+      <DropdownMenu
+        data-testid="dropdown-container"
+        triggerElement={
+          <SecondaryButton label="Trigger" data-testid="trigger-element" />
+        }
+      >
+        <DropdownMenu.ListMenuItem>Option 1</DropdownMenu.ListMenuItem>
+      </DropdownMenu>
+    );
+
+    // Check that the data-testid attributes are passed down
+    expect(screen.getByTestId('trigger-element')).toBeInTheDocument();
+    expect(screen.getByTestId('dropdown-container')).toBeInTheDocument();
+  });
+
+  it('should pass data attributes with menuType="list"', async () => {
+    await render(
+      <DropdownMenu
+        menuType="list"
+        data-testid="dropdown-container"
+        triggerElement={
+          <SecondaryButton label="Trigger" data-testid="trigger-element" />
+        }
+      >
+        <DropdownMenu.ListMenuItem>Option 1</DropdownMenu.ListMenuItem>
+      </DropdownMenu>
+    );
+
+    // Check that the data-testid attributes are passed down
+    expect(screen.getByTestId('trigger-element')).toBeInTheDocument();
+    expect(screen.getByTestId('dropdown-container')).toBeInTheDocument();
+  });
 });
