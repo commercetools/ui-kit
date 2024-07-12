@@ -38,6 +38,8 @@ const preview: Preview = {
           ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
           'form',
           ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
+          'field',
+          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
           'unported',
           ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
         ],
