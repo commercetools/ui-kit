@@ -22,7 +22,7 @@ import html, {
 
 const LIST_TYPES = [BLOCK_TAGS.ol, BLOCK_TAGS.ul];
 
-/* 
+/*
   From Slate's own implementation of rich text editor
   https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L133:L179
  */
@@ -92,7 +92,7 @@ const Element = ({ attributes, children, element }: RenderElementProps) => {
   }
 };
 
-/* 
+/*
   From Slate's own implementation of rich text editor
   https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L181:L199
  */
@@ -122,7 +122,7 @@ const Leaf = ({ attributes, children, leaf }: RenderLeafProps) => {
   return <span {...attributes}>{children}</span>;
 };
 
-/* 
+/*
   From Slate's own implementation of rich text editor
   https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L128:L131
  */
@@ -131,7 +131,7 @@ const isMarkActive = (editor: TEditor, format: Format) => {
   return marks ? marks[format as keyof typeof marks] === true : false;
 };
 
-/* 
+/*
   From Slate's own implementation of rich text editor
   https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L101:L09
  */
@@ -145,7 +145,7 @@ const toggleMark = (editor: Editor, format: Format) => {
   }
 };
 
-/* 
+/*
   From Slate's own implementation of rich text editor
   https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L111:L126
  */
@@ -164,7 +164,7 @@ const isBlockActive = (editor: TEditor, format: Format) => {
   return Boolean(match);
 };
 
-/* 
+/*
   From slate's own implementation of rich text editor
   https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L67:L99
  */
@@ -240,9 +240,44 @@ const focusEditor = (editor: Editor) => {
   Transforms.select(editor, Editor.end(editor, []));
 };
 
+/**
+ * Softbreaker is a helper that is used to ensure
+ * that slate editor can handle html-linebreaks correctly.
+ */
+const Softbreaker = {
+  /**
+   * The character that slate-editor considers a soft-linebreak
+   */
+  placeholderCharacter: '\n',
+  /**
+   * Returns a formatted version of the soft-linebreak character
+   * which can be used by internal slate editor functions
+   */
+  getSlatePlaceholder() {
+    return {
+      text: this.placeholderCharacter,
+    };
+  },
+  /**
+   * replaces the slate-placeholder character with the html
+   * equivalent = <br/>
+   */
+  serialize(str: string) {
+    return str.split(this.placeholderCharacter).join('<br/>');
+  },
+  /**
+   * Initial HMTL needs to be cleaned from soft-linebreak characters,
+   * otherwise they are being transformed into <br/> tags
+   */
+  cleanHtml(html: string) {
+    return html.split(this.placeholderCharacter).join('');
+  },
+};
+
 export {
   Element,
   Leaf,
+  Softbreaker,
   isMarkActive,
   isBlockActive,
   toggleMark,
