@@ -15,6 +15,7 @@ import parse from 'style-to-object';
 import isEmpty from 'lodash/isEmpty';
 import type { HistoryEditor } from 'slate-history';
 import { BLOCK_TAGS, MARK_TAGS } from '../tags';
+import { Softbreaker } from '../slate-helpers';
 
 type Html = string;
 
@@ -70,6 +71,10 @@ const serializeNode = (node: TNode): Html => {
     if (node.strikethrough) {
       string = `<del>${string}</del>`;
     }
+
+    // Replace all Linebreaks (that are caused by the editor) with a br-tag
+    string = Softbreaker.serialize(string);
+
     return string;
   }
 
@@ -204,6 +209,10 @@ const deserializeElement = (
   const { nodeName } = el;
   let parent = el;
 
+  if (nodeName === 'BR') {
+    return Softbreaker.getSlatePlaceholder();
+  }
+
   if (
     nodeName === 'PRE' &&
     el.childNodes[0] &&
@@ -287,7 +296,7 @@ const deserializeElement = (
 };
 const deserialize = (html: Html) => {
   const document = new DOMParser().parseFromString(
-    html || '<p></p>',
+    Softbreaker.cleanHtml(html) || '<p></p>',
     'text/html'
   );
   return deserializeElement(document.body);
