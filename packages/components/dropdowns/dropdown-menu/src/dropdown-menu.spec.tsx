@@ -101,12 +101,15 @@ describe('DropdownMenu', () => {
           <SecondaryButton label="Trigger" data-testid="trigger-element" />
         }
       >
-        <DropdownMenu.ListMenuItem>Option 1</DropdownMenu.ListMenuItem>
+        <DropdownMenu.ListMenuItem data-testid="list-item">
+          Option 1
+        </DropdownMenu.ListMenuItem>
       </DropdownMenu>
     );
 
     // Check that the data-testid attributes are passed down
     expect(screen.getByTestId('trigger-element')).toBeInTheDocument();
     expect(screen.getByTestId('dropdown-container')).toBeInTheDocument();
+    expect(screen.getByTestId('list-item')).toBeInTheDocument();
   });
 });
