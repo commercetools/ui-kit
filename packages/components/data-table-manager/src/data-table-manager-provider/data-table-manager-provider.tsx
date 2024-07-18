@@ -87,13 +87,6 @@ export const DataTableManagerProvider = ({
       customSettingsPayload[id] = payload;
     });
 
-    console.log('from provider', {
-      customSettingsPayload,
-      customSettings,
-      newCustomSettings,
-      additionalSettings,
-    });
-
     return {
       columns: columns.map((column) => ({
         ...column,
@@ -108,10 +101,8 @@ export const DataTableManagerProvider = ({
       customSettings,
       customSettingsPayload,
       isCondensed: areDisplaySettingsEnabled && displaySettings!.isCondensed,
-      updateCustomSettings: (settings: Record<string, unknown>) => {
-        console.log({ settings });
-        updateCustomSettings(settings);
-      },
+      updateCustomSettings: (settings: Record<string, unknown>) =>
+        updateCustomSettings(settings),
       additionalSettings: additionalSettings,
       debug, // TODO - remove when nexted rows are implemented
     };
