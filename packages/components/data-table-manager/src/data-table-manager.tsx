@@ -1,4 +1,4 @@
-import { useMemo, cloneElement } from 'react';
+import { useMemo, cloneElement, useState } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings from './data-table-settings';
 import type {
@@ -23,20 +23,13 @@ const DataTableManager = <Row extends TRow = TRow>(
     props.onSettingsChange || dataTableManagerContext.onSettingsChange;
   const columnManager =
     props.columnManager || dataTableManagerContext.columnManager;
-
   const customSettings =
     props.customSettings || dataTableManagerContext.customSettings;
-
   const areDisplaySettingsEnabled = Boolean(
     displaySettings && !displaySettings.disableDisplaySettings
   );
   const isWrappingText =
     areDisplaySettingsEnabled && displaySettings!.isWrappingText;
-
-  const customSettingsPayload = {} as Record<string, unknown>;
-  props.customSettings?.forEach(({ id, payload }) => {
-    customSettingsPayload[id] = payload;
-  });
 
   if (!dataTableColumns) {
     throw new Error(
@@ -55,6 +48,32 @@ const DataTableManager = <Row extends TRow = TRow>(
     [dataTableColumns, areDisplaySettingsEnabled, isWrappingText]
   );
 
+  const [additionalSettings, setAdditionalSettings] = useState<{
+    [key: string]: unknown;
+  }>({});
+
+  const updateCustomSettings = (additionalCustomSettings: unknown) => {
+    setAdditionalSettings(
+      additionalCustomSettings as { [key: string]: unknown }
+    );
+  };
+
+  const newCustomSettings = props.customSettings?.map((setting) => {
+    const newSetting = setting;
+    if (setting.id === additionalSettings.id) {
+      newSetting.payload = {
+        ...setting.payload,
+        ...additionalSettings,
+      };
+    }
+    return newSetting;
+  });
+
+  const customSettingsPayload = {} as Record<string, unknown>;
+  newCustomSettings?.forEach(({ id, payload }) => {
+    customSettingsPayload[id] = payload;
+  });
+
   return (
     <Spacings.Stack>
       <DataTableSettings
@@ -64,6 +83,8 @@ const DataTableManager = <Row extends TRow = TRow>(
         displaySettings={displaySettings}
         customSettings={customSettings as TCustomSettingsProps[] | undefined}
         managerTheme="light"
+        additionalSettings={additionalSettings}
+        updateCustomSettings={(settings) => updateCustomSettings(settings)}
       />
       {props.children
         ? cloneElement(props.children, {

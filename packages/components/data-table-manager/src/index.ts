@@ -5,6 +5,7 @@ export {
 } from './data-table-manager-provider';
 export { UPDATE_ACTIONS } from './constants';
 export { default as version } from './version';
+export { ColumnSettingsManager } from './column-settings-manager';
 export * from './export-types';
 
 // Re-exports for convenience

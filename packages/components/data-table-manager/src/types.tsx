@@ -98,11 +98,23 @@ export type TCustomSettingsProps = {
   title: string;
   label: string;
   value: string;
-  customComponent?: ReactNode;
+  type?: 'columnManager';
+  customComponent?: React.ComponentType<{
+    updateCustomSettings: (settings: Record<string, unknown>) => void;
+    additionalSettings: Record<string, unknown>;
+    onClose?: () => void;
+    columnManager?: TColumnManagerProps;
+    onSettingsChange?: (
+      settingName: string,
+      settingValue: boolean | string[]
+    ) => void;
+    managerTheme?: 'light' | 'dark';
+  }>;
   payload: Record<string, unknown>;
 };
 
 export type TDataTableSettingsProps = {
+  additionalSettings: Record<string, unknown>;
   topBar?: ReactNode;
   onSettingsChange?: (
     settingName: string,
@@ -112,6 +124,7 @@ export type TDataTableSettingsProps = {
   columnManager?: TColumnManagerProps;
   customSettings?: TCustomSettingsProps[];
   managerTheme?: 'light' | 'dark';
+  updateCustomSettings?: (settings: Record<string, unknown>) => void;
 };
 
 export interface TRow {
@@ -253,4 +266,5 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    * Manage custom settings for the table
    */
   customSettings?: TDataTableSettingsProps['customSettings'];
+  updateCustomSettings?: (settings: Record<string, unknown>) => void;
 };

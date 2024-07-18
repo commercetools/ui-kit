@@ -9,7 +9,7 @@ import DisplaySettingsManager, {
   DENSITY_COMPACT,
   SHOW_HIDE_ON_DEMAND,
 } from '../display-settings-manager';
-import ColumnSettingsManager from '../column-settings-manager';
+import { ColumnSettingsManager } from '../column-settings-manager';
 import CustomSettingsManager from '../custom-settings-manager';
 import messages from './messages';
 import DropdownMenu from '@commercetools-uikit/dropdown-menu';
@@ -217,20 +217,49 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
         />
       )}
       {props.customSettings &&
-        props.customSettings.map(
-          (customSetting) =>
+        props.customSettings.map((customSetting) => {
+          const CustomComponent = customSetting.customComponent;
+          return (
             customSetting.value === openedPanelId && (
               <div key={customSetting.value}>
-                <CustomSettingsManager
-                  {...(customSetting || {})}
-                  onClose={handleSettingsPanelChange}
-                  managerTheme={props.managerTheme}
-                >
-                  {customSetting.customComponent}
-                </CustomSettingsManager>
+                {customSetting.type === COLUMN_MANAGER ? (
+                  CustomComponent && (
+                    <CustomComponent
+                      updateCustomSettings={(settings) =>
+                        props.updateCustomSettings?.(settings)
+                      }
+                      additionalSettings={{
+                        customSetting,
+                        ...props.additionalSettings,
+                      }}
+                      onClose={handleSettingsPanelChange}
+                      onSettingsChange={props.onSettingsChange}
+                      managerTheme={props.managerTheme}
+                    />
+                  )
+                ) : (
+                  <CustomSettingsManager
+                    {...(customSetting || {})}
+                    onClose={handleSettingsPanelChange}
+                    managerTheme={props.managerTheme}
+                  >
+                    {CustomComponent && (
+                      <CustomComponent
+                        updateCustomSettings={(settings) =>
+                          props.updateCustomSettings?.(settings)
+                        }
+                        additionalSettings={{
+                          customSetting,
+                          ...props.additionalSettings,
+                        }}
+                      />
+                    )}
+                  </CustomSettingsManager>
+                )}
               </div>
             )
-        )}
+          );
+        })}
     </Spacings.Stack>
   );
 };

@@ -263,7 +263,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
   );
 
-  // TODO - remove when nexted rows are implemented
+  // TODO - remove when nested rows are implemented
   if (debug) {
     console.log({ customSettingsData });
   }

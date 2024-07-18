@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 import type {
   TDataTableSettingsProps,
   TColumnManagerProps,
@@ -18,7 +18,8 @@ const DataTableManagerContext = createContext<TDataTableManagerContext>({
   columns: [],
   displaySettings: undefined,
   isCondensed: true,
-  debug: false, // TODO - remove when nexted rows are implemented
+  debug: false,
+  additionalSettings: {},
 });
 
 export const useDataTableManagerContext = () => {
@@ -52,6 +53,16 @@ export const DataTableManagerProvider = ({
   customSettings?: TCustomSettingsProps[];
   debug: boolean;
 }) => {
+  const [additionalSettings, setAdditionalSettings] = useState<{
+    [key: string]: unknown;
+  }>({});
+
+  const updateCustomSettings = (additionalCustomSettings: unknown) => {
+    setAdditionalSettings(
+      additionalCustomSettings as { [key: string]: unknown }
+    );
+  };
+
   const decoupledDataTableManagerContext = useMemo(() => {
     const areDisplaySettingsEnabled = Boolean(
       displaySettings && !displaySettings.disableDisplaySettings
@@ -60,10 +71,27 @@ export const DataTableManagerProvider = ({
     const isWrappingText =
       areDisplaySettingsEnabled && displaySettings!.isWrappingText;
 
-    const customSettingsPayload = {} as Record<string, unknown>;
+    const newCustomSettings = customSettings?.map((setting) => {
+      const newSetting = setting;
+      if (setting.id === additionalSettings.id) {
+        newSetting.payload = {
+          ...setting.payload,
+          ...additionalSettings,
+        };
+      }
+      return newSetting;
+    });
 
-    customSettings?.forEach(({ id, payload }) => {
+    const customSettingsPayload = {} as Record<string, unknown>;
+    newCustomSettings?.forEach(({ id, payload }) => {
       customSettingsPayload[id] = payload;
+    });
+
+    console.log('from provider', {
+      customSettingsPayload,
+      customSettings,
+      newCustomSettings,
+      additionalSettings,
     });
 
     return {
@@ -80,6 +108,11 @@ export const DataTableManagerProvider = ({
       customSettings,
       customSettingsPayload,
       isCondensed: areDisplaySettingsEnabled && displaySettings!.isCondensed,
+      updateCustomSettings: (settings: Record<string, unknown>) => {
+        console.log({ settings });
+        updateCustomSettings(settings);
+      },
+      additionalSettings: additionalSettings,
       debug, // TODO - remove when nexted rows are implemented
     };
   }, [
@@ -90,6 +123,7 @@ export const DataTableManagerProvider = ({
     onSettingsChange,
     columnManager,
     debug,
+    additionalSettings,
   ]);
 
   return (
