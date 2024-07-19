@@ -1,5 +1,23 @@
 # @commercetools-uikit/dropdown-menu
 
+## 19.8.0
+
+### Minor Changes
+
+- [#2855](https://github.com/commercetools/ui-kit/pull/2855) [`906f579`](https://github.com/commercetools/ui-kit/commit/906f579854795733d4df2f80a4b970857af0fb32) Thanks [@mustafaasif2](https://github.com/mustafaasif2)! - Supports forwarding data-attributes to AccessibleButton and DropdownMenu components
+
+### Patch Changes
+
+- Updated dependencies [[`906f579`](https://github.com/commercetools/ui-kit/commit/906f579854795733d4df2f80a4b970857af0fb32)]:
+  - @commercetools-uikit/accessible-button@19.8.0
+  - @commercetools-uikit/secondary-button@19.8.0
+  - @commercetools-uikit/design-system@19.8.0
+  - @commercetools-uikit/constraints@19.8.0
+  - @commercetools-uikit/spacings-inline@19.8.0
+  - @commercetools-uikit/spacings-stack@19.8.0
+  - @commercetools-uikit/hooks@19.8.0
+  - @commercetools-uikit/utils@19.8.0
+
 ## 19.7.0
 
 ### Patch Changes
