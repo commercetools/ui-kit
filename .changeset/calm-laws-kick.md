@@ -1,5 +1,6 @@
 ---
+'@commercetools-uikit/accessible-button': minor
 '@commercetools-uikit/dropdown-menu': minor
 ---
 
-Allowed `data-*` attributes to be routed down the component
+Supports forwarding data-attributes to AccessibleButton and DropdownMenu components
