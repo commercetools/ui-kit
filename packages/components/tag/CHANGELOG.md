@@ -1,5 +1,18 @@
 # @commercetools-uikit/tag
 
+## 19.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`906f579`](https://github.com/commercetools/ui-kit/commit/906f579854795733d4df2f80a4b970857af0fb32)]:
+  - @commercetools-uikit/accessible-button@19.8.0
+  - @commercetools-uikit/design-system@19.8.0
+  - @commercetools-uikit/constraints@19.8.0
+  - @commercetools-uikit/icons@19.8.0
+  - @commercetools-uikit/text@19.8.0
+  - @commercetools-uikit/utils@19.8.0
+  - @commercetools-uikit/spacings@19.8.0
+
 ## 19.7.0
 
 ### Patch Changes

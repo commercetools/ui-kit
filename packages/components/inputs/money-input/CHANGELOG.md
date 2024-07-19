@@ -1,5 +1,19 @@
 # @commercetools-uikit/money-input
 
+## 19.8.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-utils@19.8.0
+  - @commercetools-uikit/input-utils@19.8.0
+  - @commercetools-uikit/design-system@19.8.0
+  - @commercetools-uikit/constraints@19.8.0
+  - @commercetools-uikit/icons@19.8.0
+  - @commercetools-uikit/tooltip@19.8.0
+  - @commercetools-uikit/hooks@19.8.0
+  - @commercetools-uikit/utils@19.8.0
+
 ## 19.7.0
 
 ### Minor Changes
