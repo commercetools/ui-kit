@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { useDropdownMenuContext } from '../context/dropdown-menu-context';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 function getDropdownListMenuItemStyles(props: TDropdownListMenuItemProps) {
   return [
@@ -48,6 +49,7 @@ function DropdownListMenuItem(props: TDropdownListMenuItemProps) {
       }}
       isDisabled={props.isDisabled}
       css={getDropdownListMenuItemStyles(props)}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </AccessibleButton>

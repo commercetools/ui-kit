@@ -11,7 +11,11 @@ import {
 } from 'react';
 import { isValidElementType } from 'react-is';
 import omit from 'lodash/omit';
-import { filterAriaAttributes, warning } from '@commercetools-uikit/utils';
+import {
+  filterAriaAttributes,
+  filterDataAttributes,
+  warning,
+} from '@commercetools-uikit/utils';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -177,6 +181,7 @@ const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
         {...omit(props.buttonAttributes, propsToOmit)}
         {...buttonProps}
         {...filterAriaAttributes(props)}
+        {...filterDataAttributes(props)}
       >
         {props.children}
       </Button>
