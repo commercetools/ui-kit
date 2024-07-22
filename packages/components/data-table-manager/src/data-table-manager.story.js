@@ -540,22 +540,16 @@ storiesOf('Components|DataTable', module)
       {
         key: 'customSettings1',
         customPanelTitle: 'Custom Settings 1',
-        // label: 'Custom Settings 1',
-        // value: 'customSettings1',
         customComponent: FirstCustomComponent,
       },
       {
         key: 'customSettings2',
         customPanelTitle: 'Custom Settings 2',
-        // label: 'Custom Settings 2',
-        // value: 'customSettings2',
         customComponent: SecondCustomComponent,
       },
       {
         key: 'customSettings3',
         customPanelTitle: 'Custom Settings 3',
-        // label: 'Custom Settings 3',
-        // value: 'customSettings3',
         type: 'columnManager',
         customComponent: ThirdCustomComponent,
       },
