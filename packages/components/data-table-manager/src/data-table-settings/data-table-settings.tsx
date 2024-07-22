@@ -225,16 +225,26 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
                 {customSetting.type === COLUMN_MANAGER ? (
                   CustomComponent && (
                     <CustomComponent
-                      updateCustomSettings={(settings) =>
-                        props.updateCustomSettings?.(settings)
-                      }
+                      {...(customSetting || {})}
                       additionalSettings={{
                         customSetting,
                         ...props.additionalSettings,
                       }}
                       onClose={handleSettingsPanelChange}
-                      onSettingsChange={props.onSettingsChange}
                       managerTheme={props.managerTheme}
+                      onUpdateColumns={(nextVisibleColumns) => {
+                        const keysOfVisibleColumns = nextVisibleColumns.map(
+                          (visibleColumn) => visibleColumn.key
+                        );
+                        props.onSettingsChange?.(
+                          UPDATE_ACTIONS.CUSTOM_COLUMNS_UPDATE,
+                          keysOfVisibleColumns
+                        );
+                        props.updateCustomSettings?.({
+                          id: customSetting.id,
+                          customColumns: nextVisibleColumns,
+                        });
+                      }}
                     />
                   )
                 ) : (

@@ -58,16 +58,17 @@ const DataTableManager = <Row extends TRow = TRow>(
     );
   };
 
-  const newCustomSettings = props.customSettings?.map((setting) => {
-    const newSetting = setting;
-    if (setting.id === additionalSettings.id) {
-      newSetting.payload = {
-        ...setting.payload,
-        ...additionalSettings,
-      };
-    }
-    return newSetting;
-  });
+  const newCustomSettings = useMemo(() => {
+    return props.customSettings?.map((setting) => {
+      if (setting.id === additionalSettings.id) {
+        setting.payload = {
+          ...setting.payload,
+          ...additionalSettings,
+        };
+      }
+      return setting;
+    });
+  }, [additionalSettings, props.customSettings]);
 
   const customSettingsPayload = {} as Record<string, unknown>;
   newCustomSettings?.forEach(({ id, payload }) => {
@@ -86,6 +87,7 @@ const DataTableManager = <Row extends TRow = TRow>(
         additionalSettings={additionalSettings}
         updateCustomSettings={(settings) => updateCustomSettings(settings)}
       />
+      <pre>{JSON.stringify(customSettingsPayload, null, 2)}</pre>
       {props.children
         ? cloneElement(props.children, {
             columns,

@@ -100,10 +100,11 @@ export type TCustomSettingsProps = {
   value: string;
   type?: 'columnManager';
   customComponent?: React.ComponentType<{
-    updateCustomSettings: (settings: Record<string, unknown>) => void;
+    updateCustomSettings?: (settings: Record<string, unknown>) => void;
     additionalSettings: Record<string, unknown>;
     onClose?: () => void;
     columnManager?: TColumnManagerProps;
+    onUpdateColumns?: (nextVisibleColumns: TColumnData[]) => void;
     onSettingsChange?: (
       settingName: string,
       settingValue: boolean | string[]
