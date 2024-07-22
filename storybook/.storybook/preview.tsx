@@ -23,6 +23,10 @@ const preview: Preview = {
         method: 'alphabetical',
         includeNames: true,
         order: [
+          'home',
+          ['Start', '*'],
+          'Foundation',
+          ['Readme', 'Choices', '*'],
           'Text & Media',
           [
             'Text',

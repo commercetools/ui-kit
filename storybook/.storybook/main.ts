@@ -1,5 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import react from '@vitejs/plugin-react';
+import ViteYaml from '@modyfi/vite-plugin-yaml';
 import remarkGfm from 'remark-gfm';
 import { join, dirname, resolve } from 'path';
 
@@ -13,6 +14,7 @@ function getAbsolutePath(value: string) {
 
 const config: StorybookConfig = {
   stories: [
+    '../src/docs/**/**.mdx',
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../../packages/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
@@ -84,6 +86,8 @@ const config: StorybookConfig = {
         },
       })
     );
+
+    config.plugins?.push(ViteYaml());
 
     // todo: Figure out why adding this, fixes issues with all react-select dependent components
     config.optimizeDeps = {

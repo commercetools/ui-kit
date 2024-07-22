@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 <style>
-  .sbdocs-content *:not(pre):not(code):not(.token) {
+  .sbdocs-content *:not(pre):not(code):not(.token):not(.prismjs > div):not(.prismjs > div > span) {
     font-family: 'Inter', monospace !important;
   }
 
@@ -12,7 +12,35 @@
      transform: none;
   }
 
+  table code {
+    /** make sure that e.g. long lists of unions etc. in prop-tables don't break the layout */
+    white-space: pre-wrap !important;
+  }
+
+  /** Attempt to evenly increase size of text in regular md-files
+  without affecting story-doc rendering, by using granular selectors */
+  .sbdocs-content > div > p,
+  .sbdocs-content > div > pre,
+  .sbdocs-content > div > ul li,
+  .sbdocs-content table td,
+  .sbdocs-content code,
+  .sbdocs-content blockquote,
+  .sbdocs-content blockquote p,
+  .sbdocs-content .prismjs {
+    font-size: 1rem !important;
+  }
+
+  .sbdocs-title,
+  .sb-anchor h3,
+  .sbdocs h1,
+  .sbdocs h2,
+  .sbdocs h3{
+    font-weight: 600 !important;
+    letter-spacing: -0.03em;
+  }
+
+  /** remove a default-margin from the table element, when it's DataTable */
+  .sbdocs-content table[class*="TableGrid"] {
+    margin: 0;
+  }
 </style>
-<script>
-  //document.title = "UI Kit"; window.STORYBOOK_GA_ID = "UA-38285631-31";
-</script>
