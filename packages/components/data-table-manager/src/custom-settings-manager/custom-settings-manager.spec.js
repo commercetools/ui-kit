@@ -10,7 +10,7 @@ const CustomComponent = (prop) => (
 const createTestProps = (customProps) => ({
   managerTheme: 'light',
   children: <CustomComponent onClick={mockCustomComponentClick} />,
-  title: 'Test Title',
+  customPanelTitle: 'Test Title',
   onClose: jest.fn(),
   ...customProps,
 });
