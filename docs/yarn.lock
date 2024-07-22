@@ -1940,7 +1940,6 @@ __metadata:
     "@storybook/addon-a11y": 5.3.21
     "@storybook/addon-actions": 5.3.21
     "@storybook/addon-contexts": 5.3.21
-    "@storybook/addon-google-analytics": 5.3.21
     "@storybook/addon-info": 5.3.21
     "@storybook/addon-knobs": 5.3.21
     "@storybook/addon-links": 5.3.21
@@ -2566,19 +2565,6 @@ __metadata:
     react: "*"
     vue: "*"
   checksum: b6fbadecade6c72d70aed19b94e468da49216f549f7fc018b4709a9f7d38f7f9a3e27a3bd74e27aba2f5ec11fec18da1dd729eecaf18a1d4ef726bf6582f5ec3
-  languageName: node
-  linkType: hard
-
-"@storybook/addon-google-analytics@npm:5.3.21":
-  version: 5.3.21
-  resolution: "@storybook/addon-google-analytics@npm:5.3.21"
-  dependencies:
-    "@storybook/addons": 5.3.21
-    "@storybook/core-events": 5.3.21
-    core-js: ^3.0.1
-    global: ^4.3.2
-    react-ga: ^2.5.7
-  checksum: 9dc616616cc60ea1d4f09a2a4e6e341a8b2e25a350e8299f6695b4719c8afdc2d1d10550a6c939c49acb9518462e6302a0d020f9a4b769a6686d5aa849931bbc
   languageName: node
   linkType: hard
 
@@ -11354,16 +11340,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: f4c696bdbde5008560388622b994c00502d1faeeabff32b02964770c8c020208872f5f6b914b249a8bf3e97cc12e58bb0d227cd33460093654156b7b7f4c8d76
-  languageName: node
-  linkType: hard
-
-"react-ga@npm:^2.5.7":
-  version: 2.7.0
-  resolution: "react-ga@npm:2.7.0"
-  peerDependencies:
-    prop-types: ^15.6.0
-    react: ^15.6.2 || ^16.0
-  checksum: 15d8571c156edfaa204ff0041db7a901b0eeca3e3b21774e918269b0fe48204bb5b6a3df882caea5e0077aa3a32be39a48e7082e556563338f2a78b402a59463
   languageName: node
   linkType: hard
 

@@ -99,7 +99,7 @@ export type TRadioFieldProps = {
   /**
    * Value of the input component.
    */
-  value: string;
+  value: string | boolean;
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */

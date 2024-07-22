@@ -9,6 +9,7 @@ import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints, { type TMaxProp } from '@commercetools-uikit/constraints';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 // We declare this style properties here because we need them both for initial component styling
 // but also for calculating the default max height of the dropdown menu so we make sure it fits
@@ -184,6 +185,7 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
       css={getDropdownMenuBaseStyles(props)}
       style={props.customStyles}
       ref={menuRef}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </div>
@@ -209,6 +211,7 @@ export const DropdownContentMenu = (props: TDropdownContentMenuProps) => {
       menuPosition={props.menuPosition}
       menuMaxHeight={props.menuMaxHeight}
       triggerElementRef={props.triggerElementRef}
+      {...filterDataAttributes(props)}
     >
       {props.children}
     </DropdownBaseMenu>
@@ -231,6 +234,7 @@ export const DropdownListMenu = (props: TDropdownListMenuProps) => {
       menuPosition={props.menuPosition}
       menuMaxHeight={props.menuMaxHeight}
       triggerElementRef={props.triggerElementRef}
+      {...filterDataAttributes(props)}
     >
       <SpacingsStack scale="xs">{props.children}</SpacingsStack>
     </DropdownBaseMenu>
