@@ -69,8 +69,8 @@ export const getDropdownOptions = ({
     ...(customSettings
       ? customSettings.map((customSetting) => {
           return {
-            value: customSetting.value,
-            label: customSetting.label,
+            value: customSetting.key,
+            label: customSetting.customPanelTitle,
           };
         })
       : []),
@@ -220,8 +220,8 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
         props.customSettings.map((customSetting) => {
           const CustomComponent = customSetting.customComponent;
           return (
-            customSetting.value === openedPanelId && (
-              <div key={customSetting.value}>
+            customSetting.key === openedPanelId && (
+              <div key={customSetting.key}>
                 {customSetting.type === COLUMN_MANAGER ? (
                   CustomComponent && (
                     <CustomComponent
@@ -241,7 +241,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
                           keysOfVisibleColumns
                         );
                         props.updateCustomSettings?.({
-                          id: customSetting.id,
+                          key: customSetting.key,
                           customColumns: nextVisibleColumns,
                         });
                       }}

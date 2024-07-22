@@ -94,10 +94,8 @@ export type TColumnManagerProps = {
 };
 
 export type TCustomSettingsProps = {
-  id: string;
-  title: string;
-  label: string;
-  value: string;
+  key: string;
+  customPanelTitle: string;
   type?: 'columnManager';
   customComponent?: React.ComponentType<{
     updateCustomSettings?: (settings: Record<string, unknown>) => void;
@@ -111,7 +109,7 @@ export type TCustomSettingsProps = {
     ) => void;
     managerTheme?: 'light' | 'dark';
   }>;
-  payload: Record<string, unknown>;
+  settingsPayload: Record<string, unknown>;
 };
 
 export type TDataTableSettingsProps = {

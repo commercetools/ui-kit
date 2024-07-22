@@ -73,9 +73,9 @@ export const DataTableManagerProvider = ({
 
     const newCustomSettings = customSettings?.map((setting) => {
       const newSetting = setting;
-      if (setting.id === additionalSettings.id) {
-        newSetting.payload = {
-          ...setting.payload,
+      if (setting.key === additionalSettings.key) {
+        newSetting.settingsPayload = {
+          ...setting.settingsPayload,
           ...additionalSettings,
         };
       }
@@ -83,8 +83,8 @@ export const DataTableManagerProvider = ({
     });
 
     const customSettingsPayload = {} as Record<string, unknown>;
-    newCustomSettings?.forEach(({ id, payload }) => {
-      customSettingsPayload[id] = payload;
+    newCustomSettings?.forEach(({ key, settingsPayload }) => {
+      customSettingsPayload[key] = settingsPayload;
     });
 
     return {

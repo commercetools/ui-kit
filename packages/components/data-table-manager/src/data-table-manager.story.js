@@ -364,7 +364,7 @@ storiesOf('Components|DataTable', module)
                         value={value}
                         onChange={(event) => {
                           props.updateCustomSettings({
-                            id: props.additionalSettings.customSetting.id,
+                            key: props.additionalSettings.customSetting.key,
                             phoneNumberTextColor: event.target.value,
                           });
                           onChange(event.target.value);
@@ -393,7 +393,7 @@ storiesOf('Components|DataTable', module)
                         value={value}
                         onChange={(event) => {
                           props.updateCustomSettings({
-                            id: props.additionalSettings.customSetting.id,
+                            key: props.additionalSettings.customSetting.key,
                             displayText: event.target.value,
                           });
                           onChange(event.target.value);
@@ -420,7 +420,7 @@ storiesOf('Components|DataTable', module)
         phoneNumberTextColor: PropTypes.string,
         displayText: PropTypes.string,
         customSetting: PropTypes.shape({
-          id: PropTypes.string.isRequired,
+          key: PropTypes.string.isRequired,
         }).isRequired,
         imageSize: PropTypes.string,
       }).isRequired,
@@ -446,7 +446,7 @@ storiesOf('Components|DataTable', module)
                         value={value}
                         onChange={(event) => {
                           props.updateCustomSettings({
-                            id: props.additionalSettings.customSetting.id,
+                            key: props.additionalSettings.customSetting.key,
                             imageSize: event.target.value,
                           });
                           onChange(event.target.value);
@@ -475,7 +475,7 @@ storiesOf('Components|DataTable', module)
                         value={value}
                         onChange={(event) => {
                           props.updateCustomSettings({
-                            id: props.additionalSettings.customSetting.id,
+                            key: props.additionalSettings.customSetting.key,
                             displayText: event.target.value,
                           });
                           onChange(event.target.value);
@@ -502,7 +502,7 @@ storiesOf('Components|DataTable', module)
         imageSize: PropTypes.string,
         displayText: PropTypes.string,
         customSetting: PropTypes.shape({
-          id: PropTypes.string.isRequired,
+          key: PropTypes.string.isRequired,
         }).isRequired,
       }).isRequired,
       updateCustomSettings: PropTypes.func.isRequired,
@@ -531,31 +531,31 @@ storiesOf('Components|DataTable', module)
       updateCustomSettings: PropTypes.func,
       additionalSettings: PropTypes.shape({
         customSetting: PropTypes.shape({
-          id: PropTypes.string.isRequired,
+          key: PropTypes.string.isRequired,
         }).isRequired,
       }).isRequired,
     };
 
     const customSettings = [
       {
-        id: 'customSettings1',
-        title: 'Custom Settings 1',
-        label: 'Custom Settings 1',
-        value: 'customSettings1',
+        key: 'customSettings1',
+        customPanelTitle: 'Custom Settings 1',
+        // label: 'Custom Settings 1',
+        // value: 'customSettings1',
         customComponent: FirstCustomComponent,
       },
       {
-        id: 'customSettings2',
-        title: 'Custom Settings 2',
-        label: 'Custom Settings 2',
-        value: 'customSettings2',
+        key: 'customSettings2',
+        customPanelTitle: 'Custom Settings 2',
+        // label: 'Custom Settings 2',
+        // value: 'customSettings2',
         customComponent: SecondCustomComponent,
       },
       {
-        id: 'customSettings3',
-        title: 'Custom Settings 3',
-        label: 'Custom Settings 3',
-        value: 'customSettings3',
+        key: 'customSettings3',
+        customPanelTitle: 'Custom Settings 3',
+        // label: 'Custom Settings 3',
+        // value: 'customSettings3',
         type: 'columnManager',
         customComponent: ThirdCustomComponent,
       },
@@ -779,7 +779,7 @@ storiesOf('Components|DataTable', module)
                   value={phoneNumberTextColorValue}
                   onChange={(event) =>
                     updateCustomSettings({
-                      id: props.additionalSettings.customSetting.id,
+                      key: props.additionalSettings.customSetting.key,
                       phoneNumberTextColor: event.target.value,
                     })
                   }
@@ -800,7 +800,7 @@ storiesOf('Components|DataTable', module)
                   value={radioInputValue}
                   onChange={(event) =>
                     updateCustomSettings({
-                      id: props.additionalSettings.customSetting.id,
+                      key: props.additionalSettings.customSetting.key,
                       displayText: event.target.value,
                     })
                   }
@@ -823,7 +823,7 @@ storiesOf('Components|DataTable', module)
         phoneNumberTextColor: PropTypes.string,
         displayText: PropTypes.string,
         customSetting: PropTypes.shape({
-          id: PropTypes.string.isRequired,
+          key: PropTypes.string.isRequired,
         }).isRequired,
         imageSize: PropTypes.string,
       }).isRequired,
@@ -847,7 +847,7 @@ storiesOf('Components|DataTable', module)
                   value={imageSizeValue}
                   onChange={(event) =>
                     updateCustomSettings({
-                      id: props.additionalSettings.customSetting.id,
+                      key: props.additionalSettings.customSetting.key,
                       imageSize: event.target.value,
                     })
                   }
@@ -868,7 +868,7 @@ storiesOf('Components|DataTable', module)
                   value={radioInputValue}
                   onChange={(event) =>
                     updateCustomSettings({
-                      id: props.additionalSettings.customSetting.id,
+                      key: props.additionalSettings.customSetting.key,
                       displayText: event.target.value,
                     })
                   }
@@ -891,7 +891,7 @@ storiesOf('Components|DataTable', module)
         imageSize: PropTypes.string,
         displayText: PropTypes.string,
         customSetting: PropTypes.shape({
-          id: PropTypes.string.isRequired,
+          key: PropTypes.string.isRequired,
         }).isRequired,
       }).isRequired,
     };
@@ -914,7 +914,7 @@ storiesOf('Components|DataTable', module)
               keysOfVisibleColumns
             );
             updateCustomSettings({
-              id: props.additionalSettings.customSetting.id,
+              key: props.additionalSettings.customSetting.key,
               customColumns: visibleCustomColumns,
             });
           }}
@@ -930,31 +930,25 @@ storiesOf('Components|DataTable', module)
       updateCustomSettings: PropTypes.func,
       additionalSettings: PropTypes.shape({
         customSetting: PropTypes.shape({
-          id: PropTypes.string.isRequired,
+          key: PropTypes.string.isRequired,
         }).isRequired,
       }).isRequired,
     };
 
     const customSettings = [
       {
-        id: 'customSettings1',
-        title: 'Custom Settings 1',
-        label: 'Custom Settings 1',
-        value: 'customSettings1',
+        key: 'customSettings1',
+        customPanelTitle: 'Custom Settings 1',
         customComponent: FirstCustomComponent,
       },
       {
-        id: 'customSettings2',
-        title: 'Custom Settings 2',
-        label: 'Custom Settings 2',
-        value: 'customSettings2',
+        key: 'customSettings2',
+        customPanelTitle: 'Custom Settings 2',
         customComponent: SecondCustomComponent,
       },
       {
-        id: 'customSettings3',
-        title: 'Custom Settings 3',
-        label: 'Custom Settings 3',
-        value: 'customSettings3',
+        key: 'customSettings3',
+        customPanelTitle: 'Custom Settings 3',
         type: 'columnManager',
         customComponent: ThirdCustomComponent,
       },

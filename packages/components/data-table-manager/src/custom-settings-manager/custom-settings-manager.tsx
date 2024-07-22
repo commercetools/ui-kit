@@ -8,14 +8,14 @@ export type TCustomSettingsManagerProps = {
   ) => void;
   managerTheme?: 'light' | 'dark';
   children: ReactNode;
-  title: string;
+  customPanelTitle: string;
 };
 
 const CustomSettingsManager = (props: TCustomSettingsManagerProps) => {
   return (
     <>
       <SettingsContainer
-        customSettingsTitle={props.title}
+        customSettingsTitle={props.customPanelTitle}
         closeButtonLabel={messages.closeButtonLabel}
         onClose={props.onClose}
         containerTheme={props.managerTheme}
