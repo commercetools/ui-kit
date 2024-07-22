@@ -309,7 +309,7 @@ class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
             isVisible={hasError}
             renderError={(key: string, error?: boolean) =>
               // Custom errors take precedence over the default errors
-              this.props.renderError?.(key, error) ?? this.renderError(key)
+              this.props.renderError?.(key, error) || this.renderError(key)
             }
           />
           <FieldWarnings
