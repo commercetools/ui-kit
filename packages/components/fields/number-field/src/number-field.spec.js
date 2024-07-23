@@ -14,7 +14,7 @@ class Story extends Component {
   static displayName = 'Story';
   static propTypes = {
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.string,
   };
   static defaultProps = {
@@ -210,6 +210,34 @@ describe('when field is touched and has errors', () => {
         errors: { missing: true },
       });
       expect(getByText(/field is required/i)).toBeInTheDocument();
+    });
+  });
+  describe('when value is below min', () => {
+    it('should render a default error', () => {
+      const min = 2;
+      const { getByText } = renderNumberField({
+        value: 1,
+        min,
+        touched: true,
+        errors: { belowMin: true },
+      });
+      expect(
+        getByText(`Value must be greater than or equal to ${min}.`)
+      ).toBeInTheDocument();
+    });
+  });
+  describe('when value is above max', () => {
+    it('should render a default error', () => {
+      const max = 2;
+      const { getByText } = renderNumberField({
+        value: 3,
+        max,
+        touched: true,
+        errors: { aboveMax: true },
+      });
+      expect(
+        getByText(`Value must be less than or equal to ${max}.`)
+      ).toBeInTheDocument();
     });
   });
   describe('when there is a custom error', () => {

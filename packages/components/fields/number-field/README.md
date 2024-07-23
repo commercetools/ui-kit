@@ -116,6 +116,8 @@ When the `key` is known, and when the value is truthy, and when `renderError` re
 Known error keys are:
 
 - `missing`: tells the user that this field is required
+- `belowMin`: tells the user that the value is below the minimum
+- `aboveMax`: tells the user that the value is above the maximum
 
 ## Static methods
 
