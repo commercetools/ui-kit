@@ -122,7 +122,7 @@ type ColumnSize = {
 };
 
 /**
- * This example deemonstrates a hand ful of use cases:
+ * This example deemonstrates a couple of use cases:
  * - reacting to row clicks (and ignoring them if necessary)
  * - allowing and disabling sorting
  * - fixed width columns (name) & resizable columns (all others)
