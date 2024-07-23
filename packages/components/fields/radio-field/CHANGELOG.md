@@ -1,5 +1,21 @@
 # @commercetools-uikit/radio-field
 
+## 19.8.0
+
+### Patch Changes
+
+- [#2856](https://github.com/commercetools/ui-kit/pull/2856) [`2a18fe8`](https://github.com/commercetools/ui-kit/commit/2a18fe868ff75a1490d0ed8507b80a9ea7fbc3e4) Thanks [@ragafus](https://github.com/ragafus)! - Widen `RadioField` value prop type to `string | boolean`
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@19.8.0
+  - @commercetools-uikit/radio-input@19.8.0
+  - @commercetools-uikit/design-system@19.8.0
+  - @commercetools-uikit/constraints@19.8.0
+  - @commercetools-uikit/field-errors@19.8.0
+  - @commercetools-uikit/field-warnings@19.8.0
+  - @commercetools-uikit/spacings-stack@19.8.0
+  - @commercetools-uikit/utils@19.8.0
+
 ## 19.7.0
 
 ### Patch Changes

@@ -1,3 +1,26 @@
+<script>document.title = "UI Kit";</script>
 <script>
-  document.title = "UI Kit"; window.STORYBOOK_GA_ID = "UA-38285631-31";
+  function injectScript(url, attributes = {}, onLoad) {
+    var tag = document.createElement('script');
+    tag.type = 'text/javascript';
+    tag.src = url;
+    Object.keys(attributes).forEach((key) => {
+      tag.setAttribute(key, attributes[key]);
+    });
+
+    if (onLoad) tag.onload = onLoad;
+      document.head.appendChild(tag);
+    };
+
+    // Inject the cookie consent scripts only if the page is served on a `*.commercetools.com` domain.
+  if (window && window.location.host.includes('.commercetools.com')) {
+    injectScript(
+      'https://cdn.cookielaw.org/consent/b104027d-4d10-4b75-9675-9ffef11562a8/OtAutoBlock.js'
+    );
+    injectScript(
+      'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js',
+      { 'data-domain-script': 'b104027d-4d10-4b75-9675-9ffef11562a8' },
+      'function OptanonWrapper() {};'
+    );
+  }
 </script>

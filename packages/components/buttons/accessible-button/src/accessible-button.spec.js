@@ -54,6 +54,10 @@ describe('rendering', () => {
       'true'
     );
   });
+  it('should pass data attributes', () => {
+    render(<AccessibleButton {...props} data-testid="accessible-button" />);
+    expect(screen.getByTestId('accessible-button')).toBeInTheDocument();
+  });
   describe('type variations', () => {
     it('should render a button of type "button"', () => {
       render(<AccessibleButton {...props} />);
