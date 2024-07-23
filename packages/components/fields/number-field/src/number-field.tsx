@@ -20,6 +20,8 @@ import FieldLabel from '@commercetools-uikit/field-label';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import FieldWarnings from '@commercetools-uikit/field-warnings';
 import NumberInput from '@commercetools-uikit/number-input';
+import messages from './messages';
+import { FormattedMessage } from 'react-intl';
 
 const sequentialId = createSequentialId('number-field-');
 const sequentialErrorsId = createSequentialId('number-field-error-')();
@@ -220,6 +222,33 @@ class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
     return errors as TCustomFormErrors<FormValues>;
   }
 
+  renderError(key?: string): ReactNode | null {
+    switch (key) {
+      case 'belowMin':
+        if (typeof this.props.min === 'number') {
+          return (
+            <FormattedMessage
+              {...messages.belowMinError}
+              values={{ min: this.props.min }}
+            />
+          );
+        }
+        break;
+      case 'aboveMax':
+        if (typeof this.props.max === 'number') {
+          return (
+            <FormattedMessage
+              {...messages.aboveMaxError}
+              values={{ max: this.props.max }}
+            />
+          );
+        }
+        break;
+    }
+
+    return null;
+  }
+
   render() {
     if (!this.props.isReadOnly) {
       warning(
@@ -278,7 +307,10 @@ class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
             id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
-            renderError={this.props.renderError}
+            renderError={(key: string, error?: boolean) =>
+              // Custom errors take precedence over the default errors
+              this.props.renderError?.(key, error) || this.renderError(key)
+            }
           />
           <FieldWarnings
             id={sequentialWarningsId}
