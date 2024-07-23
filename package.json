@@ -42,6 +42,7 @@
   },
   "workspaces": [
     "design-system",
+    "storybook",
     "generators/*",
     "packages/*",
     "packages/components/*",
