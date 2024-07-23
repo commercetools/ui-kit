@@ -59,6 +59,8 @@ const config: StorybookConfig = {
     disableTelemetry: true,
   },
 
+  staticDirs: ['../src/static'],
+
   viteFinal: async (config, _options) => {
     config.resolve = config.resolve || {};
 
