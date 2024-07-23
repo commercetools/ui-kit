@@ -53,7 +53,12 @@ storiesOf('Components|Fields', module)
               warnings={object('warnings', {
                 customWarning: true,
               })}
-              errors={object('errors', { missing: true, customError: true })}
+              errors={object('errors', {
+                missing: true,
+                belowMin: true,
+                aboveMax: true,
+                customError: true,
+              })}
               renderError={(key) => {
                 switch (key) {
                   case 'customError':
