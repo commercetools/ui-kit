@@ -6,11 +6,7 @@ export const cocoTheme = create({
 
   // Brand
   brandTitle: 'commercetools ui-kit',
-  brandUrl: (() => {
-    return process.env.NODE_ENV === 'production'
-      ? 'https://ui-kit.commercetools.com'
-      : 'http://localhost:6006';
-  })(),
+  brandUrl: './',
   brandImage:
     'https://unpkg.com/@commercetools-frontend/assets/logos/commercetools_primary-logo_horizontal_RGB.png',
   brandTarget: '_self',
