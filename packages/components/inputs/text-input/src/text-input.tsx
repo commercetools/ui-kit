@@ -90,7 +90,7 @@ export type TTextInputProps = {
     | 'scale'
     | 'auto';
   /**
-   * Maximum number of characters allowed in the input.
+   * Maximum number of characters allowed in the input. If this prop is used, it is recommended to inform the user about this limit in the InputField description, or otherwise.
    */
   maxLength?: number;
 };
