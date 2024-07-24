@@ -91,12 +91,6 @@ const config: StorybookConfig = {
 
     config.plugins?.push(ViteYaml());
 
-    // todo: Figure out why adding this, fixes issues with all react-select dependent components
-    config.optimizeDeps = {
-      ...config.optimizeDeps,
-      exclude: ['@commercetools-uikit/icons'],
-    };
-
     return config;
   },
 };
