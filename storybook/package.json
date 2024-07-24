@@ -16,6 +16,8 @@
     "@storybook/react": "^8.2.5",
     "@storybook/react-vite": "^8.2.5",
     "@storybook/test": "^8.2.5",
+    "@swc/plugin-emotion": "^3.0.10",
+    "@vitejs/plugin-react-swc": "^3.7.0",
     "prop-types": "15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",

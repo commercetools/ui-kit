@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 import remarkGfm from 'remark-gfm';
 import { join, dirname, resolve } from 'path';
@@ -15,8 +15,6 @@ function getAbsolutePath(value: string) {
 const config: StorybookConfig = {
   stories: [
     '../src/docs/**/**.mdx',
-    '../stories/**/*.mdx',
-    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../../packages/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../../packages/components/**/*.mdx',
   ],
@@ -37,6 +35,7 @@ const config: StorybookConfig = {
       },
     },
   ],
+
   framework: {
     name: '@storybook/react-vite',
     options: {},
@@ -45,15 +44,6 @@ const config: StorybookConfig = {
     autodocs: 'tag',
     defaultName: 'Props',
   },
-  /* swc: () => ({
-    jsc: {
-      transform: {
-        react: {
-          runtime: 'automatic',
-        },
-      },
-    },
-  }), */
 
   core: {
     disableTelemetry: true,
@@ -70,22 +60,10 @@ const config: StorybookConfig = {
       '@/storybook-helpers': resolve(__dirname, './../src/helpers'),
     };
 
-    // This is required in order to use the emotion babel plugin
-    // to avoid errors when using emotion component selectors
-    // https://styled-components.com/docs/advanced#referring-to-other-components
-    // We need to remove the default react babel plugin and add it back with the emotion plugin
-    config.plugins = config.plugins?.filter(
-      (plugin) =>
-        // @ts-ignore
-        !(Array.isArray(plugin) && plugin[0]?.name.includes('vite:react-babel'))
-    );
     config.plugins?.push(
       react({
-        exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
         jsxImportSource: '@emotion/react',
-        babel: {
-          plugins: ['@emotion/babel-plugin'],
-        },
+        plugins: [['@swc/plugin-emotion', {}]],
       })
     );
 
