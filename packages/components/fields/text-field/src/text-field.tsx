@@ -167,7 +167,7 @@ export type TTextFieldProps = {
    */
   badge?: ReactNode;
   /**
-   * Maximum number of characters allowed in the input.
+   * Maximum number of characters allowed in the input. if this prop is used, It is recommended to inform the user about this limit in the InputField description, or otherwise
    */
   maxLength?: number;
 };
