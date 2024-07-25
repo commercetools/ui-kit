@@ -42,5 +42,7 @@
       "@emotion/core": ["./node_modules/@emotion/react"],
       "@/storybook-helpers": ["./storybook/src/helpers/index"]
     }
-  }
+  },
+  // @todo: remove, once storybook v8 replaced the v5 version
+  "exclude": ["./storybook"]
 }
