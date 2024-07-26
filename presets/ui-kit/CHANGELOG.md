@@ -1,5 +1,47 @@
 # @commercetools-frontend/ui-kit
 
+## 19.9.0
+
+### Patch Changes
+
+- Updated dependencies [[`aae591e`](https://github.com/commercetools/ui-kit/commit/aae591e82c9737618b3e0248d456cc15276bff10), [`f10448a`](https://github.com/commercetools/ui-kit/commit/f10448a1a4da806305a3b0a63469d955a03fcc5c)]:
+  - @commercetools-uikit/text@19.9.0
+  - @commercetools-uikit/i18n@19.9.0
+  - @commercetools-uikit/collapsible-panel@19.9.0
+  - @commercetools-uikit/data-table-manager@19.9.0
+  - @commercetools-uikit/field-label@19.9.0
+  - @commercetools-uikit/label@19.9.0
+  - @commercetools-uikit/loading-spinner@19.9.0
+  - @commercetools-uikit/messages@19.9.0
+  - @commercetools-uikit/pagination@19.9.0
+  - @commercetools-uikit/primary-action-dropdown@19.9.0
+  - @commercetools-uikit/progress-bar@19.9.0
+  - @commercetools-uikit/stamp@19.9.0
+  - @commercetools-uikit/tag@19.9.0
+  - @commercetools-uikit/fields@19.9.0
+  - @commercetools-uikit/inputs@19.9.0
+  - @commercetools-uikit/buttons@19.9.0
+  - @commercetools-uikit/selectable-search-input@19.9.0
+  - @commercetools-uikit/dropdown-menu@19.9.0
+  - @commercetools-uikit/data-table@19.9.0
+  - @commercetools-uikit/field-errors@19.9.0
+  - @commercetools-uikit/design-system@19.9.0
+  - @commercetools-uikit/accessible-hidden@19.9.0
+  - @commercetools-uikit/avatar@19.9.0
+  - @commercetools-uikit/card@19.9.0
+  - @commercetools-uikit/collapsible@19.9.0
+  - @commercetools-uikit/collapsible-motion@19.9.0
+  - @commercetools-uikit/constraints@19.9.0
+  - @commercetools-uikit/grid@19.9.0
+  - @commercetools-uikit/icons@19.9.0
+  - @commercetools-uikit/link@19.9.0
+  - @commercetools-uikit/notifications@19.9.0
+  - @commercetools-uikit/tooltip@19.9.0
+  - @commercetools-uikit/view-switcher@19.9.0
+  - @commercetools-uikit/hooks@19.9.0
+  - @commercetools-uikit/utils@19.9.0
+  - @commercetools-uikit/spacings@19.9.0
+
 ## 19.8.0
 
 ### Patch Changes

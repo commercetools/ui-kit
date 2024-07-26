@@ -1,5 +1,15 @@
 # @commercetools-uikit/text
 
+## 19.9.0
+
+### Patch Changes
+
+- [#2866](https://github.com/commercetools/ui-kit/pull/2866) [`aae591e`](https://github.com/commercetools/ui-kit/commit/aae591e82c9737618b3e0248d456cc15276bff10) Thanks [@ragafus](https://github.com/ragafus)! - `Detail` forwards `id` prop to its underlying element when `as` prop is not defined
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.9.0
+  - @commercetools-uikit/utils@19.9.0
+
 ## 19.8.0
 
 ### Patch Changes
