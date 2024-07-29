@@ -149,11 +149,11 @@
   },
   "UIKit.NumberField.aboveMaxError": {
     "developer_comment": "An error message to show when the value is above the maximum",
-    "string": "Value must be less than or equal to {max}."
+    "string": "El valor debe ser menor o igual que {max}."
   },
   "UIKit.NumberField.belowMinError": {
     "developer_comment": "An error message to show when the value is below the minimum",
-    "string": "Value must be greater than or equal to {min}."
+    "string": "El valor debe ser mayor o igual que {min}."
   },
   "UIKit.Pagination.PageNavigator.nextPageLabel": {
     "developer_comment": "Label for next page button",
