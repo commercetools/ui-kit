@@ -87,7 +87,6 @@ const DataTableManager = <Row extends TRow = TRow>(
         selectedColumns={selectedColumns ?? []}
         customColumnManager={customColumnManager ?? undefined}
       />
-      <pre>{JSON.stringify(customSettingsPayload, null, 2)}</pre>
       {props.children
         ? cloneElement(props.children, {
             columns,
