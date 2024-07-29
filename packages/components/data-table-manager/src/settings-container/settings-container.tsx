@@ -9,10 +9,12 @@ import Text from '@commercetools-uikit/text';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import { designTokens } from '@commercetools-uikit/design-system';
 
+export type TIntlMessage = MessageDescriptor & {
+  values?: Record<string, React.ReactNode>;
+};
+
 type TSettingsContainerProps = {
-  title?: MessageDescriptor & {
-    values?: Record<string, React.ReactNode>;
-  };
+  title?: TIntlMessage;
   closeButtonLabel: MessageDescriptor & {
     values?: Record<string, React.ReactNode>;
   };
@@ -23,7 +25,7 @@ type TSettingsContainerProps = {
   secondaryButton?: ReactElement;
   children: ReactNode;
   containerTheme?: 'light' | 'dark';
-  customSettingsTitle?: string;
+  customSettingsTitle?: string | TIntlMessage;
 };
 
 const HeaderContainer = styled.div`

@@ -6,6 +6,7 @@ import type {
   TAdditionalSettings,
 } from '../types';
 import type { TDataTableManagerColumnProps, TRow } from './types';
+import { TColumnData } from '../column-settings-manager';
 
 export type TDataTableManagerContext<Row extends TRow = TRow> =
   TDataTableSettingsProps & {
@@ -54,7 +55,7 @@ export const DataTableManagerProvider = ({
   onSettingsChange: () => void;
   columnManager: TColumnManagerProps;
   customSettings?: TCustomSettingsProps[];
-  selectedColumns?: TDataTableManagerColumnProps[];
+  selectedColumns?: TColumnData[];
   customColumnManager?: TColumnManagerProps;
   debug: boolean;
 }) => {
