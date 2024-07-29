@@ -1,5 +1,23 @@
 # @commercetools-uikit/password-field
 
+## 19.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/flat-button@19.9.0
+  - @commercetools-uikit/field-label@19.9.0
+  - @commercetools-uikit/field-errors@19.9.0
+  - @commercetools-uikit/field-warnings@19.9.0
+  - @commercetools-uikit/password-input@19.9.0
+  - @commercetools-uikit/design-system@19.9.0
+  - @commercetools-uikit/constraints@19.9.0
+  - @commercetools-uikit/icons@19.9.0
+  - @commercetools-uikit/spacings-inline@19.9.0
+  - @commercetools-uikit/spacings-stack@19.9.0
+  - @commercetools-uikit/hooks@19.9.0
+  - @commercetools-uikit/utils@19.9.0
+
 ## 19.8.0
 
 ### Patch Changes
