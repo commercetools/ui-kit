@@ -11,7 +11,7 @@ export type TDataTableManagerContext<Row extends TRow = TRow> =
     columns: TDataTableManagerColumnProps<Row>[];
     isCondensed?: boolean;
     customSettingsPayload?: Record<string, unknown>;
-    debug: boolean; // TODO - remove when nexted rows are implemented
+    debug: boolean; // TODO - remove when nested rows are implemented
   };
 
 const DataTableManagerContext = createContext<TDataTableManagerContext>({
@@ -42,7 +42,9 @@ export const DataTableManagerProvider = ({
   onSettingsChange,
   columnManager,
   customSettings,
-  debug, // TODO - remove when nexted rows are implemented
+  selectedColumns,
+  customColumnManager,
+  debug, // TODO - remove when nested rows are implemented
 }: {
   children: React.ReactNode;
   columns: TDataTableManagerColumnProps[];
@@ -51,6 +53,8 @@ export const DataTableManagerProvider = ({
   onSettingsChange: () => void;
   columnManager: TColumnManagerProps;
   customSettings?: TCustomSettingsProps[];
+  selectedColumns?: TDataTableManagerColumnProps[];
+  customColumnManager?: TColumnManagerProps;
   debug: boolean;
 }) => {
   const [additionalSettings, setAdditionalSettings] = useState<{
@@ -71,21 +75,11 @@ export const DataTableManagerProvider = ({
     const isWrappingText =
       areDisplaySettingsEnabled && displaySettings!.isWrappingText;
 
-    const newCustomSettings = customSettings?.map((setting) => {
-      const newSetting = setting;
-      if (setting.key === additionalSettings.key) {
-        newSetting.settingsPayload = {
-          ...setting.settingsPayload,
-          ...additionalSettings,
-        };
-      }
-      return newSetting;
-    });
-
     const customSettingsPayload = {} as Record<string, unknown>;
-    newCustomSettings?.forEach(({ key, settingsPayload }) => {
-      customSettingsPayload[key] = settingsPayload;
-    });
+    customSettings &&
+      Object.entries(customSettings).forEach(([key, settingsPayload]) => {
+        customSettingsPayload[key] = settingsPayload;
+      });
 
     return {
       columns: columns.map((column) => ({
@@ -103,8 +97,10 @@ export const DataTableManagerProvider = ({
       isCondensed: areDisplaySettingsEnabled && displaySettings!.isCondensed,
       updateCustomSettings: (settings: Record<string, unknown>) =>
         updateCustomSettings(settings),
-      additionalSettings: additionalSettings,
-      debug, // TODO - remove when nexted rows are implemented
+      additionalSettings,
+      selectedColumns,
+      customColumnManager,
+      debug, // TODO - remove when nested rows are implemented
     };
   }, [
     displaySettings,
@@ -113,8 +109,10 @@ export const DataTableManagerProvider = ({
     topBar,
     onSettingsChange,
     columnManager,
-    debug,
     additionalSettings,
+    selectedColumns,
+    customColumnManager,
+    debug,
   ]);
 
   return (

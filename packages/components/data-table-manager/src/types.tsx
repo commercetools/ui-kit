@@ -102,12 +102,16 @@ export type TCustomSettingsProps = {
     additionalSettings: Record<string, unknown>;
     onClose?: () => void;
     columnManager?: TColumnManagerProps;
-    onUpdateColumns?: (nextVisibleColumns: TColumnData[]) => void;
+    onUpdateColumns?: (nextVisibleColumns: TColumnData[], key?: string) => void;
     onSettingsChange?: (
       settingName: string,
-      settingValue: boolean | string[]
+      settingValue: boolean | string[],
+      key?: string
     ) => void;
     managerTheme?: 'light' | 'dark';
+    customColumns?: TColumnData[];
+    selectedColumns?: TColumnData[];
+    availableColumns?: TColumnManagerProps;
   }>;
   settingsPayload: Record<string, unknown>;
 };
@@ -117,13 +121,16 @@ export type TDataTableSettingsProps = {
   topBar?: ReactNode;
   onSettingsChange?: (
     settingName: string,
-    settingValue: boolean | string[]
+    settingValue: boolean | string[] | Record<string, unknown>,
+    key?: string
   ) => void;
   displaySettings?: TDisplaySettingsProps;
   columnManager?: TColumnManagerProps;
   customSettings?: TCustomSettingsProps[];
   managerTheme?: 'light' | 'dark';
   updateCustomSettings?: (settings: Record<string, unknown>) => void;
+  selectedColumns?: TColumnData[];
+  customColumnManager?: TColumnManagerProps;
 };
 
 export interface TRow {
@@ -225,7 +232,6 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    * Each column can be customized (see properties below).
    */
   columns: TColumnProps<Row>[];
-
   /**
    * Any React node. Usually you want to render the `<DataTable>` component.
    * <br>
@@ -248,7 +254,7 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    */
   onSettingsChange?: (
     settingName: string,
-    settingValue: boolean | string[]
+    settingValue: boolean | string[] | Record<string, unknown>
   ) => void;
 
   /**
@@ -266,4 +272,6 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    */
   customSettings?: TDataTableSettingsProps['customSettings'];
   updateCustomSettings?: (settings: Record<string, unknown>) => void;
+  selectedColumns?: TColumnData[];
+  customColumnManager?: TColumnManagerProps;
 };

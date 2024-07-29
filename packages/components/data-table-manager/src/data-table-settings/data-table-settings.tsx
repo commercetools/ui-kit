@@ -67,9 +67,9 @@ export const getDropdownOptions = ({
         ]
       : []),
     ...(customSettings
-      ? customSettings.map((customSetting) => {
+      ? Object.entries(customSettings).map(([key, customSetting]) => {
           return {
-            value: customSetting.key,
+            value: key,
             label: customSetting.customPanelTitle,
           };
         })
@@ -217,33 +217,32 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
         />
       )}
       {props.customSettings &&
-        props.customSettings.map((customSetting) => {
+        Object.entries(props.customSettings).map(([key, customSetting]) => {
           const CustomComponent = customSetting.customComponent;
           return (
-            customSetting.key === openedPanelId && (
+            key === openedPanelId && (
               <div key={customSetting.key}>
                 {customSetting.type === COLUMN_MANAGER ? (
                   CustomComponent && (
                     <CustomComponent
                       {...(customSetting || {})}
                       additionalSettings={{
-                        customSetting,
+                        ...customSetting,
                         ...props.additionalSettings,
                       }}
                       onClose={handleSettingsPanelChange}
                       managerTheme={props.managerTheme}
-                      onUpdateColumns={(nextVisibleColumns) => {
+                      selectedColumns={props.selectedColumns}
+                      availableColumns={props.customColumnManager ?? undefined}
+                      onUpdateColumns={(nextVisibleColumns, key) => {
                         const keysOfVisibleColumns = nextVisibleColumns.map(
                           (visibleColumn) => visibleColumn.key
                         );
                         props.onSettingsChange?.(
                           UPDATE_ACTIONS.CUSTOM_COLUMNS_UPDATE,
-                          keysOfVisibleColumns
+                          keysOfVisibleColumns,
+                          key
                         );
-                        props.updateCustomSettings?.({
-                          key: customSetting.key,
-                          customColumns: nextVisibleColumns,
-                        });
                       }}
                     />
                   )
@@ -255,11 +254,14 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
                   >
                     {CustomComponent && (
                       <CustomComponent
-                        updateCustomSettings={(settings) =>
-                          props.updateCustomSettings?.(settings)
-                        }
+                        updateCustomSettings={(settings) => {
+                          props.onSettingsChange?.(
+                            UPDATE_ACTIONS.CUSTOM_SETTINGS_UPDATE,
+                            settings
+                          );
+                        }}
                         additionalSettings={{
-                          customSetting,
+                          ...customSetting,
                           ...props.additionalSettings,
                         }}
                       />

@@ -25,6 +25,10 @@ const DataTableManager = <Row extends TRow = TRow>(
     props.columnManager || dataTableManagerContext.columnManager;
   const customSettings =
     props.customSettings || dataTableManagerContext.customSettings;
+  const selectedColumns =
+    props.selectedColumns || dataTableManagerContext.selectedColumns;
+  const customColumnManager =
+    props.customColumnManager || dataTableManagerContext.customColumnManager;
   const areDisplaySettingsEnabled = Boolean(
     displaySettings && !displaySettings.disableDisplaySettings
   );
@@ -52,28 +56,22 @@ const DataTableManager = <Row extends TRow = TRow>(
     [key: string]: unknown;
   }>({});
 
-  const updateCustomSettings = (additionalCustomSettings: unknown) => {
+  const additionalCustomSetting =
+    dataTableManagerContext.additionalSettings || additionalSettings;
+
+  const updateSettings = (additionalCustomSettings: unknown) => {
     setAdditionalSettings(
       additionalCustomSettings as { [key: string]: unknown }
     );
   };
-
-  const newCustomSettings = useMemo(() => {
-    return props.customSettings?.map((setting) => {
-      if (setting.key === additionalSettings.key) {
-        setting.settingsPayload = {
-          ...setting.settingsPayload,
-          ...additionalSettings,
-        };
-      }
-      return setting;
-    });
-  }, [additionalSettings, props.customSettings]);
+  const updateCustomSettings =
+    dataTableManagerContext.updateCustomSettings || updateSettings;
 
   const customSettingsPayload = {} as Record<string, unknown>;
-  newCustomSettings?.forEach(({ key, settingsPayload }) => {
-    customSettingsPayload[key] = settingsPayload;
-  });
+  customSettings &&
+    Object.entries(customSettings).forEach(([key, settingsPayload]) => {
+      customSettingsPayload[key] = settingsPayload;
+    });
 
   return (
     <Spacings.Stack>
@@ -84,8 +82,10 @@ const DataTableManager = <Row extends TRow = TRow>(
         displaySettings={displaySettings}
         customSettings={customSettings as TCustomSettingsProps[] | undefined}
         managerTheme="light"
-        additionalSettings={additionalSettings}
+        additionalSettings={additionalCustomSetting}
         updateCustomSettings={(settings) => updateCustomSettings(settings)}
+        selectedColumns={selectedColumns ?? []}
+        customColumnManager={customColumnManager ?? undefined}
       />
       <pre>{JSON.stringify(customSettingsPayload, null, 2)}</pre>
       {props.children

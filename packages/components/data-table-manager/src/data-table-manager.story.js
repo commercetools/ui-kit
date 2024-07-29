@@ -13,10 +13,7 @@ import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Readme from '../README.md';
 import { UPDATE_ACTIONS } from './constants';
 import DataTableManager from './data-table-manager';
-import {
-  DataTableManagerProvider,
-  useDataTableManagerContext,
-} from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
+import { DataTableManagerProvider } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
 import { ColumnSettingsManager } from '@commercetools-uikit/data-table-manager/column-settings-manager';
 import Spacings from '@commercetools-uikit/spacings';
 import SelectInput from '@commercetools-uikit/select-input';
@@ -181,6 +178,39 @@ storiesOf('Components|DataTable', module)
       visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
     });
 
+    const [customTableData, setCustomTableData] = useState({
+      columns: initialColumnsState,
+      visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
+    });
+
+    const customColumnManager = {
+      columnManagerLabel: 'Custom Column Manager',
+      areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
+      searchHiddenColumns: (searchTerm) => {
+        setCustomTableData({
+          ...customTableData,
+          columns: initialColumnsState.filter(
+            (column) =>
+              customTableData.visibleColumnKeys.includes(column.key) ||
+              column.label
+                .toLocaleLowerCase()
+                .includes(searchTerm.toLocaleLowerCase())
+          ),
+        });
+      },
+      disableColumnManager: boolean('disableColumnManager', false),
+      visibleColumnKeys: customTableData.visibleColumnKeys,
+      hideableColumns: customTableData.columns,
+    };
+
+    const mappedCustomColumns = customColumnManager.hideableColumns.reduce(
+      (columns, column) => ({
+        ...columns,
+        [column.key]: column,
+      }),
+      {}
+    );
+
     const [isCondensed, setIsCondensed] = useState(true);
     const [isWrappingText, setIsWrappingText] = useState(false);
 
@@ -253,14 +283,237 @@ storiesOf('Components|DataTable', module)
       ...visibleColumns,
     ];
 
-    const [customTableData, setCustomTableData] = useState({
-      columns: initialColumnsState,
-      visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
-    });
+    const getSelectedColumns = (mappedColumns, visibleColumnsKeys) =>
+      visibleColumnsKeys.map((columnKey) => mappedColumns[columnKey]);
 
-    const visibleCustomColumns = customTableData.visibleColumnKeys.map(
-      (columnKey) => mappedColumns[columnKey]
+    const selectedColumns = getSelectedColumns(
+      mappedCustomColumns,
+      customColumnManager.visibleColumnKeys
     );
+
+    const FirstCustomComponent = (props) => {
+      return (
+        <>
+          <Grid
+            gridGap={designTokens.spacing30}
+            gridTemplateColumns="repeat(2, 1fr)"
+          >
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Color Settings</div>
+                <Value
+                  defaultValue={
+                    props.additionalSettings.phoneNumberTextColor || 'black'
+                  }
+                  render={(value, onChange) => {
+                    return (
+                      <SelectInput
+                        appearance="quiet"
+                        value={
+                          props.additionalSettings.phoneNumberTextColor || value
+                        }
+                        onChange={(event) => {
+                          props.updateCustomSettings({
+                            key: props.additionalSettings.key,
+                            phoneNumberTextColor: event.target.value,
+                          });
+                          onChange(event.target.value);
+                        }}
+                        options={[
+                          { value: 'black', label: 'black' },
+                          { value: 'red', label: 'Red' },
+                          { value: 'green', label: 'Green' },
+                        ]}
+                      />
+                    );
+                  }}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Toggle display</div>
+                <Value
+                  defaultValue={props.additionalSettings.displayText || 'show'}
+                  render={(value, onChange) => {
+                    return (
+                      <RadioInput.Group
+                        id="toggle-display"
+                        name="toggle-display"
+                        value={props.additionalSettings.displayText || value}
+                        onChange={(event) => {
+                          props.updateCustomSettings({
+                            key: props.additionalSettings.key,
+                            displayText: event.target.value,
+                          });
+                          onChange(event.target.value);
+                        }}
+                      >
+                        <RadioInput.Option value={'show'}>
+                          Show texts for a given column or row
+                        </RadioInput.Option>
+                        <RadioInput.Option value={'hide'}>
+                          Hide texts for a given column or row
+                        </RadioInput.Option>
+                      </RadioInput.Group>
+                    );
+                  }}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+          </Grid>
+        </>
+      );
+    };
+    FirstCustomComponent.propTypes = {
+      additionalSettings: PropTypes.shape({
+        phoneNumberTextColor: PropTypes.string,
+        displayText: PropTypes.string,
+        key: PropTypes.string.isRequired,
+        imageSize: PropTypes.string,
+      }).isRequired,
+      updateCustomSettings: PropTypes.func,
+    };
+
+    const SecondCustomComponent = (props) => {
+      return (
+        <>
+          <Grid
+            gridGap={designTokens.spacing30}
+            gridTemplateColumns="repeat(2, 1fr)"
+          >
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Choose Image size</div>
+                <Value
+                  defaultValue={props.additionalSettings.imageSize || 'small'}
+                  render={(value, onChange) => {
+                    return (
+                      <SelectInput
+                        appearance="quiet"
+                        value={props.additionalSettings.imageSize || value}
+                        onChange={(event) => {
+                          props.updateCustomSettings({
+                            key: props.additionalSettings.key,
+                            imageSize: event.target.value,
+                          });
+                          onChange(event.target.value);
+                        }}
+                        options={[
+                          { value: 'small', label: 'Small' },
+                          { value: 'medium', label: 'Medium' },
+                          { value: 'large', label: 'Large' },
+                        ]}
+                      />
+                    );
+                  }}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Toggle display</div>
+                <Value
+                  defaultValue={props.additionalSettings.displayText || 'show'}
+                  render={(value, onChange) => {
+                    return (
+                      <RadioInput.Group
+                        id="toggle-display"
+                        name="toggle-display"
+                        value={props.additionalSettings.displayText || value}
+                        onChange={(event) => {
+                          props.updateCustomSettings({
+                            key: props.additionalSettings.key,
+                            displayText: event.target.value,
+                          });
+                          onChange(event.target.value);
+                        }}
+                      >
+                        <RadioInput.Option value={'show'}>
+                          Show texts for a given column or row
+                        </RadioInput.Option>
+                        <RadioInput.Option value={'hide'}>
+                          Hide texts for a given column or row
+                        </RadioInput.Option>
+                      </RadioInput.Group>
+                    );
+                  }}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+          </Grid>
+        </>
+      );
+    };
+    SecondCustomComponent.propTypes = {
+      additionalSettings: PropTypes.shape({
+        imageSize: PropTypes.string,
+        displayText: PropTypes.string,
+        key: PropTypes.string.isRequired,
+      }).isRequired,
+      updateCustomSettings: PropTypes.func.isRequired,
+    };
+
+    const ThirdCustomComponent = (props) => {
+      return (
+        <ColumnSettingsManager
+          {...(props.availableColumns || {})}
+          title="Custom culumn manager"
+          availableColumns={props.availableColumns.hideableColumns ?? []}
+          selectedColumns={props.selectedColumns}
+          onClose={props.onClose}
+          onUpdateColumns={(nextVisibleColumns, key) => {
+            props.onUpdateColumns(
+              nextVisibleColumns,
+              props.additionalSettings.key
+            );
+          }}
+          managerTheme={props.managerTheme}
+        />
+      );
+    };
+
+    ThirdCustomComponent.propTypes = {
+      selectedColumns: PropTypes.array,
+      availableColumns: PropTypes.shape({
+        columnManagerLabel: PropTypes.string,
+        areHiddenColumnsSearchable: PropTypes.bool,
+        searchHiddenColumns: PropTypes.func,
+        disableColumnManager: PropTypes.bool,
+        visibleColumnKeys: PropTypes.array,
+        hideableColumns: PropTypes.array,
+      }),
+      customColumns: PropTypes.array,
+      onUpdateColumns: PropTypes.func,
+      onClose: PropTypes.func,
+      managerTheme: PropTypes.string,
+      updateCustomSettings: PropTypes.func,
+      additionalSettings: PropTypes.shape({
+        key: PropTypes.string.isRequired,
+      }).isRequired,
+    };
+
+    const initialCustomSettings = {
+      customSettings1: {
+        key: 'customSettings1',
+        customPanelTitle: 'Custom Settings 1',
+        customComponent: FirstCustomComponent,
+      },
+      customSettings2: {
+        key: 'customSettings2',
+        customPanelTitle: 'Custom Settings 2',
+        customComponent: SecondCustomComponent,
+      },
+      customSettings3: {
+        key: 'customSettings3',
+        customPanelTitle: 'Custom Settings 3',
+        type: 'columnManager',
+        customComponent: ThirdCustomComponent,
+        visibleColumnKeys: ['name', 'customRenderer', 'phone', 'age'],
+      },
+    };
+
+    const [customSettings, setCustomSettings] = useState(initialCustomSettings);
 
     const tableSettingsChangeHandler = {
       [UPDATE_ACTIONS.COLUMNS_UPDATE]: (visibleColumnKeys) =>
@@ -268,10 +521,26 @@ storiesOf('Components|DataTable', module)
           ...tableData,
           visibleColumnKeys,
         }),
-      [UPDATE_ACTIONS.CUSTOM_COLUMNS_UPDATE]: (visibleColumnKeys) =>
+      [UPDATE_ACTIONS.CUSTOM_COLUMNS_UPDATE]: (visibleColumnKeys, key) => {
         setCustomTableData({
           ...customTableData,
           visibleColumnKeys,
+        });
+        setCustomSettings({
+          ...customSettings,
+          [key]: {
+            ...customSettings[key],
+            visibleColumnKeys,
+          },
+        });
+      },
+      [UPDATE_ACTIONS.CUSTOM_SETTINGS_UPDATE]: (additionalSettings) =>
+        setCustomSettings({
+          ...customSettings,
+          [additionalSettings.key]: {
+            ...customSettings[additionalSettings.key],
+            ...additionalSettings,
+          },
         }),
       [UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE]: setIsCondensed,
       [UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE]: setIsWrappingText,
@@ -320,252 +589,19 @@ storiesOf('Components|DataTable', module)
       ...columnManagerButtons,
     };
 
-    const customColumnManager = {
-      columnManagerLabel: 'Custom Column Manager',
-      areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
-      searchHiddenColumns: (searchTerm) => {
-        setCustomTableData({
-          ...customTableData,
-          columns: initialColumnsState.filter(
-            (column) =>
-              customTableData.visibleColumnKeys.includes(column.key) ||
-              column.label
-                .toLocaleLowerCase()
-                .includes(searchTerm.toLocaleLowerCase())
-          ),
-        });
-      },
-      disableColumnManager: boolean('disableColumnManager', false),
-      visibleColumnKeys: customTableData.visibleColumnKeys,
-      hideableColumns: customTableData.columns,
-      ...columnManagerButtons,
-    };
-
-    const FirstCustomComponent = (props) => {
-      const phoneNumberTextColorValue =
-        props.additionalSettings.phoneNumberTextColor ?? '';
-      const radioInputValue = props.additionalSettings.displayText ?? 'show';
-
-      return (
-        <>
-          <Grid
-            gridGap={designTokens.spacing30}
-            gridTemplateColumns="repeat(2, 1fr)"
-          >
-            <Grid.Item>
-              <Spacings.Stack scale={'l'}>
-                <div>Color Settings</div>
-                <Value
-                  defaultValue={phoneNumberTextColorValue}
-                  render={(value, onChange) => {
-                    return (
-                      <SelectInput
-                        appearance="quiet"
-                        value={value}
-                        onChange={(event) => {
-                          props.updateCustomSettings({
-                            key: props.additionalSettings.customSetting.key,
-                            phoneNumberTextColor: event.target.value,
-                          });
-                          onChange(event.target.value);
-                        }}
-                        options={[
-                          { value: 'black', label: 'black' },
-                          { value: 'red', label: 'Red' },
-                          { value: 'green', label: 'Green' },
-                        ]}
-                      />
-                    );
-                  }}
-                />
-              </Spacings.Stack>
-            </Grid.Item>
-            <Grid.Item>
-              <Spacings.Stack scale={'l'}>
-                <div>Toggle display</div>
-                <Value
-                  defaultValue={radioInputValue}
-                  render={(value, onChange) => {
-                    return (
-                      <RadioInput.Group
-                        id="toggle-display"
-                        name="toggle-display"
-                        value={value}
-                        onChange={(event) => {
-                          props.updateCustomSettings({
-                            key: props.additionalSettings.customSetting.key,
-                            displayText: event.target.value,
-                          });
-                          onChange(event.target.value);
-                        }}
-                      >
-                        <RadioInput.Option value={'show'}>
-                          Show texts for a given column or row
-                        </RadioInput.Option>
-                        <RadioInput.Option value={'hide'}>
-                          Hide texts for a given column or row
-                        </RadioInput.Option>
-                      </RadioInput.Group>
-                    );
-                  }}
-                />
-              </Spacings.Stack>
-            </Grid.Item>
-          </Grid>
-        </>
-      );
-    };
-    FirstCustomComponent.propTypes = {
-      additionalSettings: PropTypes.shape({
-        phoneNumberTextColor: PropTypes.string,
-        displayText: PropTypes.string,
-        customSetting: PropTypes.shape({
-          key: PropTypes.string.isRequired,
-        }).isRequired,
-        imageSize: PropTypes.string,
-      }).isRequired,
-      updateCustomSettings: PropTypes.func.isRequired,
-    };
-
-    const SecondCustomComponent = (props) => {
-      return (
-        <>
-          <Grid
-            gridGap={designTokens.spacing30}
-            gridTemplateColumns="repeat(2, 1fr)"
-          >
-            <Grid.Item>
-              <Spacings.Stack scale={'l'}>
-                <div>Choose Image size</div>
-                <Value
-                  defaultValue="small"
-                  render={(value, onChange) => {
-                    return (
-                      <SelectInput
-                        appearance="quiet"
-                        value={value}
-                        onChange={(event) => {
-                          props.updateCustomSettings({
-                            key: props.additionalSettings.customSetting.key,
-                            imageSize: event.target.value,
-                          });
-                          onChange(event.target.value);
-                        }}
-                        options={[
-                          { value: 'small', label: 'Small' },
-                          { value: 'medium', label: 'Medium' },
-                          { value: 'large', label: 'Large' },
-                        ]}
-                      />
-                    );
-                  }}
-                />
-              </Spacings.Stack>
-            </Grid.Item>
-            <Grid.Item>
-              <Spacings.Stack scale={'l'}>
-                <div>Toggle display</div>
-                <Value
-                  defaultValue="show"
-                  render={(value, onChange) => {
-                    return (
-                      <RadioInput.Group
-                        id="toggle-display"
-                        name="toggle-display"
-                        value={value}
-                        onChange={(event) => {
-                          props.updateCustomSettings({
-                            key: props.additionalSettings.customSetting.key,
-                            displayText: event.target.value,
-                          });
-                          onChange(event.target.value);
-                        }}
-                      >
-                        <RadioInput.Option value={'show'}>
-                          Show texts for a given column or row
-                        </RadioInput.Option>
-                        <RadioInput.Option value={'hide'}>
-                          Hide texts for a given column or row
-                        </RadioInput.Option>
-                      </RadioInput.Group>
-                    );
-                  }}
-                />
-              </Spacings.Stack>
-            </Grid.Item>
-          </Grid>
-        </>
-      );
-    };
-    SecondCustomComponent.propTypes = {
-      additionalSettings: PropTypes.shape({
-        imageSize: PropTypes.string,
-        displayText: PropTypes.string,
-        customSetting: PropTypes.shape({
-          key: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired,
-      updateCustomSettings: PropTypes.func.isRequired,
-    };
-
-    const ThirdCustomComponent = (props) => {
-      return (
-        <ColumnSettingsManager
-          {...(customColumnManager || {})}
-          title="Custom culumn manager"
-          availableColumns={customColumnManager?.hideableColumns ?? []}
-          selectedColumns={visibleCustomColumns}
-          onClose={props.onClose}
-          onUpdateColumns={(nextVisibleColumns) =>
-            props.onUpdateColumns(nextVisibleColumns)
-          }
-          managerTheme={props.managerTheme}
-        />
-      );
-    };
-
-    ThirdCustomComponent.propTypes = {
-      onUpdateColumns: PropTypes.func,
-      onClose: PropTypes.func,
-      managerTheme: PropTypes.string,
-      updateCustomSettings: PropTypes.func,
-      additionalSettings: PropTypes.shape({
-        customSetting: PropTypes.shape({
-          key: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired,
-    };
-
-    const customSettings = [
-      {
-        key: 'customSettings1',
-        customPanelTitle: 'Custom Settings 1',
-        customComponent: FirstCustomComponent,
-      },
-      {
-        key: 'customSettings2',
-        customPanelTitle: 'Custom Settings 2',
-        customComponent: SecondCustomComponent,
-      },
-      {
-        key: 'customSettings3',
-        customPanelTitle: 'Custom Settings 3',
-        type: 'columnManager',
-        customComponent: ThirdCustomComponent,
-      },
-    ];
-
     return (
       <>
         <DataTableManager
           topBar={topBar}
           columns={withRowSelection ? columnsWithSelect : visibleColumns}
-          onSettingsChange={(action, nextValue) => {
-            tableSettingsChangeHandler[action](nextValue);
+          onSettingsChange={(action, nextValue, key) => {
+            tableSettingsChangeHandler[action](nextValue, key);
           }}
           columnManager={columnManager}
           displaySettings={displaySettings}
           customSettings={customSettings}
+          selectedColumns={selectedColumns}
+          customColumnManager={customColumnManager}
           managerTheme={select(
             'managerTheme',
             {
@@ -594,6 +630,39 @@ storiesOf('Components|DataTable', module)
       visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
     });
 
+    const [customTableData, setCustomTableData] = useState({
+      columns: initialColumnsState,
+      visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
+    });
+
+    const customColumnManager = {
+      columnManagerLabel: 'Custom Column Manager',
+      areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
+      searchHiddenColumns: (searchTerm) => {
+        setCustomTableData({
+          ...customTableData,
+          columns: initialColumnsState.filter(
+            (column) =>
+              customTableData.visibleColumnKeys.includes(column.key) ||
+              column.label
+                .toLocaleLowerCase()
+                .includes(searchTerm.toLocaleLowerCase())
+          ),
+        });
+      },
+      disableColumnManager: boolean('disableColumnManager', false),
+      visibleColumnKeys: customTableData.visibleColumnKeys,
+      hideableColumns: customTableData.columns,
+    };
+
+    const mappedCustomColumns = customColumnManager.hideableColumns.reduce(
+      (columns, column) => ({
+        ...columns,
+        [column.key]: column,
+      }),
+      {}
+    );
+
     const [isCondensed, setIsCondensed] = useState(true);
     const [isWrappingText, setIsWrappingText] = useState(false);
 
@@ -613,7 +682,7 @@ storiesOf('Components|DataTable', module)
       'showColumnManagerConfirmationButtons',
       false
     );
-    // TODO - remove when nexted rows are implemented
+    // TODO - remove when nested rows are implemented
     const debug = boolean('logCustomSettings', false);
 
     const {
@@ -665,14 +734,241 @@ storiesOf('Components|DataTable', module)
       ...visibleColumns,
     ];
 
-    const [customTableData, setCustomTableData] = useState({
-      columns: initialColumnsState,
-      visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
-    });
+    const getSelectedColumns = (mappedColumns, visibleColumnsKeys) =>
+      visibleColumnsKeys.map((columnKey) => mappedColumns[columnKey]);
+
+    const selectedColumns = getSelectedColumns(
+      mappedCustomColumns,
+      customColumnManager.visibleColumnKeys
+    );
 
     const visibleCustomColumns = customTableData.visibleColumnKeys.map(
       (columnKey) => mappedColumns[columnKey]
     );
+
+    const FirstCustomComponent = (props) => {
+      return (
+        <>
+          <Grid
+            gridGap={designTokens.spacing30}
+            gridTemplateColumns="repeat(2, 1fr)"
+          >
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Color Settings</div>
+                <Value
+                  defaultValue={
+                    props.additionalSettings.phoneNumberTextColor || 'black'
+                  }
+                  render={(value, onChange) => {
+                    return (
+                      <SelectInput
+                        appearance="quiet"
+                        value={
+                          props.additionalSettings.phoneNumberTextColor || value
+                        }
+                        onChange={(event) => {
+                          props.updateCustomSettings({
+                            key: props.additionalSettings.key,
+                            phoneNumberTextColor: event.target.value,
+                          });
+                          onChange(event.target.value);
+                        }}
+                        options={[
+                          { value: 'black', label: 'black' },
+                          { value: 'red', label: 'Red' },
+                          { value: 'green', label: 'Green' },
+                        ]}
+                      />
+                    );
+                  }}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Toggle display</div>
+                <Value
+                  defaultValue={props.additionalSettings.displayText || 'show'}
+                  render={(value, onChange) => {
+                    return (
+                      <RadioInput.Group
+                        id="toggle-display"
+                        name="toggle-display"
+                        value={props.additionalSettings.displayText || value}
+                        onChange={(event) => {
+                          props.updateCustomSettings({
+                            key: props.additionalSettings.key,
+                            displayText: event.target.value,
+                          });
+                          onChange(event.target.value);
+                        }}
+                      >
+                        <RadioInput.Option value={'show'}>
+                          Show texts for a given column or row
+                        </RadioInput.Option>
+                        <RadioInput.Option value={'hide'}>
+                          Hide texts for a given column or row
+                        </RadioInput.Option>
+                      </RadioInput.Group>
+                    );
+                  }}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+          </Grid>
+        </>
+      );
+    };
+    FirstCustomComponent.propTypes = {
+      additionalSettings: PropTypes.shape({
+        phoneNumberTextColor: PropTypes.string,
+        displayText: PropTypes.string,
+        key: PropTypes.string.isRequired,
+        imageSize: PropTypes.string,
+      }).isRequired,
+      updateCustomSettings: PropTypes.func,
+    };
+
+    const SecondCustomComponent = (props) => {
+      return (
+        <>
+          <Grid
+            gridGap={designTokens.spacing30}
+            gridTemplateColumns="repeat(2, 1fr)"
+          >
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Choose Image size</div>
+                <Value
+                  defaultValue={props.additionalSettings.imageSize || 'small'}
+                  render={(value, onChange) => {
+                    return (
+                      <SelectInput
+                        appearance="quiet"
+                        value={props.additionalSettings.imageSize || value}
+                        onChange={(event) => {
+                          props.updateCustomSettings({
+                            key: props.additionalSettings.key,
+                            imageSize: event.target.value,
+                          });
+                          onChange(event.target.value);
+                        }}
+                        options={[
+                          { value: 'small', label: 'Small' },
+                          { value: 'medium', label: 'Medium' },
+                          { value: 'large', label: 'Large' },
+                        ]}
+                      />
+                    );
+                  }}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+            <Grid.Item>
+              <Spacings.Stack scale={'l'}>
+                <div>Toggle display</div>
+                <Value
+                  defaultValue={props.additionalSettings.displayText || 'show'}
+                  render={(value, onChange) => {
+                    return (
+                      <RadioInput.Group
+                        id="toggle-display"
+                        name="toggle-display"
+                        value={props.additionalSettings.displayText || value}
+                        onChange={(event) => {
+                          props.updateCustomSettings({
+                            key: props.additionalSettings.key,
+                            displayText: event.target.value,
+                          });
+                          onChange(event.target.value);
+                        }}
+                      >
+                        <RadioInput.Option value={'show'}>
+                          Show texts for a given column or row
+                        </RadioInput.Option>
+                        <RadioInput.Option value={'hide'}>
+                          Hide texts for a given column or row
+                        </RadioInput.Option>
+                      </RadioInput.Group>
+                    );
+                  }}
+                />
+              </Spacings.Stack>
+            </Grid.Item>
+          </Grid>
+        </>
+      );
+    };
+    SecondCustomComponent.propTypes = {
+      additionalSettings: PropTypes.shape({
+        imageSize: PropTypes.string,
+        displayText: PropTypes.string,
+        key: PropTypes.string.isRequired,
+      }).isRequired,
+      updateCustomSettings: PropTypes.func.isRequired,
+    };
+
+    const ThirdCustomComponent = (props) => {
+      return (
+        <ColumnSettingsManager
+          {...(props.availableColumns || {})}
+          title="Custom culumn manager"
+          availableColumns={props.availableColumns.hideableColumns ?? []}
+          selectedColumns={props.selectedColumns}
+          onClose={props.onClose}
+          onUpdateColumns={(nextVisibleColumns, key) => {
+            props.onUpdateColumns(
+              nextVisibleColumns,
+              props.additionalSettings.key
+            );
+          }}
+          managerTheme={props.managerTheme}
+        />
+      );
+    };
+
+    ThirdCustomComponent.propTypes = {
+      selectedColumns: PropTypes.array,
+      availableColumns: PropTypes.shape({
+        columnManagerLabel: PropTypes.string,
+        areHiddenColumnsSearchable: PropTypes.bool,
+        searchHiddenColumns: PropTypes.func,
+        disableColumnManager: PropTypes.bool,
+        visibleColumnKeys: PropTypes.array,
+        hideableColumns: PropTypes.array,
+      }),
+      customColumns: PropTypes.array,
+      onUpdateColumns: PropTypes.func,
+      onClose: PropTypes.func,
+      managerTheme: PropTypes.string,
+      updateCustomSettings: PropTypes.func,
+      additionalSettings: PropTypes.shape({
+        key: PropTypes.string.isRequired,
+      }).isRequired,
+    };
+
+    const initialCustomSettings = {
+      customSettings1: {
+        key: 'customSettings1',
+        customPanelTitle: 'Custom Settings 1',
+        customComponent: FirstCustomComponent,
+      },
+      customSettings2: {
+        key: 'customSettings2',
+        customPanelTitle: 'Custom Settings 2',
+        customComponent: SecondCustomComponent,
+      },
+      customSettings3: {
+        key: 'customSettings3',
+        customPanelTitle: 'Custom Settings 3',
+        type: 'columnManager',
+        customComponent: ThirdCustomComponent,
+        visibleColumnKeys: ['name', 'customRenderer', 'phone', 'age'],
+      },
+    };
+
+    const [customSettings, setCustomSettings] = useState(initialCustomSettings);
 
     const tableSettingsChangeHandler = {
       [UPDATE_ACTIONS.COLUMNS_UPDATE]: (visibleColumnKeys) =>
@@ -680,10 +976,26 @@ storiesOf('Components|DataTable', module)
           ...tableData,
           visibleColumnKeys,
         }),
-      [UPDATE_ACTIONS.CUSTOM_COLUMNS_UPDATE]: (visibleColumnKeys) =>
+      [UPDATE_ACTIONS.CUSTOM_COLUMNS_UPDATE]: (visibleColumnKeys, key) => {
         setCustomTableData({
           ...customTableData,
           visibleColumnKeys,
+        });
+        setCustomSettings({
+          ...customSettings,
+          [key]: {
+            ...customSettings[key],
+            visibleColumnKeys,
+          },
+        });
+      },
+      [UPDATE_ACTIONS.CUSTOM_SETTINGS_UPDATE]: (additionalSettings) =>
+        setCustomSettings({
+          ...customSettings,
+          [additionalSettings.key]: {
+            ...customSettings[additionalSettings.key],
+            ...additionalSettings,
+          },
         }),
       [UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE]: setIsCondensed,
       [UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE]: setIsWrappingText,
@@ -732,232 +1044,27 @@ storiesOf('Components|DataTable', module)
       ...columnManagerButtons,
     };
 
-    const customColumnManager = {
-      columnManagerLabel: 'Custom Column Manager',
-      areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
-      searchHiddenColumns: (searchTerm) => {
-        setTableData({
-          ...customTableData,
-          columns: initialColumnsState.filter(
-            (column) =>
-              customTableData.visibleColumnKeys.includes(column.key) ||
-              column.label
-                .toLocaleLowerCase()
-                .includes(searchTerm.toLocaleLowerCase())
-          ),
-        });
-      },
-      disableColumnManager: boolean('disableColumnManager', false),
-      visibleColumnKeys: customTableData.visibleColumnKeys,
-      hideableColumns: customTableData.columns,
-      ...columnManagerButtons,
-    };
-
-    const FirstCustomComponent = (props) => {
-      const { updateCustomSettings } = useDataTableManagerContext();
-      const phoneNumberTextColorValue =
-        props.additionalSettings.phoneNumberTextColor ?? '';
-      const radioInputValue = props.additionalSettings.displayText ?? 'show';
-
-      return (
-        <>
-          <Grid
-            gridGap={designTokens.spacing30}
-            gridTemplateColumns="repeat(2, 1fr)"
-          >
-            <Grid.Item>
-              <Spacings.Stack scale={'l'}>
-                <div>Color Settings</div>
-                <SelectInput
-                  appearance="quiet"
-                  value={phoneNumberTextColorValue}
-                  onChange={(event) =>
-                    updateCustomSettings({
-                      key: props.additionalSettings.customSetting.key,
-                      phoneNumberTextColor: event.target.value,
-                    })
-                  }
-                  options={[
-                    { value: 'black', label: 'black' },
-                    { value: 'red', label: 'Red' },
-                    { value: 'green', label: 'Green' },
-                  ]}
-                />
-              </Spacings.Stack>
-            </Grid.Item>
-            <Grid.Item>
-              <Spacings.Stack scale={'l'}>
-                <div>Toggle display</div>
-                <RadioInput.Group
-                  id="toggle-display"
-                  name="toggle-display"
-                  value={radioInputValue}
-                  onChange={(event) =>
-                    updateCustomSettings({
-                      key: props.additionalSettings.customSetting.key,
-                      displayText: event.target.value,
-                    })
-                  }
-                >
-                  <RadioInput.Option value={'show'}>
-                    Show texts for a given column or row
-                  </RadioInput.Option>
-                  <RadioInput.Option value={'hide'}>
-                    Hide texts for a given column or row
-                  </RadioInput.Option>
-                </RadioInput.Group>
-              </Spacings.Stack>
-            </Grid.Item>
-          </Grid>
-        </>
-      );
-    };
-    FirstCustomComponent.propTypes = {
-      additionalSettings: PropTypes.shape({
-        phoneNumberTextColor: PropTypes.string,
-        displayText: PropTypes.string,
-        customSetting: PropTypes.shape({
-          key: PropTypes.string.isRequired,
-        }).isRequired,
-        imageSize: PropTypes.string,
-      }).isRequired,
-    };
-
-    const SecondCustomComponent = (props) => {
-      const { updateCustomSettings } = useDataTableManagerContext();
-      const imageSizeValue = props.additionalSettings.imageSize ?? '';
-      const radioInputValue = props.additionalSettings.displayText ?? 'show';
-
-      return (
-        <>
-          <Grid
-            gridGap={designTokens.spacing30}
-            gridTemplateColumns="repeat(2, 1fr)"
-          >
-            <Grid.Item>
-              <Spacings.Stack scale={'l'}>
-                <div>Choose Image size</div>
-                <SelectInput
-                  value={imageSizeValue}
-                  onChange={(event) =>
-                    updateCustomSettings({
-                      key: props.additionalSettings.customSetting.key,
-                      imageSize: event.target.value,
-                    })
-                  }
-                  options={[
-                    { value: 'large', label: 'Large' },
-                    { value: 'medium', label: 'Medium' },
-                    { value: 'small', label: 'Small' },
-                  ]}
-                />
-              </Spacings.Stack>
-            </Grid.Item>
-            <Grid.Item>
-              <Spacings.Stack scale={'l'}>
-                <div>Toggle display</div>
-                <RadioInput.Group
-                  id="toggle-display"
-                  name="toggle-display"
-                  value={radioInputValue}
-                  onChange={(event) =>
-                    updateCustomSettings({
-                      key: props.additionalSettings.customSetting.key,
-                      displayText: event.target.value,
-                    })
-                  }
-                >
-                  <RadioInput.Option value={'show'}>
-                    Show texts for a given column or row
-                  </RadioInput.Option>
-                  <RadioInput.Option value={'hide'}>
-                    Hide texts for a given column or row
-                  </RadioInput.Option>
-                </RadioInput.Group>
-              </Spacings.Stack>
-            </Grid.Item>
-          </Grid>
-        </>
-      );
-    };
-    SecondCustomComponent.propTypes = {
-      additionalSettings: PropTypes.shape({
-        imageSize: PropTypes.string,
-        displayText: PropTypes.string,
-        customSetting: PropTypes.shape({
-          key: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired,
-    };
-
-    const ThirdCustomComponent = (props) => {
-      const { updateCustomSettings } = useDataTableManagerContext();
-      return (
-        <ColumnSettingsManager
-          {...(customColumnManager || {})}
-          title="Custom culumn manager"
-          availableColumns={customColumnManager?.hideableColumns ?? []}
-          selectedColumns={visibleCustomColumns}
-          onClose={props.onClose}
-          onUpdateColumns={(nextVisibleColumns) => {
-            const keysOfVisibleColumns = nextVisibleColumns.map(
-              (visibleColumn) => visibleColumn.key
-            );
-            props.onSettingsChange?.(
-              UPDATE_ACTIONS.CUSTOM_COLUMNS_UPDATE,
-              keysOfVisibleColumns
-            );
-            updateCustomSettings({
-              key: props.additionalSettings.customSetting.key,
-              customColumns: visibleCustomColumns,
-            });
-          }}
-          managerTheme={props.managerTheme}
-        />
-      );
-    };
-
-    ThirdCustomComponent.propTypes = {
-      onClose: PropTypes.func,
-      managerTheme: PropTypes.string,
-      onSettingsChange: PropTypes.func,
-      updateCustomSettings: PropTypes.func,
-      additionalSettings: PropTypes.shape({
-        customSetting: PropTypes.shape({
-          key: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired,
-    };
-
-    const customSettings = [
-      {
-        key: 'customSettings1',
-        customPanelTitle: 'Custom Settings 1',
-        customComponent: FirstCustomComponent,
-      },
-      {
-        key: 'customSettings2',
-        customPanelTitle: 'Custom Settings 2',
-        customComponent: SecondCustomComponent,
-      },
-      {
-        key: 'customSettings3',
-        customPanelTitle: 'Custom Settings 3',
-        type: 'columnManager',
-        customComponent: ThirdCustomComponent,
-      },
-    ];
-
     return (
       <DataTableManagerProvider
         columns={withRowSelection ? columnsWithSelect : visibleColumns}
         displaySettings={displaySettings}
-        onSettingsChange={(action, nextValue) => {
-          tableSettingsChangeHandler[action](nextValue);
+        onSettingsChange={(action, nextValue, key) => {
+          tableSettingsChangeHandler[action](nextValue, key);
         }}
         columnManager={columnManager}
         customSettings={customSettings}
-        // TODO - remove when nexted rows are implemented
+        customColumns={visibleCustomColumns}
+        selectedColumns={selectedColumns}
+        customColumnManager={customColumnManager}
+        managerTheme={select(
+          'managerTheme',
+          {
+            dark: 'dark',
+            light: 'light',
+          },
+          'dark'
+        )}
+        // TODO - remove when nested rows are implemented
         debug={debug}
       >
         <Spacings.Stack>
