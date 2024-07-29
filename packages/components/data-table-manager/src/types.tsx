@@ -271,7 +271,16 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    * Manage custom settings for the table
    */
   customSettings?: TDataTableSettingsProps['customSettings'];
+  /**
+   * A callback function used to update the custom settings.
+   * */
   updateCustomSettings?: (settings: Record<string, unknown>) => void;
+  /**
+   * The selected columns to be displayed.
+   */
   selectedColumns?: TColumnData[];
+  /**
+   * Custom column manager settings.
+   */
   customColumnManager?: TColumnManagerProps;
 };
