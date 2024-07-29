@@ -5,6 +5,11 @@ export type TColumnData = {
   label: ReactNode;
 };
 
+export type TAdditionalSettings = {
+  key: string;
+  [key: string]: unknown;
+};
+
 export type TDisplaySettingsProps = {
   /**
    * Set this to override the default label of the display settings.
@@ -98,7 +103,7 @@ export type TCustomSettingsProps = {
   customPanelTitle: string;
   type?: 'columnManager';
   customComponent?: React.ComponentType<{
-    updateCustomSettings?: (settings: Record<string, unknown>) => void;
+    updateCustomSettings?: (settings: TAdditionalSettings) => void;
     additionalSettings: Record<string, unknown>;
     onClose?: () => void;
     columnManager?: TColumnManagerProps;
@@ -128,7 +133,7 @@ export type TDataTableSettingsProps = {
   columnManager?: TColumnManagerProps;
   customSettings?: TCustomSettingsProps[];
   managerTheme?: 'light' | 'dark';
-  updateCustomSettings?: (settings: Record<string, unknown>) => void;
+  updateCustomSettings?: (settings: TAdditionalSettings) => void;
   selectedColumns?: TColumnData[];
   customColumnManager?: TColumnManagerProps;
 };
@@ -274,7 +279,7 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
   /**
    * A callback function used to update the custom settings.
    * */
-  updateCustomSettings?: (settings: Record<string, unknown>) => void;
+  updateCustomSettings?: (settings: TAdditionalSettings) => void;
   /**
    * The selected columns to be displayed.
    */

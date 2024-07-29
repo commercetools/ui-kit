@@ -3,6 +3,7 @@ import type {
   TDataTableSettingsProps,
   TColumnManagerProps,
   TCustomSettingsProps,
+  TAdditionalSettings,
 } from '../types';
 import type { TDataTableManagerColumnProps, TRow } from './types';
 
@@ -61,7 +62,9 @@ export const DataTableManagerProvider = ({
     [key: string]: unknown;
   }>({});
 
-  const updateCustomSettings = (additionalCustomSettings: unknown) => {
+  const updateCustomSettings = (
+    additionalCustomSettings: TAdditionalSettings
+  ) => {
     setAdditionalSettings(
       additionalCustomSettings as { [key: string]: unknown }
     );
@@ -95,7 +98,7 @@ export const DataTableManagerProvider = ({
       customSettings,
       customSettingsPayload,
       isCondensed: areDisplaySettingsEnabled && displaySettings!.isCondensed,
-      updateCustomSettings: (settings: Record<string, unknown>) =>
+      updateCustomSettings: (settings: TAdditionalSettings) =>
         updateCustomSettings(settings),
       additionalSettings,
       selectedColumns,

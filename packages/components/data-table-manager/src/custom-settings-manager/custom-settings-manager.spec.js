@@ -1,5 +1,5 @@
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
-import DisplaySettingsManager from './custom-settings-manager';
+import CustomSettingsManager from './custom-settings-manager';
 
 const mockCustomComponentClick = jest.fn();
 
@@ -18,12 +18,12 @@ const createTestProps = (customProps) => ({
 describe('CustomSettingsManager', () => {
   it('renders with the correct title', () => {
     const props = createTestProps();
-    render(<DisplaySettingsManager {...props} />);
+    render(<CustomSettingsManager {...props} />);
     expect(screen.getByText('Test Title')).toBeInTheDocument();
   });
   it('renders with the correct children', () => {
     const props = createTestProps();
-    render(<DisplaySettingsManager {...props} />);
+    render(<CustomSettingsManager {...props} />);
 
     const customButton = screen.getByText('Custom Component');
     expect(customButton).toBeInTheDocument();

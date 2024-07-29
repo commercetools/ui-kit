@@ -1065,6 +1065,8 @@ storiesOf('Components|DataTable', module)
           'dark'
         )}
         // TODO - remove when nested rows are implemented
+        // Solely for debug purpose. A toggle (logCustomSettings) to log the customSettingsPayload
+        // Will be helpful when implementing the nested rows.
         debug={debug}
       >
         <Spacings.Stack>

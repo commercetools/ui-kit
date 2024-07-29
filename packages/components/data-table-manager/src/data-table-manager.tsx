@@ -53,15 +53,16 @@ const DataTableManager = <Row extends TRow = TRow>(
   );
 
   const [additionalSettings, setAdditionalSettings] = useState<{
+    key: string;
     [key: string]: unknown;
-  }>({});
+  }>({ key: '' });
 
   const additionalCustomSetting =
     dataTableManagerContext.additionalSettings || additionalSettings;
 
   const updateSettings = (additionalCustomSettings: unknown) => {
     setAdditionalSettings(
-      additionalCustomSettings as { [key: string]: unknown }
+      additionalCustomSettings as { [key: string]: unknown; key: string }
     );
   };
   const updateCustomSettings =
