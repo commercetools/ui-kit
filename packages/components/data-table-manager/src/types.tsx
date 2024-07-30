@@ -101,7 +101,7 @@ export type TColumnManagerProps = {
 export type TCustomSettingsProps = {
   key: string;
   customPanelTitle: string;
-  visibleColumnKeys?: string[];
+  type?: 'columnManager';
   customComponent?: React.ComponentType<{
     updateCustomSettings?: (settings: TAdditionalSettings) => void;
     additionalSettings: Record<string, unknown>;

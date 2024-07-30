@@ -218,11 +218,16 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
       )}
       {props.customSettings &&
         Object.entries(props.customSettings).map(([key, customSetting]) => {
+          if (!customSetting.key) {
+            throw new Error(
+              'ui-kit/DataTableManager: `customSettings` must be a JSON in the format Record<string, Object>.'
+            );
+          }
           const CustomComponent = customSetting.customComponent;
           return (
             key === openedPanelId && (
               <div key={customSetting.key}>
-                {customSetting.visibleColumnKeys ? (
+                {customSetting.type === COLUMN_MANAGER ? (
                   CustomComponent && (
                     <CustomComponent
                       {...(customSetting || {})}
