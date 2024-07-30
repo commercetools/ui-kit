@@ -222,7 +222,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
           return (
             key === openedPanelId && (
               <div key={customSetting.key}>
-                {customSetting.type === COLUMN_MANAGER ? (
+                {customSetting.visibleColumnKeys ? (
                   CustomComponent && (
                     <CustomComponent
                       {...(customSetting || {})}
