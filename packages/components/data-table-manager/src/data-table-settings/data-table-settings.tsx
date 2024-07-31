@@ -220,7 +220,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
         Object.entries(props.customSettings).map(([key, customSetting]) => {
           if (!customSetting.key) {
             throw new Error(
-              'ui-kit/DataTableManager: `customSettings` must be a JSON in the format Record<string, Object>.'
+              'ui-kit/DataTableManager: missing: `key` prop, `customSettings` must be a JSON in the format Record<string, Object>.'
             );
           }
           const CustomComponent = customSetting.customComponent;

@@ -355,7 +355,7 @@ storiesOf('Components|DataTable', module)
                           size="small"
                         />
                         <Spacings.Inset scale="xs">
-                          <Text.Detail>Resizable column (name)</Text.Detail>
+                          <Text.Detail>Resizable column (Name)</Text.Detail>
                         </Spacings.Inset>
                       </Spacings.Inline>
                     );
@@ -488,7 +488,7 @@ storiesOf('Components|DataTable', module)
       return (
         <ColumnSettingsManager
           {...(props.availableColumns || {})}
-          title="Custom culumn manager"
+          title={props.additionalSettings.customPanelTitle}
           availableColumns={props.availableColumns.hideableColumns ?? []}
           selectedColumns={props.selectedColumns}
           onClose={props.onClose}
@@ -519,6 +519,7 @@ storiesOf('Components|DataTable', module)
       managerTheme: PropTypes.string,
       updateCustomSettings: PropTypes.func,
       additionalSettings: PropTypes.shape({
+        customPanelTitle: PropTypes.string,
         key: PropTypes.string.isRequired,
       }).isRequired,
     };
@@ -535,7 +536,7 @@ storiesOf('Components|DataTable', module)
       },
       customColumnsSettings: {
         key: 'customColumnsSettings',
-        customPanelTitle: 'Custom columns settings',
+        customPanelTitle: 'Custom settings (columns)',
         type: 'columnManager',
         customComponent: ThirdCustomComponent,
         visibleColumnKeys: ['name', 'customRenderer', 'phone', 'age'],
@@ -823,14 +824,14 @@ storiesOf('Components|DataTable', module)
                 <Text.Subheadline as="h4">Column settings</Text.Subheadline>
                 <Value
                   defaultValue={
-                    props.additionalSettings.isColumnResizable || true
+                    props.additionalSettings.isColumnResizable || false
                   }
                   render={(value, onChange) => {
                     return (
                       <Spacings.Inline>
                         <ToggleInput
                           defaultValue={
-                            props.additionalSettings.isColumnResizable || true
+                            props.additionalSettings.isColumnResizable || false
                           }
                           isChecked={
                             props.additionalSettings.isColumnResizable || value
@@ -848,7 +849,7 @@ storiesOf('Components|DataTable', module)
                           size="small"
                         />
                         <Spacings.Inset scale="xs">
-                          <Text.Detail>Resizable column (name)</Text.Detail>
+                          <Text.Detail>Resizable column (Name)</Text.Detail>
                         </Spacings.Inset>
                       </Spacings.Inline>
                     );
@@ -1028,7 +1029,7 @@ storiesOf('Components|DataTable', module)
       },
       customColumnsSettings: {
         key: 'customColumnsSettings',
-        customPanelTitle: 'Custom columns settings',
+        customPanelTitle: 'Custom settings (columns)',
         type: 'columnManager',
         customComponent: ThirdCustomComponent,
         visibleColumnKeys: ['name', 'customRenderer', 'phone', 'age'],
