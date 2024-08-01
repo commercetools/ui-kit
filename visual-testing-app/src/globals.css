@@ -1,7 +1,14 @@
+@import '@fontsource/inter';
 @import '@commercetools-uikit/design-system/materials/resets.css';
+
+:root {
+  --font-family-vrt: 'Inter', 'Inter Variable', system-ui, sans-serif;
+}
 
 html,
 body {
   font-size: var(--font-size-for-body);
   height: 100vh;
 }
+
+
