@@ -42,7 +42,6 @@ const allSortedComponents = Object.keys(allUniqueRouteComponents)
   .map((key) => allUniqueRouteComponents[key]);
 
 const App = () => {
-  console.log(pkgComponentsModules);
   return (
     <>
       <ThemeProvider />
