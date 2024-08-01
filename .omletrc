@@ -9,8 +9,11 @@
        "**/*.{spec,test}.{jsx,tsx,js,ts}",
        "**/{__test__,tests}/**/*.{jsx,tsx,js,ts}",
        "**/*.visualroute.{jsx,tsx,js,ts}",
+       "**/*.visualspec.{jsx,tsx,js,ts}",
        "**/docs/**",
-       "**/_docs/**"
+       "**/_docs/**",
+       "**/*messages.{js,ts}",
+       "**/*styles.{js,ts}"
     ],
     "aliases": {
         "@*": "src/*"
