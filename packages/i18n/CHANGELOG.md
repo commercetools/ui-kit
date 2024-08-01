@@ -1,5 +1,11 @@
 # @commercetools-uikit/i18n
 
+## 19.9.0
+
+### Minor Changes
+
+- [#2853](https://github.com/commercetools/ui-kit/pull/2853) [`f10448a`](https://github.com/commercetools/ui-kit/commit/f10448a1a4da806305a3b0a63469d955a03fcc5c) Thanks [@ragafus](https://github.com/ragafus)! - Add `belowMin` and `aboveMax` error keys to `NumberField`
+
 ## 19.8.0
 
 ## 19.7.0
