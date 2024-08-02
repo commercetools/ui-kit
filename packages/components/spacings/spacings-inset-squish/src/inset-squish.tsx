@@ -5,7 +5,9 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 export type TScale = 's' | 'm' | 'l';
 export type TInsetSquishProps = {
+  /** sets the amount of `padding` applied around the children */
   scale: TScale;
+  /** sets the height of the component to 100% of the available width ('expanded') or 'auto' */
   height: 'collapsed' | 'expanded';
   children: ReactNode;
 };
