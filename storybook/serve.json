@@ -1,0 +1,6 @@
+{
+  "public": "./storybook-static",
+  "cleanUrls": false,
+  "directoryListing": false,
+  "redirects": [{ "source": "/", "destination": "/index.html" }]
+}
