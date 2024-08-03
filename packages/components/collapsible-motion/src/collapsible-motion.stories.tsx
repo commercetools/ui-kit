@@ -6,34 +6,34 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 type CollapsibleMotionProps = ComponentProps<typeof CollapsibleMotion>;
 
 const meta: Meta<CollapsibleMotionProps> = {
-title: 'components/Panels/CollapsibleMotion',
-component: CollapsibleMotion,
+  title: 'components/Panels/CollapsibleMotion',
+  component: CollapsibleMotion,
 };
 export default meta;
 
 export const BasicExample: StoryFn<CollapsibleMotionProps> = (args) => {
-const [open, setOpen] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(true);
 
-return (
-<div style={{ height: 640 }}>
-<div style={{ display: 'flex', marginBottom: '4em' }}>
-<div style={{ width: 200, marginRight: '2em', flexShrink: 0 }}>
-<h1>Uncontrolled Example</h1>
-<br />
-<p>
-<code>{`<CollapsibleMotion/>`}</code> is taking care of its
-open/closed-state.
-</p>
-</div>
-<div>
-<CollapsibleMotion {...args}>
-{({ isOpen, toggle, containerStyles, registerContentNode }) => (
-<div>
-<PrimaryButton
-data-testid="button"
-onClick={toggle}
-label={isOpen ? 'Close' : 'Open'}
-/>
+  return (
+    <div style={{ height: 640 }}>
+      <div style={{ display: 'flex', marginBottom: '4em' }}>
+        <div style={{ width: 200, marginRight: '2em', flexShrink: 0 }}>
+          <h1>Uncontrolled Example</h1>
+          <br />
+          <p>
+            <code>{`<CollapsibleMotion/>`}</code> is taking care of its
+            open/closed-state.
+          </p>
+        </div>
+        <div>
+          <CollapsibleMotion {...args}>
+            {({ isOpen, toggle, containerStyles, registerContentNode }) => (
+              <div>
+                <PrimaryButton
+                  data-testid="button"
+                  onClick={toggle}
+                  label={isOpen ? 'Close' : 'Open'}
+                />
 
                 <hr />
                 <div data-testid="container-node" style={containerStyles}>
@@ -111,6 +111,5 @@ label={isOpen ? 'Close' : 'Open'}
       </div>
       <hr />
     </div>
-
-);
+  );
 };
