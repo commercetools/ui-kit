@@ -117,6 +117,39 @@ const items = [
   },
 ];
 
+const customRows = [
+  [
+    {
+      item_id: '5e188c29791747d9c54250e2',
+      name: 'SKU',
+      phone: '+1 (895) 529-3300',
+      age: 23,
+      about:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    },
+    {
+      item_id: '5e188c29791747d9c54250e2',
+      name: 'Variant',
+      customRenderer: 'TINGLES',
+      phone: '+1 (835) 571-3268',
+      age: 36,
+      about:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    },
+  ],
+  [
+    {
+      item_id: '5e188c298f0ea901553c517f',
+      name: 'number',
+      customRenderer: 'ECRAZE',
+      phone: '+1 (944) 445-2594',
+      age: 21,
+      about:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    },
+  ],
+];
+
 /* eslint-disable react/display-name, no-alert */
 const FooterPrimaryButton = () => (
   <PrimaryButton
@@ -181,7 +214,10 @@ storiesOf('Components|DataTable', module)
     });
 
     const customColumnManager = {
-      areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
+      areHiddenCustomColumnsSearchable: boolean(
+        'areHiddenCustomColumnsSearchable',
+        true
+      ),
       searchHiddenColumns: (searchTerm) => {
         setCustomTableData({
           ...customTableData,
@@ -194,7 +230,7 @@ storiesOf('Components|DataTable', module)
           ),
         });
       },
-      disableColumnManager: boolean('disableColumnManager', false),
+      disableCustomColumnManager: boolean('disableCustomColumnManager', false),
       visibleColumnKeys: customTableData.visibleColumnKeys,
       hideableColumns: customTableData.columns,
     };
@@ -313,7 +349,10 @@ storiesOf('Components|DataTable', module)
       customColumnManager.visibleColumnKeys
     );
 
-    const FirstCustomComponent = (props) => {
+    const visibleCustomColumns = customTableData.visibleColumnKeys.map(
+      (columnKey) => mappedColumns[columnKey]
+    );
+    const CustomSettingBlankComponent = (props) => {
       return (
         <Spacings.Stack scale="xl">
           <Text.Detail tone="tertiary">
@@ -466,7 +505,7 @@ storiesOf('Components|DataTable', module)
         </Spacings.Stack>
       );
     };
-    FirstCustomComponent.propTypes = {
+    CustomSettingBlankComponent.propTypes = {
       additionalSettings: PropTypes.shape({
         updateColumnResize: PropTypes.func,
         isColumnResizable: PropTypes.bool,
@@ -483,7 +522,7 @@ storiesOf('Components|DataTable', module)
       updateCustomSettings: PropTypes.func,
     };
 
-    const ThirdCustomComponent = (props) => {
+    const CustomColumnComponent = (props) => {
       return (
         <ColumnSettingsManager
           {...(props.availableColumns || {})}
@@ -491,6 +530,9 @@ storiesOf('Components|DataTable', module)
           availableColumns={props.availableColumns.hideableColumns ?? []}
           selectedColumns={props.selectedColumns}
           onClose={props.onClose}
+          areHiddenColumnsSearchable={
+            props.availableColumns.areHiddenCustomColumnsSearchable
+          }
           onUpdateColumns={(nextVisibleColumns, key) => {
             props.onUpdateColumns(
               nextVisibleColumns,
@@ -502,9 +544,10 @@ storiesOf('Components|DataTable', module)
       );
     };
 
-    ThirdCustomComponent.propTypes = {
+    CustomColumnComponent.propTypes = {
       selectedColumns: PropTypes.array,
       availableColumns: PropTypes.shape({
+        areHiddenCustomColumnsSearchable: PropTypes.bool,
         columnManagerLabel: PropTypes.string,
         areHiddenColumnsSearchable: PropTypes.bool,
         searchHiddenColumns: PropTypes.func,
@@ -527,7 +570,7 @@ storiesOf('Components|DataTable', module)
       customSettings: {
         key: 'customSettings',
         customPanelTitle: 'Custom Settings (blank)',
-        customComponent: FirstCustomComponent,
+        customComponent: CustomSettingBlankComponent,
         updateRowSelection,
         updateRowClick,
         updateTextColor,
@@ -537,7 +580,7 @@ storiesOf('Components|DataTable', module)
         key: 'customColumnsSettings',
         customPanelTitle: 'Custom settings (columns)',
         type: 'columnManager',
-        customComponent: ThirdCustomComponent,
+        customComponent: CustomColumnComponent,
         visibleColumnKeys: ['name', 'customRenderer', 'phone', 'age'],
       },
     };
@@ -631,6 +674,7 @@ storiesOf('Components|DataTable', module)
           customSettings={customSettings}
           selectedColumns={selectedColumns}
           customColumnManager={customColumnManager}
+          customColumns={visibleCustomColumns}
           managerTheme={select(
             'managerTheme',
             {
@@ -642,6 +686,7 @@ storiesOf('Components|DataTable', module)
         >
           <DataTable
             rows={withRowSelection ? rowsWithSelection : rows}
+            customRows={customRows}
             sortedBy={sortedBy}
             onSortChange={onSortChange}
             sortDirection={sortDirection}
@@ -806,7 +851,7 @@ storiesOf('Components|DataTable', module)
       (columnKey) => mappedColumns[columnKey]
     );
 
-    const FirstCustomComponent = (props) => {
+    const CustomSettingBlankComponent = (props) => {
       return (
         <Spacings.Stack scale="xl">
           <Text.Detail tone="tertiary">
@@ -959,7 +1004,7 @@ storiesOf('Components|DataTable', module)
         </Spacings.Stack>
       );
     };
-    FirstCustomComponent.propTypes = {
+    CustomSettingBlankComponent.propTypes = {
       additionalSettings: PropTypes.shape({
         updateColumnResize: PropTypes.func,
         isColumnResizable: PropTypes.bool,
@@ -976,7 +1021,7 @@ storiesOf('Components|DataTable', module)
       updateCustomSettings: PropTypes.func,
     };
 
-    const ThirdCustomComponent = (props) => {
+    const CustomColumnComponent = (props) => {
       return (
         <ColumnSettingsManager
           {...(props.availableColumns || {})}
@@ -984,6 +1029,9 @@ storiesOf('Components|DataTable', module)
           availableColumns={props.availableColumns.hideableColumns ?? []}
           selectedColumns={props.selectedColumns}
           onClose={props.onClose}
+          areHiddenColumnsSearchable={
+            props.availableColumns.areHiddenCustomColumnsSearchable
+          }
           onUpdateColumns={(nextVisibleColumns, key) => {
             props.onUpdateColumns(
               nextVisibleColumns,
@@ -995,9 +1043,10 @@ storiesOf('Components|DataTable', module)
       );
     };
 
-    ThirdCustomComponent.propTypes = {
+    CustomColumnComponent.propTypes = {
       selectedColumns: PropTypes.array,
       availableColumns: PropTypes.shape({
+        areHiddenCustomColumnsSearchable: PropTypes.bool,
         columnManagerLabel: PropTypes.string,
         areHiddenColumnsSearchable: PropTypes.bool,
         searchHiddenColumns: PropTypes.func,
@@ -1019,7 +1068,7 @@ storiesOf('Components|DataTable', module)
       customSettings: {
         key: 'customSettings',
         customPanelTitle: 'Custom Settings (blank)',
-        customComponent: FirstCustomComponent,
+        customComponent: CustomSettingBlankComponent,
         updateRowSelection,
         updateRowClick,
         updateTextColor,
@@ -1029,7 +1078,7 @@ storiesOf('Components|DataTable', module)
         key: 'customColumnsSettings',
         customPanelTitle: 'Custom settings (columns)',
         type: 'columnManager',
-        customComponent: ThirdCustomComponent,
+        customComponent: CustomColumnComponent,
         visibleColumnKeys: ['name', 'customRenderer', 'phone', 'age'],
       },
     };
@@ -1113,15 +1162,15 @@ storiesOf('Components|DataTable', module)
     return (
       <DataTableManagerProvider
         columns={withRowSelection ? columnsWithSelect : visibleColumns}
-        displaySettings={displaySettings}
         onSettingsChange={(action, nextValue, key) => {
           tableSettingsChangeHandler[action](nextValue, key);
         }}
         columnManager={columnManager}
+        displaySettings={displaySettings}
         customSettings={customSettings}
-        customColumns={visibleCustomColumns}
         selectedColumns={selectedColumns}
         customColumnManager={customColumnManager}
+        customColumns={visibleCustomColumns}
         managerTheme={select(
           'managerTheme',
           {
@@ -1148,6 +1197,7 @@ storiesOf('Components|DataTable', module)
           <main>
             <DataTable
               rows={withRowSelection ? rowsWithSelection : rows}
+              customRows={customRows}
               sortedBy={sortedBy}
               onSortChange={onSortChange}
               sortDirection={sortDirection}

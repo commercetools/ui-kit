@@ -135,7 +135,9 @@ export type TDataTableSettingsProps = {
   managerTheme?: 'light' | 'dark';
   updateCustomSettings?: (settings: TAdditionalSettings) => void;
   selectedColumns?: TColumnData[];
-  customColumnManager?: TColumnManagerProps;
+  customColumnManager?: TColumnManagerProps & {
+    disableCustomColumnManager?: boolean;
+  };
 };
 
 export interface TRow {
@@ -287,5 +289,14 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
   /**
    * Custom column manager settings.
    */
-  customColumnManager?: TColumnManagerProps;
+  customColumnManager?: TColumnManagerProps & {
+    disableCustomColumnManager?: boolean;
+  };
+  /**
+   * The columns of the nested items to be rendered in the table. Just like the columns, Each object requires a unique `key` which should correspond to property key of
+   * the items of `rows` that you want to render under this column, and a `label`
+   * which defines the name shown on the header.
+   * The list of columns to be rendered.
+   */
+  customColumns?: TColumnProps<Row>[];
 };

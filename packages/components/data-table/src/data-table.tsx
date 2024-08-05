@@ -150,6 +150,12 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    */
   rows: Row[];
   /**
+   * The list of data that needs to be rendered in the nested component. Each object in the list can
+   * have any shape as long as it has a unique identifier.
+   * The data is rendered by using the callback render function `itemRenderer`.
+   */
+  customRows?: Row[];
+  /**
    * Each object requires a unique `key` which should correspond to property key of
    * the items of `rows` that you want to render under this column, and a `label`
    * which defines the name shown on the header.
@@ -157,6 +163,13 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    * Each column can be customized (see properties below).
    */
   columns: TColumn<Row>[];
+  /**
+   * The columns of the nested items to be rendered in the table. Just like the columns, Each object requires a unique `key` which should correspond to property key of
+   * the items of `rows` that you want to render under this column, and a `label`
+   * which defines the name shown on the header.
+   * The list of columns to be rendered.
+   */
+  customColumns?: TColumn<Row>[];
   /**
    * Element to render within the `tfoot` (footer) element of the table.
    */

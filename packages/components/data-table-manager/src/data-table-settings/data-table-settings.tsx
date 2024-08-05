@@ -41,6 +41,7 @@ const TopBarContainer = styled.div`
 `;
 
 export const getDropdownOptions = ({
+  areCustomColumnSettingsEnabled,
   areColumnSettingsEnabled,
   areDisplaySettingsEnabled,
   customSettings,
@@ -48,6 +49,7 @@ export const getDropdownOptions = ({
   displaySettingsLabel,
   formatMessage,
 }: {
+  areCustomColumnSettingsEnabled: boolean;
   areColumnSettingsEnabled: boolean;
   areDisplaySettingsEnabled: boolean;
   customSettings?: TCustomSettingsProps[];
@@ -68,10 +70,13 @@ export const getDropdownOptions = ({
       : []),
     ...(customSettings
       ? Object.entries(customSettings).map(([key, customSetting]) => {
-          return {
-            value: key,
-            label: customSetting.customPanelTitle,
-          };
+          return customSetting.type === COLUMN_MANAGER &&
+            !areCustomColumnSettingsEnabled
+            ? undefined
+            : {
+                value: key,
+                label: customSetting.customPanelTitle,
+              };
         })
       : []),
     ...(areDisplaySettingsEnabled
@@ -84,7 +89,7 @@ export const getDropdownOptions = ({
           },
         ]
       : []),
-  ];
+  ].filter((option) => option !== undefined);
 };
 
 export const getMappedColumns = (columns: TColumnData[] = []) =>
@@ -109,6 +114,11 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
     props.columnManager && !props.columnManager.disableColumnManager
   );
 
+  const areCustomColumnSettingsEnabled = Boolean(
+    props.customColumnManager &&
+      !props.customColumnManager?.disableCustomColumnManager
+  );
+
   warning(
     areDisplaySettingsEnabled || areColumnSettingsEnabled
       ? typeof props.onSettingsChange === 'function'
@@ -122,6 +132,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   );
 
   const dropdownOptions: TDropdownOption[] = getDropdownOptions({
+    areCustomColumnSettingsEnabled,
     areDisplaySettingsEnabled,
     areColumnSettingsEnabled,
     customSettings: props.customSettings,

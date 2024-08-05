@@ -46,6 +46,7 @@ export const DataTableManagerProvider = ({
   customSettings,
   selectedColumns,
   customColumnManager,
+  customColumns,
   debug, // TODO - remove when nested rows are implemented
 }: {
   children: React.ReactNode;
@@ -57,6 +58,7 @@ export const DataTableManagerProvider = ({
   customSettings?: TCustomSettingsProps[];
   selectedColumns?: TColumnData[];
   customColumnManager?: TColumnManagerProps;
+  customColumns?: TColumnData[];
   debug: boolean;
 }) => {
   const [additionalSettings, setAdditionalSettings] = useState<{
@@ -104,6 +106,7 @@ export const DataTableManagerProvider = ({
       additionalSettings,
       selectedColumns,
       customColumnManager,
+      customColumns,
       debug, // TODO - remove when nested rows are implemented
     };
   }, [
@@ -116,6 +119,7 @@ export const DataTableManagerProvider = ({
     additionalSettings,
     selectedColumns,
     customColumnManager,
+    customColumns,
     debug,
   ]);
 

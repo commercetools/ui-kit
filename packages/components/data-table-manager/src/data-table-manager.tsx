@@ -29,6 +29,8 @@ const DataTableManager = <Row extends TRow = TRow>(
     props.selectedColumns || dataTableManagerContext.selectedColumns;
   const customColumnManager =
     props.customColumnManager || dataTableManagerContext.customColumnManager;
+  const customColumns =
+    props.customColumns || dataTableManagerContext.customColumns;
   const areDisplaySettingsEnabled = Boolean(
     displaySettings && !displaySettings.disableDisplaySettings
   );
@@ -91,6 +93,7 @@ const DataTableManager = <Row extends TRow = TRow>(
       {props.children
         ? cloneElement(props.children, {
             columns,
+            customColumns,
             isCondensed:
               areDisplaySettingsEnabled && props.displaySettings!.isCondensed,
             customSettingsPayload,
