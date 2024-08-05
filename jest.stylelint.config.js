@@ -8,6 +8,7 @@ module.exports = {
   modulePathIgnorePatterns: [
     'dist',
     'docs/public',
+    'storybook',
     '.spec.js',
     '.visualspec.js',
     '.visualroute.js',

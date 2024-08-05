@@ -1,0 +1,22 @@
+<link href="./fonts/index.css" rel="stylesheet">
+<style>
+
+  .sbdocs-content *:not(pre):not(code):not(.token):not(.prismjs > div):not(.prismjs > div > span) {
+    font-family: 'Inter', monospace !important;
+  }
+
+  /* fixes an issue with positioned: fixed elements */
+  .docs-story :not(.sb-story *) {
+     transform: none;
+  }
+
+  table code {
+    /** make sure that e.g. long lists of unions etc. in prop-tables don't break the layout */
+    white-space: pre-wrap !important;
+  }
+
+  /** remove a default-margin from the table element, when it's DataTable */
+  .sbdocs-content table[class*="TableGrid"] {
+    margin: 0;
+  }
+</style>

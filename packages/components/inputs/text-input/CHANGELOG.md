@@ -1,5 +1,17 @@
 # @commercetools-uikit/text-input
 
+## 19.9.0
+
+### Patch Changes
+
+- [#2854](https://github.com/commercetools/ui-kit/pull/2854) [`de77fa9`](https://github.com/commercetools/ui-kit/commit/de77fa9ae21949def7ff7d5cf183421f8ae7dbcb) Thanks [@ragafus](https://github.com/ragafus)! - Forward `maxLength` prop to `TextField` and `TextInput` input element
+
+- Updated dependencies []:
+  - @commercetools-uikit/input-utils@19.9.0
+  - @commercetools-uikit/design-system@19.9.0
+  - @commercetools-uikit/constraints@19.9.0
+  - @commercetools-uikit/utils@19.9.0
+
 ## 19.8.0
 
 ### Patch Changes

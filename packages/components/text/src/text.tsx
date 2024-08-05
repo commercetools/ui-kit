@@ -260,6 +260,7 @@ const Detail = (props: TDetailProps) => {
 
   return (
     <div
+      id={props.id}
       css={detailStyles(props)}
       title={props.title}
       aria-labelledby={props['aria-labelledby']}

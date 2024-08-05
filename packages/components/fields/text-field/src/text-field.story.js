@@ -8,6 +8,7 @@ import {
   text,
   select,
   object,
+  number,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../../docs/.storybook/decorators/section';
@@ -78,6 +79,7 @@ storiesOf('Components|Fields', module)
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               placeholder={text('placeholder', 'Placeholder')}
+              maxLength={number('maxLength', undefined)}
               title={text('title', 'Username')}
               hint={hint}
               description={text('description', '')}

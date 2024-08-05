@@ -60,6 +60,7 @@ export default Example;
 | `hasError`             | `boolean`                                                                                             |          |           | Indicates if the input has invalid values                                                                                 |
 | `hasWarning`           | `boolean`                                                                                             |          |           |                                                                                                                           |
 | `placeholder`          | `string`                                                                                              |          |           | Placeholder text for the input                                                                                            |
+| `maxLength`            | `number`                                                                                              |          |           | Maximum number of characters allowed in the input field                                                                   |
 | `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                |
 
 ## `data-*` props

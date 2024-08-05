@@ -89,6 +89,10 @@ export type TTextInputProps = {
     | 16
     | 'scale'
     | 'auto';
+  /**
+   * Maximum number of characters allowed in the input. If this prop is used, it is recommended to inform the user about this limit in the InputField description, or otherwise.
+   */
+  maxLength?: number;
 };
 
 const defaultProps: Pick<TTextInputProps, 'horizontalConstraint'> = {
@@ -114,6 +118,7 @@ const TextInput = (props: TTextInputProps) => {
         onFocus={props.onFocus}
         disabled={props.isDisabled}
         placeholder={props.placeholder}
+        maxLength={props.maxLength}
         readOnly={props.isReadOnly}
         autoFocus={props.isAutofocussed}
         autoComplete={props.autoComplete}

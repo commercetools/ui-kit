@@ -1,5 +1,15 @@
 # @commercetools-uikit/link
 
+## 19.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.9.0
+  - @commercetools-uikit/icons@19.9.0
+  - @commercetools-uikit/spacings-inline@19.9.0
+  - @commercetools-uikit/utils@19.9.0
+
 ## 19.8.0
 
 ### Patch Changes

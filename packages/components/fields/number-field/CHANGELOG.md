@@ -1,5 +1,23 @@
 # @commercetools-uikit/number-field
 
+## 19.9.0
+
+### Minor Changes
+
+- [#2853](https://github.com/commercetools/ui-kit/pull/2853) [`f10448a`](https://github.com/commercetools/ui-kit/commit/f10448a1a4da806305a3b0a63469d955a03fcc5c) Thanks [@ragafus](https://github.com/ragafus)! - Add `belowMin` and `aboveMax` error keys to `NumberField`
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@19.9.0
+  - @commercetools-uikit/field-errors@19.9.0
+  - @commercetools-uikit/field-warnings@19.9.0
+  - @commercetools-uikit/number-input@19.9.0
+  - @commercetools-uikit/design-system@19.9.0
+  - @commercetools-uikit/constraints@19.9.0
+  - @commercetools-uikit/spacings-stack@19.9.0
+  - @commercetools-uikit/utils@19.9.0
+
 ## 19.8.0
 
 ### Patch Changes
