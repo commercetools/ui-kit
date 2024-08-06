@@ -88,6 +88,7 @@ choiceGroupsByTheme:
         color-neutral-05: 'hsl(0deg 0% 80% / 5%)'
         color-neutral-10: 'hsl(0deg 0% 80% / 10%)'
         color-neutral-40: 'hsl(232, 18%, 40%)'
+        color-neutral-50: 'hsl(233, 18%, 50%)'
         color-neutral-60: 'hsl(232, 18%, 60%)'
         color-neutral-85: 'hsl(232, 18%, 85%)'
         color-neutral-90: 'hsl(232, 18%, 90%)'
@@ -301,6 +302,8 @@ variants:
     description: 'To differentiate component big size'
   secondary:
     description: 'To differentiate component secondary type'
+  tertiary:
+    description: 'To differentiate component tertiary type'
   '10':
     description: 'To differentiate component small size'
   '20':

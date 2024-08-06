@@ -10,6 +10,7 @@ module.exports = {
     '.cache',
     'docs/.public',
     'docs/public',
+    'storybook',
     'dist',
   ],
   testMatch: ['<rootDir>/**/*.js', '<rootDir>/**/*.ts', '<rootDir>/**/*.tsx'],
