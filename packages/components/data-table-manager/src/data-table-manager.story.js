@@ -715,7 +715,10 @@ storiesOf('Components|DataTable', module)
     });
 
     const customColumnManager = {
-      areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
+      areHiddenCustomColumnsSearchable: boolean(
+        'areHiddenCustomColumnsSearchable',
+        true
+      ),
       searchHiddenColumns: (searchTerm) => {
         setCustomTableData({
           ...customTableData,
@@ -728,7 +731,7 @@ storiesOf('Components|DataTable', module)
           ),
         });
       },
-      disableColumnManager: boolean('disableColumnManager', false),
+      disableCustomColumnManager: boolean('disableCustomColumnManager', false),
       visibleColumnKeys: customTableData.visibleColumnKeys,
       hideableColumns: customTableData.columns,
     };

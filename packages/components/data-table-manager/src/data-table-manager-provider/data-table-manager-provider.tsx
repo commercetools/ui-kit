@@ -13,6 +13,7 @@ export type TDataTableManagerContext<Row extends TRow = TRow> =
     columns: TDataTableManagerColumnProps<Row>[];
     isCondensed?: boolean;
     customSettingsPayload?: Record<string, unknown>;
+    customColumns?: TColumnData[];
     debug: boolean; // TODO - remove when nested rows are implemented
   };
 
