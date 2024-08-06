@@ -1,3 +1,4 @@
+// @ts-expect-error
 import type { Meta, StoryFn } from '@storybook/react';
 import DataTable from './../../data-table';
 import DataTableManager from './index';
@@ -7,6 +8,9 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import { useSorting } from '@commercetools-uikit/hooks';
 import { UPDATE_ACTIONS } from './constants';
+import { DataTableManagerProvider } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
+import Spacings from '@commercetools-uikit/spacings';
+import SearchTextInput from '@commercetools-uikit/search-text-input';
 
 const meta: Meta<typeof DataTableManager> = {
   title: 'components/DataTable/DataTableManager',
@@ -143,6 +147,7 @@ const initialVisibleColumns = [
   {
     key: 'customRenderer',
     label: 'Custom Column',
+    // @ts-expect-error
     renderItem: (row) => (
       <a href="https://uikit.commercetools.com/">{row.customRenderer}</a>
     ),
@@ -167,6 +172,7 @@ const initialVisibleColumns = [
 
 const initialColumnsState = [...initialVisibleColumns, ...initialHiddenColumns];
 
+// @ts-expect-error
 export const BasicExample: Story = (args) => {
   const [tableData, setTableData] = useState({
     columns: initialColumnsState,
@@ -194,10 +200,12 @@ export const BasicExample: Story = (args) => {
     {}
   );
   const visibleColumns = tableData.visibleColumnKeys.map(
+    // @ts-expect-error
     (columnKey) => mappedColumns[columnKey]
   );
 
   const tableSettingsChangeHandler = {
+    // @ts-expect-error
     [UPDATE_ACTIONS.COLUMNS_UPDATE]: (visibleColumnKeys) =>
       setTableData({
         ...tableData,
@@ -230,6 +238,7 @@ export const BasicExample: Story = (args) => {
 
   const columnManager = {
     areHiddenColumnsSearchable: true,
+    // @ts-expect-error
     searchHiddenColumns: (searchTerm) => {
       setTableData({
         ...tableData,
@@ -254,6 +263,7 @@ export const BasicExample: Story = (args) => {
         {...args}
         columns={visibleColumns}
         onSettingsChange={(action, nextValue) => {
+          // @ts-expect-error
           tableSettingsChangeHandler[action](nextValue);
         }}
         columnManager={columnManager}
@@ -271,6 +281,132 @@ export const BasicExample: Story = (args) => {
 };
 
 BasicExample.args = {
+  topBar: 'topBar can display arbitrary ReactNodes',
+  managerTheme: 'light',
+};
+
+/** Use the `DataTableManagerProvider` component if you need to customize the DOM-structure */
+// @ts-expect-error
+export const WithCustomLayout: Story = (args) => {
+  const [tableData, setTableData] = useState({
+    columns: initialColumnsState,
+    visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
+  });
+
+  const [isCondensed, setIsCondensed] = useState(true);
+  const [isWrappingText, setIsWrappingText] = useState(false);
+
+  const {
+    items: rows,
+    sortedBy,
+    sortDirection,
+    onSortChange,
+  } = useSorting(items);
+
+  const showDisplaySettingsConfirmationButtons = false;
+  const showColumnManagerConfirmationButtons = false;
+
+  const mappedColumns = tableData.columns.reduce(
+    (columns, column) => ({
+      ...columns,
+      [column.key]: column,
+    }),
+    {}
+  );
+  const visibleColumns = tableData.visibleColumnKeys.map(
+    // @ts-expect-error
+    (columnKey) => mappedColumns[columnKey]
+  );
+
+  const tableSettingsChangeHandler = {
+    // @ts-expect-error
+    [UPDATE_ACTIONS.COLUMNS_UPDATE]: (visibleColumnKeys) =>
+      setTableData({
+        ...tableData,
+        visibleColumnKeys,
+      }),
+    [UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE]: setIsCondensed,
+    [UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE]: setIsWrappingText,
+  };
+
+  const displaySettingsButtons = showDisplaySettingsConfirmationButtons
+    ? {
+        primaryButton: <FooterPrimaryButton />,
+        secondaryButton: <FooterSecondaryButton />,
+      }
+    : {};
+
+  const columnManagerButtons = showColumnManagerConfirmationButtons
+    ? {
+        primaryButton: <FooterPrimaryButton />,
+        secondaryButton: <FooterSecondaryButton />,
+      }
+    : {};
+
+  const displaySettings = {
+    disableDisplaySettings: false,
+    isCondensed,
+    isWrappingText,
+    ...displaySettingsButtons,
+  };
+
+  const columnManager = {
+    areHiddenColumnsSearchable: true,
+    // @ts-expect-error
+    searchHiddenColumns: (searchTerm) => {
+      setTableData({
+        ...tableData,
+        columns: initialColumnsState.filter(
+          (column) =>
+            tableData.visibleColumnKeys.includes(column.key) ||
+            column.label
+              .toLocaleLowerCase()
+              .includes(searchTerm.toLocaleLowerCase())
+        ),
+      });
+    },
+    disableColumnManager: false,
+    visibleColumnKeys: tableData.visibleColumnKeys,
+    hideableColumns: tableData.columns,
+    ...columnManagerButtons,
+  };
+
+  return (
+    <DataTableManagerProvider
+      columns={visibleColumns}
+      displaySettings={displaySettings}
+      // @ts-expect-error
+      onSettingsChange={(action, nextValue) => {
+        tableSettingsChangeHandler[action](nextValue);
+      }}
+      columnManager={columnManager}
+    >
+      <Spacings.Stack>
+        <header>
+          <Spacings.Inline justifyContent="flex-end">
+            {/* @ts-expect-error */}
+            <DataTableManager />
+          </Spacings.Inline>
+          {/* @ts-expect-error */}
+          <SearchTextInput placeholder="'Dummy search component'" isReadOnly />
+        </header>
+        <main>
+          <DataTable
+            rows={rows}
+            sortedBy={sortedBy}
+            onSortChange={onSortChange}
+            sortDirection={sortDirection}
+          />
+        </main>
+
+        <br />
+        <hr />
+      </Spacings.Stack>
+    </DataTableManagerProvider>
+  );
+};
+
+WithCustomLayout.args = {
   topBar: 'topBar can display arbitrary ReactNodes',
   managerTheme: 'light',
 };
