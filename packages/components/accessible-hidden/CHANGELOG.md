@@ -1,5 +1,11 @@
 # @commercetools-uikit/accessible-hidden
 
+## 19.10.0
+
+### Patch Changes
+
+- [#2874](https://github.com/commercetools/ui-kit/pull/2874) [`d8f13af`](https://github.com/commercetools/ui-kit/commit/d8f13aff1709c5d0a7f5592200aefab4e05be92b) Thanks [@emmenko](https://github.com/emmenko)! - Keep JS comments in type declarations
+
 ## 19.9.0
 
 ## 19.8.0

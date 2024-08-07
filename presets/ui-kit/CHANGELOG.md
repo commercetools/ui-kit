@@ -1,5 +1,49 @@
 # @commercetools-frontend/ui-kit
 
+## 19.10.0
+
+### Patch Changes
+
+- [#2874](https://github.com/commercetools/ui-kit/pull/2874) [`d8f13af`](https://github.com/commercetools/ui-kit/commit/d8f13aff1709c5d0a7f5592200aefab4e05be92b) Thanks [@emmenko](https://github.com/emmenko)! - Keep JS comments in type declarations
+
+- Updated dependencies [[`82e5e2a`](https://github.com/commercetools/ui-kit/commit/82e5e2a85ca0f37a9e9d8bb42a0a6673dc64646d), [`d8f13af`](https://github.com/commercetools/ui-kit/commit/d8f13aff1709c5d0a7f5592200aefab4e05be92b), [`82e5e2a`](https://github.com/commercetools/ui-kit/commit/82e5e2a85ca0f37a9e9d8bb42a0a6673dc64646d), [`d9d60a8`](https://github.com/commercetools/ui-kit/commit/d9d60a8223e1f70aa3908218e90d888f82ae8d50)]:
+  - @commercetools-uikit/design-system@19.10.0
+  - @commercetools-uikit/accessible-hidden@19.10.0
+  - @commercetools-uikit/avatar@19.10.0
+  - @commercetools-uikit/card@19.10.0
+  - @commercetools-uikit/collapsible@19.10.0
+  - @commercetools-uikit/collapsible-motion@19.10.0
+  - @commercetools-uikit/collapsible-panel@19.10.0
+  - @commercetools-uikit/constraints@19.10.0
+  - @commercetools-uikit/data-table@19.10.0
+  - @commercetools-uikit/data-table-manager@19.10.0
+  - @commercetools-uikit/dropdown-menu@19.10.0
+  - @commercetools-uikit/field-errors@19.10.0
+  - @commercetools-uikit/field-label@19.10.0
+  - @commercetools-uikit/grid@19.10.0
+  - @commercetools-uikit/icons@19.10.0
+  - @commercetools-uikit/selectable-search-input@19.10.0
+  - @commercetools-uikit/label@19.10.0
+  - @commercetools-uikit/link@19.10.0
+  - @commercetools-uikit/loading-spinner@19.10.0
+  - @commercetools-uikit/messages@19.10.0
+  - @commercetools-uikit/notifications@19.10.0
+  - @commercetools-uikit/pagination@19.10.0
+  - @commercetools-uikit/primary-action-dropdown@19.10.0
+  - @commercetools-uikit/progress-bar@19.10.0
+  - @commercetools-uikit/stamp@19.10.0
+  - @commercetools-uikit/tag@19.10.0
+  - @commercetools-uikit/text@19.10.0
+  - @commercetools-uikit/tooltip@19.10.0
+  - @commercetools-uikit/view-switcher@19.10.0
+  - @commercetools-uikit/hooks@19.10.0
+  - @commercetools-uikit/i18n@19.10.0
+  - @commercetools-uikit/utils@19.10.0
+  - @commercetools-uikit/buttons@19.10.0
+  - @commercetools-uikit/fields@19.10.0
+  - @commercetools-uikit/inputs@19.10.0
+  - @commercetools-uikit/spacings@19.10.0
+
 ## 19.9.0
 
 ### Patch Changes

@@ -1,5 +1,25 @@
 # @commercetools-uikit/data-table
 
+## 19.10.0
+
+### Minor Changes
+
+- [#2851](https://github.com/commercetools/ui-kit/pull/2851) [`d9d60a8`](https://github.com/commercetools/ui-kit/commit/d9d60a8223e1f70aa3908218e90d888f82ae8d50) Thanks [@ddouglasz](https://github.com/ddouglasz)! - This extends the data table manager settings to make provision for additional settings that can allow users add more configurations to the already existing settings of the data table manager.
+  With the new approach, a user can now add any desired configuration option to the settings dropdown, and also create their own settings interface (a custom settings component) to configure the data table to their desired settings.
+
+### Patch Changes
+
+- [#2874](https://github.com/commercetools/ui-kit/pull/2874) [`d8f13af`](https://github.com/commercetools/ui-kit/commit/d8f13aff1709c5d0a7f5592200aefab4e05be92b) Thanks [@emmenko](https://github.com/emmenko)! - Keep JS comments in type declarations
+
+- Updated dependencies [[`82e5e2a`](https://github.com/commercetools/ui-kit/commit/82e5e2a85ca0f37a9e9d8bb42a0a6673dc64646d), [`d8f13af`](https://github.com/commercetools/ui-kit/commit/d8f13aff1709c5d0a7f5592200aefab4e05be92b), [`d9d60a8`](https://github.com/commercetools/ui-kit/commit/d9d60a8223e1f70aa3908218e90d888f82ae8d50)]:
+  - @commercetools-uikit/design-system@19.10.0
+  - @commercetools-uikit/accessible-button@19.10.0
+  - @commercetools-uikit/secondary-icon-button@19.10.0
+  - @commercetools-uikit/data-table-manager@19.10.0
+  - @commercetools-uikit/icons@19.10.0
+  - @commercetools-uikit/hooks@19.10.0
+  - @commercetools-uikit/utils@19.10.0
+
 ## 19.9.0
 
 ### Patch Changes
