@@ -352,8 +352,9 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {props.rows.map((row, rowIndex) => (
-              <>
+            {/* TODO - initial poc for the nested rows - comment this out to visualize the onclick from the data-table-manager*/}
+            {/* {props.rows.map((row, rowIndex) => (
+              <td key={row.id}>
                 <DataRow<Row>
                   {...props}
                   isCondensed={condensedValue}
@@ -370,17 +371,35 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
                     props.rows.length,
                     props.footer
                   )}
-                  // onRowClick={() => handleExpandRow(row)}
+                   onRowClick={() => handleExpandRow(row)}
                 />
-                {/* TODO - initial poc for the nested rows - comment this out to visualize the onclick from the data-table-manager*/}
-                {/* <div
+                <div
                   style={{
                     display: openedItemIds.includes(row.id) ? 'block' : 'none',
                   }}
                 >
                   {props.renderNestedRow && props.renderNestedRow(row)}
-                </div> */}
-              </>
+                </div>
+              </td >
+            ))} */}
+            {props.rows.map((row, rowIndex) => (
+              <DataRow<Row>
+                {...props}
+                isCondensed={condensedValue}
+                columns={columnsData}
+                row={row}
+                key={row.id}
+                rowIndex={rowIndex}
+                shouldClipContent={
+                  columnResizingReducer.getIsAnyColumnBeingResized() ||
+                  hasTableBeenResized
+                }
+                shouldRenderBottomBorder={shouldRenderRowBottomBorder(
+                  rowIndex,
+                  props.rows.length,
+                  props.footer
+                )}
+              />
             ))}
           </TableBody>
         </ColumnResizingContext.Provider>
