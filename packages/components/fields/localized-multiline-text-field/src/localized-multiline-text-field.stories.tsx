@@ -6,7 +6,7 @@ import LocalizedMultilineTextField, {
 import { useState } from 'react';
 
 const meta: Meta<typeof LocalizedMultilineTextField> = {
-  title: 'field/LocalizedMultilineTextField',
+  title: 'Form/Fields/LocalizedMultilineTextField',
   // @ts-expect-error, @todo fix component/types
   component: LocalizedMultilineTextField,
   argTypes: {

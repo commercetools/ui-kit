@@ -3,7 +3,7 @@ import MoneyInput, { TCurrencyCode } from './money-input';
 import { useState } from 'react';
 
 const meta: Meta<typeof MoneyInput> = {
-  title: 'form/MoneyInput',
+  title: 'Form/Inputs/MoneyInput',
   component: MoneyInput,
 };
 export default meta;

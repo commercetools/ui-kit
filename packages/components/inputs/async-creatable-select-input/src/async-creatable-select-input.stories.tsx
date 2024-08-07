@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { GroupBase, OptionsOrGroups } from 'react-select';
 
 const meta: Meta<typeof AsyncCreatableSelectInput> = {
-  title: 'form/AsyncCreatableSelectInput',
+  title: 'Form/Inputs/AsyncCreatableSelectInput',
   component: AsyncCreatableSelectInput,
   argTypes: {
     iconLeft: iconArgType,

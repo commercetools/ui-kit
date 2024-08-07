@@ -4,7 +4,7 @@ import NumberField from './number-field';
 import { useState } from 'react';
 
 const meta: Meta<typeof NumberField> = {
-  title: 'field/NumberField',
+  title: 'Form/Fields/NumberField',
   // @ts-expect-error, fix component and/or types
   component: NumberField,
   argTypes: {

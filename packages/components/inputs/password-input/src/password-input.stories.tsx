@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import PasswordInput from './password-input';
 
 const meta: Meta<typeof PasswordInput> = {
-  title: 'form/PasswordInput',
+  title: 'Form/Inputs/PasswordInput',
   component: PasswordInput,
 };
 export default meta;

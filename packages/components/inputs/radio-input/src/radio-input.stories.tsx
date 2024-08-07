@@ -3,7 +3,7 @@ import RadioInput, { TGroupProps } from './index';
 import { useState } from 'react';
 
 const meta: Meta<typeof RadioInput.Group> = {
-  title: 'form/RadioInput',
+  title: 'Form/Inputs/RadioInput',
   component: RadioInput.Group,
   subcomponents: {
     // @ts-ignore

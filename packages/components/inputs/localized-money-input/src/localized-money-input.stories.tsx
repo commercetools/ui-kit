@@ -3,7 +3,7 @@ import LocalizedMoneyInput from './localized-money-input';
 import { useState } from 'react';
 
 const meta: Meta<typeof LocalizedMoneyInput> = {
-  title: 'form/LocalizedMoneyInput',
+  title: 'Form/Inputs/LocalizedMoneyInput',
   // @ts-ignore
   component: LocalizedMoneyInput,
   argTypes: {

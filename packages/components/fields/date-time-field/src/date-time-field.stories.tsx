@@ -3,7 +3,7 @@ import DateTimeField from './date-time-field';
 import { useState } from 'react';
 
 const meta: Meta<typeof DateTimeField> = {
-  title: 'field/DateTimeField',
+  title: 'Form/Fields/DateTimeField',
   // @ts-expect-error @todo fix component and/or component-types
   component: DateTimeField,
   argTypes: {

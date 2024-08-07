@@ -4,7 +4,7 @@ import SelectField from './select-field';
 import { useEffect, useState } from 'react';
 
 const meta: Meta<typeof SelectField> = {
-  title: 'field/SelectField',
+  title: 'Form/Fields/SelectField',
   // @ts-expect-error, fix story and/or types
   component: SelectField,
   argTypes: {

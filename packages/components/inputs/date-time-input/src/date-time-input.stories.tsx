@@ -3,7 +3,7 @@ import DateTimeInput, { TDateTimeInputProps } from './date-time-input';
 import { useState } from 'react';
 
 const meta: Meta<typeof DateTimeInput> = {
-  title: 'form/DateTimeInput',
+  title: 'Form/Inputs/DateTimeInput',
   component: DateTimeInput,
   argTypes: {
     timeZone: {

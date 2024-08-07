@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 
 const meta: Meta<typeof SearchSelectInput> = {
-  title: 'form/SearchSelectInput',
+  title: 'Form/Inputs/SearchSelectInput',
   component: SearchSelectInput,
   argTypes: {
     iconLeft: iconArgType,

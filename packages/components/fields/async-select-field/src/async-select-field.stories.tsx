@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { iconArgType } from '@/storybook-helpers';
 
 const meta: Meta<typeof AsyncSelectField> = {
-  title: 'field/AsyncSelectField',
+  title: 'Form/Fields/AsyncSelectField',
   //@ts-expect-error refactor component for propert typings
   component: AsyncSelectField,
   argTypes: {

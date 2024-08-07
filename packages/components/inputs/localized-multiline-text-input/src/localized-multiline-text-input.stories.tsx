@@ -5,7 +5,7 @@ import LocalizedMultilineTextInput, {
 import { useState } from 'react';
 
 const meta: Meta<typeof LocalizedMultilineTextInput> = {
-  title: 'form/LocalizedMultilineTextInput',
+  title: 'Form/Inputs/LocalizedMultilineTextInput',
   // @ts-ignore
   component: LocalizedMultilineTextInput,
 };

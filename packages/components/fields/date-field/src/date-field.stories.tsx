@@ -4,7 +4,7 @@ import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
 import { useState } from 'react';
 
 const meta: Meta<typeof DateField> = {
-  title: 'field/DateField',
+  title: 'Form/Fields/DateField',
   // @ts-expect-error, @todo refactory component and/or component-types
   component: DateField,
 };

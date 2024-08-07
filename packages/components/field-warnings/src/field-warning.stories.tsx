@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import FieldWarnings from './field-warnings';
 
 const meta: Meta<typeof FieldWarnings> = {
-  title: 'field/Field__/FieldWarnings',
+  title: 'Form/Fields/Field__/FieldWarnings',
   component: FieldWarnings,
 };
 export default meta;

@@ -3,7 +3,7 @@ import SelectableSearchInput from './selectable-search-input';
 import { iconArgType } from '@/storybook-helpers';
 
 const meta: Meta<typeof SelectableSearchInput> = {
-  title: 'form/SelectableSearchInput',
+  title: 'Form/Inputs/SelectableSearchInput',
   component: SelectableSearchInput,
   argTypes: {
     rightActionIcon: iconArgType,

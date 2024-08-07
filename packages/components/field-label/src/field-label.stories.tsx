@@ -5,7 +5,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import { BoxIcon } from '@commercetools-uikit/icons';
 
 const meta: Meta<typeof FieldLabel> = {
-  title: 'field/Field__/FieldLabel',
+  title: 'Form/Fields/Field__/FieldLabel',
   // @ts-ignore
   component: FieldLabel,
   argTypes: {

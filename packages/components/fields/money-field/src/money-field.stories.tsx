@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { iconArgType } from '@/storybook-helpers';
 
 const meta: Meta<typeof MoneyField> = {
-  title: 'field/MoneyField',
+  title: 'Form/Fields/MoneyField',
   // @ts-expect-error, refactor component/types
   component: MoneyField,
   argTypes: {

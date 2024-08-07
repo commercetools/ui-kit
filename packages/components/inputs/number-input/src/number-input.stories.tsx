@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import NumberInput from './number-input';
 
 const meta: Meta<typeof NumberInput> = {
-  title: 'form/NumberInput',
+  title: 'Form/Inputs/NumberInput',
   component: NumberInput,
   argTypes: {
     value: {

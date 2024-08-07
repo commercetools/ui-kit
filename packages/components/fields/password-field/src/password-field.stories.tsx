@@ -4,7 +4,7 @@ import PasswordField from './password-field';
 import { useState } from 'react';
 
 const meta: Meta<typeof PasswordField> = {
-  title: 'field/PasswordField',
+  title: 'Form/Fields/PasswordField',
   component: PasswordField,
   argTypes: {
     hintIcon: iconArgType,

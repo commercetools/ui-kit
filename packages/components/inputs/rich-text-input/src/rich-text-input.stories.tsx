@@ -8,7 +8,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import Text from '@commercetools-uikit/text';
 
 const meta: Meta<typeof RichTextInput> = {
-  title: 'form/RichTextInput',
+  title: 'Form/Inputs/RichTextInput',
   // @ts-ignore
   component: RichTextInput,
 };

@@ -3,7 +3,7 @@ import Toggle, { TToggleInputProps } from './toggle-input';
 import { useState } from 'react';
 
 const meta: Meta<typeof Toggle> = {
-  title: 'form/ToggleInput',
+  title: 'Form/Inputs/ToggleInput',
   component: Toggle,
 };
 

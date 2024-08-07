@@ -4,7 +4,7 @@ import CreatableSelectField from './creatable-select-field';
 import { useEffect, useState } from 'react';
 
 const meta: Meta<typeof CreatableSelectField> = {
-  title: 'field/CreatableSelectField',
+  title: 'Form/Fields/CreatableSelectField',
   // @ts-expect-error, @todo component needs refactoring
   component: CreatableSelectField,
   argTypes: {

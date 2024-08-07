@@ -10,7 +10,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import Text from '@commercetools-uikit/text';
 
 const meta: Meta<typeof LocalizedRichTextInput> = {
-  title: 'form/LocalizedRichTextInput',
+  title: 'Form/Inputs/LocalizedRichTextInput',
   // @ts-ignore
   component: LocalizedRichTextInput,
 };

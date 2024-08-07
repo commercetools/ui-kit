@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import TimeInput from './time-input';
 
 const meta: Meta<typeof TimeInput> = {
-  title: 'form/TimeInput',
+  title: 'Form/Inputs/TimeInput',
   component: TimeInput,
 };
 export default meta;

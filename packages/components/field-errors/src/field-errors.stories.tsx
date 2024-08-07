@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import FieldErrors from './field-errors';
 
 const meta: Meta<typeof FieldErrors> = {
-  title: 'field/Field___/FieldErrors',
+  title: 'Form/Fields/Field___/FieldErrors',
   component: FieldErrors,
 };
 export default meta;

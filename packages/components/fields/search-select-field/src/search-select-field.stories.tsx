@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 // @todo fix component types
 
 const meta: Meta<typeof SearchSelectField> = {
-  title: 'field/SearchSelectField',
+  title: 'Form/Fields/SearchSelectField',
   component: SearchSelectField,
   argTypes: {
     hintIcon: iconArgType,

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import RadioInput from '@commercetools-uikit/radio-input';
 
 const meta: Meta<typeof RadioField> = {
-  title: 'field/RadioField',
+  title: 'Form/Fields/RadioField',
   // @ts-expect-error, fix component and/or types
   component: RadioField,
   subcomponents: {

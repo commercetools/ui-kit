@@ -4,7 +4,7 @@ import { DateRangeInputProxy } from './date-range-input-proxy';
 import { useState } from 'react';
 
 const meta: Meta<typeof DateRangeInputProxy> = {
-  title: 'form/DateRangeInput',
+  title: 'Form/Inputs/DateRangeInput',
   component: DateRangeInputProxy,
 };
 export default meta;

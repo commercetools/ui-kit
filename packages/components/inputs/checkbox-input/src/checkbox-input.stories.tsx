@@ -3,7 +3,7 @@ import CheckboxInput from './checkbox-input';
 import styled from '@emotion/styled';
 
 const meta: Meta<typeof CheckboxInput> = {
-  title: 'form/CheckboxInput',
+  title: 'Form/Inputs/CheckboxInput',
   component: CheckboxInput,
 };
 export default meta;

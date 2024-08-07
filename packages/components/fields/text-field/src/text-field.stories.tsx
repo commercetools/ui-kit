@@ -4,7 +4,7 @@ import TextField from './text-field';
 import { useState } from 'react';
 
 const meta: Meta<typeof TextField> = {
-  title: 'field/TextField',
+  title: 'Form/Fields/TextField',
   // @ts-expect-error, @todo: fix component and/or types
   component: TextField,
   argTypes: {

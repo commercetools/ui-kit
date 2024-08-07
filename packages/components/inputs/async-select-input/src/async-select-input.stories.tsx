@@ -6,7 +6,7 @@ import Spacings from '@commercetools-uikit/spacings';
 import AsyncSelectInput from './async-select-input';
 
 const meta: Meta<typeof AsyncSelectInput> = {
-  title: 'form/AsyncSelectInput',
+  title: 'Form/Inputs/AsyncSelectInput',
   component: AsyncSelectInput,
   argTypes: {
     'aria-label': { control: 'text' },

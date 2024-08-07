@@ -5,7 +5,7 @@ import LocalizedTextField, {
 import { useState } from 'react';
 
 const meta: Meta<typeof LocalizedTextField> = {
-  title: 'field/LocalizedTextField',
+  title: 'Form/Fields/LocalizedTextField',
   // @ts-expect-error, fix component and/or component types
   component: LocalizedTextField,
   argTypes: {

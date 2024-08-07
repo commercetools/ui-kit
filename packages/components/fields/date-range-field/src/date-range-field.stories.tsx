@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { type MomentInput } from 'moment';
 
 const meta: Meta<typeof DateRangeField> = {
-  title: 'field/DateRangeField',
+  title: 'Form/Fields/DateRangeField',
   /** @ts-expect-error @todo refactor component/component-types*/
   component: DateRangeField,
 };

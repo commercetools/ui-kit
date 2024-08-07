@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import DateInput from './date-input';
 
 const meta: Meta<typeof DateInput> = {
-  title: 'form/DateInput',
+  title: 'Form/Inputs/DateInput',
   component: DateInput,
 };
 export default meta;

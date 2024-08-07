@@ -4,7 +4,7 @@ import TimeField from './time-field';
 import { useState } from 'react';
 
 const meta: Meta<typeof TimeField> = {
-  title: 'field/TimeField',
+  title: 'Form/Fields/TimeField',
   // @ts-expect-error @todo fix component and/or types
   component: TimeField,
   argTypes: {

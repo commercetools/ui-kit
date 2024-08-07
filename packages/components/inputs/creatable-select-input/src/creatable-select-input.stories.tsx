@@ -5,7 +5,7 @@ import { iconArgType } from '@/storybook-helpers';
 import { useEffect, useState } from 'react';
 
 const meta: Meta<typeof CreatableSelectInput> = {
-  title: 'form/CreatableSelectInput',
+  title: 'Form/Inputs/CreatableSelectInput',
   component: CreatableSelectInput,
   argTypes: {
     createOptionPosition: {

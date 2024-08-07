@@ -3,7 +3,7 @@ import LocalizedTextInput from './localized-text-input';
 import { useState } from 'react';
 
 const meta: Meta<typeof LocalizedTextInput> = {
-  title: 'form/LocalizedTextInput',
+  title: 'Form/Inputs/LocalizedTextInput',
   // @ts-ignore
   component: LocalizedTextInput,
 };
