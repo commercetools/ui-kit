@@ -9,12 +9,17 @@ import DisplaySettingsManager, {
   DENSITY_COMPACT,
   SHOW_HIDE_ON_DEMAND,
 } from '../display-settings-manager';
-import ColumnSettingsManager from '../column-settings-manager';
+import { ColumnSettingsManager } from '../column-settings-manager';
+import CustomSettingsManager from '../custom-settings-manager';
 import messages from './messages';
 import DropdownMenu from '@commercetools-uikit/dropdown-menu';
 import IconButton from '@commercetools-uikit/icon-button';
 import Tooltip from '@commercetools-uikit/tooltip';
-import { TColumnData, TDataTableSettingsProps } from '../types';
+import {
+  TColumnData,
+  TDataTableSettingsProps,
+  TCustomSettingsProps,
+} from '../types';
 
 export type TSelectChangeEvent = {
   target: {
@@ -36,31 +41,56 @@ const TopBarContainer = styled.div`
 `;
 
 export const getDropdownOptions = ({
+  areCustomColumnSettingsEnabled,
   areColumnSettingsEnabled,
   areDisplaySettingsEnabled,
+  customSettings,
+  columnManagerLabel,
+  displaySettingsLabel,
   formatMessage,
 }: {
+  areCustomColumnSettingsEnabled: boolean;
   areColumnSettingsEnabled: boolean;
   areDisplaySettingsEnabled: boolean;
+  customSettings?: TCustomSettingsProps[];
+  columnManagerLabel?: string;
+  displaySettingsLabel?: string;
   formatMessage: (message: MessageDescriptor) => string;
-}) => [
-  ...(areColumnSettingsEnabled
-    ? [
-        {
-          value: COLUMN_MANAGER,
-          label: formatMessage(messages.columnManagerOption),
-        },
-      ]
-    : []),
-  ...(areDisplaySettingsEnabled
-    ? [
-        {
-          value: DISPLAY_SETTINGS,
-          label: formatMessage(messages.displaySettingsOption),
-        },
-      ]
-    : []),
-];
+}) => {
+  return [
+    ...(areColumnSettingsEnabled
+      ? [
+          {
+            value: COLUMN_MANAGER,
+            label: columnManagerLabel
+              ? columnManagerLabel
+              : formatMessage(messages.columnManagerOption),
+          },
+        ]
+      : []),
+    ...(customSettings
+      ? Object.entries(customSettings).map(([key, customSetting]) => {
+          return customSetting.type === COLUMN_MANAGER &&
+            !areCustomColumnSettingsEnabled
+            ? undefined
+            : {
+                value: key,
+                label: customSetting.customPanelTitle,
+              };
+        })
+      : []),
+    ...(areDisplaySettingsEnabled
+      ? [
+          {
+            value: DISPLAY_SETTINGS,
+            label: displaySettingsLabel
+              ? displaySettingsLabel
+              : formatMessage(messages.displaySettingsOption),
+          },
+        ]
+      : []),
+  ].filter((option) => option !== undefined);
+};
 
 export const getMappedColumns = (columns: TColumnData[] = []) =>
   columns.reduce<MappedColumns>(
@@ -83,6 +113,12 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   const areColumnSettingsEnabled = Boolean(
     props.columnManager && !props.columnManager.disableColumnManager
   );
+
+  const areCustomColumnSettingsEnabled = Boolean(
+    props.customColumnManager &&
+      !props.customColumnManager?.disableCustomColumnManager
+  );
+
   warning(
     areDisplaySettingsEnabled || areColumnSettingsEnabled
       ? typeof props.onSettingsChange === 'function'
@@ -94,9 +130,14 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   const [openedPanelId, setOpenedPanelId] = useState<string | null | undefined>(
     null
   );
+
   const dropdownOptions: TDropdownOption[] = getDropdownOptions({
+    areCustomColumnSettingsEnabled,
     areDisplaySettingsEnabled,
     areColumnSettingsEnabled,
+    customSettings: props.customSettings,
+    columnManagerLabel: props.columnManager?.columnManagerLabel,
+    displaySettingsLabel: props.displaySettings?.displaySettingsLabel,
     formatMessage: intl.formatMessage,
   });
 
@@ -150,6 +191,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
       {openedPanelId === DISPLAY_SETTINGS && (
         <DisplaySettingsManager
           {...(props.displaySettings || {})}
+          title={props.displaySettings?.displaySettingsLabel}
           onClose={handleSettingsPanelChange}
           onDensityDisplayChange={(event) => {
             props.onSettingsChange?.(
@@ -169,6 +211,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
       {openedPanelId === COLUMN_MANAGER && (
         <ColumnSettingsManager
           {...(props.columnManager || {})}
+          title={props.columnManager?.columnManagerLabel}
           availableColumns={props.columnManager?.hideableColumns ?? []}
           selectedColumns={selectedColumns}
           onClose={handleSettingsPanelChange}
@@ -184,6 +227,67 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
           managerTheme={props.managerTheme}
         />
       )}
+      {props.customSettings &&
+        Object.entries(props.customSettings).map(([key, customSetting]) => {
+          if (!customSetting.key) {
+            throw new Error(
+              'ui-kit/DataTableManager: missing: `key` prop, `customSettings` must be a JSON in the format Record<string, Object>.'
+            );
+          }
+          const CustomComponent = customSetting.customComponent;
+          return (
+            key === openedPanelId && (
+              <div key={customSetting.key}>
+                {customSetting.type === COLUMN_MANAGER ? (
+                  CustomComponent && (
+                    <CustomComponent
+                      {...(customSetting || {})}
+                      additionalSettings={{
+                        ...customSetting,
+                        ...props.additionalSettings,
+                      }}
+                      onClose={handleSettingsPanelChange}
+                      managerTheme={props.managerTheme}
+                      selectedColumns={props.selectedColumns}
+                      availableColumns={props.customColumnManager ?? undefined}
+                      onUpdateColumns={(nextVisibleColumns, key) => {
+                        const keysOfVisibleColumns = nextVisibleColumns.map(
+                          (visibleColumn) => visibleColumn.key
+                        );
+                        props.onSettingsChange?.(
+                          UPDATE_ACTIONS.CUSTOM_COLUMNS_UPDATE,
+                          keysOfVisibleColumns,
+                          key
+                        );
+                      }}
+                    />
+                  )
+                ) : (
+                  <CustomSettingsManager
+                    {...(customSetting || {})}
+                    onClose={handleSettingsPanelChange}
+                    managerTheme={props.managerTheme}
+                  >
+                    {CustomComponent && (
+                      <CustomComponent
+                        updateCustomSettings={(settings) => {
+                          props.onSettingsChange?.(
+                            UPDATE_ACTIONS.CUSTOM_SETTINGS_UPDATE,
+                            settings
+                          );
+                        }}
+                        additionalSettings={{
+                          ...customSetting,
+                          ...props.additionalSettings,
+                        }}
+                      />
+                    )}
+                  </CustomSettingsManager>
+                )}
+              </div>
+            )
+          );
+        })}
     </Spacings.Stack>
   );
 };

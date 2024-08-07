@@ -1,0 +1,4 @@
+{
+  "main": "dist/commercetools-uikit-data-table-manager-column-settings-manager.cjs.js",
+  "module": "dist/commercetools-uikit-data-table-manager-column-settings-manager.esm.js"
+}

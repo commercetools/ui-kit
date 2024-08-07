@@ -9,10 +9,12 @@ import Text from '@commercetools-uikit/text';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import { designTokens } from '@commercetools-uikit/design-system';
 
+export type TIntlMessage = MessageDescriptor & {
+  values?: Record<string, React.ReactNode>;
+};
+
 type TSettingsContainerProps = {
-  title: MessageDescriptor & {
-    values?: Record<string, React.ReactNode>;
-  };
+  title?: TIntlMessage;
   closeButtonLabel: MessageDescriptor & {
     values?: Record<string, React.ReactNode>;
   };
@@ -23,6 +25,7 @@ type TSettingsContainerProps = {
   secondaryButton?: ReactElement;
   children: ReactNode;
   containerTheme?: 'light' | 'dark';
+  customSettingsTitle?: string | TIntlMessage;
 };
 
 const HeaderContainer = styled.div`
@@ -45,7 +48,13 @@ const SettingsContainer = (props: TSettingsContainerProps) => {
           <CardContentWrapper>
             <Spacings.Stack scale="xl">
               <HeaderContainer>
-                <Text.Headline as="h2" intlMessage={props.title} />
+                {props.customSettingsTitle ? (
+                  <Text.Headline as="h2">
+                    {props.customSettingsTitle}
+                  </Text.Headline>
+                ) : (
+                  <Text.Headline as="h2" intlMessage={props.title} />
+                )}
                 <AccessibleButton
                   onClick={props.onClose}
                   label={intl.formatMessage(props.closeButtonLabel)}

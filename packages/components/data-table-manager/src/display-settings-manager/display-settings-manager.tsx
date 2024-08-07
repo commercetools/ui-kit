@@ -21,6 +21,7 @@ import {
 } from './constants';
 
 export type TDensityManagerProps = {
+  title?: string;
   isCondensed?: boolean;
   isWrappingText?: boolean;
   primaryButton?: ReactElement;
@@ -44,6 +45,7 @@ const DensityManager = (props: TDensityManagerProps) => {
 
   return (
     <SettingsContainer
+      customSettingsTitle={props.title}
       title={messages.title}
       closeButtonLabel={messages.closeButtonLabel}
       onClose={props.onClose}
