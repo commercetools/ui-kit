@@ -2561,7 +2561,7 @@ __metadata:
   dependencies:
     "@manypkg/find-root": 1.1.0
     "@manypkg/get-packages": 1.1.3
-    "@types/node": 18.19.38
+    "@types/node": 20.14.14
     cac: 6.7.14
     omit-empty-es: 1.2.0
     prettier: 2.8.8
@@ -2584,7 +2584,7 @@ __metadata:
     "@types/listr": 0.14.9
     "@types/lodash": 4.17.5
     "@types/mdast": 3.0.15
-    "@types/node": 18.19.38
+    "@types/node": 20.14.14
     "@types/shelljs": 0.8.15
     "@types/unist": 3.0.2
     "@types/vfile": 4.0.0
@@ -7519,12 +7519,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.19.38":
-  version: 18.19.38
-  resolution: "@types/node@npm:18.19.38"
+"@types/node@npm:20.14.14":
+  version: 20.14.14
+  resolution: "@types/node@npm:20.14.14"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 1a2c052e4eccb9f41bb6535b2278a2a6bf33b1e76450ca35a586110d84439ac0111f7889749662330236e15a0e938c6af3a6a8b2f594aee007a7675467c16039
+  checksum: cb2199123efca94908ee7191cc7b7abc11b26bf1fbb93c2948d5537a6594eedc35d4748d9fa998078fdc2eb5cc3a11d6d87b2fea20a05bda9d304e37d3c3282a
   languageName: node
   linkType: hard
 
@@ -20209,7 +20209,7 @@ __metadata:
     "@testing-library/react": 12.1.5
     "@testing-library/react-hooks": 8.0.1
     "@types/is-hotkey": ^0.1.7
-    "@types/node": 18.19.38
+    "@types/node": 20.14.14
     "@types/prettier": ^2.7.3
     "@typescript-eslint/eslint-plugin": 6.21.0
     "@typescript-eslint/parser": 6.21.0
