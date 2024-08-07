@@ -4,6 +4,7 @@ import {
   ReactNode,
   MouseEventHandler,
   LegacyRef,
+  // useState,
 } from 'react';
 import isEqual from 'lodash/isEqual';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
@@ -150,12 +151,6 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    */
   rows: Row[];
   /**
-   * The list of data that needs to be rendered in the nested component. Each object in the list can
-   * have any shape as long as it has a unique identifier.
-   * The data is rendered by using the callback render function `itemRenderer`.
-   */
-  customRows?: Row[];
-  /**
    * Each object requires a unique `key` which should correspond to property key of
    * the items of `rows` that you want to render under this column, and a `label`
    * which defines the name shown on the header.
@@ -250,36 +245,38 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    */
   sortDirection?: 'desc' | 'asc';
   /**
-   * Manage custom settings for the table
+   * Custom row renderer for nested rows.
    */
-  customSettingsPayload?: Record<string, unknown>;
+  renderNestedRow?: (row: Row) => ReactNode;
+  /**
+   * If this is provided, then it should control the height of the expanded rows. In the event where there is more content than the maxHeight,
+   *  a scrollbar should make provision for the overflow.
+   */
+  maxExpandableHeight?: number;
 };
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
-  const { columns, isCondensed, customSettingsPayload, debug } =
-    useDataTableManagerContext();
+  const { columns, isCondensed } = useDataTableManagerContext();
   const isValueFromProvider = Boolean(columns && columns.length !== 0);
   const columnsData = isValueFromProvider ? columns : props.columns;
-  const isCustomSettingsFromProvider = Boolean(
-    customSettingsPayload && customSettingsPayload.length !== 0
-  );
-  const customSettingsData = isCustomSettingsFromProvider
-    ? customSettingsPayload
-    : props.customSettingsPayload;
   const condensedValue =
     isValueFromProvider && isCondensed !== undefined
       ? isCondensed
       : props.isCondensed;
 
+  //  TODO - initial poc for the nested rows
+  // const [openedItemIds, setOpenedItemIds] = useState<string[]>([]);
+  // const handleExpandRow = (row: Row) => {
+  //   const newOpenedItemIds = openedItemIds.includes(row.id)
+  //     ? openedItemIds.filter((id) => id !== row.id)
+  //     : [...openedItemIds, row.id];
+  //   setOpenedItemIds(newOpenedItemIds);
+  // };
+
   warning(
     columnsData.length > 0,
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
   );
-
-  // TODO - remove when nested rows are implemented
-  if (debug) {
-    console.log({ customSettingsData });
-  }
 
   const tableRef = useRef<HTMLTableElement>();
   const columnResizingReducer = useManualColumnResizing(tableRef);
@@ -356,23 +353,34 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
           </TableHeader>
           <TableBody>
             {props.rows.map((row, rowIndex) => (
-              <DataRow<Row>
-                {...props}
-                isCondensed={condensedValue}
-                columns={columnsData}
-                row={row}
-                key={row.id}
-                rowIndex={rowIndex}
-                shouldClipContent={
-                  columnResizingReducer.getIsAnyColumnBeingResized() ||
-                  hasTableBeenResized
-                }
-                shouldRenderBottomBorder={shouldRenderRowBottomBorder(
-                  rowIndex,
-                  props.rows.length,
-                  props.footer
-                )}
-              />
+              <>
+                <DataRow<Row>
+                  {...props}
+                  isCondensed={condensedValue}
+                  columns={columnsData}
+                  row={row}
+                  key={row.id}
+                  rowIndex={rowIndex}
+                  shouldClipContent={
+                    columnResizingReducer.getIsAnyColumnBeingResized() ||
+                    hasTableBeenResized
+                  }
+                  shouldRenderBottomBorder={shouldRenderRowBottomBorder(
+                    rowIndex,
+                    props.rows.length,
+                    props.footer
+                  )}
+                  // onRowClick={() => handleExpandRow(row)}
+                />
+                {/* TODO - initial poc for the nested rows - comment this out to visualize the onclick from the data-table-manager*/}
+                {/* <div
+                  style={{
+                    display: openedItemIds.includes(row.id) ? 'block' : 'none',
+                  }}
+                >
+                  {props.renderNestedRow && props.renderNestedRow(row)}
+                </div> */}
+              </>
             ))}
           </TableBody>
         </ColumnResizingContext.Provider>

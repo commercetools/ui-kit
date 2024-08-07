@@ -70,12 +70,6 @@ const DataTableManager = <Row extends TRow = TRow>(
   const updateCustomSettings =
     dataTableManagerContext.updateCustomSettings || updateSettings;
 
-  const customSettingsPayload = {} as Record<string, unknown>;
-  customSettings &&
-    Object.entries(customSettings).forEach(([key, settingsPayload]) => {
-      customSettingsPayload[key] = settingsPayload;
-    });
-
   return (
     <Spacings.Stack>
       <DataTableSettings
@@ -96,7 +90,6 @@ const DataTableManager = <Row extends TRow = TRow>(
             customColumns,
             isCondensed:
               areDisplaySettingsEnabled && props.displaySettings!.isCondensed,
-            customSettingsPayload,
           })
         : null}
     </Spacings.Stack>

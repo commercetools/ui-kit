@@ -27,127 +27,124 @@ import PropTypes from 'prop-types';
 const items = [
   {
     id: '5e188c29791747d9c54250e2',
+    isExpanded: false,
     name: 'Morgan Bean',
     customRenderer: 'CYCLONICA',
     phone: '+1 (895) 529-3300',
     age: 23,
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    itemDetails:
+      'More details rendered in the nested item. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
     id: '5e188c295ae0bb19afbb115f',
+    isExpanded: false,
     name: 'Franklin Cochran',
     customRenderer: 'TINGLES',
     phone: '+1 (835) 571-3268',
     age: 36,
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    itemDetails:
+      'More details rendered in the nested item. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
     id: '5e188c298f0ea901553c517f',
+    isExpanded: false,
     name: 'Salazar Craig',
     customRenderer: 'ECRAZE',
     phone: '+1 (944) 445-2594',
     age: 21,
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    itemDetails:
+      'More details rendered in the nested item. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
     id: '5e188c29b09bb748df833ed0',
+    isExpanded: false,
     name: 'Pamela Noble',
     customRenderer: 'FILODYNE',
     phone: '+1 (875) 421-3328',
     age: 34,
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    itemDetails:
+      'More details rendered in the nested item. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
     id: '5e188c29bc14e3b97ab2ad7d',
+    isExpanded: false,
     name: 'Terra Morrow',
     customRenderer: 'DAISU',
     phone: '+1 (807) 436-2026',
     age: 30,
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    itemDetails:
+      'More details rendered in the nested item. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
     id: '5e188c296c9b7cf486a0479c',
+    isExpanded: false,
     name: 'Cline Hansen',
     customRenderer: 'ULTRIMAX',
     phone: '+1 (934) 402-3675',
     age: 21,
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    itemDetails:
+      'More details rendered in the nested item. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
     id: '5e188c29b45c669d8e60303f',
+    isExpanded: false,
     name: 'Jefferson Rosario',
     customRenderer: 'COMTOURS',
     phone: '+1 (874) 437-2581',
     age: 32,
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    itemDetails:
+      'More details rendered in the nested item. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
     id: '5e188c29ca865647af147b4a',
+    isExpanded: false,
     name: 'Tania Waller',
     customRenderer: 'DOGSPA',
     phone: '+1 (964) 585-3040',
     age: 35,
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    itemDetails:
+      'More details rendered in the nested item. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
     id: '5e188c2910b83f907e9c66ab',
+    isExpanded: false,
     name: 'Butler Shepard',
     customRenderer: 'HOUSEDOWN',
     phone: '+1 (888) 434-2153',
     age: 21,
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    itemDetails:
+      'More details rendered in the nested item. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
   {
     id: '5e188c29a9ece9123d6a87a1',
+    isExpanded: false,
     name: 'Diana Wise',
     customRenderer: 'SPEEDBOLT',
     phone: '+1 (992) 535-2912',
     age: 27,
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
+    itemDetails:
+      'More details rendered in the nested item. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
   },
-];
-
-const customRows = [
-  [
-    {
-      item_id: '5e188c29791747d9c54250e2',
-      name: 'SKU',
-      phone: '+1 (895) 529-3300',
-      age: 23,
-      about:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
-    },
-    {
-      item_id: '5e188c29791747d9c54250e2',
-      name: 'Variant',
-      customRenderer: 'TINGLES',
-      phone: '+1 (835) 571-3268',
-      age: 36,
-      about:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
-    },
-  ],
-  [
-    {
-      item_id: '5e188c298f0ea901553c517f',
-      name: 'number',
-      customRenderer: 'ECRAZE',
-      phone: '+1 (944) 445-2594',
-      age: 21,
-      about:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.',
-    },
-  ],
 ];
 
 /* eslint-disable react/display-name, no-alert */
@@ -661,6 +658,30 @@ storiesOf('Components|DataTable', module)
       ...columnManagerButtons,
     };
 
+    const NestedComponent = (props) => {
+      const item = items.find((item) => item.id === props.id);
+      return (
+        <div
+          style={{
+            marginTop: '10px',
+          }}
+        >
+          <p>
+            <strong>Item ID: {item.id}</strong>
+            <br />
+            <strong>Item Name: {item.name}</strong>
+            <br />
+            <strong>Item Details:</strong>
+            <br />
+            <span style={{ color: textColor }}>{item.itemDetails}</span>
+          </p>
+        </div>
+      );
+    };
+    NestedComponent.propTypes = {
+      id: PropTypes.string.isRequired,
+    };
+
     return (
       <>
         <DataTableManager
@@ -686,16 +707,18 @@ storiesOf('Components|DataTable', module)
         >
           <DataTable
             rows={withRowSelection ? rowsWithSelection : rows}
-            customRows={customRows}
             sortedBy={sortedBy}
             onSortChange={onSortChange}
             sortDirection={sortDirection}
-            footer={footer}
             onRowClick={
               rowClick
                 ? (item, index) => alert(`Row click: Row number ${index}`)
                 : null
             }
+            // TODO - Comment this out to test the nested rows
+            // onRowClick={rowClick ? (item, index) => item.id : null}
+            // maxExpandableHeight={100}
+            // renderNestedRow={(row) => <NestedComponent {...row} />}
           />
         </DataTableManager>
         <br />
@@ -781,8 +804,6 @@ storiesOf('Components|DataTable', module)
       'showColumnManagerConfirmationButtons',
       false
     );
-    // TODO - remove when nested rows are implemented
-    const debug = boolean('logCustomSettings', false);
 
     const {
       rows: rowsWithSelection,
@@ -1162,6 +1183,28 @@ storiesOf('Components|DataTable', module)
       ...columnManagerButtons,
     };
 
+    const NestedComponent = (props) => {
+      const item = items.find((item) => item.id === props.id);
+      if (!item) return null;
+      return (
+        <div
+          style={{
+            marginTop: '10px',
+          }}
+        >
+          <p>
+            <strong>Item ID: {item.id}</strong>
+            <strong>Item Name: {item.name}</strong>
+            <strong>Item Details:</strong>{' '}
+            <span style={{ color: textColor }}>{item.itemDetails}</span>
+          </p>
+        </div>
+      );
+    };
+    NestedComponent.propTypes = {
+      id: PropTypes.string.isRequired,
+    };
+
     return (
       <DataTableManagerProvider
         columns={withRowSelection ? columnsWithSelect : visibleColumns}
@@ -1182,10 +1225,6 @@ storiesOf('Components|DataTable', module)
           },
           'dark'
         )}
-        // TODO - remove when nested rows are implemented
-        // Solely for debug purpose. A toggle (logCustomSettings) to log the customSettingsPayload
-        // Will be helpful when implementing the nested rows.
-        debug={debug}
       >
         <Spacings.Stack>
           <header>
@@ -1200,7 +1239,6 @@ storiesOf('Components|DataTable', module)
           <main>
             <DataTable
               rows={withRowSelection ? rowsWithSelection : rows}
-              customRows={customRows}
               sortedBy={sortedBy}
               onSortChange={onSortChange}
               sortDirection={sortDirection}
@@ -1209,6 +1247,10 @@ storiesOf('Components|DataTable', module)
                   ? (item, index) => alert(`Row click: Row number ${index}`)
                   : null
               }
+              // TODO - Comment this out to test the nested rows
+              // onRowClick={rowClick ? (item, index) => item.id : null}
+              // maxExpandableHeight={100}
+              renderNestedRow={(row) => <NestedComponent {...row} />}
             />
           </main>
           <br />
