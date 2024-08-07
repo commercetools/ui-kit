@@ -147,6 +147,14 @@
     "developer_comment": "The label for \"expand\" action",
     "string": "Développer"
   },
+  "UIKit.NumberField.aboveMaxError": {
+    "developer_comment": "An error message to show when the value is above the maximum",
+    "string": "La valeur doit être inférieure ou égale à {max}."
+  },
+  "UIKit.NumberField.belowMinError": {
+    "developer_comment": "An error message to show when the value is below the minimum",
+    "string": "La valeur doit être supérieure ou égale à {min}."
+  },
   "UIKit.Pagination.PageNavigator.nextPageLabel": {
     "developer_comment": "Label for next page button",
     "string": "Page suivante"

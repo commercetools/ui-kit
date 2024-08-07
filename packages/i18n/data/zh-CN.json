@@ -147,6 +147,14 @@
     "developer_comment": "The label for \"expand\" action",
     "string": "扩展"
   },
+  "UIKit.NumberField.aboveMaxError": {
+    "developer_comment": "An error message to show when the value is above the maximum",
+    "string": "值必须小于或等于 {max}。"
+  },
+  "UIKit.NumberField.belowMinError": {
+    "developer_comment": "An error message to show when the value is below the minimum",
+    "string": "值必须大于或等于 {min}。"
+  },
   "UIKit.Pagination.PageNavigator.nextPageLabel": {
     "developer_comment": "Label for next page button",
     "string": "下一页"
