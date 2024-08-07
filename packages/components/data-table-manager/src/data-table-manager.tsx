@@ -1,7 +1,12 @@
-import { useMemo, cloneElement } from 'react';
+import { useMemo, cloneElement, useState } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings from './data-table-settings';
-import type { TRow, TColumnProps, TDataTableManagerProps } from './types';
+import type {
+  TRow,
+  TColumnProps,
+  TDataTableManagerProps,
+  TCustomSettingsProps,
+} from './types';
 import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
 
 const DataTableManager = <Row extends TRow = TRow>(
@@ -18,7 +23,14 @@ const DataTableManager = <Row extends TRow = TRow>(
     props.onSettingsChange || dataTableManagerContext.onSettingsChange;
   const columnManager =
     props.columnManager || dataTableManagerContext.columnManager;
-
+  const customSettings =
+    props.customSettings || dataTableManagerContext.customSettings;
+  const selectedColumns =
+    props.selectedColumns || dataTableManagerContext.selectedColumns;
+  const customColumnManager =
+    props.customColumnManager || dataTableManagerContext.customColumnManager;
+  const customColumns =
+    props.customColumns || dataTableManagerContext.customColumns;
   const areDisplaySettingsEnabled = Boolean(
     displaySettings && !displaySettings.disableDisplaySettings
   );
@@ -42,6 +54,22 @@ const DataTableManager = <Row extends TRow = TRow>(
     [dataTableColumns, areDisplaySettingsEnabled, isWrappingText]
   );
 
+  const [additionalSettings, setAdditionalSettings] = useState<{
+    key: string;
+    [key: string]: unknown;
+  }>({ key: '' });
+
+  const additionalCustomSetting =
+    dataTableManagerContext.additionalSettings || additionalSettings;
+
+  const updateSettings = (additionalCustomSettings: unknown) => {
+    setAdditionalSettings(
+      additionalCustomSettings as { [key: string]: unknown; key: string }
+    );
+  };
+  const updateCustomSettings =
+    dataTableManagerContext.updateCustomSettings || updateSettings;
+
   return (
     <Spacings.Stack>
       <DataTableSettings
@@ -49,11 +77,17 @@ const DataTableManager = <Row extends TRow = TRow>(
         onSettingsChange={onSettingsChange}
         columnManager={columnManager}
         displaySettings={displaySettings}
+        customSettings={customSettings as TCustomSettingsProps[] | undefined}
         managerTheme="light"
+        additionalSettings={additionalCustomSetting}
+        updateCustomSettings={(settings) => updateCustomSettings(settings)}
+        selectedColumns={selectedColumns ?? []}
+        customColumnManager={customColumnManager ?? undefined}
       />
       {props.children
         ? cloneElement(props.children, {
             columns,
+            customColumns,
             isCondensed:
               areDisplaySettingsEnabled && props.displaySettings!.isCondensed,
           })

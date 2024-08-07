@@ -11,6 +11,7 @@ export type TDataRow<Row extends TRow = TRow> = {
   columns: TColumn<Row>[];
   shouldClipContent: boolean;
   shouldRenderBottomBorder: boolean;
+  onExpandRow?: (row: Row) => void;
 } & Pick<
   TDataTableProps<Row>,
   | 'onRowClick'

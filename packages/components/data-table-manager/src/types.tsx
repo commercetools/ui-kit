@@ -5,7 +5,16 @@ export type TColumnData = {
   label: ReactNode;
 };
 
+export type TAdditionalSettings = {
+  key: string;
+  [key: string]: unknown;
+};
+
 export type TDisplaySettingsProps = {
+  /**
+   * Set this to override the default label of the display settings.
+   */
+  displaySettingsLabel?: string;
   /**
    * Set this flag to `false` to show the display settings panel option.
    *
@@ -42,6 +51,10 @@ export type TDisplaySettingsProps = {
 };
 
 export type TColumnManagerProps = {
+  /**
+   * Set this to override the default label of the column manager.
+   */
+  columnManagerLabel?: string;
   /**
    * Set this to `true` to show a search input for the hidden columns panel.
    */
@@ -85,15 +98,46 @@ export type TColumnManagerProps = {
   secondaryButton?: ReactElement;
 };
 
+export type TCustomSettingsProps = {
+  key: string;
+  customPanelTitle: string;
+  type?: 'columnManager';
+  customComponent?: React.ComponentType<{
+    updateCustomSettings?: (settings: TAdditionalSettings) => void;
+    additionalSettings: Record<string, unknown>;
+    onClose?: () => void;
+    columnManager?: TColumnManagerProps;
+    onUpdateColumns?: (nextVisibleColumns: TColumnData[], key?: string) => void;
+    onSettingsChange?: (
+      settingName: string,
+      settingValue: boolean | string[],
+      key?: string
+    ) => void;
+    managerTheme?: 'light' | 'dark';
+    customColumns?: TColumnData[];
+    selectedColumns?: TColumnData[];
+    availableColumns?: TColumnManagerProps;
+  }>;
+  settingsPayload: Record<string, unknown>;
+};
+
 export type TDataTableSettingsProps = {
+  additionalSettings: Record<string, unknown>;
   topBar?: ReactNode;
   onSettingsChange?: (
     settingName: string,
-    settingValue: boolean | string[]
+    settingValue: boolean | string[] | Record<string, unknown>,
+    key?: string
   ) => void;
   displaySettings?: TDisplaySettingsProps;
   columnManager?: TColumnManagerProps;
+  customSettings?: TCustomSettingsProps[];
   managerTheme?: 'light' | 'dark';
+  updateCustomSettings?: (settings: TAdditionalSettings) => void;
+  selectedColumns?: TColumnData[];
+  customColumnManager?: TColumnManagerProps & {
+    disableCustomColumnManager?: boolean;
+  };
 };
 
 export interface TRow {
@@ -195,7 +239,6 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    * Each column can be customized (see properties below).
    */
   columns: TColumnProps<Row>[];
-
   /**
    * Any React node. Usually you want to render the `<DataTable>` component.
    * <br>
@@ -218,7 +261,7 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    */
   onSettingsChange?: (
     settingName: string,
-    settingValue: boolean | string[]
+    settingValue: boolean | string[] | Record<string, unknown>
   ) => void;
 
   /**
@@ -230,4 +273,30 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    * Sets the background theme of the Card that contains the settings
    */
   managerTheme?: 'light' | 'dark';
+
+  /**
+   * Manage custom settings for the table
+   */
+  customSettings?: TDataTableSettingsProps['customSettings'];
+  /**
+   * A callback function used to update the custom settings.
+   * */
+  updateCustomSettings?: (settings: TAdditionalSettings) => void;
+  /**
+   * The selected columns to be displayed.
+   */
+  selectedColumns?: TColumnData[];
+  /**
+   * Custom column manager settings.
+   */
+  customColumnManager?: TColumnManagerProps & {
+    disableCustomColumnManager?: boolean;
+  };
+  /**
+   * The columns of the nested items to be rendered in the table. Just like the columns, Each object requires a unique `key` which should correspond to property key of
+   * the items of `rows` that you want to render under this column, and a `label`
+   * which defines the name shown on the header.
+   * The list of columns to be rendered.
+   */
+  customColumns?: TColumnProps<Row>[];
 };
