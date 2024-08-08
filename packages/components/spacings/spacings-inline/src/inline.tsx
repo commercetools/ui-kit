@@ -28,8 +28,15 @@ export type TJustifyContent =
 export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 
 export type TInlineProps = {
+  /** sets the amount of spacing between individual items */
   scale: TScale;
+  /**
+   * sets the `align-self` value on all direct children.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/align-items */
   alignItems: TAlignItem;
+  /**
+   * defines how the browser distributes space between and around content items along the main-axis.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content */
   justifyContent: TJustifyContent;
   children: ReactNode;
 };
