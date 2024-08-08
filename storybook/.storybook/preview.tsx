@@ -12,12 +12,6 @@ const preview: Preview = {
   },
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    controls: {
-      matchers: {
-        //color: /(background|color)$/i,
-        //date: /Date$/,
-      },
-    },
     options: {
       storySort: {
         method: 'alphabetical',
@@ -30,9 +24,9 @@ const preview: Preview = {
           'Text & Media',
           [
             'Text',
-            ['Readme', 'Props', '*'],
+            ['*', ['Readme', 'Props', '*']],
             'Icons',
-            ['Readme', 'All Icons', '*'],
+            ['Readme', 'All Icons', '*', ['Readme', 'Props', '*']],
             '*',
             ['Readme', 'Props', '*', ['Readme', 'Props', '*']],
           ],
@@ -40,22 +34,18 @@ const preview: Preview = {
           ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
           'components',
           ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
-          'form',
-          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
-          'field',
-          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
-          'unported',
-          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
+          'Form',
+          [
+            'Readme',
+            'Inputs',
+            ['Readme', '*', ['Readme', 'Props', '*']],
+            'Fields',
+            ['Readme', '*', ['Readme', 'Props', '*']],
+          ],
         ],
       },
     },
   },
-  // argTypes: {
-  //   onBlur: { action: 'onBlur' },
-  //   onChange: { action: 'onChange' },
-  //   onFocus: { action: 'onFocus' },
-  //   onInputChange: { action: 'onInputChange' },
-  // },
   decorators: [withThemeDecorator, WithIntlDecorator],
   tags: ['autodocs'],
 };
