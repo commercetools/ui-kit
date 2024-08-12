@@ -102,7 +102,9 @@ export default Example;
 ### Signature `onInfoButtonClick`
 
 ```ts
-() => void
+(
+  event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+) => void
 ```
 
 ## `data-*` props

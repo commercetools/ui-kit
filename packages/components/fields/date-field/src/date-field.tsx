@@ -1,10 +1,13 @@
 import {
   Component,
   isValidElement,
+  type MouseEvent,
+  type KeyboardEvent,
   type FocusEventHandler,
   type ReactElement,
   type ReactNode,
 } from 'react';
+
 import {
   filterDataAttributes,
   createSequentialId,
@@ -164,7 +167,9 @@ export type TDateFieldProps = {
    * <br />
    * Info button will only be visible when this prop is passed.
    */
-  onInfoButtonClick?: () => void;
+  onInfoButtonClick?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * Icon to be displayed beside the hint text.
    * <br />
