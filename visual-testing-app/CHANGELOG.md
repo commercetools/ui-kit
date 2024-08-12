@@ -1,5 +1,16 @@
 # visual-testing-app
 
+## 12.4.9
+
+### Patch Changes
+
+- [#2874](https://github.com/commercetools/ui-kit/pull/2874) [`d8f13af`](https://github.com/commercetools/ui-kit/commit/d8f13aff1709c5d0a7f5592200aefab4e05be92b) Thanks [@emmenko](https://github.com/emmenko)! - Keep JS comments in type declarations
+
+- [#2870](https://github.com/commercetools/ui-kit/pull/2870) [`091c660`](https://github.com/commercetools/ui-kit/commit/091c660b7d6b06a78a05ee577e1e53943747baca) Thanks [@misama-ct](https://github.com/misama-ct)! - removed reliance on google-fonts in visual-testing-app
+
+- Updated dependencies [[`82e5e2a`](https://github.com/commercetools/ui-kit/commit/82e5e2a85ca0f37a9e9d8bb42a0a6673dc64646d), [`d8f13af`](https://github.com/commercetools/ui-kit/commit/d8f13aff1709c5d0a7f5592200aefab4e05be92b)]:
+  - @commercetools-uikit/design-system@19.10.0
+
 ## 12.4.8
 
 ### Patch Changes
