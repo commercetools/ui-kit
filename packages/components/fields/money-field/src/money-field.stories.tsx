@@ -9,20 +9,27 @@ const meta: Meta<typeof MoneyField> = {
   component: MoneyField,
   argTypes: {
     // @ts-expect-error,
-    currencies: {
-      control: 'select',
-      options: ['EUR', 'USD', 'AED', 'KWD', 'JPY'],
-    },
     title: { control: 'text' },
     hint: { control: 'text' },
     description: { control: 'text' },
     menuShouldBlockScroll: { control: 'boolean' },
     hintIcon: iconArgType,
   },
+  decorators: [
+    (Story) => (
+      // @ts-expect-error,
+      <div style={{ height: '320px' }}>
+        {/** @ts-expect-error */}
+        <Story />
+      </div>
+    ),
+  ],
 };
 export default meta;
 
 type Story = StoryFn<typeof MoneyField>;
+
+const currencies = ['EUR', 'USD', 'AED', 'KWD', 'JPY'];
 
 export const BasicExample: Story = (args) => {
   const [value, onChange] = useState({
@@ -64,6 +71,7 @@ BasicExample.args = {
   // @ts-expect-error
   id: 'money-field-id',
   name: 'money-field-name',
+  currencies,
   horizontalConstraint: 7,
   isRequired: false,
   touched: { amount: true, currencyCode: true },
