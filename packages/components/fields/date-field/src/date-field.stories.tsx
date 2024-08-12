@@ -2,11 +2,15 @@ import type { Meta, StoryFn } from '@storybook/react';
 import DateField from './date-field';
 import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
 import { useState } from 'react';
+import { iconArgType } from '@/storybook-helpers';
 
 const meta: Meta<typeof DateField> = {
   title: 'Form/Fields/DateField',
   // @ts-expect-error, @todo refactory component and/or component-types
   component: DateField,
+  argTypes: {
+    hintIcon: iconArgType,
+  },
 };
 export default meta;
 
