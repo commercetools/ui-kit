@@ -3,6 +3,7 @@ import LocalizedTextField, {
   TLocalizedTextFieldProps,
 } from './localized-text-field';
 import { useState } from 'react';
+import { iconArgType } from '@/storybook-helpers';
 
 const meta: Meta<typeof LocalizedTextField> = {
   title: 'Form/Fields/LocalizedTextField',
@@ -14,6 +15,7 @@ const meta: Meta<typeof LocalizedTextField> = {
       control: 'select',
       options: ['en', 'de'],
     },
+    hintIcon: iconArgType,
   },
 };
 export default meta;
