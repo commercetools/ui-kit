@@ -19,13 +19,3 @@ yarn prettier --write --parser json '**/package.json' &>/dev/null
 
 echo "Patching packages"
 yarn patch-package
-
-if [ -n "$SKIP_INSTALL_STORYBOOK" ]; then
-  echo "Skipping installation of Storybook dependencies."
-
-else
-  echo "Installing dependencies for Storybook."
-  pushd docs/
-  yarn
-
-fi
