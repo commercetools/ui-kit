@@ -1,4 +1,5 @@
 import { designTokens } from '@commercetools-uikit/design-system';
+import { TMaxProp } from './horizontal';
 
 type TDesignTokenName = keyof typeof designTokens;
 
@@ -18,7 +19,7 @@ const getAcceptedMaxPropValues = (min = 1, max = 16) => {
     ...Array.from({ length: max - min + 1 }).map((_, index) => index + min),
     'scale',
     'auto',
-  ];
+  ] as TMaxProp[];
 };
 
 export { getMaxPropTokenValue, getAcceptedMaxPropValues };
