@@ -1,4 +1,4 @@
-import type { RemarkGfmOptions } from 'remark-gfm';
+import type { RemarkGfmOptions } from 'remark-gfm-v1';
 
 const gfmOptions: Partial<RemarkGfmOptions> = {
   tablePipeAlign: false,

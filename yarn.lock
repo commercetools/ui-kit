@@ -2595,7 +2595,7 @@ __metadata:
     prettier: 2.8.8
     rcfile: 1.0.3
     react-docgen: 5.4.3
-    remark-gfm: 1.0.0
+    remark-gfm-v1: "npm:remark-gfm@1.0.0"
     remark-mdx: 1.6.22
     remark-parse: 9.0.0
     remark-stringify: 9.0.1
@@ -17933,7 +17933,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-gfm@npm:1.0.0":
+"remark-gfm-v1@npm:remark-gfm@1.0.0":
   version: 1.0.0
   resolution: "remark-gfm@npm:1.0.0"
   dependencies:
