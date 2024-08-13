@@ -48,17 +48,5 @@
     "enabled": true
   },
   "labels": ["🤖 Type: Dependencies"],
-  "ignoreDeps": [
-    "@storybook/addon-a11y",
-    "@storybook/addon-actions",
-    "@storybook/addon-google-analytics",
-    "@storybook/addon-knobs",
-    "@storybook/addon-links",
-    "@storybook/addon-storysource",
-    "@storybook/react",
-    "@storybook/theming",
-    "slate",
-    "slate-html-serializer",
-    "slate-react"
-  ]
+  "ignoreDeps": ["slate", "slate-html-serializer", "slate-react"]
 }
