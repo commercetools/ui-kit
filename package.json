@@ -33,7 +33,7 @@
     "bundlesize": "bundlesize",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "changeset": "changeset",
-    "changeset:version-and-format": "changeset version && yarn prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false SKIP_INSTALL_STORYBOOK=true yarn install",
+    "changeset:version-and-format": "changeset version && yarn prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install",
     "visual-testing-app:start": "yarn workspace visual-testing-app start",
     "visual-testing-app:build": "yarn workspace visual-testing-app build",
     "visual-testing-app:preview": "yarn workspace visual-testing-app preview",
