@@ -13,9 +13,16 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.visualroute.js'],
+      files: ['*.story.js', '*.visualroute.js', '**/docs/*.js'],
       rules: {
         'react/display-name': 'off',
+      },
+      settings: {
+        'import/resolver': {
+          node: {
+            paths: [path.resolve('docs/node_modules')],
+          },
+        },
       },
     },
     {
