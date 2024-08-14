@@ -60,7 +60,7 @@ export const PlaygroundExample: Story = () => {
     [setResetValue]
   );
   const handleReset = () => {
-    //ref.current?.resetValue(resetValue);
+    ref.current?.resetValue(resetValue);
   };
 
   return (
