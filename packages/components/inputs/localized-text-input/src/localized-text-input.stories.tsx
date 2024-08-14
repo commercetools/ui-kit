@@ -6,6 +6,12 @@ const meta: Meta<typeof LocalizedTextInput> = {
   title: 'Form/Inputs/LocalizedTextInput',
   // @ts-ignore
   component: LocalizedTextInput,
+  argTypes: {
+    selectedLanguage: {
+      control: 'select',
+      options: ['de', 'en', 'nan-Hant-TW'],
+    },
+  },
 };
 export default meta;
 
