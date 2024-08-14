@@ -111,6 +111,7 @@ export type TMultilineTextInputProps = {
 
   /**
    * Custom action icon to be displayed on the right side of the input.
+   * **Will only show**, if `rightActionProps` is provided.
    */
   rightActionIcon?: ReactElement;
   /**
