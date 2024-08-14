@@ -17,11 +17,13 @@ const meta: Meta<typeof AsyncCreatableSelectInput> = {
     backspaceRemovesValue: { control: 'boolean' },
     id: { control: 'text' },
     containerId: { control: 'text' },
+    formatCreateLabel: { type: 'function' },
     isClearable: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
     isOptionDisabled: { control: 'boolean' },
     isMulti: { control: 'boolean' },
     isSearchable: { control: 'boolean' },
+    isValidNewOption: { type: 'function' },
     maxMenuHeight: { control: 'number' },
     menuShouldBlockScroll: { control: 'boolean' },
     closeMenuOnSelect: { control: 'boolean' },
@@ -175,7 +177,7 @@ export const BasicExample: Story = (args) => {
 
 BasicExample.args = {
   horizontalConstraint: 'scale',
-  isMulti: true,
+  isMulti: false,
   hasError: false,
   hasWarning: false,
   backspaceRemovesValue: true,
