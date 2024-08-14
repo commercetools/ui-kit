@@ -171,7 +171,11 @@ const HeaderCell = (props: THeaderCell) => {
           <HeaderLabelTextWrapper>{props.children}</HeaderLabelTextWrapper>
 
           {props.iconComponent && (
-            <HeaderIconWrapper>{props.iconComponent}</HeaderIconWrapper>
+            <HeaderIconWrapper>
+              {typeof props.iconComponent === 'function'
+                ? props.iconComponent()
+                : props.iconComponent}
+            </HeaderIconWrapper>
           )}
         </HeaderLabelWrapper>
         {props.isSortable && (
