@@ -16,7 +16,8 @@ export default meta;
 
 type Story = StoryFn<typeof RichTextInput>;
 
-const initialValue = '<h1>H1 <u>heading</u></h1>';
+const initialValue =
+  '<h1>Heading</h1><p>This is a paragraph.<br/><br/>New sentence, <strong>same</strong> paragraph, but with <u>soft</u>-linebreak (<em>Shift + Enter</em>).</p>';
 
 // @ts-ignore
 export const BasicExample: Story = (args: TRichTextInputProps) => {
@@ -30,7 +31,9 @@ export const BasicExample: Story = (args: TRichTextInputProps) => {
   );
 };
 
-BasicExample.args = {};
+BasicExample.args = {
+  defaultExpandMultilineText: true,
+};
 
 /** This demo allows to modify the intial input, do changes and verify if the html-output matches the expectations. */
 export const PlaygroundExample: Story = () => {
