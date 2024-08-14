@@ -28,6 +28,7 @@ const meta: Meta<typeof CreatableSelectInput> = {
     containerId: { control: 'text' },
     isDisabled: { control: 'boolean' },
     isOptionDisabled: { control: 'boolean' },
+    isValidNewOption: { type: 'function' },
     maxMenuHeight: { control: 'number' },
     menuShouldBlockScroll: { control: 'boolean' },
     name: { control: 'text' },
@@ -149,7 +150,7 @@ export const BasicExample: Story = (args) => {
 BasicExample.args = {
   horizontalConstraint: 'scale',
   options,
-  isMulti: true,
+  isMulti: false,
   hasError: false,
   hasWarning: false,
   backspaceRemovesValue: true,
