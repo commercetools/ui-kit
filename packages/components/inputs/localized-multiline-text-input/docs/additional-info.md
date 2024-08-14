@@ -74,7 +74,7 @@ Returns `true` when at least one value is truthy.
 This field exports a default error message which can be used when the field is
 required, but the user provided no value. You can use it as
 
-```js
+```jsx
 render (
   return (
     <div>
