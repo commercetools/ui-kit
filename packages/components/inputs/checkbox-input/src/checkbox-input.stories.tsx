@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CheckboxInput from './checkbox-input';
 import styled from '@emotion/styled';
+import { useEffect, useState } from 'react';
 
 const meta: Meta<typeof CheckboxInput> = {
   title: 'Form/Inputs/CheckboxInput',
@@ -10,11 +11,26 @@ export default meta;
 
 type Story = StoryObj<typeof CheckboxInput>;
 
-export const BasicExample: Story = {
-  args: {
-    isChecked: true,
-    children: 'I am a checkbox',
-  },
+export const BasicExample: Story = (args) => {
+  const [checked, setChecked] = useState(args.isChecked);
+
+  useEffect(() => {
+    setChecked(args.isChecked);
+  }, [args.isChecked]);
+
+  return (
+    <CheckboxInput
+      {...args}
+      isChecked={checked}
+      onChange={() => setChecked(!checked)}
+    >
+      Checkbox Label
+    </CheckboxInput>
+  );
+};
+
+BasicExample.args = {
+  children: 'I am a checkbox',
 };
 
 const DemoContainer = styled.div`
