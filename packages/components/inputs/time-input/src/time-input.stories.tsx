@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import TimeInput from './time-input';
+import { useState } from 'react';
 
 const meta: Meta<typeof TimeInput> = {
   title: 'Form/Inputs/TimeInput',
@@ -7,12 +8,20 @@ const meta: Meta<typeof TimeInput> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof TimeInput>;
+type Story = StoryFn<typeof TimeInput>;
 
-export const BasicExample: Story = {
-  args: {
-    value: '17:12',
-    placeholder: 'Enter time...',
-    horizontalConstraint: 7,
-  },
+export const BasicExample: Story = (args) => {
+  const [value, setValue] = useState('17:12');
+  return (
+    <TimeInput
+      {...args}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  );
+};
+
+BasicExample.args = {
+  placeholder: 'Enter time...',
+  horizontalConstraint: 7,
 };
