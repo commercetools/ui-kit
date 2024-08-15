@@ -18,6 +18,7 @@ const meta: Meta<typeof AsyncCreatableSelectInput> = {
     id: { control: 'text' },
     containerId: { control: 'text' },
     formatCreateLabel: { type: 'function' },
+    inputValue: { control: 'text' },
     isClearable: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
     isOptionDisabled: { control: 'boolean' },
