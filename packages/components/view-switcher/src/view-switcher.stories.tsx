@@ -9,6 +9,10 @@ const meta: Meta<typeof ViewSwitcher.Group> = {
     // @ts-ignore
     Button: ViewSwitcher.Button,
   },
+  argTypes: {
+    children: { control: false },
+    defaultSelected: { control: false },
+  },
 };
 export default meta;
 
