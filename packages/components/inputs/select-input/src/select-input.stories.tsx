@@ -1,9 +1,39 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import SelectInput from './select-input';
+import { iconArgType } from '@/storybook-helpers';
 
 const meta: Meta<typeof SelectInput> = {
   title: 'Form/Inputs/SelectInput',
   component: SelectInput,
+  argTypes: {
+    iconLeft: iconArgType,
+    'aria-label': { control: { type: 'text' } },
+    'aria-labelledby': { control: { type: 'text' } },
+    'aria-invalid': { control: { type: 'boolean' } },
+    'aria-errormessage': { control: { type: 'text' } },
+    backspaceRemovesValue: { control: { type: 'boolean' } },
+    controlShouldRenderValue: { control: { type: 'boolean' } },
+    filterOption: { type: 'function' },
+    id: { control: { type: 'text' } },
+    inputValue: { control: { type: 'text' } },
+    containerId: { control: { type: 'text' } },
+    isClearable: { control: { type: 'boolean' } },
+    isDisabled: { control: { type: 'boolean' } },
+    isOptionDisabled: { type: 'function' },
+    isMulti: { control: { type: 'boolean' } },
+    isSearchable: { control: { type: 'boolean' } },
+    menuIsOpen: { control: { type: 'boolean' } },
+    maxMenuHeight: { control: { type: 'number' } },
+    menuPortalTarget: { control: false },
+    menuShouldBlockScroll: { control: { type: 'boolean' } },
+    closeMenuOnSelect: { control: { type: 'boolean' } },
+    name: { control: { type: 'text' } },
+    noOptionsMessage: { type: 'function' },
+    placeholder: { control: { type: 'text' } },
+    tabIndex: { control: { type: 'number' } },
+    tabSelectsValue: { control: { type: 'boolean' } },
+    value: { control: false },
+  },
 };
 export default meta;
 
