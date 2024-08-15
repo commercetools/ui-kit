@@ -4,6 +4,9 @@ import ContentNotification from './content-notification';
 const meta: Meta<typeof ContentNotification> = {
   title: 'components/Notification/ContentNotification',
   component: ContentNotification,
+  argTypes: {
+    intlMessage: { control: false },
+  },
 };
 export default meta;
 
