@@ -11,7 +11,8 @@ type Story = StoryObj<typeof ContentNotification>;
 
 export const BasicExample: Story = {
   args: {
-    children: 'I am displaying all kinds of notifications!',
+    children: 'I can display different kinds of notifications!',
+    type: 'warning',
     onRemove: undefined,
   },
 };
