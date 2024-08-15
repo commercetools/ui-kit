@@ -7,6 +7,7 @@ const meta: Meta<typeof Stamp> = {
   component: Stamp,
   argTypes: {
     icon: iconArgType,
+    children: { control: { disable: true } },
   },
 };
 
