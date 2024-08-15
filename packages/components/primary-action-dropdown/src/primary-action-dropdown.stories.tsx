@@ -16,6 +16,9 @@ const meta: Meta<typeof PrimaryActionDropdown> = {
     // @ts-ignore
     Option,
   },
+  argTypes: {
+    children: { control: { disable: true } },
+  },
 };
 export default meta;
 
