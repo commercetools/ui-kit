@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { iconArgType } from '@/storybook-helpers';
 import MultilineTextField from './multiline-text-field';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const meta: Meta<typeof MultilineTextField> = {
   title: 'Form/Fields/MultilineTextField',
@@ -22,7 +22,11 @@ type Story = StoryFn<typeof MultilineTextField>;
 export const BasicExample: Story = (args) => {
   // @ts-expect-error
   const { defaultExpandMultilineText } = args;
-  const [value, onChange] = useState('');
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+    setValue(args.value);
+  }, [args.value]);
 
   return (
     <MultilineTextField
@@ -32,7 +36,7 @@ export const BasicExample: Story = (args) => {
       }
       value={value}
       onChange={(event) => {
-        onChange(event.target.value);
+        setValue(event.target.value);
       }}
     />
   );
