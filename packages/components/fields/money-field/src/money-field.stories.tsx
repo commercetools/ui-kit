@@ -17,9 +17,7 @@ const meta: Meta<typeof MoneyField> = {
   },
   decorators: [
     (Story) => (
-      // @ts-expect-error,
       <div style={{ height: '320px' }}>
-        {/** @ts-expect-error */}
         <Story />
       </div>
     ),

@@ -9,6 +9,7 @@ const meta: Meta<typeof DateField> = {
   // @ts-expect-error, @todo refactory component and/or component-types
   component: DateField,
   argTypes: {
+    // @ts-expect-error
     hintIcon: iconArgType,
   },
 };
