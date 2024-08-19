@@ -38,6 +38,9 @@ const meta: Meta<typeof AsyncCreatableSelectInput> = {
       control: 'select',
       options: ['first', 'last'],
     },
+    value: {
+      control: false,
+    },
   },
 };
 export default meta;
