@@ -21,7 +21,7 @@ export const BasicExample: Story = ({
   const [value, setValue] = useState({
     en: 'Horse\nCow\nDuck',
     de: 'Pferd\nKuh\nEnte',
-    'nan-Hant-TW': '马\n奶牛\n鸭子',
+    'nan-Hant-TW': '馬\n奶牛\n鴨子',
   });
 
   return (
