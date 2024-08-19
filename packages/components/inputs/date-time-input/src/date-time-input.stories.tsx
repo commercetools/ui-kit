@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import DateTimeInput, { TDateTimeInputProps } from './date-time-input';
+import { TDateTimeInputProps } from './date-time-input';
 import { useState } from 'react';
+import { DateTimeInputWrapper } from './date-time-input-wrapper';
 
-const meta: Meta<typeof DateTimeInput> = {
+const meta: Meta<typeof DateTimeInputWrapper> = {
   title: 'Form/Inputs/DateTimeInput',
-  component: DateTimeInput,
+  component: DateTimeInputWrapper,
   argTypes: {
     timeZone: {
       control: { type: 'select' },
@@ -20,14 +21,14 @@ const meta: Meta<typeof DateTimeInput> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof DateTimeInput>;
+type Story = StoryObj<typeof DateTimeInputWrapper>;
 
 export const BasicExample: Story = (args: TDateTimeInputProps) => {
   const [value, setValue] = useState<string>('');
 
   return (
     <div style={{ height: 400 }}>
-      <DateTimeInput
+      <DateTimeInputWrapper
         {...args}
         onChange={(e) => setValue(e.target.value || '')}
         value={value}
