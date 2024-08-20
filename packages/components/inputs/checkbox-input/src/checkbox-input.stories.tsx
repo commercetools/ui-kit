@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CheckboxInput from './checkbox-input';
+import CheckboxInput, { TCheckboxProps } from './checkbox-input';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 
@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof CheckboxInput>;
 
-export const BasicExample: Story = (args) => {
+export const BasicExample: Story = (args: TCheckboxProps) => {
   const [checked, setChecked] = useState(args.isChecked);
 
   useEffect(() => {
