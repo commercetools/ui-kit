@@ -4,7 +4,7 @@ import ErrorMessage from './error-message';
 const meta: Meta<typeof ErrorMessage> = {
   title: 'components/Messages/ErrorMessage',
   component: ErrorMessage,
-    argTypes: {
+  argTypes: {
     intlMessage: { control: { disable: true } },
   },
 };
