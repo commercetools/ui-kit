@@ -178,6 +178,22 @@ const Wrap = (props: TWrapProps) => {
 };
 Wrap.displayName = 'TextWrap';
 
+/**
+ * Need to duplicate TTone type here because storybook v8 does not parse this:
+ *
+ * type TBodyTone = TTone | 'inverted'
+ * */
+type TBodyTone =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'information'
+  | 'positive'
+  | 'negative'
+  | 'critical'
+  | 'inherit'
+  | 'inverted';
+
 export type TBodyProps = {
   as?: 'span' | 'p';
   /**
@@ -186,7 +202,7 @@ export type TBodyProps = {
   isBold?: boolean;
   isItalic?: boolean;
   isStrikethrough?: boolean;
-  tone?: TTone | 'inverted';
+  tone?: TBodyTone;
   fontWeight?: TFontWeight;
   truncate?: boolean;
   nowrap?: boolean;
@@ -224,6 +240,17 @@ const Body = (props: TBodyProps) => {
 };
 Body.displayName = 'TextBody';
 
+type TDetailTone =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'information'
+  | 'positive'
+  | 'negative'
+  | 'critical'
+  | 'inherit'
+  | 'warning'
+  | 'inverted';
 export type TDetailProps = {
   /**
    * @deprecated: use the new `fontWeight` prop
@@ -232,7 +259,7 @@ export type TDetailProps = {
   isItalic?: boolean;
   isStrikethrough?: boolean;
   as?: 'span' | 'small';
-  tone?: TTone | 'warning' | 'inverted';
+  tone?: TDetailTone;
   fontWeight?: TFontWeight;
   truncate?: boolean;
   nowrap?: boolean;
@@ -271,11 +298,22 @@ const Detail = (props: TDetailProps) => {
   );
 };
 Detail.displayName = 'TextDetail';
+type TCaptionTone =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'information'
+  | 'positive'
+  | 'negative'
+  | 'critical'
+  | 'inherit'
+  | 'warning'
+  | 'inverted';
 
 export type TCaptionProps = {
   isItalic?: boolean;
   isStrikethrough?: boolean;
-  tone?: TTone | 'warning' | 'inverted';
+  tone?: TCaptionTone;
   fontWeight?: TFontWeight;
   truncate?: boolean;
   nowrap?: boolean;

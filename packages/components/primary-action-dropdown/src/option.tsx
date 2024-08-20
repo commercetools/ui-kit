@@ -19,7 +19,7 @@ type TOption = {
   /**
    * Any React node.
    */
-  iconLeft: ReactNode;
+  iconLeft?: ReactNode;
 };
 
 const Option = (props: TOption) => (
