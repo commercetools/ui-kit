@@ -107,7 +107,7 @@ export const PlaygroundExample: Story = () => {
         value={value}
       />
       <Text.Headline as="h3">Output</Text.Headline>
-      <pre>{value}</pre>
+      <pre style={{ textWrap: 'auto' }}>{value}</pre>
     </Spacings.Stack>
   );
 };
