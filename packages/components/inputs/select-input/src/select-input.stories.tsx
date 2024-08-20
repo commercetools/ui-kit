@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import SelectInput from './select-input';
 import { iconArgType } from '@/storybook-helpers';
+import { useEffect, useState } from 'react';
 
 const meta: Meta<typeof SelectInput> = {
   title: 'Form/Inputs/SelectInput',
@@ -34,10 +35,17 @@ const meta: Meta<typeof SelectInput> = {
     tabSelectsValue: { control: { type: 'boolean' } },
     value: { control: false },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ height: 350 }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 export default meta;
 
-type Story = StoryObj<typeof SelectInput>;
+type Story = StoryFn<typeof SelectInput>;
 
 const options = [
   {
@@ -107,16 +115,27 @@ const options = [
   },
 ];
 
-export const BasicExample: Story = {
-  decorators: [
-    (Story) => (
-      <div style={{ height: 350 }}>
-        <Story />
-      </div>
-    ),
-  ],
-  args: {
-    options,
-    horizontalConstraint: 7,
-  },
+export const BasicExample: Story = (args) => {
+  const [value, setValue] = useState<string | string[] | null | undefined>(
+    null
+  );
+
+  useEffect(() => {
+    setValue(null);
+  }, [args.isMulti]);
+
+  return (
+    <SelectInput
+      {...args}
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+      }}
+    />
+  );
+};
+
+BasicExample.args = {
+  options,
+  horizontalConstraint: 7,
 };
