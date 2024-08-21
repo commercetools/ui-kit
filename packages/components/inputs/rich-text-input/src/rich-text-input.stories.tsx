@@ -60,6 +60,7 @@ export const PlaygroundExample: Story = () => {
     [setResetValue]
   );
   const handleReset = () => {
+    // @ts-expect-error todo: fix underlying components and/or types
     ref.current?.resetValue(resetValue);
   };
 
@@ -107,7 +108,7 @@ export const PlaygroundExample: Story = () => {
         value={value}
       />
       <Text.Headline as="h3">Output</Text.Headline>
-      <pre style={{ textWrap: 'auto' }}>{value}</pre>
+      <code>{value}</code>
     </Spacings.Stack>
   );
 };
