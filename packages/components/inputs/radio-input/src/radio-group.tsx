@@ -40,7 +40,10 @@ export type TGroupProps = {
     | 16
     | 'scale'
     | 'auto';
+  /** Pick the desired layout. Possible values are `stack` or `inline`, (= Radio.Option items will be
+   * wrapped with the `Spacing.Stack` or `Spacing.Inline` component)*/
   direction: 'stack' | 'inline';
+  /** Props uesed to configue the selected layout component that was picked via the `direction` property */
   directionProps: {
     scale?: TInlineProps['scale'];
     alignItems?: TInlineProps['alignItems'];
