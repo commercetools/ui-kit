@@ -1,14 +1,14 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { iconArgType } from '@/storybook-helpers';
-import MultilineTextField from './multiline-text-field';
+import MultilineTextField, {
+  TMultiTextFieldProps,
+} from './multiline-text-field';
 import { useEffect, useState } from 'react';
 
-const meta: Meta<typeof MultilineTextField> = {
+const meta: Meta<TMultiTextFieldProps> = {
   title: 'Form/Fields/MultilineTextField',
-  // @ts-expect-error, fix component and/or types
   component: MultilineTextField,
   argTypes: {
-    // @ts-expect-error
     title: { control: 'text' },
     hint: { control: 'text' },
     description: { control: 'text' },
@@ -17,12 +17,11 @@ const meta: Meta<typeof MultilineTextField> = {
 };
 export default meta;
 
-type Story = StoryFn<typeof MultilineTextField>;
+type Story = StoryFn<TMultiTextFieldProps>;
 
 export const BasicExample: Story = (args) => {
-  // @ts-expect-error
   const { defaultExpandMultilineText } = args;
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState<string>('');
 
   useEffect(() => {
     setValue(args.value);
@@ -43,7 +42,6 @@ export const BasicExample: Story = (args) => {
 };
 
 BasicExample.args = {
-  // @ts-expect-error
   id: 'multiline-text-field-id',
   name: 'multiline-text-field-name',
   horizontalConstraint: 7,
@@ -79,4 +77,5 @@ BasicExample.args = {
   description: '',
   onInfoButtonClick: () => alert('info button clicked'),
   badge: '',
+  value: '',
 };
