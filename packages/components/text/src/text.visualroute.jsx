@@ -29,6 +29,36 @@ export const component = () => (
         </Text.Headline>
       </Spec>
     </NarrowBox>
+    <Spec label="Headline - tone - primary">
+      <Text.Headline tone="primary" as="h1">
+        {'Headline tone primary'}
+      </Text.Headline>
+    </Spec>
+    <Spec label="Headline - tone - secondary">
+      <Text.Headline tone="secondary" as="h1">
+        {'Headline tone secondary'}
+      </Text.Headline>
+    </Spec>
+    <Spec label="Headline - tone - tertiary">
+      <Text.Headline tone="tertiary" as="h1">
+        {'Headline tone tertiary'}
+      </Text.Headline>
+    </Spec>
+    <Spec label="Headline - tone - information">
+      <Text.Headline tone="information" as="h1">
+        {'Headline tone information'}
+      </Text.Headline>
+    </Spec>
+    <Spec label="Headline - tone - positive">
+      <Text.Headline tone="positive" as="h1">
+        {'Headline tone positive'}
+      </Text.Headline>
+    </Spec>
+    <Spec label="Headline - tone - negative">
+      <Text.Headline tone="negative" as="h1">
+        {'Headline tone negative'}
+      </Text.Headline>
+    </Spec>
 
     <Spec label="Headline - h2">
       <Text.Headline as="h2">{'Title H2'}</Text.Headline>
