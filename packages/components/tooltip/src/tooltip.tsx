@@ -239,7 +239,7 @@ const Tooltip = (props: TTooltipProps) => {
   const { closeAfter } = props;
 
   const handleLeave = useCallback(
-    (event) => {
+    (event: FocusEvent) => {
       clearTimeout(enterTimer.current);
       clearTimeout(leaveTimer.current);
 

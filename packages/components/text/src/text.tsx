@@ -29,7 +29,7 @@ export type TBasicTextProps = {
   intlMessage?: MessageDescriptor & {
     values?: Record<string, React.ReactNode>;
   };
-  children?: ReactNode;
+  children?: ReactNode | string;
 };
 
 type TBasicHeadlineProps = {

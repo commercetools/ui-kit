@@ -1,4 +1,4 @@
-import { useRef, useCallback, type ReactNode } from 'react';
+import { useRef, useCallback, type ReactNode, ChangeEvent } from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
 import Select, {
@@ -627,7 +627,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
   ]);
 
   const handleAmountChange = useCallback(
-    (event) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
       if (isNumberish(event.target.value)) {
         onChange?.({
           persist: () => {},
@@ -643,8 +643,8 @@ const MoneyInput = (props: TMoneyInputProps) => {
   );
 
   const handleCurrencyChange = useCallback(
-    (option) => {
-      const currencyCode = option.value;
+    (option: unknown) => {
+      const currencyCode = (option as { value: TCurrencyCode }).value;
       if (props.value.currencyCode !== currencyCode) {
         // When the user changes from a currency with 3 fraction digits to
         // a currency with 2 fraction digits, and when the input value was
@@ -753,7 +753,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
 
   const { onBlur } = props;
   const handleContainerBlur = useCallback(
-    (event) => {
+    (event: React.FocusEvent<HTMLDivElement, Element>) => {
       // ensures that both fields are marked as touched when one of them
       // is blurred
       if (
@@ -778,7 +778,9 @@ const MoneyInput = (props: TMoneyInputProps) => {
   );
 
   const TooltipPortal = useCallback(
-    (remainingProps) => <Portal {...remainingProps} id={props.id} />,
+    (remainingProps: Object) => (
+      <Portal {...remainingProps} id={props.id as string} />
+    ),
     [props.id]
   );
 

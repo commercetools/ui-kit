@@ -412,7 +412,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   }, [toggleDropdownHasFocus, onBlur, dropdownName, dropdownId]);
 
   const handleContainerBlur = useCallback(
-    (event) => {
+    (event: React.FocusEvent<HTMLDivElement, Element>) => {
       // ensures that both fields are marked as touched when one of them
       // is blurred
       if (
@@ -437,14 +437,14 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   );
 
   const handleDropdownChange = useCallback(
-    (nextSelectedOptions) => {
-      setSearchOption(nextSelectedOptions.value);
+    (nextSelectedOptions: unknown) => {
+      setSearchOption((nextSelectedOptions as { value: string }).value);
       if (props.onChange) {
         props.onChange({
           target: {
             id: SelectableSearchInput.getDropdownId(selectablSearchInputId),
             name: getDropdownName(name),
-            value: nextSelectedOptions.value,
+            value: (nextSelectedOptions as { value: string }).value,
           },
         });
       }

@@ -198,7 +198,7 @@ const sequentialId = createSequentialId('localized-text-input-');
 const LocalizedInput = (props: TLocalizedInputProps) => {
   const { onChange } = props;
   const handleChange = useCallback(
-    (event) => {
+    (event: React.ChangeEvent<HTMLLocalizedInputElement>) => {
       // We manipulate the event to add the language to the target.
       // That way the users of LocalizedTextInput's onChange can read
       // event.target.language and event.target.value to determine the next value.
@@ -359,7 +359,7 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                   )}
                   {props.additionalInfo?.[language] && (
                     <AdditionalInfoMessage
-                      message={props.additionalInfo[language]}
+                      message={props.additionalInfo[language] as string}
                     />
                   )}
                 </Stack>

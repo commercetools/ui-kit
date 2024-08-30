@@ -31,6 +31,7 @@ type TCustomEvent = {
     id?: string;
     name?: string;
     value?: string | string[] | null;
+    currency?: string;
   };
   persist?: () => void;
 };
@@ -223,7 +224,7 @@ export const sortCurrencies = (
 const LocalizedInput = (props: TLocalizedInputProps) => {
   const { onChange } = props;
   const handleChange = useCallback(
-    (event) => {
+    (event: TCustomEvent) => {
       // We manipulate the event to add the currency to the target.
       // That way the users  can read
       // event.target.currency and event.target.value to determine the next value.

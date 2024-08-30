@@ -362,7 +362,9 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
             </Row>
             {props.additionalInfo && (
               <LeftColumn>
-                <AdditionalInfoMessage message={props.additionalInfo} />
+                <AdditionalInfoMessage
+                  message={props.additionalInfo as string}
+                />
               </LeftColumn>
             )}
           </Stack>

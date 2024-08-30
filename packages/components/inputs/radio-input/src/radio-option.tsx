@@ -128,7 +128,7 @@ const Option = (props: TOptionProps) => {
           </RadioOptionBorder>
         </RadioOptionContainer>
         <LabelTextWrapper isDisabled={props.isDisabled}>
-          {props.children}
+          {props.children as ReactNode}
         </LabelTextWrapper>
         {props.additionalContent && (
           <AdditionalTextWrapper isDisabled={props.isDisabled}>

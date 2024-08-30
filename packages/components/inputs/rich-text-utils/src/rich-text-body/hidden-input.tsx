@@ -12,7 +12,7 @@ type THiddenInputProps = {
 const HiddenInput = (props: THiddenInputProps) => {
   const { handleFocus } = props;
   const onFocus = useCallback(
-    (event) => {
+    (event: React.FocusEvent<HTMLInputElement>) => {
       event.preventDefault();
       if (!props.isFocused) {
         handleFocus();
@@ -21,7 +21,7 @@ const HiddenInput = (props: THiddenInputProps) => {
     [props.isFocused, handleFocus]
   );
 
-  const onBlur = useCallback((event) => {
+  const onBlur = useCallback((event: React.FocusEvent<HTMLInputElement>) => {
     event.preventDefault();
   }, []);
 

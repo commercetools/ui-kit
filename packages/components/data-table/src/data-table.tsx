@@ -326,7 +326,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         <ColumnResizingContext.Provider value={columnResizingReducer}>
           <TableHeader>
             <TableRow isRowClickable={false}>
-              {columnsData.map((column) => (
+              {columnsData.map((column: TColumn<Row>) => (
                 <HeaderCell
                   key={column.key}
                   shouldWrap={props.wrapHeaderLabels}

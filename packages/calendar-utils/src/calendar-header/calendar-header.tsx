@@ -34,7 +34,7 @@ const CalendarHeader = (props: TCalendarHeader) => {
 
   // we prevent all our defined onClicks inside of the CalendarHeader
   // from blurring our input.
-  const onMouseDown = useCallback((event) => {
+  const onMouseDown = useCallback((event: React.MouseEvent) => {
     event.preventDefault();
   }, []);
   return (
