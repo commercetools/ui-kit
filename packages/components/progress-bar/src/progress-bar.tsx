@@ -87,7 +87,9 @@ const ProgressBarLabel = (
 
   return (
     <div css={getLabelStyles(props)}>
-      <TextComponent {...textProps} />
+      <TextComponent {...textProps}>
+        {textProps.children as ReactNode}
+      </TextComponent>
     </div>
   );
 };

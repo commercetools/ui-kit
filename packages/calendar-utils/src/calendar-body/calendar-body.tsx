@@ -3,6 +3,7 @@ import {
   type LegacyRef,
   type FocusEventHandler,
   type KeyboardEvent,
+  FocusEvent,
 } from 'react';
 import type { Theme } from '@emotion/react';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
@@ -89,7 +90,7 @@ export const CalendarBody = (props: TCalendarBody) => {
   const onInputFocus = props.inputProps?.onFocus;
 
   const handleInputFocus = useCallback(
-    (event) => {
+    (event: FocusEvent<HTMLInputElement>) => {
       toggleIsFocused(true);
       if (onInputFocus) onInputFocus(event);
     },
@@ -99,7 +100,7 @@ export const CalendarBody = (props: TCalendarBody) => {
   const onInputBlur = props.inputProps?.onBlur;
 
   const handleInputBlur = useCallback(
-    (event) => {
+    (event: FocusEvent<HTMLInputElement>) => {
       toggleIsFocused(false);
       if (onInputBlur) onInputBlur(event);
     },
@@ -109,7 +110,7 @@ export const CalendarBody = (props: TCalendarBody) => {
   const onToggleFocus = props.toggleButtonProps?.onFocus;
 
   const handleToggleFocus = useCallback(
-    (event) => {
+    (event: FocusEvent<HTMLButtonElement>) => {
       toggleIsFocused(true);
       if (onToggleFocus) onToggleFocus(event);
     },
@@ -119,7 +120,7 @@ export const CalendarBody = (props: TCalendarBody) => {
   const onToggleBlur = props.toggleButtonProps?.onBlur;
 
   const handleToggleBlur = useCallback(
-    (event) => {
+    (event: FocusEvent<HTMLButtonElement>) => {
       toggleIsFocused(false);
       if (onToggleBlur) onToggleBlur(event);
     },

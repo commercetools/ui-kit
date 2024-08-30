@@ -229,22 +229,23 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
   const [isOpen, toggle] = useToggleState(false);
 
   const handleGlobalClick = useCallback(
-    (event) => {
+    (event: MouseEvent | TouchEvent) => {
       const dropdownButton = ref.current;
       if (
         dropdownButton &&
         event.target !== dropdownButton &&
-        !dropdownButton.contains(event.target)
+        !dropdownButton.contains(event.target as Node)
       ) {
         toggle(false);
       }
     },
     [ref, toggle]
   );
+
   useEffect(() => {
-    window.addEventListener('click', handleGlobalClick);
+    window.addEventListener('click', handleGlobalClick as EventListener);
     return () => {
-      window.removeEventListener('click', handleGlobalClick);
+      window.removeEventListener('click', handleGlobalClick as EventListener);
     };
   }, [handleGlobalClick]);
 
@@ -256,7 +257,7 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
   const { onClick } = primaryOption.props;
 
   const handleClickOnHead = useCallback(
-    (event) => {
+    (event: MouseEvent | KeyboardEvent) => {
       if (isOpen) {
         toggle(true);
       } else {

@@ -50,7 +50,7 @@ const SettingsContainer = (props: TSettingsContainerProps) => {
               <HeaderContainer>
                 {props.customSettingsTitle ? (
                   <Text.Headline as="h2">
-                    {props.customSettingsTitle}
+                    {props.customSettingsTitle as string}
                   </Text.Headline>
                 ) : (
                   <Text.Headline as="h2" intlMessage={props.title} />

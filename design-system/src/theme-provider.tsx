@@ -118,12 +118,17 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
   const [theme, setTheme] = useState<ThemeName>('default');
   const parentSelectorRef = useRef(parentSelector);
 
-  const mutationChangeCallback = useCallback((mutationList) => {
-    // We expect only a single element in the mutation list as we configured the
-    // observer to only listen to `data-theme` changes.
-    const [mutationEvent] = mutationList;
-    setTheme((mutationEvent.target as HTMLElement).dataset.theme as ThemeName);
-  }, []);
+  const mutationChangeCallback = useCallback(
+    (mutationList: MutationRecord[]) => {
+      // We expect only a single element in the mutation list as we configured the
+      // observer to only listen to `data-theme` changes.
+      const [mutationEvent] = mutationList;
+      setTheme(
+        (mutationEvent.target as HTMLElement).dataset.theme as ThemeName
+      );
+    },
+    []
+  );
 
   useMutationObserver(parentSelector(), mutationChangeCallback, {
     attributes: true,

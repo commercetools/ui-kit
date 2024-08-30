@@ -121,14 +121,14 @@ function DropdownMenu(props: TDropdownMenuProps) {
 
   // Close the dropdown when clicking outside of it
   const handleGlobalClick = useCallback(
-    (event) => {
+    (event: MouseEvent) => {
       const triggerElement = triggerRef.current;
       if (
         isOpen &&
         triggerElement &&
         event.target !== triggerElement &&
-        window.document.contains(event.target) &&
-        !triggerElement.parentElement?.contains(event.target)
+        window.document.contains(event.target as Node) &&
+        !triggerElement.parentElement?.contains(event.target as Node)
       ) {
         toggle(false);
       }

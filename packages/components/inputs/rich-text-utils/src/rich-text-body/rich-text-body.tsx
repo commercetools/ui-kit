@@ -49,6 +49,7 @@ import {
   isMarkActive,
   isBlockActive,
 } from '../slate-helpers';
+import { type Format } from '../html';
 import type { TDropdownLabel } from './dropdown';
 
 type TMoreStylesDropdownItem = {
@@ -230,23 +231,23 @@ const RichTextEditorBody = forwardRef<
   const hasRedos = editor.history.redos.length > 0;
 
   const onClickBlock = useCallback(
-    ({ value: format }) => {
+    ({ value: format }: { value: Format }) => {
       toggleBlock(editor, format);
     },
     [editor]
   );
   const onClickMoreStyleMark = useCallback(
-    ({ value: format }) => {
+    ({ value: format }: { value: Format }) => {
       toggleMark(editor, format);
     },
     [editor]
   );
   const getIsMoreStyleMarkItemSelected = useCallback(
-    ({ value: format }) => isMarkActive(editor, format),
+    ({ value: format }: { value: Format }) => isMarkActive(editor, format),
     [editor]
   );
   const getIsBlockItemSelected = useCallback(
-    ({ value: format }) => isBlockActive(editor, format),
+    ({ value: format }: { value: Format }) => isBlockActive(editor, format),
     [editor]
   );
 
@@ -254,9 +255,12 @@ const RichTextEditorBody = forwardRef<
   // we prevent all our defined onClicks inside of the CalendarHeader
   // from blurring our input.
 
-  const onToolbarMouseDown = useCallback((event) => {
-    event.preventDefault();
-  }, []);
+  const onToolbarMouseDown = useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      event.preventDefault();
+    },
+    []
+  );
 
   if (props.showExpandIcon) {
     warning(
@@ -280,7 +284,7 @@ const RichTextEditorBody = forwardRef<
             onChange={onClickBlock}
             options={styleDropdownOptions}
             components={{
-              Item: StylesDropdownItem,
+              Item: StylesDropdownItem as React.FunctionComponent<unknown>,
               Label: DropdownLabel,
             }}
             isDisabled={props.isDisabled}
@@ -337,7 +341,7 @@ const RichTextEditorBody = forwardRef<
             isDisabled={props.isDisabled}
             isReadOnly={props.isReadOnly}
             components={{
-              Item: MoreStylesDropdownItem,
+              Item: MoreStylesDropdownItem as React.FunctionComponent<unknown>,
               Label: MoreStylesDropdownLabel,
             }}
             getIsItemSelected={getIsMoreStyleMarkItemSelected}
