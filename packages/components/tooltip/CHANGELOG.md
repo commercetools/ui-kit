@@ -1,5 +1,15 @@
 # @commercetools-uikit/tooltip
 
+## 19.11.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.11.0
+  - @commercetools-uikit/constraints@19.11.0
+  - @commercetools-uikit/hooks@19.11.0
+  - @commercetools-uikit/utils@19.11.0
+
 ## 19.10.0
 
 ### Patch Changes
