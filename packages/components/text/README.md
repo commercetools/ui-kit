@@ -18,15 +18,16 @@ import Text from '@commercetools-uikit/text';
 
 ### Properties
 
-| Props         | Type             | Required | Values               | Default | Description                                                                               |
-| ------------- | ---------------- | :------: | -------------------- | ------- | ----------------------------------------------------------------------------------------- |
-| `as`          | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                                                         |
-| `children`    | `PropTypes.node` | ✅ (\*)  | -                    | -       | -                                                                                         |
-| `intlMessage` | `intl message`   | ✅ (\*)  | -                    | -       | An `intl` message object that will be rendered with `FormattedMessage`                    |
-| `id`          | `String`         |    -     | -                    | -       | Used as HTML id property                                                                  |
-| `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element                                       |
-| `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width                            |
-| `nowrap`      | `Bool`           |    -     | -                    | `false` | The content in the element will not be wrapped to a new line unless explicitly specified. |
+| Props         | Type             | Required | Values                                                                        | Default | Description                                                                               |
+| ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------- |
+| `as`          | `String`         |    ✅    | `['h1', 'h2', 'h3']`                                                          | -       | -                                                                                         |
+| `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       | -                                                                                         |
+| `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                             | -       | An `intl` message object that will be rendered with `FormattedMessage`                    |
+| `id`          | `String`         |    -     | -                                                                             | -       | Used as HTML id property                                                                  |
+| `title`       | `String`         |    -     | -                                                                             | -       | Text to show in a tooltip on hover over the element                                       |
+| `truncate`    | `Bool`           |    -     | -                                                                             | `false` | Option for truncate content in case the screen has small width                            |
+| `nowrap`      | `Bool`           |    -     | -                                                                             | `false` | The content in the element will not be wrapped to a new line unless explicitly specified. |
+| `tone`        | `String`         |    -     | `['primary', 'secondary', 'tertiary', 'information', 'positive', 'negative']` | -       |                                                                                           |
 
 > `*`: `children` is required only if `intlMessage` is not provided
 
