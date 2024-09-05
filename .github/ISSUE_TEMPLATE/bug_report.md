@@ -10,6 +10,15 @@ Before you submit, please search open/closed github issues and discussions since
 **Describe the bug**
 A clear and concise description of what the bug is.
 
+**UI Kit Version Number**
+Please provide the version number you are using.
+
+**Browser**
+Which internet browser are you using?
+
+**Priority**
+How important is this to you? Required.
+
 **To Reproduce**
 Steps to reproduce the behavior:
 
