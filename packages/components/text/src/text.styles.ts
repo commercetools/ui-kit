@@ -147,6 +147,7 @@ export const headlineStyles = (props: THeadlineProps) => css`
   font-size: ${getElementFontSize(props.as)};
   line-height: ${getElementLineHeight(props.as)};
   font-weight: ${getElementFontWeight(props.as)};
+  ${props.tone && getTone(props.tone)}
   ${props.truncate && truncate}
   ${props.nowrap && nowrap}
 `;

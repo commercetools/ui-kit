@@ -1,5 +1,17 @@
 # @commercetools-uikit/text
 
+## 19.11.0
+
+### Minor Changes
+
+- [#2887](https://github.com/commercetools/ui-kit/pull/2887) [`7a0c58b`](https://github.com/commercetools/ui-kit/commit/7a0c58b136dc7a3479b98cbecea11e8f69ac4728) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Add the tone prop to Text.Headline component. Just like the other derivatives of the Text components, we want to be able to change the Text color of the Text.Headline through the tone property.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.11.0
+  - @commercetools-uikit/utils@19.11.0
+
 ## 19.10.0
 
 ### Patch Changes

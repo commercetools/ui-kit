@@ -87,6 +87,7 @@ Text.displayName = 'Text';
 export type THeadlineProps = {
   as?: 'h1' | 'h2' | 'h3';
   truncate?: boolean;
+  tone?: TTone;
   nowrap?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;

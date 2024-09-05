@@ -25,6 +25,15 @@ storiesOf('Basics|Typography/Text', module)
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
         nowrap={boolean('nowrap', false)}
+        tone={select('Text tone', {
+          none: null,
+          primary: 'primary',
+          information: 'information',
+          secondary: 'secondary',
+          tertiary: 'tertiary',
+          positive: 'positive',
+          negative: 'negative',
+        })}
       >
         {text('Text', 'Sample text Headline')}
       </Text.Headline>
