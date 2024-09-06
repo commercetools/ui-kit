@@ -40,20 +40,6 @@
     "labels:sync": "github-labels sync",
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
-  "workspaces": [
-    "design-system",
-    "storybook",
-    "generators/*",
-    "packages/*",
-    "packages/components/*",
-    "packages/components/buttons/*",
-    "packages/components/dropdowns/*",
-    "packages/components/fields/*",
-    "packages/components/inputs/*",
-    "packages/components/spacings/*",
-    "presets/*",
-    "visual-testing-app"
-  ],
   "preconstruct": {
     "packages": [
       "design-system",
@@ -177,7 +163,7 @@
   "engines": {
     "node": ">=18 <19",
     "npm": ">=6",
-    "yarn": ">=3"
+    "pnpm": ">=9"
   },
-  "packageManager": "yarn@3.8.2"
+  "packageManager": "pnpm@9.7.1"
 }
