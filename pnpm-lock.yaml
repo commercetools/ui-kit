@@ -252,9 +252,6 @@ importers:
       react-test-renderer:
         specifier: 17.0.2
         version: 17.0.2(react@17.0.2)
-      react-value:
-        specifier: 0.2.0
-        version: 0.2.0(react@17.0.2)
       replace:
         specifier: 1.2.2
         version: 1.2.2
@@ -4745,16 +4742,16 @@ importers:
         version: 7.25.0
       '@commercetools-uikit/spacings-inline':
         specifier: 19.11.0
-        version: 19.11.0(@types/react@17.0.80)(react-dom@18.3.1(react@17.0.2))(react@17.0.2)
+        version: 19.11.0(@types/react@17.0.80)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       '@commercetools-uikit/spacings-inset':
         specifier: 19.11.0
-        version: 19.11.0(@types/react@17.0.80)(react-dom@18.3.1(react@17.0.2))(react@17.0.2)
+        version: 19.11.0(@types/react@17.0.80)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       '@commercetools-uikit/spacings-inset-squish':
         specifier: 19.11.0
-        version: 19.11.0(@types/react@17.0.80)(react-dom@18.3.1(react@17.0.2))(react@17.0.2)
+        version: 19.11.0(@types/react@17.0.80)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       '@commercetools-uikit/spacings-stack':
         specifier: 19.11.0
-        version: 19.11.0(@types/react@17.0.80)(react-dom@18.3.1(react@17.0.2))(react@17.0.2)
+        version: 19.11.0(@types/react@17.0.80)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
     devDependencies:
       react:
         specifier: 17.0.2
@@ -12569,11 +12566,6 @@ packages:
     peerDependencies:
       react: '>=16.6.0'
       react-dom: '>=16.6.0'
-
-  react-value@0.2.0:
-    resolution: {integrity: sha512-geq4OA3sksC3AyZQ6SmkpoKCVEfXt1kKjylSf5XUzYAR5kBHBfOkEnS+9gpxuHbpMAlIBFobToirkxF5pxiZeQ==}
-    peerDependencies:
-      react: ^15.0 || ^16.0
 
   react@17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
@@ -26073,10 +26065,6 @@ snapshots:
       prop-types: 15.8.1
       react: 17.0.2
       react-dom: 18.3.1(react@17.0.2)
-
-  react-value@0.2.0(react@17.0.2):
-    dependencies:
-      react: 17.0.2
 
   react@17.0.2:
     dependencies:
