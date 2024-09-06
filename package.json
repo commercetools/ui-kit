@@ -70,6 +70,8 @@
     "@commercetools/github-labels": "1.1.0",
     "@commitlint/cli": "17.8.1",
     "@commitlint/config-conventional": "17.8.1",
+    "@emotion/react": "11.10.5",
+    "@emotion/styled": "11.10.5",
     "@formatjs/cli": "6.2.12",
     "@formatjs/intl-relativetimeformat": "11.2.14",
     "@manypkg/cli": "0.21.4",

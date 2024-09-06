@@ -54,6 +54,12 @@ importers:
       '@commitlint/config-conventional':
         specifier: 17.8.1
         version: 17.8.1
+      '@emotion/react':
+        specifier: 11.10.5
+        version: 11.10.5(@babel/core@7.24.7)(@types/react@17.0.80)(react@17.0.2)
+      '@emotion/styled':
+        specifier: 11.10.5
+        version: 11.10.5(@babel/core@7.24.7)(@emotion/react@11.10.5(@babel/core@7.24.7)(@types/react@17.0.80)(react@17.0.2))(@types/react@17.0.80)(react@17.0.2)
       '@formatjs/cli':
         specifier: 6.2.12
         version: 6.2.12
@@ -4785,16 +4791,16 @@ importers:
         version: 7.25.0
       '@commercetools-uikit/spacings-inline':
         specifier: 19.11.0
-        version: 19.11.0(@types/react@17.0.80)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+        version: 19.11.0(@types/react@17.0.80)(react-dom@18.3.1(react@17.0.2))(react@17.0.2)
       '@commercetools-uikit/spacings-inset':
         specifier: 19.11.0
-        version: 19.11.0(@types/react@17.0.80)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+        version: 19.11.0(@types/react@17.0.80)(react-dom@18.3.1(react@17.0.2))(react@17.0.2)
       '@commercetools-uikit/spacings-inset-squish':
         specifier: 19.11.0
-        version: 19.11.0(@types/react@17.0.80)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+        version: 19.11.0(@types/react@17.0.80)(react-dom@18.3.1(react@17.0.2))(react@17.0.2)
       '@commercetools-uikit/spacings-stack':
         specifier: 19.11.0
-        version: 19.11.0(@types/react@17.0.80)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+        version: 19.11.0(@types/react@17.0.80)(react-dom@18.3.1(react@17.0.2))(react@17.0.2)
     devDependencies:
       react:
         specifier: 17.0.2
@@ -6604,6 +6610,18 @@ packages:
   '@emotion/memoize@0.9.0':
     resolution: {integrity: sha512-30FAj7/EoJ5mwVPOWhAyCX+FPfMDrVecJAM+Iw9NRoSl4BBAQeqj4cApHHUXOVvIPgLVDsCFoz/hGD+5QQD1GQ==}
 
+  '@emotion/react@11.10.5':
+    resolution: {integrity: sha512-TZs6235tCJ/7iF6/rvTaOH4oxQg2gMAcdHemjwLKIjKz4rRuYe1HJ2TQJKnAcRAfOUDdU8XoDadCe1rl72iv8A==}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+      '@types/react': '*'
+      react: '>=16.8.0'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@types/react':
+        optional: true
+
   '@emotion/react@11.13.0':
     resolution: {integrity: sha512-WkL+bw1REC2VNV1goQyfxjx1GYJkcc23CRQkXX+vZNLINyfI7o+uUn/rTGPt/xJ3bJHd5GcljgnxHf4wRw5VWQ==}
     peerDependencies:
@@ -6618,6 +6636,19 @@ packages:
 
   '@emotion/sheet@1.4.0':
     resolution: {integrity: sha512-fTBW9/8r2w3dXWYM4HCB1Rdp8NLibOw2+XELH5m5+AkWiL/KqYX6dc0kKYlaYyKjrQ6ds33MCdMPEwgs2z1rqg==}
+
+  '@emotion/styled@11.10.5':
+    resolution: {integrity: sha512-8EP6dD7dMkdku2foLoruPCNkRevzdcBaY6q0l0OsbyJK+x8D9HWjX27ARiSIKNF634hY9Zdoedh8bJCiva8yZw==}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+      '@emotion/react': ^11.0.0-rc.0
+      '@types/react': '*'
+      react: '>=16.8.0'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@types/react':
+        optional: true
 
   '@emotion/styled@11.13.0':
     resolution: {integrity: sha512-tkzkY7nQhW/zC4hztlwucpT8QEZ6eUzpXDRhww/Eej4tFfO0FxQYWRyg/c5CCXa4d/f174kqeXYjuQRnhzf6dA==}
@@ -6639,6 +6670,9 @@ packages:
 
   '@emotion/utils@1.4.0':
     resolution: {integrity: sha512-spEnrA1b6hDR/C68lC2M7m6ALPUHZC0lIY7jAS/B/9DuuO1ZP04eov8SMv/6fwRd8pzmsn2AuJEznRREWlQrlQ==}
+
+  '@emotion/weak-memoize@0.3.1':
+    resolution: {integrity: sha512-EsBwpc7hBUJWAsNPBmJy4hxWx12v6bshQsldrVmjxJoc3isbxhOrF2IcCpaXxfvq03NwkI7sbsOLXbYuqF/8Ww==}
 
   '@emotion/weak-memoize@0.4.0':
     resolution: {integrity: sha512-snKqtPW01tN0ui7yu9rGv69aJXr/a/Ywvl11sUjNtEcRc+ng/mQriFL0wLXMef74iHa/EkftbDzU9F8iFbH+zg==}
@@ -19086,7 +19120,7 @@ snapshots:
       '@types/node': 20.5.1
       chalk: 4.1.2
       cosmiconfig: 8.3.6(typescript@5.5.4)
-      cosmiconfig-typescript-loader: 4.4.0(@types/node@20.5.1)(cosmiconfig@8.3.6(typescript@5.5.4))(ts-node@10.9.2(@swc/core@1.7.10)(@types/node@20.5.1)(typescript@5.5.4))(typescript@5.5.4)
+      cosmiconfig-typescript-loader: 4.4.0(@types/node@20.5.1)(cosmiconfig@8.3.6(typescript@5.5.2))(ts-node@10.9.2(@swc/core@1.7.10)(@types/node@20.5.1)(typescript@5.5.4))(typescript@5.5.4)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -19222,6 +19256,23 @@ snapshots:
 
   '@emotion/memoize@0.9.0': {}
 
+  '@emotion/react@11.10.5(@babel/core@7.24.7)(@types/react@17.0.80)(react@17.0.2)':
+    dependencies:
+      '@babel/runtime': 7.25.0
+      '@emotion/babel-plugin': 11.12.0
+      '@emotion/cache': 11.13.1
+      '@emotion/serialize': 1.3.0
+      '@emotion/use-insertion-effect-with-fallbacks': 1.1.0(react@17.0.2)
+      '@emotion/utils': 1.4.0
+      '@emotion/weak-memoize': 0.3.1
+      hoist-non-react-statics: 3.3.2
+      react: 17.0.2
+    optionalDependencies:
+      '@babel/core': 7.24.7
+      '@types/react': 17.0.80
+    transitivePeerDependencies:
+      - supports-color
+
   '@emotion/react@11.13.0(@types/react@17.0.80)(react@17.0.2)':
     dependencies:
       '@babel/runtime': 7.25.0
@@ -19248,6 +19299,22 @@ snapshots:
 
   '@emotion/sheet@1.4.0': {}
 
+  '@emotion/styled@11.10.5(@babel/core@7.24.7)(@emotion/react@11.10.5(@babel/core@7.24.7)(@types/react@17.0.80)(react@17.0.2))(@types/react@17.0.80)(react@17.0.2)':
+    dependencies:
+      '@babel/runtime': 7.25.0
+      '@emotion/babel-plugin': 11.12.0
+      '@emotion/is-prop-valid': 1.2.2
+      '@emotion/react': 11.10.5(@babel/core@7.24.7)(@types/react@17.0.80)(react@17.0.2)
+      '@emotion/serialize': 1.3.0
+      '@emotion/use-insertion-effect-with-fallbacks': 1.1.0(react@17.0.2)
+      '@emotion/utils': 1.4.0
+      react: 17.0.2
+    optionalDependencies:
+      '@babel/core': 7.24.7
+      '@types/react': 17.0.80
+    transitivePeerDependencies:
+      - supports-color
+
   '@emotion/styled@11.13.0(@emotion/react@11.13.0(@types/react@17.0.80)(react@17.0.2))(@types/react@17.0.80)(react@17.0.2)':
     dependencies:
       '@babel/runtime': 7.25.0
@@ -19270,6 +19337,8 @@ snapshots:
       react: 17.0.2
 
   '@emotion/utils@1.4.0': {}
+
+  '@emotion/weak-memoize@0.3.1': {}
 
   '@emotion/weak-memoize@0.4.0': {}
 
@@ -22507,7 +22576,7 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  cosmiconfig-typescript-loader@4.4.0(@types/node@20.5.1)(cosmiconfig@8.3.6(typescript@5.5.4))(ts-node@10.9.2(@swc/core@1.7.10)(@types/node@20.5.1)(typescript@5.5.4))(typescript@5.5.4):
+  cosmiconfig-typescript-loader@4.4.0(@types/node@20.5.1)(cosmiconfig@8.3.6(typescript@5.5.2))(ts-node@10.9.2(@swc/core@1.7.10)(@types/node@20.5.1)(typescript@5.5.4))(typescript@5.5.4):
     dependencies:
       '@types/node': 20.5.1
       cosmiconfig: 8.3.6(typescript@5.5.4)
