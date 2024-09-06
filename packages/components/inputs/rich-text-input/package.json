@@ -32,6 +32,7 @@
     "@commercetools-uikit/spacings-inline": "19.11.0",
     "@commercetools-uikit/spacings-stack": "19.11.0",
     "@commercetools-uikit/tooltip": "19.11.0",
+    "@commercetools-uikit/collapsible-panel": "19.11.0",
     "@commercetools-uikit/utils": "19.11.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

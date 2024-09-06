@@ -21,6 +21,7 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
+    "@commercetools-uikit/calendar-utils": "19.11.0",
     "@commercetools-uikit/constraints": "19.11.0",
     "@commercetools-uikit/date-input": "19.11.0",
     "@commercetools-uikit/design-system": "19.11.0",
