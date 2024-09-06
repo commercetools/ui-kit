@@ -90,6 +90,7 @@ const IconItem = styled.div`
     display: block;
     width: 48px;
     height: 48px;
+    fill: currentColor;
   }
 `;
 

@@ -138,7 +138,6 @@ BasicExample.args = {
   showExpandIcon: false,
   selectedLanguage: 'en',
   hideLanguageExpansionControls: false,
-  isAutofocussed: false,
   isDisabled: false,
   isReadOnly: false,
   placeholder: {

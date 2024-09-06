@@ -1,4 +1,3 @@
-// @ts-expect-error
 import type { Meta, StoryFn } from '@storybook/react';
 import DataTable from './../../data-table';
 import DataTableManager from './index';
@@ -172,7 +171,6 @@ const initialVisibleColumns = [
 
 const initialColumnsState = [...initialVisibleColumns, ...initialHiddenColumns];
 
-// @ts-expect-error
 export const BasicExample: Story = (args) => {
   const [tableData, setTableData] = useState({
     columns: initialColumnsState,

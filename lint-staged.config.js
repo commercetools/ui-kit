@@ -14,7 +14,7 @@ module.exports = {
     // For that reason, we move the `--onlyChanged` flag next to it.
     'yarn lint:js --reporters=jest-silent-reporter --onlyChanged',
   ],
-  '*.{ts,tsx} !(*.stories.tsx)': [
+  '*.{ts,tsx}': [
     'yarn prettier --write',
     // NOTE: apparently if you pass some argument that is not a flag AFTER the `reporters`
     // flag, jest does not seem correctly parse the arguments.

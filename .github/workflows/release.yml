@@ -48,8 +48,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-        env:
-          SKIP_INSTALL_STORYBOOK: true
 
       - name: Creating .npmrc
         run: |
