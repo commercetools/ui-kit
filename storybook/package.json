@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "storybook dev -p 6006",
-    "build-and-serve": "yarn build & yarn serve",
+    "build-and-serve": "pnpm build & pnpm serve",
     "build": "NODE_ENV=production storybook build",
     "serve": "serve"
   }

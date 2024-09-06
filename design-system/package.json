@@ -20,7 +20,7 @@
   "files": ["dist", "materials"],
   "scripts": {
     "build:tokens": "node ./scripts/generate-design-tokens.js",
-    "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn build:tokens'"
+    "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'pnpm build:tokens'"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.13",
