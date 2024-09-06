@@ -5,7 +5,13 @@
   "homepage": "https://uikit.commercetools.com/",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "private": true,
-  "keywords": ["javascript", "frontend", "ui-kit", "design-system", "react"],
+  "keywords": [
+    "javascript",
+    "frontend",
+    "ui-kit",
+    "design-system",
+    "react"
+  ],
   "sideEffects": false,
   "scripts": {
     "auth": "npm_config_registry=https://registry.npmjs.org npm whoami",
@@ -83,6 +89,7 @@
     "@types/is-hotkey": "^0.1.7",
     "@types/node": "18.19.38",
     "@types/prettier": "^2.7.3",
+    "@types/react": "17.0.80",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "babel-jest": "29.7.0",
@@ -164,5 +171,8 @@
     "npm": ">=6",
     "pnpm": ">=9"
   },
-  "packageManager": "pnpm@9.7.1"
+  "packageManager": "pnpm@9.7.1",
+  "devDependencies": {
+    "@storybook/react": "^8.2.9"
+  }
 }

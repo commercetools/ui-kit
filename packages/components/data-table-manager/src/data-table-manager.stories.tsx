@@ -7,7 +7,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import { useSorting } from '@commercetools-uikit/hooks';
 import { UPDATE_ACTIONS } from './constants';
-import { DataTableManagerProvider } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
+import { DataTableManagerProvider } from './index';
 import Spacings from '@commercetools-uikit/spacings';
 import SearchTextInput from '@commercetools-uikit/search-text-input';
 
