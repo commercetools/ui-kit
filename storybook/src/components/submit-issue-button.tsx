@@ -2,7 +2,9 @@ import SecondaryButton from '@commercetools-uikit/secondary-button';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
 
 type TProps = {
+  /** the issue-button's label */
   label: string;
+  /** the github template name */
   template: string;
 };
 
