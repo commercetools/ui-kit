@@ -1,3 +1,25 @@
+<script>
+    const injectScript = (url, attributes = {}) => {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = url;
+      Object.keys(attributes).forEach((key) => {
+        script.setAttribute(key, attributes[key]);
+      });
+      document.body.appendChild(script);
+    };
+
+    const bootCookieBanner = ()=>{
+      injectScript('https://cdn.cookielaw.org/consent/b104027d-4d10-4b75-9675-9ffef11562a8/OtAutoBlock.js');
+      injectScript('https://cdn.cookielaw.org/scripttemplates/otSDKStub.js', {
+        'data-domain-script': 'b104027d-4d10-4b75-9675-9ffef11562a8',
+      });
+    }
+
+    if(window && window.location.host.includes('.commercetools.com')) {
+      window.onload = bootCookieBanner;
+    }
+</script>
 <link href="./fonts/index.css" rel="stylesheet">
 
 <style>
