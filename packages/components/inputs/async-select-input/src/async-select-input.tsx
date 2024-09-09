@@ -1,4 +1,4 @@
-import type { ReactNode, FocusEvent } from 'react';
+import type { ReactNode, FocusEvent, FC } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import {
@@ -325,7 +325,7 @@ const defaultProps: Pick<
   controlShouldRenderValue: true,
 };
 
-const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
+const AsyncSelectInput: FC<TAsyncSelectInputProps> = (props) => {
   const intl = useIntl();
 
   if (!props.isReadOnly) {

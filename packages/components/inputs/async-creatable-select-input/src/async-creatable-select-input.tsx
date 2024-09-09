@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import {
@@ -353,7 +353,9 @@ const defaultProps: Pick<
   menuPortalZIndex: 1,
 };
 
-const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
+const AsyncCreatableSelectInput: FC<TAsyncCreatableSelectInputProps> = (
+  props
+) => {
   const intl = useIntl();
 
   const placeholder =
