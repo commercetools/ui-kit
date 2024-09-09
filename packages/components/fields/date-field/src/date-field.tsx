@@ -1,10 +1,13 @@
 import {
   Component,
   isValidElement,
+  type MouseEvent,
+  type KeyboardEvent,
   type FocusEventHandler,
   type ReactElement,
   type ReactNode,
 } from 'react';
+
 import {
   filterDataAttributes,
   createSequentialId,
@@ -150,21 +153,23 @@ export type TDateFieldProps = {
   /**
    * Title of the label
    */
-  title: string | ReactNode;
+  title: ReactNode;
   /**
    * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas `description` can describe it in more depth. Can also receive a `hintIcon`.
    */
-  hint?: string | ReactNode;
+  hint?: ReactNode;
   /**
    * Provides a description for the title.
    */
-  description?: string | ReactNode;
+  description?: ReactNode;
   /**
    * Function called when info button is pressed.
    * <br />
    * Info button will only be visible when this prop is passed.
    */
-  onInfoButtonClick?: () => void;
+  onInfoButtonClick?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * Icon to be displayed beside the hint text.
    * <br />

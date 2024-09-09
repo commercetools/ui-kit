@@ -7,7 +7,6 @@ module.exports = {
   moduleFileExtensions: ['js'],
   modulePathIgnorePatterns: [
     'dist',
-    'docs/public',
     'storybook',
     '.spec.js',
     '.visualspec.js',

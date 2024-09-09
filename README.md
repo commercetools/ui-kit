@@ -14,7 +14,7 @@
 
 > If you are building **Custom Applications** for the Merchant Center, be sure to check out our [documentation](https://docs.commercetools.com/custom-applications)
 
-> Interactive documentation of UI Kit components can be found in our [Storybook](https://uikit.commercetools.com/?path=/story/introduction--getting-started)
+> Interactive documentation of UI Kit components can be found in our [Storybook](https://uikit.commercetools.com/)
 
 # Getting started
 

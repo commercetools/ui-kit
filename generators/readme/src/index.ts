@@ -41,7 +41,7 @@ import vfile from 'vfile';
 import unified from 'unified';
 import parse from 'remark-parse';
 import mdx from 'remark-mdx';
-import gfm from 'remark-gfm';
+import gfm from 'remark-gfm-v1';
 import stringify from 'remark-stringify';
 // @ts-ignore
 import * as reactDocgen from 'react-docgen';

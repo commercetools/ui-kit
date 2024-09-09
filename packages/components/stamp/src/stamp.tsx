@@ -24,7 +24,7 @@ export type TStampProps = {
   isCondensed: boolean;
   /**
    * Content to render within the stamp.
-   * This property has been **deprecated** in favor of `label`.
+   * @deprecated in favor of `label`.
    */
   children?: ReactNode;
   /**

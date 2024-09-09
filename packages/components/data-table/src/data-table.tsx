@@ -155,7 +155,26 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    * the items of `rows` that you want to render under this column, and a `label`
    * which defines the name shown on the header.
    * The list of columns to be rendered.
-   * Each column can be customized (see properties below).
+   *
+   * Column item shape:
+   *
+   * ```
+   * {
+   *   key: string;
+   *   label: ReactNode;
+   *   width?: string;
+   *   align?: 'left' | 'center' | 'right';
+   *   onClick?: (event: MouseEventHandler) => void;
+   *   renderItem?: (row: Row, isRowCollapsed: boolean) => ReactNode;
+   *   headerIcon?: ReactNode;
+   *   isTruncated?: boolean;
+   *   isSortable?: boolean;
+   *   disableResizing?: boolean;
+   *   shouldIgnoreRowClick?: boolean;
+   * }
+   * ```
+   *
+   * [Colum signatures with description](/?path=/docs/components-datatable-readme--props#signatures)
    */
   columns: TColumn<Row>[];
   /**

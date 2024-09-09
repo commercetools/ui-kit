@@ -20,7 +20,11 @@ export type TAlignItem =
 export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 
 export type TStackProps = {
+  /** specifies the spacing between individual items */
   scale: TScale;
+  /**
+   * sets the `align-self` value on all direct children.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/align-items */
   alignItems: TAlignItem;
   children: ReactNode;
 };
