@@ -323,6 +323,9 @@ importers:
       react:
         specifier: 17.0.2
         version: 17.0.2
+      yaml:
+        specifier: ^2.5.1
+        version: 2.5.1
     devDependencies:
       nodemon:
         specifier: ^3.0.0
@@ -20413,6 +20416,14 @@ packages:
     engines: { node: '>= 14' }
     hasBin: true
 
+  yaml@2.5.1:
+    resolution:
+      {
+        integrity: sha512-bLQOjaX/ADgQ20isPJRvF0iRUHIxVhYvr53Of7wGcWlO2jvtUlH5m87DsmulFVxRpNLOnI4tB6p/oh8D7kpn9Q==,
+      }
+    engines: { node: '>= 14' }
+    hasBin: true
+
   yargs-parser@18.1.3:
     resolution:
       {
@@ -34067,6 +34078,8 @@ snapshots:
   yaml@2.3.1: {}
 
   yaml@2.5.0: {}
+
+  yaml@2.5.1: {}
 
   yargs-parser@18.1.3:
     dependencies:
