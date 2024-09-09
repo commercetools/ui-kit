@@ -23,46 +23,43 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+      - name: Get pnpm cache
+        id: pnpm-cache
+        run: echo "::set-output name=dir::$(pnpm store path)"
 
       - uses: actions/cache@v4
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock', 'patches/*.patch') }}
+          path: ${{ steps.pnpm-cache.outputs.dir }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml', 'patches/*.patch') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-pnpm-
 
       - name: Install dependencies
-        run: yarn install --immutable
-
-      - name: Check for unmet constraints (fix w/ "yarn constraints --fix")
-        run: yarn constraints
+        run: pnpm install --frozen-lockfile
 
       - name: Building packages
-        run: yarn build
+        run: pnpm build
 
       - name: Running static type checking
-        run: yarn typecheck
+        run: pnpm typecheck
 
       - name: Running linters and tests
-        run: yarn run jest --projects jest.{eslint,test,ts-test,bundle}.config.js --reporters github-actions
+        run: pnpm run jest --projects jest.{eslint,test,ts-test,bundle}.config.js --reporters github-actions
         env:
           CI: true
 
       - name: Building Visual Regression Tests application for UI components
-        run: yarn visual-testing-app:build
+        run: pnpm visual-testing-app:build
 
       - name: Running Visual Regression Tests for UI components
-        run: yarn vrt:components
+        run: pnpm vrt:components
         timeout-minutes: 20
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
 
       - name: Checking bundle size of visual testing app
-        run: yarn bundlesize
+        run: pnpm bundlesize
         # env:
         # NOTE: it seems that currently bundlesize server is having problems
         # resulting in status code 500. Because of that, the bundlesize script

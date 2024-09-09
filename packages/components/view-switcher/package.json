@@ -21,9 +21,9 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/icons": "19.11.0",
     "@commercetools-uikit/accessible-button": "19.11.0",
     "@commercetools-uikit/design-system": "19.11.0",
+    "@commercetools-uikit/icons": "19.11.0",
     "@commercetools-uikit/utils": "19.11.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
