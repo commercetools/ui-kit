@@ -26,6 +26,7 @@
     "@commercetools-uikit/field-errors": "19.11.0",
     "@commercetools-uikit/field-label": "19.11.0",
     "@commercetools-uikit/field-warnings": "19.11.0",
+    "@commercetools-uikit/messages": "19.11.0",
     "@commercetools-uikit/spacings-stack": "19.11.0",
     "@commercetools-uikit/text-input": "19.11.0",
     "@commercetools-uikit/utils": "19.11.0",
