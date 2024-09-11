@@ -64,9 +64,6 @@ const Card = (props: TCardProps) => {
       border: ${props.type === 'raised'
         ? `1px solid ${designTokens.colorNeutral90}`
         : 'none'};
-      background: ${props.theme === 'dark'
-        ? designTokens.colorNeutral95
-        : designTokens.colorSurface};
       cursor: ${shouldBeDisabled
         ? 'not-allowed'
         : isClickable
