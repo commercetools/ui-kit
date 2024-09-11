@@ -4993,6 +4993,9 @@ importers:
       '@commercetools-uikit/icons':
         specifier: 19.11.0
         version: 19.11.0(@types/react@17.0.80)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+      '@commercetools-uikit/secondary-button':
+        specifier: workspace:*
+        version: link:../packages/components/buttons/secondary-button
       '@commercetools-uikit/text-input':
         specifier: 19.11.0
         version: 19.11.0(@types/react@17.0.80)(react-dom@17.0.2(react@17.0.2))(react-intl@6.6.8(react@17.0.2)(typescript@5.5.4))(react@17.0.2)(typescript@5.5.4)

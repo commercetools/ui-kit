@@ -7,6 +7,7 @@
     "@commercetools-uikit/data-table": "19.11.0",
     "@commercetools-uikit/icon-button": "19.11.0",
     "@commercetools-uikit/icons": "19.11.0",
+    "@commercetools-uikit/secondary-button": "workspace:*",
     "@commercetools-uikit/text-input": "19.11.0",
     "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.10.5",
