@@ -7,7 +7,7 @@ import type {
   TDataTableManagerProps,
   TCustomSettingsProps,
 } from './types';
-import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
+import { useDataTableManagerContext } from './data-table-manager-provider';
 
 const DataTableManager = <Row extends TRow = TRow>(
   props: TDataTableManagerProps<Row>

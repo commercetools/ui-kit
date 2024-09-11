@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import {
@@ -343,7 +343,7 @@ const defaultProps: Pick<
   menuPortalZIndex: 1,
 };
 
-const CreatableSelectInput: FC<TCreatableSelectInputProps> = (props) => {
+const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
   const intl = useIntl();
 
   if (!props.isReadOnly) {

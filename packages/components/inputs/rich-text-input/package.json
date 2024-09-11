@@ -30,6 +30,7 @@
     "@commercetools-uikit/icons": "19.11.0",
     "@commercetools-uikit/input-utils": "19.11.0",
     "@commercetools-uikit/rich-text-utils": "19.11.0",
+    "@commercetools-uikit/spacings": "workspace:^",
     "@commercetools-uikit/spacings-inline": "19.11.0",
     "@commercetools-uikit/spacings-stack": "19.11.0",
     "@commercetools-uikit/tooltip": "19.11.0",
@@ -48,7 +49,9 @@
   "devDependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intl": "^6.3.2"
+    "react-intl": "^6.3.2",
+    "@commercetools-uikit/primary-button": "workspace:^",
+    "@commercetools-uikit/text": "workspace:^"
   },
   "peerDependencies": {
     "react": "17.x",

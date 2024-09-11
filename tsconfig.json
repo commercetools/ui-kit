@@ -19,7 +19,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "preserveSymlinks": true,
+    "preserveSymlinks": false,
     "pretty": true,
     "removeComments": false,
     "sourceMap": true,
@@ -28,14 +28,11 @@
     "stripInternal": true,
     "target": "ES2019",
     "allowJs": true,
-    "typeRoots": [
-      "@types",
-      // "@types-extensions",
-      "node_modules/@types"
-    ],
+    "typeRoots": ["@types", "@types-extensions", "node_modules/@types"],
     "paths": {
       // allow importing custom storybook components + helpers into stories via this alias
       "@/storybook-helpers": ["./storybook/src/helpers/index"]
     }
-  }
+  },
+  "exclude": ["node_modules", "dist", "build", "storybook-static"]
 }

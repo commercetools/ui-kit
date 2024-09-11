@@ -17,7 +17,6 @@ import {
   warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import React from 'react';
 
 const customizedComponents = {
   DropdownIndicator,
@@ -391,7 +390,7 @@ const isOptionObject = (
   option: TOption | TOptionObject
 ): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
-const SelectInput: React.FC<TSelectInputProps> = (props) => {
+const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
 
   warnIfMenuPortalPropsAreMissing({
