@@ -1,8 +1,4 @@
-import {
-  customProperties,
-  designTokens,
-  version,
-} from '@commercetools-frontend/ui-kit';
+import { customProperties, designTokens, version } from '../presets/ui-kit';
 
 describe('exports', () => {
   // This field has been deprecated

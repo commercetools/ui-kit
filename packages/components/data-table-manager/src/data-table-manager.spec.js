@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { screen, render, fireEvent, within } from '../../../../test/test-utils';
 import DataTableManager from './data-table-manager';
-import {
-  useDataTableManagerContext,
-  DataTableManagerProvider,
-} from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
+import { useDataTableManagerContext, DataTableManagerProvider } from './index';
 import { UPDATE_ACTIONS } from './constants';
 
 /* eslint-disable react/prop-types */
