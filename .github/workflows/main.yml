@@ -47,7 +47,7 @@ jobs:
         run: pnpm typecheck
 
       - name: Running linters and tests
-        run: pnpm run jest --projects jest.{eslint,test,ts-test,bundle}.config.js --reporters github-actions
+        run: pnpm exec jest --projects jest.{eslint,test,ts-test,bundle}.config.js --reporters github-actions
         env:
           CI: true
 
