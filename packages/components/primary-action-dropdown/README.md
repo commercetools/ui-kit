@@ -71,7 +71,7 @@ export default Example;
 | `onClick`    | `Function`<br/>[See signature.](#signature-onClick) |    ✅    |         | Event handler triggers whenever the option is clicked.                                              |
 | `isDisabled` | `boolean`                                           |          | `false` | Disables the option within the dropdown. If all options are disabled the dropdown will be disabled. |
 | `children`   | `string`                                            |    ✅    |         | Any string which serves as the label.                                                               |
-| `iconLeft`   | `ReactNode`                                         |    ✅    |         | Any React node.                                                                                     |
+| `iconLeft`   | `ReactNode`                                         |          |         | Any React node.                                                                                     |
 
 ### Signatures
 
