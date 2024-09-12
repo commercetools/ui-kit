@@ -39,6 +39,7 @@
   "peerDependencies": {
     "react": "17.x",
     "react-intl": "6.x",
-    "react-router-dom": "5.x"
+    "react-router-dom": "5.x",
+    "@commercetools-uikit/icons": "workspace:*"
   }
 }

@@ -19,7 +19,6 @@ const config: StorybookConfig = {
     '../../packages/components/**/*.mdx',
   ],
   addons: [
-    //getAbsolutePath('@storybook/addon-webpack5-compiler-swc'),
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-essentials'),

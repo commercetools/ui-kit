@@ -33,7 +33,8 @@
     "react-intl": "^6.3.2"
   },
   "devDependencies": {
-    "react": "17.0.2"
+    "react": "17.0.2",
+    "@commercetools-uikit/icons": "workspace:*"
   },
   "peerDependencies": {
     "react": "17.x"

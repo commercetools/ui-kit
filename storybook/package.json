@@ -4,11 +4,17 @@
   "private": true,
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
+    "@commercetools-uikit/data-table": "19.11.0",
+    "@commercetools-uikit/icon-button": "19.11.0",
+    "@commercetools-uikit/icons": "19.11.0",
+    "@commercetools-uikit/secondary-button": "workspace:*",
+    "@commercetools-uikit/text-input": "19.11.0",
     "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@modyfi/vite-plugin-yaml": "^1.1.0",
     "@storybook/addon-a11y": "^8.2.9",
+    "@storybook/addon-docs": "^8.2.9",
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
     "@storybook/addon-links": "^8.2.9",
@@ -32,7 +38,7 @@
   },
   "scripts": {
     "start": "storybook dev -p 6006",
-    "build-and-serve": "yarn build & yarn serve",
+    "build-and-serve": "pnpm build & pnpm serve",
     "build": "NODE_ENV=production storybook build",
     "serve": "serve"
   }

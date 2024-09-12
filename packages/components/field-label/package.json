@@ -23,6 +23,7 @@
     "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/constraints": "19.11.0",
     "@commercetools-uikit/design-system": "19.11.0",
+    "@commercetools-uikit/flat-button": "19.11.0",
     "@commercetools-uikit/icon-button": "19.11.0",
     "@commercetools-uikit/icons": "19.11.0",
     "@commercetools-uikit/label": "19.11.0",

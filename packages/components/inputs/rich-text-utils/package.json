@@ -52,6 +52,7 @@
   "peerDependencies": {
     "react": "17.x",
     "react-dom": "17.x",
-    "react-intl": "6.x"
+    "react-intl": "6.x",
+    "jsdom": "20.0.3"
   }
 }

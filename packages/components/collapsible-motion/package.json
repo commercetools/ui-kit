@@ -22,6 +22,7 @@
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/hooks": "19.11.0",
+    "@commercetools-uikit/primary-button": "19.11.0",
     "@commercetools-uikit/utils": "19.11.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

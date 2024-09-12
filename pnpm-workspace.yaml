@@ -1,0 +1,13 @@
+packages:
+  - "design-system"
+  - "storybook"
+  - "generators/*"
+  - "packages/*"
+  - "packages/components/*"
+  - "packages/components/buttons/*"
+  - "packages/components/dropdowns/*"
+  - "packages/components/fields/*"
+  - "packages/components/inputs/*"
+  - "packages/components/spacings/*"
+  - "presets/*"
+  - "visual-testing-app"

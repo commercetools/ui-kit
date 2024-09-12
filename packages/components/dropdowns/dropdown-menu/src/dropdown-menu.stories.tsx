@@ -2,13 +2,13 @@ import type { Meta, StoryFn } from '@storybook/react';
 import DropdownMenu from './dropdown-menu';
 import { SecondaryButton, IconButton } from '@commercetools-uikit/buttons';
 import { ColumnsIcon, FilterIcon } from '@commercetools-uikit/icons';
-import Constraints from '@commercetools-uikit/constraints/src';
+import Constraints from '@commercetools-uikit/constraints';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SelectInput from '@commercetools-uikit/select-input';
 import Text from '@commercetools-uikit/text';
 import { useState } from 'react';
-import CheckboxInput from '@commercetools-uikit//checkbox-input';
+import CheckboxInput from '@commercetools-uikit/checkbox-input';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'components/Dropdowns/DropdownMenu',
