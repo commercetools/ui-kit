@@ -6,6 +6,6 @@ export type TFiltersListProps = {
 };
 
 function FiltersList(props: TFiltersListProps) {
-  return <div>{props.label} - I am a List of Filters!</div>;
+  return <div>{props.label}</div>;
 }
 export default FiltersList;
