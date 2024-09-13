@@ -461,6 +461,7 @@ const SelectInput = (props: TSelectInputProps) => {
             } as ReactSelectProps['components']
           }
           menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
+          hideSelectedOptions={false}
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,

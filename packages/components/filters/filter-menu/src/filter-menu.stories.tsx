@@ -1,5 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import FilterMenu from './filter-menu';
+import type { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
+import { type MenuProps, type MenuListProps } from 'react-select';
+import FilterMenu, { type TAppliedFilterValue } from './filter-menu';
+import SelectInput from '../../../inputs/select-input';
 
 const meta: Meta<typeof FilterMenu> = {
   title: 'components/Filters/FilterMenu',
@@ -13,10 +16,94 @@ const meta: Meta<typeof FilterMenu> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof FilterMenu>;
+type Story = StoryFn<typeof FilterMenu>;
 
-export const BasicExample: Story = {
-  args: {
-    label: 'A label text',
-  },
+const operatorsOptions = [
+  { value: 'OR', label: 'OR' },
+  { value: 'AND', label: 'AND' },
+];
+
+const colorOptions = [
+  { label: 'Blue', value: 'blue', key: 'blue', id: '2' },
+  { label: 'Purple', value: 'purple', key: 'purple', id: '3' },
+  { label: 'Red', value: 'red', key: 'red', id: '4' },
+  { label: 'Orange', value: 'orange', key: 'orange', id: '5' },
+  { label: 'Yellow', value: 'yellow', key: 'yellow', id: '6' },
+  { label: 'Green', value: 'green', key: 'green', id: '7' },
+  { label: 'Forest', value: 'forest', key: 'forest', id: '8' },
+  { label: 'Slate', value: 'slate', key: 'slate', id: '9' },
+  { label: 'Silver', value: 'silver', key: 'silver', id: '10' },
+];
+const CustomSelectMenu = ({ children, ...rest }: MenuProps) => (
+  <div {...rest}>{children}</div>
+);
+const CustomMenuList = ({ children, ...rest }: MenuListProps) => (
+  <div {...rest}>{children}</div>
+);
+export const BasicExample: Story = () => {
+  const [filterValue, onFilterChange] = useState<
+    string | string[] | null | undefined
+  >(undefined);
+
+  const [appliedFilter, setAppliedFilter] = useState<
+    TAppliedFilterValue | TAppliedFilterValue[] | undefined | null
+  >(undefined);
+
+  const [operatorsValue, onChangeOperators] = useState<
+    string | null | undefined
+  >(undefined);
+
+  return (
+    <div
+      style={{
+        height: 300,
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <FilterMenu
+        key="colors"
+        label="Colors"
+        appliedFilterValues={appliedFilter}
+        filter={
+          <SelectInput
+            options={colorOptions}
+            onChange={(e) => {
+              onFilterChange(e.target.value);
+              Array.isArray(e.target.value)
+                ? setAppliedFilter(
+                    e.target.value.map((value) => ({ label: value }))
+                  )
+                : setAppliedFilter({ label: e.target.value as string });
+            }}
+            menuIsOpen={true}
+            value={filterValue}
+            components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
+            controlShouldRenderValue={false}
+            isMulti
+          />
+        }
+        operatorsInput={
+          <SelectInput
+            value={operatorsValue}
+            onChange={(e) => onChangeOperators(e.target.value as string)}
+            options={operatorsOptions}
+          />
+        }
+        onApplyFilter={() => {
+          if (filterValue) {
+            Array.isArray(filterValue)
+              ? setAppliedFilter(filterValue.map((value) => ({ label: value })))
+              : setAppliedFilter({ label: filterValue });
+          }
+        }}
+        onClearFilter={() => {
+          setAppliedFilter(undefined);
+          onFilterChange(undefined);
+        }}
+      />
+    </div>
+  );
 };
