@@ -39,10 +39,10 @@ export default Example;
 
 ## Properties
 
-| Props         | Type                                                                                                          | Required | Default         | Description                                                                                        |
-| ------------- | ------------------------------------------------------------------------------------------------------------- | :------: | --------------- | -------------------------------------------------------------------------------------------------- |
-| `tone`        | `union`<br/>Possible values:<br/>`, 'critical', 'warning', 'positive', 'information', 'primary', 'secondary'` |          | `'information'` | Indicates the color scheme of stamp                                                                |
-| `isCondensed` | `boolean`                                                                                                     |          | `false`         | If `true`, renders a condensed version of the stamp.                                               |
-| `children`    | `ReactNode`                                                                                                   |          |                 | Content to render within the stamp.&#xA;This property has been **deprecated** in favor of `label`. |
-| `icon`        | `ReactElement`                                                                                                |          |                 | Icon to render beside (left) the stamp text.                                                       |
-| `label`       | `string`                                                                                                      |          |                 | Text to render within the stamp.                                                                   |
+| Props         | Type                                                                                                          | Required | Default         | Description                                                              |
+| ------------- | ------------------------------------------------------------------------------------------------------------- | :------: | --------------- | ------------------------------------------------------------------------ |
+| `tone`        | `union`<br/>Possible values:<br/>`, 'critical', 'warning', 'positive', 'information', 'primary', 'secondary'` |          | `'information'` | Indicates the color scheme of stamp                                      |
+| `isCondensed` | `boolean`                                                                                                     |          | `false`         | If `true`, renders a condensed version of the stamp.                     |
+| `children`    | `ReactNode`                                                                                                   |          |                 | Content to render within the stamp.&#xA;@deprecated in favor of `label`. |
+| `icon`        | `ReactElement`                                                                                                |          |                 | Icon to render beside (left) the stamp text.                             |
+| `label`       | `string`                                                                                                      |          |                 | Text to render within the stamp.                                         |
