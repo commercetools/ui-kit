@@ -3,6 +3,14 @@ import react from '@vitejs/plugin-react-swc';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 import remarkGfm from 'remark-gfm';
 import { join, dirname, resolve } from 'path';
+import { readFileSync } from 'fs';
+import { prepareManagerHeadFile } from './../scripts/prepare-manager-head-file';
+
+const isProduction = process.env.NODE_ENV === 'production';
+const prodHead = readFileSync(
+  join(__dirname, './manager-head.prod.html'),
+  'utf8'
+);
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -18,6 +26,11 @@ const config: StorybookConfig = {
     '../../packages/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../../packages/components/**/*.mdx',
   ],
+  // head = the manager-header.html file contents
+  managerHead: (head) => `
+    ${head}
+    ${isProduction ? prepareManagerHeadFile(prodHead) : ''}
+  `,
   addons: [
     //getAbsolutePath('@storybook/addon-webpack5-compiler-swc'),
     getAbsolutePath('@storybook/addon-links'),
