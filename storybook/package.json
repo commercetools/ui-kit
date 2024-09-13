@@ -34,6 +34,6 @@
     "start": "storybook dev -p 6006",
     "build-and-serve": "yarn build & yarn serve",
     "build": "NODE_ENV=production storybook build",
-    "serve": "serve ./storybook-static"
+    "serve": "serve"
   }
 }
