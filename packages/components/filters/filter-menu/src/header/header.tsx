@@ -3,9 +3,9 @@ import IconButton from '../../../../buttons/icon-button';
 import { SortingIcon } from '../../../../icons';
 
 export type TFilterMenuHeaderProps = {
-  label: string;
+  label: string | ReactElement;
   operatorsInput?: ReactElement;
-  onFilterOptionsSortClick?: () => void;
+  onFilterOptionsSortClick?: Function;
 };
 function Header(props: TFilterMenuHeaderProps) {
   const [sortActive, setSortActive] = useState(false);
@@ -23,18 +23,21 @@ function Header(props: TFilterMenuHeaderProps) {
       {props.operatorsInput && (
         <div style={{ margin: '0 8px' }}>{props.operatorsInput}</div>
       )}
+
       {props.onFilterOptionsSortClick && (
-        <IconButton
-          icon={<SortingIcon />}
-          onClick={() => {
-            setSortActive(!sortActive);
-            props.onFilterOptionsSortClick!();
-          }}
-          label={`sort selected ${props.label} options to top`}
-          isToggleButton
-          isToggled={sortActive}
-          size="20"
-        />
+        <div style={{ marginLeft: 'auto' }}>
+          <IconButton
+            icon={<SortingIcon />}
+            onClick={() => {
+              setSortActive(!sortActive);
+              props.onFilterOptionsSortClick!();
+            }}
+            label={`sort selected ${props.label} options to top`}
+            isToggleButton
+            isToggled={sortActive}
+            size="20"
+          />
+        </div>
       )}
     </header>
   );

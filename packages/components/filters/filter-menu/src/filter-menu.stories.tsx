@@ -85,6 +85,7 @@ export const BasicExample: Story = () => {
             isMulti
           />
         }
+        onRemoveFilter={() => alert('this would make the component disappear!')}
         operatorsInput={
           <SelectInput
             value={operatorsValue}
@@ -94,14 +95,20 @@ export const BasicExample: Story = () => {
         }
         onApplyFilter={() => {
           if (filterValue) {
-            Array.isArray(filterValue)
-              ? setAppliedFilter(filterValue.map((value) => ({ label: value })))
-              : setAppliedFilter({ label: filterValue });
+            const valuesToApply = Array.isArray(filterValue)
+              ? filterValue.map((value) => ({ label: value }))
+              : { label: filterValue };
+            setAppliedFilter(valuesToApply);
+            alert('values applied');
           }
         }}
         onClearFilter={() => {
           setAppliedFilter(undefined);
           onFilterChange(undefined);
+          alert('filter options cleared!');
+        }}
+        onFilterOptionsSortClick={() => {
+          alert('filter options sorted! (in consuming application)');
         }}
       />
     </div>
