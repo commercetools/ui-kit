@@ -1,6 +1,6 @@
 import { type ReactElement, useState } from 'react';
-import IconButton from '../../../../buttons/icon-button';
-import { SortingIcon } from '../../../../icons';
+import IconButton from '@commercetools-uikit/icon-button';
+import { SortingIcon } from '@commercetools-uikit/icons';
 
 export type TFilterMenuHeaderProps = {
   label: string | ReactElement;

@@ -1,5 +1,5 @@
 import { type ReactElement } from 'react';
-import DropdownMenu from '../../../dropdowns/dropdown-menu';
+import DropdownMenu from '@commercetools-uikit/dropdown-menu';
 import { Footer } from './footer';
 import { Header } from './header';
 import { TriggerButton } from './trigger-button';

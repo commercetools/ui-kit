@@ -1,6 +1,6 @@
-import PrimaryButton from '../../../../buttons/primary-button';
-import SecondaryButton from '../../../../buttons/secondary-button';
-import { CloseIcon } from '../../../../icons';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+import { CloseIcon } from '@commercetools-uikit/icons';
 
 export type TFilterMenuFooterProps = {
   onApplyFilter?: Function;

@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
-import IconButton from '../../../../buttons/icon-button';
-import { CaretDownIcon, CloseIcon } from '../../../../icons';
+import IconButton from '@commercetools-uikit/icon-button';
+import { CaretDownIcon, CloseIcon } from '@commercetools-uikit/icons';
 import { Badge } from '../badge';
 import { Chip } from '../chip';
 import type { TAppliedFilterValue } from '../filter-menu';
