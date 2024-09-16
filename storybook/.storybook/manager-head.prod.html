@@ -1,5 +1,7 @@
+<!-- Cookie Consent -->
 <script type="text/javascript" src="https://cdn.cookielaw.org/consent/{{COOKIELAW_ORG}}/OtAutoBlock.js"></script>
 <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-domain-script="{{COOKIELAW_ORG}}"></script>
+<!-- FullStory -->
 <script type="text/plain" class="optanon-category-C0002">
 window['_fs_host'] = '{{FS_HOST}}';
 window['_fs_script'] = '{{FS_SCRIPT}}';
@@ -22,5 +24,5 @@ g.log=function(b,d){h("log",{level:b,msg:d})},g.consent=function(b){h("setIdenti
 f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){return g._w[s].apply(this,arguments)}),g._v="2.0.0")
 }(window,document,window._fs_namespace,"script",window._fs_script);
 </script>
-
+<!-- UserGudining -->
 <script type="text/plain" class="optanon-category-C0002">(function(g,u,i,d,e,s){g[e]=g[e]||[];var f=u.getElementsByTagName(i)[0];var k=u.createElement(i);k.async=true;k.src='https://eu-static.userguiding.com/media/user-guiding-'+s+'-embedded.js';f.parentNode.insertBefore(k,f);if(g[d])return;var ug=g[d]={q:[]};ug.c=function(n){return function(){ug.q.push([n,arguments])};};var m=['previewGuide','finishPreview','track','identify','hideChecklist','launchChecklist'];for(var j=0;j<m.length;j+=1){ug[m[j]]=ug.c(m[j]);}})(window,document,'script','userGuiding','userGuidingLayer','{{USERGUIDING_ORG}}');</script>
