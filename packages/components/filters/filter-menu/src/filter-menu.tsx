@@ -13,7 +13,6 @@ function FilterMenu(props: TFilterMenuProps) {
   return (
     <DropdownMenu triggerElement={<TriggerButton label={props.label} />}>
       <Header />
-
       <Footer />
     </DropdownMenu>
   );
