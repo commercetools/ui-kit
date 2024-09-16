@@ -3069,6 +3069,10 @@ __metadata:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
     "@commercetools-uikit/dropdown-menu": "workspace:^"
+    "@commercetools-uikit/icon-button": "workspace:^"
+    "@commercetools-uikit/icons": "workspace:^"
+    "@commercetools-uikit/primary-button": "workspace:^"
+    "@commercetools-uikit/secondary-button": "workspace:^"
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
@@ -3160,7 +3164,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/icon-button@19.11.0, @commercetools-uikit/icon-button@workspace:packages/components/buttons/icon-button":
+"@commercetools-uikit/icon-button@19.11.0, @commercetools-uikit/icon-button@workspace:^, @commercetools-uikit/icon-button@workspace:packages/components/buttons/icon-button":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/icon-button@workspace:packages/components/buttons/icon-button"
   dependencies:
@@ -3182,7 +3186,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/icons@19.11.0, @commercetools-uikit/icons@workspace:packages/components/icons":
+"@commercetools-uikit/icons@19.11.0, @commercetools-uikit/icons@workspace:^, @commercetools-uikit/icons@workspace:packages/components/icons":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/icons@workspace:packages/components/icons"
   dependencies:
@@ -3838,7 +3842,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/primary-button@19.11.0, @commercetools-uikit/primary-button@workspace:packages/components/buttons/primary-button":
+"@commercetools-uikit/primary-button@19.11.0, @commercetools-uikit/primary-button@workspace:^, @commercetools-uikit/primary-button@workspace:packages/components/buttons/primary-button":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/primary-button@workspace:packages/components/buttons/primary-button"
   dependencies:
@@ -4074,7 +4078,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/secondary-button@19.11.0, @commercetools-uikit/secondary-button@workspace:packages/components/buttons/secondary-button":
+"@commercetools-uikit/secondary-button@19.11.0, @commercetools-uikit/secondary-button@workspace:^, @commercetools-uikit/secondary-button@workspace:packages/components/buttons/secondary-button":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/secondary-button@workspace:packages/components/buttons/secondary-button"
   dependencies:
