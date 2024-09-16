@@ -2943,7 +2943,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/dropdown-menu@19.11.0, @commercetools-uikit/dropdown-menu@workspace:packages/components/dropdowns/dropdown-menu":
+"@commercetools-uikit/dropdown-menu@19.11.0, @commercetools-uikit/dropdown-menu@workspace:^, @commercetools-uikit/dropdown-menu@workspace:packages/components/dropdowns/dropdown-menu":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/dropdown-menu@workspace:packages/components/dropdowns/dropdown-menu"
   dependencies:
@@ -3059,6 +3059,39 @@ __metadata:
     react: 17.x
     react-intl: 6.x
     react-router-dom: 5.x
+  languageName: unknown
+  linkType: soft
+
+"@commercetools-uikit/filter-menu@workspace:packages/components/filters/filter-menu":
+  version: 0.0.0-use.local
+  resolution: "@commercetools-uikit/filter-menu@workspace:packages/components/filters/filter-menu"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/dropdown-menu": "workspace:^"
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    prop-types: 15.8.1
+    react: 17.0.2
+    react-intl: ^6.3.2
+  peerDependencies:
+    react: 17.x
+  languageName: unknown
+  linkType: soft
+
+"@commercetools-uikit/filters-list@workspace:packages/components/filters/filters-list":
+  version: 0.0.0-use.local
+  resolution: "@commercetools-uikit/filters-list@workspace:packages/components/filters/filters-list"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    prop-types: 15.8.1
+    react: 17.0.2
+    react-intl: ^6.3.2
+  peerDependencies:
+    react: 17.x
   languageName: unknown
   linkType: soft
 
