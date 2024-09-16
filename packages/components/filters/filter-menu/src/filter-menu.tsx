@@ -1,26 +1,17 @@
 import DropdownMenu from '@commercetools-uikit/dropdown-menu';
-import { Badge } from './badge';
-import { Chip } from './chip';
 import { Footer } from './footer';
 import { Header } from './header';
+import { TriggerButton } from './trigger-button';
 
 export type TFilterMenuProps = {
   /**
    * This is a stub prop
    */
-  label?: string;
+  label: string;
 };
 function FilterMenu(props: TFilterMenuProps) {
   return (
-    <DropdownMenu
-      triggerElement={
-        <div>
-          {props.label}
-          <Chip />
-          <Badge />
-        </div>
-      }
-    >
+    <DropdownMenu triggerElement={<TriggerButton label={props.label} />}>
       <Header />
 
       <Footer />
