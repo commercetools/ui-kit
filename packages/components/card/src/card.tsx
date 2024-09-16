@@ -128,22 +128,24 @@ const Card = (props: TCardProps) => {
       }
     }
   }
-  console.log('Test preview');
 
   return (
-    <div
-      {...commonProps}
-      // Support accessibility as a button when the `onClick` prop is provided
-      role={isClickable ? 'button' : undefined}
-      tabIndex={isClickable ? 0 : undefined}
-      onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
-        if (isClickable && props.onClick && event.key === 'Enter') {
-          props.onClick();
-        }
-      }}
-    >
-      {content}
-    </div>
+    <>
+      <div>Test Preview</div>
+      <div
+        {...commonProps}
+        // Support accessibility as a button when the `onClick` prop is provided
+        role={isClickable ? 'button' : undefined}
+        tabIndex={isClickable ? 0 : undefined}
+        onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+          if (isClickable && props.onClick && event.key === 'Enter') {
+            props.onClick();
+          }
+        }}
+      >
+        {content}
+      </div>
+    </>
   );
 };
 
