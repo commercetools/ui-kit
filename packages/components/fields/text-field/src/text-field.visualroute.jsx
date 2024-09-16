@@ -101,5 +101,15 @@ export const component = () => (
         horizontalConstraint={7}
       />
     </Spec>
+    <Spec label="with additionalInfo prop">
+      <TextField
+        title="Welcome Text"
+        value={value}
+        isCondensed={true}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        additionalInfo="A string containing additional information"
+      />
+    </Spec>
   </Suite>
 );
