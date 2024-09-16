@@ -56,6 +56,7 @@ const Card = (props: TCardProps) => {
     'aria-disabled': props.isDisabled ? true : undefined,
     css: css`
       box-sizing: border-box;
+      background-color: lightBlue !important;
       width: 100%;
       font-size: 1rem;
       box-shadow: ${props.type === 'raised' ? designTokens.shadow17 : 'none'};
