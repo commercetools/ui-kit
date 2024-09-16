@@ -1,11 +1,8 @@
 import { type ReactElement } from 'react';
 import DropdownMenu from '../../../dropdowns/dropdown-menu';
-import IconButton from '../../../buttons/icon-button';
-import { CaretDownIcon, CloseIcon } from '../../../icons';
-import { Badge } from './badge';
-import { Chip } from './chip';
 import { Footer } from './footer';
 import { Header } from './header';
+import { TriggerButton } from './trigger-button';
 
 export type TAppliedFilterValue = {
   key?: string;
@@ -16,7 +13,7 @@ export type TFilterMenuProps = {
   /**
    * unique identifier for the filter
    */
-  key: string;
+  filterKey: string;
   /**
    * formatted message to display the filter's name
    */
@@ -78,48 +75,19 @@ export type TFilterMenuProps = {
    */
   onFilterOptionsSortClick?: Function;
 };
+
 function FilterMenu(props: TFilterMenuProps) {
   return (
     // dropdown menu needs way to programatically clo
     <DropdownMenu
       triggerElement={
-        /**should this be its own component like chip/badge/etc? */
-        <button
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            border: 'solid 1px rebeccapurple',
-            padding: '8px',
-            color: 'rebeccapurple',
-            backgroundColor: 'papayawhip',
-          }}
-        >
-          {props.label}
-          {props.appliedFilterValues &&
-            (Array.isArray(props.appliedFilterValues) ? (
-              props.appliedFilterValues.map((value) => (
-                <Chip key={value.key} label={value.label} />
-              ))
-            ) : (
-              <Chip label={props.appliedFilterValues.label} />
-            ))}
-          {props.appliedFilterValues &&
-            Array.isArray(props.appliedFilterValues) && (
-              <Badge label={`+${props.appliedFilterValues.length}`} />
-            )}
-          {props.onRemoveFilter && !props.isPersistent && (
-            <IconButton
-              icon={<CloseIcon />}
-              label={`close ${props.label} filter`}
-              onClick={(e) => {
-                e.stopPropagation();
-                props.onRemoveFilter!();
-              }}
-              size="20"
-            />
-          )}
-          <CaretDownIcon size="small" color="info" />
-        </button>
+        <TriggerButton
+          label={props.label}
+          appliedFilterValues={props.appliedFilterValues}
+          isDisabled={props.isDisabled}
+          isPersistent={props.isPersistent}
+          onRemoveFilter={props.onRemoveFilter}
+        />
       }
       menuHorizontalConstraint={7}
       menuMaxHeight={1000}

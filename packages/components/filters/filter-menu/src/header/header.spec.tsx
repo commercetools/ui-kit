@@ -6,7 +6,7 @@ import Header from './header';
  */
 describe('FilterMenu Header', () => {
   it('should render the header', async () => {
-    await render(<Header />);
+    await render(<Header label={'header'} />);
     await screen.findByText('header');
   });
 });

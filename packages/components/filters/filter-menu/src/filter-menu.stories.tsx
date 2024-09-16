@@ -64,7 +64,7 @@ export const BasicExample: Story = () => {
       }}
     >
       <FilterMenu
-        key="colors"
+        filterKey="colors"
         label="Colors"
         appliedFilterValues={appliedFilter}
         filter={
@@ -85,7 +85,11 @@ export const BasicExample: Story = () => {
             isMulti
           />
         }
-        onRemoveFilter={() => alert('this would make the component disappear!')}
+        onRemoveFilter={() => {
+          onFilterChange(undefined);
+          setAppliedFilter(undefined);
+          alert('this would make the component disappear!');
+        }}
         operatorsInput={
           <SelectInput
             value={operatorsValue}
@@ -99,13 +103,13 @@ export const BasicExample: Story = () => {
               ? filterValue.map((value) => ({ label: value }))
               : { label: filterValue };
             setAppliedFilter(valuesToApply);
-            alert('values applied');
+          } else {
+            setAppliedFilter(undefined);
           }
         }}
         onClearFilter={() => {
           setAppliedFilter(undefined);
           onFilterChange(undefined);
-          alert('filter options cleared!');
         }}
         onFilterOptionsSortClick={() => {
           alert('filter options sorted! (in consuming application)');
