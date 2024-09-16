@@ -207,3 +207,17 @@ describe('when field is touched and has warnings', () => {
     });
   });
 });
+
+describe('when `additionalInfo` is passed', () => {
+  it('should render an additionalInfo string', () => {
+    const { getByText } = renderTextField({ additionalInfo: 'foo bar' });
+    expect(getByText('foo bar')).toBeInTheDocument();
+  });
+  it('should render an additionalInfo component', () => {
+    const { getByTestId, getByText } = renderTextField({
+      additionalInfo: <div data-testid="foo">foo bar</div>,
+    });
+    expect(getByTestId('foo')).toBeInTheDocument();
+    expect(getByText('foo bar')).toBeInTheDocument();
+  });
+});
