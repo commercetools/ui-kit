@@ -14,6 +14,7 @@ const meta: Meta<typeof TextField> = {
     description: { control: 'text' },
     badge: { control: 'text' },
     hintIcon: iconArgType,
+    additionalInfo: { control: 'text' },
   },
 };
 export default meta;
@@ -71,5 +72,6 @@ BasicExample.args = {
   hint: 'Enter your username',
   description: '',
   onInfoButtonClick: () => alert('info button clicked'),
+  additionalInfo: 'Only use letters, numbers, and underscores',
   badge: '',
 };

@@ -18,6 +18,7 @@ import {
 } from '@commercetools-uikit/utils';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import FieldWarnings from '@commercetools-uikit/field-warnings';
+import { AdditionalInfoMessage } from '@commercetools-uikit/messages';
 
 const sequentialId = createSequentialId('text-field-');
 const sequentialErrorsId = createSequentialId('text-field-error-')();
@@ -170,6 +171,10 @@ export type TTextFieldProps = {
    * Maximum number of characters allowed in the input. if this prop is used, It is recommended to inform the user about this limit in the InputField description, or otherwise
    */
   maxLength?: number;
+  /**
+   * Additional information to be displayed below the input.
+   */
+  additionalInfo?: ReactNode;
 };
 
 type TTextFieldState = Pick<TTextFieldProps, 'id'>;
@@ -258,6 +263,9 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
             aria-invalid={hasError}
             aria-errormessage={sequentialErrorsId}
           />
+          {this.props.additionalInfo && (
+            <AdditionalInfoMessage message={this.props.additionalInfo} />
+          )}
           <FieldErrors
             id={sequentialErrorsId}
             errors={this.props.errors}
