@@ -1,10 +1,12 @@
 const envVars: Record<string, string | undefined> = {
-  /** Needed for setting up the cookie-consent script */
+  /** ENV's needed for CookieConsent script integration */
   COOKIELAW_ORG: process.env.COOKIELAW_ORG,
-  /** Needed for setting up full-story integration */
+  /** ENV's needed for FullStory integration */
   FS_HOST: process.env.FS_HOST,
   FS_SCRIPT: process.env.FS_SCRIPT,
   FS_ORG: process.env.FS_ORG,
+  /** ENV's needed for UserGuiding integration */
+  USERGUIDING_ORG: process.env.USERGUIDING_ORG,
 };
 
 // this function replaces {{VARIABLE_NAME}} variables in the given string
