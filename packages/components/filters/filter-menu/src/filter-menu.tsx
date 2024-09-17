@@ -5,7 +5,7 @@ import { TriggerButton } from './trigger-button';
 
 export type TFilterMenuProps = {
   /**
-   * This is a stub prop
+   * This is a stub prop!
    */
   label: string;
 };
