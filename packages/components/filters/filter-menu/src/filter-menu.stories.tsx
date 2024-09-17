@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
-import { type MenuProps, type MenuListProps } from 'react-select';
+import { MenuProps, MenuListProps } from 'react-select';
 import FilterMenu, { type TAppliedFilterValue } from './filter-menu';
 import SelectInput from '../../../inputs/select-input';
 
@@ -34,11 +34,21 @@ const colorOptions = [
   { label: 'Slate', value: 'slate', key: 'slate', id: '9' },
   { label: 'Silver', value: 'silver', key: 'silver', id: '10' },
 ];
-const CustomSelectMenu = ({ children, ...rest }: MenuProps) => (
-  <div {...rest}>{children}</div>
+const CustomSelectMenu = ({
+  children,
+  innerProps: { ref, ...restInnerProps },
+}: MenuProps) => (
+  <div ref={ref} {...restInnerProps}>
+    {children}
+  </div>
 );
-const CustomMenuList = ({ children, ...rest }: MenuListProps) => (
-  <div {...rest}>{children}</div>
+const CustomMenuList = ({
+  children,
+  innerProps: { ref, ...restInnerProps },
+}: MenuListProps) => (
+  <div ref={ref} {...restInnerProps}>
+    {children}
+  </div>
 );
 export const BasicExample: Story = () => {
   const [filterValue, onFilterChange] = useState<

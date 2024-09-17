@@ -41,7 +41,7 @@ export type TFilterMenuTriggerButtonProps = {
 
 const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
   return (
-    <button
+    <div
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -49,8 +49,22 @@ const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
         padding: '8px',
         color: 'rebeccapurple',
         backgroundColor: 'papayawhip',
+        position: 'relative',
       }}
     >
+      {/**a horribly dirty trick to simulate 'nested' buttons w/o syntax errors */}
+      <button
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: '100%',
+          height: '100%',
+          background: 'transparent',
+          border: 'none',
+        }}
+        aria-label="open menu"
+      />
       {props.label}
       {props.appliedFilterValues &&
         (Array.isArray(props.appliedFilterValues) ? (
@@ -65,18 +79,20 @@ const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
           <Badge label={`+${props.appliedFilterValues.length}`} />
         )}
       {props.onRemoveFilter && !props.isPersistent && (
-        <IconButton
-          icon={<CloseIcon />}
-          label={`close ${props.label} filter`}
-          onClick={(e) => {
-            e.stopPropagation();
-            props.onRemoveFilter!();
-          }}
-          size="20"
-        />
+        <span style={{ zIndex: '1' }}>
+          <IconButton
+            icon={<CloseIcon />}
+            label={`close ${props.label} filter`}
+            onClick={(e) => {
+              e.stopPropagation();
+              props.onRemoveFilter!();
+            }}
+            size="20"
+          />
+        </span>
       )}
       <CaretDownIcon size="small" color="info" />
-    </button>
+    </div>
   );
 };
 
