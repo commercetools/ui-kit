@@ -55,7 +55,7 @@ const Card = (props: TCardProps) => {
     onClick: isClickable ? props.onClick : undefined,
     'aria-disabled': props.isDisabled ? true : undefined,
     css: css`
-      background-color: lightBlue !important;
+      background-color: lightGreen !important;
       box-sizing: border-box;
       width: 100%;
       font-size: 1rem;
