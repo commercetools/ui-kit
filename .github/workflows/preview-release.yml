@@ -92,8 +92,10 @@ jobs:
       - name: Publishing preview releases to npm registry
         if: steps.changesets.outputs.published != 'true' && startsWith(github.ref, 'refs/heads/preview/')
         run: |
+          BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
+          DATE=$(date +"%Y%m%d")
           git checkout ${{ github.head_ref }}
-          yarn changeset version --snapshot preview
+          yarn changeset version --snapshot "0.0.0-${BRANCH_NAME}-${DATE}"
           yarn changeset publish --tag preview
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
