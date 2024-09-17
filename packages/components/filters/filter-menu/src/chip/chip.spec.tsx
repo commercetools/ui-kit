@@ -6,7 +6,7 @@ import Chip from './chip';
  */
 describe('FilterMenu Chip', () => {
   it('should render the chip', async () => {
-    await render(<Chip />);
+    await render(<Chip label="chip" />);
     await screen.findByText('chip');
   });
 });

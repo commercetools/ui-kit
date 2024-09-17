@@ -7,7 +7,7 @@ export type TFilterMenuFooterProps = {
   onClearFilter?: Function;
 };
 function Footer(props: TFilterMenuFooterProps) {
-  if (!props.onApplyFilter && !props.onApplyFilter) {
+  if (!props.onApplyFilter && !props.onClearFilter) {
     return null;
   }
   return (

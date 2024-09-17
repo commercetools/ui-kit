@@ -6,7 +6,7 @@ import Footer from './footer';
  */
 describe('FilterMenu Footer', () => {
   it('should render the footer', async () => {
-    await render(<Footer />);
-    await screen.findByText('footer');
+    await render(<Footer onClearFilter={() => {}} />);
+    await screen.findByRole('button', { name: /clear all/i });
   });
 });
