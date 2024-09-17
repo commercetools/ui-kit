@@ -1,15 +1,120 @@
-import { type ReactElement } from 'react';
-import IconButton from '@commercetools-uikit/icon-button';
 import { CaretDownIcon, CloseIcon } from '@commercetools-uikit/icons';
 import { Badge } from '../badge';
 import { Chip } from '../chip';
 import type { TAppliedFilterValue } from '../filter-menu';
+import styled from '@emotion/styled';
+import { designTokens } from '@commercetools-uikit/design-system';
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import { RefObject, useEffect, useRef, useState } from 'react';
+
+const { colorNeutral85, colorNeutral40, fontSize20 } = designTokens;
+
+const useScrollObserver = (ref: RefObject<HTMLElement>, totalCount: number) => {
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(0);
+  const numRef = useRef(totalCount); // Store the current num value in a ref
+
+  useEffect(() => {
+    numRef.current = totalCount; // Update the ref whenever num changes
+  }, [totalCount]);
+
+  useEffect(() => {
+    if (isOverflowing) {
+      setVisibleCount(numRef.current);
+    } else {
+      setVisibleCount(0);
+    }
+  }, [isOverflowing]);
+
+  useEffect(() => {
+    console.log('useEffect ref.current:', ref.current);
+    const node = ref.current;
+    if (!node) return;
+
+    const checkOverflow = () => {
+      const { clientWidth, scrollWidth } = node;
+      console.log('client, scroll:', clientWidth, scrollWidth);
+      setIsOverflowing(scrollWidth > clientWidth);
+    };
+
+    checkOverflow();
+
+    // Observe size changes
+    const resizeObserver = new ResizeObserver(() => checkOverflow());
+
+    resizeObserver.observe(node);
+
+    // Clean up observer on unmount
+    return () => {
+      resizeObserver.unobserve(node);
+    };
+    // doesn't work without ref.current
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ref, ref.current]);
+
+  console.log('');
+
+  return { isOverflowing, overflowCount: totalCount - visibleCount + 1 };
+};
+
+const Container = styled.div({
+  display: 'flex',
+  borderRadius: '1rem',
+  height: '2rem',
+  boxShadow: `0px 0px 0 1px ${colorNeutral85}`,
+  overflow: 'hidden',
+  position: 'relative',
+  alignItems: 'center',
+
+  paddingLeft: '.5rem',
+  paddingRight: '.5rem',
+  gap: '.5rem',
+  cursor: 'pointer',
+
+  maxWidth: '100%',
+});
+
+const Label = styled.div({
+  color: colorNeutral40,
+  fontSize: fontSize20,
+  lineHeight: 1,
+  flexGrow: 0,
+});
+
+const ClearButtonContainer = styled.div({
+  position: 'relative',
+  zIndex: 2,
+  flexGrow: 0,
+  flexShrink: 0,
+});
+
+const ValueContainer = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
+  gap: '.25rem',
+  flexGrow: 1,
+  flexShrink: 1,
+  overflow: 'hidden',
+  position: 'relative',
+  paddingLeft: 0,
+});
+
+const BadgeContainer = styled.div({
+  position: 'absolute',
+  right: 0,
+  height: '2rem',
+  display: 'flex',
+  alignItems: 'center',
+  background: 'linear-gradient(to right, transparent, white 25%)',
+  paddingLeft: '1.25rem',
+});
 
 export type TFilterMenuTriggerButtonProps = {
   /**
    * formatted message to display the filter's name
    */
-  label: string | ReactElement;
+  label: string;
   /**
    * the values applied to this filter by the user
    *
@@ -17,11 +122,7 @@ export type TFilterMenuTriggerButtonProps = {
    * this will almost certainly be some sort of generic w/validation - all the `Chip` really
    * needs is the selected option's `label`, but these options need to contain a lot more data
    */
-  appliedFilterValues:
-    | TAppliedFilterValue
-    | TAppliedFilterValue[]
-    | undefined
-    | null;
+  appliedFilterValues: TAppliedFilterValue[] | undefined | null;
   /**
    * whether or not the filter is disabled
    */
@@ -40,43 +141,46 @@ export type TFilterMenuTriggerButtonProps = {
 };
 
 const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
+  const values = props.appliedFilterValues || [];
+  const filtersApplied: boolean = values.length > 0;
+
+  const chipListRef = useRef<HTMLDivElement>(null);
+  const { isOverflowing, overflowCount } = useScrollObserver(
+    chipListRef,
+    values.length
+  );
+
   return (
-    <button
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        border: 'solid 1px rebeccapurple',
-        padding: '8px',
-        color: 'rebeccapurple',
-        backgroundColor: 'papayawhip',
-      }}
-    >
-      {props.label}
-      {props.appliedFilterValues &&
-        (Array.isArray(props.appliedFilterValues) ? (
-          props.appliedFilterValues.map((value) => (
-            <Chip key={value.key} label={value.label} />
-          ))
-        ) : (
-          <Chip label={props.appliedFilterValues.label} />
-        ))}
-      {props.appliedFilterValues &&
-        Array.isArray(props.appliedFilterValues) && (
-          <Badge label={`+${props.appliedFilterValues.length}`} />
-        )}
-      {props.onRemoveFilter && !props.isPersistent && (
-        <IconButton
-          icon={<CloseIcon />}
-          label={`close ${props.label} filter`}
-          onClick={(e) => {
-            e.stopPropagation();
-            props.onRemoveFilter!();
-          }}
-          size="20"
-        />
+    <Container>
+      <Label>{props.label}</Label>
+      {filtersApplied && (
+        <ValueContainer as="ul" ref={chipListRef}>
+          {values.length > 0 &&
+            values.map((value) => <Chip key={value.key}>{value.label}</Chip>)}
+          {isOverflowing && (
+            <BadgeContainer as="li">
+              <Badge>+{overflowCount}</Badge>
+            </BadgeContainer>
+          )}
+        </ValueContainer>
       )}
-      <CaretDownIcon size="small" color="info" />
-    </button>
+
+      <ClearButtonContainer>
+        {props.onRemoveFilter && !props.isPersistent && (
+          <SecondaryIconButton
+            icon={<CloseIcon />}
+            label={`close ${props.label} filter`}
+            onClick={(e) => {
+              e.stopPropagation();
+              props.onRemoveFilter!();
+            }}
+            size="10"
+          />
+        )}
+      </ClearButtonContainer>
+
+      <CaretDownIcon size="small" color="neutral60" />
+    </Container>
   );
 };
 

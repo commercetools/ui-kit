@@ -102,6 +102,7 @@ const defaultProps: Pick<
 const Container = styled.div`
   position: relative;
   display: inline-block;
+  max-width: 100%;
 `;
 
 function DropdownMenu(props: TDropdownMenuProps) {

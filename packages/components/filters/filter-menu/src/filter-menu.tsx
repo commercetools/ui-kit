@@ -17,7 +17,7 @@ export type TFilterMenuProps = {
   /**
    * formatted message to display the filter's name
    */
-  label: string | ReactElement;
+  label: string;
   /**
    * the input in which the user selects values for the filter
    *
@@ -42,11 +42,7 @@ export type TFilterMenuProps = {
    * this will almost certainly be some sort of generic w/validation - all the `Chip` really
    * needs is the selected option's `label`, but these options need to contain a lot more data
    */
-  appliedFilterValues:
-    | TAppliedFilterValue
-    | TAppliedFilterValue[]
-    | undefined
-    | null;
+  appliedFilterValues: TAppliedFilterValue[] | undefined | null;
   /**
    * indicates whether FilterMenu can be removed from the filtersList
    */

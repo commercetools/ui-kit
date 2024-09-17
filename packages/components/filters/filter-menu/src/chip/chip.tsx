@@ -1,21 +1,15 @@
-import { type ReactElement } from 'react';
-export type TFilterMenuChipProps = {
-  label: string | ReactElement | undefined;
-};
-function Chip(props: TFilterMenuChipProps) {
-  if (!props.label) return null;
-  return (
-    <div
-      style={{
-        backgroundColor: 'chartreuse',
-        color: 'deeppink',
-        padding: '4px',
-        margin: '0 2px',
-      }}
-    >
-      {props.label}
-    </div>
-  );
-}
+import styled from '@emotion/styled';
+import { designTokens } from '@commercetools-uikit/design-system';
+
+const Chip = styled.span({
+  fontSize: designTokens.fontSize20,
+  backgroundColor: designTokens.colorPrimary95,
+  height: '1.5rem',
+  lineHeight: '1.5rem',
+  borderRadius: '1rem',
+  paddingLeft: '.5rem',
+  paddingRight: '.5rem',
+  userSelect: 'none',
+});
 
 export default Chip;

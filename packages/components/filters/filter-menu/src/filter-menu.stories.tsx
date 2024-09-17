@@ -7,7 +7,7 @@ import SelectInput from '../../../inputs/select-input';
 const meta: Meta<typeof FilterMenu> = {
   title: 'components/Filters/FilterMenu',
   component: FilterMenu,
-  tags: ['local-dev'],
+  //tags: ['local-dev'],
   argTypes: {
     label: {
       control: 'text',
@@ -46,8 +46,8 @@ export const BasicExample: Story = () => {
   >(undefined);
 
   const [appliedFilter, setAppliedFilter] = useState<
-    TAppliedFilterValue | TAppliedFilterValue[] | undefined | null
-  >(undefined);
+    TAppliedFilterValue[] | undefined | null
+  >([]);
 
   const [operatorsValue, onChangeOperators] = useState<
     string | null | undefined
@@ -57,15 +57,13 @@ export const BasicExample: Story = () => {
     <div
       style={{
         height: 300,
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        outline: '1px solid tomato',
+        maxWidth: 400,
       }}
     >
       <FilterMenu
         filterKey="colors"
-        label="Colors"
+        label="Color"
         appliedFilterValues={appliedFilter}
         filter={
           <SelectInput
@@ -76,7 +74,7 @@ export const BasicExample: Story = () => {
                 ? setAppliedFilter(
                     e.target.value.map((value) => ({ label: value }))
                   )
-                : setAppliedFilter({ label: e.target.value as string });
+                : setAppliedFilter([{ label: e.target.value as string }]);
             }}
             menuIsOpen={true}
             value={filterValue}
@@ -101,7 +99,7 @@ export const BasicExample: Story = () => {
           if (filterValue) {
             const valuesToApply = Array.isArray(filterValue)
               ? filterValue.map((value) => ({ label: value }))
-              : { label: filterValue };
+              : [{ label: filterValue }];
             setAppliedFilter(valuesToApply);
           } else {
             setAppliedFilter(undefined);
