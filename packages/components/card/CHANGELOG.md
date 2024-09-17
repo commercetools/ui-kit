@@ -1,5 +1,18 @@
 # @commercetools-uikit/card
 
+## 19.12.0
+
+### Minor Changes
+
+- [#2908](https://github.com/commercetools/ui-kit/pull/2908) [`94770d5`](https://github.com/commercetools/ui-kit/commit/94770d5fc7af71c44d8ec935ae236cdd90832ebd) Thanks [@ddouglasz](https://github.com/ddouglasz)! - update to test branch-specific canary version
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.12.0
+  - @commercetools-uikit/spacings-inset@19.12.0
+  - @commercetools-uikit/utils@19.12.0
+
 ## 19.11.0
 
 ### Patch Changes

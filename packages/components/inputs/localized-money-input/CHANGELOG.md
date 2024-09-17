@@ -1,5 +1,24 @@
 # @commercetools-uikit/localized-money-input
 
+## 19.12.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.12.0
+  - @commercetools-uikit/flat-button@19.12.0
+  - @commercetools-uikit/constraints@19.12.0
+  - @commercetools-uikit/icons@19.12.0
+  - @commercetools-uikit/input-utils@19.12.0
+  - @commercetools-uikit/money-input@19.12.0
+  - @commercetools-uikit/select-utils@19.12.0
+  - @commercetools-uikit/messages@19.12.0
+  - @commercetools-uikit/spacings-stack@19.12.0
+  - @commercetools-uikit/tooltip@19.12.0
+  - @commercetools-uikit/hooks@19.12.0
+  - @commercetools-uikit/localized-utils@19.12.0
+  - @commercetools-uikit/utils@19.12.0
+
 ## 19.11.0
 
 ### Patch Changes

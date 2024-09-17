@@ -1,5 +1,22 @@
 # @commercetools-uikit/multiline-text-input
 
+## 19.12.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.12.0
+  - @commercetools-uikit/flat-button@19.12.0
+  - @commercetools-uikit/secondary-icon-button@19.12.0
+  - @commercetools-uikit/constraints@19.12.0
+  - @commercetools-uikit/icons@19.12.0
+  - @commercetools-uikit/input-utils@19.12.0
+  - @commercetools-uikit/spacings-inline@19.12.0
+  - @commercetools-uikit/spacings-stack@19.12.0
+  - @commercetools-uikit/tooltip@19.12.0
+  - @commercetools-uikit/hooks@19.12.0
+  - @commercetools-uikit/utils@19.12.0
+
 ## 19.11.0
 
 ### Patch Changes
