@@ -1,0 +1,99 @@
+name: Preview release
+
+on:
+  push:
+    branches:
+      - 'preview/**'
+
+permissions:
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Get GitHub token via the CT Changesets App
+      - name: Generate GitHub token (via CT Changesets App)
+        id: generate_github_token
+        uses: tibdex/github-app-token@v2.1.0
+        with:
+          app_id: ${{ secrets.CT_CHANGESETS_APP_ID }}
+          private_key: ${{ secrets.CT_CHANGESETS_APP_PEM }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # Pass a personal access token (using our `ct-release-bot` account) to be able to trigger
+          # other workflows
+          # https://help.github.com/en/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token
+          # https://github.community/t/action-does-not-trigger-another-on-push-tag-action/17148/8
+          token: ${{ steps.generate_github_token.outputs.token }}
+
+      - name: Setup Node (uses version in .nvmrc)
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock', 'patches/*.patch') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Creating .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            provenance=true
+            email=npmjs@commercetools.com
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Building packages
+        run: yarn build
+
+      - name: Building package READMEs
+        run: yarn generate-readmes
+        env:
+          CI: true
+
+      - name: Storing release version for changeset
+        id: release_version
+        run: echo "VALUE=$(./scripts/print_release_version.sh)" >> $GITHUB_OUTPUT
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: dotansimha/changesets-action@v1.5.2
+        with:
+          commit: 'ci(changesets): version packages'
+          publish: yarn changeset publish
+          version: yarn changeset:version-and-format
+          createGithubReleases: aggregate
+          githubReleaseName: v${{ steps.release_version.outputs.VALUE }}
+          githubTagName: v${{ steps.release_version.outputs.VALUE }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
+          SKIP_POSTINSTALL_DEV_SETUP: true
+
+      # Publish canary releases only if the packages weren't published already
+      - name: Publishing preview releases to npm registry
+        if: steps.changesets.outputs.published != 'true' && startsWith(github.ref, 'refs/heads/preview/')
+        run: |
+          git checkout ${{ github.head_ref }}
+          yarn changeset version --snapshot preview
+          yarn changeset publish --tag preview
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
