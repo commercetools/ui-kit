@@ -55,6 +55,7 @@ const Card = (props: TCardProps) => {
     onClick: isClickable ? props.onClick : undefined,
     'aria-disabled': props.isDisabled ? true : undefined,
     css: css`
+      background-color: lightBlue !important;
       box-sizing: border-box;
       width: 100%;
       font-size: 1rem;
@@ -130,22 +131,19 @@ const Card = (props: TCardProps) => {
   }
 
   return (
-    <>
-      <div>Test Preview</div>
-      <div
-        {...commonProps}
-        // Support accessibility as a button when the `onClick` prop is provided
-        role={isClickable ? 'button' : undefined}
-        tabIndex={isClickable ? 0 : undefined}
-        onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
-          if (isClickable && props.onClick && event.key === 'Enter') {
-            props.onClick();
-          }
-        }}
-      >
-        {content}
-      </div>
-    </>
+    <div
+      {...commonProps}
+      // Support accessibility as a button when the `onClick` prop is provided
+      role={isClickable ? 'button' : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+        if (isClickable && props.onClick && event.key === 'Enter') {
+          props.onClick();
+        }
+      }}
+    >
+      {content}
+    </div>
   );
 };
 
