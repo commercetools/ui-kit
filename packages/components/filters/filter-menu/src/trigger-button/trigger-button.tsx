@@ -5,9 +5,17 @@ import type { TAppliedFilterValue } from '../filter-menu';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
-import { RefObject, useEffect, useRef, useState } from 'react';
+import {
+  forwardRef,
+  LegacyRef,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
-const { colorNeutral85, colorNeutral40, fontSize20 } = designTokens;
+const { colorNeutral85, colorNeutral40, colorPrimary, fontSize20 } =
+  designTokens;
 
 const useScrollObserver = (ref: RefObject<HTMLElement>, totalCount: number) => {
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -27,13 +35,11 @@ const useScrollObserver = (ref: RefObject<HTMLElement>, totalCount: number) => {
   }, [isOverflowing]);
 
   useEffect(() => {
-    console.log('useEffect ref.current:', ref.current);
     const node = ref.current;
     if (!node) return;
 
     const checkOverflow = () => {
       const { clientWidth, scrollWidth } = node;
-      console.log('client, scroll:', clientWidth, scrollWidth);
       setIsOverflowing(scrollWidth > clientWidth);
     };
 
@@ -52,13 +58,11 @@ const useScrollObserver = (ref: RefObject<HTMLElement>, totalCount: number) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, ref.current]);
 
-  console.log('');
-
   return { isOverflowing, overflowCount: totalCount - visibleCount + 1 };
 };
 
 const Container = styled.div({
-  display: 'flex',
+  display: 'inline-flex',
   borderRadius: '1rem',
   height: '2rem',
   boxShadow: `0px 0px 0 1px ${colorNeutral85}`,
@@ -110,6 +114,18 @@ const BadgeContainer = styled.div({
   paddingLeft: '1.25rem',
 });
 
+const OverlayButton = styled.button({
+  background: 'transparent',
+  border: 0,
+  position: 'absolute',
+  inset: 0,
+  zIndex: 1,
+  borderRadius: 999,
+  ':focus': {
+    boxShadow: `0px 0px 0px 2px ${colorPrimary}`,
+  },
+});
+
 export type TFilterMenuTriggerButtonProps = {
   /**
    * formatted message to display the filter's name
@@ -140,7 +156,10 @@ export type TFilterMenuTriggerButtonProps = {
   onRemoveFilter?: Function;
 };
 
-const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
+const TriggerButton = forwardRef(function TriggerButton(
+  props: TFilterMenuTriggerButtonProps,
+  ref: LegacyRef<HTMLButtonElement>
+) {
   const values = props.appliedFilterValues || [];
   const filtersApplied: boolean = values.length > 0;
 
@@ -149,6 +168,15 @@ const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
     chipListRef,
     values.length
   );
+
+  const {
+    label,
+    appliedFilterValues,
+    isDisabled,
+    isPersistent,
+    onRemoveFilter,
+    ...rest
+  } = props;
 
   return (
     <Container>
@@ -180,8 +208,9 @@ const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
       </ClearButtonContainer>
 
       <CaretDownIcon size="small" color="neutral60" />
+      <OverlayButton ref={ref} aria-label={label} {...rest} />
     </Container>
   );
-};
+});
 
 export default TriggerButton;

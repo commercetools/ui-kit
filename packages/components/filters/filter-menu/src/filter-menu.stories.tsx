@@ -33,6 +33,21 @@ const colorOptions = [
   { label: 'Forest', value: 'forest', key: 'forest', id: '8' },
   { label: 'Slate', value: 'slate', key: 'slate', id: '9' },
   { label: 'Silver', value: 'silver', key: 'silver', id: '10' },
+  { label: 'Brown', value: 'brown', key: 'brown', id: '11' },
+  { label: 'Black', value: 'black', key: 'black', id: '12' },
+  { label: 'Bisque', value: 'bisque', key: 'bisque', id: '13' },
+  {
+    label: 'Darkgoldenrod',
+    value: 'darkgoldenrod',
+    key: 'darkgoldenrod',
+    id: '14',
+  },
+  {
+    label: 'Mediumaquamarine',
+    value: 'mediumaquamarine',
+    key: 'mediumaquamarine',
+    id: '15',
+  },
 ];
 const CustomSelectMenu = ({ children, ...rest }: MenuProps) => (
   <div {...rest}>{children}</div>
@@ -56,9 +71,8 @@ export const BasicExample: Story = () => {
   return (
     <div
       style={{
-        height: 300,
         outline: '1px solid tomato',
-        maxWidth: 400,
+        maxWidth: 468,
       }}
     >
       <FilterMenu

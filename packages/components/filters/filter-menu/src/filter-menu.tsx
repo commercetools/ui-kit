@@ -1,8 +1,10 @@
 import { type ReactElement } from 'react';
-import DropdownMenu from '@commercetools-uikit/dropdown-menu';
+
 import { Footer } from './footer';
 import { Header } from './header';
 import { TriggerButton } from './trigger-button';
+import * as Popover from '@radix-ui/react-popover';
+import styled from '@emotion/styled';
 
 export type TAppliedFilterValue = {
   key?: string;
@@ -72,11 +74,23 @@ export type TFilterMenuProps = {
   onFilterOptionsSortClick?: Function;
 };
 
+const PopoverContent = styled.div({
+  borderRadius: '4px',
+  padding: '20px',
+  width: '260px',
+  backgroundColor: 'white',
+  boxShadow:
+    'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
+  animationDuration: '400ms',
+  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+  willChange: 'transform, opacity',
+  marginTop: '.5rem',
+});
+
 function FilterMenu(props: TFilterMenuProps) {
   return (
-    // dropdown menu needs way to programatically clo
-    <DropdownMenu
-      triggerElement={
+    <Popover.Root>
+      <Popover.Trigger asChild>
         <TriggerButton
           label={props.label}
           appliedFilterValues={props.appliedFilterValues}
@@ -84,21 +98,26 @@ function FilterMenu(props: TFilterMenuProps) {
           isPersistent={props.isPersistent}
           onRemoveFilter={props.onRemoveFilter}
         />
-      }
-      menuHorizontalConstraint={7}
-      menuMaxHeight={1000}
-    >
-      <Header
-        label={props.label}
-        operatorsInput={props.operatorsInput}
-        onFilterOptionsSortClick={props.onFilterOptionsSortClick}
-      />
-      {props.filter}
-      <Footer
-        onApplyFilter={props.onApplyFilter}
-        onClearFilter={props.onClearFilter}
-      />
-    </DropdownMenu>
+      </Popover.Trigger>
+
+      <Popover.Portal>
+        <Popover.Content side="bottom" align="start">
+          <PopoverContent>
+            <Header
+              label={props.label}
+              operatorsInput={props.operatorsInput}
+              onFilterOptionsSortClick={props.onFilterOptionsSortClick}
+            />
+            {props.filter}
+            <Footer
+              onApplyFilter={props.onApplyFilter}
+              onClearFilter={props.onClearFilter}
+            />
+            <Popover.Close />
+          </PopoverContent>
+        </Popover.Content>
+      </Popover.Portal>
+    </Popover.Root>
   );
 }
 

@@ -21,13 +21,16 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
+    "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/dropdown-menu": "workspace:^",
     "@commercetools-uikit/icon-button": "workspace:^",
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/primary-button": "workspace:^",
     "@commercetools-uikit/secondary-button": "workspace:^",
+    "@commercetools-uikit/secondary-icon-button": "workspace:^",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@radix-ui/react-popover": "^1.1.1",
     "prop-types": "15.8.1",
     "react-intl": "^6.3.2"
   },
