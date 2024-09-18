@@ -74,13 +74,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
 
-      # Publish preview releases only if the branch starts with "preview/" and packages weren't published already
+      # Publish preview releases only if the branch starts with "preview/" and the commit message contains "[publish_preview]"
       - name: Publishing preview releases to npm registry
         if: startsWith(github.ref, 'refs/heads/preview/') && contains(github.event.head_commit.message, '[publish_preview]')
         run: |
           BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
           git checkout ${{ github.head_ref }}
-          yarn changeset version --snapshot ${BRANCH_NAME}"
+          yarn changeset version --snapshot ${BRANCH_NAME}
           yarn changeset publish --tag preview
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
