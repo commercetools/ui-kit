@@ -1,10 +1,10 @@
-import { type ReactElement, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import IconButton from '@commercetools-uikit/icon-button';
 import { SortingIcon } from '@commercetools-uikit/icons';
 
 export type TFilterMenuHeaderProps = {
-  label: string | ReactElement;
-  operatorsInput?: ReactElement;
+  label: ReactNode;
+  operatorsInput?: ReactNode;
   onFilterOptionsSortClick?: Function;
 };
 function Header(props: TFilterMenuHeaderProps) {

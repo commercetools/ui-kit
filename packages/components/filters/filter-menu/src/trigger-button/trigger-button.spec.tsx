@@ -9,6 +9,6 @@ describe('FilterMenu TriggerButton', () => {
     await render(
       <TriggerButton label="trigger button" appliedFilterValues={null} />
     );
-    await screen.findByRole('button', { name: /trigger button/i });
+    await screen.findByRole('button', { name: /open menu/i });
   });
 });

@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import { type ReactNode } from 'react';
 import IconButton from '@commercetools-uikit/icon-button';
 import { CaretDownIcon, CloseIcon } from '@commercetools-uikit/icons';
 import { Badge } from '../badge';
@@ -9,7 +9,7 @@ export type TFilterMenuTriggerButtonProps = {
   /**
    * formatted message to display the filter's name
    */
-  label: string | ReactElement;
+  label: ReactNode;
   /**
    * the values applied to this filter by the user
    *

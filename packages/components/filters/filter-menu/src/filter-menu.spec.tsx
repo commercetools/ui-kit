@@ -16,6 +16,6 @@ describe('FilterMenu FilterMenu', () => {
         appliedFilterValues={null}
       />
     );
-    await screen.findByRole('button', { name: /filter menu/i });
+    await screen.findByRole('button', { name: /open menu/i });
   });
 });
