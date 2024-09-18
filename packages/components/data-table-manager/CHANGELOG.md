@@ -1,5 +1,33 @@
 # @commercetools-uikit/data-table-manager
 
+## 19.12.0
+
+### Patch Changes
+
+- Updated dependencies [[`53f4a64`](https://github.com/commercetools/ui-kit/commit/53f4a647164877f3840cd98a7a8c4be54345b1b2)]:
+  - @commercetools-uikit/card@19.12.0
+  - @commercetools-uikit/design-system@19.12.0
+  - @commercetools-uikit/accessible-hidden@19.12.0
+  - @commercetools-uikit/accessible-button@19.12.0
+  - @commercetools-uikit/icon-button@19.12.0
+  - @commercetools-uikit/primary-button@19.12.0
+  - @commercetools-uikit/secondary-button@19.12.0
+  - @commercetools-uikit/secondary-icon-button@19.12.0
+  - @commercetools-uikit/collapsible-motion@19.12.0
+  - @commercetools-uikit/dropdown-menu@19.12.0
+  - @commercetools-uikit/field-label@19.12.0
+  - @commercetools-uikit/grid@19.12.0
+  - @commercetools-uikit/icons@19.12.0
+  - @commercetools-uikit/async-select-input@19.12.0
+  - @commercetools-uikit/radio-input@19.12.0
+  - @commercetools-uikit/select-input@19.12.0
+  - @commercetools-uikit/tag@19.12.0
+  - @commercetools-uikit/text@19.12.0
+  - @commercetools-uikit/tooltip@19.12.0
+  - @commercetools-uikit/hooks@19.12.0
+  - @commercetools-uikit/utils@19.12.0
+  - @commercetools-uikit/spacings@19.12.0
+
 ## 19.11.0
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/filter-menu",
   "description": "The `FilterMenu` is the menu that displays the available and selected options for a specific filter in the `FiltersList`.",
-  "version": "19.11.0",
+  "version": "19.12.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

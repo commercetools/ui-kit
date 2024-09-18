@@ -1,5 +1,19 @@
 # @commercetools-uikit/localized-multiline-text-field
 
+## 19.12.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.12.0
+  - @commercetools-uikit/constraints@19.12.0
+  - @commercetools-uikit/field-errors@19.12.0
+  - @commercetools-uikit/field-label@19.12.0
+  - @commercetools-uikit/field-warnings@19.12.0
+  - @commercetools-uikit/localized-multiline-text-input@19.12.0
+  - @commercetools-uikit/utils@19.12.0
+  - @commercetools-uikit/spacings@19.12.0
+
 ## 19.11.0
 
 ### Patch Changes
