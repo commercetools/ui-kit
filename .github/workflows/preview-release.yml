@@ -74,22 +74,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
 
-      - name: Publish to npm
-        id: changesets
-        uses: dotansimha/changesets-action@v1.5.2
-        with:
-          publish: yarn changeset publish --tag preview
-          version: yarn changeset version --snapshot ${{ github.head_ref }}
-          createGithubReleases: aggregate
-          githubReleaseName: v${{ steps.release_version.outputs.VALUE }}
-          githubTagName: v${{ steps.release_version.outputs.VALUE }}
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
-          SKIP_POSTINSTALL_DEV_SETUP: true
-
       # Publish preview releases only if the branch starts with "preview/" and packages weren't published already
       - name: Publishing preview releases to npm registry
-        if: steps.changesets.outputs.published != 'true' && startsWith(github.ref, 'refs/heads/preview/')
+        if: startsWith(github.ref, 'refs/heads/preview/')
         run: |
           BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
           git checkout ${{ github.head_ref }}
