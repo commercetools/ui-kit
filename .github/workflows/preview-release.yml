@@ -74,28 +74,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
 
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: dotansimha/changesets-action@v1.5.2
-        with:
-          commit: 'ci(changesets): version packages'
-          publish: yarn changeset publish
-          version: yarn changeset:version-and-format
-          createGithubReleases: aggregate
-          githubReleaseName: v${{ steps.release_version.outputs.VALUE }}
-          githubTagName: v${{ steps.release_version.outputs.VALUE }}
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
-          SKIP_POSTINSTALL_DEV_SETUP: true
-
-      # Publish canary releases only if the packages weren't published already
+      # Publish preview releases only if the branch starts with "preview/" and packages weren't published already
       - name: Publishing preview releases to npm registry
-        if: steps.changesets.outputs.published != 'true' && startsWith(github.ref, 'refs/heads/preview/')
+        if: startsWith(github.ref, 'refs/heads/preview/') && contains(github.event.head_commit.message, '[publish_preview]')
         run: |
           BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
-          DATE=$(date +"%Y%m%d")
           git checkout ${{ github.head_ref }}
-          yarn changeset version --snapshot "0.0.0-${BRANCH_NAME}-${DATE}"
+          yarn changeset version --snapshot ${BRANCH_NAME}"
           yarn changeset publish --tag preview
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
