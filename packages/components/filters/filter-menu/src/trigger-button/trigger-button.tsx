@@ -17,11 +17,7 @@ export type TFilterMenuTriggerButtonProps = {
    * this will almost certainly be some sort of generic w/validation - all the `Chip` really
    * needs is the selected option's `label`, but these options need to contain a lot more data
    */
-  appliedFilterValues:
-    | TAppliedFilterValue
-    | TAppliedFilterValue[]
-    | undefined
-    | null;
+  appliedFilterValues: TAppliedFilterValue[] | undefined | null;
   /**
    * whether or not the filter is disabled
    */
@@ -67,17 +63,12 @@ const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
       />
       {props.label}
       {props.appliedFilterValues &&
-        (Array.isArray(props.appliedFilterValues) ? (
-          props.appliedFilterValues.map((value) => (
-            <Chip key={value.key} label={value.label} />
-          ))
-        ) : (
-          <Chip label={props.appliedFilterValues.label} />
+        props.appliedFilterValues.map((value) => (
+          <Chip key={value.key} label={value.label} />
         ))}
-      {props.appliedFilterValues &&
-        Array.isArray(props.appliedFilterValues) && (
-          <Badge label={`+${props.appliedFilterValues.length}`} />
-        )}
+      {props.appliedFilterValues && !!props.appliedFilterValues.length && (
+        <Badge label={`+${props.appliedFilterValues.length}`} />
+      )}
       {props.onRemoveFilter && !props.isPersistent && (
         <span style={{ zIndex: '1' }}>
           <IconButton

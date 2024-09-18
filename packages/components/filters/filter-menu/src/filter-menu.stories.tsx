@@ -51,13 +51,9 @@ const CustomMenuList = ({
   </div>
 );
 export const BasicExample: Story = () => {
-  const [filterValue, onFilterChange] = useState<
-    string | string[] | null | undefined
-  >(undefined);
+  const [filterValue, onFilterChange] = useState<string[]>([]);
 
-  const [appliedFilter, setAppliedFilter] = useState<
-    TAppliedFilterValue | TAppliedFilterValue[] | undefined | null
-  >(undefined);
+  const [appliedFilter, setAppliedFilter] = useState<TAppliedFilterValue[]>([]);
 
   const [operatorsValue, onChangeOperators] = useState<
     string | null | undefined
@@ -79,14 +75,19 @@ export const BasicExample: Story = () => {
         appliedFilterValues={appliedFilter}
         filter={
           <SelectInput
+            name="colorsInput"
             options={colorOptions}
             onChange={(e) => {
-              onFilterChange(e.target.value);
-              Array.isArray(e.target.value)
-                ? setAppliedFilter(
-                    e.target.value.map((value) => ({ label: value }))
-                  )
-                : setAppliedFilter({ label: e.target.value as string });
+              /**return an array whether or not e.target.value is a string or array */
+              onFilterChange(
+                Array.prototype.concat(e.target.value ? e.target.value : [])
+              );
+
+              setAppliedFilter(
+                Array.prototype
+                  .concat(e.target.value ? e.target.value : [])
+                  .map((value) => ({ label: value }))
+              );
             }}
             menuIsOpen={true}
             value={filterValue}
@@ -96,8 +97,8 @@ export const BasicExample: Story = () => {
           />
         }
         onRemoveFilter={() => {
-          onFilterChange(undefined);
-          setAppliedFilter(undefined);
+          onFilterChange([]);
+          setAppliedFilter([]);
           alert('this would make the component disappear!');
         }}
         operatorsInput={
@@ -107,19 +108,16 @@ export const BasicExample: Story = () => {
             options={operatorsOptions}
           />
         }
-        onApplyFilter={() => {
-          if (filterValue) {
-            const valuesToApply = Array.isArray(filterValue)
-              ? filterValue.map((value) => ({ label: value }))
-              : { label: filterValue };
-            setAppliedFilter(valuesToApply);
-          } else {
-            setAppliedFilter(undefined);
-          }
-        }}
+        onApplyFilter={() =>
+          setAppliedFilter(
+            Array.prototype
+              .concat(filterValue)
+              .map((value) => ({ label: value }))
+          )
+        }
         onClearFilter={() => {
-          setAppliedFilter(undefined);
-          onFilterChange(undefined);
+          setAppliedFilter([]);
+          onFilterChange([]);
         }}
         onFilterOptionsSortClick={() => {
           alert('filter options sorted! (in consuming application)');

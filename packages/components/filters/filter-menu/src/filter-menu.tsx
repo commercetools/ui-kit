@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import { type ReactNode } from 'react';
 import DropdownMenu from '@commercetools-uikit/dropdown-menu';
 import { Footer } from './footer';
 import { Header } from './header';
@@ -6,7 +6,7 @@ import { TriggerButton } from './trigger-button';
 
 export type TAppliedFilterValue = {
   key?: string;
-  label: string | ReactElement;
+  label: ReactNode;
 };
 
 export type TFilterMenuProps = {
@@ -17,7 +17,7 @@ export type TFilterMenuProps = {
   /**
    * formatted message to display the filter's name
    */
-  label: string | ReactElement;
+  label: ReactNode;
   /**
    * the input in which the user selects values for the filter
    *
@@ -26,7 +26,7 @@ export type TFilterMenuProps = {
    * or start defining different menu bodies based on props and only make predefined input
    * types available, which is restrictive and much higher maintenance
    */
-  filter: ReactElement;
+  filter: ReactNode;
   /**
    * the input in which the user can select which operator should be used for this filter
    *
@@ -34,7 +34,7 @@ export type TFilterMenuProps = {
    * the alternative to a rect element is passing in an array of operators and a handler function,
    * which is more achievable here than for the input in the body, but could still be restrictive
    */
-  operatorsInput?: ReactElement;
+  operatorsInput?: ReactNode;
   /**
    * the values applied to this filter by the user
    *
@@ -42,11 +42,7 @@ export type TFilterMenuProps = {
    * this will almost certainly be some sort of generic w/validation - all the `Chip` really
    * needs is the selected option's `label`, but these options need to contain a lot more data
    */
-  appliedFilterValues:
-    | TAppliedFilterValue
-    | TAppliedFilterValue[]
-    | undefined
-    | null;
+  appliedFilterValues: TAppliedFilterValue[] | undefined | null;
   /**
    * indicates whether FilterMenu can be removed from the filtersList
    */
