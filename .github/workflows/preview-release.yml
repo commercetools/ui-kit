@@ -76,7 +76,7 @@ jobs:
 
       # Publish preview releases only if the branch starts with "preview/" and packages weren't published already
       - name: Publishing preview releases to npm registry
-        if: startsWith(github.ref, 'refs/heads/preview/')
+        if: startsWith(github.ref, 'refs/heads/preview/') && contains(github.event.head_commit.message, '[publish_preview]')
         run: |
           BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
           git checkout ${{ github.head_ref }}
