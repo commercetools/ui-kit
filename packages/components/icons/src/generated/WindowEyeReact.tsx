@@ -135,7 +135,7 @@ const SvgWindowEye = (props: SVGProps) => (
     height={12}
     fill="none"
     viewBox="0 0 12 12"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path

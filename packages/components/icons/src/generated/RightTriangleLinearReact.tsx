@@ -134,7 +134,7 @@ const SvgRightTriangleLinear = (props: SVGProps) => (
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path d="M5.425 19.575h14.15V5.425zM3.715 21q-.475 0-.653-.44-.178-.439.154-.77L19.79 3.215q.333-.332.772-.154.44.178.439.653v16.573a.69.69 0 0 1-.712.712z" />

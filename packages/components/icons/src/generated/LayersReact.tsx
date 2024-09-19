@@ -135,7 +135,7 @@ const SvgLayers = (props: SVGProps) => (
     height={24}
     fill="none"
     viewBox="0 0 24 24"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path
