@@ -2928,7 +2928,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/design-system@19.11.0, @commercetools-uikit/design-system@workspace:design-system":
+"@commercetools-uikit/design-system@19.11.0, @commercetools-uikit/design-system@workspace:^, @commercetools-uikit/design-system@workspace:design-system":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/design-system@workspace:design-system"
   dependencies:
@@ -3062,7 +3062,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/filter-menu@workspace:packages/components/filters/filter-menu":
+"@commercetools-uikit/filter-menu@workspace:^, @commercetools-uikit/filter-menu@workspace:packages/components/filters/filter-menu":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/filter-menu@workspace:packages/components/filters/filter-menu"
   dependencies:
@@ -3089,6 +3089,11 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/design-system": "workspace:^"
+    "@commercetools-uikit/dropdown-menu": "workspace:^"
+    "@commercetools-uikit/filter-menu": "workspace:^"
+    "@commercetools-uikit/secondary-button": "workspace:^"
+    "@commercetools-uikit/select-input": "workspace:^"
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
@@ -4149,7 +4154,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/select-input@19.11.0, @commercetools-uikit/select-input@workspace:packages/components/inputs/select-input":
+"@commercetools-uikit/select-input@19.11.0, @commercetools-uikit/select-input@workspace:^, @commercetools-uikit/select-input@workspace:packages/components/inputs/select-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/select-input@workspace:packages/components/inputs/select-input"
   dependencies:

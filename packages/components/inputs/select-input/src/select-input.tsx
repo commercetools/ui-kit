@@ -30,6 +30,7 @@ export type TOption = {
 };
 
 export type TOptionObject = {
+  label: ReactNode;
   options: TOption[];
 };
 
