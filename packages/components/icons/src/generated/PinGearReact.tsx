@@ -135,7 +135,7 @@ const SvgPinGear = (props: SVGProps) => (
     width={18}
     height={18}
     viewBox="0 0 18 18"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <defs>

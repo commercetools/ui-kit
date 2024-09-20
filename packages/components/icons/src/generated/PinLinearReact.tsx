@@ -134,7 +134,7 @@ const SvgPinLinear = (props: SVGProps) => (
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path d="m16 11.1 1.8 1.8v1.8h-4.5v5.4l-.9.9-.9-.9v-5.4H7v-1.8l1.8-1.8V4.8h-.9V3h9v1.8H16zm-6.435 1.8h5.67L14.2 11.865V4.8h-3.6v7.065z" />

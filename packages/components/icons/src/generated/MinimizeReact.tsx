@@ -134,7 +134,7 @@ const SvgMinimize = (props: SVGProps) => (
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path d="M4.463 13q-.639 0-1.05-.432A1.48 1.48 0 0 1 3 11.5q0-.638.43-1.068A1.45 1.45 0 0 1 4.5 10h15.038q.636 0 1.05.432.412.43.412 1.068t-.432 1.068A1.45 1.45 0 0 1 19.5 13z" />

@@ -135,7 +135,7 @@ const SvgChecked = (props: SVGProps) => (
     height={9}
     fill="none"
     viewBox="0 0 12 9"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path

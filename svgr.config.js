@@ -92,7 +92,7 @@ module.exports = {
       'prefixIds',
     ],
   },
-  svgProps: { role: 'img' },
+  svgProps: { 'aria-hidden': 'true' },
   typescript: true,
   // same as the rollup plugin
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
