@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { MenuProps, MenuListProps } from 'react-select';
 import FiltersList from './filters-list';
 import SelectInput from '../../../inputs/select-input';
@@ -54,26 +54,30 @@ export const BasicExample: Story = () => {
   const clearPrimaryColorFilter = () => setPrimaryColorValue([]);
   const clearSecondaryColorFilter = () => setSecondaryColorValue([]);
 
+  const getPrimaryColorTags = useCallback(() => {
+    if (primaryColorValue.length > 0) {
+      return primaryColorValue.map((value) => ({
+        key: value,
+        label: value.toUpperCase(),
+      }));
+    }
+    return [];
+  }, [primaryColorValue]);
+
+  const getSecondaryColorTags = useCallback(() => {
+    if (secondaryColorValue.length > 0) {
+      return secondaryColorValue.map((value) => ({
+        key: value,
+        label: value.toUpperCase(),
+      }));
+    }
+    return [];
+  }, [secondaryColorValue]);
+
   const clearAllFilters = () => {
     clearPrimaryColorFilter();
     clearSecondaryColorFilter();
   };
-
-  const appliedFilters = [];
-
-  if (primaryColorValue.length > 0) {
-    appliedFilters.push({
-      filterKey: 'primaryColors',
-      label: primaryColorValue,
-    });
-  }
-
-  if (secondaryColorValue.length > 0) {
-    appliedFilters.push({
-      filterKey: 'secondaryColors',
-      label: secondaryColorValue,
-    });
-  }
 
   const filterGroups = [
     { key: 'secondaryColors', label: <div>SECONDARY COLORS</div> },
@@ -102,6 +106,7 @@ export const BasicExample: Story = () => {
           />
         ),
         onClearRequest: clearPrimaryColorFilter,
+        getTags: getPrimaryColorTags,
       },
     },
     {
@@ -126,6 +131,7 @@ export const BasicExample: Story = () => {
           />
         ),
         onClearRequest: clearSecondaryColorFilter,
+        getTags: getSecondaryColorTags,
       },
     },
   ];
@@ -142,7 +148,6 @@ export const BasicExample: Story = () => {
     >
       <FiltersList
         filters={filters}
-        appliedFilters={appliedFilters}
         onClearAllRequest={clearAllFilters}
         filterGroups={filterGroups}
       />

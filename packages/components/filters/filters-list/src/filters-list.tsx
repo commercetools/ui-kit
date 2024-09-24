@@ -8,8 +8,7 @@ import { PlusThinIcon, CloseIcon } from '@commercetools-uikit/icons';
 import SelectInput from '@commercetools-uikit/select-input';
 
 export type TAppliedFilterValue = {
-  filterKey: string;
-  label: ReactNode[];
+  label: ReactNode;
 };
 
 export type TFiltersConfiguration = {
@@ -18,6 +17,7 @@ export type TFiltersConfiguration = {
   label: ReactNode;
   filterMenuConfiguration: {
     renderMenuBody: () => ReactNode;
+    getTags: () => TAppliedFilterValue[];
     onClearRequest: Function;
     onApplyRequest?: Function;
     onSortRequest?: Function;
@@ -40,7 +40,6 @@ export type TAddFilterSelectOption = {
 export type TFiltersListProps = {
   filters: TFiltersConfiguration[];
   filterGroups?: TFilterGroup[];
-  appliedFilters: TAppliedFilterValue[];
   onClearAllRequest: Function;
   onAddFilterRequest?: Function;
 };
@@ -117,9 +116,7 @@ function FiltersList(props: TFiltersListProps) {
             renderMenuBody={
               activeFilterConfig.filterMenuConfiguration.renderMenuBody
             }
-            appliedFilterValues={props.appliedFilters.filter(
-              (appliedFilter) => activeFilter === appliedFilter.filterKey
-            )}
+            appliedFilterValues={activeFilterConfig.filterMenuConfiguration.getTags()}
             onApplyFilter={
               activeFilterConfig.filterMenuConfiguration.onApplyRequest
             }
