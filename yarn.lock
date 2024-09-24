@@ -3092,7 +3092,8 @@ __metadata:
     "@commercetools-uikit/design-system": "workspace:^"
     "@commercetools-uikit/dropdown-menu": "workspace:^"
     "@commercetools-uikit/filter-menu": "workspace:^"
-    "@commercetools-uikit/secondary-button": "workspace:^"
+    "@commercetools-uikit/flat-button": "workspace:^"
+    "@commercetools-uikit/icons": "workspace:^"
     "@commercetools-uikit/select-input": "workspace:^"
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
@@ -3104,7 +3105,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/flat-button@19.11.0, @commercetools-uikit/flat-button@workspace:packages/components/buttons/flat-button":
+"@commercetools-uikit/flat-button@19.11.0, @commercetools-uikit/flat-button@workspace:^, @commercetools-uikit/flat-button@workspace:packages/components/buttons/flat-button":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/flat-button@workspace:packages/components/buttons/flat-button"
   dependencies:

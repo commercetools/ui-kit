@@ -74,46 +74,59 @@ export const BasicExample: Story = () => {
       label: secondaryColorValue,
     });
   }
+
+  const filterGroups = [
+    { key: 'secondaryColors', label: <div>SECONDARY COLORS</div> },
+    { key: 'primaryColors', label: <div>PRIMARY!!!</div> },
+  ];
+
   const filters = [
     {
       key: 'primaryColors',
       label: 'Primary Colors',
-      filter: (
-        <SelectInput
-          name="primaryColorsSelect"
-          options={primaryColorOptions}
-          value={primaryColorValue}
-          onChange={(e) =>
-            setPrimaryColorValue(
-              Array.prototype.concat(e.target.value ? e.target.value : [])
-            )
-          }
-          components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
-          menuIsOpen={true}
-          controlShouldRenderValue={false}
-        />
-      ),
-      onClearRequest: clearPrimaryColorFilter,
+      groupKey: 'primaryColors',
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <SelectInput
+            name="primaryColorsSelect"
+            options={primaryColorOptions}
+            value={primaryColorValue}
+            onChange={(e) =>
+              setPrimaryColorValue(
+                Array.prototype.concat(e.target.value ? e.target.value : [])
+              )
+            }
+            components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
+            menuIsOpen={true}
+            controlShouldRenderValue={false}
+          />
+        ),
+        onClearRequest: clearPrimaryColorFilter,
+      },
     },
     {
       key: 'secondaryColors',
       label: 'Secondary Colors',
-      filter: (
-        <SelectInput
-          name="secondaryColorsSelect"
-          options={secondaryColorOptions}
-          value={secondaryColorValue}
-          onChange={(e) =>
-            setSecondaryColorValue(
-              Array.prototype.concat(e.target.value ? e.target.value : [])
-            )
-          }
-          components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
-          menuIsOpen={true}
-          controlShouldRenderValue={false}
-        />
-      ),
-      onClearRequest: clearSecondaryColorFilter,
+      groupKey: 'secondaryColors',
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <SelectInput
+            name="secondaryColorsSelect"
+            options={secondaryColorOptions}
+            value={secondaryColorValue}
+            onChange={(e) =>
+              setSecondaryColorValue(
+                Array.prototype.concat(e.target.value ? e.target.value : [])
+              )
+            }
+            components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
+            menuIsOpen={true}
+            controlShouldRenderValue={false}
+            isMulti
+          />
+        ),
+        onClearRequest: clearSecondaryColorFilter,
+      },
     },
   ];
 
@@ -131,6 +144,7 @@ export const BasicExample: Story = () => {
         filters={filters}
         appliedFilters={appliedFilters}
         onClearAllRequest={clearAllFilters}
+        filterGroups={filterGroups}
       />
     </div>
   );

@@ -24,5 +24,6 @@ export const BasicExample: Story = {
   args: {
     label: 'Button Label Text',
     iconLeft: 'AngleDownIcon',
+    tone: 'secondary',
   },
 };

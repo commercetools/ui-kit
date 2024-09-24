@@ -13,8 +13,10 @@ describe('FilterMenu FiltersList', () => {
           {
             key: 'test',
             label: 'test',
-            filter: () => <div />,
-            onClearRequest: () => {},
+            filterMenuConfiguration: {
+              renderMenuBody: () => <div />,
+              onClearRequest: () => {},
+            },
           },
         ]}
         appliedFilters={[]}
