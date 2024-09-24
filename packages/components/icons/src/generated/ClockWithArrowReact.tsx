@@ -134,7 +134,7 @@ const SvgClockWithArrow = (props: SVGProps) => (
     width={33}
     height={32}
     viewBox="0 0 33 32"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path

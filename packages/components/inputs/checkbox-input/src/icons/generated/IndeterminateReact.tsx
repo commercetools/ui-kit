@@ -135,7 +135,7 @@ const SvgIndeterminate = (props: SVGProps) => (
     height={2}
     fill="none"
     viewBox="0 0 12 2"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path stroke="#000" strokeLinecap="round" strokeWidth={2} d="M11 1H1" />

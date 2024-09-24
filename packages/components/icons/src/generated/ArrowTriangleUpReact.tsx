@@ -134,7 +134,7 @@ const SvgArrowTriangleUp = (props: SVGProps) => (
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path fillRule="evenodd" d="m12 4 9 15H3" />

@@ -134,7 +134,7 @@ const SvgDot = (props: SVGProps) => (
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path d="M12 21q-3.76 0-6.38-2.62T3 12t2.62-6.381Q8.24 3 12 3t6.38 2.619Q21 8.239 21 12q0 3.76-2.62 6.38T12 21" />
