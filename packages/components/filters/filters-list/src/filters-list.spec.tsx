@@ -16,10 +16,14 @@ describe('FilterMenu FiltersList', () => {
             filterMenuConfiguration: {
               renderMenuBody: () => <div />,
               onClearRequest: () => {},
+              getTags: () => [
+                {
+                  label: 'hi',
+                },
+              ],
             },
           },
         ]}
-        appliedFilters={[]}
         onClearAllRequest={() => {}}
       />
     );
