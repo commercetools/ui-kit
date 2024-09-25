@@ -3,7 +3,6 @@ import { Badge } from '../badge';
 import { Chip } from '../chip';
 import type { TAppliedFilterValue } from '../filter-menu';
 import styled from '@emotion/styled';
-
 import { designTokens } from '@commercetools-uikit/design-system';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import {
@@ -11,7 +10,6 @@ import {
   LegacyRef,
   RefObject,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -97,13 +95,13 @@ const ClearButtonContainer = styled.div({
 const ValueContainer = styled.div({
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'flex-start',
   gap: '.25rem',
   flexGrow: 1,
   flexShrink: 1,
   overflow: 'hidden',
   position: 'relative',
-  padding: 0,
-  margin: 0,
+  paddingLeft: 0,
 });
 
 const BadgeContainer = styled.div({
@@ -162,9 +160,7 @@ const TriggerButton = forwardRef(function TriggerButton(
   props: TFilterMenuTriggerButtonProps,
   ref: LegacyRef<HTMLButtonElement>
 ) {
-  const values = useMemo(() => {
-    return [...(props.appliedFilterValues || [])];
-  }, [props.appliedFilterValues]);
+  const values = props.appliedFilterValues || [];
   const filtersApplied: boolean = values.length > 0;
 
   const chipListRef = useRef<HTMLDivElement>(null);
@@ -186,17 +182,9 @@ const TriggerButton = forwardRef(function TriggerButton(
     <Container>
       <Label>{props.label}</Label>
       {filtersApplied && (
-        <ValueContainer ref={chipListRef}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row-reverse',
-              justifyContent: 'flex-end',
-            }}
-          >
-            {values.length > 0 &&
-              values.map((value) => <Chip key={value.key}>{value.label}</Chip>)}
-          </div>
+        <ValueContainer as="ul" ref={chipListRef}>
+          {values.length > 0 &&
+            values.map((value) => <Chip key={value.key}>{value.label}</Chip>)}
           {isOverflowing && (
             <BadgeContainer as="li">
               <Badge>+{overflowCount}</Badge>
