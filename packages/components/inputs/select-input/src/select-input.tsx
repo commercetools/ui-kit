@@ -161,7 +161,7 @@ export type TSelectInputProps = {
   // formatOptionLabel: PropTypes.func,
   // getOptionLabel: PropTypes.func,
   // getOptionValue: PropTypes.func,
-  // hideSelectedOptions: PropTypes.bool,
+  hideSelectedOptions?: ReactSelectProps['hideSelectedOptions'];
   /**
    * Used as HTML id property. An id is generated automatically when not provided.
    * This forwarded as react-select's "inputId"
@@ -461,7 +461,7 @@ const SelectInput = (props: TSelectInputProps) => {
             } as ReactSelectProps['components']
           }
           menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
-          hideSelectedOptions={false}
+          hideSelectedOptions={props.hideSelectedOptions}
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,

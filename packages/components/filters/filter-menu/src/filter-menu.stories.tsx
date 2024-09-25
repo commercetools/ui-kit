@@ -86,13 +86,14 @@ export const BasicExample: Story = () => {
               setAppliedFilter(
                 Array.prototype
                   .concat(e.target.value ? e.target.value : [])
-                  .map((value) => ({ label: value.toUpperCase() }))
+                  .map((value) => ({ value, label: value.toUpperCase() }))
               );
             }}
             menuIsOpen={true}
             value={filterValue}
             components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
             controlShouldRenderValue={false}
+            hideSelectedOptions={false}
             isMulti
           />
         )}
@@ -101,18 +102,19 @@ export const BasicExample: Story = () => {
           setAppliedFilter([]);
           alert('this would make the component disappear!');
         }}
-        operatorsInput={
+        renderOperatorsInput={() => (
           <SelectInput
+            appearance="quiet"
             value={operatorsValue}
             onChange={(e) => onChangeOperators(e.target.value as string)}
             options={operatorsOptions}
           />
-        }
+        )}
         onApplyFilter={() =>
           setAppliedFilter(
             Array.prototype
               .concat(filterValue)
-              .map((value) => ({ label: value }))
+              .map((value) => ({ value: value, label: value }))
           )
         }
         onClearFilter={() => {

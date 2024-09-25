@@ -7,17 +7,20 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import { PlusThinIcon, CloseIcon } from '@commercetools-uikit/icons';
 import SelectInput from '@commercetools-uikit/select-input';
 
-export type TAppliedFilterValue = {
+export type TAppliedFilterValue = { label: ReactNode; value: string };
+
+export type TAppliedFilter = {
   filterKey: string;
-  label: ReactNode[];
+  values: TAppliedFilterValue[];
 };
 
-export type TFiltersConfiguration = {
+export type TFilterConfiguration = {
   key: string;
   groupKey?: string;
   label: ReactNode;
   filterMenuConfiguration: {
     renderMenuBody: () => ReactNode;
+    renderOperatorsInput?: () => ReactNode;
     onClearRequest: Function;
     onApplyRequest?: Function;
     onSortRequest?: Function;
@@ -26,21 +29,15 @@ export type TFiltersConfiguration = {
   isDisabled?: boolean;
 };
 
-export type TFilterGroup = {
+export type TFilterGroupConfiguration = {
   key: string;
   label: ReactNode;
 };
 
-export type TAddFilterSelectOption = {
-  label: string;
-  value: string;
-  isDisabled: boolean;
-};
-
 export type TFiltersListProps = {
-  filters: TFiltersConfiguration[];
-  filterGroups?: TFilterGroup[];
-  appliedFilters: TAppliedFilterValue[];
+  filters: TFilterConfiguration[];
+  filterGroups?: TFilterGroupConfiguration[];
+  appliedFilters: TAppliedFilter[];
   onClearAllRequest: Function;
   onAddFilterRequest?: Function;
 };
@@ -64,10 +61,35 @@ const CustomMenuList = ({
 );
 
 function FiltersList(props: TFiltersListProps) {
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-  const persistedFilters = props.filters
-    .filter((filter) => filter.isPersistent)
+  /**
+   * persisted filters: always visible
+   * applied filters: filters for which values have been selected
+   * visible filters = persisted + applied
+   *
+   * visibleFiltersFromProps = filters visible based on props
+   * localVisibleFilters = filters actually visible in component currently
+   */
+  const persistedFilterKeys = props.filters
+    .filter(({ isPersistent }) => isPersistent)
     .map((filter) => filter.key);
+
+  const appliedFilterKeys = props.appliedFilters.map(
+    ({ filterKey }) => filterKey
+  );
+
+  // applied filters must have corresponding filter in `props.filters`
+  const visibleFiltersFromProps = props.filters.filter(
+    ({ key, isPersistent }) => {
+      const isVisible =
+        Boolean(isPersistent) || appliedFilterKeys.includes(key);
+      return isVisible;
+    }
+  );
+
+  // set initial state as visibleFiltersFromProps
+  const [localVisibleFilters, setLocalVisibleFilters] = useState<string[]>(
+    visibleFiltersFromProps.map(({ key }) => key)
+  );
 
   // TODO: handle options that don't have a group if `filterGroups` is passed
   const getFilterOptions = () => {
@@ -92,8 +114,10 @@ function FiltersList(props: TFiltersListProps) {
   };
 
   const removeFilter = (filterKey: string) =>
-    setSelectedFilters((selectedFilters) =>
-      selectedFilters.filter((selectedFilter) => selectedFilter !== filterKey)
+    setLocalVisibleFilters((currentVisibleFilters) =>
+      currentVisibleFilters.filter(
+        (visibleFilterKey) => visibleFilterKey !== filterKey
+      )
     );
 
   return (
@@ -105,7 +129,7 @@ function FiltersList(props: TFiltersListProps) {
         gap: 8px;
       `}
     >
-      {persistedFilters.concat(selectedFilters).map((activeFilter) => {
+      {localVisibleFilters.map((activeFilter) => {
         const activeFilterConfig = props.filters.find(
           (filter) => filter.key === activeFilter
         )!;
@@ -114,12 +138,16 @@ function FiltersList(props: TFiltersListProps) {
             key={activeFilterConfig.key}
             filterKey={activeFilterConfig.key}
             label={activeFilterConfig.label}
+            isPersistent={activeFilterConfig.isPersistent}
+            isDisabled={activeFilterConfig.isDisabled}
             renderMenuBody={
               activeFilterConfig.filterMenuConfiguration.renderMenuBody
             }
-            appliedFilterValues={props.appliedFilters.filter(
-              (appliedFilter) => activeFilter === appliedFilter.filterKey
-            )}
+            appliedFilterValues={
+              props.appliedFilters.find(
+                (appliedFilter) => activeFilter === appliedFilter.filterKey
+              )?.values
+            }
             onApplyFilter={
               activeFilterConfig.filterMenuConfiguration.onApplyRequest
             }
@@ -130,6 +158,9 @@ function FiltersList(props: TFiltersListProps) {
               removeFilter(activeFilter);
               activeFilterConfig.filterMenuConfiguration.onClearRequest();
             }}
+            onFilterOptionsSortClick={
+              activeFilterConfig.filterMenuConfiguration.onSortRequest
+            }
           />
         );
       })}
@@ -142,24 +173,26 @@ function FiltersList(props: TFiltersListProps) {
           name="add filters"
           options={getFilterOptions()}
           onChange={(e) => {
-            setSelectedFilters(
+            setLocalVisibleFilters(
               Array.prototype.concat(e.target.value ? e.target.value : [])
             );
           }}
-          value={selectedFilters}
+          value={localVisibleFilters}
           menuIsOpen={true}
           components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
           controlShouldRenderValue={false}
           isMulti={true}
           // @ts-ignore
           isOptionDisabled={(option: unknown) => option.isDisabled}
+          backspaceRemovesValue={false}
+          isClearable={false}
         />
       </DropdownMenu>
-      {selectedFilters.length > 0 && (
+      {localVisibleFilters.length > 0 && (
         <FlatButton
           tone="secondary"
           onClick={() => {
-            setSelectedFilters([]);
+            setLocalVisibleFilters(persistedFilterKeys);
             props.onClearAllRequest();
           }}
           label="Clear all"

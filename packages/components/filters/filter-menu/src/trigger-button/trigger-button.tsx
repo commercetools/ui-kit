@@ -64,7 +64,7 @@ const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
       {props.label}
       {props.appliedFilterValues &&
         props.appliedFilterValues.map((value) => (
-          <Chip key={value.key} label={value.label} />
+          <Chip key={value.value} label={value.label} />
         ))}
       {props.appliedFilterValues && !!props.appliedFilterValues.length && (
         <Badge label={`+${props.appliedFilterValues.length}`} />

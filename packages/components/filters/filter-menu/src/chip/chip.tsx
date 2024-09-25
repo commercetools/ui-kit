@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 export type TFilterMenuChipProps = {
-  label: string | ReactNode | undefined;
+  label: ReactNode;
 };
 function Chip(props: TFilterMenuChipProps) {
   if (!props.label) return null;

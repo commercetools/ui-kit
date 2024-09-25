@@ -59,19 +59,31 @@ export const BasicExample: Story = () => {
     clearSecondaryColorFilter();
   };
 
+  // const appliedFilters = [
+  //   {
+  //     filterKey: 'primaryColors',
+  //     values: [{ value: 'blue', label: 'BLUE' }],
+  //   },
+  // ];
   const appliedFilters = [];
 
   if (primaryColorValue.length > 0) {
     appliedFilters.push({
       filterKey: 'primaryColors',
-      label: primaryColorValue,
+      values: primaryColorValue.map((value) => ({
+        value: value,
+        label: value.toUpperCase(),
+      })),
     });
   }
 
   if (secondaryColorValue.length > 0) {
     appliedFilters.push({
       filterKey: 'secondaryColors',
-      label: secondaryColorValue,
+      values: secondaryColorValue.map((value) => ({
+        value: value,
+        label: value.toUpperCase(),
+      })),
     });
   }
 
@@ -99,6 +111,7 @@ export const BasicExample: Story = () => {
             components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
             menuIsOpen={true}
             controlShouldRenderValue={false}
+            hideSelectedOptions={false}
           />
         ),
         onClearRequest: clearPrimaryColorFilter,
@@ -108,6 +121,7 @@ export const BasicExample: Story = () => {
       key: 'secondaryColors',
       label: 'Secondary Colors',
       groupKey: 'secondaryColors',
+      isPersistent: true,
       filterMenuConfiguration: {
         renderMenuBody: () => (
           <SelectInput
@@ -123,6 +137,9 @@ export const BasicExample: Story = () => {
             menuIsOpen={true}
             controlShouldRenderValue={false}
             isMulti
+            backspaceRemovesValue={false}
+            isClearable={false}
+            hideSelectedOptions={false}
           />
         ),
         onClearRequest: clearSecondaryColorFilter,

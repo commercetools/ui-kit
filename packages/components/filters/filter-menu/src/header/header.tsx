@@ -4,7 +4,7 @@ import { SortingIcon } from '@commercetools-uikit/icons';
 
 export type TFilterMenuHeaderProps = {
   label: ReactNode;
-  operatorsInput?: ReactNode;
+  renderOperatorsInput?: () => ReactNode;
   onFilterOptionsSortClick?: Function;
 };
 function Header(props: TFilterMenuHeaderProps) {
@@ -20,8 +20,8 @@ function Header(props: TFilterMenuHeaderProps) {
       }}
     >
       {props.label}
-      {props.operatorsInput && (
-        <div style={{ margin: '0 8px' }}>{props.operatorsInput}</div>
+      {props.renderOperatorsInput && (
+        <div style={{ margin: '0 8px' }}>{props.renderOperatorsInput()}</div>
       )}
 
       {props.onFilterOptionsSortClick && (

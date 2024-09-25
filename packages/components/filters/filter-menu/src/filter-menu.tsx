@@ -5,7 +5,7 @@ import { Header } from './header';
 import { TriggerButton } from './trigger-button';
 
 export type TAppliedFilterValue = {
-  key?: string;
+  value: string;
   label: ReactNode;
 };
 
@@ -34,7 +34,7 @@ export type TFilterMenuProps = {
    * the alternative to a rect element is passing in an array of operators and a handler function,
    * which is more achievable here than for the input in the body, but could still be restrictive
    */
-  operatorsInput?: ReactNode;
+  renderOperatorsInput?: () => ReactNode;
   /**
    * the values applied to this filter by the user
    *
@@ -74,7 +74,6 @@ export type TFilterMenuProps = {
 
 function FilterMenu(props: TFilterMenuProps) {
   return (
-    // dropdown menu needs way to programatically clo
     <DropdownMenu
       triggerElement={
         <TriggerButton
@@ -90,7 +89,7 @@ function FilterMenu(props: TFilterMenuProps) {
     >
       <Header
         label={props.label}
-        operatorsInput={props.operatorsInput}
+        renderOperatorsInput={props.renderOperatorsInput}
         onFilterOptionsSortClick={props.onFilterOptionsSortClick}
       />
       {props.renderMenuBody()}
