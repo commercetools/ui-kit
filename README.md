@@ -20,6 +20,10 @@
 
 The UI Kit is a set of React components that follows commercetools [Design System](#design-system).
 
+# Need Help?
+
+In case you have any questions about or issues with the tools and components provided in this repository, please reach out to our [Support team](https://support.commercetools.com).
+
 # Using individual packages
 
 Each UI Kit component is published as a single NPM package under the scope `@commercetools-uikit`. This is useful if you only need a bunch of React components and do not want to have bigger bundle.
