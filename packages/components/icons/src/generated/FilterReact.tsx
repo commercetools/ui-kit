@@ -134,7 +134,7 @@ const SvgFilter = (props: SVGProps) => (
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <path d="M11 20a.97.97 0 0 1-.712-.288A.97.97 0 0 1 10 19v-6L4.2 5.6q-.375-.5-.112-1.05T5 4h14q.65 0 .913.55.262.55-.113 1.05L14 13v6q0 .424-.287.712A.97.97 0 0 1 13 20z" />

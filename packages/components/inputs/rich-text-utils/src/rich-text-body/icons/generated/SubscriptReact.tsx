@@ -134,7 +134,7 @@ const SvgSubscript = (props: SVGProps) => (
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    role="img"
+    aria-hidden="true"
     {...props}
   >
     <g fill="#333" fillRule="nonzero">

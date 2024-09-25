@@ -8,11 +8,22 @@ jest.mock('@commercetools-uikit/utils', () => ({
 }));
 
 it('should render the inline props', () => {
-  render(<Stamp tone="positive" label="Hello" icon={<AngleDownIcon />} />);
+  render(
+    <Stamp
+      tone="positive"
+      label="Hello"
+      icon={<AngleDownIcon data-testid="tested-icon" />}
+    />
+  );
   expect(screen.getByText('Hello')).toBeInTheDocument();
-  expect(screen.getByRole('img')).toBeInTheDocument();
+  expect(screen.getByTestId('tested-icon')).toBeInTheDocument();
 });
-it('should render the children', () => {
+it('should still render children but trigger a console.warn', () => {
+  const consoleWarnSpy = jest
+    .spyOn(console, 'warn')
+    .mockImplementation(() => {});
   render(<Stamp tone="positive">Hello</Stamp>);
   expect(screen.getByText('Hello')).toBeInTheDocument();
+  expect(consoleWarnSpy).toHaveBeenCalled();
+  consoleWarnSpy.mockRestore();
 });
