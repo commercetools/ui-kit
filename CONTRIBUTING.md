@@ -150,7 +150,7 @@ Canary releases are useful to test early changes that should not be released yet
 
 ### Branch-specific canary releases
 
-To release a canary version for a specific branch other than the `main` branch, the follow steps to trigger a release should be followed:
+To release a canary version for a specific branch other than the `main` branch, follow these steps:
 
 1. Create a PR with a branch name that starts with the prefix `preview/`  example: `preview/canary-branch`
 2. To avoid creating versions every time we push, to trigger a canary version with your change, the commit message has to contain the trigger string `[publish_preview]` example: `git commit -m"chore(xxx): [publish_preview] test with a commit trigger"` .
