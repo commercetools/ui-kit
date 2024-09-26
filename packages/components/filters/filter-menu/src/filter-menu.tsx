@@ -1,5 +1,7 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, type ReactElement } from 'react';
 import DropdownMenu from '@commercetools-uikit/dropdown-menu';
+import { type TSelectInputProps } from '@commercetools-uikit/select-input';
+import { type TPrimaryButtonProps } from '@commercetools-uikit/primary-button';
 import { Footer } from './footer';
 import { Header } from './header';
 import { TriggerButton } from './trigger-button';
@@ -34,7 +36,7 @@ export type TFilterMenuProps = {
    * the alternative to a rect element is passing in an array of operators and a handler function,
    * which is more achievable here than for the input in the body, but could still be restrictive
    */
-  renderOperatorsInput?: () => ReactNode;
+  renderOperatorsInput?: () => ReactElement<TSelectInputProps>;
   /**
    * the values applied to this filter by the user
    *
@@ -57,19 +59,19 @@ export type TFilterMenuProps = {
    * NOTES / OPINIONS WELCOME IN PR COMMENTS:
    * is the presence/absence of the function sufficient for display logic, or do we need a separate `show-` prop?
    */
-  onRemoveFilter?: Function;
+  onRemoveRequest?: Function;
   /**
    * controls whether `apply` button in Menu Body Footer is displayed
    */
-  onApplyFilter?: Function;
+  renderApplyButton?: () => ReactElement<TPrimaryButtonProps>;
   /**
    * controls whether `clear` button in Menu Body Footer is displayed
    */
-  onClearFilter?: Function;
+  onClearRequest?: Function;
   /**
    * controls whether `sort` button in Menu Body Header is displayed
    */
-  onFilterOptionsSortClick?: Function;
+  onSortRequest?: Function;
 };
 
 function FilterMenu(props: TFilterMenuProps) {
@@ -81,7 +83,7 @@ function FilterMenu(props: TFilterMenuProps) {
           appliedFilterValues={props.appliedFilterValues}
           isDisabled={props.isDisabled}
           isPersistent={props.isPersistent}
-          onRemoveFilter={props.onRemoveFilter}
+          onRemoveRequest={props.onRemoveRequest}
         />
       }
       menuHorizontalConstraint={7}
@@ -90,12 +92,12 @@ function FilterMenu(props: TFilterMenuProps) {
       <Header
         label={props.label}
         renderOperatorsInput={props.renderOperatorsInput}
-        onFilterOptionsSortClick={props.onFilterOptionsSortClick}
+        onSortRequest={props.onSortRequest}
       />
       {props.renderMenuBody()}
       <Footer
-        onApplyFilter={props.onApplyFilter}
-        onClearFilter={props.onClearFilter}
+        renderApplyButton={props.renderApplyButton}
+        onClearRequest={props.onClearRequest}
       />
     </DropdownMenu>
   );

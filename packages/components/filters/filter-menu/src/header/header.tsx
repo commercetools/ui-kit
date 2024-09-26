@@ -5,7 +5,7 @@ import { SortingIcon } from '@commercetools-uikit/icons';
 export type TFilterMenuHeaderProps = {
   label: ReactNode;
   renderOperatorsInput?: () => ReactNode;
-  onFilterOptionsSortClick?: Function;
+  onSortRequest?: Function;
 };
 function Header(props: TFilterMenuHeaderProps) {
   const [sortActive, setSortActive] = useState(false);
@@ -24,13 +24,13 @@ function Header(props: TFilterMenuHeaderProps) {
         <div style={{ margin: '0 8px' }}>{props.renderOperatorsInput()}</div>
       )}
 
-      {props.onFilterOptionsSortClick && (
+      {props.onSortRequest && (
         <div style={{ marginLeft: 'auto' }}>
           <IconButton
             icon={<SortingIcon />}
             onClick={() => {
               setSortActive(!sortActive);
-              props.onFilterOptionsSortClick!();
+              props.onSortRequest!();
             }}
             label={`sort selected ${props.label} options to top`}
             isToggleButton

@@ -2,7 +2,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 import { MenuProps, MenuListProps } from 'react-select';
 import FilterMenu, { type TAppliedFilterValue } from './filter-menu';
-import SelectInput from '../../../inputs/select-input';
+import SelectInput from '@commercetools-uikit/select-input';
+import PrimaryButton from '@commercetools-uikit/primary-button';
 
 const meta: Meta<typeof FilterMenu> = {
   title: 'components/Filters/FilterMenu',
@@ -97,7 +98,7 @@ export const BasicExample: Story = () => {
             isMulti
           />
         )}
-        onRemoveFilter={() => {
+        onRemoveRequest={() => {
           onFilterChange([]);
           setAppliedFilter([]);
           alert('this would make the component disappear!');
@@ -110,21 +111,25 @@ export const BasicExample: Story = () => {
             options={operatorsOptions}
           />
         )}
-        onApplyFilter={() =>
-          setAppliedFilter(
-            Array.prototype
-              .concat(filterValue)
-              .map((value) => ({ value: value, label: value }))
-          )
-        }
-        onClearFilter={() => {
+        renderApplyButton={() => (
+          <PrimaryButton
+            label="Apply"
+            onClick={() =>
+              setAppliedFilter(
+                Array.prototype
+                  .concat(filterValue)
+                  .map((value) => ({ value: value, label: value }))
+              )
+            }
+          />
+        )}
+        onClearRequest={() => {
           setAppliedFilter([]);
           onFilterChange([]);
         }}
-        onFilterOptionsSortClick={() => {
+        onSortRequest={() => {
           alert('filter options sorted! (in consuming application)');
         }}
-        isPersistent
       />
     </div>
   );

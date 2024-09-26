@@ -1,11 +1,14 @@
-import { type ReactNode, useState } from 'react';
+import { type ReactNode, type ReactElement, useState } from 'react';
 import { css } from '@emotion/react';
 import { MenuProps, MenuListProps } from 'react-select';
 import DropdownMenu from '@commercetools-uikit/dropdown-menu';
 import FilterMenu from '@commercetools-uikit/filter-menu';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { PlusThinIcon, CloseIcon } from '@commercetools-uikit/icons';
-import SelectInput from '@commercetools-uikit/select-input';
+import SelectInput, {
+  type TSelectInputProps,
+} from '@commercetools-uikit/select-input';
+import { type TPrimaryButtonProps } from '@commercetools-uikit/primary-button';
 
 export type TAppliedFilterValue = { label: ReactNode; value: string };
 
@@ -20,7 +23,8 @@ export type TFilterConfiguration = {
   label: ReactNode;
   filterMenuConfiguration: {
     renderMenuBody: () => ReactNode;
-    renderOperatorsInput?: () => ReactNode;
+    renderOperatorsInput?: () => ReactElement<TSelectInputProps>;
+    renderApplyButton?: () => ReactElement<TPrimaryButtonProps>;
     onClearRequest: Function;
     onApplyRequest?: Function;
     onSortRequest?: Function;
@@ -143,22 +147,25 @@ function FiltersList(props: TFiltersListProps) {
             renderMenuBody={
               activeFilterConfig.filterMenuConfiguration.renderMenuBody
             }
+            renderOperatorsInput={
+              activeFilterConfig.filterMenuConfiguration.renderOperatorsInput
+            }
+            renderApplyButton={
+              activeFilterConfig.filterMenuConfiguration.renderApplyButton
+            }
             appliedFilterValues={
               props.appliedFilters.find(
                 (appliedFilter) => activeFilter === appliedFilter.filterKey
               )?.values
             }
-            onApplyFilter={
-              activeFilterConfig.filterMenuConfiguration.onApplyRequest
-            }
-            onClearFilter={
+            onClearRequest={
               activeFilterConfig.filterMenuConfiguration.onClearRequest
             }
-            onRemoveFilter={() => {
+            onRemoveRequest={() => {
               removeFilter(activeFilter);
               activeFilterConfig.filterMenuConfiguration.onClearRequest();
             }}
-            onFilterOptionsSortClick={
+            onSortRequest={
               activeFilterConfig.filterMenuConfiguration.onSortRequest
             }
           />

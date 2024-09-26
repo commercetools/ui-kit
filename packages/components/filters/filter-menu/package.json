@@ -26,6 +26,7 @@
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/primary-button": "workspace:^",
     "@commercetools-uikit/secondary-button": "workspace:^",
+    "@commercetools-uikit/select-input": "workspace:^",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "prop-types": "15.8.1",

@@ -1,13 +1,14 @@
-import PrimaryButton from '@commercetools-uikit/primary-button';
+import { type ReactElement } from 'react';
+import { type TPrimaryButtonProps } from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import { CloseIcon } from '@commercetools-uikit/icons';
 
 export type TFilterMenuFooterProps = {
-  onApplyFilter?: Function;
-  onClearFilter?: Function;
+  renderApplyButton?: () => ReactElement<TPrimaryButtonProps>;
+  onClearRequest?: Function;
 };
 function Footer(props: TFilterMenuFooterProps) {
-  if (!props.onApplyFilter && !props.onClearFilter) {
+  if (!props.renderApplyButton && !props.onClearRequest) {
     return null;
   }
   return (
@@ -21,18 +22,11 @@ function Footer(props: TFilterMenuFooterProps) {
         padding: '8px',
       }}
     >
-      {props.onApplyFilter && (
-        <PrimaryButton
-          onClick={() => {
-            props.onApplyFilter!();
-          }}
-          label="Apply"
-        />
-      )}
-      {props.onClearFilter && (
+      {props.renderApplyButton && props.renderApplyButton()}
+      {props.onClearRequest && (
         <SecondaryButton
           onClick={() => {
-            props.onClearFilter!();
+            props.onClearRequest!();
           }}
           label="Clear all"
           iconLeft={<CloseIcon />}

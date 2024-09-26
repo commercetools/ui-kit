@@ -32,7 +32,7 @@ export type TFilterMenuTriggerButtonProps = {
    * NOTES / OPINIONS WELCOME IN PR COMMENTS:
    * is the presence/absence of the function sufficient for display logic, or do we need a separate `show-` prop?
    */
-  onRemoveFilter?: Function;
+  onRemoveRequest?: Function;
 };
 
 const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
@@ -69,14 +69,14 @@ const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
       {props.appliedFilterValues && !!props.appliedFilterValues.length && (
         <Badge label={`+${props.appliedFilterValues.length}`} />
       )}
-      {props.onRemoveFilter && !props.isPersistent && (
+      {props.onRemoveRequest && !props.isPersistent && (
         <span style={{ zIndex: '1' }}>
           <IconButton
             icon={<CloseIcon />}
             label={`close ${props.label} filter`}
             onClick={(e) => {
               e.stopPropagation();
-              props.onRemoveFilter!();
+              props.onRemoveRequest!();
             }}
             size="20"
           />
