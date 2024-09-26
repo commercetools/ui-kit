@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 import { WorldIcon } from '../../../icons';
+import { CompatRoute } from "react-router-dom-v5-compat";
 
 const defaultOptions = [
   { value: 'one', label: 'One' },
@@ -286,15 +287,15 @@ const OpenRouteWithOptionGroupsAndDivider = () => (
 
 export const component = () => (
   <Switch>
-    <Route path={`${routePath}/open`} component={OpenRoute} />
-    <Route
+    <CompatRoute path={`${routePath}/open`} element={<OpenRoute/>} />
+    <CompatRoute
       path={`${routePath}/open-with-option-groups`}
-      component={OpenRouteWithOptionGroups}
+      element={<OpenRouteWithOptionGroups/>}
     />
-    <Route
+    <CompatRoute
       path={`${routePath}/open-with-option-groups-and-divider`}
-      component={OpenRouteWithOptionGroupsAndDivider}
+      element={<OpenRouteWithOptionGroupsAndDivider/>}
     />
-    <Route path={routePath} render={() => <DefaultRoute />} />
+    <CompatRoute path={routePath} render={() => <DefaultRoute />} />
   </Switch>
 );
