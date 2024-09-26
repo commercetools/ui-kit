@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 import './globals.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { CompatRouter } from 'react-router-dom-v5-compat';
 import { ThemeProvider } from '@commercetools-uikit/design-system';
 
 interface TRouteComponent {
@@ -46,40 +47,42 @@ const App = () => {
     <>
       <ThemeProvider />
       <Router>
-        <Switch>
-          <Route
-            path="/"
-            exact
-            component={() => (
-              <div>
-                <h1>Visual Testing App</h1>
-                <ul>
-                  {allSortedComponents.map((Component) => (
-                    <li key={Component.routePath}>
-                      <a href={Component.routePath}>{Component.routePath}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          />
-          {allSortedComponents.map((Component) => (
+        <CompatRouter>
+          <Switch>
             <Route
-              key={Component.routePath}
-              path={Component.routePath}
-              // eslint-disable-next-line react/jsx-pascal-case
-              render={() => <Component.component />}
+              path="/"
+              exact
+              component={() => (
+                <div>
+                  <h1>Visual Testing App</h1>
+                  <ul>
+                    {allSortedComponents.map((Component) => (
+                      <li key={Component.routePath}>
+                        <a href={Component.routePath}>{Component.routePath}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             />
-          ))}
-          <Route
-            component={() => (
-              <div>
-                <p>No route found</p>
-                <a href="/">Show all routes</a>
-              </div>
-            )}
-          />
-        </Switch>
+            {allSortedComponents.map((Component) => (
+              <Route
+                key={Component.routePath}
+                path={Component.routePath}
+                // eslint-disable-next-line react/jsx-pascal-case
+                render={() => <Component.component />}
+              />
+            ))}
+            <Route
+              component={() => (
+                <div>
+                  <p>No route found</p>
+                  <a href="/">Show all routes</a>
+                </div>
+              )}
+            />
+          </Switch>
+        </CompatRouter>
       </Router>
     </>
   );
