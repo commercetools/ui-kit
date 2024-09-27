@@ -73,7 +73,7 @@ export const BasicExample: Story = () => {
         filterKey="colors"
         label="Colors"
         appliedFilterValues={appliedFilter}
-        filter={
+        renderMenuBody={() => (
           <SelectInput
             name="colorsInput"
             options={colorOptions}
@@ -86,7 +86,7 @@ export const BasicExample: Story = () => {
               setAppliedFilter(
                 Array.prototype
                   .concat(e.target.value ? e.target.value : [])
-                  .map((value) => ({ label: value }))
+                  .map((value) => ({ label: value.toUpperCase() }))
               );
             }}
             menuIsOpen={true}
@@ -95,7 +95,7 @@ export const BasicExample: Story = () => {
             controlShouldRenderValue={false}
             isMulti
           />
-        }
+        )}
         onRemoveFilter={() => {
           onFilterChange([]);
           setAppliedFilter([]);
@@ -122,6 +122,7 @@ export const BasicExample: Story = () => {
         onFilterOptionsSortClick={() => {
           alert('filter options sorted! (in consuming application)');
         }}
+        isPersistent
       />
     </div>
   );

@@ -11,7 +11,7 @@ describe('FilterMenu FilterMenu', () => {
     await render(
       <FilterMenu
         filterKey="testKey"
-        filter={<TestFilter />}
+        renderMenuBody={() => <TestFilter />}
         label="filter menu"
         appliedFilterValues={null}
       />
