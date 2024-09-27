@@ -26,7 +26,7 @@ export type TFilterMenuProps = {
    * or start defining different menu bodies based on props and only make predefined input
    * types available, which is restrictive and much higher maintenance
    */
-  filter: ReactNode;
+  renderMenuBody: () => ReactNode;
   /**
    * the input in which the user can select which operator should be used for this filter
    *
@@ -93,7 +93,7 @@ function FilterMenu(props: TFilterMenuProps) {
         operatorsInput={props.operatorsInput}
         onFilterOptionsSortClick={props.onFilterOptionsSortClick}
       />
-      {props.filter}
+      {props.renderMenuBody()}
       <Footer
         onApplyFilter={props.onApplyFilter}
         onClearFilter={props.onClearFilter}
