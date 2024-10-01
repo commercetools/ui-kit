@@ -1,4 +1,5 @@
 {
+  "exclude": ["**/node_modules/**", "**/dist/**"],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": false,
@@ -28,6 +29,7 @@
     "stripInternal": true,
     "target": "ES2019",
     "allowJs": true,
+    "noEmit": true,
     "typeRoots": [
       "@types",
       // "@types-extensions",

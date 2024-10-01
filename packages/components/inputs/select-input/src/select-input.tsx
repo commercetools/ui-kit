@@ -161,7 +161,12 @@ export type TSelectInputProps = {
   // formatOptionLabel: PropTypes.func,
   // getOptionLabel: PropTypes.func,
   // getOptionValue: PropTypes.func,
-  // hideSelectedOptions: PropTypes.bool,
+  /**
+   * Custom method to determine whether selected options should be displayed in the menu
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  hideSelectedOptions?: ReactSelectProps['hideSelectedOptions'];
   /**
    * Used as HTML id property. An id is generated automatically when not provided.
    * This forwarded as react-select's "inputId"
@@ -491,6 +496,7 @@ const SelectInput = (props: TSelectInputProps) => {
           isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
+          hideSelectedOptions={props.hideSelectedOptions}
           // @ts-ignore
           isReadOnly={props.isReadOnly}
           isMulti={props.isMulti}
