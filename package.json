@@ -49,7 +49,6 @@
     "packages/components/buttons/*",
     "packages/components/dropdowns/*",
     "packages/components/fields/*",
-    "packages/components/filters/*",
     "packages/components/inputs/*",
     "packages/components/spacings/*",
     "presets/*",
@@ -63,7 +62,6 @@
       "packages/components/buttons/*",
       "packages/components/dropdowns/*",
       "packages/components/fields/*",
-      "packages/components/filters/*",
       "packages/components/inputs/*",
       "packages/components/spacings/*",
       "presets/*"
