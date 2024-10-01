@@ -1,6 +1,11 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { screen, render, fireEvent } from '../../../../../test/test-utils';
+import {
+  screen,
+  render,
+  fireEvent,
+  waitFor,
+} from '../../../../../test/test-utils';
 import DateInput from './date-input';
 
 // This component is used to enable easy testing.
@@ -220,4 +225,33 @@ describe('date picker keyboard navigation', () => {
       });
     });
   });
+});
+
+it('should only emit valid dates from manually entered datestrings', async () => {
+  // Render the input with an initial value
+  renderDateInput({ value: '2020-09-15', 'data-testid': 'onblurtest' });
+  const htmlInputElement = screen.getByTestId('onblurtest');
+
+  // verify it got formatted for display
+  await waitFor(() =>
+    expect(htmlInputElement).toHaveDisplayValue('09/15/2020')
+  );
+
+  // enter a valid formatted date
+  await fireEvent.change(htmlInputElement, { target: { value: '03/28/2024' } });
+  await fireEvent.blur(htmlInputElement);
+
+  // no change is expected
+  await waitFor(() =>
+    expect(htmlInputElement).toHaveDisplayValue('03/28/2024')
+  );
+
+  // enter an invalid date
+  await fireEvent.change(htmlInputElement, { target: { value: '33/28/2024' } });
+  await fireEvent.blur(htmlInputElement);
+
+  // should reset to the most recent valid date
+  await waitFor(() =>
+    expect(htmlInputElement).toHaveDisplayValue('03/28/2024')
+  );
 });
