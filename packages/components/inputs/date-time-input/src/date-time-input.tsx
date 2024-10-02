@@ -440,6 +440,10 @@ class DateTimeInput extends Component<
                           this.props.timeZone
                         );
 
+                        // If there is no parsed date, don't clear and submit. Instead, give
+                        // the user a chance to fix the value.
+                        if (!parsedDate) return;
+
                         this.emit(parsedDate);
 
                         closeMenu();
