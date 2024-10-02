@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../../../test/test-utils';
+import { render, fireEvent, within } from '../../../../../test/test-utils';
 import SelectInput from './select-input';
 
 // We use this component to simulate the whole flow of
@@ -78,21 +78,18 @@ it('should have focus automatically when isAutofocussed is passed', () => {
 });
 
 it('should have an open menu if menuIsOpen is true', () => {
-  const { getByLabelText, getByText } = renderInput({
+  const { getByText } = renderInput({
     menuIsOpen: true,
   });
-  const input = getByLabelText('Fruit');
 
   expect(getByText('Mango')).toBeInTheDocument();
 });
 
 it('should not have an open menu if menuIsOpen is true and isReadOnly is true', () => {
-  const { getByLabelText, queryByText } = renderInput({
+  const { queryByText } = renderInput({
     menuIsOpen: true,
     isReadOnly: true,
   });
-
-  const input = getByLabelText('Fruit');
 
   expect(queryByText('Mango')).not.toBeInTheDocument();
 });
@@ -117,6 +114,36 @@ it('should call onBlur when input loses focus', () => {
   expect(onBlur).toHaveBeenCalled();
 });
 
+it('should not display selected options in menu when hideSelectedOptions is true', () => {
+  const { getByLabelText, getByRole } = renderInput({
+    hideSelectedOptions: true,
+  });
+  const input = getByLabelText('Fruit', { text: 'Banana' });
+  expect(input).toBeInTheDocument();
+
+  fireEvent.keyDown(input, {
+    key: 'ArrowDown',
+  });
+
+  const menu = getByRole('listbox');
+  expect(within(menu).queryByText('Banana')).not.toBeInTheDocument();
+});
+
+it('should display selected options in menu when hideSelectedOptions is false', () => {
+  const { getByLabelText, getByRole } = renderInput({
+    hideSelectedOptions: false,
+  });
+  const input = getByLabelText('Fruit', { text: 'Banana' });
+  expect(input).toBeInTheDocument();
+
+  fireEvent.keyDown(input, {
+    key: 'ArrowDown',
+  });
+
+  const menu = getByRole('listbox');
+  expect(within(menu).getByText('Banana')).toBeInTheDocument();
+});
+
 describe('in single mode', () => {
   describe('when no value is specified', () => {
     it('should render a select input', () => {
@@ -133,6 +160,18 @@ describe('in single mode', () => {
       const input = getByLabelText('Fruit');
       expect(input).toBeInTheDocument();
       expect(getByText('Banana')).toBeInTheDocument();
+    });
+    it('should display selected option in menu when hideSelectedOptions is undefined', () => {
+      const { getByLabelText, getByRole } = renderInput();
+      const input = getByLabelText('Fruit', { text: 'Banana' });
+      expect(input).toBeInTheDocument();
+
+      fireEvent.keyDown(input, {
+        key: 'ArrowDown',
+      });
+
+      const menu = getByRole('listbox');
+      expect(within(menu).getByText('Banana')).toBeInTheDocument();
     });
   });
   describe('interacting', () => {
@@ -218,8 +257,23 @@ describe('in multi mode', () => {
         expect(getByText('Mango')).toBeInTheDocument();
         expect(getByText('Raspberry')).toBeInTheDocument();
       });
+      it('should not display selected options in menu when hideSelectedOptions is undefined', () => {
+        const { getByLabelText, getByRole } = renderInput({
+          isMulti: true,
+          value: ['mango', 'raspberry'],
+        });
+        const input = getByLabelText('Fruit');
+        fireEvent.keyDown(input, {
+          key: 'ArrowDown',
+        });
+
+        const menu = getByRole('listbox');
+        expect(within(menu).queryByText('Mango')).not.toBeInTheDocument();
+        expect(within(menu).queryByText('Raspberry')).not.toBeInTheDocument();
+      });
     });
   });
+
   describe('interacting', () => {
     describe('when disabled', () => {
       it('should not call onChange when value is cleared', () => {

@@ -15,6 +15,7 @@ const meta: Meta<typeof SelectInput> = {
     backspaceRemovesValue: { control: { type: 'boolean' } },
     controlShouldRenderValue: { control: { type: 'boolean' } },
     filterOption: { type: 'function' },
+    hideSelectedOptions: { type: 'boolean' },
     id: { control: { type: 'text' } },
     inputValue: { control: { type: 'text' } },
     containerId: { control: { type: 'text' } },

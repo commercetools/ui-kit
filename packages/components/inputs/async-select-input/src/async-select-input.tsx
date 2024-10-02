@@ -137,6 +137,12 @@ export type TAsyncSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   filterOption?: ReactSelectAsyncProps['filterOption'];
+  /**
+   * Custom method to determine whether selected options should be displayed in the menu
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  hideSelectedOptions?: ReactSelectAsyncProps['hideSelectedOptions'];
   // This forwarded as react-select's "inputId"
   /**
    * The id of the search input
@@ -398,6 +404,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
             }) as ReactSelectAsyncProps['styles']
           }
           filterOption={props.filterOption}
+          hideSelectedOptions={props.hideSelectedOptions}
           // react-select uses "id" (for the container) and "inputId" (for the input),
           // but we use "id" (for the input) and "containerId" (for the container)
           // instead.

@@ -1,6 +1,11 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
+import {
+  render,
+  fireEvent,
+  waitFor,
+  within,
+} from '../../../../../test/test-utils';
 import AsyncSelectInput from './async-select-input';
 
 // We use this component to simulate the whole flow of
@@ -83,7 +88,7 @@ it('should have an open menu if menuIsOpen is true', async () => {
   const { findByLabelText, getByText } = renderInput({
     menuIsOpen: true,
   });
-  const input = await findByLabelText('Fruit');
+  await findByLabelText('Fruit');
 
   expect(getByText('Mango')).toBeInTheDocument();
 });
@@ -94,7 +99,7 @@ it('should not have an open menu if menuIsOpen is true and isReadOnly is true', 
     isReadOnly: true,
   });
 
-  const input = await findByLabelText('Fruit');
+  await findByLabelText('Fruit');
 
   expect(queryByText('Mango')).not.toBeInTheDocument();
 });
@@ -119,6 +124,34 @@ it('should call onBlur when input loses focus', async () => {
   expect(onBlur).toHaveBeenCalled();
 });
 
+it('should not display selected options in menu when hideSelectedOptions is true', async () => {
+  const { findByLabelText, findByRole } = renderInput({
+    hideSelectedOptions: true,
+  });
+  const input = await findByLabelText('Fruit', { text: 'Banana' });
+
+  fireEvent.keyDown(input, {
+    key: 'ArrowDown',
+  });
+
+  const menu = await findByRole('listbox');
+  expect(within(menu).queryByText('Banana')).not.toBeInTheDocument();
+});
+
+it('should display selected options in menu when hideSelectedOptions is false', async () => {
+  const { findByLabelText, findByRole } = renderInput({
+    hideSelectedOptions: false,
+  });
+  const input = await findByLabelText('Fruit', { text: 'Banana' });
+
+  fireEvent.keyDown(input, {
+    key: 'ArrowDown',
+  });
+
+  const menu = await findByRole('listbox');
+  expect(within(menu).getByText('Banana')).toBeInTheDocument();
+});
+
 describe('in single mode', () => {
   describe('when no value is specified', () => {
     it('should render a select input', async () => {
@@ -135,6 +168,18 @@ describe('in single mode', () => {
       const input = await findByLabelText('Fruit');
       expect(input).toBeInTheDocument();
       expect(getByText('Banana')).toBeInTheDocument();
+    });
+    it('should display selected option in menu when hideSelectedOptions is undefined', async () => {
+      const { findByLabelText, findByRole } = renderInput();
+      const input = await findByLabelText('Fruit', { text: 'Banana' });
+      expect(input).toBeInTheDocument();
+
+      fireEvent.keyDown(input, {
+        key: 'ArrowDown',
+      });
+
+      const menu = await findByRole('listbox');
+      expect(within(menu).getByText('Banana')).toBeInTheDocument();
     });
   });
   describe('interacting', () => {
@@ -208,6 +253,23 @@ describe('in multi mode', () => {
         expect(input).toBeInTheDocument();
         expect(getByText('Mango')).toBeInTheDocument();
         expect(getByText('Raspberry')).toBeInTheDocument();
+      });
+      it('should not display selected options in menu when hideSelectedOptions is undefined', async () => {
+        const { findByLabelText, findByRole } = renderInput({
+          isMulti: true,
+          value: [
+            { value: 'mango', label: 'Mango' },
+            { value: 'raspberry', label: 'Raspberry' },
+          ],
+        });
+        const input = await findByLabelText('Fruit');
+        fireEvent.keyDown(input, {
+          key: 'ArrowDown',
+        });
+
+        const menu = await findByRole('listbox');
+        expect(within(menu).queryByText('Mango')).not.toBeInTheDocument();
+        expect(within(menu).queryByText('Raspberry')).not.toBeInTheDocument();
       });
     });
   });
