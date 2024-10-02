@@ -169,7 +169,7 @@
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "core-js-compat": "^3.23.4",
-    "glob-parent": "^5.1.2",
+    "glob-parent": "^6.0.0",
     "minimatch": "^9.0.0",
     "json5": "^2.0.0",
     "react-from-dom": "0.6.2"
