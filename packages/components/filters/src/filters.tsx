@@ -10,6 +10,7 @@ export type TFiltersProps = {
 function Filters(props: TFiltersProps) {
   return (
     <div style={{ display: 'flex', gap: '8px' }}>
+      <div>{props.label}</div>
       active:
       <Badge label="+2" id={`${props.label}-total-applied-filters`} />
       disabled:
