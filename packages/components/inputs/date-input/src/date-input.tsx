@@ -205,10 +205,11 @@ const DateInput = (props: TDateInput) => {
    * attempt to parse the value and emit it to the consumer if it's valid and in range.
    */
   const onInputBlur = (event: TCustomEvent) => {
-    const date = parseInputToDate(event.target.value, intl.locale);
+    const inputValue = event.target.value || '';
+    const date = parseInputToDate(inputValue, intl.locale);
     const inRange = getIsDateInRange(date, props.minValue, props.maxValue);
+    if (inputValue.length === 0) emit(inputValue);
     if (!date || !inRange) return;
-    setCalendarDate(date);
     emit(date);
   };
 
