@@ -1,5 +1,17 @@
 # @commercetools-uikit/icons
 
+## 19.12.0
+
+### Minor Changes
+
+- [#2927](https://github.com/commercetools/ui-kit/pull/2927) [`ab87fbd`](https://github.com/commercetools/ui-kit/commit/ab87fbd92e4c12594fb9d8c1700b6ac66ed14bd2) Thanks [@misama-ct](https://github.com/misama-ct)! - Four new icons added: 'HubIcon', 'CtCheckoutIcon', 'TuneIcon' & 'PaidIcon'
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.12.0
+  - @commercetools-uikit/utils@19.12.0
+
 ## 19.11.0
 
 ### Patch Changes

@@ -1,5 +1,21 @@
 # @commercetools-uikit/async-select-input
 
+## 19.12.0
+
+### Patch Changes
+
+- [#2934](https://github.com/commercetools/ui-kit/pull/2934) [`d971925`](https://github.com/commercetools/ui-kit/commit/d971925633750591dfeb3f89c4df322a9e5e0370) Thanks [@ByronDWall](https://github.com/ByronDWall)! - feat(select input props): add hideSelectedOptions prop from 'react-select' to SelectInput and AsyncSelectInput
+
+- Updated dependencies [[`ab87fbd`](https://github.com/commercetools/ui-kit/commit/ab87fbd92e4c12594fb9d8c1700b6ac66ed14bd2)]:
+  - @commercetools-uikit/icons@19.12.0
+  - @commercetools-uikit/select-utils@19.12.0
+  - @commercetools-uikit/design-system@19.12.0
+  - @commercetools-uikit/constraints@19.12.0
+  - @commercetools-uikit/loading-spinner@19.12.0
+  - @commercetools-uikit/text@19.12.0
+  - @commercetools-uikit/utils@19.12.0
+  - @commercetools-uikit/spacings@19.12.0
+
 ## 19.11.0
 
 ### Patch Changes

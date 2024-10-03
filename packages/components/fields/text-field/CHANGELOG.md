@@ -1,5 +1,24 @@
 # @commercetools-uikit/text-field
 
+## 19.12.0
+
+### Minor Changes
+
+- [#2899](https://github.com/commercetools/ui-kit/pull/2899) [`64027cb`](https://github.com/commercetools/ui-kit/commit/64027cb12ed74b88179dd8d39cbb0ae7b9fdaecf) Thanks [@misama-ct](https://github.com/misama-ct)! - `additionalInfo` prop added to TextField component
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@19.12.0
+  - @commercetools-uikit/text-input@19.12.0
+  - @commercetools-uikit/design-system@19.12.0
+  - @commercetools-uikit/constraints@19.12.0
+  - @commercetools-uikit/field-errors@19.12.0
+  - @commercetools-uikit/field-warnings@19.12.0
+  - @commercetools-uikit/messages@19.12.0
+  - @commercetools-uikit/spacings-stack@19.12.0
+  - @commercetools-uikit/utils@19.12.0
+
 ## 19.11.0
 
 ### Patch Changes
