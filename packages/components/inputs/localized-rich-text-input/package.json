@@ -39,13 +39,13 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "downshift": "6.1.12",
-    "immutable": "4.3.6",
+    "immutable": "4.3.7",
     "is-hotkey": "0.2.0",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
     "react-textarea-autosize": "8.4.0",
     "slate": "0.75.0",
-    "slate-history": "0.100.0",
+    "slate-history": "0.109.0",
     "slate-react": "0.75.0"
   },
   "devDependencies": {
