@@ -25,7 +25,7 @@ const chipStyles = css`
 `;
 
 const disabledChipStyles = css`
-  color: ${designTokens.colorNeutral50};
+  color: ${designTokens.colorNeutral40};
   background-color: ${designTokens.colorNeutral90};
 `;
 
