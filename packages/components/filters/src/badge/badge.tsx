@@ -34,6 +34,7 @@ const badgeStyles = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: ${designTokens.spacing40};
 `;
 
 const disabledBageStyles = css`
