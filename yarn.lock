@@ -2212,16 +2212,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chromatic-com/storybook@npm:^1.6.1":
-  version: 1.6.1
-  resolution: "@chromatic-com/storybook@npm:1.6.1"
+"@chromatic-com/storybook@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "@chromatic-com/storybook@npm:2.0.2"
   dependencies:
     chromatic: ^11.4.0
     filesize: ^10.0.12
     jsonfile: ^6.1.0
     react-confetti: ^6.1.0
     strip-ansi: ^7.1.0
-  checksum: 7a9330ecc573c89ab818212a71e55c23859a2d54e63bb3dac7c2df4b39c49a6c17a06521efd74f3a1b41007241a726898966446d2af4c2beb837b4753a715e9b
+  checksum: 13fb45bc420be543e679d78df122bf4a7028e91559c9798ff31bebfe33e1454736c81560649782cf5ddff7f0a151d69cc4ebcb4f775de4cd3207a77f4a3412a8
   languageName: node
   linkType: hard
 
@@ -2406,7 +2406,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-local/storybook@workspace:storybook"
   dependencies:
-    "@chromatic-com/storybook": ^1.6.1
+    "@chromatic-com/storybook": ^2.0.0
     "@emotion/css": ^11.10.5
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
