@@ -13,6 +13,7 @@ const chipStyles = css`
   line-height: ${designTokens.lineHeight20};
   color: ${designTokens.colorPrimary20};
   background-color: ${designTokens.colorPrimary95};
+  height: ${designTokens.spacing40};
   padding: 0 ${designTokens.spacing20};
   border-radius: calc(
     ${designTokens.borderRadius20} - ${designTokens.borderRadius4}
@@ -24,7 +25,7 @@ const chipStyles = css`
 `;
 
 const disabledChipStyles = css`
-  color: ${designTokens.colorNeutral60};
+  color: ${designTokens.colorNeutral50};
   background-color: ${designTokens.colorNeutral90};
 `;
 
