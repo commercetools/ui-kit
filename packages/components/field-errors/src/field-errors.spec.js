@@ -137,19 +137,19 @@ describe('error renderers', () => {
       );
       expect(container.querySelector('#super-cool-id-0')).toBeInTheDocument();
     });
-  });
-  it('should generate unique ids for each error', () => {
-    const { container } = render(
-      <FieldErrors
-        id={'super-cool-id'}
-        errors={{
-          [FieldErrors.errorTypes.MISSING]: true,
-          [FieldErrors.errorTypes.FRACTIONS]: true,
-        }}
-        isVisible={true}
-      />
-    );
-    expect(container.querySelector('#super-cool-id-0')).toBeInTheDocument();
-    expect(container.querySelector('#super-cool-id-1')).toBeInTheDocument();
+    it('should generate unique ids for each error', () => {
+      const { container } = render(
+        <FieldErrors
+          id={'super-cool-id'}
+          errors={{
+            [FieldErrors.errorTypes.MISSING]: true,
+            [FieldErrors.errorTypes.FRACTIONS]: true,
+          }}
+          isVisible={true}
+        />
+      );
+      expect(container.querySelector('#super-cool-id-0')).toBeInTheDocument();
+      expect(container.querySelector('#super-cool-id-1')).toBeInTheDocument();
+    });
   });
 });
