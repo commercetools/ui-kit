@@ -231,6 +231,9 @@ export type TColumnProps<Row extends TRow = TRow> = {
 };
 
 export type TDataTableManagerProps<Row extends TRow = TRow> = {
+  /**
+   * Set this to `true` to enable the row selection feature.
+   */
   withRowSelection?: boolean;
   /**
    * Each object requires a unique `key` which should correspond to property key of

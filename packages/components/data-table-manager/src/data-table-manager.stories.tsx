@@ -248,12 +248,12 @@ export const BasicExample: Story = (args) => {
     {}
   );
 
-  const [isCondensed, setIsCondensed] = useState(true);
-  const [isWrappingText, setIsWrappingText] = useState(false);
-  const [rowClick, setRowClick] = useState(true);
-  const [rowSelection, setRowSelection] = useState(true);
-  const [textColor, setTextColor] = useState('black');
-  const [disableResize, setDisableResize] = useState(true);
+  const [isCondensed, setIsCondensed] = useState<boolean>(true);
+  const [isWrappingText, setIsWrappingText] = useState<boolean>(false);
+  const [rowClick, setRowClick] = useState<boolean>(true);
+  const [rowSelection, setRowSelection] = useState<boolean>(true);
+  const [textColor, setTextColor] = useState<string>('black');
+  const [disableResize, setDisableResize] = useState<boolean>(true);
 
   const updateRowSelection = (
     newState: boolean | ((prevState: boolean) => boolean)
