@@ -11,6 +11,7 @@ function Filters(props: TFiltersProps) {
   return (
     <div style={{ display: 'flex', gap: designTokens.spacing20 }}>
       <div>{props.label}</div>
+      <div style={{ display: 'flex', gap: designTokens.spacing20 }}></div>
     </div>
   );
 }
