@@ -8,6 +8,7 @@ const defaultProps = {
 describe('Filters Badge', () => {
   it('should render the badge', async () => {
     await render(<Badge {...defaultProps} />);
-    await screen.findByRole('status', { name: '+1' });
+    const badge = await screen.findByRole('status');
+    expect(badge.textContent).toEqual('+1');
   });
 });

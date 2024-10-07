@@ -44,7 +44,7 @@ const disabledBageStyles = css`
 function Badge(props: TBadgeProps) {
   return (
     <span
-      aria-label={props['aria-label'] ? props['aria-label'] : props.label}
+      aria-label={props['aria-label']}
       css={[badgeStyles, props.isDisabled && disabledBageStyles]}
       id={props.id}
       role="status"
