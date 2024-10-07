@@ -2212,19 +2212,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chromatic-com/storybook@npm:^1.6.1":
-  version: 1.6.1
-  resolution: "@chromatic-com/storybook@npm:1.6.1"
-  dependencies:
-    chromatic: ^11.4.0
-    filesize: ^10.0.12
-    jsonfile: ^6.1.0
-    react-confetti: ^6.1.0
-    strip-ansi: ^7.1.0
-  checksum: 7a9330ecc573c89ab818212a71e55c23859a2d54e63bb3dac7c2df4b39c49a6c17a06521efd74f3a1b41007241a726898966446d2af4c2beb837b4753a715e9b
-  languageName: node
-  linkType: hard
-
 "@commercetools-frontend/babel-preset-mc-app@npm:21.25.2, @commercetools-frontend/babel-preset-mc-app@npm:^21.25.2":
   version: 21.25.2
   resolution: "@commercetools-frontend/babel-preset-mc-app@npm:21.25.2"
@@ -2406,7 +2393,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-local/storybook@workspace:storybook"
   dependencies:
-    "@chromatic-com/storybook": ^1.6.1
     "@emotion/css": ^11.10.5
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
@@ -10542,25 +10528,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^11.4.0":
-  version: 11.7.0
-  resolution: "chromatic@npm:11.7.0"
-  peerDependencies:
-    "@chromatic-com/cypress": ^0.*.* || ^1.0.0
-    "@chromatic-com/playwright": ^0.*.* || ^1.0.0
-  peerDependenciesMeta:
-    "@chromatic-com/cypress":
-      optional: true
-    "@chromatic-com/playwright":
-      optional: true
-  bin:
-    chroma: dist/bin.js
-    chromatic: dist/bin.js
-    chromatic-cli: dist/bin.js
-  checksum: 6c74ead18a8249a3bf9a74e1a4adbd5ac8ce34b7fa6750396fe1b86221a68a45bb20419ffcaf949afec7099fd4344bbe7684108a0d96caa36cb2037b4b6f95fa
-  languageName: node
-  linkType: hard
-
 "chrome-trace-event@npm:^1.0.2":
   version: 1.0.4
   resolution: "chrome-trace-event@npm:1.0.4"
@@ -13469,13 +13436,6 @@ __metadata:
   dependencies:
     minimatch: ^5.0.1
   checksum: a303573b0821e17f2d5e9783688ab6fbfce5d52aaac842790ae85e704a6f5e4e3538660a63183d6453834dedf1e0f19a9dadcebfa3e926c72397694ea11f5160
-  languageName: node
-  linkType: hard
-
-"filesize@npm:^10.0.12":
-  version: 10.1.4
-  resolution: "filesize@npm:10.1.4"
-  checksum: b54949fb1a2ecf2407afeb08f943f59a81da382a83ad2b8472ca2a64ba08345ecd489cb44914f44e48dd125c3658f19687d2d4920ae4505e6356f1054c139dcf
   languageName: node
   linkType: hard
 
@@ -16473,7 +16433,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonfile@npm:^6.0.1, jsonfile@npm:^6.1.0":
+"jsonfile@npm:^6.0.1":
   version: 6.1.0
   resolution: "jsonfile@npm:6.1.0"
   dependencies:
@@ -22011,7 +21971,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strip-ansi@npm:^7.0.1, strip-ansi@npm:^7.1.0":
+"strip-ansi@npm:^7.0.1":
   version: 7.1.0
   resolution: "strip-ansi@npm:7.1.0"
   dependencies:
