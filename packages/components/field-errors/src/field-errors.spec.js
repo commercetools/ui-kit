@@ -93,4 +93,63 @@ describe('error renderers', () => {
     );
     expect(screen.getByText(/required/i)).toBeInTheDocument();
   });
+  // note: these generated id's should stay the same as long as more tests are not added before it,
+  // if tests are added, please also update the id values in this describe block
+  describe('when props.id is not passed', () => {
+    it('should generate a sequential id internally for use in the fieldId', () => {
+      const { container } = render(
+        <FieldErrors
+          errors={{ [FieldErrors.errorTypes.MISSING]: true }}
+          isVisible={true}
+        />
+      );
+      expect(
+        container.querySelector('#ui-kit-field-error-8-0')
+      ).toBeInTheDocument();
+    });
+    it('should generate unique ids for each error', () => {
+      const { container } = render(
+        <FieldErrors
+          errors={{
+            [FieldErrors.errorTypes.MISSING]: true,
+            [FieldErrors.errorTypes.FRACTIONS]: true,
+          }}
+          isVisible={true}
+        />
+      );
+
+      expect(
+        container.querySelector('#ui-kit-field-error-9-0')
+      ).toBeInTheDocument();
+      expect(
+        container.querySelector('#ui-kit-field-error-9-1')
+      ).toBeInTheDocument();
+    });
+  });
+  describe('when props.id is passed', () => {
+    it('should use the provided id in the fieldId', () => {
+      const { container } = render(
+        <FieldErrors
+          id={'super-cool-id'}
+          errors={{ [FieldErrors.errorTypes.MISSING]: true }}
+          isVisible={true}
+        />
+      );
+      expect(container.querySelector('#super-cool-id-0')).toBeInTheDocument();
+    });
+  });
+  it('should generate unique ids for each error', () => {
+    const { container } = render(
+      <FieldErrors
+        id={'super-cool-id'}
+        errors={{
+          [FieldErrors.errorTypes.MISSING]: true,
+          [FieldErrors.errorTypes.FRACTIONS]: true,
+        }}
+        isVisible={true}
+      />
+    );
+    expect(container.querySelector('#super-cool-id-0')).toBeInTheDocument();
+    expect(container.querySelector('#super-cool-id-1')).toBeInTheDocument();
+  });
 });
