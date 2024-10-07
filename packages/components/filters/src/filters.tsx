@@ -1,3 +1,5 @@
+import { designTokens } from '@commercetools-uikit/design-system';
+
 export type TFiltersProps = {
   /**
    * This is a stub prop
@@ -6,6 +8,10 @@ export type TFiltersProps = {
 };
 
 function Filters(props: TFiltersProps) {
-  return <div>{props.label}</div>;
+  return (
+    <div style={{ display: 'flex', gap: designTokens.spacing20 }}>
+      <div>{props.label}</div>
+    </div>
+  );
 }
 export default Filters;
