@@ -1,4 +1,8 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, forwardRef, type LegacyRef } from 'react';
+import { CaretDownIcon, CloseBoldIcon } from '@commercetools-uikit/icons';
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import { type TAppliedFilterValue } from '../filter-menu';
+import * as styles from './trigger-button.styles';
 
 export type TFilterMenuTriggerButtonProps = {
   /**
@@ -11,10 +15,8 @@ export type TFilterMenuTriggerButtonProps = {
   label: ReactNode;
   /**
    * the values applied to this filter by the user
-   *
-   * NOTE: this will become more specific in later PR's
    */
-  appliedFilterValues: unknown | undefined | null;
+  appliedFilterValues: TAppliedFilterValue[] | undefined | null;
   /**
    * whether or not the filter is disabled
    */
@@ -29,12 +31,74 @@ export type TFilterMenuTriggerButtonProps = {
   onRemoveRequest?: Function;
 };
 
-const TriggerButton = (props: TFilterMenuTriggerButtonProps) => {
+const TriggerButton = forwardRef(function TriggerButton(
+  props: TFilterMenuTriggerButtonProps,
+  ref: LegacyRef<HTMLButtonElement>
+) {
+  const {
+    filterKey,
+    label,
+    appliedFilterValues,
+    isDisabled,
+    isPersistent,
+    onRemoveRequest,
+    ...rest
+  } = props;
+
+  const values = appliedFilterValues || [];
+  const filtersApplied: boolean = values.length > 0;
   return (
-    <button>
-      <div>{props.label}</div>
-    </button>
+    <div css={[styles.triggerWrapper, isDisabled && styles.disabled]}>
+      <label css={styles.label} htmlFor={`${filterKey}-menu-trigger`}>
+        {label}:
+      </label>
+      {/** THESE CONTAINERS ARE FOR THE NEXT PR, when the `Chip` and `Badge` are merged */}
+      {/* {filtersApplied && (
+        <ul css={styles.valuesContainer}>
+          test
+          <span
+            className="ui-kit-filter-trigger-badge-container"
+            css={styles.badgeContainer}
+          >
+            -
+          </span>
+        </ul>
+      )} */}
+      {!filtersApplied && (
+        <CaretDownIcon
+          aria-label={`toggle filter menu icon`}
+          size="small"
+          color="neutral60"
+        />
+      )}
+      <button
+        css={[styles.mainActionButton, isDisabled && styles.disabledButton]}
+        ref={ref}
+        id={`${filterKey}-menu-trigger`}
+        aria-disabled={isDisabled}
+        {...rest}
+        {...(isDisabled && {
+          tabIndex: -1,
+          disabled: true,
+          readOnly: true,
+        })}
+      />
+      {filtersApplied && onRemoveRequest && !isPersistent && (
+        <div css={[styles.removeButton, isDisabled && styles.disabledButton]}>
+          <SecondaryIconButton
+            icon={<CloseBoldIcon />}
+            size="10"
+            label={`remove ${label} filter`}
+            isDisabled={props.isDisabled}
+            onClick={(e) => {
+              e.stopPropagation();
+              onRemoveRequest!();
+            }}
+          />
+        </div>
+      )}
+    </div>
   );
-};
+});
 
 export default TriggerButton;

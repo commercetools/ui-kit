@@ -78,7 +78,7 @@ const menuStyles = css`
   will-change: 'transform, opacity';
   margin-top: ${designTokens.spacing10};
   position: relative;
-  z-index: 999;
+  z-index: 5;
 `;
 function FilterMenu(props: TFilterMenuProps) {
   return (
@@ -94,12 +94,10 @@ function FilterMenu(props: TFilterMenuProps) {
         />
       </Popover.Trigger>
       <Popover.Portal>
-        <Popover.Content side="bottom" align="start" style={{ zIndex: 5 }}>
-          <div css={menuStyles}>
-            <Header />
-            {props.renderMenuBody()}
-            <Footer />
-          </div>
+        <Popover.Content side="bottom" align="start" css={menuStyles}>
+          <Header />
+          {props.renderMenuBody()}
+          <Footer />
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
