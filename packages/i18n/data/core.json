@@ -19,6 +19,10 @@
     "developer_comment": "Tooltip title when user hovers the today button",
     "string": "Today"
   },
+  "UIKit.ClearAllButton.clearAllButtonLabel": {
+    "developer_comment": "Label for the clear all button",
+    "string": "Clear all"
+  },
   "UIKit.ClearButton.clearButtonLabel": {
     "developer_comment": "Label for the clear button",
     "string": "Clear"
@@ -54,6 +58,10 @@
   "UIKit.DataTableManager.ColumnSelectorGroups.visible": {
     "developer_comment": "Message for the visible columns section.",
     "string": "Visible columns"
+  },
+  "UIKit.DataTableManager.CustomSettingsManager.closeButtonLabel": {
+    "developer_comment": "Label for custom settings manager close button.",
+    "string": "Close"
   },
   "UIKit.DataTableManager.DensityManager.closeButtonLabel": {
     "developer_comment": "Label for density manager close button.",
