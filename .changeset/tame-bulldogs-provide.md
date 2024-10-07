@@ -3,4 +3,4 @@
 '@commercetools-uikit/i18n': minor
 ---
 
-Add menu footer component
+Add FilterMenu Footer component
