@@ -19,7 +19,7 @@ type TFooterProps = {
 
 const mainContainerStyles = css`
   height: auto;
-  width: 252px;
+  width: 100%;
    };
 `;
 
