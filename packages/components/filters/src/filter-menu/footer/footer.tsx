@@ -26,7 +26,7 @@ const mainContainerStyles = css`
 const footerContainerStyles = css`
   /* horizontal divider */
   height: 1px;
-  background-color: ${designTokens.colorWarning};
+  background-color: ${designTokens.colorNeutral90};
   margin-top: ${designTokens.spacingS};
 
   display: grid;
@@ -35,12 +35,10 @@ const footerContainerStyles = css`
 
   & > div:first-of-type {
     margin-top: ${designTokens.spacingS};
-    padding-left: ${designTokens.spacingM};
   }
 
   & > div:last-of-type {
     margin-top: ${designTokens.spacingS};
-    padding-right: ${designTokens.spacingM};
     display: flex;
     justify-content: flex-end;
   }
