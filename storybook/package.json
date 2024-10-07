@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "@chromatic-com/storybook": "^1.6.1",
     "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
