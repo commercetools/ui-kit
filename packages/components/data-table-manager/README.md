@@ -68,7 +68,7 @@ export default Example;
 
 ### Detached
 
-As mentioned earlier, the default behaviour places the triggering element above the `<DataTable>` component (top-right corner), but there may be use cases where the triggering element needs to be positioned differently on the page. This is also possible but requires the usage of one more component (`DataTableManagerProvider`) in order to share the manager state between the manager panels and the `DataTable` component.
+As mentioned earlier, the default behavior places the triggering element above the `<DataTable>` component (top-right corner), but there may be use cases where the triggering element needs to be positioned differently on the page. This is also possible but requires the usage of one more component (`DataTableManagerProvider`) in order to share the manager state between the manager panels and the `DataTable` component.
 
 In this mode, you should pass the manager props to the `DataTableManagerProvider` component and the `DataTableManager` does not need to receive any prop; it can be placed anywhere in the component's tree without requiring any prop.
 
@@ -108,6 +108,31 @@ const Example = () => (
 );
 
 export default Example;
+```
+
+### With custom configuration settings
+
+The `DataTableManager` allows provides a feature for users to add custom configurations to the data table settings.
+
+To configure the data table manager, you can pass in your own `jsx` component and all the expected actions and states you want to control.
+
+The `ColumnSettingsManager` component is also exposed for users to consume and pass in configuration of choice for custom column configurations, pass in your settings through the `customColumnManager` props.
+
+```jsx
+import { ColumnSettingsManager } from '@commercetools-uikit/data-table-manager/column-settings-manager';
+
+<DataTableManagerProvider
+  columns={columns}
+  onSettingsChange={() => tableSettingsChangeHandler}
+  columnManager={columnManager}
+  displaySettings={displaySettings}
+  customSettings={customSettings}
+  selectedColumns={selectedColumns}
+  customColumnManager={customColumnManager}
+  customColumns={visibleCustomColumns}
+>
+  <DataTable rows={rows} />
+</DataTableManagerProvider>;
 ```
 
 ## Properties
