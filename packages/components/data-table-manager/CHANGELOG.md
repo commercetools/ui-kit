@@ -1,5 +1,35 @@
 # @commercetools-uikit/data-table-manager
 
+## 19.12.0
+
+### Patch Changes
+
+- [#2933](https://github.com/commercetools/ui-kit/pull/2933) [`b7f3b35`](https://github.com/commercetools/ui-kit/commit/b7f3b35e1f5dff55a8d3d2b9dd825307cd9091a3) Thanks [@emmenko](https://github.com/emmenko)! - Include types declarations for libraries"
+
+- Updated dependencies [[`ab87fbd`](https://github.com/commercetools/ui-kit/commit/ab87fbd92e4c12594fb9d8c1700b6ac66ed14bd2), [`d971925`](https://github.com/commercetools/ui-kit/commit/d971925633750591dfeb3f89c4df322a9e5e0370)]:
+  - @commercetools-uikit/icons@19.12.0
+  - @commercetools-uikit/async-select-input@19.12.0
+  - @commercetools-uikit/select-input@19.12.0
+  - @commercetools-uikit/field-label@19.12.0
+  - @commercetools-uikit/radio-input@19.12.0
+  - @commercetools-uikit/tag@19.12.0
+  - @commercetools-uikit/design-system@19.12.0
+  - @commercetools-uikit/accessible-hidden@19.12.0
+  - @commercetools-uikit/accessible-button@19.12.0
+  - @commercetools-uikit/icon-button@19.12.0
+  - @commercetools-uikit/primary-button@19.12.0
+  - @commercetools-uikit/secondary-button@19.12.0
+  - @commercetools-uikit/secondary-icon-button@19.12.0
+  - @commercetools-uikit/card@19.12.0
+  - @commercetools-uikit/collapsible-motion@19.12.0
+  - @commercetools-uikit/dropdown-menu@19.12.0
+  - @commercetools-uikit/grid@19.12.0
+  - @commercetools-uikit/text@19.12.0
+  - @commercetools-uikit/tooltip@19.12.0
+  - @commercetools-uikit/hooks@19.12.0
+  - @commercetools-uikit/utils@19.12.0
+  - @commercetools-uikit/spacings@19.12.0
+
 ## 19.11.0
 
 ### Patch Changes

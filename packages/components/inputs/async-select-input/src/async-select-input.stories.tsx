@@ -15,6 +15,7 @@ const meta: Meta<typeof AsyncSelectInput> = {
     'aria-errormessage': { control: 'text' },
     backspaceRemovesValue: { control: 'boolean' },
     controlShouldRenderValue: { control: 'boolean' },
+    hideSelectedOptions: { control: 'boolean' },
     id: { control: 'text' },
     containerId: { control: 'text' },
     isClearable: { control: 'boolean' },
