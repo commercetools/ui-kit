@@ -2,6 +2,10 @@ import { type ReactNode } from 'react';
 
 export type TFilterMenuTriggerButtonProps = {
   /**
+   * unique identifier for the filter
+   */
+  filterKey: string;
+  /**
    * formatted message to display the filter's name
    */
   label: ReactNode;

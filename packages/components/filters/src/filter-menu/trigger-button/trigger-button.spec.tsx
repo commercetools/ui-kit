@@ -7,7 +7,11 @@ import TriggerButton from './trigger-button';
 describe('FilterMenu Trigger Button', () => {
   it('should render the trigger button', async () => {
     await render(
-      <TriggerButton label="trigger button" appliedFilterValues={undefined} />
+      <TriggerButton
+        label="trigger button"
+        filterKey="key"
+        appliedFilterValues={undefined}
+      />
     );
     await screen.findByText(/trigger button/i);
   });

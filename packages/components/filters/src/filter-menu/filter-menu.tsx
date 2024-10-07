@@ -1,24 +1,108 @@
-import DropdownMenu from '@commercetools-uikit/dropdown-menu';
+import { type ReactNode } from 'react';
+import { css } from '@emotion/react';
+import Constraints from '@commercetools-uikit/constraints';
+import { designTokens } from '@commercetools-uikit/design-system';
+import * as Popover from '@radix-ui/react-popover';
 import { Footer } from './footer';
 import { Header } from './header';
 import { TriggerButton } from './trigger-button';
 
+export type TAppliedFilterValue = {
+  value: string;
+  label: ReactNode;
+};
+
 export type TFilterMenuProps = {
   /**
-   * This is a stub prop!
+   * unique identifier for the filter
    */
-  label: string;
+  filterKey: string;
+  /**
+   * formatted message to display the filter's name
+   */
+  label: ReactNode;
+  /**
+   * the input in which the user selects values for the filter
+   */
+  renderMenuBody: () => ReactNode;
+  /**
+   * the input in which the user can select which operator should be used for this filter
+   */
+  renderOperatorsInput?: () => ReactNode;
+  /**
+   * the values applied to this filter by the user
+   */
+  appliedFilterValues: TAppliedFilterValue[] | undefined | null;
+  /**
+   * indicates whether FilterMenu can be removed from the filtersList
+   */
+  isPersistent?: boolean;
+  /**
+   * whether or not the filter is disabled
+   */
+  isDisabled?: boolean;
+  /**
+   * controls whether `x` in Trigger Button is displayed - required if `isPersistent` is `false`
+   */
+  onRemoveRequest?: Function;
+  /**
+   * controls whether `apply` button in Menu Body Footer is displayed
+   */
+  renderApplyButton?: () => ReactNode;
+  /**
+   * controls whether `clear` button in Menu Body Footer is displayed
+   */
+  onClearRequest?: Function;
+  /**
+   * controls whether `sort` button in Menu Body Header is displayed
+   */
+  onSortRequest?: Function;
+  /**
+   * controls whether menu is open on initial render
+   */
+  defaultOpen?: boolean;
 };
+
+const menuStyles = css`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: ${designTokens.spacing30};
+  width: ${Constraints.getMaxPropTokenValue(6)};
+  padding: ${designTokens.spacing20} ${designTokens.spacing30};
+  background-color: ${designTokens.colorSurface};
+  border: 1px solid ${designTokens.colorSurface};
+  border-radius: ${designTokens.borderRadius8};
+  box-shadow: 0 5px 30px 0px rgba(0, 0, 0, 0.1);
+  animation-duration: ${designTokens.transitionStandard};
+  will-change: 'transform, opacity';
+  margin-top: ${designTokens.spacing10};
+  position: relative;
+  z-index: 999;
+`;
 function FilterMenu(props: TFilterMenuProps) {
   return (
-    <DropdownMenu
-      triggerElement={
-        <TriggerButton label={props.label} appliedFilterValues={undefined} />
-      }
-    >
-      <Header />
-      <Footer />
-    </DropdownMenu>
+    <Popover.Root defaultOpen={props.isDisabled ? false : props.defaultOpen}>
+      <Popover.Trigger asChild>
+        <TriggerButton
+          filterKey={props.filterKey}
+          label={props.label}
+          appliedFilterValues={props.appliedFilterValues}
+          isDisabled={props.isDisabled}
+          isPersistent={props.isPersistent}
+          onRemoveRequest={props.onRemoveRequest}
+        />
+      </Popover.Trigger>
+      <Popover.Portal>
+        <Popover.Content side="bottom" align="start" style={{ zIndex: 5 }}>
+          <div css={menuStyles}>
+            <Header />
+            {props.renderMenuBody()}
+            <Footer />
+          </div>
+        </Popover.Content>
+      </Popover.Portal>
+    </Popover.Root>
   );
 }
 

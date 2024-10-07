@@ -6,7 +6,15 @@ import FilterMenu from './filter-menu';
  */
 describe('FilterMenu FilterMenu', () => {
   it('should render the filter-menu', async () => {
-    await render(<FilterMenu label="filter menu" />);
-    await screen.findByText('filter menu');
+    await render(
+      <FilterMenu
+        filterKey="test"
+        renderMenuBody={() => <div>im the body</div>}
+        appliedFilterValues={[{ label: 'hello', value: 'hello' }]}
+        onRemoveRequest={() => {}}
+        label="filter menu"
+      />
+    );
+    await screen.findByText('filter menu:');
   });
 });
