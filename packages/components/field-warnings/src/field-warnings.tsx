@@ -1,5 +1,9 @@
 import { ReactNode } from 'react';
+import { useFieldId } from '@commercetools-uikit/hooks';
 import { WarningMessage } from '@commercetools-uikit/messages';
+import { createSequentialId } from '@commercetools-uikit/utils';
+
+const sequentialId = createSequentialId('ui-kit-field-warning-');
 
 const isObject = (obj: unknown): boolean => typeof obj === 'object';
 
@@ -8,7 +12,7 @@ type TWarningRenderer = (key: string, warning?: boolean) => ReactNode;
 export type TFieldWarnings = Record<string, boolean>;
 export type TFieldWarningsProps = {
   /**
-   * ID of the warning field.
+   * ID of the warning field, used as basis for ID of each warning field.
    */
   id?: string;
   /**
@@ -31,6 +35,8 @@ export type TFieldWarningsProps = {
 };
 
 const FieldWarnings = (props: TFieldWarningsProps) => {
+  const baseId = useFieldId(props.id, sequentialId);
+
   if (!props.isVisible) return null;
   if (!props.warnings || !isObject(props.warnings)) return null;
 
@@ -40,7 +46,8 @@ const FieldWarnings = (props: TFieldWarningsProps) => {
         // Only render warnings which have truthy values, to avoid
         // rendering a warning that has falsy values.
         .filter(([, warning]) => warning)
-        .map(([key, warning]) => {
+        .map(([key, warning], idx) => {
+          const fieldId = `${baseId}-${idx}`;
           // We might not use a custom warning renderer, so we fall back to null
           // to enable the default warnings to kick in
           const warningElement = props.renderWarning
@@ -50,7 +57,7 @@ const FieldWarnings = (props: TFieldWarningsProps) => {
           // Custom warnings take precedence over the default warnings
           if (warningElement)
             return (
-              <WarningMessage key={key} id={props.id}>
+              <WarningMessage key={key} id={fieldId}>
                 {warningElement}
               </WarningMessage>
             );
@@ -62,7 +69,7 @@ const FieldWarnings = (props: TFieldWarningsProps) => {
           // Default warnings take precedence over the known warnings
           if (defaultWarningElement)
             return (
-              <WarningMessage key={key} id={props.id}>
+              <WarningMessage key={key} id={fieldId}>
                 {defaultWarningElement}
               </WarningMessage>
             );

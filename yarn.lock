@@ -3162,7 +3162,9 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/hooks": "workspace:^"
     "@commercetools-uikit/messages": 19.12.0
+    "@commercetools-uikit/utils": "workspace:^"
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
@@ -3263,7 +3265,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/hooks@19.12.0, @commercetools-uikit/hooks@workspace:packages/hooks":
+"@commercetools-uikit/hooks@19.12.0, @commercetools-uikit/hooks@workspace:^, @commercetools-uikit/hooks@workspace:packages/hooks":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/hooks@workspace:packages/hooks"
   dependencies:
