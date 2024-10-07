@@ -345,7 +345,7 @@ export type TSearchSelectInputProps<
   iconLeft?: ReactNode;
 };
 
-type TOptionInnerPropsData = {
+export type TOptionInnerPropsData = {
   label?: string;
   key?: string;
   id?: string;
