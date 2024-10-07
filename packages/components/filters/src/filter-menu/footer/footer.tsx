@@ -22,10 +22,9 @@ const mainContainerStyles = css`
   width: 100%;
    };
 `;
-
 const footerContainerStyles = css`
   /* horizontal divider */
-  height: 1px;
+  height: ${designTokens.borderWidth1};
   background-color: ${designTokens.colorNeutral90};
   margin-top: ${designTokens.spacingS};
 
