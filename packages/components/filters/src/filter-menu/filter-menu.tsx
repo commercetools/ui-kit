@@ -14,7 +14,7 @@ function FilterMenu(props: TFilterMenuProps) {
     <DropdownMenu triggerElement={<TriggerButton label={props.label} />}>
       <Header
         // For storybook purposes, we are not using the actual props - will be taken off eventually.
-        label={props.label}
+        headerLabel="Size"
         operatorOptions={[
           { value: 'is', label: 'is' },
           { value: 'is not', label: 'is NOT' },

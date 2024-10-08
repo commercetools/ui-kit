@@ -12,7 +12,7 @@ type TOption = {
 };
 
 type THeaderProps = {
-  label: string;
+  headerLabel: string;
   operatorOptions?: Array<TOption>;
   onSelectOperand: (value: string) => void;
   onSort?: () => void;
@@ -39,7 +39,7 @@ const Header = (props: THeaderProps) => {
   return (
     <Spacings.Inline>
       <div css={headerContainerStyles}>
-        <div>{props.label}</div>
+        <div>{props.headerLabel}</div>
         {props.renderOperatorsInput && (
           <div css={getSelectInputStyles(props)}>
             <SelectInput
