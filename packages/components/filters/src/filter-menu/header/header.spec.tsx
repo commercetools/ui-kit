@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '../../../../../../test/test-utils';
 import Header from './header';
 
-const operandOptions = [
+const operatorOptions = [
   { value: 'is', label: 'IS' },
   { value: 'isNot', label: 'IS NOT' },
 ];
@@ -9,9 +9,10 @@ const operandOptions = [
 const FilterSetup = () => (
   <Header
     label="Filter Label"
-    operandOptions={operandOptions}
+    operatorOptions={operatorOptions}
     onSelectOperand={jest.fn()}
     onSort={jest.fn()}
+    renderOperatorsInput={() => {}}
   />
 );
 
@@ -22,13 +23,13 @@ describe('FilterMenu Header', () => {
     expect(screen.getByText('Filter Label')).toBeInTheDocument();
   });
 
-  it('should conditionally render the SelectInput when operandOptions are provided', async () => {
+  it('should conditionally render the SelectInput when renderOperatorsInput are provided', async () => {
     render(<FilterSetup />);
 
     expect(screen.getByRole('combobox')).toBeInTheDocument();
   });
 
-  it('should not render SelectInput when operandOptions are not provided', () => {
+  it('should not render SelectInput when renderOperatorsInput are not provided', () => {
     render(
       <Header
         label="Filter Label"
@@ -51,7 +52,7 @@ describe('FilterMenu Header', () => {
       <Header
         label="Filter Label"
         onSelectOperand={jest.fn()}
-        operandOptions={operandOptions}
+        operatorOptions={operatorOptions}
       />
     );
 
@@ -63,7 +64,7 @@ describe('FilterMenu Header', () => {
     render(
       <Header
         label="Filter Label"
-        operandOptions={operandOptions}
+        operatorOptions={operatorOptions}
         onSelectOperand={jest.fn()}
         onSort={onSortMock}
       />

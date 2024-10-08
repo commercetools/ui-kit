@@ -15,12 +15,12 @@ function FilterMenu(props: TFilterMenuProps) {
       <Header
         // For storybook purposes, we are not using the actual props - will be taken off eventually.
         label={props.label}
-        operandOptions={[
+        operatorOptions={[
           { value: 'is', label: 'is' },
           { value: 'is not', label: 'is NOT' },
         ]}
-        renderOperandsInput={true}
         onSelectOperand={(value) => value}
+        renderOperatorsInput={() => {}}
         onSort={() => {}}
         menuHeaderWidth={'100px'}
       />

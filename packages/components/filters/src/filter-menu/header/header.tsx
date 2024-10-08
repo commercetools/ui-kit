@@ -13,11 +13,11 @@ type TOption = {
 
 type THeaderProps = {
   label: string;
-  operandOptions?: Array<TOption>;
-  renderOperandsInput?: boolean;
+  operatorOptions?: Array<TOption>;
   onSelectOperand: (value: string) => void;
   onSort?: () => void;
   menuHeaderWidth?: string;
+  renderOperatorsInput?: () => void;
 };
 
 const headerContainerStyles = css`
@@ -40,18 +40,18 @@ const Header = (props: THeaderProps) => {
     <Spacings.Inline>
       <div css={headerContainerStyles}>
         <div>{props.label}</div>
-        {props.operandOptions && (
+        {props.renderOperatorsInput && (
           <div css={getSelectInputStyles(props)}>
             <SelectInput
               appearance="quiet"
               value={
                 headerSelectOptions
                   ? headerSelectOptions
-                  : props.operandOptions[0].value
+                  : props?.operatorOptions && props.operatorOptions[0].value
               }
               isCondensed={true}
               isSearchable={false}
-              options={props.operandOptions}
+              options={props.operatorOptions}
               onChange={(event) => {
                 setHeaderSelectOptions(event.target.value as string);
                 props.onSelectOperand(event.target.value as string);
