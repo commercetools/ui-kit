@@ -43,7 +43,6 @@ describe('FilterMenu Header', () => {
   it('should conditionally render the IconButton when onSort is provided', async () => {
     render(<FilterSetup />);
 
-    // Check if IconButton is rendered
     expect(screen.getByLabelText('Sort')).toBeInTheDocument();
   });
 
@@ -56,7 +55,6 @@ describe('FilterMenu Header', () => {
       />
     );
 
-    // IconButton should not be present
     expect(screen.queryByLabelText('Sort')).not.toBeInTheDocument();
   });
 
@@ -73,7 +71,6 @@ describe('FilterMenu Header', () => {
 
     const sortButton = screen.getByLabelText('Sort');
 
-    // Simulate button click
     fireEvent.click(sortButton);
 
     expect(onSortMock).toHaveBeenCalled();
