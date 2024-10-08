@@ -8,7 +8,7 @@ const operatorOptions = [
 
 const FilterSetup = () => (
   <Header
-    label="Filter Label"
+    headerLabel="Filter Label"
     operatorOptions={operatorOptions}
     onSelectOperand={jest.fn()}
     onSort={jest.fn()}
@@ -32,7 +32,7 @@ describe('FilterMenu Header', () => {
   it('should not render SelectInput when renderOperatorsInput are not provided', () => {
     render(
       <Header
-        label="Filter Label"
+        headerLabel="Filter Label"
         onSelectOperand={jest.fn()}
         onSort={jest.fn()}
       />
@@ -50,7 +50,7 @@ describe('FilterMenu Header', () => {
   it('should not render IconButton when onSort is not provided', () => {
     render(
       <Header
-        label="Filter Label"
+        headerLabel="Filter Label"
         onSelectOperand={jest.fn()}
         operatorOptions={operatorOptions}
       />
@@ -63,7 +63,7 @@ describe('FilterMenu Header', () => {
     const onSortMock = jest.fn();
     render(
       <Header
-        label="Filter Label"
+        headerLabel="Filter Label"
         operatorOptions={operatorOptions}
         onSelectOperand={jest.fn()}
         onSort={onSortMock}
