@@ -30,8 +30,6 @@ type TCustomFormErrors<Values> = {
 };
 
 const sequentialId = createSequentialId('radio-field-');
-const sequentialErrorsId = createSequentialId('radio-field-error-')();
-const sequentialWarningsId = createSequentialId('radio-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -221,6 +219,9 @@ class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
       );
     }
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Stack scale="xs">
@@ -251,17 +252,18 @@ class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
             {...filterDataAttributes(this.props)}
             /* ARIA */
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
           >
             {this.props.children}
           </RadioInput.Group>
           <FieldErrors
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

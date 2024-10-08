@@ -44,10 +44,6 @@ const hasErrors = (errors?: TFieldErrors) =>
 const hasWarnings = (warnings?: TFieldWarnings) =>
   warnings && Object.values(warnings).some(Boolean);
 const sequentialId = createSequentialId('search-select-field-');
-const sequentialErrorsId = createSequentialId('search-select-field-error-')();
-const sequentialWarningsId = createSequentialId(
-  'search-select-field-warning-'
-)();
 
 export type TSearchSelectFieldProps = {
   /**
@@ -342,6 +338,8 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
   const hasWarning =
     props.hasWarning || (Boolean(props.touched) && hasWarnings(props.warnings));
   const id = useFieldId(props.id, sequentialId);
+  const errorsContainerId = `${id}-errors`;
+  const warningsContainerId = `${id}-warnings`;
 
   if (!props.isReadOnly) {
     warning(
@@ -389,7 +387,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
           aria-invalid={hasError}
-          aria-errormessage={sequentialErrorsId}
+          aria-errormessage={errorsContainerId}
           isAutofocussed={props.isAutofocussed}
           backspaceRemovesValue={props.backspaceRemovesValue}
           components={props.components}
@@ -427,13 +425,13 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           iconLeft={props.iconLeft}
         />
         <FieldErrors
-          id={sequentialErrorsId}
+          id={errorsContainerId}
           errors={props.errors}
           isVisible={hasError}
           renderError={props.renderError}
         />
         <FieldWarnings
-          id={sequentialWarningsId}
+          id={warningsContainerId}
           warnings={props.warnings}
           isVisible={hasWarning}
           renderWarning={props.renderWarning}

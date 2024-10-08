@@ -26,8 +26,6 @@ import FieldWarnings from '@commercetools-uikit/field-warnings';
 import messages from './messages';
 
 const sequentialId = createSequentialId('password-field-');
-const sequentialErrorsId = createSequentialId('password-field-error-')();
-const sequentialWarningsId = createSequentialId('password-field-warning-')();
 
 type TFieldWarnings = Record<string, boolean>;
 type TFieldErrors = Record<string, boolean>;
@@ -201,6 +199,8 @@ const PasswordField = (props: TPasswordField) => {
   const intl = useIntl();
   const [isPasswordVisible, togglePasswordVisibility] = useToggleState(false);
   const id = useFieldId(props.id, sequentialId);
+  const errorsContainerId = `${id}-errors`;
+  const warningsContainerId = `${id}-warnings`;
   const hasError = props.touched && hasErrors(props.errors);
   const hasWarning = props.touched && hasWarnings(props.warnings);
   const canInteract =
@@ -268,16 +268,16 @@ const PasswordField = (props: TPasswordField) => {
           {...filterDataAttributes(props)}
           /* ARIA */
           aria-invalid={hasError}
-          aria-errormessage={sequentialErrorsId}
+          aria-errormessage={errorsContainerId}
         />
         <FieldErrors
-          id={sequentialErrorsId}
+          id={errorsContainerId}
           errors={props.errors}
           isVisible={hasError}
           renderError={props.renderError}
         />
         <FieldWarnings
-          id={sequentialWarningsId}
+          id={warningsContainerId}
           warnings={props.warnings}
           isVisible={hasWarning}
           renderWarning={props.renderWarning}

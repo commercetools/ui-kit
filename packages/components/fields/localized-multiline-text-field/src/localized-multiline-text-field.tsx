@@ -216,12 +216,6 @@ type TLocalizedMultilineTextFieldState = Pick<
 >;
 
 const sequentialId = createSequentialId('localized-multiline-text-field-');
-const sequentialErrorsId = createSequentialId(
-  'localized-multiline-text-field-error-'
-)();
-const sequentialWarningsId = createSequentialId(
-  'localized-multiline-text-field-warning-'
-)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -285,6 +279,9 @@ class LocalizedMultilineTextField extends Component<
     const hasError = this.props.touched && hasErrors(this.props.errors);
     const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -325,19 +322,19 @@ class LocalizedMultilineTextField extends Component<
             {...filterDataAttributes(this.props)}
             /* ARIA */
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
             additionalInfo={
               this.props.additionalInfo && this.props.additionalInfo
             }
           />
           <FieldErrors
-            id={sequentialErrorsId}
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

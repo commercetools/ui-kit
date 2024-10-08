@@ -164,10 +164,6 @@ type TState = {
 };
 
 const sequentialId = createSequentialId('multiline-text-field-');
-const sequentialErrorsId = createSequentialId('multiline-text-field-error-')();
-const sequentialWarningsId = createSequentialId(
-  'multiline-text-field-warning-'
-)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -225,6 +221,9 @@ class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
       );
     }
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -256,16 +255,16 @@ class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
           />
           <FieldErrors
-            id={sequentialErrorsId}
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

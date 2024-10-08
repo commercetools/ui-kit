@@ -24,8 +24,6 @@ import messages from './messages';
 import { FormattedMessage } from 'react-intl';
 
 const sequentialId = createSequentialId('number-field-');
-const sequentialErrorsId = createSequentialId('number-field-error-')();
-const sequentialWarningsId = createSequentialId('number-field-warning-')();
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TFieldWarnings = Record<string, boolean>;
@@ -267,6 +265,9 @@ class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Stack scale="xs">
@@ -301,10 +302,10 @@ class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
             {...filterDataAttributes(this.props)}
             /* ARIA */
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
           />
           <FieldErrors
-            id={sequentialErrorsId}
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={(key: string, error?: boolean) =>
@@ -313,7 +314,7 @@ class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
             }
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}
