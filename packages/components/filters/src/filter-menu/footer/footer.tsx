@@ -17,27 +17,16 @@ type TFooterProps = {
   onClearAllRequest?: () => void;
 };
 
-const mainContainerStyles = css`
-  height: auto;
-  width: 100%;
-   };
-`;
 const footerContainerStyles = css`
-  /* horizontal divider */
-  height: ${designTokens.borderWidth1};
-  background-color: ${designTokens.colorNeutral90};
-  margin-top: ${designTokens.spacingS};
+  border-top: ${designTokens.borderWidth1} solid ${designTokens.colorNeutral90};
+  margin-bottom: ${designTokens.spacing20};
+  padding-top: ${designTokens.spacing20};
 
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
 
-  & > div:first-of-type {
-    margin-top: ${designTokens.spacingS};
-  }
-
-  & > div:last-of-type {
-    margin-top: ${designTokens.spacingS};
+  div:last-of-type {
     display: flex;
     justify-content: flex-end;
   }
@@ -48,19 +37,17 @@ const Footer = ({ renderApplyButton, onClearAllRequest }: TFooterProps) => {
   if (!renderApplyButton && !onClearAllRequest) return null;
 
   return (
-    <div css={mainContainerStyles}>
-      <div css={footerContainerStyles}>
-        <div>{renderApplyButton && renderApplyButton()}</div>
-        <div>
-          {onClearAllRequest && (
-            <FlatButton
-              icon={<CloseBoldIcon />}
-              tone="secondary"
-              onClick={onClearAllRequest}
-              label={intl.formatMessage(messages.clearAllButtonLabel)}
-            />
-          )}
-        </div>
+    <div css={footerContainerStyles}>
+      <div>{renderApplyButton && renderApplyButton()}</div>
+      <div>
+        {onClearAllRequest && (
+          <FlatButton
+            icon={<CloseBoldIcon />}
+            tone="secondary"
+            onClick={onClearAllRequest}
+            label={intl.formatMessage(messages.clearAllButtonLabel)}
+          />
+        )}
       </div>
     </div>
   );
