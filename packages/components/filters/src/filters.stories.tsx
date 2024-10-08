@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import Filters from './filters';
+import FilterMenu from './filter-menu';
 
 const meta: Meta<typeof Filters> = {
   title: 'components/Filters',
@@ -16,5 +17,6 @@ export default meta;
 type Story = StoryFn<typeof Filters>;
 
 export const BasicExample: Story = () => {
-  return <Filters label={'test'} />;
+  // return <Filters label={'test'} />;
+  return <FilterMenu label={'Size'} />;
 };
