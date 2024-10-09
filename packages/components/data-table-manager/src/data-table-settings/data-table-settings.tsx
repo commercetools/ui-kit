@@ -50,36 +50,30 @@ export const getDropdownOptions = ({
   displaySettingsLabel,
   formatMessage,
 }: {
-  areCustomColumnSettingsEnabled: boolean;
-  areColumnSettingsEnabled: boolean;
-  areDisplaySettingsEnabled: boolean;
+  areCustomColumnSettingsEnabled?: boolean;
+  areColumnSettingsEnabled?: boolean;
+  areDisplaySettingsEnabled?: boolean;
   customSettings?: TCustomSettingsProps[];
   columnManagerLabel?: string;
   displaySettingsLabel?: string;
   formatMessage: (message: MessageDescriptor) => string;
 }) => {
   return [
-    ...(areColumnSettingsEnabled
+    ...(areColumnSettingsEnabled !== undefined
       ? [
           {
             value: COLUMN_MANAGER,
+            isDisabled: !areColumnSettingsEnabled,
             label: columnManagerLabel
               ? columnManagerLabel
               : formatMessage(messages.columnManagerOption),
           },
         ]
-      : [
-          {
-            value: COLUMN_MANAGER,
-            isDisabled: true,
-            label: columnManagerLabel
-              ? columnManagerLabel
-              : formatMessage(messages.columnManagerOption),
-          },
-        ]),
-    ...(customSettings
+      : []),
+    ...(customSettings && areCustomColumnSettingsEnabled !== undefined
       ? Object.entries(customSettings).map(([key, customSetting]) => {
           return customSetting.type === COLUMN_MANAGER &&
+            Object.keys(customSetting).length > 0 &&
             !areCustomColumnSettingsEnabled
             ? {
                 value: key,
@@ -92,24 +86,17 @@ export const getDropdownOptions = ({
               };
         })
       : []),
-    ...(areDisplaySettingsEnabled
+    ...(areDisplaySettingsEnabled !== undefined
       ? [
           {
             value: DISPLAY_SETTINGS,
+            isDisabled: !areDisplaySettingsEnabled,
             label: displaySettingsLabel
               ? displaySettingsLabel
               : formatMessage(messages.displaySettingsOption),
           },
         ]
-      : [
-          {
-            value: DISPLAY_SETTINGS,
-            isDisabled: true,
-            label: displaySettingsLabel
-              ? displaySettingsLabel
-              : formatMessage(messages.displaySettingsOption),
-          },
-        ]),
+      : []),
   ].filter((option) => option !== undefined);
 };
 
@@ -128,12 +115,24 @@ export const getSelectedColumns = (
 ) => visibleColumnsKeys.map((columnKey) => mappedColumns[columnKey]);
 
 const DataTableSettings = (props: TDataTableSettingsProps) => {
-  const areDisplaySettingsEnabled = Boolean(
-    props.displaySettings && !props.displaySettings.disableDisplaySettings
-  );
-  const areColumnSettingsEnabled = Boolean(
-    props.columnManager && !props.columnManager.disableColumnManager
-  );
+  const getEnabledDisplaySettings = () => {
+    if (!props.displaySettings || Object.keys(props.displaySettings).length < 0)
+      return undefined;
+
+    return Boolean(
+      props.displaySettings && !props.displaySettings.disableDisplaySettings
+    );
+  };
+  const getEnabledColumnSettings = () => {
+    if (!props.columnManager || Object.keys(props.columnManager).length < 0)
+      return undefined;
+
+    return Boolean(
+      props.columnManager && !props.columnManager.disableColumnManager
+    );
+  };
+  const areDisplaySettingsEnabled = getEnabledDisplaySettings();
+  const areColumnSettingsEnabled = getEnabledColumnSettings();
 
   const areCustomColumnSettingsEnabled = Boolean(
     props.customColumnManager &&
