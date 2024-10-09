@@ -11,7 +11,11 @@ export type TFilterMenuProps = {
 };
 function FilterMenu(props: TFilterMenuProps) {
   return (
-    <DropdownMenu triggerElement={<TriggerButton label={props.label} />}>
+    <DropdownMenu
+      triggerElement={
+        <TriggerButton label={props.label} appliedFilterValues={undefined} />
+      }
+    >
       <Header />
       <Footer />
     </DropdownMenu>

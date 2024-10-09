@@ -23,6 +23,8 @@
     "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/dropdown-menu": "workspace:^",
+    "@commercetools-uikit/icons": "workspace:^",
+    "@commercetools-uikit/secondary-icon-button": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

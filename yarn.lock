@@ -3215,6 +3215,8 @@ __metadata:
     "@babel/runtime-corejs3": ^7.20.13
     "@commercetools-uikit/design-system": "workspace:^"
     "@commercetools-uikit/dropdown-menu": "workspace:^"
+    "@commercetools-uikit/icons": "workspace:^"
+    "@commercetools-uikit/secondary-icon-button": "workspace:^"
     "@commercetools-uikit/utils": "workspace:^"
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
@@ -3313,7 +3315,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/icons@19.12.1, @commercetools-uikit/icons@workspace:packages/components/icons":
+"@commercetools-uikit/icons@19.12.1, @commercetools-uikit/icons@workspace:^, @commercetools-uikit/icons@workspace:packages/components/icons":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/icons@workspace:packages/components/icons"
   dependencies:
@@ -4246,7 +4248,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/secondary-icon-button@19.12.1, @commercetools-uikit/secondary-icon-button@workspace:packages/components/buttons/secondary-icon-button":
+"@commercetools-uikit/secondary-icon-button@19.12.1, @commercetools-uikit/secondary-icon-button@workspace:^, @commercetools-uikit/secondary-icon-button@workspace:packages/components/buttons/secondary-icon-button":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/secondary-icon-button@workspace:packages/components/buttons/secondary-icon-button"
   dependencies:
