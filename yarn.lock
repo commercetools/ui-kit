@@ -4019,6 +4019,8 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/design-system": "workspace:^"
+    "@commercetools-uikit/tag": "workspace:^"
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
@@ -4474,7 +4476,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/tag@19.12.1, @commercetools-uikit/tag@workspace:packages/components/tag":
+"@commercetools-uikit/tag@19.12.1, @commercetools-uikit/tag@workspace:^, @commercetools-uikit/tag@workspace:packages/components/tag":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/tag@workspace:packages/components/tag"
   dependencies:

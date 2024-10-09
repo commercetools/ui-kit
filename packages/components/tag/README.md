@@ -55,17 +55,18 @@ export default Example;
 
 ## Properties
 
-| Props                  | Type                                                                                                        | Required | Default    | Description                                                                           |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------- | :------: | ---------- | ------------------------------------------------------------------------------------- |
-| `type`                 | `union`<br/>Possible values:<br/>`'normal' , 'warning'`                                                     |          | `'normal'` | Indicates color scheme of the tag.                                                    |
-| `styles`               | `Record`                                                                                                    |          |            | Styles object that is spread into the tag body.                                       |
-| `to`                   | `union`<br/>Possible values:<br/>`string , LocationDescriptor`                                              |          |            | Link of the tag when not disabled                                                     |
-| `isDisabled`           | `boolean`                                                                                                   |          | `false`    | Disable the tag element along with the option to remove it.                           |
-| `isDraggable`          | `boolean`                                                                                                   |          | `false`    | Adds the draggable icon on the left side.                                             |
-| `onRemove`             | `Function`<br/>[See signature.](#signature-onRemove)                                                        |          |            | Called when remove button is clicked.                                                 |
-| `onClick`              | `Function`<br/>[See signature.](#signature-onClick)                                                         |          |            | Called when tag element is clicked. This is not called when remove button is clicked. |
-| `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'`  | Horizontal size limit of the input field.                                             |
-| `children`             | `ReactNode`                                                                                                 |    ✅    |            | Content rendered within the tag                                                       |
+| Props                  | Type                                                                                                        | Required | Default     | Description                                                                           |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------- | :------: | ----------- | ------------------------------------------------------------------------------------- |
+| `type`                 | `union`<br/>Possible values:<br/>`'normal' , 'warning'`                                                     |          |             | Indicates color scheme of the tag.&#xA;@deprecated use `tone` instead                 |
+| `styles`               | `Record`                                                                                                    |          |             | Styles object that is spread into the tag body.                                       |
+| `to`                   | `union`<br/>Possible values:<br/>`string , LocationDescriptor`                                              |          |             | Link of the tag when not disabled                                                     |
+| `isDisabled`           | `boolean`                                                                                                   |          | `false`     | Disable the tag element along with the option to remove it.                           |
+| `isDraggable`          | `boolean`                                                                                                   |          | `false`     | Adds the draggable icon on the left side.                                             |
+| `onRemove`             | `Function`<br/>[See signature.](#signature-onRemove)                                                        |          |             | Called when remove button is clicked.                                                 |
+| `onClick`              | `Function`<br/>[See signature.](#signature-onClick)                                                         |          |             | Called when tag element is clicked. This is not called when remove button is clicked. |
+| `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'`   | Horizontal size limit of the input field.                                             |
+| `children`             | `ReactNode`                                                                                                 |    ✅    |             | Content rendered within the tag                                                       |
+| `tone`                 | `union`<br/>Possible values:<br/>`'primary' , 'warning' , 'surface'`                                        |          | `'primary'` | Indicates the color scheme of the tag.                                                |
 
 ## Signatures
 

@@ -6,7 +6,16 @@ import QuickFilters from './quick-filters';
  */
 describe('QuickFilters', () => {
   it('should render the quick-filters', async () => {
-    await render(<QuickFilters label="quickfilters" />);
-    await screen.findByText('quickfilters');
+    await render(
+      <QuickFilters
+        items={[
+          { id: '1', label: 'Fooo', isActive: true },
+          { id: '2', label: 'Bar', isActive: false },
+        ]}
+        onItemClick={() => {}}
+      />
+    );
+    await screen.findByText('Fooo');
+    await screen.findByText('Bar');
   });
 });

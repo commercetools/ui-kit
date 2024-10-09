@@ -7,10 +7,12 @@ import Constraints from '@commercetools-uikit/constraints';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
 import TagBody from './tag-body';
+import { getToneStyles } from './tag.styles';
 
 export type TTagProps = {
   /**
    * Indicates color scheme of the tag.
+   * @deprecated use `tone` instead
    */
   type?: 'normal' | 'warning';
   /**
@@ -65,13 +67,17 @@ export type TTagProps = {
    * Content rendered within the tag
    */
   children: ReactNode;
+  /**
+   * Indicates the color scheme of the tag.
+   */
+  tone: 'primary' | 'warning' | 'surface';
 };
 
 const defaultProps: Pick<
   TTagProps,
-  'type' | 'isDisabled' | 'isDraggable' | 'horizontalConstraint'
+  'tone' | 'isDisabled' | 'isDraggable' | 'horizontalConstraint'
 > = {
-  type: 'normal',
+  tone: 'primary',
   isDisabled: false,
   isDraggable: false,
   horizontalConstraint: 'scale',
@@ -80,39 +86,25 @@ const defaultProps: Pick<
 const Tag = (props: TTagProps) => {
   const linkProps =
     props.to && !props.isDisabled ? { as: Link, to: props.to } : {};
+
+  const isInteractive =
+    !props.isDisabled && (Boolean(props.onClick) || Boolean(props.to));
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <div
         css={css`
           a {
-            cursor: pointer;
             text-decoration: none;
           }
           box-sizing: border-box;
-          cursor: default;
+          cursor: ${isInteractive ? 'pointer' : 'default'};
           min-width: 0;
           display: flex;
           border-radius: ${designTokens.borderRadius20};
           border-style: solid;
           border-width: 1px;
-          background-color: ${props.isDisabled
-            ? designTokens.colorNeutral95
-            : props.type === 'warning'
-            ? designTokens.colorWarning95
-            : designTokens.colorPrimary95};
-          border-color: ${props.isDisabled
-            ? designTokens.colorNeutral
-            : props.type === 'warning'
-            ? designTokens.colorWarning85
-            : designTokens.colorPrimary90};
-          ${props.onClick &&
-          `&:hover {
-            background-color: ${
-              props.type === 'warning'
-                ? designTokens.colorWarning85
-                : designTokens.colorPrimary90
-            };
-          }`}
+          ${getToneStyles(props)};
         `}
       >
         <TagBody

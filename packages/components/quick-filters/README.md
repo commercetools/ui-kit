@@ -42,6 +42,28 @@ export default Example;
 
 ## Properties
 
-| Props   | Type     | Required | Default | Description          |
-| ------- | -------- | :------: | ------- | -------------------- |
-| `label` | `string` |    ✅    |         | This is a stub prop! |
+| Props         | Type                                                                | Required | Default | Description                                                                                                                                                                         |
+| ------------- | ------------------------------------------------------------------- | :------: | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `items`       | `Array: TQuickFiltersItem[]`<br/>[See signature.](#signature-items) |    ✅    |         | collection of quick filter items@param item.id unique identifier for the item.&#xA;@param item.label label to display&#xA;@param item.isActive the current active state of the item |
+| `onItemClick` | `Function`<br/>[See signature.](#signature-onItemClick)             |    ✅    |         | callback fn, executed when an item is clicked                                                                                                                                       |
+
+## Signatures
+
+### Signature `items`
+
+```ts
+{
+  /** unique identifier for the item. */
+  id: string;
+  /* label to display */
+  label: string;
+  /* the current active state of the item */
+  isActive: boolean;
+}
+```
+
+### Signature `onItemClick`
+
+```ts
+(item: TQuickFiltersItem) => void
+```
