@@ -200,6 +200,19 @@ const DateInput = (props: TDateInput) => {
     setHighlightedIndex(dayToHighlight);
   };
 
+  /**
+   * If the user manually enters a value in the text-input field,
+   * attempt to parse the value and emit it to the consumer if it's valid and in range.
+   */
+  const onInputBlur = (event: TCustomEvent) => {
+    const inputValue = event.target.value || '';
+    const date = parseInputToDate(inputValue, intl.locale);
+    const inRange = getIsDateInRange(date, props.minValue, props.maxValue);
+    if (inputValue.length === 0) emit(inputValue);
+    if (!date || !inRange) return;
+    emit(date);
+  };
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Downshift
@@ -347,6 +360,7 @@ const DateInput = (props: TDateInput) => {
                       }
                     }
                   },
+                  onBlur: onInputBlur,
                   // we only do this for readOnly because the input
                   // doesn't ignore these events, unlike when its disabled
                   onClick: props.isReadOnly ? undefined : openMenu,

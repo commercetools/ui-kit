@@ -1,5 +1,26 @@
 # @commercetools-uikit/date-input
 
+## 19.12.1
+
+### Patch Changes
+
+- [#2944](https://github.com/commercetools/ui-kit/pull/2944) [`20f74cc`](https://github.com/commercetools/ui-kit/commit/20f74cc2548f0e804f06dd663f318c4e0cc9c785) Thanks [@misama-ct](https://github.com/misama-ct)! - emit manually entered and properly formatted dates & datetimes when the calendar-ui blur event is triggered
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.12.1
+  - @commercetools-uikit/calendar-time-utils@19.12.1
+  - @commercetools-uikit/calendar-utils@19.12.1
+  - @commercetools-uikit/accessible-button@19.12.1
+  - @commercetools-uikit/secondary-icon-button@19.12.1
+  - @commercetools-uikit/constraints@19.12.1
+  - @commercetools-uikit/icons@19.12.1
+  - @commercetools-uikit/select-utils@19.12.1
+  - @commercetools-uikit/spacings-inline@19.12.1
+  - @commercetools-uikit/text@19.12.1
+  - @commercetools-uikit/tooltip@19.12.1
+  - @commercetools-uikit/hooks@19.12.1
+  - @commercetools-uikit/utils@19.12.1
+
 ## 19.12.0
 
 ### Patch Changes

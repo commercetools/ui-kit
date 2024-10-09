@@ -1,6 +1,11 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { screen, render, fireEvent } from '../../../../../test/test-utils';
+import {
+  screen,
+  render,
+  fireEvent,
+  waitFor,
+} from '../../../../../test/test-utils';
 import DateTimeInput from './date-time-input';
 
 // This component is used to enable easy testing.
@@ -188,4 +193,41 @@ describe('date picker defaultDaySelectionTime prop', () => {
 
     expect(screen.getByDisplayValue('11:10 AM')).toBeInTheDocument();
   });
+});
+
+it('should only emit valid datetimes from manually entered datestrings', async () => {
+  // Render the input with an initial value
+  renderDateTimeInput({
+    defaultDaySelectionTime: '11:10',
+    value: '2024-10-16T07:30:00.000Z',
+    'data-testid': 'onblurtest',
+  });
+  const htmlInputElement = screen.getByTestId('onblurtest');
+
+  // verify it got formatted for display
+  await waitFor(() =>
+    expect(htmlInputElement).toHaveDisplayValue('10/16/2024 7:30 AM')
+  );
+
+  // enter a valid formatted datetime
+  fireEvent.change(htmlInputElement, {
+    target: { value: '12/17/1985 5:30 AM' },
+  });
+  fireEvent.blur(htmlInputElement);
+
+  // should stay unchanged
+  await waitFor(() =>
+    expect(htmlInputElement).toHaveDisplayValue('12/17/1985 5:30 AM')
+  );
+
+  // enter an invalid formatted datetime
+  fireEvent.change(htmlInputElement, {
+    target: { value: '14/17/1985 5:30 AM' },
+  });
+  fireEvent.blur(htmlInputElement);
+
+  // should reset to the most recent valid value
+  await waitFor(() =>
+    expect(htmlInputElement).toHaveDisplayValue('12/17/1985 5:30 AM')
+  );
 });
