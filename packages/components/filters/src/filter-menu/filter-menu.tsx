@@ -12,7 +12,23 @@ export type TFilterMenuProps = {
 function FilterMenu(props: TFilterMenuProps) {
   return (
     <DropdownMenu triggerElement={<TriggerButton label={props.label} />}>
-      <Header />
+      <Header
+        // For storybook purposes, we are not using the actual props - will be taken off eventually.
+        headerLabel="Size"
+        operatorOptions={[
+          { value: 'is', label: 'is' },
+          { value: 'is not', label: 'is NOT' },
+        ]}
+        onSelectOperand={(value) => value}
+        renderOperatorsInput={() => {}}
+        onSort={() => {}}
+        menuHeaderWidth={'100px'}
+      />
+      <p>text</p>
+      <p>text</p>
+      <p>text</p>
+      <p>text</p>
+      <p>text</p>
       <Footer />
     </DropdownMenu>
   );
