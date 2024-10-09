@@ -154,6 +154,7 @@ export const themes = {
     shadow16:
       '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)',
     shadow17: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
+    shadow18: '0 5px 30px 0px rgba(0, 0, 0, 0.1)',
     constraintScale: '100%',
     constraint1: '42px',
     constraint2: '84px',
@@ -396,6 +397,7 @@ const designTokens = {
   shadow16:
     'var(--shadow-16, 0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25))',
   shadow17: 'var(--shadow-17, 0 1px 5px 0 rgba(0, 0, 0, 0.05))',
+  shadow18: 'var(--shadow-18, 0 5px 30px 0px rgba(0, 0, 0, 0.1))',
   constraintScale: 'var(--constraint-scale, 100%)',
   constraint1: 'var(--constraint-1, 42px)',
   constraint2: 'var(--constraint-2, 84px)',
