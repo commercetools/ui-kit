@@ -2754,7 +2754,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/constraints@19.12.1, @commercetools-uikit/constraints@workspace:packages/components/constraints":
+"@commercetools-uikit/constraints@19.12.1, @commercetools-uikit/constraints@workspace:^, @commercetools-uikit/constraints@workspace:packages/components/constraints":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/constraints@workspace:packages/components/constraints"
   dependencies:
@@ -3213,6 +3213,7 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/constraints": "workspace:^"
     "@commercetools-uikit/design-system": "workspace:^"
     "@commercetools-uikit/dropdown-menu": "workspace:^"
     "@commercetools-uikit/icons": "workspace:^"
