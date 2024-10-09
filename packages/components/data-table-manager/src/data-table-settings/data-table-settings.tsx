@@ -34,6 +34,7 @@ type MappedColumns = Record<string, TColumnData>;
 export type TDropdownOption = {
   value: string;
   label: string;
+  isDisabled?: boolean;
 };
 
 const TopBarContainer = styled.div`
@@ -67,12 +68,24 @@ export const getDropdownOptions = ({
               : formatMessage(messages.columnManagerOption),
           },
         ]
-      : []),
+      : [
+          {
+            value: COLUMN_MANAGER,
+            isDisabled: true,
+            label: columnManagerLabel
+              ? columnManagerLabel
+              : formatMessage(messages.columnManagerOption),
+          },
+        ]),
     ...(customSettings
       ? Object.entries(customSettings).map(([key, customSetting]) => {
           return customSetting.type === COLUMN_MANAGER &&
             !areCustomColumnSettingsEnabled
-            ? undefined
+            ? {
+                value: key,
+                label: customSetting.customPanelTitle,
+                isDisabled: true,
+              }
             : {
                 value: key,
                 label: customSetting.customPanelTitle,
@@ -88,7 +101,15 @@ export const getDropdownOptions = ({
               : formatMessage(messages.displaySettingsOption),
           },
         ]
-      : []),
+      : [
+          {
+            value: DISPLAY_SETTINGS,
+            isDisabled: true,
+            label: displaySettingsLabel
+              ? displaySettingsLabel
+              : formatMessage(messages.displaySettingsOption),
+          },
+        ]),
   ].filter((option) => option !== undefined);
 };
 
@@ -180,6 +201,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
                   onClick={() => {
                     setOpenedPanelId(option?.value);
                   }}
+                  isDisabled={option?.isDisabled}
                 >
                   {option?.label}
                 </DropdownMenu.ListMenuItem>
