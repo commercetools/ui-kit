@@ -112,7 +112,7 @@ export default Example;
 
 ### With custom configuration settings
 
-The `DataTableManager` allows provides a feature for users to add custom configurations to the data table settings.
+The `DataTableManager` provides a feature for users to add custom configurations to the data table settings.
 
 To configure the data table manager, you can pass in your own `jsx` component and all the expected actions and states you want to control.
 
