@@ -42,6 +42,6 @@ export default Example;
 
 ## Properties
 
-| Props   | Type     | Required | Default | Description          |
-| ------- | -------- | :------: | ------- | -------------------- |
-| `label` | `string` |    ✅    |         | This is a stub prop! |
+| Props   | Type     | Required | Default | Description         |
+| ------- | -------- | :------: | ------- | ------------------- |
+| `label` | `string` |          |         | This is a stub prop |
