@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { designTokens } from '@commercetools-uikit/design-system';
 
 export const triggerWrapper = css`
@@ -15,7 +16,7 @@ export const triggerWrapper = css`
   box-shadow: 0 0 0 ${designTokens.borderWidth1} ${designTokens.colorNeutral85};
   cursor: pointer;
   height: ${designTokens.spacing50};
-  max-width: 100%;
+  max-width: ${Constraints.getMaxPropTokenValue(13)};
   align-self: flex-start;
   &:hover {
     background-color: ${designTokens.colorPrimary98};
@@ -100,7 +101,7 @@ export const badgeContainer = css`
   right: 0;
   display: flex;
   align-items: center;
-  padding-left: ${designTokens.spacing20};
+  padding-left: ${designTokens.spacing30};
   background: linear-gradient(
     to right,
     transparent,

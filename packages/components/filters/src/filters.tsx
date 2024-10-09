@@ -17,103 +17,32 @@ function Filters(props: TFiltersProps) {
       }}
     >
       {props.label && <span>{props.label}</span>}
-      <span
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: designTokens.spacing20,
-        }}
-      >
-        <FilterMenu
-          filterKey="test"
-          label="Testing"
-          renderMenuBody={() => <div>im the body</div>}
-          appliedFilterValues={undefined}
-          onRemoveRequest={() => {}}
-          defaultOpen={true}
-        />
-        <ul>
-          <li>no applied values</li>
-          <li>open on mount</li>
-        </ul>
-      </span>
-      <span
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: designTokens.spacing20,
-        }}
-      >
-        <FilterMenu
-          filterKey="test"
-          label="Testing"
-          renderMenuBody={() => <div>im the body</div>}
-          appliedFilterValues={[{ label: 'hello', value: 'hello' }]}
-          onRemoveRequest={() => {}}
-        />
-        <ul>
-          <li>applied values</li>
-        </ul>
-      </span>
-      <span
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: designTokens.spacing20,
-        }}
-      >
-        <FilterMenu
-          filterKey="test"
-          label="Testing"
-          renderMenuBody={() => <div>im the body</div>}
-          appliedFilterValues={undefined}
-          onRemoveRequest={() => {}}
-          isPersistent
-        />
-        <ul>
-          <li>no applied values</li>
-          <li>persistent</li>
-        </ul>
-      </span>
-      <span
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: designTokens.spacing20,
-        }}
-      >
-        <FilterMenu
-          filterKey="test"
-          label="Testing"
-          renderMenuBody={() => <div>im the body</div>}
-          appliedFilterValues={[{ label: 'hello', value: 'hello' }]}
-          onRemoveRequest={() => {}}
-          isPersistent
-        />
-        <ul>
-          <li>applied values</li>
-          <li>persistent</li>
-        </ul>
-      </span>
-      <span
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: designTokens.spacing20,
-        }}
-      >
-        <FilterMenu
-          filterKey="test"
-          label="Testing"
-          renderMenuBody={() => <div>im the body</div>}
-          appliedFilterValues={[{ label: 'hello', value: 'hello' }]}
-          onRemoveRequest={() => {}}
-          isDisabled
-        />
-        <ul>
-          <li>disabled</li>
-        </ul>
-      </span>
+
+      <FilterMenu
+        filterKey="test"
+        label="Testing"
+        renderMenuBody={() => <div>im the body</div>}
+        appliedFilterValues={[
+          { value: 'one', label: 'one' },
+          { value: 'two', label: 'two' },
+          {
+            value: 'long-label',
+            label: 'just a realllllly reallllllllllllllyyyyyyy long label',
+          },
+          {
+            value: 'another-one',
+            label: 'another reallllyu reerealllllay longggg label',
+          },
+          { value: 'yet-another', label: 'hi' },
+          { value: 'one1', label: 'one' },
+          { value: 'two1', label: 'two' },
+          {
+            value: 'long-label1',
+            label: 'just a realllllly reallllllllllllllyyyyyyy long label',
+          },
+        ]}
+        onRemoveRequest={() => {}}
+      />
     </div>
   );
 }
