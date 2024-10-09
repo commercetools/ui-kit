@@ -70,12 +70,15 @@ const preventDownshiftDefault = (event: TPreventDownshiftDefaultEvent) => {
 // This keeps the menu open when the user focuses the time input (thereby
 // blurring the regular input/toggle button)
 const createBlurHandler =
-  (timeInputRef: RefObject<HTMLInputElement>) =>
+  (timeInputRef: RefObject<HTMLInputElement>, cb: () => void = () => {}) =>
   (event: TCreateBlurHandlerEvent) => {
     event.persist();
+
     if (event.relatedTarget === timeInputRef.current) {
       preventDownshiftDefault(event);
     }
+
+    cb();
   };
 
 type TCustomEvent = {
@@ -440,6 +443,10 @@ class DateTimeInput extends Component<
                           this.props.timeZone
                         );
 
+                        // If there is no parsed date, don't clear and submit. Instead, give
+                        // the user a chance to fix the value.
+                        if (!parsedDate) return;
+
                         this.emit(parsedDate);
 
                         closeMenu();
@@ -477,7 +484,18 @@ class DateTimeInput extends Component<
                       }
                     },
                     onClick: this.props.isReadOnly ? undefined : openMenu,
-                    onBlur: createBlurHandler(this.timeInputRef),
+                    // validate the input on blur, and emit the value if it's valid
+                    onBlur: createBlurHandler(this.timeInputRef, () => {
+                      const inputValue = this.inputRef.current?.value || '';
+                      const parsedDate = parseInputText(
+                        inputValue,
+                        this.props.intl.locale,
+                        this.props.timeZone
+                      );
+
+                      if (inputValue.length > 0 && !parsedDate) return;
+                      this.emit(parsedDate);
+                    }),
                     onChange: (event: TCustomEvent) => {
                       // keep timeInput and regular input in sync when user
                       // types into regular input
