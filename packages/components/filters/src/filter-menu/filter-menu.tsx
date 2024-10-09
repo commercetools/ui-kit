@@ -46,7 +46,7 @@ export type TFilterMenuProps = {
    */
   onRemoveRequest?: Function;
   /**
-   * controls whether `apply` button in Menu Body Footer is displayed
+   * optional button that allows the user to apply selected filter values
    */
   renderApplyButton?: () => ReactNode;
   /**
@@ -73,7 +73,7 @@ const menuStyles = css`
   background-color: ${designTokens.colorSurface};
   border: 1px solid ${designTokens.colorSurface};
   border-radius: ${designTokens.borderRadius8};
-  box-shadow: 0 5px 30px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: ${designTokens.shadow18};
   animation-duration: ${designTokens.transitionStandard};
   will-change: 'transform, opacity';
   margin-top: ${designTokens.spacing10};
@@ -96,7 +96,7 @@ function FilterMenu(props: TFilterMenuProps) {
       <Popover.Portal>
         <Popover.Content side="bottom" align="start" css={menuStyles}>
           <Header />
-          {props.renderMenuBody()}
+          <div>{props.renderMenuBody()}</div>
           <Footer />
         </Popover.Content>
       </Popover.Portal>
