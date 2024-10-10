@@ -14,7 +14,7 @@ export default meta;
 
 type Story = StoryObj<typeof QuickFilters>;
 
-/** display a list of filter tags which can be enabled or disabled. */
+/** The `QuickFilters` component displays a selection of `Tag` components that represent the available filter actions. */
 export const BasicExample: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
