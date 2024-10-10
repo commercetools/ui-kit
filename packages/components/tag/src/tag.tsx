@@ -104,6 +104,7 @@ const Tag = (props: TTagProps) => {
           border-radius: ${designTokens.borderRadius20};
           border-style: solid;
           border-width: 1px;
+          user-select: none;
           ${getToneStyles(props)};
         `}
       >

@@ -34,7 +34,6 @@ const listStyles = css`
 
 const listItemStyles = css`
   all: unset;
-  user-select: none;
 `;
 
 function QuickFilters({ items, onItemClick }: TQuickFiltersProps) {
