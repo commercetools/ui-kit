@@ -42,7 +42,7 @@ export type TTagProps = {
    */
   onClick?: (event: MouseEvent<HTMLElement>) => void;
   /**
-   * Horizontal size limit of the input field.
+   * Horizontal size limit of the tag.
    */
   horizontalConstraint?:
     | 1
@@ -100,7 +100,7 @@ const Tag = (props: TTagProps) => {
           box-sizing: border-box;
           cursor: ${isInteractive ? 'pointer' : 'default'};
           min-width: 0;
-          display: flex;
+          display: inline-flex;
           border-radius: ${designTokens.borderRadius20};
           border-style: solid;
           border-width: 1px;
