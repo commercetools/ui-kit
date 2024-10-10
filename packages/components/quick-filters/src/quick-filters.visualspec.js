@@ -7,6 +7,6 @@ describe('QuickFilters', () => {
 
   it('Default', async () => {
     await page.waitForSelector('text/Renders an active + inactive item');
-    await percySnapshot(page, 'Tag');
+    await percySnapshot(page, 'QuickFilters');
   });
 });
