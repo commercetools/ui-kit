@@ -22,8 +22,6 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 const sequentialId = createSequentialId('date-field-');
-const sequentialErrorsId = createSequentialId('date-field-error-')();
-const sequentialWarningsId = createSequentialId('date-field-warning-')();
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TWarningRenderer = (key: string, warning?: boolean) => ReactNode;
@@ -235,6 +233,9 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
       );
     }
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -267,16 +268,16 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
             {...filterDataAttributes(this.props)}
             /* ARIA */
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
           />
           <FieldErrors
-            id={sequentialErrorsId}
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

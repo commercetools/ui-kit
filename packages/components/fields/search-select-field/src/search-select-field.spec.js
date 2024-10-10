@@ -175,6 +175,24 @@ describe('when showing an info button', () => {
 });
 
 describe('when field is touched and has errors', () => {
+  it('should render an id for the error container that is based on the component id', () => {
+    const { container } = renderSearchSelectField({
+      touched: true,
+      errors: { missing: true },
+    });
+    expect(
+      container.querySelector('#search-select-field-errors')
+    ).toBeInTheDocument();
+  });
+  it('should set the aria-errormessage value to the id of the error container', () => {
+    const { getByRole } = renderSearchSelectField({
+      touched: true,
+      errors: { missing: true },
+    });
+    expect(getByRole('combobox')).toHaveAccessibleErrorMessage(
+      /field is required/i
+    );
+  });
   describe('when field empty', () => {
     it('should render a default error', () => {
       renderSearchSelectField({
@@ -197,6 +215,16 @@ describe('when field is touched and has errors', () => {
 });
 
 describe('when field is touched and has warnings', () => {
+  it('should render an id for the warning container that is based on the component id', () => {
+    const { container } = renderSearchSelectField({
+      touched: true,
+      warnings: { customWarning: true },
+      renderWarning: () => 'Custom warning',
+    });
+    expect(
+      container.querySelector('#search-select-field-warnings')
+    ).toBeInTheDocument();
+  });
   describe('when there is a custom warning', () => {
     it('should render the custom warning message', () => {
       const { getByText } = renderSearchSelectField({

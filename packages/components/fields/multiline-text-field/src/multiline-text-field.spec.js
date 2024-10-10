@@ -165,6 +165,22 @@ describe('when showing an info button', () => {
 });
 
 describe('when field is touched and has errors', () => {
+  it('should render an id for the error container that is based on the component id', () => {
+    const { container } = renderMultilineTextField({
+      touched: true,
+      errors: { missing: true },
+    });
+    expect(container.querySelector('#text-field-errors')).toBeInTheDocument();
+  });
+  it('should set the aria-errormessage value to the id of the error container', () => {
+    const { getAllByRole } = renderMultilineTextField({
+      touched: true,
+      errors: { missing: true },
+    });
+    getAllByRole('textbox').forEach((input) => {
+      expect(input).toHaveAccessibleErrorMessage(/field is required/i);
+    });
+  });
   describe('when field empty', () => {
     it('should render a default error', () => {
       const { getByText } = renderMultilineTextField({
@@ -187,6 +203,14 @@ describe('when field is touched and has errors', () => {
 });
 
 describe('when field is touched and has warnings', () => {
+  it('should render an id for the warning container that is based on the component id', () => {
+    const { container } = renderMultilineTextField({
+      touched: true,
+      warnings: { customWarning: true },
+      renderWarning: () => 'Custom warning',
+    });
+    expect(container.querySelector('#text-field-warnings')).toBeInTheDocument();
+  });
   describe('when there is a custom warning', () => {
     it('should render the custom warning message', () => {
       const { getByText } = renderMultilineTextField({

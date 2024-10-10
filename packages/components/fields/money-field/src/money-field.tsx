@@ -35,8 +35,6 @@ type TTouched = {
 };
 
 const sequentialId = createSequentialId('money-field-');
-const sequentialErrorsId = createSequentialId('money-field-error-')();
-const sequentialWarningsId = createSequentialId('money-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -284,6 +282,9 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
       );
     }
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -317,17 +318,17 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
             menuShouldBlockScroll={this.props.menuShouldBlockScroll}
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
             isCurrencyInputDisabled={this.props.isCurrencyInputDisabled}
           />
           <FieldErrors
-            id={sequentialErrorsId}
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

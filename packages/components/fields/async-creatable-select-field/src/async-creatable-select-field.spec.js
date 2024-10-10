@@ -209,6 +209,25 @@ describe('when showing an info button', () => {
 });
 
 describe('when field is touched and has errors', () => {
+  it('should render an id for the error container that is based on the component id', async () => {
+    const { container, findByText } = renderAsyncCreatableSelectField({
+      touched: true,
+      errors: { missing: true },
+    });
+    await findByText(/field is required/i);
+    expect(
+      container.querySelector('#async-creatable-select-field-errors')
+    ).toBeInTheDocument();
+  });
+  it('should set the aria-errormessage value to the id of the error container', async () => {
+    const { findByRole } = renderAsyncCreatableSelectField({
+      touched: true,
+      errors: { missing: true },
+    });
+    expect(await findByRole('combobox')).toHaveAccessibleErrorMessage(
+      /field is required/i
+    );
+  });
   describe('when field empty', () => {
     it('should render a default error', async () => {
       const { findByText } = renderAsyncCreatableSelectField({
@@ -231,6 +250,17 @@ describe('when field is touched and has errors', () => {
 });
 
 describe('when field is touched and has warnings', () => {
+  it('should render an id for the warning container that is based on the component id', async () => {
+    const { container, findByText } = renderAsyncCreatableSelectField({
+      touched: true,
+      warnings: { customWarning: true },
+      renderWarning: () => 'Custom warning',
+    });
+    await findByText('Custom warning');
+    expect(
+      container.querySelector('#async-creatable-select-field-warnings')
+    ).toBeInTheDocument();
+  });
   describe('when there is a custom warning', () => {
     it('should render the custom warning message', async () => {
       const { findByText } = renderAsyncCreatableSelectField({

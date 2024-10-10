@@ -21,8 +21,6 @@ import FieldWarnings from '@commercetools-uikit/field-warnings';
 import { AdditionalInfoMessage } from '@commercetools-uikit/messages';
 
 const sequentialId = createSequentialId('text-field-');
-const sequentialErrorsId = createSequentialId('text-field-error-')();
-const sequentialWarningsId = createSequentialId('text-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -228,6 +226,9 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Stack scale="xs">
@@ -261,19 +262,19 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
             {...filterDataAttributes(this.props)}
             /* ARIA */
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
           />
           {this.props.additionalInfo && (
             <AdditionalInfoMessage message={this.props.additionalInfo} />
           )}
           <FieldErrors
-            id={sequentialErrorsId}
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}
