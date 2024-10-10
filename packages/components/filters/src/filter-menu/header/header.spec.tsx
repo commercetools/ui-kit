@@ -1,59 +1,46 @@
 import { render, screen, fireEvent } from '../../../../../../test/test-utils';
 import Header from './header';
 
-const operatorOptions = [
-  { value: 'is', label: 'IS' },
-  { value: 'isNot', label: 'IS NOT' },
-];
+const renderOperatorsInput = () => {
+  return <>select Input</>;
+};
 
-const FilterSetup = () => (
+const HeaderSetup = () => (
   <Header
     headerLabel="Filter Label"
-    operatorOptions={operatorOptions}
-    onSelectOperand={jest.fn()}
     onSort={jest.fn()}
-    renderOperatorsInput={() => {}}
+    renderOperatorsInput={renderOperatorsInput}
   />
 );
 
 describe('FilterMenu Header', () => {
   it('should render the header label', async () => {
-    render(<FilterSetup />);
+    render(<HeaderSetup />);
 
     expect(screen.getByText('Filter Label')).toBeInTheDocument();
   });
 
-  it('should conditionally render the SelectInput when renderOperatorsInput are provided', async () => {
-    render(<FilterSetup />);
+  it('should conditionally render the component returned when renderOperatorsInput are provided', async () => {
+    render(<HeaderSetup />);
 
-    expect(screen.getByRole('combobox')).toBeInTheDocument();
+    expect(screen.getByText('select Input')).toBeInTheDocument();
   });
 
-  it('should not render SelectInput when renderOperatorsInput are not provided', () => {
-    render(
-      <Header
-        headerLabel="Filter Label"
-        onSelectOperand={jest.fn()}
-        onSort={jest.fn()}
-      />
-    );
+  it('should not render component when renderOperatorsInput are not provided', () => {
+    render(<Header headerLabel="Filter Label" onSort={jest.fn()} />);
 
-    expect(screen.queryByRole('combobox')).not.toBeInTheDocument();
+    expect(screen.queryByText('select Input')).not.toBeInTheDocument();
   });
 
   it('should conditionally render the IconButton when onSort is provided', async () => {
-    render(<FilterSetup />);
+    render(<HeaderSetup />);
 
     expect(screen.getByLabelText('Sort')).toBeInTheDocument();
   });
 
   it('should not render IconButton when onSort is not provided', () => {
     render(
-      <Header
-        headerLabel="Filter Label"
-        onSelectOperand={jest.fn()}
-        operatorOptions={operatorOptions}
-      />
+      <Header headerLabel="Filter Label" renderOperatorsInput={jest.fn()} />
     );
 
     expect(screen.queryByLabelText('Sort')).not.toBeInTheDocument();
@@ -64,8 +51,7 @@ describe('FilterMenu Header', () => {
     render(
       <Header
         headerLabel="Filter Label"
-        operatorOptions={operatorOptions}
-        onSelectOperand={jest.fn()}
+        renderOperatorsInput={jest.fn()}
         onSort={onSortMock}
       />
     );

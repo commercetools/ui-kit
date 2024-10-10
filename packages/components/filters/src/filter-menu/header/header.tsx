@@ -1,23 +1,27 @@
-import SelectInput from '@commercetools-uikit/select-input';
+import { useState, ReactNode } from 'react';
 import IconButton from '@commercetools-uikit/icon-button';
 import Spacings from '@commercetools-uikit/spacings';
 import { SortingIcon } from '@commercetools-uikit/icons';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
-import { useState } from 'react';
-
-type TOption = {
-  value: string;
-  label: string;
-};
 
 type THeaderProps = {
+  /**
+   * the label of the header
+   */
   headerLabel: string;
-  operatorOptions?: Array<TOption>;
-  onSelectOperand: (value: string) => void;
+  /**
+   * the function to render the operator input
+   */
+  renderOperatorsInput?: () => ReactNode;
+  /**
+   * the function to sort the data
+   */
   onSort?: () => void;
+  /**
+   * the width of the menu header
+   */
   menuHeaderWidth?: string;
-  renderOperatorsInput?: () => void;
 };
 
 const headerContainerStyles = css`
@@ -33,7 +37,6 @@ const getSelectInputStyles = (props: THeaderProps) => css`
 `;
 
 const Header = (props: THeaderProps) => {
-  const [headerSelectOptions, setHeaderSelectOptions] = useState<string>();
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -42,24 +45,9 @@ const Header = (props: THeaderProps) => {
         <div>{props.headerLabel}</div>
         {props.renderOperatorsInput && (
           <div css={getSelectInputStyles(props)}>
-            <SelectInput
-              appearance="quiet"
-              value={
-                headerSelectOptions
-                  ? headerSelectOptions
-                  : props?.operatorOptions && props.operatorOptions[0].value
-              }
-              isCondensed={true}
-              isSearchable={false}
-              options={props.operatorOptions}
-              onChange={(event) => {
-                setHeaderSelectOptions(event.target.value as string);
-                props.onSelectOperand(event.target.value as string);
-              }}
-            />
+            {props.renderOperatorsInput()}
           </div>
         )}
-
         {props.onSort && (
           <IconButton
             size="20"
