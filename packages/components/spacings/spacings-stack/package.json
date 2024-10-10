@@ -27,9 +27,9 @@
     "prop-types": "15.8.1"
   },
   "devDependencies": {
-    "react": "17.0.2"
+    "react": "18.3.1"
   },
   "peerDependencies": {
-    "react": "17.x"
+    "react": "18.x"
   }
 }
