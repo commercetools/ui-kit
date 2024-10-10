@@ -1,5 +1,18 @@
 # @commercetools-uikit/data-table
 
+## 19.13.0
+
+### Patch Changes
+
+- Updated dependencies [[`38c2dfe`](https://github.com/commercetools/ui-kit/commit/38c2dfede044d44a89c35808cee4f4c8df01d618), [`68723be`](https://github.com/commercetools/ui-kit/commit/68723bed55886ace5d560f84317560bd53878a61)]:
+  - @commercetools-uikit/data-table-manager@19.13.0
+  - @commercetools-uikit/design-system@19.13.0
+  - @commercetools-uikit/accessible-button@19.13.0
+  - @commercetools-uikit/secondary-icon-button@19.13.0
+  - @commercetools-uikit/icons@19.13.0
+  - @commercetools-uikit/hooks@19.13.0
+  - @commercetools-uikit/utils@19.13.0
+
 ## 19.12.1
 
 ### Patch Changes
