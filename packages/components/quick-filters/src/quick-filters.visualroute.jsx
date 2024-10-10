@@ -5,10 +5,10 @@ export const routePath = '/quick-filters';
 
 export const component = () => (
   <Suite>
-    <Spec label="Renders ">
+    <Spec label="Renders an active + inactive item">
       <QuickFilters
-        items={
-          ({
+        items={[
+          {
             id: '1',
             label: 'Accepted',
             isActive: true,
@@ -17,8 +17,8 @@ export const component = () => (
             id: '2',
             label: 'Rejected',
             isActive: false,
-          })
-        }
+          },
+        ]}
         onItemClick={() => {}}
       />
     </Spec>
