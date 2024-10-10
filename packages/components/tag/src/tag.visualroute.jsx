@@ -228,10 +228,12 @@ export const component = () => (
         </TagList>
       </Constraints.Horizontal>
     </Spec>
-    <Spec label="Tag: available 'tones'">
-      <Tag tone="primary">primary tone</Tag>
-      <Tag tone="warning">warning tone</Tag>
-      <Tag tone="surface">surface tone</Tag>
+    <Spec label="Tag: available 'tones'" propsToList={[]}>
+      <div>
+        <Tag tone="primary">primary tone</Tag>
+        <Tag tone="warning">warning tone</Tag>
+        <Tag tone="surface">surface tone</Tag>
+      </div>
     </Spec>
   </Suite>
 );
