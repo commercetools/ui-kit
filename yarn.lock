@@ -2335,7 +2335,7 @@ __metadata:
   dependencies:
     "@manypkg/find-root": 1.1.0
     "@manypkg/get-packages": 1.1.3
-    "@types/node": 18.19.54
+    "@types/node": 20.16.11
     cac: 6.7.14
     omit-empty-es: 1.2.0
     prettier: 2.8.8
@@ -2358,7 +2358,7 @@ __metadata:
     "@types/listr": 0.14.9
     "@types/lodash": 4.17.10
     "@types/mdast": 3.0.15
-    "@types/node": 18.19.54
+    "@types/node": 20.16.11
     "@types/shelljs": 0.8.15
     "@types/unist": 3.0.3
     "@types/vfile": 4.0.0
@@ -8665,12 +8665,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.19.54":
-  version: 18.19.54
-  resolution: "@types/node@npm:18.19.54"
+"@types/node@npm:20.16.11":
+  version: 20.16.11
+  resolution: "@types/node@npm:20.16.11"
   dependencies:
-    undici-types: ~5.26.4
-  checksum: d85bacc7430c2913bcd2cf293f312bc1f9108819707ac25b58404185c3b8f9ca9e3e93c396672f457c18e65f5ba86cc8363803f830207c6b7dd14fd74e1455b0
+    undici-types: ~6.19.2
+  checksum: 68a239e4cff66972c990a89faa052da27d17d9f8d3ee324e9e5899323feaf229b475c1969ae9e189d0c499736fc04e9f20f480613d16b93ce249518dc32707a0
   languageName: node
   linkType: hard
 
@@ -23557,7 +23557,7 @@ __metadata:
     "@testing-library/react": 12.1.5
     "@testing-library/react-hooks": 8.0.1
     "@types/is-hotkey": ^0.1.7
-    "@types/node": 18.19.54
+    "@types/node": 20.16.11
     "@types/prettier": ^2.7.3
     "@typescript-eslint/eslint-plugin": 8.8.0
     "@typescript-eslint/parser": 8.8.0
@@ -23662,6 +23662,13 @@ __metadata:
   version: 6.13.0
   resolution: "undici-types@npm:6.13.0"
   checksum: 9d0ef6bf58994bebbea6a4ab75f381c69a89a7ed151bfbae0d4ef95450d56502c9eccb323abf17b7d099c1d9c1cbae62e909e4dfeb8d204612d2f1fdada24707
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.19.2":
+  version: 6.19.8
+  resolution: "undici-types@npm:6.19.8"
+  checksum: de51f1b447d22571cf155dfe14ff6d12c5bdaec237c765085b439c38ca8518fc360e88c70f99469162bf2e14188a7b0bcb06e1ed2dc031042b984b0bb9544017
   languageName: node
   linkType: hard
 
