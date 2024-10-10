@@ -9,9 +9,13 @@ export type TFiltersProps = {
 
 function Filters(props: TFiltersProps) {
   return (
-    <div style={{ display: 'flex', gap: designTokens.spacing20 }}>
-      <div>{props.label}</div>
-      <div style={{ display: 'flex', gap: designTokens.spacing20 }}></div>
+    <div
+      style={{
+        display: 'flex',
+        gap: designTokens.spacing40,
+      }}
+    >
+      {props.label && <span>{props.label}</span>}
     </div>
   );
 }
