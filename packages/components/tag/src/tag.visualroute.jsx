@@ -199,9 +199,7 @@ export const component = () => (
         {longText}
       </Tag>
     </Spec>
-    <Spec
-      label="Tag list - with remove"
-    >
+    <Spec label="Tag list - with remove">
       <TagList>
         {examplesLong.map((tag, index) => (
           <Tag type="normal" to="foo/bar" onRemove={() => {}} key={index}>
@@ -210,9 +208,7 @@ export const component = () => (
         ))}
       </TagList>
     </Spec>
-    <Spec
-      label="Tag list - no remove"
-    >
+    <Spec label="Tag list - no remove">
       <TagList>
         {examplesLong.map((tag, index) => (
           <Tag type="normal" to="foo/bar" key={index}>
@@ -221,9 +217,7 @@ export const component = () => (
         ))}
       </TagList>
     </Spec>
-    <Spec
-      label="Tag list - multi rows"
-    >
+    <Spec label="Tag list - multi rows">
       <Constraints.Horizontal max={5}>
         <TagList>
           {examplesLong.map((tag, index) => (
@@ -233,6 +227,13 @@ export const component = () => (
           ))}
         </TagList>
       </Constraints.Horizontal>
+    </Spec>
+    <Spec label="Tag: available 'tones'" propsToList={[]}>
+      <div>
+        <Tag tone="primary">primary tone</Tag>
+        <Tag tone="warning">warning tone</Tag>
+        <Tag tone="surface">surface tone</Tag>
+      </div>
     </Spec>
   </Suite>
 );

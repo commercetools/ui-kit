@@ -1,12 +1,12 @@
 import percySnapshot from '@percy/puppeteer';
-import { getDocument, queries } from 'pptr-testing-library';
 
-describe('FiltersList', () => {
+describe('QuickFilters', () => {
   beforeAll(async () => {
     await page.goto(`${globalThis.HOST}/quick-filters`);
   });
 
-  it.skip('Default', async () => {
-    // THIS IS A STUB
+  it('Default', async () => {
+    await page.waitForSelector('text/Renders an active + inactive item');
+    await percySnapshot(page, 'QuickFilters');
   });
 });
