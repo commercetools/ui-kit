@@ -1,5 +1,16 @@
 # @commercetools-uikit/select-input
 
+## 19.13.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.13.0
+  - @commercetools-uikit/constraints@19.13.0
+  - @commercetools-uikit/icons@19.13.0
+  - @commercetools-uikit/select-utils@19.13.0
+  - @commercetools-uikit/utils@19.13.0
+
 ## 19.12.1
 
 ### Patch Changes
