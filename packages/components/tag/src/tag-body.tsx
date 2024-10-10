@@ -1,17 +1,15 @@
 import type { TTagProps } from './tag';
 
-import { ReactNode } from 'react';
+import { ElementType, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { Link } from 'react-router-dom';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { DragIcon } from '@commercetools-uikit/icons';
 
 export type TTagBodyProps = {
   to?: TTagProps['to'];
-  as?: typeof Link;
-  type?: TTagProps['type'];
+  as?: ElementType;
   onClick?: TTagProps['onClick'];
   onRemove?: TTagProps['onRemove'];
   isDisabled?: boolean;
@@ -20,8 +18,7 @@ export type TTagBodyProps = {
   styles?: TTagProps['styles'];
 };
 
-const defaultProps: Pick<TTagProps, 'type' | 'isDisabled' | 'isDraggable'> = {
-  type: 'normal',
+const defaultProps: Pick<TTagProps, 'isDisabled' | 'isDraggable'> = {
   isDisabled: false,
   isDraggable: false,
 };
@@ -36,6 +33,7 @@ const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
 
 const getContentWrapperStyles = (props: TTagBodyProps) => {
   return css`
+    all: unset;
     position: relative;
     display: flex;
     align-items: center;

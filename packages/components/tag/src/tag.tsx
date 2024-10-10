@@ -1,5 +1,5 @@
 import type { LocationDescriptor } from 'history';
-import { ReactNode, MouseEvent, KeyboardEvent } from 'react';
+import { ReactNode, MouseEvent, KeyboardEvent, ElementType } from 'react';
 import { css, type SerializedStyles } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -84,8 +84,21 @@ const defaultProps: Pick<
 };
 
 const Tag = (props: TTagProps) => {
-  const linkProps =
-    props.to && !props.isDisabled ? { as: Link, to: props.to } : {};
+  let tagBodyProps;
+
+  switch (true) {
+    case props.isDisabled:
+      tagBodyProps = {};
+      break;
+    case Boolean(props.to):
+      tagBodyProps = { as: Link, to: props.to };
+      break;
+    case Boolean(props.onClick):
+      tagBodyProps = { as: 'button' as ElementType };
+      break;
+    default:
+      tagBodyProps = {};
+  }
 
   const isInteractive =
     !props.isDisabled && (Boolean(props.onClick) || Boolean(props.to));
@@ -106,12 +119,16 @@ const Tag = (props: TTagProps) => {
           border-width: 1px;
           user-select: none;
           ${getToneStyles(props)};
+
+          &:focus-within {
+            outline: ${designTokens.borderWidth2} solid
+              ${designTokens.colorPrimary40};
+          }
         `}
       >
         <TagBody
-          {...linkProps}
+          {...tagBodyProps}
           styles={props.styles}
-          type={props.type}
           onClick={props.onClick}
           onRemove={props.onRemove}
           isDisabled={props.isDisabled}
@@ -127,12 +144,20 @@ const Tag = (props: TTagProps) => {
             onClick={props.onRemove}
             css={[
               css`
-                padding: 0 ${designTokens.spacing25};
-                display: flex;
                 align-items: center;
+                border-radius: ${designTokens.borderRadius20};
+                display: flex;
                 fill: ${designTokens.colorNeutral40};
+                padding: 0 ${designTokens.spacing25};
+
                 &:disabled {
                   fill: ${designTokens.colorNeutral60};
+                }
+
+                &:focus-visible {
+                  outline: ${designTokens.borderWidth2} solid
+                    ${designTokens.colorPrimary40};
+                  outline-offset: calc(-1 * ${designTokens.borderWidth2});
                 }
               `,
             ]}
