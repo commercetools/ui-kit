@@ -113,7 +113,7 @@ const Tag = (props: TTagProps) => {
           box-sizing: border-box;
           cursor: ${isInteractive ? 'pointer' : 'default'};
           min-width: 0;
-          display: inline-flex;
+          display: flex;
           border-radius: ${designTokens.borderRadius20};
           border-style: solid;
           border-width: 1px;
