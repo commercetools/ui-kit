@@ -37,8 +37,9 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     position: relative;
     display: flex;
     align-items: center;
-    padding-top: ${designTokens.spacing05};
-    padding-bottom: ${designTokens.spacing05};
+    gap: ${designTokens.spacing20};
+    padding-top: ${designTokens.spacing10};
+    padding-bottom: ${designTokens.spacing10};
     padding-left: ${designTokens.spacing25};
     padding-right: ${!props.isDisabled && props.onRemove
       ? '0'
@@ -75,9 +76,6 @@ const TagBody = (props: TTagBodyProps) => {
       to={props.to}
       as={props.as}
       css={[
-        css`
-          gap: ${designTokens.spacing25};
-        `,
         getContentWrapperStyles(props),
         !props.isDisabled &&
           Boolean(props.onClick) &&
@@ -93,9 +91,9 @@ const TagBody = (props: TTagBodyProps) => {
       {props.isDraggable && !props.isDisabled ? (
         <DragIcon data-testid="drag-icon" size="medium" />
       ) : null}
-      <Text.Body tone={textTone} as="span">
+      <Text.Detail tone={textTone} as="span">
         {props.children}
-      </Text.Body>
+      </Text.Detail>
     </Body>
   );
 };
