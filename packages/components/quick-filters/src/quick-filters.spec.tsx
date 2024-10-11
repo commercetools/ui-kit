@@ -8,9 +8,9 @@ describe('QuickFilters', () => {
       { id: '2', label: 'Bar', isActive: false },
     ];
 
-    const cb = jest.fn();
+    const handleItemClick = jest.fn();
 
-    await render(<QuickFilters items={items} onItemClick={cb} />);
+    await render(<QuickFilters items={items} onItemClick={handleItemClick} />);
 
     const button1 = (await screen.findByText('Foo')).closest('button');
     const button2 = (await screen.findByText('Bar')).closest('button');
@@ -19,8 +19,8 @@ describe('QuickFilters', () => {
     expect(button2).toBeInTheDocument();
 
     button2?.click();
-    expect(cb).toHaveBeenCalledWith(items[1]);
+    expect(handleItemClick).toHaveBeenCalledWith(items[1]);
     button1?.click();
-    expect(cb).toHaveBeenCalledWith(items[0]);
+    expect(handleItemClick).toHaveBeenCalledWith(items[0]);
   });
 });
