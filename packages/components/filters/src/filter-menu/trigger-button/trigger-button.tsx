@@ -55,9 +55,10 @@ function useIsOverflowing(
       let hiddenCount = 0;
       entries.forEach((entry) => {
         if (entry.intersectionRatio < 1) {
+          // if the ratio is less than 1, part of the element is hidden, so increment count
           ++hiddenCount;
         }
-        observerRef.current!.unobserve(entry.target);
+        observerRef.current!.unobserve(entry.target); // no need to observe again til the rendered values are updated
       });
       if (hiddenCount > 0) {
         setHiddenCount(hiddenCount);
@@ -80,8 +81,9 @@ function useIsOverflowing(
       observerRef.current?.disconnect();
     };
     // won't call IntersectionObserver callback on initial mount without observerRef.current
+    // won't update the observers without listening to changes in values
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [observerRef.current, refs, values]); // Let the triggers fire the effect too on changes
+  }, [observerRef.current, refs.current, values]); // Let the triggers fire the effect too on changes
 
   return { hiddenCount, isOverflowing };
 }
@@ -102,7 +104,7 @@ const TriggerButton = forwardRef(function TriggerButton(
   const values = appliedFilterValues || [];
   const filtersApplied: boolean = values.length > 0;
 
-  const chipsRef = useRef<Map<number, HTMLElement>>(new Map());
+  const chipsRef = useRef<Map<number, HTMLElement>>(new Map()); //set a map of callback refs for each element that might be hidden
 
   const { hiddenCount, isOverflowing } = useIsOverflowing(chipsRef, values);
 
