@@ -111,7 +111,11 @@ const Tag = (props: TTagProps) => {
             text-decoration: none;
           }
           box-sizing: border-box;
-          cursor: ${isInteractive ? 'pointer' : 'default'};
+          cursor: ${props.isDisabled
+            ? 'not-allowed'
+            : isInteractive
+            ? 'pointer'
+            : 'default'};
           min-width: 0;
           display: flex;
           border-radius: ${designTokens.borderRadius20};
