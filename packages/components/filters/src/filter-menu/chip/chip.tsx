@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { type LegacyRef, type ReactNode, forwardRef } from 'react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 
@@ -30,12 +30,15 @@ const disabledChipStyles = css`
   background-color: ${designTokens.colorNeutral90};
 `;
 
-function Chip(props: TFilterMenuChipProps) {
+const Chip = forwardRef(function Chip(
+  props: TFilterMenuChipProps,
+  ref: LegacyRef<HTMLLIElement>
+) {
   return (
-    <li css={[chipStyles, props.isDisabled && disabledChipStyles]}>
+    <li ref={ref} css={[chipStyles, props.isDisabled && disabledChipStyles]}>
       {props.label}
     </li>
   );
-}
+});
 
 export default Chip;

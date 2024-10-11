@@ -2,9 +2,9 @@ import {
   type ReactNode,
   forwardRef,
   type LegacyRef,
-  type RefObject,
-  useEffect,
+  type MutableRefObject,
   useLayoutEffect,
+  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -14,72 +14,6 @@ import { type TAppliedFilterValue } from '../filter-menu';
 import * as styles from './trigger-button.styles';
 import { Badge } from '../../badge';
 import { Chip } from '../chip';
-
-type TVisibleHiddenCount = number | undefined;
-
-const useScrollObserver = (ref: RefObject<HTMLElement>, totalCount: number) => {
-  const [isOverflowing, setIsOverflowing] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(0);
-  const numRef = useRef(totalCount); // Store the current num value in a ref
-
-  useEffect(() => {
-    numRef.current = totalCount; // Update the ref whenever num changes
-  }, [totalCount]);
-
-  useLayoutEffect(() => {
-    if (isOverflowing) {
-      let counts;
-      setTimeout(() => {
-        const node = ref.current;
-        const { clientWidth, children } = node!;
-        let widthOfAllChildren = 0;
-        counts = Array.from(children).reduce<TVisibleHiddenCount>(
-          (acc, child, idx) => {
-            const { width } = child.getBoundingClientRect();
-            widthOfAllChildren = widthOfAllChildren += width;
-            console.log(width);
-            if (widthOfAllChildren <= clientWidth) {
-              console.log(idx);
-              acc = idx + 1;
-            }
-            return acc;
-          },
-          0
-        );
-        console.log(counts);
-        setVisibleCount(counts ? counts : 0);
-      }, 100);
-    } else {
-      setVisibleCount(0);
-    }
-  }, [isOverflowing, ref]);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const checkOverflow = () => {
-      const { clientWidth, scrollWidth } = node;
-      setIsOverflowing(scrollWidth > clientWidth);
-    };
-
-    checkOverflow();
-
-    // Observe size changes
-    const resizeObserver = new ResizeObserver(() => checkOverflow());
-
-    resizeObserver.observe(node);
-
-    // Clean up observer on unmount
-    return () => {
-      resizeObserver.unobserve(node);
-    };
-    // doesn't work without ref.current
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref, ref.current]);
-  console.log(visibleCount);
-  return { isOverflowing, overflowCount: totalCount - visibleCount + 1 };
-};
 
 export type TFilterMenuTriggerButtonProps = {
   /**
@@ -108,6 +42,50 @@ export type TFilterMenuTriggerButtonProps = {
   onRemoveRequest?: Function;
 };
 
+function useIsOverflowing(
+  refs: MutableRefObject<Map<number, HTMLElement>>,
+  values: TAppliedFilterValue[]
+) {
+  const [hiddenCount, setHiddenCount] = useState(0);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver((entries) => {
+      let hiddenCount = 0;
+      entries.forEach((entry) => {
+        if (entry.intersectionRatio < 1) {
+          ++hiddenCount;
+        }
+        observerRef.current!.unobserve(entry.target);
+      });
+      if (hiddenCount > 0) {
+        setHiddenCount(hiddenCount);
+        setIsOverflowing(true);
+      } else {
+        setIsOverflowing(false);
+      }
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    refs.current?.forEach((chip) => {
+      const node = chip;
+      if (!!observerRef.current && !!node) {
+        observerRef.current.observe(node);
+      }
+    });
+
+    return () => {
+      observerRef.current?.disconnect();
+    };
+    // won't call IntersectionObserver callback on initial mount without observerRef.current
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [observerRef.current, refs, values]); // Let the triggers fire the effect too on changes
+
+  return { hiddenCount, isOverflowing };
+}
+
 const TriggerButton = forwardRef(function TriggerButton(
   props: TFilterMenuTriggerButtonProps,
   ref: LegacyRef<HTMLButtonElement>
@@ -124,33 +102,39 @@ const TriggerButton = forwardRef(function TriggerButton(
   const values = appliedFilterValues || [];
   const filtersApplied: boolean = values.length > 0;
 
-  const appliedValuesContainer = useRef<HTMLUListElement>(null);
-  const { isOverflowing, overflowCount } = useScrollObserver(
-    appliedValuesContainer,
-    values.length
-  );
+  const chipsRef = useRef<Map<number, HTMLElement>>(new Map());
+
+  const { hiddenCount, isOverflowing } = useIsOverflowing(chipsRef, values);
 
   return (
     <div css={[styles.triggerWrapper, isDisabled && styles.disabled]}>
       <label css={styles.label} htmlFor={`${filterKey}-menu-trigger`}>
         {label}:
       </label>
-      {/** THESE CONTAINERS ARE FOR THE NEXT PR, when the `Chip` and `Badge` are merged */}
+
       {filtersApplied && (
-        <ul ref={appliedValuesContainer} css={styles.valuesContainer}>
-          {values.map((value) => (
-            <Chip key={value.value} label={value.label} />
+        <ul css={styles.valuesContainer}>
+          {values.map((value, idx) => (
+            <Chip
+              key={value.value}
+              label={value.label}
+              ref={(el) =>
+                el
+                  ? chipsRef.current.set(idx, el)
+                  : chipsRef.current.delete(idx)
+              }
+            />
           ))}
           {isOverflowing && (
-            <span
+            <li
               className="ui-kit-filter-trigger-badge-container"
               css={styles.badgeContainer}
             >
               <Badge
                 id="ui-kit-filter-triger-badge"
-                label={`+${overflowCount}`}
+                label={`+${hiddenCount}`}
               />
-            </span>
+            </li>
           )}
         </ul>
       )}
