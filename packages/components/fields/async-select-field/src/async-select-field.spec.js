@@ -191,6 +191,27 @@ describe('when showing an info button', () => {
 });
 
 describe('when field is touched and has errors', () => {
+  it('should render an id for the error container that is based on the component id', async () => {
+    const { container, findByText } = renderAsyncSelectField({
+      touched: true,
+      errors: { custom: true },
+      renderError: () => 'Custom error',
+    });
+    await findByText(/custom error/i);
+    expect(
+      container.querySelector('#async-select-field-errors')
+    ).toBeInTheDocument();
+  });
+  it('should set the aria-errormessage value to the id of the error container', async () => {
+    const { findByRole } = renderAsyncSelectField({
+      touched: true,
+      errors: { custom: true },
+      renderError: () => 'Custom error',
+    });
+    expect(await findByRole('combobox')).toHaveAccessibleErrorMessage(
+      /Custom Error/i
+    );
+  });
   describe('when field empty', () => {
     it('should render a default error', async () => {
       const { findByText } = renderAsyncSelectField({
@@ -213,6 +234,17 @@ describe('when field is touched and has errors', () => {
 });
 
 describe('when field is touched and has warnings', () => {
+  it('should render an id for the warning container that is based on the component id', async () => {
+    const { container, findByText } = renderAsyncSelectField({
+      touched: true,
+      warnings: { customWarning: true },
+      renderWarning: () => 'Custom warning',
+    });
+    await findByText('Custom warning');
+    expect(
+      container.querySelector('#async-select-field-warnings')
+    ).toBeInTheDocument();
+  });
   describe('when there is a custom warning', () => {
     it('should render the custom warning message', async () => {
       const { findByText } = renderAsyncSelectField({

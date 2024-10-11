@@ -204,10 +204,6 @@ export type TLocalizedTextFieldProps = {
 type TLocalizedTextFieldSTate = Pick<TLocalizedTextFieldProps, 'id'>;
 
 const sequentialId = createSequentialId('localized-text-field-');
-const sequentialErrorsId = createSequentialId('localized-text-field-error-')();
-const sequentialWarningsId = createSequentialId(
-  'localized-text-field-warning-'
-)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -268,6 +264,9 @@ class LocalizedTextField extends Component<
       );
     }
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -305,19 +304,19 @@ class LocalizedTextField extends Component<
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
             additionalInfo={
               this.props.additionalInfo && this.props.additionalInfo
             }
           />
           <FieldErrors
-            id={sequentialErrorsId}
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

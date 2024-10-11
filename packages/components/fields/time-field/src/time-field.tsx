@@ -190,8 +190,6 @@ export type TTimeFieldProps = {
 type TTimeFieldState = Pick<TTimeFieldProps, 'id'>;
 
 const sequentialId = createSequentialId('time-field-');
-const sequentialErrorsId = createSequentialId('time-field-error-')();
-const sequentialWarningsId = createSequentialId('time-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -248,6 +246,9 @@ class TimeField extends Component<TTimeFieldProps, TTimeFieldState> {
       );
     }
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Stack scale="xs">
@@ -280,15 +281,16 @@ class TimeField extends Component<TTimeFieldProps, TTimeFieldState> {
             {...filterDataAttributes(this.props)}
             /* ARIA */
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
           />
           <FieldErrors
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

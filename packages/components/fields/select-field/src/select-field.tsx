@@ -309,8 +309,6 @@ export type TSelectFieldProps = {
 type TFieldState = Pick<TSelectFieldProps, 'id'>;
 
 const sequentialId = createSequentialId('select-field-');
-const sequentialErrorsId = createSequentialId('select-field-error-')();
-const sequentialWarningsId = createSequentialId('select-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -380,6 +378,9 @@ export default class SelectField extends Component<TSelectFieldProps> {
       );
     }
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -435,15 +436,16 @@ export default class SelectField extends Component<TSelectFieldProps> {
             controlShouldRenderValue={this.props.controlShouldRenderValue}
             /* ARIA */
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
           />
           <FieldErrors
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

@@ -35,7 +35,7 @@ const FieldWarnings = (props: TFieldWarningsProps) => {
   if (!props.warnings || !isObject(props.warnings)) return null;
 
   return (
-    <>
+    <div id={props.id} role="status">
       {Object.entries(props.warnings)
         // Only render warnings which have truthy values, to avoid
         // rendering a warning that has falsy values.
@@ -49,11 +49,7 @@ const FieldWarnings = (props: TFieldWarningsProps) => {
           // Render a custom warning if one was provided.
           // Custom warnings take precedence over the default warnings
           if (warningElement)
-            return (
-              <WarningMessage key={key} id={props.id}>
-                {warningElement}
-              </WarningMessage>
-            );
+            return <WarningMessage key={key}>{warningElement}</WarningMessage>;
 
           const defaultWarningElement = props.renderDefaultWarning
             ? props.renderDefaultWarning(key, warning)
@@ -62,15 +58,13 @@ const FieldWarnings = (props: TFieldWarningsProps) => {
           // Default warnings take precedence over the known warnings
           if (defaultWarningElement)
             return (
-              <WarningMessage key={key} id={props.id}>
-                {defaultWarningElement}
-              </WarningMessage>
+              <WarningMessage key={key}>{defaultWarningElement}</WarningMessage>
             );
           // Render nothing in case the warning is not known and no custom warning
           // was returned
           return null;
         })}
-    </>
+    </div>
   );
 };
 

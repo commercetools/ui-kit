@@ -11,6 +11,23 @@ describe('when not visible', () => {
 });
 
 describe('warning renderers', () => {
+  it('should set the id as an attribute of the container', () => {
+    const { container } = render(
+      <FieldWarnings
+        id="test-id"
+        warnings={{ customWarning: true }}
+        isVisible={true}
+        renderWarning={(key) =>
+          key === 'customWarning' ? 'RENDER_WARNING' : null
+        }
+        renderDefaultWarning={(key) =>
+          key === 'defaultWarning' ? 'RENDER_DEFAULT_WARNING' : null
+        }
+      />
+    );
+    expect(screen.getByRole('status')).toBeInTheDocument();
+    expect(container.querySelector('#test-id')).toBeInTheDocument();
+  });
   it('should give highest importance to renderWarning', () => {
     render(
       <FieldWarnings
