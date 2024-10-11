@@ -42,7 +42,7 @@ function QuickFilters({ items, onItemClick }: TQuickFiltersProps) {
       {items.map((item) => (
         <li key={item.id} css={listItemStyles}>
           <Tag
-            tone={item.isActive ? `primary` : 'surface'}
+            tone={item.isActive ? 'primary' : 'surface'}
             onClick={() => onItemClick(item)}
           >
             {item.label}
