@@ -16,7 +16,7 @@ type THeaderProps = {
   /**
    * the function to sort the data
    */
-  onSort?: () => void;
+  onSortRequest?: Function;
   /**
    * the width of the menu header
    */
@@ -46,7 +46,7 @@ const Header = (props: THeaderProps) => {
           {props.renderOperatorsInput()}
         </div>
       )}
-      {props.onSort && (
+      {props.onSortRequest && (
         <IconButton
           size="20"
           theme={isActive ? 'info' : 'default'}
@@ -55,7 +55,7 @@ const Header = (props: THeaderProps) => {
           isToggleButton={true}
           onClick={() => {
             setIsActive(!isActive);
-            return props.onSort && props.onSort();
+            return props.onSortRequest && props.onSortRequest();
           }}
         />
       )}

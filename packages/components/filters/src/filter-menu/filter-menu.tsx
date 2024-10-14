@@ -99,7 +99,7 @@ function FilterMenu(props: TFilterMenuProps) {
             // For storybook purposes, we are not using the actual props - will be taken off eventually.
             label="Size"
             renderOperatorsInput={props.renderOperatorsInput}
-            onSort={() => {}}
+            onSortRequest={props.onSortRequest}
             menuHeaderWidth={'100px'}
           />
           <div>{props.renderMenuBody()}</div>

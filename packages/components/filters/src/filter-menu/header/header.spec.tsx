@@ -8,7 +8,7 @@ const renderOperatorsInput = () => {
 const HeaderSetup = () => (
   <Header
     label="Filter Label"
-    onSort={jest.fn()}
+    onSortRequest={jest.fn()}
     renderOperatorsInput={renderOperatorsInput}
   />
 );
@@ -27,30 +27,30 @@ describe('FilterMenu Header', () => {
   });
 
   it('should not render component when renderOperatorsInput are not provided', () => {
-    render(<Header label="Filter Label" onSort={jest.fn()} />);
+    render(<Header label="Filter Label" onSortRequest={jest.fn()} />);
 
     expect(screen.queryByText('select Input')).not.toBeInTheDocument();
   });
 
-  it('should conditionally render the IconButton when onSort is provided', async () => {
+  it('should conditionally render the IconButton when onSortRequest is provided', async () => {
     render(<HeaderSetup />);
 
     expect(screen.getByLabelText('Sort')).toBeInTheDocument();
   });
 
-  it('should not render IconButton when onSort is not provided', () => {
+  it('should not render IconButton when onSortRequest is not provided', () => {
     render(<Header label="Filter Label" renderOperatorsInput={jest.fn()} />);
 
     expect(screen.queryByLabelText('Sort')).not.toBeInTheDocument();
   });
 
-  it('should toggle isActive and call onSort when IconButton is clicked', async () => {
-    const onSortMock = jest.fn();
+  it('should toggle isActive and call onSortRequest when IconButton is clicked', async () => {
+    const onSortRequestMock = jest.fn();
     render(
       <Header
         label="Filter Label"
         renderOperatorsInput={jest.fn()}
-        onSort={onSortMock}
+        onSortRequest={onSortRequestMock}
       />
     );
 
@@ -58,6 +58,6 @@ describe('FilterMenu Header', () => {
 
     fireEvent.click(sortButton);
 
-    expect(onSortMock).toHaveBeenCalled();
+    expect(onSortRequestMock).toHaveBeenCalled();
   });
 });
