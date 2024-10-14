@@ -119,6 +119,44 @@ describe('FilterMenu Trigger Button', () => {
       const badge = await screen.findByText(/\+/);
       expect(badge).toBeInTheDocument();
     });
+    it('should update the overflow badge when more chips are added', async () => {
+      const props = getDefaultProps({
+        appliedFilterValues: [
+          { value: 'one', label: 'one' },
+          { value: 'two', label: 'two' },
+          { value: 'three', label: 'three' },
+        ],
+      });
+      // Mock the initial container dimensions
+      Object.defineProperty(HTMLUListElement.prototype, 'clientWidth', { configurable: true, value: 537 });
+      Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', { configurable: true, value: 500 });
+      const { rerender } = render(<TriggerButton {...props} />);
+      expect(screen.queryByText(/\+/)).not.toBeInTheDocument();
+      // Update the mock to simulate an overflow after re-rendering
+      Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', { configurable: true, value: 800 });
+      // Rerender with more chips to cause overflow
+      rerender(
+        <TriggerButton
+          {...props}
+          appliedFilterValues={[
+            { value: 'one', label: 'one' },
+            { value: 'two', label: 'two' },
+            { value: 'three', label: 'three' },
+            { value: 'four', label: 'four' },
+            {
+              value: 'long-label',
+              label: 'just a realllllly reallllllllllllllyyyyyyy long label',
+            },
+            {
+              value: 'another-one',
+              label: 'another reallllyu reerealllllay longggg label',
+            },
+          ]}
+        />
+      );
+      const badge = await screen.findByText(/\+/);
+      expect(badge).toBeInTheDocument();
+    });
     it('should not display an overflow badge when all chips fit', async () => {
       const props = getDefaultProps({
         appliedFilterValues: [{ value: 'one', label: 'one' }],
