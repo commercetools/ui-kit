@@ -18,5 +18,12 @@ type Story = StoryFn<typeof Filters>;
 
 export const BasicExample: Story = () => {
   // return <Filters label={'test'} />;
-  return <FilterMenu label={'Size'} />;
+  return (
+    <FilterMenu
+      label={'Size'}
+      filterKey="filterKey"
+      // @ts-expect-error
+      renderMenuBody={<>Hello!</>}
+    />
+  );
 };
