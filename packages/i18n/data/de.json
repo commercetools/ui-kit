@@ -21,7 +21,7 @@
   },
   "UIKit.ClearAllButton.clearAllButtonLabel": {
     "developer_comment": "Label for the clear all button",
-    "string": "Clear all"
+    "string": "Alle löschen"
   },
   "UIKit.ClearButton.clearButtonLabel": {
     "developer_comment": "Label for the clear button",
@@ -61,7 +61,7 @@
   },
   "UIKit.DataTableManager.CustomSettingsManager.closeButtonLabel": {
     "developer_comment": "Label for custom settings manager close button.",
-    "string": "Close"
+    "string": "Schließen"
   },
   "UIKit.DataTableManager.DensityManager.closeButtonLabel": {
     "developer_comment": "Label for density manager close button.",
