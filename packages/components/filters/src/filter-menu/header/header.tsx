@@ -1,19 +1,14 @@
 import { useState, ReactNode } from 'react';
 import IconButton from '@commercetools-uikit/icon-button';
-import Spacings from '@commercetools-uikit/spacings';
 import { SortingIcon } from '@commercetools-uikit/icons';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 
-type TOption = {
-  value: string;
-  label: string;
-};
-
 type THeaderProps = {
-  headerLabel: ReactNode;
-  operandOptions?: Array<TOption>;
-  renderOperandsInput?: boolean;
+  /**
+   * the label of the menu header
+   */
+  label: ReactNode;
   /**
    * the function to render the operator input
    */
@@ -44,29 +39,27 @@ const Header = (props: THeaderProps) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <Spacings.Inline>
-      <div css={headerContainerStyles}>
-        <div>{props.headerLabel}</div>
-        {props.renderOperatorsInput && (
-          <div css={getSelectInputStyles(props)}>
-            {props.renderOperatorsInput()}
-          </div>
-        )}
-        {props.onSort && (
-          <IconButton
-            size="20"
-            theme={isActive ? 'info' : 'default'}
-            label="Sort"
-            icon={<SortingIcon />}
-            isToggleButton={true}
-            onClick={() => {
-              setIsActive(!isActive);
-              return props.onSort && props.onSort();
-            }}
-          />
-        )}
-      </div>
-    </Spacings.Inline>
+    <div css={headerContainerStyles}>
+      <div>{props.label}</div>
+      {props.renderOperatorsInput && (
+        <div css={getSelectInputStyles(props)}>
+          {props.renderOperatorsInput()}
+        </div>
+      )}
+      {props.onSort && (
+        <IconButton
+          size="20"
+          theme={isActive ? 'info' : 'default'}
+          label="Sort"
+          icon={<SortingIcon />}
+          isToggleButton={true}
+          onClick={() => {
+            setIsActive(!isActive);
+            return props.onSort && props.onSort();
+          }}
+        />
+      )}
+    </div>
   );
 };
 

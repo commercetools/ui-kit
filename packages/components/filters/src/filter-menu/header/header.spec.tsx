@@ -7,7 +7,7 @@ const renderOperatorsInput = () => {
 
 const HeaderSetup = () => (
   <Header
-    headerLabel="Filter Label"
+    label="Filter Label"
     onSort={jest.fn()}
     renderOperatorsInput={renderOperatorsInput}
   />
@@ -27,7 +27,7 @@ describe('FilterMenu Header', () => {
   });
 
   it('should not render component when renderOperatorsInput are not provided', () => {
-    render(<Header headerLabel="Filter Label" onSort={jest.fn()} />);
+    render(<Header label="Filter Label" onSort={jest.fn()} />);
 
     expect(screen.queryByText('select Input')).not.toBeInTheDocument();
   });
@@ -39,9 +39,7 @@ describe('FilterMenu Header', () => {
   });
 
   it('should not render IconButton when onSort is not provided', () => {
-    render(
-      <Header headerLabel="Filter Label" renderOperatorsInput={jest.fn()} />
-    );
+    render(<Header label="Filter Label" renderOperatorsInput={jest.fn()} />);
 
     expect(screen.queryByLabelText('Sort')).not.toBeInTheDocument();
   });
@@ -50,7 +48,7 @@ describe('FilterMenu Header', () => {
     const onSortMock = jest.fn();
     render(
       <Header
-        headerLabel="Filter Label"
+        label="Filter Label"
         renderOperatorsInput={jest.fn()}
         onSort={onSortMock}
       />
