@@ -23,7 +23,6 @@ export const BasicExample: Story = () => {
       label={'Size'}
       filterKey="filterKey"
       renderMenuBody={() => <>Hello!</>}
-      defaultOpen={true}
       appliedFilterValues={[{ label: 'hello', value: 'hello' }]}
     />
   );
