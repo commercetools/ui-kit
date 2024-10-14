@@ -75,6 +75,57 @@ describe('FilterMenu Trigger Button', () => {
         screen.queryByRole('button', { name: 'remove test filter' })
       ).not.toBeInTheDocument();
     });
+    it('should render the correct number of filter chips', async () => {
+      const props = getDefaultProps({
+        appliedFilterValues: [
+          { value: 'one', label: 'one' },
+          { value: 'two', label: 'two' },
+        ],
+      });
+      await render(<TriggerButton {...props} />);
+      expect(screen.getAllByText(/one|two/)).toHaveLength(2);
+    });
+    it('should display the overflow badge when chips overflow', async () => {
+      const props = getDefaultProps({
+        appliedFilterValues: [
+          { value: 'one', label: 'one' },
+          { value: 'two', label: 'two' },
+          {
+            value: 'long-label',
+            label: 'just a realllllly reallllllllllllllyyyyyyy long label',
+          },
+          {
+            value: 'another-one',
+            label: 'another reallllyu reerealllllay longggg label',
+          },
+        ],
+      });
+      // Mock clientWidth and scrollWidth to simulate overflow
+      Object.defineProperty(HTMLUListElement.prototype, 'clientWidth', { configurable: true, value: 537 });
+      Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', { configurable: true, value: 800 });
+      // Mock getBoundingClientRect for all li elements to have a consistent width
+      window.HTMLLIElement.prototype.getBoundingClientRect = () => ({
+        x: 0,
+        y: 0,
+        bottom: 0,
+        height: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+        width: 100,
+        toJSON: () => ({}),
+      });
+      await render(<TriggerButton {...props} />);
+      const badge = await screen.findByText(/\+/);
+      expect(badge).toBeInTheDocument();
+    });
+    it('should not display an overflow badge when all chips fit', async () => {
+      const props = getDefaultProps({
+        appliedFilterValues: [{ value: 'one', label: 'one' }],
+      });
+      await render(<TriggerButton {...props} />);
+      expect(screen.queryByText(/\+/)).not.toBeInTheDocument();
+    });
   });
 
   describe('when disabled', () => {
