@@ -127,7 +127,7 @@ function FilterMenu(props: TFilterMenuProps) {
             onSort={() => {}}
             menuHeaderWidth={'100px'}
           />
-          <div>{props.renderMenuBody}</div>
+          <div>{props.renderMenuBody()}</div>
           <Footer />
         </Popover.Content>
       </Popover.Portal>

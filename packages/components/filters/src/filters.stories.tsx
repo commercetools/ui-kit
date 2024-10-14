@@ -22,8 +22,9 @@ export const BasicExample: Story = () => {
     <FilterMenu
       label={'Size'}
       filterKey="filterKey"
-      // @ts-expect-error
-      renderMenuBody={<>Hello!</>}
+      renderMenuBody={() => <>Hello!</>}
+      defaultOpen={true}
+      appliedFilterValues={[{ label: 'hello', value: 'hello' }]}
     />
   );
 };
