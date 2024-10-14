@@ -55,7 +55,7 @@ jobs:
         run: yarn visual-testing-app:build
 
       - name: Running Visual Regression Tests for UI components
-        run: aa-exec --profile=chrome && yarn vrt:components
+        run: aa-exec --profile=chrome -- yarn vrt:components
         timeout-minutes: 20
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
