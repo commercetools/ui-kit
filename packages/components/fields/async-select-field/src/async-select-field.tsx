@@ -39,10 +39,6 @@ type TCustomEvent = {
 };
 
 const sequentialId = createSequentialId('async-select-field-');
-const sequentialErrorsId = createSequentialId('async-select-field-error-')();
-const sequentialWarningsId = createSequentialId(
-  'async-select-field-warning-'
-)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -419,6 +415,9 @@ export default class AsyncSelectField extends Component<
       );
     }
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -438,7 +437,7 @@ export default class AsyncSelectField extends Component<
             aria-label={this.props['aria-label']}
             aria-labelledby={this.props['aria-labelledby']}
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
             isAutofocussed={this.props.isAutofocussed}
             backspaceRemovesValue={this.props.backspaceRemovesValue}
             components={this.props.components}
@@ -478,13 +477,13 @@ export default class AsyncSelectField extends Component<
             controlShouldRenderValue={this.props.controlShouldRenderValue}
           />
           <FieldErrors
-            id={sequentialErrorsId}
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

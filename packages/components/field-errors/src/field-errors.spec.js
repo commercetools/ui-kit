@@ -18,6 +18,18 @@ describe('errorTypes', () => {
     expect(screen.getByText(/field is required/i)).toBeInTheDocument();
   });
 
+  it('should set the id as an attribute of the container', () => {
+    const { container } = render(
+      <FieldErrors
+        id="test-id"
+        errors={{ [FieldErrors.errorTypes.MISSING]: true }}
+        isVisible={true}
+      />
+    );
+    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(container.querySelector('#test-id')).toBeInTheDocument();
+  });
+
   it('should render the "negative" error', () => {
     render(
       <FieldErrors

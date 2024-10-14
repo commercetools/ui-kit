@@ -1,18 +1,15 @@
 import type { TTagProps } from './tag';
 
-import { ReactNode } from 'react';
+import { ElementType, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { Link } from 'react-router-dom';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { DragIcon } from '@commercetools-uikit/icons';
-import Spacings from '@commercetools-uikit/spacings';
 
 export type TTagBodyProps = {
   to?: TTagProps['to'];
-  as?: typeof Link;
-  type?: TTagProps['type'];
+  as?: ElementType;
   onClick?: TTagProps['onClick'];
   onRemove?: TTagProps['onRemove'];
   isDisabled?: boolean;
@@ -21,8 +18,7 @@ export type TTagBodyProps = {
   styles?: TTagProps['styles'];
 };
 
-const defaultProps: Pick<TTagProps, 'type' | 'isDisabled' | 'isDraggable'> = {
-  type: 'normal',
+const defaultProps: Pick<TTagProps, 'isDisabled' | 'isDraggable'> = {
   isDisabled: false,
   isDraggable: false,
 };
@@ -37,10 +33,17 @@ const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
 
 const getContentWrapperStyles = (props: TTagBodyProps) => {
   return css`
+    all: unset;
     position: relative;
     display: flex;
     align-items: center;
-    padding: ${designTokens.spacing05} ${designTokens.spacing25};
+    gap: ${designTokens.spacing20};
+    padding-top: ${designTokens.spacing10};
+    padding-bottom: ${designTokens.spacing10};
+    padding-left: ${designTokens.spacing25};
+    padding-right: ${!props.isDisabled && props.onRemove
+      ? '0'
+      : designTokens.spacing25};
     white-space: normal;
     text-align: left;
     min-width: 0;
@@ -85,14 +88,12 @@ const TagBody = (props: TTagBodyProps) => {
       ]}
       onClick={props.isDisabled ? undefined : props.onClick}
     >
-      <Spacings.Inline scale="s" alignItems="center">
-        {props.isDraggable && !props.isDisabled ? (
-          <DragIcon data-testid="drag-icon" size="medium" />
-        ) : null}
-        <Text.Detail tone={textTone} as="span">
-          {props.children}
-        </Text.Detail>
-      </Spacings.Inline>
+      {props.isDraggable && !props.isDisabled ? (
+        <DragIcon data-testid="drag-icon" size="medium" />
+      ) : null}
+      <Text.Detail tone={textTone} as="span">
+        {props.children}
+      </Text.Detail>
     </Body>
   );
 };

@@ -1,5 +1,5 @@
 import type { LocationDescriptor } from 'history';
-import { ReactNode, MouseEvent, KeyboardEvent } from 'react';
+import { ReactNode, MouseEvent, KeyboardEvent, ElementType } from 'react';
 import { css, type SerializedStyles } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -7,10 +7,12 @@ import Constraints from '@commercetools-uikit/constraints';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
 import TagBody from './tag-body';
+import { getToneStyles } from './tag.styles';
 
 export type TTagProps = {
   /**
    * Indicates color scheme of the tag.
+   * @deprecated use `tone` instead
    */
   type?: 'normal' | 'warning';
   /**
@@ -40,7 +42,7 @@ export type TTagProps = {
    */
   onClick?: (event: MouseEvent<HTMLElement>) => void;
   /**
-   * Horizontal size limit of the input field.
+   * Horizontal size limit of the tag.
    */
   horizontalConstraint?:
     | 1
@@ -65,60 +67,72 @@ export type TTagProps = {
    * Content rendered within the tag
    */
   children: ReactNode;
+  /**
+   * Indicates the color scheme of the tag.
+   */
+  tone: 'primary' | 'warning' | 'surface';
 };
 
 const defaultProps: Pick<
   TTagProps,
-  'type' | 'isDisabled' | 'isDraggable' | 'horizontalConstraint'
+  'tone' | 'isDisabled' | 'isDraggable' | 'horizontalConstraint'
 > = {
-  type: 'normal',
+  tone: 'primary',
   isDisabled: false,
   isDraggable: false,
   horizontalConstraint: 'scale',
 };
 
 const Tag = (props: TTagProps) => {
-  const linkProps =
-    props.to && !props.isDisabled ? { as: Link, to: props.to } : {};
+  let tagBodyProps;
+
+  switch (true) {
+    case props.isDisabled:
+      tagBodyProps = {};
+      break;
+    case Boolean(props.to):
+      tagBodyProps = { as: Link, to: props.to };
+      break;
+    case Boolean(props.onClick):
+      tagBodyProps = { as: 'button' as ElementType };
+      break;
+    default:
+      tagBodyProps = {};
+  }
+
+  const isInteractive =
+    !props.isDisabled && (Boolean(props.onClick) || Boolean(props.to));
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <div
         css={css`
           a {
-            cursor: pointer;
             text-decoration: none;
           }
           box-sizing: border-box;
-          cursor: default;
+          cursor: ${props.isDisabled
+            ? 'not-allowed'
+            : isInteractive
+            ? 'pointer'
+            : 'default'};
           min-width: 0;
           display: flex;
           border-radius: ${designTokens.borderRadius20};
           border-style: solid;
           border-width: 1px;
-          background-color: ${props.isDisabled
-            ? designTokens.colorNeutral95
-            : props.type === 'warning'
-            ? designTokens.colorWarning95
-            : designTokens.colorPrimary95};
-          border-color: ${props.isDisabled
-            ? designTokens.colorNeutral
-            : props.type === 'warning'
-            ? designTokens.colorWarning85
-            : designTokens.colorPrimary90};
-          ${props.onClick &&
-          `&:hover {
-            background-color: ${
-              props.type === 'warning'
-                ? designTokens.colorWarning85
-                : designTokens.colorPrimary90
-            };
-          }`}
+          user-select: none;
+          ${getToneStyles(props)};
+
+          &:focus-within {
+            outline: ${designTokens.borderWidth2} solid
+              ${designTokens.colorPrimary40};
+          }
         `}
       >
         <TagBody
-          {...linkProps}
+          {...tagBodyProps}
           styles={props.styles}
-          type={props.type}
           onClick={props.onClick}
           onRemove={props.onRemove}
           isDisabled={props.isDisabled}
@@ -134,12 +148,20 @@ const Tag = (props: TTagProps) => {
             onClick={props.onRemove}
             css={[
               css`
-                padding: 0 ${designTokens.spacing25};
-                display: flex;
                 align-items: center;
+                border-radius: ${designTokens.borderRadius20};
+                display: flex;
                 fill: ${designTokens.colorNeutral40};
+                padding: 0 ${designTokens.spacing25};
+
                 &:disabled {
                   fill: ${designTokens.colorNeutral60};
+                }
+
+                &:focus-visible {
+                  outline: ${designTokens.borderWidth2} solid
+                    ${designTokens.colorPrimary40};
+                  outline-offset: calc(-1 * ${designTokens.borderWidth2});
                 }
               `,
             ]}

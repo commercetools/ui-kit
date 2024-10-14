@@ -29,8 +29,6 @@ type TCustomFormErrors<Values> = {
 };
 
 const sequentialId = createSequentialId('date-time-field-');
-const sequentialErrorsId = createSequentialId('date-time-field-error-')();
-const sequentialWarningsId = createSequentialId('date-time-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -240,6 +238,9 @@ class DateTimeField extends Component<
     const hasError = this.props.touched && hasErrors(this.props.errors);
     const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -270,17 +271,17 @@ class DateTimeField extends Component<
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
             defaultDaySelectionTime={this.props.defaultDaySelectionTime}
           />
           <FieldErrors
-            id={sequentialErrorsId}
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

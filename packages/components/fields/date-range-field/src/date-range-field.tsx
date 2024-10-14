@@ -34,8 +34,6 @@ type TCustomEvent = {
 };
 
 const sequentialId = createSequentialId('date-range-field-');
-const sequentialErrorsId = createSequentialId('date-range-field-error-')();
-const sequentialWarningsId = createSequentialId('date-range-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -224,6 +222,9 @@ class DateRangeField extends Component<
       );
     }
 
+    const errorsContainerId = `${this.state.id}-errors`;
+    const warningsContainerId = `${this.state.id}-warnings`;
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -253,16 +254,16 @@ class DateRangeField extends Component<
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
-            aria-errormessage={sequentialErrorsId}
+            aria-errormessage={errorsContainerId}
           />
           <FieldErrors
-            id={sequentialErrorsId}
+            id={errorsContainerId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
           <FieldWarnings
-            id={sequentialWarningsId}
+            id={warningsContainerId}
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}

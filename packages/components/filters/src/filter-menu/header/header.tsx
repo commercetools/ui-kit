@@ -5,11 +5,15 @@ import { SortingIcon } from '@commercetools-uikit/icons';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 
+type TOption = {
+  value: string;
+  label: string;
+};
+
 type THeaderProps = {
-  /**
-   * the label of the header
-   */
-  headerLabel: string;
+  headerLabel: ReactNode;
+  operandOptions?: Array<TOption>;
+  renderOperandsInput?: boolean;
   /**
    * the function to render the operator input
    */

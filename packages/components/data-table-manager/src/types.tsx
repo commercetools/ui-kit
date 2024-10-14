@@ -232,13 +232,17 @@ export type TColumnProps<Row extends TRow = TRow> = {
 
 export type TDataTableManagerProps<Row extends TRow = TRow> = {
   /**
+   * Set this to `true` to enable the row selection feature.
+   */
+  withRowSelection?: boolean;
+  /**
    * Each object requires a unique `key` which should correspond to property key of
    * the items of `rows` that you want to render under this column, and a `label`
    * which defines the name shown on the header.
    * The list of columns to be rendered.
    * Each column can be customized (see properties below).
    */
-  columns: TColumnProps<Row>[];
+  columns?: TColumnProps<Row>[];
   /**
    * Any React node. Usually you want to render the `<DataTable>` component.
    * <br>
