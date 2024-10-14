@@ -8,7 +8,6 @@ jest.setTimeout(20000);
 
 beforeEach(async () => {
   browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
     headless: 'new',
     slowMo: 10, // Launching the browser in slow motion is necessary due to race conditions. Otherwise browser closes prematurely and tests fail.
   });
