@@ -136,7 +136,7 @@
     "postcss-value-parser": "4.2.0",
     "pptr-testing-library": "0.8.0",
     "prettier": "2.8.8",
-    "puppeteer": "19.11.1",
+    "puppeteer": "23.5.3",
     "qs": "6.13.0",
     "rcfile": "1.0.3",
     "react": "17.0.2",
