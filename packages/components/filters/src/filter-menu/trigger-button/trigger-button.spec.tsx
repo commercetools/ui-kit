@@ -76,7 +76,7 @@ describe('FilterMenu Trigger Button', () => {
       ).not.toBeInTheDocument();
     });
     describe('overflow badge', () => {
-      // container has right of 300
+      // container has right of 300 for all tests
       window.HTMLUListElement.prototype.getBoundingClientRect = () =>
         ({
           bottom: 0,
@@ -87,7 +87,7 @@ describe('FilterMenu Trigger Button', () => {
           width: 0,
         } as DOMRect);
 
-      // increment 'right' by 100px for every li element
+      // increment 'right' by 100px for every li element, reset for each test
       beforeEach(() => {
         let right = 0;
         window.HTMLLIElement.prototype.getBoundingClientRect = () =>
