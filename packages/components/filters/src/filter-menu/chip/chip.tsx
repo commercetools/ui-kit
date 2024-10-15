@@ -22,6 +22,7 @@ const chipStyles = css`
   justify-content: center;
   align-items: center;
   list-style: none;
+  white-space: nowrap;
 `;
 
 const disabledChipStyles = css`
