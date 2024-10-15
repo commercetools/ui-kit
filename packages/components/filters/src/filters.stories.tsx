@@ -24,6 +24,10 @@ export const BasicExample: Story = () => {
     const operatorOptions = [
       { value: 'is', label: 'is' },
       { value: 'is not', label: 'is NOT' },
+      {
+        value: 'is not quite a short option',
+        label: 'is NOT quite a short option',
+      },
     ];
 
     return (
@@ -51,6 +55,7 @@ export const BasicExample: Story = () => {
       renderMenuBody={() => <>Hello!</>}
       appliedFilterValues={[{ label: 'hello', value: 'hello' }]}
       renderOperatorsInput={renderOperatorsInput}
+      onSortRequest={() => {}}
     />
   );
 };

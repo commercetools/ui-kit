@@ -26,13 +26,19 @@ type THeaderProps = {
 const headerContainerStyles = css`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-bottom: ${designTokens.spacing10};
   border-bottom: 1px solid ${designTokens.colorNeutral90};
+  width: 100%;
 `;
 
-const getSelectInputStyles = (props: THeaderProps) => css`
-  width: ${props.menuHeaderWidth};
-  margin: ${designTokens.spacing20};
+const selectInputStyles = css`
+  margin: auto ${designTokens.spacing30} auto ${designTokens.spacing20};
+`;
+
+const operatorInputContainer = css`
+  display: flex;
+  align-items: center;
 `;
 
 const Header = (props: THeaderProps) => {
@@ -40,25 +46,27 @@ const Header = (props: THeaderProps) => {
 
   return (
     <div css={headerContainerStyles}>
-      <div>{props.label}</div>
-      {props.renderOperatorsInput && (
-        <div css={getSelectInputStyles(props)}>
-          {props.renderOperatorsInput()}
-        </div>
-      )}
-      {props.onSortRequest && (
-        <IconButton
-          size="20"
-          theme={isActive ? 'info' : 'default'}
-          label="Sort"
-          icon={<SortingIcon />}
-          isToggleButton={true}
-          onClick={() => {
-            setIsActive(!isActive);
-            return props.onSortRequest && props.onSortRequest();
-          }}
-        />
-      )}
+      <div css={operatorInputContainer}>
+        <div>{props.label}</div>
+        {props.renderOperatorsInput && (
+          <div css={selectInputStyles}>{props.renderOperatorsInput()}</div>
+        )}
+      </div>
+      <div>
+        {props.onSortRequest && (
+          <IconButton
+            size="20"
+            theme={isActive ? 'info' : 'default'}
+            label="Sort"
+            icon={<SortingIcon />}
+            isToggleButton={true}
+            onClick={() => {
+              setIsActive(!isActive);
+              return props.onSortRequest && props.onSortRequest();
+            }}
+          />
+        )}
+      </div>
     </div>
   );
 };
