@@ -1,5 +1,22 @@
 # @commercetools-uikit/tag
 
+## 19.13.0
+
+### Minor Changes
+
+- [#2954](https://github.com/commercetools/ui-kit/pull/2954) [`7b68886`](https://github.com/commercetools/ui-kit/commit/7b688867cd8071cf9a4a77127058b474aaa41c7d) Thanks [@misama-ct](https://github.com/misama-ct)! - Deprecated 'type' property in favor of 'tone' for better clarity and flexibility. New tone 'surface' added.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.13.0
+  - @commercetools-uikit/accessible-button@19.13.0
+  - @commercetools-uikit/constraints@19.13.0
+  - @commercetools-uikit/icons@19.13.0
+  - @commercetools-uikit/text@19.13.0
+  - @commercetools-uikit/utils@19.13.0
+  - @commercetools-uikit/spacings@19.13.0
+
 ## 19.12.1
 
 ### Patch Changes
