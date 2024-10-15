@@ -131,7 +131,7 @@ describe('FilterMenu Trigger Button', () => {
         });
 
         await render(<TriggerButton {...props} />);
-        const badge = await screen.findByText(/\+/);
+        const badge = await screen.findByText(/\+1/);
         expect(badge).toBeInTheDocument();
       });
       it('should update the overflow badge when more chips are added', async () => {
@@ -157,7 +157,7 @@ describe('FilterMenu Trigger Button', () => {
         // Update the mock to simulate an overflow after re-rendering
         Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', {
           configurable: true,
-          value: 600,
+          value: 400,
         });
         // Rerender with more chips to cause overflow
         rerender(
@@ -173,7 +173,7 @@ describe('FilterMenu Trigger Button', () => {
             ]}
           />
         );
-        const badge = await screen.findByText(/\+/);
+        const badge = await screen.findByText(/\+3/);
         expect(badge).toBeInTheDocument();
       });
       it('should not display an overflow badge when all chips fit', async () => {
