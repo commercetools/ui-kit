@@ -7,7 +7,7 @@ import SelectInput from '@commercetools-uikit/select-input';
 const meta: Meta<typeof Filters> = {
   title: 'components/Filters',
   component: Filters,
-  // tags: ['local-dev'],
+  tags: ['local-dev'],
   argTypes: {
     label: {
       control: 'text',
