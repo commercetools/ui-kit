@@ -75,94 +75,114 @@ describe('FilterMenu Trigger Button', () => {
         screen.queryByRole('button', { name: 'remove test filter' })
       ).not.toBeInTheDocument();
     });
-    it('should render the correct number of filter chips', async () => {
-      const props = getDefaultProps({
-        appliedFilterValues: [
-          { value: 'one', label: 'one' },
-          { value: 'two', label: 'two' },
-        ],
+    describe('overflow badge', () => {
+      // container has right of 300
+      window.HTMLUListElement.prototype.getBoundingClientRect = () =>
+        ({
+          bottom: 0,
+          height: 0,
+          left: 0,
+          right: 300,
+          top: 0,
+          width: 0,
+        } as DOMRect);
+
+      // increment 'right' by 100px for every li element
+      beforeEach(() => {
+        let right = 0;
+        window.HTMLLIElement.prototype.getBoundingClientRect = () =>
+          ({
+            bottom: 44,
+            height: 24,
+            left: 10,
+            right: (right += 100),
+            top: 20,
+            width: 25.67,
+          } as DOMRect);
       });
-      await render(<TriggerButton {...props} />);
-      expect(screen.getAllByText(/one|two/)).toHaveLength(2);
-    });
-    it('should display the overflow badge when chips overflow', async () => {
-      const props = getDefaultProps({
-        appliedFilterValues: [
-          { value: 'one', label: 'one' },
-          { value: 'two', label: 'two' },
-          {
-            value: 'long-label',
-            label: 'just a realllllly reallllllllllllllyyyyyyy long label',
-          },
-          {
-            value: 'another-one',
-            label: 'another reallllyu reerealllllay longggg label',
-          },
-        ],
+
+      it('should render the correct number of filter chips', async () => {
+        const props = getDefaultProps({
+          appliedFilterValues: [
+            { value: 'one', label: 'one' },
+            { value: 'two', label: 'two' },
+          ],
+        });
+        await render(<TriggerButton {...props} />);
+        expect(screen.getAllByText(/one|two/)).toHaveLength(2);
       });
-      // Mock clientWidth and scrollWidth to simulate overflow
-      Object.defineProperty(HTMLUListElement.prototype, 'clientWidth', { configurable: true, value: 537 });
-      Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', { configurable: true, value: 800 });
-      // Mock getBoundingClientRect for all li elements to have a consistent width
-      window.HTMLLIElement.prototype.getBoundingClientRect = () => ({
-        x: 0,
-        y: 0,
-        bottom: 0,
-        height: 0,
-        left: 0,
-        right: 0,
-        top: 0,
-        width: 100,
-        toJSON: () => ({}),
-      });
-      await render(<TriggerButton {...props} />);
-      const badge = await screen.findByText(/\+/);
-      expect(badge).toBeInTheDocument();
-    });
-    it('should update the overflow badge when more chips are added', async () => {
-      const props = getDefaultProps({
-        appliedFilterValues: [
-          { value: 'one', label: 'one' },
-          { value: 'two', label: 'two' },
-          { value: 'three', label: 'three' },
-        ],
-      });
-      // Mock the initial container dimensions
-      Object.defineProperty(HTMLUListElement.prototype, 'clientWidth', { configurable: true, value: 537 });
-      Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', { configurable: true, value: 500 });
-      const { rerender } = render(<TriggerButton {...props} />);
-      expect(screen.queryByText(/\+/)).not.toBeInTheDocument();
-      // Update the mock to simulate an overflow after re-rendering
-      Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', { configurable: true, value: 800 });
-      // Rerender with more chips to cause overflow
-      rerender(
-        <TriggerButton
-          {...props}
-          appliedFilterValues={[
+      it('should display the overflow badge when chips overflow', async () => {
+        const props = getDefaultProps({
+          appliedFilterValues: [
             { value: 'one', label: 'one' },
             { value: 'two', label: 'two' },
             { value: 'three', label: 'three' },
             { value: 'four', label: 'four' },
-            {
-              value: 'long-label',
-              label: 'just a realllllly reallllllllllllllyyyyyyy long label',
-            },
-            {
-              value: 'another-one',
-              label: 'another reallllyu reerealllllay longggg label',
-            },
-          ]}
-        />
-      );
-      const badge = await screen.findByText(/\+/);
-      expect(badge).toBeInTheDocument();
-    });
-    it('should not display an overflow badge when all chips fit', async () => {
-      const props = getDefaultProps({
-        appliedFilterValues: [{ value: 'one', label: 'one' }],
+          ],
+        });
+        // Mock clientWidth and scrollWidth to simulate overflow
+        Object.defineProperty(HTMLUListElement.prototype, 'clientWidth', {
+          configurable: true,
+          value: 300,
+        });
+        Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', {
+          configurable: true,
+          value: 400,
+        });
+
+        await render(<TriggerButton {...props} />);
+        const badge = await screen.findByText(/\+/);
+        expect(badge).toBeInTheDocument();
       });
-      await render(<TriggerButton {...props} />);
-      expect(screen.queryByText(/\+/)).not.toBeInTheDocument();
+      it('should update the overflow badge when more chips are added', async () => {
+        const props = getDefaultProps({
+          appliedFilterValues: [
+            { value: 'one', label: 'one' },
+            { value: 'two', label: 'two' },
+            { value: 'three', label: 'three' },
+            { value: 'four', label: 'four' },
+          ],
+        });
+        // Mock the initial container dimensions
+        Object.defineProperty(HTMLUListElement.prototype, 'clientWidth', {
+          configurable: true,
+          value: 300,
+        });
+        Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', {
+          configurable: true,
+          value: 200,
+        });
+        const { rerender } = render(<TriggerButton {...props} />);
+        expect(screen.queryByText(/\+/)).not.toBeInTheDocument();
+        // Update the mock to simulate an overflow after re-rendering
+        Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', {
+          configurable: true,
+          value: 600,
+        });
+        // Rerender with more chips to cause overflow
+        rerender(
+          <TriggerButton
+            {...props}
+            appliedFilterValues={[
+              { value: 'one', label: 'one' },
+              { value: 'two', label: 'two' },
+              { value: 'three', label: 'three' },
+              { value: 'four', label: 'four' },
+              { value: 'five', label: 'five' },
+              { value: 'six', label: 'six' },
+            ]}
+          />
+        );
+        const badge = await screen.findByText(/\+/);
+        expect(badge).toBeInTheDocument();
+      });
+      it('should not display an overflow badge when all chips fit', async () => {
+        const props = getDefaultProps({
+          appliedFilterValues: [{ value: 'one', label: 'one' }],
+        });
+        await render(<TriggerButton {...props} />);
+        expect(screen.queryByText(/\+/)).not.toBeInTheDocument();
+      });
     });
   });
 

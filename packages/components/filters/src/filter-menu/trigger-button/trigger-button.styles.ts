@@ -16,6 +16,7 @@ export const triggerWrapper = css`
   box-shadow: 0 0 0 ${designTokens.borderWidth1} ${designTokens.colorNeutral85};
   cursor: pointer;
   height: ${designTokens.spacing50};
+  /* width: 100%; */
   max-width: ${Constraints.getMaxPropTokenValue(13)};
   align-self: flex-start;
   &:hover {

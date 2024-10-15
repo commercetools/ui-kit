@@ -75,6 +75,7 @@
     "@commercetools-frontend/eslint-config-mc-app": "21.25.2",
     "@commercetools-local/generator-package-json": "*",
     "@commercetools-local/generator-readme": "*",
+    "@commercetools-uikit/flat-button": "workspace:^",
     "@commercetools/github-labels": "1.1.0",
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",

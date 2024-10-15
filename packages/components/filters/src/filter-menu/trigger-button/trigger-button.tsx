@@ -15,7 +15,7 @@ import { Chip } from '../chip';
 
 const useScrollObserver = (totalCount: number) => {
   const [isOverflowing, setIsOverflowing] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(0);
+  const [overflowCount, setOverflowCount] = useState(0);
   const containerRef = useRef<HTMLUListElement | null>(null);
 
   const setContainerRef = useCallback(
@@ -23,30 +23,32 @@ const useScrollObserver = (totalCount: number) => {
       if (node) {
         containerRef.current = node;
 
-        setTimeout(() => {
-          const { clientWidth, scrollWidth, children } = node;
+        const { clientWidth, scrollWidth, children } = node;
+        const hasOverflow = scrollWidth > clientWidth;
 
-          const hasOverflow = scrollWidth > clientWidth;
-          setIsOverflowing(hasOverflow);
+        setIsOverflowing(hasOverflow);
 
-          let widthOfAllChildren = 0;
-          let visibleChipCount = 0;
+        let visibleChipCount = 0;
 
-          if (hasOverflow) {
-            Array.from(children).forEach((child, idx) => {
-              const { width } = (child as HTMLElement).getBoundingClientRect();
-              widthOfAllChildren += width + 4;
-
-              if (widthOfAllChildren <= clientWidth) {
-                visibleChipCount = idx + 1;
-              }
-            });
-          } else {
-            visibleChipCount = totalCount;
-          }
-
-          setVisibleCount(visibleChipCount);
-        }, 100);
+        if (hasOverflow) {
+          Array.from(children).forEach((child) => {
+            const childRect = child.getBoundingClientRect();
+            const containerRect = node.getBoundingClientRect();
+            if (
+              // if the right hand side of the child is past the right of the container
+              childRect.right <= containerRect.right &&
+              // and it's not the badge
+              !Array.from(child.classList).includes(
+                'ui-kit-filter-trigger-badge-container'
+              )
+            ) {
+              ++visibleChipCount;
+            } else {
+              console.debug(childRect.right, child.textContent);
+            }
+          });
+        }
+        setOverflowCount(totalCount - visibleChipCount);
       }
     },
     [totalCount]
@@ -54,7 +56,7 @@ const useScrollObserver = (totalCount: number) => {
 
   return {
     isOverflowing,
-    overflowCount: totalCount - visibleCount,
+    overflowCount,
     setContainerRef,
   };
 };
@@ -108,7 +110,11 @@ const TriggerButton = forwardRef(function TriggerButton(
 
   return (
     <div css={[styles.triggerWrapper, isDisabled && styles.disabled]}>
-      <label css={styles.label} htmlFor={`${filterKey}-menu-trigger`}>
+      <label
+        css={styles.label}
+        htmlFor={`${filterKey}-menu-trigger`}
+        id={`${filterKey}-menu-label`}
+      >
         {label}:
       </label>
       {filtersApplied && (
@@ -116,8 +122,8 @@ const TriggerButton = forwardRef(function TriggerButton(
           {values.map((value) => (
             <Chip key={value.value} label={value.label} />
           ))}
-          {isOverflowing && (
-            <span
+          {isOverflowing && overflowCount && (
+            <li
               className="ui-kit-filter-trigger-badge-container"
               css={styles.badgeContainer}
             >
@@ -125,7 +131,7 @@ const TriggerButton = forwardRef(function TriggerButton(
                 id="ui-kit-filter-triger-badge"
                 label={`+${overflowCount}`}
               />
-            </span>
+            </li>
           )}
         </ul>
       )}
@@ -141,6 +147,7 @@ const TriggerButton = forwardRef(function TriggerButton(
         ref={ref}
         id={`${filterKey}-menu-trigger`}
         aria-disabled={isDisabled}
+        aria-labelledby={`${filterKey}-menu-label`}
         {...rest}
         {...(isDisabled && {
           tabIndex: -1,

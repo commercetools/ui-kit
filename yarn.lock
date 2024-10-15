@@ -3645,7 +3645,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/flat-button@19.13.0, @commercetools-uikit/flat-button@workspace:packages/components/buttons/flat-button":
+"@commercetools-uikit/flat-button@19.13.0, @commercetools-uikit/flat-button@workspace:^, @commercetools-uikit/flat-button@workspace:packages/components/buttons/flat-button":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/flat-button@workspace:packages/components/buttons/flat-button"
   dependencies:
@@ -24053,6 +24053,7 @@ __metadata:
     "@commercetools-frontend/eslint-config-mc-app": 21.25.2
     "@commercetools-local/generator-package-json": "*"
     "@commercetools-local/generator-readme": "*"
+    "@commercetools-uikit/flat-button": "workspace:^"
     "@commercetools/github-labels": 1.1.0
     "@commitlint/cli": 19.5.0
     "@commitlint/config-conventional": 19.5.0
