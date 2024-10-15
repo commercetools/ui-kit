@@ -20,7 +20,6 @@ type THeaderProps = {
   /**
    * the width of the menu header
    */
-  menuHeaderWidth?: string;
 };
 
 const headerContainerStyles = css`

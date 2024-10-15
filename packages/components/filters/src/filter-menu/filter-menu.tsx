@@ -100,7 +100,6 @@ function FilterMenu(props: TFilterMenuProps) {
             label="Size"
             renderOperatorsInput={props.renderOperatorsInput}
             onSortRequest={props.onSortRequest}
-            menuHeaderWidth={'100px'}
           />
           <div>{props.renderMenuBody()}</div>
           <Footer />
