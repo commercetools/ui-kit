@@ -43,8 +43,6 @@ const useScrollObserver = (totalCount: number) => {
               )
             ) {
               ++visibleChipCount;
-            } else {
-              console.debug(childRect.right, child.textContent);
             }
           });
         }
