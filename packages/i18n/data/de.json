@@ -19,6 +19,10 @@
     "developer_comment": "Tooltip title when user hovers the today button",
     "string": "Heute"
   },
+  "UIKit.ClearAllButton.clearAllButtonLabel": {
+    "developer_comment": "Label for the clear all button",
+    "string": "Alle löschen"
+  },
   "UIKit.ClearButton.clearButtonLabel": {
     "developer_comment": "Label for the clear button",
     "string": "Zurücksetzen"
@@ -54,6 +58,10 @@
   "UIKit.DataTableManager.ColumnSelectorGroups.visible": {
     "developer_comment": "Message for the visible columns section.",
     "string": "Angezeigte Spalten"
+  },
+  "UIKit.DataTableManager.CustomSettingsManager.closeButtonLabel": {
+    "developer_comment": "Label for custom settings manager close button.",
+    "string": "Schließen"
   },
   "UIKit.DataTableManager.DensityManager.closeButtonLabel": {
     "developer_comment": "Label for density manager close button.",
@@ -146,6 +154,14 @@
   "UIKit.MultilineTextInput.expand": {
     "developer_comment": "The label for \"expand\" action",
     "string": "Einblenden"
+  },
+  "UIKit.NumberField.aboveMaxError": {
+    "developer_comment": "An error message to show when the value is above the maximum",
+    "string": "Der Wert muss kleiner oder gleich {max} sein."
+  },
+  "UIKit.NumberField.belowMinError": {
+    "developer_comment": "An error message to show when the value is below the minimum",
+    "string": "Der Wert muss größer oder gleich {min} sein."
   },
   "UIKit.Pagination.PageNavigator.nextPageLabel": {
     "developer_comment": "Label for next page button",
