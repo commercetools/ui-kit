@@ -27,7 +27,7 @@ const footerContainerStyles = css`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-
+  width: 100%;
   div:last-of-type {
     display: flex;
     justify-content: flex-end;
