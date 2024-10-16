@@ -1,5 +1,39 @@
 # @commercetools-uikit/data-table-manager
 
+## 19.13.0
+
+### Minor Changes
+
+- [#2938](https://github.com/commercetools/ui-kit/pull/2938) [`38c2dfe`](https://github.com/commercetools/ui-kit/commit/38c2dfede044d44a89c35808cee4f4c8df01d618) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Add storybook story for custom data table manager configurations.
+
+- [#2953](https://github.com/commercetools/ui-kit/pull/2953) [`68723be`](https://github.com/commercetools/ui-kit/commit/68723bed55886ace5d560f84317560bd53878a61) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Add property to disable a dropdown option in the data table settings.
+
+### Patch Changes
+
+- Updated dependencies [[`7b68886`](https://github.com/commercetools/ui-kit/commit/7b688867cd8071cf9a4a77127058b474aaa41c7d)]:
+  - @commercetools-uikit/tag@19.13.0
+  - @commercetools-uikit/design-system@19.13.0
+  - @commercetools-uikit/accessible-hidden@19.13.0
+  - @commercetools-uikit/accessible-button@19.13.0
+  - @commercetools-uikit/icon-button@19.13.0
+  - @commercetools-uikit/primary-button@19.13.0
+  - @commercetools-uikit/secondary-button@19.13.0
+  - @commercetools-uikit/secondary-icon-button@19.13.0
+  - @commercetools-uikit/card@19.13.0
+  - @commercetools-uikit/collapsible-motion@19.13.0
+  - @commercetools-uikit/dropdown-menu@19.13.0
+  - @commercetools-uikit/field-label@19.13.0
+  - @commercetools-uikit/grid@19.13.0
+  - @commercetools-uikit/icons@19.13.0
+  - @commercetools-uikit/async-select-input@19.13.0
+  - @commercetools-uikit/radio-input@19.13.0
+  - @commercetools-uikit/select-input@19.13.0
+  - @commercetools-uikit/text@19.13.0
+  - @commercetools-uikit/tooltip@19.13.0
+  - @commercetools-uikit/hooks@19.13.0
+  - @commercetools-uikit/utils@19.13.0
+  - @commercetools-uikit/spacings@19.13.0
+
 ## 19.12.1
 
 ### Patch Changes

@@ -1,5 +1,22 @@
 # @commercetools-uikit/search-select-field
 
+## 19.13.0
+
+### Patch Changes
+
+- [#2950](https://github.com/commercetools/ui-kit/pull/2950) [`c41a012`](https://github.com/commercetools/ui-kit/commit/c41a012c352e7ddb1d3a0ab4d4a9eb6af2d25583) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Ensure that `FieldWarnings` and `FieldErrors` display a single id by adding id to wrapper instead of to each error or warning, Ensure all `-Field` components assign unique id's to their error and warning message containers
+
+- Updated dependencies [[`c41a012`](https://github.com/commercetools/ui-kit/commit/c41a012c352e7ddb1d3a0ab4d4a9eb6af2d25583)]:
+  - @commercetools-uikit/field-warnings@19.13.0
+  - @commercetools-uikit/field-errors@19.13.0
+  - @commercetools-uikit/design-system@19.13.0
+  - @commercetools-uikit/constraints@19.13.0
+  - @commercetools-uikit/field-label@19.13.0
+  - @commercetools-uikit/search-select-input@19.13.0
+  - @commercetools-uikit/hooks@19.13.0
+  - @commercetools-uikit/utils@19.13.0
+  - @commercetools-uikit/spacings@19.13.0
+
 ## 19.12.1
 
 ### Patch Changes

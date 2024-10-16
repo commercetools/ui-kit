@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import Constraints from '@commercetools-uikit/constraints';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -95,7 +95,12 @@ function FilterMenu(props: TFilterMenuProps) {
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content side="bottom" align="start" css={menuStyles}>
-          <Header />
+          <Header
+            // For storybook purposes, we are not using the actual props - will be taken off eventually.
+            label="Size"
+            renderOperatorsInput={props.renderOperatorsInput}
+            onSortRequest={props.onSortRequest}
+          />
           <div>{props.renderMenuBody()}</div>
           <Footer />
         </Popover.Content>
