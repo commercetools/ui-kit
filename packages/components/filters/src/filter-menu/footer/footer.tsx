@@ -1,10 +1,10 @@
-import FlatButton from '@commercetools-uikit/flat-button';
-import messages from './messages';
-import { CloseBoldIcon } from '@commercetools-uikit/icons';
-import { ReactNode } from 'react';
+import { type ReactNode, type MouseEvent, type KeyboardEvent } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
+import FlatButton from '@commercetools-uikit/flat-button';
+import { CloseBoldIcon } from '@commercetools-uikit/icons';
 import { useIntl } from 'react-intl';
+import messages from './messages';
 
 type TFooterProps = {
   /**
@@ -14,7 +14,9 @@ type TFooterProps = {
   /**
    * controls whether a `clear all` button in Menu Body Footer is displayed
    */
-  onClearAllRequest?: () => void;
+  onClearRequest?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
 };
 
 const footerContainerStyles = css`
@@ -32,19 +34,19 @@ const footerContainerStyles = css`
   }
 `;
 
-const Footer = ({ renderApplyButton, onClearAllRequest }: TFooterProps) => {
+const Footer = ({ renderApplyButton, onClearRequest }: TFooterProps) => {
   const intl = useIntl();
-  if (!renderApplyButton && !onClearAllRequest) return null;
+  if (!renderApplyButton && !onClearRequest) return null;
 
   return (
     <div css={footerContainerStyles}>
       <div>{renderApplyButton && renderApplyButton()}</div>
       <div>
-        {onClearAllRequest && (
+        {onClearRequest && (
           <FlatButton
             icon={<CloseBoldIcon />}
             tone="secondary"
-            onClick={onClearAllRequest}
+            onClick={onClearRequest}
             label={intl.formatMessage(messages.clearAllButtonLabel)}
           />
         )}

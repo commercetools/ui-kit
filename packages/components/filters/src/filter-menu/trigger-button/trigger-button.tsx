@@ -2,6 +2,8 @@ import {
   type ReactNode,
   forwardRef,
   type LegacyRef,
+  type MouseEvent,
+  type KeyboardEvent,
   useCallback,
   useRef,
   useState,
@@ -83,7 +85,9 @@ export type TFilterMenuTriggerButtonProps = {
   /**
    * controls whether `x` in Trigger Button is displayed - required if `isPersistent` is `false`
    */
-  onRemoveRequest?: Function;
+  onRemoveRequest?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
 };
 
 const TriggerButton = forwardRef(function TriggerButton(
@@ -162,7 +166,7 @@ const TriggerButton = forwardRef(function TriggerButton(
             isDisabled={props.isDisabled}
             onClick={(e) => {
               e.stopPropagation();
-              onRemoveRequest!();
+              onRemoveRequest!(e);
             }}
           />
         </div>

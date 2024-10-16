@@ -1,4 +1,9 @@
-import { useState, ReactNode } from 'react';
+import {
+  useState,
+  type ReactNode,
+  type MouseEvent,
+  type KeyboardEvent,
+} from 'react';
 import IconButton from '@commercetools-uikit/icon-button';
 import { SortingIcon } from '@commercetools-uikit/icons';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -16,7 +21,9 @@ type THeaderProps = {
   /**
    * the function to sort the data
    */
-  onSortRequest?: Function;
+  onSortRequest?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * the width of the menu header
    */
@@ -59,9 +66,9 @@ const Header = (props: THeaderProps) => {
             label="Sort"
             icon={<SortingIcon />}
             isToggleButton={true}
-            onClick={() => {
+            onClick={(e) => {
               setIsActive(!isActive);
-              return props.onSortRequest && props.onSortRequest();
+              return props.onSortRequest && props.onSortRequest(e);
             }}
           />
         )}

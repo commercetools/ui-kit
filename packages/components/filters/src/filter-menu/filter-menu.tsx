@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { type ReactNode, type MouseEvent, type KeyboardEvent } from 'react';
 import { css } from '@emotion/react';
 import Constraints from '@commercetools-uikit/constraints';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -44,19 +44,25 @@ export type TFilterMenuProps = {
   /**
    * controls whether `x` in Trigger Button is displayed - required if `isPersistent` is `false`
    */
-  onRemoveRequest?: Function;
+  onRemoveRequest?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * optional button that allows the user to apply selected filter values
    */
   renderApplyButton?: () => ReactNode;
   /**
-   * controls whether `clear` button in Menu Body Footer is displayed
+   * controls whether `clear all` button in Menu Body Footer is displayed
    */
-  onClearRequest?: Function;
+  onClearRequest?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * controls whether `sort` button in Menu Body Header is displayed
    */
-  onSortRequest?: Function;
+  onSortRequest?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * controls whether menu is open on initial render
    */
@@ -96,13 +102,15 @@ function FilterMenu(props: TFilterMenuProps) {
       <Popover.Portal>
         <Popover.Content side="bottom" align="start" css={menuStyles}>
           <Header
-            // For storybook purposes, we are not using the actual props - will be taken off eventually.
-            label="Size"
+            label={props.label}
             renderOperatorsInput={props.renderOperatorsInput}
             onSortRequest={props.onSortRequest}
           />
           <div>{props.renderMenuBody()}</div>
-          <Footer />
+          <Footer
+            onClearRequest={props.onClearRequest}
+            renderApplyButton={props.renderApplyButton}
+          />
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
