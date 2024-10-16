@@ -9,7 +9,7 @@ import Filters from './filters';
 const meta: Meta<typeof Filters> = {
   title: 'components/Filters',
   component: Filters,
-  // tags: ['local-dev'],
+  tags: ['local-dev'],
   argTypes: {
     label: {
       control: 'text',
