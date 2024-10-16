@@ -20,13 +20,21 @@ import SearchSelectInput from '@commercetools-uikit/search-select-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import FieldWarnings from '@commercetools-uikit/field-warnings';
 
-type ReactSelectAsyncProps = AsyncProps<unknown, boolean, GroupBase<unknown>>;
+type ReactSelectAsyncProps<
+  Option,
+  isMulti extends boolean,
+  Group extends GroupBase<Option>
+> = AsyncProps<Option, isMulti, Group>;
 
-type TCustomEvent = {
+type TCustomEvent<
+  Option,
+  isMulti extends boolean,
+  Group extends GroupBase<Option>
+> = {
   target: {
-    id?: ReactSelectAsyncProps['inputId'];
-    name?: ReactSelectAsyncProps['name'];
-    value?: unknown;
+    id?: ReactSelectAsyncProps<Option, isMulti, Group>['inputId'];
+    name?: ReactSelectAsyncProps<Option, isMulti, Group>['name'];
+    value?: ReactSelectAsyncProps<Option, isMulti, Group>['value'];
   };
   persist: () => void;
 };
@@ -45,7 +53,11 @@ const hasWarnings = (warnings?: TFieldWarnings) =>
   warnings && Object.values(warnings).some(Boolean);
 const sequentialId = createSequentialId('search-select-field-');
 
-export type TSearchSelectFieldProps = {
+export type TSearchSelectFieldProps<
+  Option extends TOptionInnerPropsData = TOptionInnerPropsData,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = {
   /**
    *Horizontal size limit of the input fields.
    */
@@ -71,67 +83,79 @@ export type TSearchSelectFieldProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-label'?: ReactSelectAsyncProps['aria-label'];
+  'aria-label'?: ReactSelectAsyncProps<Option, isMulti, Group>['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-labelledby'?: ReactSelectAsyncProps['aria-labelledby'];
+  'aria-labelledby'?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['aria-labelledby'];
   /**
    * The id of the search input. This forwarded as react-select's "inputId"
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  id?: ReactSelectAsyncProps['inputId'];
+  id?: ReactSelectAsyncProps<Option, isMulti, Group>['inputId'];
   /**
    * The id to set on the SelectContainer component. This is forwarded as react-select's "id"
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  containerId?: ReactSelectAsyncProps['id'];
+  containerId?: ReactSelectAsyncProps<Option, isMulti, Group>['id'];
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  name?: ReactSelectAsyncProps['name'];
+  name?: ReactSelectAsyncProps<Option, isMulti, Group>['name'];
   /**
    * Placeholder text for the select value
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  placeholder?: ReactSelectAsyncProps['placeholder'];
+  placeholder?: ReactSelectAsyncProps<Option, isMulti, Group>['placeholder'];
   /**
    * Map of components to overwrite the default ones, see [what components you can override](https://react-select.com/components)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  components?: ReactSelectAsyncProps['components'];
+  components?: ReactSelectAsyncProps<Option, isMulti, Group>['components'];
   /**
    * Control whether the selected values should be rendered in the control
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  controlShouldRenderValue?: ReactSelectAsyncProps['controlShouldRenderValue'];
+  controlShouldRenderValue?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['controlShouldRenderValue'];
   /**
    * Sets the tabIndex attribute on the input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  tabIndex?: ReactSelectAsyncProps['tabIndex'];
+  tabIndex?: ReactSelectAsyncProps<Option, isMulti, Group>['tabIndex'];
   /**
    * The value of the select; reflected by the selected option
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  value?: ReactSelectAsyncProps['value'];
+  value?: ReactSelectAsyncProps<Option, isMulti, Group>['value'];
   /**
    * Remove the currently focused option when the user presses backspace
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  backspaceRemovesValue?: ReactSelectAsyncProps['backspaceRemovesValue'];
+  backspaceRemovesValue?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['backspaceRemovesValue'];
   /**
    * Indicates the input field has an error
    */
@@ -162,13 +186,17 @@ export type TSearchSelectFieldProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isOptionDisabled?: ReactSelectAsyncProps['isOptionDisabled'];
+  isOptionDisabled?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['isOptionDisabled'];
   /**
    * Support multiple selected options
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isMulti?: ReactSelectAsyncProps['isMulti'];
+  isMulti?: ReactSelectAsyncProps<Option, isMulti, Group>['isMulti'];
   /**
    * Focus the control when it is mounted. Renamed autoFocus of react-select
    */
@@ -178,19 +206,31 @@ export type TSearchSelectFieldProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  noOptionsMessage?: ReactSelectAsyncProps['noOptionsMessage'];
+  noOptionsMessage?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['noOptionsMessage'];
   /**
    * Maximum height of the menu before scrolling
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  maxMenuHeight?: ReactSelectAsyncProps['maxMenuHeight'];
+  maxMenuHeight?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['maxMenuHeight'];
   /**
    * Dom element to portal the select menu to
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuPortalTarget?: ReactSelectAsyncProps['menuPortalTarget'];
+  menuPortalTarget?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['menuPortalTarget'];
   /**
    * z-index value for the menu portal
    * <br>
@@ -208,37 +248,48 @@ export type TSearchSelectFieldProps = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: (event: TCustomEvent) => void;
+  onBlur?: (event: TCustomEvent<Option, isMulti, Group>) => void;
   /**
    * Called with a fake event when value changes.
    * <br />
    * The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
    */
-  onChange?: (event: TCustomEvent, info: ActionMeta<unknown>) => void;
+  onChange?: (
+    event: TCustomEvent<Option, isMulti, Group>,
+    info: ActionMeta<unknown>
+  ) => void;
   /**
    * Handle focus events on the control
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onFocus?: ReactSelectAsyncProps['onFocus'];
+  onFocus?: ReactSelectAsyncProps<Option, isMulti, Group>['onFocus'];
   /**
    * Handle change events on the input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onInputChange?: ReactSelectAsyncProps['onInputChange'];
+  onInputChange?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['onInputChange'];
   /**
    * Select the currently focused option when the user presses tab
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  tabSelectsValue?: ReactSelectAsyncProps['tabSelectsValue'];
+  tabSelectsValue?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['tabSelectsValue'];
   /**
    * Function that returns a promise, which is the set of options to be used once the promise resolves.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  loadOptions: ReactSelectAsyncProps['loadOptions'];
+  loadOptions: ReactSelectAsyncProps<Option, isMulti, Group>['loadOptions'];
   /**
    * The text shown while the options are being loaded
    */
@@ -248,13 +299,13 @@ export type TSearchSelectFieldProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  cacheOptions?: ReactSelectAsyncProps['cacheOptions'];
+  cacheOptions?: ReactSelectAsyncProps<Option, isMulti, Group>['cacheOptions'];
   /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  filterOption?: ReactSelectAsyncProps['filterOption'];
+  filterOption?: ReactSelectAsyncProps<Option, isMulti, Group>['filterOption'];
   /**
    * The style of the an option in the dropdown menu. It could be single lined option or an option with more and custom info
    */
@@ -326,6 +377,12 @@ export type TSearchSelectFieldProps = {
    * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
    */
   iconLeft?: ReactNode;
+};
+
+type TOptionInnerPropsData = {
+  label?: string;
+  key?: string;
+  id?: string;
 };
 
 const defaultProps: Pick<TSearchSelectFieldProps, 'controlShouldRenderValue'> =
