@@ -9,9 +9,9 @@ describe('FilterMenu Footer', () => {
   });
 
   it('should render a FlatButton if the onClearAllRequest prop is passed', async () => {
-    const mockOnClearAllRequest = jest.fn();
+    const mockOnClearRequest = jest.fn();
 
-    render(<Footer onClearAllRequest={mockOnClearAllRequest} />);
+    render(<Footer onClearRequest={mockOnClearRequest} />);
 
     const flatButton = screen.getByRole('button', { name: /clear all/i });
     expect(flatButton).toBeInTheDocument();
