@@ -16,6 +16,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 import messages from './messages';
 import { useIntl } from 'react-intl';
+import { menuStyles } from './filter-menu/filter-menu';
 
 // This will be updated in a future PR to use a ui kit button once ui kit buttons can forward refs
 // const AddFilterButtonNEW = forwardRef(function AddFilterButton(
@@ -138,53 +139,11 @@ const verticalDividerStyles = css`
   width: 1px;
   height: ${designTokens.spacing30};
   background-color: ${designTokens.colorNeutral90};
-  margin: 0 ${designTokens.spacing30} 0 ${designTokens.spacing30}!important;
+  margin: 0 ${designTokens.spacing30} 0 ${designTokens.spacing30};
 `;
 
-const FiltersButton = ({ onAddFilters }: { onAddFilters: () => void }) => {
-  const intl = useIntl();
-  return (
-    <FlatButton
-      data-testid="filters-button"
-      label={intl.formatMessage(messages.filtersButtonLabel)}
-      icon={<FilterIcon />}
-      onClick={onAddFilters}
-    />
-  );
-};
-
-const AddFilterButton = () => {
-  const intl = useIntl();
-  return (
-    <FlatButton
-      data-testid="add-filter-button"
-      label={intl.formatMessage(messages.addFiltersButtonLabel)}
-      icon={<PlusBoldIcon />}
-    />
-  );
-};
-
-//Removes filters from being visible & clears all data
-const ClearAllFiltersButton = ({
-  onClearAllRequest,
-}: {
-  onClearAllRequest: () => void;
-}) => {
-  const intl = useIntl();
-  return (
-    <>
-      <div css={verticalDividerStyles}> </div>
-      <FlatButton
-        icon={<CloseBoldIcon />}
-        label={intl.formatMessage(messages.clearAllFiltersButtonLabel)}
-        onClick={onClearAllRequest}
-        tone="secondary"
-      />
-    </>
-  );
-};
-
 function Filters(props: TFiltersProps) {
+  const intl = useIntl();
   const [showAddFilters, setShowAddFilters] = useState(false);
 
   const handleFiltersClick = () => {
@@ -194,26 +153,50 @@ function Filters(props: TFiltersProps) {
   return (
     <>
       <Spacings.Inline scale="m" alignItems="center">
-        {props.renderSearchComponent()}
-        <FiltersButton onAddFilters={handleFiltersClick} />
+        <div css={{ maxWidth: `${designTokens.constraint16}` }}>
+          {props.renderSearchComponent()}
+        </div>
+        <FlatButton
+          data-testid="filters-button"
+          label={intl.formatMessage(messages.filtersButtonLabel)}
+          icon={<FilterIcon />}
+          onClick={handleFiltersClick}
+        />
       </Spacings.Inline>
       <div css={horizontalDividerStyles} />
       {showAddFilters && (
-        <Spacings.Inline scale="s" alignItems="center">
+        <div
+          css={css`
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: ${designTokens.spacing20};
+          `}
+        >
           <Popover.Root>
             <Popover.Trigger asChild>
-              <div>
-                <AddFilterButton />
+              <div css={{ display: 'inline-flex' }}>
+                <FlatButton
+                  data-testid="add-filter-button"
+                  label={intl.formatMessage(messages.addFiltersButtonLabel)}
+                  icon={<PlusBoldIcon />}
+                />
               </div>
             </Popover.Trigger>
             <Popover.Portal>
-              <Popover.Content>
+              <Popover.Content side="bottom" align="start" css={menuStyles}>
                 <SelectInput />
               </Popover.Content>
             </Popover.Portal>
           </Popover.Root>
-          <ClearAllFiltersButton onClearAllRequest={props.onClearAllRequest} />
-        </Spacings.Inline>
+          <div css={verticalDividerStyles}> </div>
+          <FlatButton
+            icon={<CloseBoldIcon />}
+            label={intl.formatMessage(messages.clearAllFiltersButtonLabel)}
+            onClick={props.onClearAllRequest}
+            tone="secondary"
+          />
+        </div>
       )}
     </>
   );

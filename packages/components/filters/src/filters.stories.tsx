@@ -5,7 +5,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 const meta: Meta<typeof Filters> = {
   title: 'components/Filters',
   component: Filters,
-  tags: ['local-dev'],
+  // tags: ['local-dev'],
   argTypes: {},
 };
 
