@@ -139,7 +139,14 @@ const verticalDividerStyles = css`
   width: 1px;
   height: ${designTokens.spacing30};
   background-color: ${designTokens.colorNeutral90};
-  margin: 0 ${designTokens.spacing30} 0 ${designTokens.spacing30};
+  margin: 0 ${designTokens.spacing20} 0 ${designTokens.spacing30};
+`;
+
+const menuListStyles = css`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: ${designTokens.spacing20};
 `;
 
 function Filters(props: TFiltersProps) {
@@ -165,14 +172,7 @@ function Filters(props: TFiltersProps) {
       </Spacings.Inline>
       <div css={horizontalDividerStyles} />
       {showAddFilters && (
-        <div
-          css={css`
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: ${designTokens.spacing20};
-          `}
-        >
+        <div css={menuListStyles}>
           <Popover.Root>
             <Popover.Trigger asChild>
               <div css={{ display: 'inline-flex' }}>
