@@ -4,7 +4,7 @@
 module.exports = {
   runner: 'jest-runner-stylelint',
   displayName: 'stylelint',
-  moduleFileExtensions: ['js'],
+  moduleFileExtensions: ['js', 'ts', 'tsx'],
   modulePathIgnorePatterns: [
     'dist',
     'storybook',
@@ -13,6 +13,6 @@ module.exports = {
     '.visualroute.js',
     '.story.js',
   ],
-  testMatch: ['<rootDir>/**/*.js'],
+  testMatch: ['<rootDir>/**/*.{js,ts,tsx}'],
   watchPlugins: ['jest-watch-typeahead/filename'],
 };
