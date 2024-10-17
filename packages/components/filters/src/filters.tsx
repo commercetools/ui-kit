@@ -18,18 +18,6 @@ import messages from './messages';
 import { useIntl } from 'react-intl';
 import { menuStyles } from './filter-menu/filter-menu';
 
-// This will be updated in a future PR to use a ui kit button once ui kit buttons can forward refs
-// const AddFilterButtonNEW = forwardRef(function AddFilterButton(
-//   props: Record<string, unknown>,
-//   ref: LegacyRef<HTMLButtonElement>
-// ) {
-//   return (
-//     <button ref={ref} {...props}>
-//       add filters
-//     </button>
-//   );
-// });
-
 type TAppliedFilter = {
   /**
    * unique identifier for the filter
@@ -139,7 +127,7 @@ const verticalDividerStyles = css`
   width: 1px;
   height: ${designTokens.spacing30};
   background-color: ${designTokens.colorNeutral90};
-  margin: 0 ${designTokens.spacing20} 0 ${designTokens.spacing30};
+  margin: 0 ${designTokens.spacing20} 0 ${designTokens.spacing20};
 `;
 
 const menuListStyles = css`
