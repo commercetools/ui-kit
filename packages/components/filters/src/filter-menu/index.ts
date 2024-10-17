@@ -1,1 +1,1 @@
-export { default } from './filter-menu';
+export { default, type TAppliedFilterValue } from './filter-menu';

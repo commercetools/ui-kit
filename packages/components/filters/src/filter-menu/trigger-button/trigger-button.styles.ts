@@ -6,6 +6,7 @@ export const triggerWrapper = css`
   background-color: ${designTokens.colorSurface};
   font-size: ${designTokens.fontSize20};
   font-weight: ${designTokens.fontWeight500};
+  line-height: ${designTokens.lineHeight20};
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -15,7 +16,7 @@ export const triggerWrapper = css`
   box-shadow: 0 0 0 ${designTokens.borderWidth1} ${designTokens.colorNeutral85};
   cursor: pointer;
   height: ${designTokens.spacing50};
-  max-width: 100%;
+  max-width: min(100%, ${designTokens.constraint13});
   align-self: flex-start;
   &:hover {
     background-color: ${designTokens.colorPrimary98};
@@ -55,8 +56,6 @@ export const disabled = css`
   }
 `;
 
-export const disabledButton = css``;
-
 export const mainActionButton = css`
   background: transparent;
   border: 0;
@@ -81,8 +80,12 @@ export const removeButton = css`
 `;
 
 export const label = css`
-  flex-grow: 0;
+  flex: 0 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
   cursor: inherit;
+  white-space: nowrap;
+  max-width: ${designTokens.constraint6};
 `;
 
 export const valuesContainer = css`
@@ -100,7 +103,7 @@ export const badgeContainer = css`
   right: 0;
   display: flex;
   align-items: center;
-  padding-left: ${designTokens.spacing20};
+  padding-left: ${designTokens.spacing30};
   background: linear-gradient(
     to right,
     transparent,

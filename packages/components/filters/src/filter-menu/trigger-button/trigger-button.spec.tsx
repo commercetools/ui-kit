@@ -75,6 +75,115 @@ describe('FilterMenu Trigger Button', () => {
         screen.queryByRole('button', { name: 'remove test filter' })
       ).not.toBeInTheDocument();
     });
+    describe('overflow badge', () => {
+      // container has right of 300 for all tests
+      window.HTMLUListElement.prototype.getBoundingClientRect = () =>
+        ({
+          bottom: 0,
+          height: 0,
+          left: 0,
+          right: 300,
+          top: 0,
+          width: 0,
+        } as DOMRect);
+
+      // increment 'right' by 100px for every li element, reset for each test
+      beforeEach(() => {
+        let right = 0;
+        window.HTMLLIElement.prototype.getBoundingClientRect = () =>
+          ({
+            bottom: 44,
+            height: 24,
+            left: 10,
+            right: (right += 100),
+            top: 20,
+            width: 25.67,
+          } as DOMRect);
+      });
+
+      it('should render the correct number of filter chips', async () => {
+        const props = getDefaultProps({
+          appliedFilterValues: [
+            { value: 'one', label: 'one' },
+            { value: 'two', label: 'two' },
+          ],
+        });
+        await render(<TriggerButton {...props} />);
+        expect(screen.getAllByText(/one|two/)).toHaveLength(2);
+      });
+      it('should display the overflow badge when chips overflow', async () => {
+        const props = getDefaultProps({
+          appliedFilterValues: [
+            { value: 'one', label: 'one' },
+            { value: 'two', label: 'two' },
+            { value: 'three', label: 'three' },
+            { value: 'four', label: 'four' },
+          ],
+        });
+        // Mock clientWidth and scrollWidth to simulate overflow
+        Object.defineProperty(HTMLUListElement.prototype, 'clientWidth', {
+          configurable: true,
+          value: 300,
+        });
+        Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', {
+          configurable: true,
+          value: 400,
+        });
+
+        await render(<TriggerButton {...props} />);
+        const badge = await screen.findByText(/\+1/);
+        expect(badge).toBeInTheDocument();
+      });
+      it('should update the overflow badge when more chips are added', async () => {
+        const props = getDefaultProps({
+          appliedFilterValues: [
+            { value: 'one', label: 'one' },
+            { value: 'two', label: 'two' },
+            { value: 'three', label: 'three' },
+            { value: 'four', label: 'four' },
+          ],
+        });
+        // Mock the initial container dimensions
+        Object.defineProperty(HTMLUListElement.prototype, 'clientWidth', {
+          configurable: true,
+          value: 300,
+        });
+        Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', {
+          configurable: true,
+          value: 200,
+        });
+        const { rerender } = render(<TriggerButton {...props} />);
+        expect(screen.queryByText(/\+/)).not.toBeInTheDocument();
+        // Update the mock to simulate an overflow after re-rendering
+        Object.defineProperty(HTMLUListElement.prototype, 'scrollWidth', {
+          configurable: true,
+          value: 400,
+        });
+        // Rerender with more chips to cause overflow
+        rerender(
+          <TriggerButton
+            {...props}
+            appliedFilterValues={[
+              { value: 'one', label: 'one' },
+              { value: 'two', label: 'two' },
+              { value: 'three', label: 'three' },
+              { value: 'four', label: 'four' },
+              { value: 'five', label: 'five' },
+              { value: 'six', label: 'six' },
+            ]}
+          />
+        );
+        const badge = await screen.findByText(/\+3/);
+        expect(badge).toBeInTheDocument();
+      });
+      it('should not display an overflow badge when all chips fit', async () => {
+        const props = getDefaultProps({
+          appliedFilterValues: [{ value: 'one', label: 'one' }],
+        });
+        await render(<TriggerButton {...props} />);
+        expect(screen.queryByText(/\+/)).not.toBeInTheDocument();
+      });
+    });
   });
 
   describe('when disabled', () => {

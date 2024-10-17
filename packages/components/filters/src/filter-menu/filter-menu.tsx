@@ -1,11 +1,33 @@
-import { ReactNode } from 'react';
+import {
+  type ReactNode,
+  type MouseEvent,
+  type KeyboardEvent,
+  useRef,
+  useCallback,
+} from 'react';
 import { css } from '@emotion/react';
-import Constraints from '@commercetools-uikit/constraints';
 import { designTokens } from '@commercetools-uikit/design-system';
 import * as Popover from '@radix-ui/react-popover';
 import { Footer } from './footer';
 import { Header } from './header';
 import { TriggerButton } from './trigger-button';
+
+/**
+ * CSS selector to find focusable elements.
+ * @see https://github.com/microsoft/tabster/blob/6bfd54a45f5b20eccd17b8a05f6c86c241b992c3/src/Focusable.ts#L17-L25
+ * TODO: make available as a util for general use
+ */
+const FOCUSABLE_CSS_SELECTOR = `a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), *[tabindex], *[contenteditable]`;
+
+/**
+ * Find the first focusable element in the given container,
+ * such as the first focusable list item.
+ * @param {HTMLElement} container
+ * @returns {HTMLElement | null}
+ */
+function findFirstFocusable<T extends HTMLElement>(container: T): T | null {
+  return container.querySelector(FOCUSABLE_CSS_SELECTOR);
+}
 
 export type TAppliedFilterValue = {
   value: string;
@@ -44,19 +66,25 @@ export type TFilterMenuProps = {
   /**
    * controls whether `x` in Trigger Button is displayed - required if `isPersistent` is `false`
    */
-  onRemoveRequest?: Function;
+  onRemoveRequest?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * optional button that allows the user to apply selected filter values
    */
   renderApplyButton?: () => ReactNode;
   /**
-   * controls whether `clear` button in Menu Body Footer is displayed
+   * controls whether `clear all` button in Menu Body Footer is displayed
    */
-  onClearRequest?: Function;
+  onClearRequest?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * controls whether `sort` button in Menu Body Header is displayed
    */
-  onSortRequest?: Function;
+  onSortRequest?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * controls whether menu is open on initial render
    */
@@ -68,7 +96,7 @@ const menuStyles = css`
   flex-direction: column;
   align-items: flex-start;
   gap: ${designTokens.spacing30};
-  width: ${Constraints.getMaxPropTokenValue(6)};
+  width: ${designTokens.constraint6};
   padding: ${designTokens.spacing20} ${designTokens.spacing30};
   background-color: ${designTokens.colorSurface};
   border: 1px solid ${designTokens.colorSurface};
@@ -80,7 +108,29 @@ const menuStyles = css`
   position: relative;
   z-index: 5;
 `;
+
+const menuBodyStyle = css`
+  width: 100%;
+`;
+
 function FilterMenu(props: TFilterMenuProps) {
+  const menuBodyRef = useRef<HTMLDivElement>(null);
+
+  const focusMenuBody = useCallback(
+    (e) => {
+      if (menuBodyRef.current) {
+        const firstFocusableElementInMenuBody = findFirstFocusable(
+          menuBodyRef.current
+        );
+        if (firstFocusableElementInMenuBody) {
+          e.preventDefault();
+          firstFocusableElementInMenuBody.focus();
+        }
+      }
+    },
+    [menuBodyRef]
+  );
+
   return (
     <Popover.Root defaultOpen={props.isDisabled ? false : props.defaultOpen}>
       <Popover.Trigger asChild>
@@ -94,15 +144,24 @@ function FilterMenu(props: TFilterMenuProps) {
         />
       </Popover.Trigger>
       <Popover.Portal>
-        <Popover.Content side="bottom" align="start" css={menuStyles}>
+        <Popover.Content
+          side="bottom"
+          align="start"
+          css={menuStyles}
+          onOpenAutoFocus={focusMenuBody}
+        >
           <Header
-            // For storybook purposes, we are not using the actual props - will be taken off eventually.
-            label="Size"
+            label={props.label}
             renderOperatorsInput={props.renderOperatorsInput}
             onSortRequest={props.onSortRequest}
           />
-          <div>{props.renderMenuBody()}</div>
-          <Footer />
+          <div css={menuBodyStyle} ref={menuBodyRef}>
+            {props.renderMenuBody()}
+          </div>
+          <Footer
+            onClearRequest={props.onClearRequest}
+            renderApplyButton={props.renderApplyButton}
+          />
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>

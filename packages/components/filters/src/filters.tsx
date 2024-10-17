@@ -2,7 +2,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 
 export type TFiltersProps = {
   /**
-   * This is a stub prop
+   * Label for the filter
    */
   label?: string;
 };
