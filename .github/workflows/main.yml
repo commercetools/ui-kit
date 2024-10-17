@@ -55,13 +55,7 @@ jobs:
         run: yarn visual-testing-app:build
 
       - name: Running Visual Regression Tests for UI components
-      # aa-exec:
-      # ubuntu-24.04, the image used for `ubuntu-latest` as of Oct 14 2024(https://github.com/actions/runner-images/issues/10636),
-      # introduced security measures in its app-armor security  (https://github.com/puppeteer/puppeteer/issues/12818#issuecomment-2247844464)
-      # that made it so that puppeteers chromium installation is not whitelisted,
-      # which made it so that the chromium sandbox is not available and puppeteer errors out,
-      # so we need to specify that we are using app armor's chrome profile when running puppeteer (https://github.com/mermaid-js/mermaid-cli/issues/730#issuecomment-2408615110)
-        run: aa-exec --profile=chrome -- yarn vrt:components
+        run: yarn vrt:components
         timeout-minutes: 20
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
