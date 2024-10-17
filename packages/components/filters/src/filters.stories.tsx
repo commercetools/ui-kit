@@ -9,7 +9,7 @@ import Filters from './filters';
 const meta: Meta<typeof Filters> = {
   title: 'components/Filters',
   component: Filters,
-  tags: ['local-dev'],
+  // tags: ['local-dev'],
   argTypes: {
     label: {
       control: 'text',
@@ -19,6 +19,35 @@ const meta: Meta<typeof Filters> = {
 export default meta;
 
 type Story = StoryFn<typeof Filters>;
+
+const OperatorsInput = () => {
+  const [headerSelectOptions, setHeaderSelectOptions] = useState<string>();
+
+  const operatorOptions = [
+    { value: 'is', label: 'is' },
+    { value: 'is not', label: 'is NOT' },
+    {
+      value: 'is not quite a short option',
+      label: 'is NOT quite a short option',
+    },
+  ];
+
+  return (
+    <SelectInput
+      appearance="quiet"
+      isCondensed={true}
+      isSearchable={false}
+      value={
+        // Default to the first option if no value is passed
+        headerSelectOptions ? headerSelectOptions : operatorOptions[0].value
+      }
+      options={operatorOptions}
+      onChange={(event) => {
+        setHeaderSelectOptions(event.target.value as string);
+      }}
+    />
+  );
+};
 
 const colorOptions = [
   { label: 'Blue', value: 'blue', key: 'blue', id: '2' },
@@ -54,7 +83,7 @@ const CustomMenuList = ({
   </div>
 );
 
-export const BasicExample: Story = () => {
+export const BasicExample: Story = (args) => {
   const [filterValue, onFilterChange] = useState<string[]>([
     'blue',
     'purple',
@@ -103,72 +132,44 @@ export const BasicExample: Story = () => {
         gap: designTokens.spacing40,
       }}
     >
-      <div style={{ width: '800px', border: 'solid 1px green' }}>
-        800px:{' '}
-        <FilterMenu
-          filterKey="test"
-          label="Testing"
-          renderMenuBody={() => (
-            <SelectInput
-              name="colorsInput"
-              options={colorOptions}
-              onChange={(e) => {
-                /**return an array whether or not e.target.value is a string or array */
-                onFilterChange(
-                  Array.prototype.concat(e.target.value ? e.target.value : [])
-                );
+      <FilterMenu
+        filterKey="test"
+        label={args.label}
+        renderOperatorsInput={OperatorsInput}
+        onSortRequest={() => {}}
+        onClearRequest={() => {}}
+        renderMenuBody={() => (
+          <SelectInput
+            name="colorsInput"
+            options={colorOptions}
+            onChange={(e) => {
+              /**return an array whether or not e.target.value is a string or array */
+              onFilterChange(
+                Array.prototype.concat(e.target.value ? e.target.value : [])
+              );
 
-                setAppliedFilter(
-                  Array.prototype
-                    .concat(e.target.value ? e.target.value : [])
-                    .map((value) => ({ value, label: value.toUpperCase() }))
-                );
-              }}
-              menuIsOpen={true}
-              value={filterValue}
-              components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
-              controlShouldRenderValue={false}
-              hideSelectedOptions={false}
-              isMulti
-            />
-          )}
-          appliedFilterValues={appliedFilter}
-          onRemoveRequest={() => {}}
-        />
-      </div>
-      <div style={{ width: '200px', border: 'solid 1px green' }}>
-        200px:{' '}
-        <FilterMenu
-          filterKey="test1"
-          label="Testing"
-          renderMenuBody={() => (
-            <SelectInput
-              name="colorsInput"
-              options={colorOptions}
-              onChange={(e) => {
-                /**return an array whether or not e.target.value is a string or array */
-                onFilterChange(
-                  Array.prototype.concat(e.target.value ? e.target.value : [])
-                );
-
-                setAppliedFilter(
-                  Array.prototype
-                    .concat(e.target.value ? e.target.value : [])
-                    .map((value) => ({ value, label: value.toUpperCase() }))
-                );
-              }}
-              menuIsOpen={true}
-              value={filterValue}
-              components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
-              controlShouldRenderValue={false}
-              hideSelectedOptions={false}
-              isMulti
-            />
-          )}
-          appliedFilterValues={appliedFilter}
-          onRemoveRequest={() => {}}
-        />
-      </div>
+              setAppliedFilter(
+                Array.prototype
+                  .concat(e.target.value ? e.target.value : [])
+                  .map((value) => ({ value, label: value.toUpperCase() }))
+              );
+            }}
+            menuIsOpen={true}
+            value={filterValue}
+            components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
+            controlShouldRenderValue={false}
+            hideSelectedOptions={false}
+            backspaceRemovesValue={false}
+            isMulti
+          />
+        )}
+        appliedFilterValues={appliedFilter}
+        onRemoveRequest={() => {}}
+      />
     </div>
   );
+};
+
+BasicExample.args = {
+  label: 'an label',
 };

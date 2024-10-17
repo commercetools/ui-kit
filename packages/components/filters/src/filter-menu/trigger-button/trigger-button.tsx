@@ -122,7 +122,11 @@ const TriggerButton = forwardRef(function TriggerButton(
       {filtersApplied && (
         <ul ref={setContainerRef} css={styles.valuesContainer}>
           {values.map((value) => (
-            <Chip key={value.value} label={value.label} />
+            <Chip
+              key={value.value}
+              label={value.label}
+              isDisabled={isDisabled}
+            />
           ))}
           {isOverflowing && overflowCount && (
             <li
@@ -132,6 +136,7 @@ const TriggerButton = forwardRef(function TriggerButton(
               <Badge
                 id="ui-kit-filter-triger-badge"
                 label={`+${overflowCount}`}
+                isDisabled={isDisabled}
               />
             </li>
           )}
@@ -145,7 +150,7 @@ const TriggerButton = forwardRef(function TriggerButton(
         />
       )}
       <button
-        css={[styles.mainActionButton, isDisabled && styles.disabledButton]}
+        css={[styles.mainActionButton]}
         ref={ref}
         id={`${filterKey}-menu-trigger`}
         aria-disabled={isDisabled}
@@ -158,7 +163,7 @@ const TriggerButton = forwardRef(function TriggerButton(
         })}
       />
       {filtersApplied && onRemoveRequest && !isPersistent && (
-        <div css={[styles.removeButton, isDisabled && styles.disabledButton]}>
+        <div css={[styles.removeButton]}>
           <SecondaryIconButton
             icon={<CloseBoldIcon />}
             size="10"

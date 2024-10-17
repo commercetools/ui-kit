@@ -21,7 +21,7 @@ type TFooterProps = {
 
 const footerContainerStyles = css`
   border-top: ${designTokens.borderWidth1} solid ${designTokens.colorNeutral90};
-  margin-bottom: ${designTokens.spacing20};
+
   padding-top: ${designTokens.spacing20};
 
   display: grid;
