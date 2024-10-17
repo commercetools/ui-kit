@@ -1,4 +1,3 @@
-// import { forwardRef, type LegacyRef } from 'react';
 import * as Popover from '@radix-ui/react-popover';
 import FlatButton from '@commercetools-uikit/flat-button';
 import SelectInput from '@commercetools-uikit/select-input';
@@ -11,7 +10,7 @@ import { ReactElement, ReactNode, useState } from 'react';
 import { type TAppliedFilterValue } from './filter-menu/filter-menu';
 import { type TPrimaryButtonProps } from '@commercetools-uikit/primary-button';
 import { type TSelectInputProps } from '@commercetools-uikit/select-input';
-import Spacings from '@commercetools-uikit/spacings/src/spacings';
+import Spacings from '@commercetools-uikit/spacings';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 import messages from './messages';
