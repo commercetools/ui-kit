@@ -151,7 +151,7 @@ export const BasicExample: Story = (args) => {
               setAppliedFilter(
                 Array.prototype
                   .concat(e.target.value ? e.target.value : [])
-                  .map((value) => ({ value, label: value.toUpperCase() }))
+                  .map((value) => ({ value, label: value }))
               );
             }}
             menuIsOpen={true}
