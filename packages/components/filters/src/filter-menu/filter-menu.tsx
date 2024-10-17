@@ -15,6 +15,7 @@ import { TriggerButton } from './trigger-button';
 /**
  * CSS selector to find focusable elements.
  * @see https://github.com/microsoft/tabster/blob/6bfd54a45f5b20eccd17b8a05f6c86c241b992c3/src/Focusable.ts#L17-L25
+ * TODO: make available as a util for general use
  */
 const FOCUSABLE_CSS_SELECTOR = `a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), *[tabindex], *[contenteditable]`;
 
