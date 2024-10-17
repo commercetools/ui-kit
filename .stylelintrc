@@ -32,7 +32,6 @@
     "no-duplicate-selectors": null,
     "no-empty-source": null,
     "declaration-empty-line-before": null,
-    "function-name-case": null,
-    "value-keyword-case": null
+    "function-name-case": null
   }
 }
