@@ -7,6 +7,7 @@ const meta: Meta<typeof SecondaryButton> = {
   component: SecondaryButton,
   argTypes: {
     iconLeft: iconArgType,
+    iconRight: iconArgType,
     as: {
       control: 'text',
     },
