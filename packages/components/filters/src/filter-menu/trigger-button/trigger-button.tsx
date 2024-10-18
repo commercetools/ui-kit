@@ -15,7 +15,7 @@ import * as styles from './trigger-button.styles';
 import { Badge } from '../../badge';
 import { Chip } from '../chip';
 
-const useScrollObserver = (totalCount: number) => {
+const useScrollObserver = (values: TAppliedFilterValue[]) => {
   const [isOverflowing, setIsOverflowing] = useState(false);
   const [overflowCount, setOverflowCount] = useState(0);
   const containerRef = useRef<HTMLUListElement | null>(null);
@@ -48,10 +48,10 @@ const useScrollObserver = (totalCount: number) => {
             }
           });
         }
-        setOverflowCount(totalCount - visibleChipCount);
+        setOverflowCount(values.length - visibleChipCount);
       }
     },
-    [totalCount]
+    [values]
   );
 
   return {
@@ -106,9 +106,8 @@ const TriggerButton = forwardRef(function TriggerButton(
   const values = appliedFilterValues || [];
   const filtersApplied: boolean = values.length > 0;
 
-  const { isOverflowing, overflowCount, setContainerRef } = useScrollObserver(
-    values.length
-  );
+  const { isOverflowing, overflowCount, setContainerRef } =
+    useScrollObserver(values);
 
   return (
     <div css={[styles.triggerWrapper, isDisabled && styles.disabled]}>
@@ -134,7 +133,7 @@ const TriggerButton = forwardRef(function TriggerButton(
               css={styles.badgeContainer}
             >
               <Badge
-                id="ui-kit-filter-triger-badge"
+                id="ui-kit-filter-trigger-overflow-count-badge"
                 label={`+${overflowCount}`}
                 isDisabled={isDisabled}
               />
