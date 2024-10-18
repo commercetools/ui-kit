@@ -2732,13 +2732,13 @@ __metadata:
     "@commercetools-uikit/view-switcher": 19.13.0
     moment: 2.30.1
     moment-timezone: 0.5.46
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
     moment: 2.x
     moment-timezone: 0.5.x
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
@@ -2826,8 +2826,8 @@ __metadata:
     "@swc/plugin-emotion": ^4.0.0
     "@vitejs/plugin-react-swc": ^3.7.0
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     remark-gfm: ^4.0.0
     serve: ^14.2.3
@@ -2849,10 +2849,10 @@ __metadata:
     "@types/react-is": ^17.0.3
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-is: 17.0.2
+    react: 18.3.1
+    react-is: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -2864,9 +2864,9 @@ __metadata:
     "@babel/runtime-corejs3": ^7.20.13
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -2887,10 +2887,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -2913,13 +2913,13 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-select: 5.8.1
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -2941,10 +2941,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -2966,13 +2966,13 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-select: 5.8.1
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -2989,9 +2989,9 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3009,11 +3009,11 @@ __metadata:
     "@commercetools-uikit/primary-button": 19.13.0
     "@commercetools-uikit/secondary-button": 19.13.0
     "@commercetools-uikit/secondary-icon-button": 19.13.0
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
@@ -3053,14 +3053,14 @@ __metadata:
     lodash: 4.17.21
     moment: 2.30.1
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-select: 5.8.1
   peerDependencies:
     moment: 2.x
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3078,10 +3078,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     "@types/react-router-dom": ^5.3.3
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-router-dom: 5.3.4
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-router-dom: 5.x
   languageName: unknown
   linkType: soft
@@ -3100,10 +3100,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3119,9 +3119,9 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3144,10 +3144,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3163,9 +3163,9 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3180,9 +3180,9 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3203,10 +3203,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3227,13 +3227,13 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-select: 5.8.1
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3274,13 +3274,13 @@ __metadata:
     formik: ^2.2.9
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-beautiful-dnd: 13.1.1
-    react-dom: 17.0.2
+    react-dom: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3304,10 +3304,10 @@ __metadata:
     formik: ^2.2.9
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3328,10 +3328,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3359,13 +3359,13 @@ __metadata:
     downshift: 6.1.12
     moment: 2.30.1
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
-    react-is: 17.0.2
+    react-is: 18.3.1
     warning: 4.0.3
   peerDependencies:
     moment: 2.x
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3387,10 +3387,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3418,13 +3418,13 @@ __metadata:
     downshift: 6.1.12
     moment: 2.30.1
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
-    react-is: 17.0.2
+    react-is: 18.3.1
     warning: 4.0.3
   peerDependencies:
     moment: 2.x
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3446,10 +3446,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3477,13 +3477,13 @@ __metadata:
     downshift: 6.1.12
     moment: 2.30.1
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
-    react-is: 17.0.2
+    react-is: 18.3.1
     warning: 4.0.3
   peerDependencies:
     moment: 2.x
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3499,7 +3499,7 @@ __metadata:
     lodash: 4.17.21
     nodemon: ^3.0.0
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   languageName: unknown
   linkType: soft
 
@@ -3520,10 +3520,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3537,10 +3537,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3564,10 +3564,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3581,10 +3581,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3612,11 +3612,11 @@ __metadata:
     "@commercetools-uikit/select-field": 19.13.0
     "@commercetools-uikit/text-field": 19.13.0
     "@commercetools-uikit/time-field": 19.13.0
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
@@ -3642,10 +3642,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     "@radix-ui/react-popover": ^1.1.2
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3664,10 +3664,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3680,9 +3680,9 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3697,11 +3697,11 @@ __metadata:
     "@types/raf-schd": ^4.0.1
     lodash: 4.17.21
     raf-schd: ^4.0.3
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3729,10 +3729,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3749,10 +3749,10 @@ __metadata:
     "@types/dompurify": ^2.4.0
     dompurify: 2.5.7
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-from-dom: 0.6.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3768,11 +3768,11 @@ __metadata:
     "@commercetools-uikit/utils": 19.13.0
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     react-textarea-autosize: 8.4.0
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3807,11 +3807,11 @@ __metadata:
     "@commercetools-uikit/text-input": 19.13.0
     "@commercetools-uikit/time-input": 19.13.0
     "@commercetools-uikit/toggle-input": 19.13.0
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
@@ -3829,10 +3829,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3852,11 +3852,11 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
@@ -3878,11 +3878,11 @@ __metadata:
     "@types/react-router-dom": ^5.3.3
     history: 4.10.1
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
@@ -3900,10 +3900,10 @@ __metadata:
     "@commercetools-uikit/utils": 19.13.0
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3929,13 +3929,13 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-select: 5.8.1
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -3957,10 +3957,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -3984,14 +3984,14 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-select: 5.8.1
     react-textarea-autosize: 8.4.0
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4024,16 +4024,16 @@ __metadata:
     is-hotkey: 0.2.0
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-textarea-autosize: 8.4.0
     slate: 0.75.0
     slate-history: 0.109.0
     slate-react: 0.75.0
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4055,10 +4055,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4083,10 +4083,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4113,10 +4113,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4138,10 +4138,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4163,13 +4163,13 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-select: 5.8.1
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4191,10 +4191,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4219,11 +4219,11 @@ __metadata:
     "@emotion/styled": ^11.10.5
     downshift: 6.1.12
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     react-textarea-autosize: 8.4.0
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4240,10 +4240,10 @@ __metadata:
     "@commercetools-uikit/utils": 19.13.0
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4265,10 +4265,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4285,9 +4285,9 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4312,10 +4312,10 @@ __metadata:
     formik: ^2.2.9
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4341,10 +4341,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4362,9 +4362,9 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4385,10 +4385,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4407,10 +4407,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4429,10 +4429,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4447,10 +4447,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4471,10 +4471,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4495,10 +4495,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
-    react-is: 17.0.2
+    react: 18.3.1
+    react-is: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4527,15 +4527,15 @@ __metadata:
     is-hotkey: 0.2.0
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     slate: 0.75.0
     slate-history: 0.109.0
     slate-react: 0.75.0
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4560,8 +4560,8 @@ __metadata:
     is-hotkey: 0.2.0
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     slate: 0.75.0
     slate-history: 0.109.0
@@ -4569,8 +4569,8 @@ __metadata:
     slate-react: 0.75.0
     style-to-object: 0.4.4
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4593,10 +4593,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4615,12 +4615,12 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4640,9 +4640,9 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4661,11 +4661,11 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
@@ -4686,10 +4686,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4710,10 +4710,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4733,13 +4733,13 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-select: 5.8.1
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4760,13 +4760,13 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-select: 5.8.1
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4790,13 +4790,13 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-select: 5.8.1
   peerDependencies:
-    react: 17.x
-    react-dom: 17.x
+    react: 18.x
+    react-dom: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -4811,9 +4811,9 @@ __metadata:
     "@commercetools-uikit/utils": 19.13.0
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4827,9 +4827,9 @@ __metadata:
     "@commercetools-uikit/utils": 19.13.0
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4843,9 +4843,9 @@ __metadata:
     "@commercetools-uikit/utils": 19.13.0
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4859,9 +4859,9 @@ __metadata:
     "@commercetools-uikit/utils": 19.13.0
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4875,9 +4875,9 @@ __metadata:
     "@commercetools-uikit/spacings-inset": 19.13.0
     "@commercetools-uikit/spacings-inset-squish": 19.13.0
     "@commercetools-uikit/spacings-stack": 19.13.0
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4893,9 +4893,9 @@ __metadata:
     "@commercetools-uikit/utils": 19.13.0
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4915,11 +4915,11 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-router-dom: 5.x
   languageName: unknown
   linkType: soft
@@ -4942,10 +4942,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4962,9 +4962,9 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -4979,11 +4979,11 @@ __metadata:
     "@emotion/react": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
     warning: 4.0.3
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -5005,10 +5005,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -5030,10 +5030,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
     react-intl: ^6.3.2
   peerDependencies:
-    react: 17.x
+    react: 18.x
     react-intl: 6.x
   languageName: unknown
   linkType: soft
@@ -5051,9 +5051,9 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -5071,11 +5071,11 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
-    react-is: 17.0.2
+    react: 18.3.1
+    react-is: 18.3.1
     use-popper: 1.1.6
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -5086,9 +5086,9 @@ __metadata:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
     "@emotion/is-prop-valid": 1.3.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -5105,9 +5105,9 @@ __metadata:
     "@emotion/styled": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
-    react: 17.0.2
+    react: 18.3.1
   peerDependencies:
-    react: 17.x
+    react: 18.x
   languageName: unknown
   linkType: soft
 
@@ -9173,12 +9173,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:17.0.25":
-  version: 17.0.25
-  resolution: "@types/react-dom@npm:17.0.25"
+"@types/react-dom@npm:18.3.1":
+  version: 18.3.1
+  resolution: "@types/react-dom@npm:18.3.1"
   dependencies:
-    "@types/react": ^17
-  checksum: d1e582682478e0848c8d54ea3e89d02047bac6d916266b85ce63731b06987575919653ea7159d98fda47ade3362b8c4d5796831549564b83088e7aa9ce8b60ed
+    "@types/react": "*"
+  checksum: ad28ecce3915d30dc76adc2a1373fda1745ba429cea290e16c6628df9a05fd80b6403c8e87d78b45e6c60e51df7a67add389ab62b90070fbfdc9bda8307d9953
   languageName: node
   linkType: hard
 
@@ -9233,14 +9233,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.83":
-  version: 17.0.83
-  resolution: "@types/react@npm:17.0.83"
+"@types/react@npm:18.3.11":
+  version: 18.3.11
+  resolution: "@types/react@npm:18.3.11"
   dependencies:
     "@types/prop-types": "*"
-    "@types/scheduler": ^0.16
     csstype: ^3.0.2
-  checksum: c237dc47fc19bbe1af14ff89d0e9b749abfb95c0d9c3bca8292539f3d4a4b22c2a359db5e405cd274999a62e1a5fadc8e0eafe62ecc070ff3b2bbba89600b35e
+  checksum: 6cbf36673b64e758dd61b16c24139d015f58530e0d476777de26ba83f24b55e142fbf64e3b8f6b3c7b05ed9ba548551b2a62d9ffb0f95743d0a368646a619163
   languageName: node
   linkType: hard
 
@@ -9257,13 +9256,6 @@ __metadata:
   version: 1.20.6
   resolution: "@types/resolve@npm:1.20.6"
   checksum: dc35f5517606b6687cd971c0281ac58bdee2c50c051b030f04647d3991688be2259c304ee97e5b5d4b9936072c36767eb5933b54611a407d6557972bb6fea4f6
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:^0.16":
-  version: 0.16.8
-  resolution: "@types/scheduler@npm:0.16.8"
-  checksum: 6c091b096daa490093bf30dd7947cd28e5b2cd612ec93448432b33f724b162587fed9309a0acc104d97b69b1d49a0f3fc755a62282054d62975d53d7fd13472d
   languageName: node
   linkType: hard
 
@@ -20909,20 +20901,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:17.0.2":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.2
-  peerDependencies:
-    react: 17.0.2
-  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
-  languageName: node
-  linkType: hard
-
-"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
+"react-dom@npm:18.3.1, react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
   dependencies:
@@ -20999,13 +20978,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:17.0.2, react-is@npm:^17.0.1, react-is@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react-is@npm:17.0.2"
-  checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
-  languageName: node
-  linkType: hard
-
 "react-is@npm:18.1.0":
   version: 18.1.0
   resolution: "react-is@npm:18.1.0"
@@ -21013,7 +20985,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^16.12.0 || ^17.0.0 || ^18.0.0, react-is@npm:^18.0.0":
+"react-is@npm:18.3.1, react-is@npm:^16.12.0 || ^17.0.0 || ^18.0.0, react-is@npm:^18.0.0, react-is@npm:^18.3.1":
   version: 18.3.1
   resolution: "react-is@npm:18.3.1"
   checksum: e20fe84c86ff172fc8d898251b7cc2c43645d108bf96d0b8edf39b98f9a2cae97b40520ee7ed8ee0085ccc94736c4886294456033304151c3f94978cec03df21
@@ -21024,6 +20996,13 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
+  languageName: node
+  linkType: hard
+
+"react-is@npm:^17.0.1, react-is@npm:^17.0.2":
+  version: 17.0.2
+  resolution: "react-is@npm:17.0.2"
+  checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
   languageName: node
   linkType: hard
 
@@ -21146,7 +21125,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-shallow-renderer@npm:^16.13.1":
+"react-shallow-renderer@npm:^16.15.0":
   version: 16.15.0
   resolution: "react-shallow-renderer@npm:16.15.0"
   dependencies:
@@ -21175,17 +21154,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-test-renderer@npm:17.0.2":
-  version: 17.0.2
-  resolution: "react-test-renderer@npm:17.0.2"
+"react-test-renderer@npm:18.3.1":
+  version: 18.3.1
+  resolution: "react-test-renderer@npm:18.3.1"
   dependencies:
-    object-assign: ^4.1.1
-    react-is: ^17.0.2
-    react-shallow-renderer: ^16.13.1
-    scheduler: ^0.20.2
+    react-is: ^18.3.1
+    react-shallow-renderer: ^16.15.0
+    scheduler: ^0.23.2
   peerDependencies:
-    react: 17.0.2
-  checksum: e6b5c6ed2a0bde2c34f1ab9523ff9bc4c141a271daf730d6b852374e83acc0155d58ab71a318251e953ebfa65b8bebb9c5dce3eba1ccfcbef7cc4e1e8261c401
+    react: ^18.3.1
+  checksum: e8e58e738835fab3801afb63f6bfe0fcf6e68ea39619fae5bdf47feefc36b1e4acb48c9dd139c7533611466eff1dfce6ffdda4b317e06aee663dda7d91438f26
   languageName: node
   linkType: hard
 
@@ -21226,17 +21204,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
-  languageName: node
-  linkType: hard
-
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
+"react@npm:18.3.1, react@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
   dependencies:
@@ -22061,16 +22029,6 @@ __metadata:
   dependencies:
     xmlchars: ^2.2.0
   checksum: d3fa3e2aaf6c65ed52ee993aff1891fc47d5e47d515164b5449cbf5da2cbdc396137e55590472e64c5c436c14ae64a8a03c29b9e7389fc6f14035cf4e982ef3b
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
   languageName: node
   linkType: hard
 
@@ -24121,11 +24079,11 @@ __metadata:
     puppeteer: 22.15.0
     qs: 6.13.0
     rcfile: 1.0.3
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-router-dom: 5.3.4
-    react-test-renderer: 17.0.2
+    react-test-renderer: 18.3.1
     react-value: 0.2.0
     replace: 1.2.2
     rimraf: 3.0.2
@@ -24785,13 +24743,13 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@fontsource/inter": 5.1.0
-    "@types/react": 17.0.83
+    "@types/react": 18.3.11
     "@vitejs/plugin-react": 4.3.2
     moment: 2.30.1
     moment-timezone: 0.5.46
     prop-types: 15.8.1
-    react: 17.0.2
-    react-dom: 17.0.2
+    react: 18.3.1
+    react-dom: 18.3.1
     react-intl: ^6.3.2
     react-router: 5.3.4
     react-router-dom: 5.3.4
