@@ -66,6 +66,10 @@ export type TSecondaryButtonProps<
    */
   iconLeft?: ReactElement;
   /**
+   * The righr icon displayed within the button.
+   */
+  iconRight?: ReactElement;
+  /**
    * If this is active, it means the button will persist in an "active" state when toggled (see `isToggled`), and back to normal state when untoggled
    */
   isToggleButton?: boolean;
@@ -108,10 +112,11 @@ export type TSecondaryButtonProps<
 export const getIconColor = (
   props: Pick<
     TSecondaryButtonProps,
-    'isToggleButton' | 'isToggled' | 'theme' | 'isDisabled' | 'iconLeft'
+    'isToggleButton' | 'isToggled' | 'theme' | 'isDisabled'
   > & {
     isActive?: boolean;
-  }
+  },
+  icon: TSecondaryButtonProps['iconLeft'] | TSecondaryButtonProps['iconRight']
 ) => {
   const isActive = props.isToggleButton && props.isToggled;
   // if button has a theme, icon should be the same color as the theme on active state
@@ -119,7 +124,7 @@ export const getIconColor = (
   // if button is disabled, icon should be grey
   if (props.isDisabled) return 'neutral60';
   // if button is not disabled nor has a theme, return icon's default color
-  return props.iconLeft?.props.color;
+  return icon?.props.color;
 };
 
 const defaultProps: Pick<
@@ -183,6 +188,26 @@ export const SecondaryButton = <
     getToneStyles(props.tone, props.isDisabled, isActive),
   ];
 
+  const renderIcon = (
+    icon: TSecondaryButtonProps['iconRight'] | TSecondaryButtonProps['iconLeft']
+  ) => {
+    if (!icon) return null;
+    return (
+      <span
+        css={css`
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        `}
+      >
+        {cloneElement(icon, {
+          color: getIconColor(props, icon),
+          size: props.size === 'big' || props.size === '20' ? '40' : '20',
+        })}
+      </span>
+    );
+  };
+
   return (
     <AccessibleButton
       as={(shouldUseLinkTag ? Link : props.as) as ComponentType}
@@ -195,24 +220,10 @@ export const SecondaryButton = <
       isDisabled={props.isDisabled}
       css={containerStyles}
     >
-      <Inline alignItems="center" scale="xs">
-        {Boolean(props.iconLeft) && (
-          <span
-            css={css`
-              margin: 0 ${designTokens.spacing10} 0 0;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            `}
-          >
-            {props.iconLeft &&
-              cloneElement(props.iconLeft, {
-                color: getIconColor(props),
-                size: props.size === 'big' || props.size === '20' ? '40' : '20',
-              })}
-          </span>
-        )}
+      <Inline alignItems="center" scale="s">
+        {renderIcon(props.iconLeft)}
         <span>{props.label}</span>
+        {renderIcon(props.iconRight)}
       </Inline>
     </AccessibleButton>
   );
