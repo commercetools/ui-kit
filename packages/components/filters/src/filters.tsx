@@ -172,7 +172,7 @@ function Filters(props: TFiltersProps) {
                   <div css={{ display: 'inline-flex' }}>
                     <FlatButton
                       data-testid="add-filter-button"
-                      label={intl.formatMessage(messages.addFiltersButtonLabel)}
+                      label={intl.formatMessage(messages.addFilterButtonLabel)}
                       icon={<PlusBoldIcon />}
                       onClick={() => setShowAddFilters(true)}
                     />
