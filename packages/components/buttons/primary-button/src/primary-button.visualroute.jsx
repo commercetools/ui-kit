@@ -288,5 +288,22 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
+
+    <Spec label="with icon right">
+      <PrimaryButton
+        label="A label text"
+        onClick={() => {}}
+        iconRight={<InformationIcon />}
+      />
+    </Spec>
+
+    <Spec label="with icons left + right">
+      <PrimaryButton
+        label="A label text"
+        onClick={() => {}}
+        iconLeft={<InformationIcon />}
+        iconRight={<InformationIcon />}
+      />
+    </Spec>
   </Suite>
 );
