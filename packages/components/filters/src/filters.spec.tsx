@@ -37,8 +37,8 @@ describe('Filters', () => {
     const addFilterButton = screen.queryByTestId('add-filter-button');
     const clearAllFiltersButton = screen.queryByText(/clear all/i);
 
-    expect(addFilterButton).not.toBeInTheDocument();
-    expect(clearAllFiltersButton).not.toBeInTheDocument();
+    expect(addFilterButton).not.toBeVisible();
+    expect(clearAllFiltersButton).not.toBeVisible();
   });
 
   it('should call onClearAllRequest when the `clear all` filters button is clicked', async () => {

@@ -3107,7 +3107,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/collapsible-motion@19.13.0, @commercetools-uikit/collapsible-motion@workspace:packages/components/collapsible-motion":
+"@commercetools-uikit/collapsible-motion@19.13.0, @commercetools-uikit/collapsible-motion@workspace:^, @commercetools-uikit/collapsible-motion@workspace:packages/components/collapsible-motion":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/collapsible-motion@workspace:packages/components/collapsible-motion"
   dependencies:
@@ -3628,6 +3628,7 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/collapsible-motion": "workspace:^"
     "@commercetools-uikit/design-system": "workspace:^"
     "@commercetools-uikit/dropdown-menu": "workspace:^"
     "@commercetools-uikit/flat-button": "workspace:^"

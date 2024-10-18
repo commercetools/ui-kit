@@ -16,6 +16,7 @@ import { css } from '@emotion/react';
 import messages from './messages';
 import { useIntl } from 'react-intl';
 import { menuStyles } from './filter-menu/filter-menu';
+import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 
 type TAppliedFilter = {
   /**
@@ -158,33 +159,42 @@ function Filters(props: TFiltersProps) {
         />
       </Spacings.Inline>
       <div css={horizontalDividerStyles} />
-      {showAddFilters && (
-        <div css={menuListStyles}>
-          <Popover.Root>
-            <Popover.Trigger asChild>
-              <div css={{ display: 'inline-flex' }}>
-                <FlatButton
-                  data-testid="add-filter-button"
-                  label={intl.formatMessage(messages.addFiltersButtonLabel)}
-                  icon={<PlusBoldIcon />}
-                />
-              </div>
-            </Popover.Trigger>
-            <Popover.Portal>
-              <Popover.Content side="bottom" align="start" css={menuStyles}>
-                <SelectInput />
-              </Popover.Content>
-            </Popover.Portal>
-          </Popover.Root>
-          <div css={verticalDividerStyles}> </div>
-          <FlatButton
-            icon={<CloseBoldIcon />}
-            label={intl.formatMessage(messages.clearAllFiltersButtonLabel)}
-            onClick={props.onClearAllRequest}
-            tone="secondary"
-          />
-        </div>
-      )}
+
+      <CollapsibleMotion
+        isClosed={!showAddFilters}
+        onToggle={() => setShowAddFilters(!showAddFilters)}
+      >
+        {({ registerContentNode, containerStyles }) => (
+          <div style={containerStyles}>
+            <div ref={registerContentNode} css={menuListStyles}>
+              <Popover.Root>
+                <Popover.Trigger asChild>
+                  <div css={{ display: 'inline-flex' }}>
+                    <FlatButton
+                      data-testid="add-filter-button"
+                      label={intl.formatMessage(messages.addFiltersButtonLabel)}
+                      icon={<PlusBoldIcon />}
+                      onClick={() => setShowAddFilters(true)}
+                    />
+                  </div>
+                </Popover.Trigger>
+                <Popover.Portal>
+                  <Popover.Content side="bottom" align="start" css={menuStyles}>
+                    <SelectInput />
+                  </Popover.Content>
+                </Popover.Portal>
+              </Popover.Root>
+              <div css={verticalDividerStyles} />
+              <FlatButton
+                icon={<CloseBoldIcon />}
+                label={intl.formatMessage(messages.clearAllFiltersButtonLabel)}
+                onClick={props.onClearAllRequest}
+                tone="secondary"
+              />
+            </div>
+          </div>
+        )}
+      </CollapsibleMotion>
     </>
   );
 }
