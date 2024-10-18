@@ -1,4 +1,8 @@
 {
+  "UIKit.AddFilterButton.addFilterButtonLabel": {
+    "developer_comment": "Label for the add filter button",
+    "string": "Add filter"
+  },
   "UIKit.CalendarHeader.nextMonthTooltip": {
     "developer_comment": "Tooltip title when user hovers the next month button",
     "string": "nächstes Monat"
@@ -122,6 +126,10 @@
   "UIKit.FieldErrors.missingRequiredField": {
     "developer_comment": "Error message for missing required value",
     "string": "Pflichtfeld*, Geben Sie mindestens einen Wert an"
+  },
+  "UIKit.FiltersButton.filtersButtonLabel": {
+    "developer_comment": "Label for the filters button",
+    "string": "Filters"
   },
   "UIKit.LocalizedMoneyInput.hide": {
     "developer_comment": "Hide currencies button",
@@ -310,13 +318,5 @@
   "UIKit.TimeInput.placeholder": {
     "developer_comment": "Placeholder for time input",
     "string": "HH:mm"
-  },
-  "UIKit.addFiltersButton.addFiltersButtonLabel": {
-    "developer_comment": "Label for the add filters button",
-    "string": "Add filter"
-  },
-  "UIKit.filtersButton.filtersButtonLabel": {
-    "developer_comment": "Label for the filters button",
-    "string": "Filters"
   }
 }
