@@ -67,7 +67,7 @@ export type TFilterMenuProps = {
    * controls whether `x` in Trigger Button is displayed - required if `isPersistent` is `false`
    */
   onRemoveRequest?: (
-    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+    event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
    * optional button that allows the user to apply selected filter values
@@ -132,7 +132,19 @@ function FilterMenu(props: TFilterMenuProps) {
   );
 
   return (
-    <Popover.Root defaultOpen={props.isDisabled ? false : props.defaultOpen}>
+    <Popover.Root
+      defaultOpen={props.isDisabled ? false : props.defaultOpen}
+      onOpenChange={(open) => {
+        if (
+          !open &&
+          !props.appliedFilterValues?.length &&
+          !props.isPersistent &&
+          props.onRemoveRequest
+        ) {
+          props.onRemoveRequest();
+        }
+      }}
+    >
       <Popover.Trigger asChild>
         <TriggerButton
           filterKey={props.filterKey}
