@@ -23,6 +23,10 @@
     "developer_comment": "Label for the clear all button",
     "string": "Limpar tudo"
   },
+  "UIKit.ClearAllFiltersButton.clearAllFiltersButtonLabel": {
+    "developer_comment": "Label for the clear all filters button",
+    "string": "Clear all"
+  },
   "UIKit.ClearButton.clearButtonLabel": {
     "developer_comment": "Label for the clear button",
     "string": "Limpar"
@@ -306,5 +310,13 @@
   "UIKit.TimeInput.placeholder": {
     "developer_comment": "Placeholder for time input",
     "string": "HH:mm AM/PM"
+  },
+  "UIKit.addFiltersButton.addFiltersButtonLabel": {
+    "developer_comment": "Label for the add filters button",
+    "string": "Add filter"
+  },
+  "UIKit.filtersButton.filtersButtonLabel": {
+    "developer_comment": "Label for the filters button",
+    "string": "Filters"
   }
 }
