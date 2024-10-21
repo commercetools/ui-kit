@@ -138,6 +138,31 @@ const defaultProps: Pick<
   isToggleButton: false,
 };
 
+const PositionedIcon = ({
+  size,
+  icon,
+  color,
+}: {
+  size: string;
+  icon: ReactElement;
+  color: string;
+}) => {
+  return (
+    <span
+      css={css`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      `}
+    >
+      {cloneElement(icon, {
+        color,
+        size: size === 'big' || size === '20' ? '40' : '20',
+      })}
+    </span>
+  );
+};
+
 export const SecondaryButton = <
   TStringOrComponent extends ElementType = 'button'
 >(
@@ -188,26 +213,6 @@ export const SecondaryButton = <
     getToneStyles(props.tone, props.isDisabled, isActive),
   ];
 
-  const renderIcon = (
-    icon: TSecondaryButtonProps['iconRight'] | TSecondaryButtonProps['iconLeft']
-  ) => {
-    if (!icon) return null;
-    return (
-      <span
-        css={css`
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        `}
-      >
-        {cloneElement(icon, {
-          color: getIconColor(props, icon),
-          size: props.size === 'big' || props.size === '20' ? '40' : '20',
-        })}
-      </span>
-    );
-  };
-
   return (
     <AccessibleButton
       as={(shouldUseLinkTag ? Link : props.as) as ComponentType}
@@ -221,9 +226,21 @@ export const SecondaryButton = <
       css={containerStyles}
     >
       <Inline alignItems="center" scale="s">
-        {renderIcon(props.iconLeft)}
+        {props.iconLeft && (
+          <PositionedIcon
+            icon={props.iconLeft}
+            size={props.size}
+            color={getIconColor(props, props.iconLeft)}
+          />
+        )}
         <span>{props.label}</span>
-        {renderIcon(props.iconRight)}
+        {props.iconRight && (
+          <PositionedIcon
+            icon={props.iconRight}
+            size={props.size}
+            color={getIconColor(props, props.iconRight)}
+          />
+        )}
       </Inline>
     </AccessibleButton>
   );
