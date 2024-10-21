@@ -7,6 +7,9 @@ import TextInput from '@commercetools-uikit/text-input';
 import { MenuProps, MenuListProps } from 'react-select';
 import Filters, { type TFiltersProps } from './filters';
 
+//TODO: move example data and components to separate files
+//TODO: better docs on different states and how to accomplish them
+
 const primaryColorOptions = [
   { label: 'Blue', value: 'blue', key: 'blue', id: '2' },
   { label: 'Red', value: 'red', key: 'red', id: '4' },
@@ -22,10 +25,10 @@ const secondaryColorOptions = [
   { label: 'Silver', value: 'silver', key: 'silver', id: '10' },
 ];
 
-// const filterGroups = [
-//   { key: 'secondaryColors', label: <div>Secondary Colors</div> },
-//   { key: 'primaryColors', label: <div>Primary Colors</div> },
-// ];
+const filterGroups = [
+  { key: 'secondaryColors', label: <div>Secondary Colors</div> },
+  { key: 'primaryColors', label: <div>Primary Colors</div> },
+];
 
 const CustomSelectMenu = ({
   children,
@@ -56,14 +59,6 @@ const SearchComponent = () => {
     />
   );
 };
-
-// const RadioComponent = () => {
-//   const [v, setV] = useState('1');
-
-//   return (
-
-//   );
-// };
 
 const meta: Meta<typeof Filters> = {
   title: 'components/Filters',
@@ -144,7 +139,7 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
     {
       key: 'primaryColors',
       label: 'Primary Colors',
-      groupKey: 'primaryColors',
+      groupKey: 'notarealkey',
       filterMenuConfiguration: {
         renderMenuBody: () => (
           <SelectInput
@@ -212,6 +207,7 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
     {
       key: 'fruits',
       label: 'Fruits',
+      groupKey: 'secondaryColors',
       filterMenuConfiguration: {
         renderMenuBody: () => (
           <RadioInput.Group
@@ -219,7 +215,6 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
             name="fruits"
             value={fruitsValue}
             onChange={(e) => {
-              console.log(e);
               setFruitsValue(e.target.value);
             }}
           >
@@ -237,7 +232,7 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
     <Filters
       renderSearchComponent={SearchComponent}
       filters={filters}
-      // filterGroups={filterGroups}
+      filterGroups={filterGroups}
       appliedFilters={appliedFilters}
       onClearAllRequest={clearAllFilters}
     />

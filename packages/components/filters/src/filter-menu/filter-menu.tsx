@@ -111,6 +111,7 @@ export const menuStyles = css`
 
 const menuBodyStyle = css`
   width: 100%;
+  overflow: hidden;
 `;
 
 function FilterMenu(props: TFilterMenuProps) {
