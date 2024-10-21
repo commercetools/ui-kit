@@ -37,6 +37,32 @@ const sizeMapping: Record<TLegacySizes, TSizes> = {
   big: '20',
 };
 
+const PositionedIcon = ({
+  icon,
+  size,
+  isDisabled,
+}: {
+  icon: TPrimaryButtonProps['iconRight'] | TPrimaryButtonProps['iconLeft'];
+  size: TPrimaryButtonProps['size'];
+  isDisabled: TPrimaryButtonProps['isDisabled'];
+}) => {
+  if (!icon) return null;
+  return (
+    <span
+      css={css`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      `}
+    >
+      {cloneElement(icon, {
+        color: isDisabled ? 'neutral60' : 'surface',
+        size: size === 'big' || size === '20' ? '40' : '20',
+      })}
+    </span>
+  );
+};
+
 export type TPrimaryButtonProps<
   TStringOrComponent extends ElementType = 'button'
 > = {
@@ -131,26 +157,6 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
 
   const isActive = Boolean(props.isToggleButton && props.isToggled);
 
-  const renderIcon = (
-    icon: TPrimaryButtonProps['iconRight'] | TPrimaryButtonProps['iconLeft']
-  ) => {
-    if (!icon) return null;
-    return (
-      <span
-        css={css`
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        `}
-      >
-        {cloneElement(icon, {
-          color: props.isDisabled ? 'neutral60' : 'surface',
-          size: props.size === 'big' || props.size === '20' ? '40' : '20',
-        })}
-      </span>
-    );
-  };
-
   return (
     <AccessibleButton
       as={props.as}
@@ -164,9 +170,21 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
       css={getButtonStyles(props.isDisabled, isActive, props.tone, props.size)}
     >
       <Inline alignItems="center" scale="s">
-        {renderIcon(props.iconLeft)}
+        {props.iconLeft && (
+          <PositionedIcon
+            icon={props.iconLeft}
+            isDisabled={props.isDisabled}
+            size={props.size}
+          />
+        )}
         <span>{props.label}</span>
-        {renderIcon(props.iconRight)}
+        {props.iconRight && (
+          <PositionedIcon
+            icon={props.iconRight}
+            isDisabled={props.isDisabled}
+            size={props.size}
+          />
+        )}
       </Inline>
     </AccessibleButton>
   );
