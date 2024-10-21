@@ -1,6 +1,6 @@
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
-import { components, OptionProps } from 'react-select';
+import { components, GroupBase, OptionProps } from 'react-select';
 import { NO_VALUE_FALLBACK, SELECT_DROPDOWN_OPTION_TYPES } from './constants';
 
 export type TData = {
@@ -11,14 +11,22 @@ export type TData = {
 
 export type TSelectDropdownOptionTypesKeys =
   keyof typeof SELECT_DROPDOWN_OPTION_TYPES;
-export type TDoublePropertySelectInputOptionProps = {
+export type TDoublePropertySelectInputOptionProps<
+  Option = unknown,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = {
   data?: TData;
   noValueFallback?: string;
   optionType?: (typeof SELECT_DROPDOWN_OPTION_TYPES)[TSelectDropdownOptionTypesKeys];
-} & OptionProps;
+} & OptionProps<Option, isMulti, Group>;
 
-export const MultiplePropertiesSelectInputOption = (
-  props: TDoublePropertySelectInputOptionProps
+export const MultiplePropertiesSelectInputOption = <
+  Option = unknown,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: TDoublePropertySelectInputOptionProps<Option, isMulti, Group>
 ) => {
   const { data } = props;
   const noValueFallback = props.noValueFallback || NO_VALUE_FALLBACK;
@@ -39,8 +47,12 @@ export const MultiplePropertiesSelectInputOption = (
 MultiplePropertiesSelectInputOption.displayName =
   'MultiplePropertiesSelectInputOption';
 
-export const DoublePropertySelectInputOption = (
-  props: TDoublePropertySelectInputOptionProps
+export const DoublePropertySelectInputOption = <
+  Option = unknown,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: TDoublePropertySelectInputOptionProps<Option, isMulti, Group>
 ) => {
   const { data } = props;
   const noValueFallback = props.noValueFallback || NO_VALUE_FALLBACK;
@@ -58,12 +70,24 @@ export const DoublePropertySelectInputOption = (
 
 DoublePropertySelectInputOption.displayName = 'DoublePropertySelectInputOption';
 
-export type TCustomSelectInputOptionProps = {
-  optionInnerProps: TDoublePropertySelectInputOptionProps;
-} & TDoublePropertySelectInputOptionProps;
+export type TCustomSelectInputOptionProps<
+  Option = unknown,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = {
+  optionInnerProps: TDoublePropertySelectInputOptionProps<
+    Option,
+    isMulti,
+    Group
+  >;
+} & TDoublePropertySelectInputOptionProps<Option, isMulti, Group>;
 
-export const CustomSelectInputOption = (
-  props: TCustomSelectInputOptionProps
+export const CustomSelectInputOption = <
+  Option = unknown,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: TCustomSelectInputOptionProps<Option, isMulti, Group>
 ) => {
   const noValueFallback = props.noValueFallback || NO_VALUE_FALLBACK;
 
