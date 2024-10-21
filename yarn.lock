@@ -3107,7 +3107,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/collapsible-motion@19.13.0, @commercetools-uikit/collapsible-motion@workspace:packages/components/collapsible-motion":
+"@commercetools-uikit/collapsible-motion@19.13.0, @commercetools-uikit/collapsible-motion@workspace:^, @commercetools-uikit/collapsible-motion@workspace:packages/components/collapsible-motion":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/collapsible-motion@workspace:packages/components/collapsible-motion"
   dependencies:
@@ -3628,6 +3628,7 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/collapsible-motion": "workspace:^"
     "@commercetools-uikit/design-system": "workspace:^"
     "@commercetools-uikit/dropdown-menu": "workspace:^"
     "@commercetools-uikit/flat-button": "workspace:^"
@@ -3635,6 +3636,7 @@ __metadata:
     "@commercetools-uikit/icons": "workspace:^"
     "@commercetools-uikit/secondary-icon-button": "workspace:^"
     "@commercetools-uikit/select-input": "workspace:^"
+    "@commercetools-uikit/spacings": "workspace:^"
     "@commercetools-uikit/utils": "workspace:^"
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
@@ -4863,7 +4865,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/spacings@19.13.0, @commercetools-uikit/spacings@workspace:presets/spacings":
+"@commercetools-uikit/spacings@19.13.0, @commercetools-uikit/spacings@workspace:^, @commercetools-uikit/spacings@workspace:presets/spacings":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/spacings@workspace:presets/spacings"
   dependencies:
