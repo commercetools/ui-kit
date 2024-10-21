@@ -14,7 +14,10 @@ import {
   FilterIcon,
   PlusBoldIcon,
 } from '@commercetools-uikit/icons';
-import SelectInput from '@commercetools-uikit/select-input';
+import SelectInput, {
+  TOption,
+  TOptionObject,
+} from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import { useIntl } from 'react-intl';
 import { MenuProps, MenuListProps } from 'react-select';
@@ -25,6 +28,13 @@ import FilterMenu, {
 import messages from './messages';
 import { Badge } from './badge';
 
+type TAddFilterSelectOption = {
+  value: string;
+  label: ReactNode;
+  isDisabled: boolean;
+};
+
+//TODO: JSDoc annotations of types that are arrays/objects for storybook
 type TAppliedFilter = {
   /**
    * unique identifier for the filter
@@ -153,11 +163,19 @@ const menuListStyles = css`
   gap: ${designTokens.spacing20};
 `;
 
+//TODO: better styling and set up scrolling when there are lots of options
 const CustomSelectMenu = ({
   children,
   innerProps: { ref, ...restInnerProps },
 }: MenuProps) => (
-  <div ref={ref} {...restInnerProps}>
+  <div
+    ref={ref}
+    {...restInnerProps}
+    css={css`
+      overflow: hidden auto;
+      max-width: 100%;
+    `}
+  >
     {children}
   </div>
 );
@@ -211,24 +229,42 @@ function Filters(props: TFiltersProps) {
 
   // TODO: handle options that don't have a group if `filterGroups` is passed
   const getFilterOptions = () => {
+    let filterOptions: (TOption | (TOptionObject & { key: string }))[] = [];
+    // set option groups
     if (props.filterGroups) {
-      return props.filterGroups.map((filterGroup) => ({
+      filterOptions = props.filterGroups.map((filterGroup) => ({
         label: filterGroup.label,
-        options: props.filters
-          .filter((filter) => filter.groupKey === filterGroup.key)
-          .map((filter) => ({
+        key: filterGroup.key,
+        options: [],
+      }));
+    }
+    return props.filters.reduce((filterOptions, filter) => {
+      //if theres a groupkey and an filterGroups, add option to its group
+      if (filter.groupKey && props.filterGroups) {
+        const optionGroup = filterOptions.find(
+          //@ts-ignore
+          (option) => option?.key === filter.groupKey
+        );
+        if (optionGroup) {
+          //@ts-ignore
+          optionGroup?.options?.push({
             value: filter.key,
             label: filter.label,
             isDisabled: filter.isDisabled,
-          })),
-      }));
-    } else {
-      return props.filters.map((filter) => ({
-        value: filter.key,
-        label: filter.label,
-        isDisabled: filter.isDisabled,
-      }));
-    }
+          });
+          return filterOptions;
+        }
+      }
+      // otherwise add option directly
+      return [
+        ...filterOptions,
+        {
+          value: filter.key,
+          label: filter.label,
+          isDisabled: filter.isDisabled,
+        },
+      ];
+    }, filterOptions);
   };
 
   const removeFilter = (filterKey: string) =>
@@ -237,9 +273,6 @@ function Filters(props: TFiltersProps) {
         (visibleFilterKey) => visibleFilterKey !== filterKey
       )
     );
-
-  const locallyVisibleRemovableFilterCount =
-    localVisibleFilters.length - persistedFilterKeys.length;
 
   return (
     <>
@@ -254,16 +287,15 @@ function Filters(props: TFiltersProps) {
             icon={<FilterIcon />}
             onClick={handleFiltersClick}
           />
-          {locallyVisibleRemovableFilterCount > 1 && !showFilterControls && (
+          {props.appliedFilters.length > 1 && !showFilterControls && (
             <Badge
               id={'uikit-filters-selected-filter-count'}
-              label={`${locallyVisibleRemovableFilterCount}`}
+              label={`${props.appliedFilters.length}`}
             />
           )}
         </Spacings.Inline>
       </Spacings.Inline>
-      <div css={horizontalDividerStyles} />
-
+      <hr css={horizontalDividerStyles} />
       <CollapsibleMotion
         isClosed={!showFilterControls}
         onToggle={() => setShowFilterControls(!showFilterControls)}
@@ -333,8 +365,9 @@ function Filters(props: TFiltersProps) {
                 <Popover.Portal>
                   <Popover.Content side="bottom" align="start" css={menuStyles}>
                     <SelectInput
+                      id="ui-kit-add-filters-select"
                       name="add filters"
-                      options={getFilterOptions()}
+                      options={getFilterOptions() as TOption[]}
                       onChange={(e) => {
                         setLocalVisibleFilters(
                           Array.prototype.concat(
@@ -351,14 +384,16 @@ function Filters(props: TFiltersProps) {
                       controlShouldRenderValue={false}
                       isMulti={true}
                       // @ts-ignore
-                      isOptionDisabled={(option: unknown) => option.isDisabled}
+                      isOptionDisabled={(option: TAddFilterSelectOption) =>
+                        option.isDisabled
+                      }
                       backspaceRemovesValue={false}
                       isClearable={false}
                     />
                   </Popover.Content>
                 </Popover.Portal>
               </Popover.Root>
-              {locallyVisibleRemovableFilterCount > 1 && (
+              {props.appliedFilters.length > 1 && (
                 <>
                   <div css={verticalDividerStyles} />
                   <FlatButton
