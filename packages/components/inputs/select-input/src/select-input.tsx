@@ -7,6 +7,8 @@ import Select, {
   type Props as ReactSelectProps,
 } from 'react-select';
 import Constraints from '@commercetools-uikit/constraints';
+import { SearchIcon } from '@commercetools-uikit/icons';
+
 import {
   ClearIndicator,
   TagRemove,
@@ -49,7 +51,7 @@ export type TSelectInputProps = {
    * Indicates the appearance of the input.
    * Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.
    */
-  appearance?: 'default' | 'quiet';
+  appearance?: 'default' | 'quiet' | 'filter';
   horizontalConstraint?:
     | 3
     | 4
@@ -462,6 +464,9 @@ const SelectInput = (props: TSelectInputProps) => {
                     ),
                   }
                 : {}),
+              ...(props.appearance === 'filter' && {
+                DropdownIndicator: () => <SearchIcon color="neutral60" />,
+              }),
               ...props.components,
             } as ReactSelectProps['components']
           }
