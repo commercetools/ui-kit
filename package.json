@@ -72,7 +72,7 @@
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.9",
     "@commercetools-frontend/babel-preset-mc-app": "22.35.0",
-    "@commercetools-frontend/eslint-config-mc-app": "21.25.2",
+    "@commercetools-frontend/eslint-config-mc-app": "22.35.0",
     "@commercetools-local/generator-package-json": "*",
     "@commercetools-local/generator-readme": "*",
     "@commercetools/github-labels": "1.1.0",
