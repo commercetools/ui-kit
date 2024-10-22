@@ -28,13 +28,18 @@ import FilterMenu, {
 import messages from './messages';
 import { Badge } from './badge';
 
-type TAddFilterSelectOption = {
-  value: string;
+interface TAddFilterSelectOption extends TOption {
+  isDisabled?: boolean;
+}
+
+interface TAddFilterOptionGroup extends TOptionObject {
+  options: TAddFilterSelectOption[];
   label: ReactNode;
-  isDisabled: boolean;
-};
+  key: string;
+}
 
 //TODO: JSDoc annotations of types that are arrays/objects for storybook
+//TODO: document that the applied filter values are what show in the TriggerButton Chips, and the state for them is handled outside the `Filters` component
 type TAppliedFilter = {
   /**
    * unique identifier for the filter
@@ -51,6 +56,7 @@ type TFilterConfiguration = {
    * configuration object for the filter menu.
    */
   filterMenuConfiguration: {
+    //TODO: how to document that the state for this is handled outside the `Filters` component?
     /**
      * the input in which the user selects values for the filter
      */
@@ -59,6 +65,7 @@ type TFilterConfiguration = {
      * the input in which the user can select which operator should be used for this filter
      */
     renderOperatorsInput?: () => ReactNode;
+    //TODO: should we document do/don'ts around disabling this button, etc?
     /**
      * optional button that allows the user to apply selected filter values
      */
@@ -69,6 +76,7 @@ type TFilterConfiguration = {
     onClearRequest: (
       event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
     ) => void;
+    //TODO: document that this is meant to sort options so that selected options are first in list
     /**
      * controls whether `sort` button in Menu Body Header is displayed
      */
@@ -118,10 +126,13 @@ export type TFiltersProps = {
    * configuration for the available filters.
    */
   filters: TFilterConfiguration[];
+  //TODO: add notes about grouped items being sorted below ungrouped items, and groups are displayed in the order they are sorted in this array
   /**
    * optional configuration for filter groups.
+   *
    */
   filterGroups?: TFilterGroupConfiguration[];
+  //TODO: document that this should clear the application's filter state
   /**
    * controls the `clear all` (added filters) button from the menu list
    */
@@ -129,7 +140,7 @@ export type TFiltersProps = {
     event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * optional callback trigger to add a new filter.
+   * optional callback when a filter is selected from the add filters menu.
    */
   onAddFilterRequest?: (
     event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
@@ -164,7 +175,7 @@ const menuListStyles = css`
 `;
 
 //TODO: better styling and set up scrolling when there are lots of options
-const CustomSelectMenu = ({
+const AddFiltersSelectMenu = ({
   children,
   innerProps: { ref, ...restInnerProps },
 }: MenuProps) => (
@@ -180,7 +191,7 @@ const CustomSelectMenu = ({
   </div>
 );
 
-const CustomMenuList = ({
+const AddFiltersSelectList = ({
   children,
   innerProps: { ref, ...restInnerProps },
 }: MenuListProps) => (
@@ -188,6 +199,40 @@ const CustomMenuList = ({
     {children}
   </div>
 );
+
+function getFilterOptions(
+  filters: TFilterConfiguration[],
+  filterGroups?: TFilterGroupConfiguration[]
+): (TAddFilterSelectOption | TAddFilterOptionGroup)[] {
+  let filterOptions: (TAddFilterSelectOption | TAddFilterOptionGroup)[] = [];
+  // define option groups
+  if (filterGroups) {
+    filterOptions = filterGroups.map((filterGroup) => ({
+      label: filterGroup.label,
+      key: filterGroup.key,
+      options: [],
+    }));
+  }
+  return filters.reduce((filterOptions, filter) => {
+    const formattedOption = {
+      value: filter.key,
+      label: filter.label,
+      isDisabled: filter.isDisabled,
+    };
+    //if theres a groupkey, filterGroups, and the groupKey matches a filterGroup, add option to its group
+    if (filter.groupKey && filterGroups) {
+      const optionGroup = filterOptions.find(
+        (option) => 'key' in option && option.key === filter.groupKey
+      );
+      if (optionGroup && 'options' in optionGroup) {
+        optionGroup.options.push(formattedOption);
+        return filterOptions;
+      }
+    }
+    // otherwise add option directly
+    return [formattedOption, ...filterOptions];
+  }, filterOptions);
+}
 
 function Filters(props: TFiltersProps) {
   const intl = useIntl();
@@ -212,60 +257,21 @@ function Filters(props: TFiltersProps) {
   const appliedFilterKeys = props.appliedFilters.map(
     ({ filterKey }) => filterKey
   );
+
   // applied filters must have corresponding filter in `props.filters`,
-  // and persistent filters should be first in filter list
   const visibleFiltersFromProps = props.filters
     .filter(({ key, isPersistent }) => {
       const isVisible =
         Boolean(isPersistent) || appliedFilterKeys.includes(key);
       return isVisible;
     })
+    // persistent filters should be first in filter list
     .sort(({ isPersistent }) => (isPersistent ? -1 : 1));
 
   // set initial state as visibleFiltersFromProps
   const [localVisibleFilters, setLocalVisibleFilters] = useState<string[]>(
     visibleFiltersFromProps.map(({ key }) => key)
   );
-
-  // TODO: handle options that don't have a group if `filterGroups` is passed
-  const getFilterOptions = () => {
-    let filterOptions: (TOption | (TOptionObject & { key: string }))[] = [];
-    // set option groups
-    if (props.filterGroups) {
-      filterOptions = props.filterGroups.map((filterGroup) => ({
-        label: filterGroup.label,
-        key: filterGroup.key,
-        options: [],
-      }));
-    }
-    return props.filters.reduce((filterOptions, filter) => {
-      //if theres a groupkey and an filterGroups, add option to its group
-      if (filter.groupKey && props.filterGroups) {
-        const optionGroup = filterOptions.find(
-          //@ts-ignore
-          (option) => option?.key === filter.groupKey
-        );
-        if (optionGroup) {
-          //@ts-ignore
-          optionGroup?.options?.push({
-            value: filter.key,
-            label: filter.label,
-            isDisabled: filter.isDisabled,
-          });
-          return filterOptions;
-        }
-      }
-      // otherwise add option directly
-      return [
-        ...filterOptions,
-        {
-          value: filter.key,
-          label: filter.label,
-          isDisabled: filter.isDisabled,
-        },
-      ];
-    }, filterOptions);
-  };
 
   const removeFilter = (filterKey: string) =>
     setLocalVisibleFilters((currentVisibleFilters) =>
@@ -367,7 +373,12 @@ function Filters(props: TFiltersProps) {
                     <SelectInput
                       id="ui-kit-add-filters-select"
                       name="add filters"
-                      options={getFilterOptions() as TOption[]}
+                      options={
+                        getFilterOptions(
+                          props.filters,
+                          props.filterGroups
+                        ) as TOption[]
+                      }
                       onChange={(e) => {
                         setLocalVisibleFilters(
                           Array.prototype.concat(
@@ -378,8 +389,8 @@ function Filters(props: TFiltersProps) {
                       value={localVisibleFilters}
                       menuIsOpen={true}
                       components={{
-                        Menu: CustomSelectMenu,
-                        MenuList: CustomMenuList,
+                        Menu: AddFiltersSelectMenu,
+                        MenuList: AddFiltersSelectList,
                       }}
                       controlShouldRenderValue={false}
                       isMulti={true}
