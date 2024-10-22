@@ -91,7 +91,7 @@ export type TFilterMenuProps = {
   defaultOpen?: boolean;
 };
 
-const menuStyles = css`
+export const menuStyles = css`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
