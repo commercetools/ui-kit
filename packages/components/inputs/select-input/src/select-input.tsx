@@ -15,6 +15,8 @@ import {
   createSelectStyles,
   messages,
   warnIfMenuPortalPropsAreMissing,
+  optionStyleCheckboxComponents,
+  optionsStyleCheckboxSelectProps,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
@@ -27,6 +29,7 @@ const customizedComponents = {
 export type TOption = {
   value: string;
   label?: ReactNode;
+  isDisabled?: boolean;
 };
 
 export type TOptionObject = {
@@ -308,6 +311,8 @@ export type TSelectInputProps = {
    * Array of options that populate the select menu
    */
   options: TOptions;
+  /** defines how options are rendered */
+  optionStyle: 'list' | 'checkbox';
   showOptionGroupDivider?: boolean;
   // pageSize: PropTypes.number,
   /**
@@ -383,12 +388,17 @@ export type TSelectInputProps = {
 
 const defaultProps: Pick<
   TSelectInputProps,
-  'appearance' | 'maxMenuHeight' | 'menuPortalZIndex' | 'options'
+  | 'appearance'
+  | 'maxMenuHeight'
+  | 'menuPortalZIndex'
+  | 'options'
+  | 'optionStyle'
 > = {
   appearance: 'default',
   maxMenuHeight: 220,
   menuPortalZIndex: 1,
   options: [],
+  optionStyle: 'list',
 };
 
 const isOptionObject = (
@@ -463,6 +473,9 @@ const SelectInput = (props: TSelectInputProps) => {
                   }
                 : {}),
               ...props.components,
+              ...(props.optionStyle === 'checkbox'
+                ? optionStyleCheckboxComponents()
+                : {}),
             } as ReactSelectProps['components']
           }
           menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
@@ -496,6 +509,7 @@ const SelectInput = (props: TSelectInputProps) => {
           isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
+          // @ts-expect-error: optionStyle 'checkbox' will override this property (if set)
           hideSelectedOptions={props.hideSelectedOptions}
           // @ts-ignore
           isReadOnly={props.isReadOnly}
@@ -505,6 +519,7 @@ const SelectInput = (props: TSelectInputProps) => {
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
+          // @ts-expect-error: optionStyle 'checkbox' will override this property (if set)
           closeMenuOnSelect={props.closeMenuOnSelect}
           name={props.name}
           noOptionsMessage={
@@ -574,6 +589,9 @@ const SelectInput = (props: TSelectInputProps) => {
           iconLeft={props.iconLeft}
           controlShouldRenderValue={props.controlShouldRenderValue}
           menuPlacement="auto"
+          {...(props.optionStyle === 'checkbox'
+            ? optionsStyleCheckboxSelectProps()
+            : {})}
         />
       </div>
     </Constraints.Horizontal>
