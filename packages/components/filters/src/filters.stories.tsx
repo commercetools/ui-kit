@@ -1,82 +1,47 @@
 import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import RadioInput from '@commercetools-uikit/radio-input';
-import SearchTextInput from '@commercetools-uikit/search-text-input';
-import SelectInput from '@commercetools-uikit/select-input';
-import TextInput from '@commercetools-uikit/text-input';
-import { MenuProps, MenuListProps } from 'react-select';
 import Filters, { type TFiltersProps } from './filters';
+import {
+  SearchInputComponent,
+  FruitsRadioInput,
+  ColorNameTextInput,
+  SecondaryColorsInput,
+  PrimaryColorsInput,
+  OperatorsInput,
+} from './fixtures/inputs';
+import {
+  FILTER_GROUP_KEYS,
+  FILTER_GROUPS,
+  FRUIT_OPTIONS,
+  OPERATOR_OPTIONS,
+} from './fixtures/constants';
 
-//TODO: move example data and components to separate files
-//TODO: better docs on different states and how to accomplish them
-
-const primaryColorOptions = [
-  { label: 'Blue', value: 'blue', key: 'blue', id: '2' },
-  { label: 'Red', value: 'red', key: 'red', id: '4' },
-  { label: 'Orange', value: 'orange', key: 'orange', id: '5' },
-  { label: 'Yellow', value: 'yellow', key: 'yellow', id: '6' },
-  { label: 'Green', value: 'green', key: 'green', id: '7' },
-];
-
-const secondaryColorOptions = [
-  { label: 'Purple', value: 'purple', key: 'purple', id: '3' },
-  { label: 'Forest', value: 'forest', key: 'forest', id: '8' },
-  { label: 'Slate', value: 'slate', key: 'slate', id: '9' },
-  { label: 'Silver', value: 'silver', key: 'silver', id: '10' },
-];
-
-const filterGroups = [
-  { key: 'secondaryColors', label: <div>Secondary Colors</div> },
-  { key: 'primaryColors', label: <div>Primary Colors</div> },
-];
-
-const CustomSelectMenu = ({
-  children,
-  innerProps: { ref, ...restInnerProps },
-}: MenuProps) => (
-  <div ref={ref} {...restInnerProps}>
-    {children}
-  </div>
-);
-const CustomMenuList = ({
-  children,
-  innerProps: { ref, ...restInnerProps },
-}: MenuListProps) => (
-  <div ref={ref} {...restInnerProps}>
-    {children}
-  </div>
-);
-
-const SearchComponent = () => {
-  const [query, setQuery] = useState('');
-  return (
-    <SearchTextInput
-      placeholder="search"
-      onChange={(e) => setQuery(e.target.value)}
-      value={query}
-      onSubmit={() => {}}
-      onReset={() => setQuery('')}
-    />
-  );
-};
-
+//TODO: what kind of controls make sense here?
 const meta: Meta<typeof Filters> = {
   title: 'components/Filters',
   component: Filters,
-  // tags: ['local-dev'],
   argTypes: {},
+  // https://github.com/storybookjs/storybook/issues/17025#issuecomment-1703974689
+  parameters: {
+    docs: {
+      source: { type: 'code' },
+    },
+  },
 };
 
 export default meta;
 
 type Story = StoryFn<typeof Filters>;
-
+//TODO: better docs on different states and how to accomplish them
 //TODO: operators inputs, apply buttons, etc
 export const BasicExample: Story = (_props: TFiltersProps) => {
   const [primaryColorValue, setPrimaryColorValue] = useState<string[]>([]);
   const [secondaryColorValue, setSecondaryColorValue] = useState<string[]>([]);
   const [colorNameValue, setColorName] = useState<string>('');
   const [fruitsValue, setFruitsValue] = useState<string>('');
+  const [primaryColorOperator, setPrimaryColorOperatorValue] = useState<string>(
+    OPERATOR_OPTIONS[0].value
+  );
 
   const clearPrimaryColorFilter = () => setPrimaryColorValue([]);
   const clearSecondaryColorFilter = () => setSecondaryColorValue([]);
@@ -97,7 +62,20 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
       filterKey: 'primaryColors',
       values: primaryColorValue.map((value) => ({
         value: value,
-        label: value,
+        label: (
+          <div>
+            <span
+              css={{
+                fontStyle: 'italic',
+                marginRight: '4px',
+                fontWeight: '600',
+              }}
+            >
+              {primaryColorOperator}
+            </span>
+            {value}
+          </div>
+        ),
       })),
     });
   }
@@ -124,12 +102,13 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
     });
   }
   if (fruitsValue) {
+    const option = FRUIT_OPTIONS.find((option) => option.value === fruitsValue);
     appliedFilters.push({
       filterKey: 'fruits',
       values: [
         {
           value: fruitsValue,
-          label: fruitsValue,
+          label: option?.label,
         },
       ],
     });
@@ -139,23 +118,18 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
     {
       key: 'primaryColors',
       label: 'Primary Colors',
-      groupKey: 'notarealkey',
+      groupKey: FILTER_GROUP_KEYS.primaryColors,
       filterMenuConfiguration: {
         renderMenuBody: () => (
-          <SelectInput
-            name="primaryColorsSelect"
-            options={primaryColorOptions}
+          <PrimaryColorsInput
             value={primaryColorValue}
-            onChange={(e) =>
-              setPrimaryColorValue(
-                Array.prototype.concat(e.target.value ? e.target.value : [])
-              )
-            }
-            components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
-            menuIsOpen={true}
-            controlShouldRenderValue={false}
-            hideSelectedOptions={false}
-            isMulti
+            onChange={setPrimaryColorValue}
+          />
+        ),
+        renderOperatorsInput: () => (
+          <OperatorsInput
+            value={primaryColorOperator}
+            onChange={setPrimaryColorOperatorValue}
           />
         ),
         onClearRequest: clearPrimaryColorFilter,
@@ -164,26 +138,13 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
     {
       key: 'secondaryColors',
       label: 'Secondary Colors',
-      groupKey: 'secondaryColors',
+      groupKey: FILTER_GROUP_KEYS.secondaryColors,
       isPersistent: true,
       filterMenuConfiguration: {
         renderMenuBody: () => (
-          <SelectInput
-            name="secondaryColorsSelect"
-            options={secondaryColorOptions}
+          <SecondaryColorsInput
             value={secondaryColorValue}
-            onChange={(e) =>
-              setSecondaryColorValue(
-                Array.prototype.concat(e.target.value ? e.target.value : [])
-              )
-            }
-            components={{ Menu: CustomSelectMenu, MenuList: CustomMenuList }}
-            menuIsOpen={true}
-            controlShouldRenderValue={false}
-            isMulti
-            backspaceRemovesValue={false}
-            isClearable={false}
-            hideSelectedOptions={false}
+            onChange={setSecondaryColorValue}
           />
         ),
         onClearRequest: clearSecondaryColorFilter,
@@ -194,12 +155,7 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
       label: 'Color Name',
       filterMenuConfiguration: {
         renderMenuBody: () => (
-          <TextInput
-            name="colorNameInput"
-            value={colorNameValue}
-            onChange={(e) => setColorName(e.target.value)}
-            placeholder="enter a color name..."
-          />
+          <ColorNameTextInput value={colorNameValue} onChange={setColorName} />
         ),
         onClearRequest: clearColorNameFilter,
       },
@@ -207,21 +163,10 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
     {
       key: 'fruits',
       label: 'Fruits',
-      groupKey: 'secondaryColors',
+      groupKey: FILTER_GROUP_KEYS.secondaryColors,
       filterMenuConfiguration: {
         renderMenuBody: () => (
-          <RadioInput.Group
-            id="fruit-selector"
-            name="fruits"
-            value={fruitsValue}
-            onChange={(e) => {
-              setFruitsValue(e.target.value);
-            }}
-          >
-            <RadioInput.Option value="🍎">🍎 Apple</RadioInput.Option>
-            <RadioInput.Option value="🍌">🍌 Banana</RadioInput.Option>
-            <RadioInput.Option value="🍍">🍍 Pineapple</RadioInput.Option>
-          </RadioInput.Group>
+          <FruitsRadioInput value={fruitsValue} onChange={setFruitsValue} />
         ),
         onClearRequest: clearFruitsFilter,
       },
@@ -230,9 +175,9 @@ export const BasicExample: Story = (_props: TFiltersProps) => {
 
   return (
     <Filters
-      renderSearchComponent={SearchComponent}
+      renderSearchComponent={SearchInputComponent}
       filters={filters}
-      filterGroups={filterGroups}
+      filterGroups={FILTER_GROUPS}
       appliedFilters={appliedFilters}
       onClearAllRequest={clearAllFilters}
     />
