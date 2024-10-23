@@ -19,6 +19,7 @@ import {
   optionsStyleCheckboxSelectProps,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { SearchIcon } from '@commercetools-uikit/icons';
 
 const customizedComponents = {
   DropdownIndicator,
@@ -52,7 +53,7 @@ export type TSelectInputProps = {
    * Indicates the appearance of the input.
    * Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.
    */
-  appearance?: 'default' | 'quiet';
+  appearance?: 'default' | 'quiet' | 'filter';
   horizontalConstraint?:
     | 3
     | 4
@@ -472,6 +473,9 @@ const SelectInput = (props: TSelectInputProps) => {
                     ),
                   }
                 : {}),
+              ...(props.appearance === 'filter' && {
+                DropdownIndicator: () => <SearchIcon color="neutral60" />,
+              }),
               ...props.components,
               ...(props.optionStyle === 'checkbox'
                 ? optionStyleCheckboxComponents()
