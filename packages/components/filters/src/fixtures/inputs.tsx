@@ -44,6 +44,8 @@ export const PrimaryColorsInput = ({
 }: TFiltersSelectExampleProps) => (
   <SelectInput
     name="primaryColorsSelect"
+    id="primaryColorsSelect"
+    aria-label="select primary colors"
     options={PRIMARY_COLOR_OPTIONS}
     value={value}
     onChange={(e) =>
@@ -63,6 +65,8 @@ export const SecondaryColorsInput = ({
 }: TFiltersSelectExampleProps) => (
   <SelectInput
     name="secondaryColorsSelect"
+    id="secondaryColorsSelect"
+    aria-label="select secondary colors"
     options={SECONDARY_COLOR_OPTIONS}
     value={value}
     onChange={(e) =>
@@ -114,6 +118,7 @@ export const SearchInputComponent = () => {
   const [query, setQuery] = useState('');
   return (
     <SearchTextInput
+      name="searchQueryInput"
       placeholder="search"
       onChange={(e) => setQuery(e.target.value)}
       value={query}
@@ -128,6 +133,9 @@ export const OperatorsInput = ({
   onChange,
 }: TFiltersInputExampleProps) => (
   <SelectInput
+    name="operators-input"
+    id="operators-input"
+    aria-label="select operators"
     appearance="quiet"
     isCondensed={true}
     isSearchable={false}

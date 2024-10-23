@@ -119,7 +119,11 @@ const TriggerButton = forwardRef(function TriggerButton(
         {label}:
       </label>
       {filtersApplied && (
-        <ul ref={setContainerRef} css={styles.valuesContainer}>
+        <ul
+          ref={setContainerRef}
+          css={styles.valuesContainer}
+          aria-label={`${filterKey} selected values`}
+        >
           {values.map((value) => (
             <Chip
               key={value.value}
