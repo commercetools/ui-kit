@@ -376,7 +376,8 @@ function Filters(props: TFiltersProps) {
                   <Popover.Content side="bottom" align="start" css={menuStyles}>
                     <SelectInput
                       id="ui-kit-add-filters-select"
-                      name="add filters"
+                      name="select filters"
+                      aria-label="select filters"
                       options={
                         getFilterOptions(
                           props.filters,
