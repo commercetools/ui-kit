@@ -308,7 +308,11 @@ function Filters(props: TFiltersProps) {
       >
         {({ registerContentNode, containerStyles }) => (
           <div style={containerStyles}>
-            <div ref={registerContentNode} css={menuListStyles}>
+            <div
+              ref={registerContentNode}
+              css={menuListStyles}
+              aria-live="polite"
+            >
               {localVisibleFilters.map((activeFilter) => {
                 const activeFilterConfig = props.filters.find(
                   (filter) => filter.key === activeFilter
