@@ -90,25 +90,33 @@ describe('Filters', () => {
     });
     fireEvent.click(filtersButton);
 
-    // // addFilter
+    // open add filter dialog
     const addFilterButton = await screen.findByRole('button', {
       name: /add filter/i,
     });
     fireEvent.click(addFilterButton);
-
-    const option = screen.getByText('Primary Colors');
-
+    // find dialog
+    const addFilterDialog = await screen.findByRole('dialog');
+    // find option for filter to add
+    const option = within(addFilterDialog).getByText('Primary Colors');
+    // select option
     fireEvent.click(option);
-    const filterSelectOptions = screen.getByRole('listbox');
-    const filterValueOption = within(filterSelectOptions).getByText('Blue');
-
+    // expect add filter dialog to close
+    expect(addFilterDialog).not.toBeInTheDocument();
+    // expect dialog for selected filter to open
+    const selectFilterValuesDialog = await screen.findByRole('dialog');
+    // get filter value to select
+    const filterValueOption = within(selectFilterValuesDialog).getByText(
+      /blue/i
+    );
+    // select value
     fireEvent.click(filterValueOption);
+    // close filter dialog
     fireEvent.keyDown(filterValueOption, {
       key: 'Escape',
     });
-
-    expect(filterSelectOptions).not.toBeInTheDocument();
-
+    expect(selectFilterValuesDialog).not.toBeInTheDocument();
+    // check to make sure selected value is displayed in selected filter trigger button
     const selectedValues = screen.getByRole('list', {
       name: 'primaryColors selected values',
     });
