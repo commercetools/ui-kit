@@ -1,88 +1,120 @@
-import { render, screen } from '../../../../test/test-utils';
+import { useState } from 'react';
+import { fireEvent, render, screen, within } from '../../../../test/test-utils';
 import Filters, { TFiltersProps } from './filters';
-import SelectInput from '@commercetools-uikit/select-input';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { PrimaryColorsInput } from './fixtures/inputs';
+import { FILTER_GROUP_KEYS } from './fixtures/constants';
 
-const mockRenderSearchComponent = () => <SelectInput />;
+const mockRenderSearchComponent = () => (
+  <input id="search-text" type="text" placeholder="Search Placeholder" />
+);
 const mockOnClearAllRequest = jest.fn();
 
-const getDefaultProps = (custom?: Partial<TFiltersProps>): TFiltersProps => ({
-  appliedFilters: [],
-  filters: [],
+const createTestProps = (
+  custom?: Partial<TFiltersProps>
+): Partial<TFiltersProps> & {
+  onClearAllRequest: TFiltersProps['onClearAllRequest'];
+  renderSearchComponent: TFiltersProps['renderSearchComponent'];
+} => ({
   onClearAllRequest: mockOnClearAllRequest,
   renderSearchComponent: mockRenderSearchComponent,
   ...custom,
 });
 
-// filters list === add filter & clear all
+const FilterTestComponent = (
+  props: Partial<TFiltersProps> & {
+    onClearAllRequest: TFiltersProps['onClearAllRequest'];
+    renderSearchComponent: TFiltersProps['renderSearchComponent'];
+  }
+) => {
+  const [primaryColorValue, setPrimaryColorValue] = useState<string[]>([]);
+  const clearPrimaryColorFilter = () => setPrimaryColorValue([]);
+
+  const appliedFilters = [];
+
+  if (primaryColorValue.length > 0) {
+    appliedFilters.push({
+      filterKey: 'primaryColors',
+      values: primaryColorValue.map((value) => ({
+        value: value,
+        label: value,
+      })),
+    });
+  }
+  const filters = [
+    {
+      key: 'primaryColors',
+      label: 'Primary Colors',
+      groupKey: FILTER_GROUP_KEYS.primaryColors,
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <PrimaryColorsInput
+            value={primaryColorValue}
+            onChange={setPrimaryColorValue}
+          />
+        ),
+
+        onClearRequest: clearPrimaryColorFilter,
+      },
+    },
+  ];
+  return (
+    <Filters {...props} filters={filters} appliedFilters={appliedFilters} />
+  );
+};
+
 describe('Filters', () => {
-  // it('should display the filter list when `filters` button is toggled', async () => {
-  //   await render(<Filters {...getDefaultProps()} />);
-  //   const filtersButton = await screen.findByTestId('filters-button');
+  it('should expand & collapse the filter list when `filters` button is clicked', async () => {
+    render(<FilterTestComponent {...createTestProps()} />);
+    const filtersButton = await screen.findByRole('button', {
+      name: /filters/i,
+    });
 
-  //   fireEvent.click(filtersButton);
+    // initial click will expand the filter list
+    fireEvent.click(filtersButton);
+    const addFilterButton = await screen.findByRole('button', {
+      name: /add filter/i,
+    });
+    expect(addFilterButton).toBeVisible();
 
-  //   //TODO: use roles and text instead of testid
-  //   const addFilterButton = await screen.findByTestId('add-filter-button');
-  //       //TODO: use roles and text instead of just text
-  //   const clearAllFiltersButton = await screen.findByText(/clear all/i);
+    // second click will collapse the filter list
+    fireEvent.click(filtersButton);
+    expect(addFilterButton).not.toBeVisible();
+  });
 
-  //   expect(addFilterButton).toBeInTheDocument();
-  //   expect(clearAllFiltersButton).toBeInTheDocument();
-  // });
+  it('should select a filter and a text input', async () => {
+    render(<FilterTestComponent {...createTestProps()} />);
 
-  // it('should hide the filter list when `filters` button is toggled twice', async () => {
-  //   await render(<Filters {...getDefaultProps()} />);
-  //   const filtersButton = await screen.findByTestId('filters-button');
-  //   fireEvent.click(filtersButton);
-  //   fireEvent.click(filtersButton);
-  //   const addFilterButton = screen.queryByTestId('add-filter-button');
-  //   const clearAllFiltersButton = screen.queryByText(/clear all/i);
+    // expand filterList
+    const filtersButton = await screen.findByRole('button', {
+      name: /filters/i,
+    });
+    fireEvent.click(filtersButton);
 
-  //   expect(addFilterButton).not.toBeVisible();
-  //   expect(clearAllFiltersButton).not.toBeVisible();
-  // });
+    // // addFilter
+    const addFilterButton = await screen.findByRole('button', {
+      name: /add filter/i,
+    });
+    fireEvent.click(addFilterButton);
 
-  // it('should call onClearAllRequest when the `clear all` filters button is clicked', async () => {
-  //   await render(<Filters {...getDefaultProps()} />);
-  //   const filtersButton = await screen.findByTestId('filters-button');
-  //   fireEvent.click(filtersButton);
-  //   const clearAllFiltersButton = await screen.findByText(/clear all/i);
-  //   fireEvent.click(clearAllFiltersButton);
-  //   expect(mockOnClearAllRequest).toHaveBeenCalled();
-  // });
+    const option = screen.getByText('Primary Colors');
 
-  // it('should render a SelectInput component when the `add filter` button is clicked', async () => {
-  //   await render(<Filters {...getDefaultProps()} />);
-  //   const filtersButton = await screen.findByTestId('filters-button');
-  //   fireEvent.click(filtersButton);
+    fireEvent.click(option);
+    const filterSelectOptions = screen.getByRole('listbox');
+    const filterValueOption = within(filterSelectOptions).getByText('Blue');
 
-  //   const addFilterButton = await screen.findByTestId('add-filter-button');
-  //   fireEvent.click(addFilterButton);
+    fireEvent.click(filterValueOption);
+    fireEvent.keyDown(filterValueOption, {
+      key: 'Escape',
+    });
 
-  //   const selectOption = await screen.findByText(/select/);
-  //   expect(selectOption).toBeInTheDocument();
-  // });
+    expect(filterSelectOptions).not.toBeInTheDocument();
 
-  it('renders the custom search component when passed as a prop', () => {
-    render(
-      <Filters
-        {...getDefaultProps()}
-        renderSearchComponent={() => (
-          <div
-            css={{
-              maxWidth: `${designTokens.constraint13}`,
-              border: `1px solid ${designTokens.colorNeutral90}`,
-            }}
-          >
-            SearchPlaceholderSearchPlaceholder
-          </div>
-        )}
-      />
-    );
+    const selectedValues = screen.getByRole('list', {
+      name: 'primaryColors selected values',
+    });
+    const valueChip = within(selectedValues).getByRole('listitem');
 
-    expect(
-      screen.getByText('SearchPlaceholderSearchPlaceholder')
-    ).toBeInTheDocument();
+    expect(valueChip).toBeVisible();
+    expect(valueChip).toHaveTextContent(/blue/i);
   });
 });
