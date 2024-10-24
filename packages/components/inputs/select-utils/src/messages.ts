@@ -21,6 +21,11 @@ export default defineMessages({
     description: 'Default input placeholder text',
     defaultMessage: 'Select...',
   },
+  selectInputAsFilterPlaceholder: {
+    id: 'UIKit.SelectInput.selectInputAsFilterPlaceholder',
+    description: 'Default input placeholder text when used as filter',
+    defaultMessage: 'Search',
+  },
   loadingOptions: {
     id: 'UIKit.SelectInput.loadingOptions',
     description: 'Default input loading text',

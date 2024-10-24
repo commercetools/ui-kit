@@ -22,7 +22,7 @@ type TProps = {
   hasValue?: boolean;
   isCondensed?: boolean;
   controlShouldRenderValue?: boolean;
-  appearance?: 'default' | 'quiet';
+  appearance?: 'default' | 'quiet' | 'filter';
   minMenuWidth?:
     | 2
     | 3

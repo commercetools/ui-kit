@@ -140,3 +140,31 @@ BasicExample.args = {
   options,
   horizontalConstraint: 7,
 };
+
+export const CheckboxOptionStyle: Story = (args) => {
+  const [value, setValue] = useState<string | string[] | null | undefined>([]);
+
+  useEffect(() => {
+    setValue([]);
+  }, [args.isMulti]);
+
+  return (
+    <div>
+      <SelectInput
+        {...args}
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+      />
+      <pre>{JSON.stringify(value, null, 2)}</pre>
+    </div>
+  );
+};
+
+CheckboxOptionStyle.args = {
+  options,
+  horizontalConstraint: 7,
+  optionStyle: 'checkbox',
+  isMulti: true,
+};
