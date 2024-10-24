@@ -5,6 +5,7 @@ import has from 'lodash/has';
 import Select, {
   components as defaultComponents,
   type Props as ReactSelectProps,
+  type ValueContainerProps,
 } from 'react-select';
 import Constraints from '@commercetools-uikit/constraints';
 import {
@@ -406,6 +407,17 @@ const isOptionObject = (
   option: TOption | TOptionObject
 ): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
+// For filters, in some cases we do not want to show the value in the input field
+const CustomValueContainer = ({ children, ...props }: ValueContainerProps) => {
+  const { getValue } = props;
+  const values = getValue();
+  return (
+    <defaultComponents.ValueContainer {...props}>
+      {values.length > 0 ? null : children}
+    </defaultComponents.ValueContainer>
+  );
+};
+
 const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
 
@@ -416,7 +428,9 @@ const SelectInput = (props: TSelectInputProps) => {
   });
 
   const placeholder =
-    props.placeholder || intl.formatMessage(messages.placeholder);
+    props.appearance === 'filter'
+      ? intl.formatMessage(messages.selectInputAsFilterPlaceholder)
+      : props.placeholder || intl.formatMessage(messages.placeholder);
   // Options can be grouped as
   //   const colourOptions = [{ value: 'green', label: 'Green' }];
   //   const flavourOptions = [{ value: 'vanilla', label: 'Vanilla' }];
@@ -475,11 +489,12 @@ const SelectInput = (props: TSelectInputProps) => {
                 : {}),
               ...(props.appearance === 'filter' && {
                 DropdownIndicator: () => <SearchIcon color="neutral60" />,
+                ValueContainer: CustomValueContainer,
               }),
-              ...props.components,
               ...(props.optionStyle === 'checkbox'
                 ? optionStyleCheckboxComponents()
                 : {}),
+              ...props.components,
             } as ReactSelectProps['components']
           }
           menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}

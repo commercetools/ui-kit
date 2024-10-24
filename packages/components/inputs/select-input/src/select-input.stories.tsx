@@ -142,12 +142,10 @@ BasicExample.args = {
 };
 
 export const CheckboxOptionStyle: Story = (args) => {
-  const [value, setValue] = useState<string | string[] | null | undefined>([
-    'goat',
-  ]);
+  const [value, setValue] = useState<string | string[] | null | undefined>([]);
 
   useEffect(() => {
-    setValue(['goat']);
+    setValue([]);
   }, [args.isMulti]);
 
   return (
@@ -159,7 +157,6 @@ export const CheckboxOptionStyle: Story = (args) => {
           setValue(e.target.value);
         }}
       />
-
       <pre>{JSON.stringify(value, null, 2)}</pre>
     </div>
   );
