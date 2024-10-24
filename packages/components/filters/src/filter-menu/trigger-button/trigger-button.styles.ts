@@ -64,7 +64,7 @@ export const mainActionButton = css`
   z-index: 1;
   border-radius: ${designTokens.borderRadius20};
   &:focus {
-    box-shadow: 0px 0px 0px 2px ${designTokens.colorPrimary40};
+    box-shadow: 0 0 0 2px ${designTokens.colorPrimary40};
   }
 `;
 
@@ -76,6 +76,9 @@ export const removeButton = css`
   display: flex;
   svg {
     fill: ${designTokens.colorNeutral40} !important;
+    &:hover {
+      fill: ${designTokens.colorPrimary40} !important;
+    }
   }
 `;
 
