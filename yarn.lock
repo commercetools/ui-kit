@@ -3592,6 +3592,7 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@radix-ui/react-popover": ^1.1.2
+    prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^6.3.2
   peerDependencies:
