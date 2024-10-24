@@ -3056,7 +3056,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/collapsible-motion@19.13.0, @commercetools-uikit/collapsible-motion@workspace:^, @commercetools-uikit/collapsible-motion@workspace:packages/components/collapsible-motion":
+"@commercetools-uikit/collapsible-motion@19.13.0, @commercetools-uikit/collapsible-motion@workspace:packages/components/collapsible-motion":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/collapsible-motion@workspace:packages/components/collapsible-motion"
   dependencies:
@@ -3437,7 +3437,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/design-system@19.13.0, @commercetools-uikit/design-system@workspace:^, @commercetools-uikit/design-system@workspace:design-system":
+"@commercetools-uikit/design-system@19.13.0, @commercetools-uikit/design-system@workspace:design-system":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/design-system@workspace:design-system"
   dependencies:
@@ -3452,7 +3452,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/dropdown-menu@19.13.0, @commercetools-uikit/dropdown-menu@workspace:^, @commercetools-uikit/dropdown-menu@workspace:packages/components/dropdowns/dropdown-menu":
+"@commercetools-uikit/dropdown-menu@19.13.0, @commercetools-uikit/dropdown-menu@workspace:packages/components/dropdowns/dropdown-menu":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/dropdown-menu@workspace:packages/components/dropdowns/dropdown-menu"
   dependencies:
@@ -3577,23 +3577,21 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
-    "@commercetools-uikit/collapsible-motion": "workspace:^"
-    "@commercetools-uikit/design-system": "workspace:^"
-    "@commercetools-uikit/dropdown-menu": "workspace:^"
-    "@commercetools-uikit/flat-button": "workspace:^"
-    "@commercetools-uikit/icon-button": "workspace:^"
-    "@commercetools-uikit/icons": "workspace:^"
+    "@commercetools-uikit/collapsible-motion": 19.13.0
+    "@commercetools-uikit/design-system": 19.13.0
+    "@commercetools-uikit/flat-button": 19.13.0
+    "@commercetools-uikit/icon-button": 19.13.0
+    "@commercetools-uikit/icons": 19.13.0
     "@commercetools-uikit/radio-input": "workspace:^"
     "@commercetools-uikit/search-text-input": "workspace:^"
-    "@commercetools-uikit/secondary-icon-button": "workspace:^"
-    "@commercetools-uikit/select-input": "workspace:^"
-    "@commercetools-uikit/spacings": "workspace:^"
+    "@commercetools-uikit/secondary-icon-button": 19.13.0
+    "@commercetools-uikit/select-input": 19.13.0
+    "@commercetools-uikit/spacings": 19.13.0
     "@commercetools-uikit/text-input": "workspace:^"
-    "@commercetools-uikit/utils": "workspace:^"
+    "@commercetools-uikit/utils": 19.13.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@radix-ui/react-popover": ^1.1.2
-    prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^6.3.2
   peerDependencies:
@@ -3601,7 +3599,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/flat-button@19.13.0, @commercetools-uikit/flat-button@workspace:^, @commercetools-uikit/flat-button@workspace:packages/components/buttons/flat-button":
+"@commercetools-uikit/flat-button@19.13.0, @commercetools-uikit/flat-button@workspace:packages/components/buttons/flat-button":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/flat-button@workspace:packages/components/buttons/flat-button"
   dependencies:
@@ -3666,7 +3664,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/icon-button@19.13.0, @commercetools-uikit/icon-button@workspace:^, @commercetools-uikit/icon-button@workspace:packages/components/buttons/icon-button":
+"@commercetools-uikit/icon-button@19.13.0, @commercetools-uikit/icon-button@workspace:packages/components/buttons/icon-button":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/icon-button@workspace:packages/components/buttons/icon-button"
   dependencies:
@@ -3688,7 +3686,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/icons@19.13.0, @commercetools-uikit/icons@workspace:^, @commercetools-uikit/icons@workspace:packages/components/icons":
+"@commercetools-uikit/icons@19.13.0, @commercetools-uikit/icons@workspace:packages/components/icons":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/icons@workspace:packages/components/icons"
   dependencies:
@@ -4394,8 +4392,8 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
-    "@commercetools-uikit/design-system": "workspace:^"
-    "@commercetools-uikit/tag": "workspace:^"
+    "@commercetools-uikit/design-system": 19.13.0
+    "@commercetools-uikit/tag": 19.13.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
@@ -4623,7 +4621,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/secondary-icon-button@19.13.0, @commercetools-uikit/secondary-icon-button@workspace:^, @commercetools-uikit/secondary-icon-button@workspace:packages/components/buttons/secondary-icon-button":
+"@commercetools-uikit/secondary-icon-button@19.13.0, @commercetools-uikit/secondary-icon-button@workspace:packages/components/buttons/secondary-icon-button":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/secondary-icon-button@workspace:packages/components/buttons/secondary-icon-button"
   dependencies:
@@ -4669,7 +4667,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/select-input@19.13.0, @commercetools-uikit/select-input@workspace:^, @commercetools-uikit/select-input@workspace:packages/components/inputs/select-input":
+"@commercetools-uikit/select-input@19.13.0, @commercetools-uikit/select-input@workspace:packages/components/inputs/select-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/select-input@workspace:packages/components/inputs/select-input"
   dependencies:
@@ -4817,7 +4815,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/spacings@19.13.0, @commercetools-uikit/spacings@workspace:^, @commercetools-uikit/spacings@workspace:presets/spacings":
+"@commercetools-uikit/spacings@19.13.0, @commercetools-uikit/spacings@workspace:presets/spacings":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/spacings@workspace:presets/spacings"
   dependencies:
@@ -4851,7 +4849,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/tag@19.13.0, @commercetools-uikit/tag@workspace:^, @commercetools-uikit/tag@workspace:packages/components/tag":
+"@commercetools-uikit/tag@19.13.0, @commercetools-uikit/tag@workspace:packages/components/tag":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/tag@workspace:packages/components/tag"
   dependencies:
@@ -5031,7 +5029,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/utils@19.13.0, @commercetools-uikit/utils@workspace:^, @commercetools-uikit/utils@workspace:packages/utils":
+"@commercetools-uikit/utils@19.13.0, @commercetools-uikit/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/utils@workspace:packages/utils"
   dependencies:
