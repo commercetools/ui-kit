@@ -52,7 +52,8 @@ export type TCustomEvent = {
 export type TSelectInputProps = {
   /**
    * Indicates the appearance of the input.
-   * Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.
+   * `quiet` appearance is meant to be used with the `horizontalConstraint="auto"`.
+   * `filter` appearance provides a different look and feel for the select input when it is used as part of a filter component.
    */
   appearance?: 'default' | 'quiet' | 'filter';
   horizontalConstraint?:
@@ -529,8 +530,9 @@ const SelectInput = (props: TSelectInputProps) => {
           isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
-          // @ts-expect-error: optionStyle 'checkbox' will override this property (if set)
-          hideSelectedOptions={props.hideSelectedOptions}
+          {...(props.optionStyle === 'checkbox'
+            ? optionsStyleCheckboxSelectProps()
+            : { hideSelectedOptions: props.hideSelectedOptions })}
           // @ts-ignore
           isReadOnly={props.isReadOnly}
           isMulti={props.isMulti}
