@@ -407,13 +407,14 @@ const isOptionObject = (
   option: TOption | TOptionObject
 ): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
-// For filters, in some cases we do not want to show the value in the input field
+// When the select-input is used in the filter component, we don't always want to show the multi-selected options in the input field.
 const CustomValueContainer = ({ children, ...props }: ValueContainerProps) => {
   const { getValue } = props;
   const values = getValue();
+
   return (
     <defaultComponents.ValueContainer {...props}>
-      {values.length > 0 ? null : children}
+      {values.length === 0 ? children : Array.isArray(children) && children[1]}
     </defaultComponents.ValueContainer>
   );
 };
