@@ -25,10 +25,32 @@ describe('rendering', () => {
     expect(screen.getByLabelText('Add')).toBeInTheDocument();
     expect(screen.getByLabelText('Add')).toBeEnabled();
   });
-  it('should render icon', () => {
+  it('should render left icon', () => {
     render(<SecondaryButton {...props} />);
     expect(screen.getByTestId('icon')).toBeInTheDocument();
   });
+  it('should render right icon', () => {
+    render(
+      <SecondaryButton
+        {...props}
+        iconLeft={undefined}
+        iconRight={<PlusBoldIcon data-testid="icon-right" />}
+      />
+    );
+    expect(screen.getByTestId('icon-right')).toBeInTheDocument();
+  });
+
+  it('should render left + right icon', () => {
+    render(
+      <SecondaryButton
+        {...props}
+        iconRight={<PlusBoldIcon data-testid="icon-right" />}
+      />
+    );
+    expect(screen.getByTestId('icon')).toBeInTheDocument();
+    expect(screen.getByTestId('icon-right')).toBeInTheDocument();
+  });
+
   it('should not render icon', () => {
     render(<SecondaryButton {...props} iconLeft={undefined} />);
     expect(screen.queryByTestId('icon')).not.toBeInTheDocument();

@@ -9,7 +9,6 @@ import {
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import Inline from '@commercetools-uikit/spacings-inline';
-import { designTokens } from '@commercetools-uikit/design-system';
 import {
   filterInvalidAttributes,
   useWarning,
@@ -38,6 +37,32 @@ const sizeMapping: Record<TLegacySizes, TSizes> = {
   big: '20',
 };
 
+const PositionedIcon = ({
+  icon,
+  size,
+  isDisabled,
+}: {
+  icon: TPrimaryButtonProps['iconRight'] | TPrimaryButtonProps['iconLeft'];
+  size: TPrimaryButtonProps['size'];
+  isDisabled: TPrimaryButtonProps['isDisabled'];
+}) => {
+  if (!icon) return null;
+  return (
+    <span
+      css={css`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      `}
+    >
+      {cloneElement(icon, {
+        color: isDisabled ? 'neutral60' : 'surface',
+        size: size === 'big' || size === '20' ? '40' : '20',
+      })}
+    </span>
+  );
+};
+
 export type TPrimaryButtonProps<
   TStringOrComponent extends ElementType = 'button'
 > = {
@@ -60,6 +85,10 @@ export type TPrimaryButtonProps<
    * The left icon displayed within the button.
    */
   iconLeft?: ReactElement;
+  /**
+   * The right icon displayed within the button.
+   */
+  iconRight?: ReactElement;
   /**
    * If this is active, it means the button will persist in an "active" state when toggled (see `isToggled`), and back to normal state when untoggled
    */
@@ -127,6 +156,7 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
   );
 
   const isActive = Boolean(props.isToggleButton && props.isToggled);
+
   return (
     <AccessibleButton
       as={props.as}
@@ -139,24 +169,22 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
       isDisabled={props.isDisabled}
       css={getButtonStyles(props.isDisabled, isActive, props.tone, props.size)}
     >
-      <Inline alignItems="center" scale="xs">
-        {Boolean(props.iconLeft) && (
-          <span
-            css={css`
-              margin: 0 ${designTokens.spacing10} 0 0;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            `}
-          >
-            {props.iconLeft &&
-              cloneElement(props.iconLeft, {
-                color: props.isDisabled ? 'neutral60' : 'surface',
-                size: props.size === 'big' || props.size === '20' ? '40' : '20',
-              })}
-          </span>
+      <Inline alignItems="center" scale="s">
+        {props.iconLeft && (
+          <PositionedIcon
+            icon={props.iconLeft}
+            isDisabled={props.isDisabled}
+            size={props.size}
+          />
         )}
         <span>{props.label}</span>
+        {props.iconRight && (
+          <PositionedIcon
+            icon={props.iconRight}
+            isDisabled={props.isDisabled}
+            size={props.size}
+          />
+        )}
       </Inline>
     </AccessibleButton>
   );
