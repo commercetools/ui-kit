@@ -10,6 +10,7 @@ const meta: Meta<typeof PrimaryButton> = {
       control: 'text',
     },
     iconLeft: iconArgType,
+    iconRight: iconArgType,
     size: {
       control: 'select',
       options: ['10', '20'],

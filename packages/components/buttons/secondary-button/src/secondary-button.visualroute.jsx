@@ -108,5 +108,21 @@ export const component = () => (
     <Spec label='when tone is "info"'>
       <SecondaryButton label="A label text" onClick={() => {}} tone="info" />
     </Spec>
+
+    <Spec label="with icon right">
+      <SecondaryButton
+        label="A label text"
+        onClick={() => {}}
+        iconRight={<InformationIcon />}
+      />
+    </Spec>
+    <Spec label="with icon left + right">
+      <SecondaryButton
+        label="A label text"
+        onClick={() => {}}
+        iconLeft={<InformationIcon />}
+        iconRight={<InformationIcon />}
+      />
+    </Spec>
   </Suite>
 );
