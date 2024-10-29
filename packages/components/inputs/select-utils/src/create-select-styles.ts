@@ -369,6 +369,23 @@ const placeholderStyles = (props: TProps) => (base: TBase) => {
   };
 };
 
+const getInputValueLayout = (props: TProps) => {
+  switch (true) {
+    case props.appearance === 'filter':
+      return 'grid';
+    // Display property should be grid when isMulti and has no value so the Placeholder component is positioned correctly with the Input
+    // Display property should be Flex when there is an iconLeft, also when the input has some values when isMulti.
+    // See PR from react select for more insight https://github.com/JedWatson/react-select/pull/4833
+    case (props.iconLeft && !props.isMulti) ||
+      (props.isMulti &&
+        props.hasValue &&
+        (props.controlShouldRenderValue ?? true)):
+      return 'flex';
+    default:
+      return 'grid';
+  }
+};
+
 const valueContainerStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
@@ -376,16 +393,7 @@ const valueContainerStyles = (props: TProps) => (base: TBase) => {
     padding: '0',
     backgroundColor: 'none',
     overflow: 'hidden',
-    // Display property should be grid when isMulti and has no value so the Placeholder component is positioned correctly with the Input
-    // Display property should be Flex when there is an iconLeft, also when the input has some values when isMulti.
-    // See PR from react select for more insight https://github.com/JedWatson/react-select/pull/4833
-    display:
-      (props.iconLeft && !props.isMulti) ||
-      (props.isMulti &&
-        props.hasValue &&
-        (props.controlShouldRenderValue ?? true))
-        ? 'flex'
-        : 'grid',
+    display: getInputValueLayout(props),
     fill:
       props.isDisabled || props.isReadOnly
         ? designTokens.fontColorForInputWhenDisabled

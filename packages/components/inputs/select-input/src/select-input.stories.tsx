@@ -167,4 +167,5 @@ CheckboxOptionStyle.args = {
   horizontalConstraint: 7,
   optionStyle: 'checkbox',
   isMulti: true,
+  appearance: 'filter',
 };
