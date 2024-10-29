@@ -10,20 +10,12 @@ export const optionStyleCheckboxComponents = () => {
   return {
     Option: (props) => {
       const {
-        // children, - not needed, its just the "label" props content
-        // innerRef, - references the element react-select interacts with
         innerRef,
-        // innerProps, - adds the mandatory props (event handler etc.) to the element react-select interacts with
         innerProps,
-        // React components to render the label
         label,
-        // type, not needed, as it is always "option"
-        // data, - the raw-data of this option item
-        // possible states of the option
         isDisabled,
         isFocused,
         isSelected,
-        // default classNames
         className,
       } = props;
 

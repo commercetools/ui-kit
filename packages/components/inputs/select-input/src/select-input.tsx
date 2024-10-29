@@ -417,7 +417,7 @@ const SelectInput = (props: TSelectInputProps) => {
   });
 
   const placeholder =
-    props.appearance === 'filter'
+    props.appearance === 'filter' && !props.placeholder
       ? intl.formatMessage(messages.selectInputAsFilterPlaceholder)
       : props.placeholder || intl.formatMessage(messages.placeholder);
   // Options can be grouped as
