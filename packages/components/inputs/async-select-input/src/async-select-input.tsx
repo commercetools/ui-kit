@@ -357,6 +357,8 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
     return props.loadingMessage || intl.formatMessage(messages.loadingOptions);
   };
 
+  // Testing a commit issue
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
