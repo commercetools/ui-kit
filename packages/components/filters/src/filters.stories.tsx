@@ -27,7 +27,29 @@ type TFiltersPropsWithCustomArgs = TFiltersProps & {
   isDisabled?: boolean;
   isPersistent?: boolean;
 };
+
 const CustomSearchExample = () => <div>im an example</div>;
+
+const SelectedValueWithOperator = ({
+  operator,
+  value,
+}: {
+  operator: string;
+  value: string;
+}) => (
+  <div>
+    <span
+      css={{
+        fontStyle: 'italic',
+        marginRight: '4px',
+        fontWeight: '600',
+      }}
+    >
+      {operator}
+    </span>
+    {value}
+  </div>
+);
 
 const meta: Meta<TFiltersPropsWithCustomArgs> = {
   title: 'components/Filters',
@@ -55,7 +77,7 @@ const meta: Meta<TFiltersPropsWithCustomArgs> = {
       control: false,
       table: {
         type: {
-          detail: 'see "PRIMARY COLORS SECTION" for controls',
+          detail: 'see "PRIMARY COLORS FILTER" section below for controls',
         },
       },
     },
@@ -183,18 +205,10 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
           value: value,
           // display selected operator in selected value if an operators input is rendered
           label: props.renderOperatorsInput ? (
-            <div>
-              <span
-                css={{
-                  fontStyle: 'italic',
-                  marginRight: '4px',
-                  fontWeight: '600',
-                }}
-              >
-                {primaryColorOperator}
-              </span>
-              {value}
-            </div>
+            <SelectedValueWithOperator
+              operator={primaryColorOperator}
+              value={value}
+            />
           ) : (
             value
           ),
