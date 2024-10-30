@@ -42,6 +42,124 @@ export default Example;
 
 ## Properties
 
-| Props   | Type     | Required | Default | Description         |
-| ------- | -------- | :------: | ------- | ------------------- |
-| `label` | `string` |          |         | This is a stub prop |
+| Props                   | Type                                                                               | Required | Default | Description                                                                                                                                                                                                                                                                                     |
+| ----------------------- | ---------------------------------------------------------------------------------- | :------: | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `appliedFilters`        | `Array: TAppliedFilter[]`<br/>[See signature.](#signature-appliedFilters)          |    ✅    |         | array of applied filters, each containing a unique key and an array of values.                                                                                                                                                                                                                  |
+| `filters`               | `Array: TFilterConfiguration[]`<br/>[See signature.](#signature-filters)           |    ✅    |         | configuration for the available filters.@param key unique identifier for the filter@param label formatted message to display the filter name@param isDisabled indicates whether the filter is disabled@param isPersistent indicates whether filter menu should always be visible@param groupKey |
+| `filterGroups`          | `Array: TFilterGroupConfiguration[]`<br/>[See signature.](#signature-filterGroups) |          |         | optional configuration for filter groups.                                                                                                                                                                                                                                                       |
+| `onClearAllRequest`     | `Function`<br/>[See signature.](#signature-onClearAllRequest)                      |    ✅    |         | controls the `clear all` (added filters) button from the menu list                                                                                                                                                                                                                              |
+| `onAddFilterRequest`    | `Function`<br/>[See signature.](#signature-onAddFilterRequest)                     |          |         | optional callback when a filter is selected from the add filters menu.                                                                                                                                                                                                                          |
+| `renderSearchComponent` | `Function`<br/>[See signature.](#signature-renderSearchComponent)                  |    ✅    |         | function to render a search input, selectable from applicable UI Kit components.                                                                                                                                                                                                                |
+
+## Signatures
+
+### Signature `appliedFilters`
+
+```ts
+{
+  /**
+   * unique identifier for the filter
+   */
+  filterKey: string;
+  /**
+   * the values applied to this filter by the user
+   */
+  values: TAppliedFilterValue[];
+}
+```
+
+### Signature `filters`
+
+```ts
+{
+  /**
+   * configuration object for the filter menu.
+   */
+  filterMenuConfiguration: {
+    //TODO: how to document that the state for this is handled outside the `Filters` component?
+    /**
+     * the input in which the user selects values for the filter
+     */
+    renderMenuBody: () => ReactNode;
+    /**
+     * the input in which the user can select which operator should be used for this filter
+     */
+    renderOperatorsInput?: () => ReactNode;
+    //TODO: should we document do/don'ts around disabling this button, etc?
+    /**
+     * optional button that allows the user to apply selected filter values
+     */
+    renderApplyButton?: () => ReactNode;
+    /**
+     * controls whether `clear` button in Menu Body Footer is displayed
+     */
+    onClearRequest: (
+      event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+    ) => void;
+    //TODO: document that this is meant to sort options so that selected options are first in list
+    /**
+     * controls whether `sort` button in Menu Body Header is displayed
+     */
+    onSortRequest?: (
+      event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+    ) => void;
+  };
+  /**
+   * optional key to group filters together.
+   */
+  groupKey?: string;
+  /**
+   * indicates whether filter menu can be removed from filters
+   */
+  isPersistent?: boolean;
+  /**
+   * indicates whether the filter is disabled
+   */
+  isDisabled?: boolean;
+  /**
+   * unique identifier for the filter
+   */
+  key: string;
+  /**
+   * formatted message to display the filter name
+   */
+  label: ReactNode;
+}
+```
+
+### Signature `filterGroups`
+
+```ts
+{
+  /**
+   * unique identifier for the filter group
+   */
+  key: string;
+  /**
+   * formatted message to display the filter group name
+   */
+  label: ReactNode;
+}
+```
+
+### Signature `onClearAllRequest`
+
+```ts
+(
+  event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+) => void
+```
+
+### Signature `onAddFilterRequest`
+
+```ts
+(
+  event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+) => void
+```
+
+### Signature `renderSearchComponent`
+
+```ts
+() => ReactNode;
+```

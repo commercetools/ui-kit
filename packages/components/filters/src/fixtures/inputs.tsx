@@ -59,6 +59,37 @@ export const PrimaryColorsInput = ({
   />
 );
 
+export const PrimaryColorsTextInput = ({
+  value,
+  onChange,
+}: TFiltersInputExampleProps) => (
+  <TextInput
+    name="primaryColorsTextInput"
+    value={value}
+    onChange={(e) => onChange([e.target.value])}
+    placeholder="enter a color name..."
+  />
+);
+
+export const PrimaryColorsRadioInput = ({
+  value,
+  onChange,
+}: TFiltersInputExampleProps) => (
+  <RadioInput.Group
+    id="fruit-selector"
+    name="fruits"
+    value={value}
+    onChange={(e) => {
+      onChange([e.target.value]);
+    }}
+  >
+    {PRIMARY_COLOR_OPTIONS.map((option) => (
+      <RadioInput.Option key={option.value} value={option.value}>
+        {option.label}
+      </RadioInput.Option>
+    ))}
+  </RadioInput.Group>
+);
 export const SecondaryColorsInput = ({
   value,
   onChange,
