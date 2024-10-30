@@ -2,6 +2,7 @@ import {
   type ReactNode,
   type MouseEvent,
   type KeyboardEvent,
+  useRef,
   useState,
 } from 'react';
 import { css } from '@emotion/react';
@@ -238,11 +239,11 @@ function getFilterOptions(
 function Filters(props: TFiltersProps) {
   const intl = useIntl();
   const [showFilterControls, setShowFilterControls] = useState(false);
+  const persistedFiltersRef = useRef<string[]>([]);
 
   const handleFiltersClick = () => {
     setShowFilterControls((currState) => !currState);
   };
-
   /**
    * persisted filters: always visible
    * applied filters: filters for which values have been selected
@@ -267,12 +268,19 @@ function Filters(props: TFiltersProps) {
       return isVisible;
     })
     // persistent filters should be first in filter list
-    .sort(({ isPersistent }) => (isPersistent ? -1 : 0));
+    .sort(({ isPersistent }) => (isPersistent ? -1 : 1));
 
   // set initial state as visibleFiltersFromProps
   const [localVisibleFilters, setLocalVisibleFilters] = useState<string[]>(
     visibleFiltersFromProps.map(({ key }) => key)
   );
+
+  //update localVisibleFilters if persisted filter count changes
+  if (persistedFiltersRef.current.length !== persistedFilterKeys.length) {
+    console.log(visibleFiltersFromProps);
+    setLocalVisibleFilters(visibleFiltersFromProps.map(({ key }) => key));
+  }
+  persistedFiltersRef.current = persistedFilterKeys;
 
   const removeFilter = (filterKey: string) =>
     setLocalVisibleFilters((currentVisibleFilters) =>

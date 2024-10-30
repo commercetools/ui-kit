@@ -61,7 +61,7 @@ const meta: Meta<TFiltersPropsWithCustomArgs> = {
     renderMenuBody: 'select',
     renderApplyButton: false,
     isDisabled: false,
-    isPersistent: false,
+    isPersistent: true,
   },
   argTypes: {
     appliedFilters: {
@@ -179,6 +179,7 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
 
   // simulate state from parent application for each menuBody input
   const clearPrimaryColorFilter = () => setPrimaryColorValue([]);
+  const clearPrimaryColorAppliedValue = () => setAppliedPrimaryColorValue([]);
   const clearSecondaryColorFilter = () => setSecondaryColorValue([]);
   const clearColorNameFilter = () => setColorName('');
   const clearFruitsFilter = () => setFruitsValue('');
@@ -186,6 +187,7 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
   // add clear function for each input to 'clearAllFilters' function
   const clearAllFilters = () => {
     clearPrimaryColorFilter();
+    clearPrimaryColorAppliedValue();
     clearSecondaryColorFilter();
     clearColorNameFilter();
     clearFruitsFilter();
@@ -347,7 +349,10 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
               size="10"
             />
           ) : undefined,
-        onClearRequest: clearPrimaryColorFilter,
+        onClearRequest: () => {
+          clearPrimaryColorFilter();
+          clearPrimaryColorAppliedValue();
+        },
       },
     },
   ];
