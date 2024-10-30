@@ -42,14 +42,14 @@ export default Example;
 
 ## Properties
 
-| Props                   | Type                                                                               | Required | Default | Description                                                                                                                                                                                                                                                                                     |
-| ----------------------- | ---------------------------------------------------------------------------------- | :------: | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `appliedFilters`        | `Array: TAppliedFilter[]`<br/>[See signature.](#signature-appliedFilters)          |    ✅    |         | array of applied filters, each containing a unique key and an array of values.                                                                                                                                                                                                                  |
-| `filters`               | `Array: TFilterConfiguration[]`<br/>[See signature.](#signature-filters)           |    ✅    |         | configuration for the available filters.@param key unique identifier for the filter@param label formatted message to display the filter name@param isDisabled indicates whether the filter is disabled@param isPersistent indicates whether filter menu should always be visible@param groupKey |
-| `filterGroups`          | `Array: TFilterGroupConfiguration[]`<br/>[See signature.](#signature-filterGroups) |          |         | optional configuration for filter groups.                                                                                                                                                                                                                                                       |
-| `onClearAllRequest`     | `Function`<br/>[See signature.](#signature-onClearAllRequest)                      |    ✅    |         | controls the `clear all` (added filters) button from the menu list                                                                                                                                                                                                                              |
-| `onAddFilterRequest`    | `Function`<br/>[See signature.](#signature-onAddFilterRequest)                     |          |         | optional callback when a filter is selected from the add filters menu.                                                                                                                                                                                                                          |
-| `renderSearchComponent` | `Function`<br/>[See signature.](#signature-renderSearchComponent)                  |    ✅    |         | function to render a search input, selectable from applicable UI Kit components.                                                                                                                                                                                                                |
+| Props                   | Type                                                                               | Required | Default | Description                                                                      |
+| ----------------------- | ---------------------------------------------------------------------------------- | :------: | ------- | -------------------------------------------------------------------------------- |
+| `appliedFilters`        | `Array: TAppliedFilter[]`<br/>[See signature.](#signature-appliedFilters)          |    ✅    |         | array of applied filters, each containing a unique key and an array of values.   |
+| `filters`               | `Array: TFilterConfiguration[]`<br/>[See signature.](#signature-filters)           |    ✅    |         | configuration for the available filters.                                         |
+| `filterGroups`          | `Array: TFilterGroupConfiguration[]`<br/>[See signature.](#signature-filterGroups) |          |         | optional configuration for filter groups.                                        |
+| `onClearAllRequest`     | `Function`<br/>[See signature.](#signature-onClearAllRequest)                      |    ✅    |         | controls the `clear all` (added filters) button from the menu list               |
+| `onAddFilterRequest`    | `Function`<br/>[See signature.](#signature-onAddFilterRequest)                     |          |         | optional callback when a filter is selected from the add filters menu.           |
+| `renderSearchComponent` | `ReactNode`                                                                        |    ✅    |         | function to render a search input, selectable from applicable UI Kit components. |
 
 ## Signatures
 
@@ -156,10 +156,4 @@ export default Example;
 (
   event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
 ) => void
-```
-
-### Signature `renderSearchComponent`
-
-```ts
-() => ReactNode;
 ```
