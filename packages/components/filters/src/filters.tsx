@@ -39,8 +39,6 @@ interface TAddFilterOptionGroup extends TOptionObject {
   key: string;
 }
 
-//TODO: JSDoc annotations of types that are arrays/objects for storybook
-//TODO: document that the applied filter values are what show in the TriggerButton Chips, and the state for them is handled outside the `Filters` component
 type TAppliedFilter = {
   /**
    * unique identifier for the filter
@@ -57,7 +55,6 @@ type TFilterConfiguration = {
    * configuration object for the filter menu.
    */
   filterMenuConfiguration: {
-    //TODO: how to document that the state for this is handled outside the `Filters` component?
     /**
      * the input in which the user selects values for the filter
      */
@@ -66,7 +63,6 @@ type TFilterConfiguration = {
      * the input in which the user can select which operator should be used for this filter
      */
     renderOperatorsInput?: () => ReactNode;
-    //TODO: should we document do/don'ts around disabling this button, etc?
     /**
      * optional button that allows the user to apply selected filter values
      */
@@ -77,7 +73,6 @@ type TFilterConfiguration = {
     onClearRequest: (
       event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
     ) => void;
-    //TODO: document that this is meant to sort options so that selected options are first in list
     /**
      * controls whether `sort` button in Menu Body Header is displayed
      */
@@ -117,7 +112,7 @@ type TFilterGroupConfiguration = {
    */
   label: ReactNode;
 };
-
+//TODO: add notes about grouped items being sorted below ungrouped items, and groups are displayed in the order they are sorted in this array
 export type TFiltersProps = {
   /**
    * array of applied filters, each containing a unique key and an array of values.
@@ -128,15 +123,14 @@ export type TFiltersProps = {
    *
    */
   filters: TFilterConfiguration[];
-  //TODO: add notes about grouped items being sorted below ungrouped items, and groups are displayed in the order they are sorted in this array
   /**
    * optional configuration for filter groups.
    *
    */
   filterGroups?: TFilterGroupConfiguration[];
-  //TODO: document that this should clear the application's filter state
+
   /**
-   * controls the `clear all` (added filters) button from the menu list
+   * controls the `clear all` (added filters) button from the menu list, meant to clear the parent application's filter state
    */
   onClearAllRequest: (
     event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
