@@ -42,14 +42,14 @@ export default Example;
 
 ## Properties
 
-| Props                   | Type                                                                               | Required | Default | Description                                                                      |
-| ----------------------- | ---------------------------------------------------------------------------------- | :------: | ------- | -------------------------------------------------------------------------------- |
-| `appliedFilters`        | `Array: TAppliedFilter[]`<br/>[See signature.](#signature-appliedFilters)          |    ✅    |         | array of applied filters, each containing a unique key and an array of values.   |
-| `filters`               | `Array: TFilterConfiguration[]`<br/>[See signature.](#signature-filters)           |    ✅    |         | configuration for the available filters.                                         |
-| `filterGroups`          | `Array: TFilterGroupConfiguration[]`<br/>[See signature.](#signature-filterGroups) |          |         | optional configuration for filter groups.                                        |
-| `onClearAllRequest`     | `Function`<br/>[See signature.](#signature-onClearAllRequest)                      |    ✅    |         | controls the `clear all` (added filters) button from the menu list               |
-| `onAddFilterRequest`    | `Function`<br/>[See signature.](#signature-onAddFilterRequest)                     |          |         | optional callback when a filter is selected from the add filters menu.           |
-| `renderSearchComponent` | `ReactNode`                                                                        |    ✅    |         | function to render a search input, selectable from applicable UI Kit components. |
+| Props                   | Type                                                                               | Required | Default | Description                                                                                                              |
+| ----------------------- | ---------------------------------------------------------------------------------- | :------: | ------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `appliedFilters`        | `Array: TAppliedFilter[]`<br/>[See signature.](#signature-appliedFilters)          |    ✅    |         | array of applied filters, each containing a unique key and an array of values.                                           |
+| `filters`               | `Array: TFilterConfiguration[]`<br/>[See signature.](#signature-filters)           |    ✅    |         | configuration for the available filters.                                                                                 |
+| `filterGroups`          | `Array: TFilterGroupConfiguration[]`<br/>[See signature.](#signature-filterGroups) |          |         | optional configuration for filter groups.                                                                                |
+| `onClearAllRequest`     | `Function`<br/>[See signature.](#signature-onClearAllRequest)                      |    ✅    |         | controls the `clear all` (added filters) button from the menu list, meant to clear the parent application's filter state |
+| `onAddFilterRequest`    | `Function`<br/>[See signature.](#signature-onAddFilterRequest)                     |          |         | optional callback when a filter is selected from the add filters menu.                                                   |
+| `renderSearchComponent` | `ReactNode`                                                                        |    ✅    |         | function to render a search input, selectable from applicable UI Kit components.                                         |
 
 ## Signatures
 
@@ -76,7 +76,6 @@ export default Example;
    * configuration object for the filter menu.
    */
   filterMenuConfiguration: {
-    //TODO: how to document that the state for this is handled outside the `Filters` component?
     /**
      * the input in which the user selects values for the filter
      */
@@ -85,7 +84,6 @@ export default Example;
      * the input in which the user can select which operator should be used for this filter
      */
     renderOperatorsInput?: () => ReactNode;
-    //TODO: should we document do/don'ts around disabling this button, etc?
     /**
      * optional button that allows the user to apply selected filter values
      */
@@ -96,7 +94,6 @@ export default Example;
     onClearRequest: (
       event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
     ) => void;
-    //TODO: document that this is meant to sort options so that selected options are first in list
     /**
      * controls whether `sort` button in Menu Body Header is displayed
      */
