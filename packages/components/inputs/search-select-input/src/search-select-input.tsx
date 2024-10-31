@@ -8,6 +8,8 @@ import {
   CustomSelectInputOption,
   SearchIconDropdownIndicator,
   warnIfMenuPortalPropsAreMissing,
+  optionStyleCheckboxComponents,
+  optionsStyleCheckboxSelectProps,
 } from '@commercetools-uikit/select-utils';
 import messages from './messages';
 import { SearchSelectInputWrapper } from './search-select-input.styles';
@@ -272,6 +274,13 @@ export type TSearchSelectInputProps = {
    * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
    */
   iconLeft?: ReactNode;
+  /** defines how options are rendered */
+  optionStyle: 'list' | 'checkbox';
+  /**
+   * Indicates the appearance of the input.
+   * Filter appearance is meant to be used when the async-select is used as a filter.
+   */
+  appearance?: 'default' | 'filter';
 };
 
 type TOptionInnerPropsData = {
@@ -286,12 +295,19 @@ type TOptionInnerProps = {
 
 const defaultProps: Pick<
   TSearchSelectInputProps,
-  'value' | 'menuPortalZIndex' | 'maxMenuHeight' | 'controlShouldRenderValue'
+  | 'value'
+  | 'menuPortalZIndex'
+  | 'maxMenuHeight'
+  | 'controlShouldRenderValue'
+  | 'appearance'
+  | 'optionStyle'
 > = {
   value: null,
   menuPortalZIndex: 1,
   maxMenuHeight: 220,
   controlShouldRenderValue: true,
+  appearance: 'default',
+  optionStyle: 'list',
 };
 
 const SearchSelectInput = (props: TSearchSelectInputProps) => {
@@ -318,7 +334,9 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
     props.loadingMessage || intl.formatMessage(messages.loadingOptionsMessage);
 
   const placeholder =
-    props.placeholder || intl.formatMessage(messages.placeholderMessage);
+    props.appearance === 'filter' && !props.placeholder
+      ? intl.formatMessage(messages.searchSelectInputAsFilterPlaceholder)
+      : props.placeholder || intl.formatMessage(messages.placeholderMessage);
 
   const optionType = props.optionType;
 
@@ -331,10 +349,13 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
           optionInnerProps={optionInnerProps}
         />
       ),
+      ...(props.optionStyle === 'checkbox'
+        ? optionStyleCheckboxComponents()
+        : {}),
       ...props.components,
       DropdownIndicator: SearchIconDropdownIndicator,
     }),
-    [props.components, optionType]
+    [props.optionStyle, props.components, optionType]
   );
 
   return (
@@ -351,7 +372,14 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
         loadingMessage={loadingMessage}
         noOptionsMessage={noOptionsMessage}
         isSearchable={true}
+        // @ts-expect-error
         closeMenuOnSelect={props.closeMenuOnSelect}
+        {...(props.optionStyle === 'checkbox'
+          ? optionsStyleCheckboxSelectProps()
+          : {})}
+        controlShouldRenderValue={
+          props.appearance === 'filter' ? false : props.controlShouldRenderValue
+        }
       />
     </SearchSelectInputWrapper>
   );
