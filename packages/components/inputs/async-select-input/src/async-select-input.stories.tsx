@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
+import AsyncSelectInput from './async-select-input';
+import { useEffect, useState } from 'react';
 import { iconArgType } from '@/storybook-helpers';
 import { GroupBase, OptionsOrGroups } from 'react-select';
 import Spacings from '@commercetools-uikit/spacings';
-import AsyncSelectInput from './async-select-input';
 
 const meta: Meta<typeof AsyncSelectInput> = {
   title: 'Form/Inputs/AsyncSelectInput',
@@ -143,4 +143,36 @@ BasicExample.args = {
   cacheOptions: false,
   showOptionGroupDivider: false,
   iconLeft: undefined,
+};
+
+export const CheckboxOptionStyle: Story = ({ isMulti, ...args }) => {
+  const [value, setValue] = useState<Option | Option[] | null>(null);
+
+  useEffect(() => {
+    setValue(isMulti ? [] : null);
+  }, [isMulti]);
+
+  return (
+    <div style={{ height: 400 }}>
+      <Spacings.Stack>
+        <AsyncSelectInput
+          {...args}
+          isMulti={isMulti}
+          defaultOptions={defaultOptions}
+          loadOptions={loadOptions}
+          value={value}
+          onChange={(e) => setValue(e.target.value as Option | Option[])}
+        />
+        <strong>state:</strong>
+        <pre>{JSON.stringify({ value }, null, 2)}</pre>
+      </Spacings.Stack>
+    </div>
+  );
+};
+
+CheckboxOptionStyle.args = {
+  isMulti: true,
+  closeMenuOnSelect: false,
+  optionStyle: 'checkbox',
+  appearance: 'filter',
 };
