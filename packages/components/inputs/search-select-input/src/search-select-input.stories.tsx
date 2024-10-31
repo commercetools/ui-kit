@@ -127,3 +127,70 @@ BasicExample.args = {
   cacheOptions: true,
   optionType: 'single-property',
 };
+
+export const CheckboxOptionStyle: Story = ({ isMulti, ...args }) => {
+  const [value, onChange] = useState<string | string[] | undefined>(
+    isMulti ? [] : undefined
+  );
+
+  return (
+    <div style={{ height: 400 }}>
+      <Spacings.Stack scale="m">
+        <SearchSelectInput
+          onChange={(event) => {
+            onChange(event.target.value as string | string[] | undefined);
+          }}
+          value={value}
+          {...args}
+          loadOptions={loadOptions}
+        />
+
+        <div>
+          <p>
+            In this example, the `loadOptions` function uses the data (given
+            below) to perform an exact match. It is case sensitive and it
+            performs a search based on{' '}
+            <b>
+              <i>id</i>
+            </b>{' '}
+            and{' '}
+            <b>
+              <i>label</i>
+            </b>{' '}
+            fields with a 500ms delay
+          </p>
+          <b>Data used:</b>
+          <pre style={{ textWrap: 'wrap' }}>
+            {JSON.stringify(colourOptions, undefined, 2)}
+          </pre>
+        </div>
+      </Spacings.Stack>
+    </div>
+  );
+};
+
+CheckboxOptionStyle.args = {
+  isMulti: false,
+  horizontalConstraint: 'scale',
+  noOptionsMessage: ({ inputValue }) =>
+    inputValue.length > 0
+      ? `No matches found for '${inputValue}'`
+      : 'No matches found',
+  loadingMessage: 'Loading exact matches',
+  hasError: false,
+  hasWarning: false,
+  isAutofocussed: false,
+  backspaceRemovesValue: true,
+  controlShouldRenderValue: true,
+  isClearable: true,
+  isCondensed: false,
+  isDisabled: false,
+  isReadOnly: false,
+  maxMenuHeight: 220,
+  name: 'form-field-name',
+  tabSelectsValue: true,
+  cacheOptions: true,
+  optionType: 'single-property',
+  appearance: 'filter',
+  optionStyle: 'checkbox',
+};
