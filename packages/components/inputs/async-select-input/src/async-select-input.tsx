@@ -375,9 +375,12 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
 
   // TODO: uncomment to replace placeholder logic once select-input PR for this has been merged.
   // const placeholder =
-  //   props.appearance === 'filter' && !props.placeholder
-  //     ? intl.formatMessage(messages.selectInputAsFilterPlaceholder)
-  //     : props.placeholder || intl.formatMessage(messages.placeholder);
+  //   props.placeholder ||
+  //   intl.formatMessage(
+  //     props.appearance === 'filter'
+  //       ? messages.selectInputAsFilterPlaceholder
+  //       : messages.placeholder
+  //   );
 
   const loadingMessage = () => {
     if (typeof props.loadingMessage === 'function') {
@@ -528,7 +531,6 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               ? false
               : props.controlShouldRenderValue
           }
-          appea
         />
       </div>
     </Constraints.Horizontal>
