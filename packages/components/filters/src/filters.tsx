@@ -21,9 +21,10 @@ import SelectInput, {
 } from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import { useIntl } from 'react-intl';
-import { MenuProps, MenuListProps } from 'react-select';
+import { ContainerProps, MenuProps, MenuListProps } from 'react-select';
 import FilterMenu, {
   menuStyles,
+  menuBodyStyle,
   type TAppliedFilterValue,
 } from './filter-menu';
 import messages from './messages';
@@ -51,6 +52,14 @@ type TAppliedFilter = {
 };
 
 type TFilterConfiguration = {
+  /**
+   * unique identifier for the filter
+   */
+  key: string;
+  /**
+   * formatted message to display the filter name
+   */
+  label: ReactNode;
   /**
    * configuration object for the filter menu.
    */
@@ -92,14 +101,6 @@ type TFilterConfiguration = {
    * indicates whether the filter is disabled
    */
   isDisabled?: boolean;
-  /**
-   * unique identifier for the filter
-   */
-  key: string;
-  /**
-   * formatted message to display the filter name
-   */
-  label: ReactNode;
 };
 
 type TFilterGroupConfiguration = {
@@ -112,7 +113,7 @@ type TFilterGroupConfiguration = {
    */
   label: ReactNode;
 };
-//TODO: add notes about grouped items being sorted below ungrouped items, and groups are displayed in the order they are sorted in this array
+
 export type TFiltersProps = {
   /**
    * array of applied filters, each containing a unique key and an array of values.
@@ -136,7 +137,7 @@ export type TFiltersProps = {
     event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * optional callback when a filter is selected from the add filters menu.
+   * optional callback when the add filter button is clicked
    */
   onAddFilterRequest?: (
     event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
@@ -145,6 +146,10 @@ export type TFiltersProps = {
    * function to render a search input, selectable from applicable UI Kit components.
    */
   renderSearchComponent: ReactNode;
+  /**
+   * controls whether the filters list is initially open
+   */
+  defaultOpen?: boolean;
 };
 
 const horizontalDividerStyles = css`
@@ -171,6 +176,22 @@ const menuListStyles = css`
 `;
 
 //TODO: better styling and set up scrolling when there are lots of options
+const AddFiltersSelectContainer = ({
+  children,
+  innerProps: { ref, ...restInnerProps },
+}: ContainerProps) => (
+  <div
+    data-testid="uikit-custom-filters-select"
+    css={css`
+      height: 100%;
+    `}
+    ref={ref}
+    {...restInnerProps}
+  >
+    {children}
+  </div>
+);
+
 const AddFiltersSelectMenu = ({
   children,
   innerProps: { ref, ...restInnerProps },
@@ -179,8 +200,10 @@ const AddFiltersSelectMenu = ({
     ref={ref}
     {...restInnerProps}
     css={css`
-      overflow: hidden auto;
+      margin-top: ${designTokens.spacing20};
       max-width: 100%;
+      max-height: calc(100% - ${designTokens.spacing60});
+      overflow: hidden auto;
     `}
   >
     {children}
@@ -230,10 +253,17 @@ function getFilterOptions(
   }, filterOptions);
 }
 
-function Filters(props: TFiltersProps) {
+function Filters({
+  appliedFilters,
+  filters,
+  filterGroups,
+  onClearAllRequest,
+  onAddFilterRequest,
+  renderSearchComponent,
+  defaultOpen = false,
+}: TFiltersProps) {
   const intl = useIntl();
-  const [showFilterControls, setShowFilterControls] = useState(false);
-  const persistedFiltersRef = useRef<string[]>([]);
+  const [showFilterControls, setShowFilterControls] = useState(defaultOpen);
 
   const handleFiltersClick = () => {
     setShowFilterControls((currState) => !currState);
@@ -246,16 +276,16 @@ function Filters(props: TFiltersProps) {
    * visibleFiltersFromProps = filters visible based on props
    * localVisibleFilters = filters actually visible in component currently
    */
-  const persistedFilterKeys = props.filters
+  const persistedFilterKeys = filters
     .filter(({ isPersistent }) => isPersistent)
     .map((filter) => filter.key);
 
-  const appliedFilterKeys = props.appliedFilters.map(
-    ({ filterKey }) => filterKey
-  );
+  const persistedFiltersRef = useRef<string[]>(persistedFilterKeys);
+
+  const appliedFilterKeys = appliedFilters.map(({ filterKey }) => filterKey);
 
   // applied filters must have corresponding filter in `props.filters`,
-  const visibleFiltersFromProps = props.filters
+  const visibleFiltersFromProps = filters
     .filter(({ key, isPersistent }) => {
       const isVisible =
         Boolean(isPersistent) || appliedFilterKeys.includes(key);
@@ -271,10 +301,9 @@ function Filters(props: TFiltersProps) {
 
   //update localVisibleFilters if persisted filter count changes
   if (persistedFiltersRef.current.length !== persistedFilterKeys.length) {
-    console.log(visibleFiltersFromProps);
     setLocalVisibleFilters(visibleFiltersFromProps.map(({ key }) => key));
+    persistedFiltersRef.current = persistedFilterKeys;
   }
-  persistedFiltersRef.current = persistedFilterKeys;
 
   const removeFilter = (filterKey: string) =>
     setLocalVisibleFilters((currentVisibleFilters) =>
@@ -287,19 +316,18 @@ function Filters(props: TFiltersProps) {
     <>
       <Spacings.Inline scale="m" alignItems="center">
         <div css={{ maxWidth: `${designTokens.constraint16}` }}>
-          {props.renderSearchComponent}
+          {renderSearchComponent}
         </div>
         <Spacings.Inline scale="s" alignItems="center">
           <FlatButton
-            data-testid="filters-button"
             label={intl.formatMessage(messages.filtersButtonLabel)}
             icon={<FilterIcon />}
             onClick={handleFiltersClick}
           />
-          {props.appliedFilters.length > 1 && !showFilterControls && (
+          {appliedFilters.length > 1 && !showFilterControls && (
             <Badge
               id={'uikit-filters-selected-filter-count'}
-              label={`${props.appliedFilters.length}`}
+              label={`${appliedFilters.length}`}
             />
           )}
         </Spacings.Inline>
@@ -317,7 +345,7 @@ function Filters(props: TFiltersProps) {
               aria-live="polite"
             >
               {localVisibleFilters.map((activeFilter) => {
-                const activeFilterConfig = props.filters.find(
+                const activeFilterConfig = filters.find(
                   (filter) => filter.key === activeFilter
                 )!;
                 return (
@@ -339,7 +367,7 @@ function Filters(props: TFiltersProps) {
                         .renderApplyButton
                     }
                     appliedFilterValues={
-                      props.appliedFilters.find(
+                      appliedFilters.find(
                         (appliedFilter) =>
                           activeFilter === appliedFilter.filterKey
                       )?.values
@@ -357,7 +385,10 @@ function Filters(props: TFiltersProps) {
                       activeFilterConfig.filterMenuConfiguration.onSortRequest
                     }
                     defaultOpen={
-                      activeFilterConfig.isPersistent || !showFilterControls
+                      activeFilterConfig.isPersistent ||
+                      (!showFilterControls &&
+                        localVisibleFilters.length ===
+                          visibleFiltersFromProps.length)
                         ? false
                         : true
                     }
@@ -368,24 +399,29 @@ function Filters(props: TFiltersProps) {
                 <Popover.Trigger asChild>
                   <div css={{ display: 'inline-flex' }}>
                     <FlatButton
-                      data-testid="add-filter-button"
                       label={intl.formatMessage(messages.addFilterButtonLabel)}
                       icon={<PlusBoldIcon />}
-                      onClick={() => setShowFilterControls(true)}
+                      onClick={(e) => {
+                        if (onAddFilterRequest) {
+                          onAddFilterRequest(e);
+                        }
+                        setShowFilterControls(true);
+                      }}
                     />
                   </div>
                 </Popover.Trigger>
                 <Popover.Portal>
-                  <Popover.Content side="bottom" align="start" css={menuStyles}>
+                  <Popover.Content
+                    side="bottom"
+                    align="start"
+                    css={[menuStyles, menuBodyStyle]}
+                  >
                     <SelectInput
                       id="ui-kit-add-filters-select"
                       name="select filters"
                       aria-label="select filters"
                       options={
-                        getFilterOptions(
-                          props.filters,
-                          props.filterGroups
-                        ) as TOption[]
+                        getFilterOptions(filters, filterGroups) as TOption[]
                       }
                       onChange={(e) => {
                         setLocalVisibleFilters(
@@ -397,6 +433,7 @@ function Filters(props: TFiltersProps) {
                       value={localVisibleFilters}
                       menuIsOpen={true}
                       components={{
+                        SelectContainer: AddFiltersSelectContainer,
                         Menu: AddFiltersSelectMenu,
                         MenuList: AddFiltersSelectList,
                       }}
@@ -412,7 +449,7 @@ function Filters(props: TFiltersProps) {
                   </Popover.Content>
                 </Popover.Portal>
               </Popover.Root>
-              {props.appliedFilters.length > 1 && (
+              {appliedFilters.length > 1 && (
                 <>
                   <div css={verticalDividerStyles} />
                   <FlatButton
@@ -421,7 +458,7 @@ function Filters(props: TFiltersProps) {
                       messages.clearAllFiltersButtonLabel
                     )}
                     onClick={(e) => {
-                      props.onClearAllRequest(e);
+                      onClearAllRequest(e);
                       setLocalVisibleFilters(persistedFilterKeys);
                     }}
                     tone="secondary"

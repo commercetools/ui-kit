@@ -11,6 +11,7 @@ import {
   PrimaryColorsRadioInput,
   PrimaryColorsTextInput,
   OperatorsInput,
+  SelectedValueWithOperator,
 } from './fixtures/inputs';
 import {
   FILTER_GROUP_KEYS,
@@ -30,27 +31,6 @@ type TFiltersPropsWithCustomArgs = TFiltersProps & {
 
 const CustomSearchExample = () => <div>im an example</div>;
 
-const SelectedValueWithOperator = ({
-  operator,
-  value,
-}: {
-  operator: string;
-  value: string;
-}) => (
-  <div>
-    <span
-      css={{
-        fontStyle: 'italic',
-        marginRight: '4px',
-        fontWeight: '600',
-      }}
-    >
-      {operator}
-    </span>
-    {value}
-  </div>
-);
-
 const meta: Meta<TFiltersPropsWithCustomArgs> = {
   title: 'components/Filters',
   component: Filters,
@@ -62,6 +42,7 @@ const meta: Meta<TFiltersPropsWithCustomArgs> = {
     renderApplyButton: false,
     isDisabled: false,
     isPersistent: true,
+    defaultOpen: true,
   },
   argTypes: {
     appliedFilters: {
@@ -99,7 +80,7 @@ const meta: Meta<TFiltersPropsWithCustomArgs> = {
         category: 'primary colors filter',
         type: {
           summary:
-            "a component passed to 'filters.renderMenyBody' that sets the selected filter value into the parent application's state",
+            "a component passed to 'filters.renderMenuBody' that sets the selected filter value into the parent application's state",
         },
       },
     },
@@ -166,18 +147,20 @@ export default meta;
 type Story = StoryFn<typeof Filters>;
 
 export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
-  const [primaryColorValue, setPrimaryColorValue] = useState<string[]>([]);
-  const [appliedPrimaryColorValue, setAppliedPrimaryColorValue] = useState<
-    TFiltersProps['appliedFilters']
-  >([]);
+  // simulate state from parent application for each menuBody input
+  const [primaryColorValue, setPrimaryColorValue] = useState<string[]>(['red']);
   const [secondaryColorValue, setSecondaryColorValue] = useState<string[]>([]);
   const [colorNameValue, setColorName] = useState<string>('');
   const [fruitsValue, setFruitsValue] = useState<string>('');
   const [primaryColorOperator, setPrimaryColorOperatorValue] = useState<string>(
     OPERATOR_OPTIONS[0].value
   );
+  //simulate separate 'applied' state to use when primary color filter renderApplyButton is true
+  const [appliedPrimaryColorValue, setAppliedPrimaryColorValue] = useState<
+    TFiltersProps['appliedFilters']
+  >([]);
 
-  // simulate state from parent application for each menuBody input
+  // create a 'clear' function for each filter
   const clearPrimaryColorFilter = () => setPrimaryColorValue([]);
   const clearPrimaryColorAppliedValue = () => setAppliedPrimaryColorValue([]);
   const clearSecondaryColorFilter = () => setSecondaryColorValue([]);
@@ -364,6 +347,7 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
       filterGroups={props.filterGroups ? FILTER_GROUPS : undefined}
       appliedFilters={appliedFilters}
       onClearAllRequest={clearAllFilters}
+      defaultOpen={props.defaultOpen}
     />
   );
 };

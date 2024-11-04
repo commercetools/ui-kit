@@ -17,6 +17,12 @@ export const PRIMARY_COLOR_OPTIONS = [
   { label: 'Orange', value: 'orange' },
   { label: 'Yellow', value: 'yellow' },
   { label: 'Green', value: 'green' },
+  {
+    label: 'Test label that is very very long for testing',
+    value: 'Test label that is very very long for testing',
+  },
+  { label: 'Indigo', value: 'indigo' },
+  { label: 'Violet', value: 'violet' },
 ];
 
 export const SECONDARY_COLOR_OPTIONS = [
