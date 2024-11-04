@@ -175,7 +175,6 @@ const menuListStyles = css`
   gap: ${designTokens.spacing20};
 `;
 
-//TODO: better styling and set up scrolling when there are lots of options
 const AddFiltersSelectContainer = ({
   children,
   innerProps: { ref, ...restInnerProps },
