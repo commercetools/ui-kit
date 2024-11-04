@@ -97,6 +97,7 @@ export const menuStyles = css`
   align-items: flex-start;
   gap: ${designTokens.spacing30};
   width: ${designTokens.constraint6};
+  max-height: ${designTokens.constraint10};
   padding: ${designTokens.spacing20} ${designTokens.spacing30};
   background-color: ${designTokens.colorSurface};
   border: 1px solid ${designTokens.colorSurface};
@@ -109,9 +110,23 @@ export const menuStyles = css`
   z-index: 5;
 `;
 
-const menuBodyStyle = css`
+export const menuBodyStyle = css`
   width: 100%;
-  overflow: hidden;
+
+  /** ensure that body scrolls with overflow now that there is a menu max-height */
+  overflow: hidden auto;
+
+  /** using has selector to add some styles based on whether there is a custom select 3 divs down */
+  :has(div > div > [data-testid='uikit-custom-filters-select']) {
+    display: flex;
+    > div {
+      display: flex;
+      min-height: 100%;
+      > div {
+        width: 100%;
+      }
+    }
+  }
 `;
 
 function FilterMenu(props: TFilterMenuProps) {
