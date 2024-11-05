@@ -51,7 +51,7 @@ type TAppliedFilter = {
   values: TAppliedFilterValue[];
 };
 
-type TFilterConfiguration = {
+export type TFilterConfiguration = {
   /**
    * unique identifier for the filter
    */

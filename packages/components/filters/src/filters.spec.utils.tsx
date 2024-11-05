@@ -19,9 +19,15 @@ export const getClearAllFiltersButton = (): HTMLElement | null => {
   });
 };
 
-export const getBadgeStatus = (): HTMLElement | null => {
+export const getBadgeElement = (): HTMLElement | null => {
   // Query matcher used here to cover positive & negative assertions
   return screen.queryByRole('status');
+};
+
+export const getPrimaryColorFilterButton = (): HTMLElement | null => {
+  return screen.queryByRole('button', {
+    name: /primary colors/i,
+  });
 };
 
 // Expand/ collapse filter list
@@ -38,7 +44,10 @@ export const openAddFilterDialog = async (): Promise<HTMLElement> => {
 };
 
 //Select filter to apply
-export const selectFilter = async (dialog: HTMLElement, optionText: string) => {
+export const selectFilterOption = async (
+  dialog: HTMLElement,
+  optionText: string
+) => {
   const option = within(dialog).getByText(optionText);
   fireEvent.click(option);
 };
@@ -56,9 +65,10 @@ export const selectFilterValues = async (
   return !screen.queryByRole('dialog');
 };
 
-// Retrieves selected values (chips) for a given filter
-//! find better fn name
-export const displayedChips = (filterName: string | null): string[] => {
+//Retrieves selected values (in chips) for a given filter
+export const getDisplayedChipsForFilter = (
+  filterName: string | null
+): string[] => {
   const selectedValues = screen.getByRole('list', {
     name: `${filterName} selected values`,
   });
