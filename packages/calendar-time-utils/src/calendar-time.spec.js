@@ -82,7 +82,7 @@ describe('getLocalizedDateTimeFormatPattern', () => {
     it('should throw and error', () => {
       expect(() =>
         getLocalizedDateTimeFormatPattern('en', 'unknownFormatType')
-      ).toThrowError(
+      ).toThrow(
         "CalendarTime.getLocalizedDateTimeFormatPattern: Unknown format type 'unknownFormatType'"
       );
     });
