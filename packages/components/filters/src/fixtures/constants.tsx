@@ -23,6 +23,11 @@ export const PRIMARY_COLOR_OPTIONS = [
   },
   { label: 'Indigo', value: 'indigo' },
   { label: 'Violet', value: 'violet' },
+  { label: 'Pink', value: 'pink' },
+  { label: 'Azure', value: 'azure' },
+  { label: 'Cobalt', value: 'cobalt' },
+  { label: 'Ivory', value: 'ivory' },
+  { label: 'Lavender', value: 'lavender' },
 ];
 
 export const SECONDARY_COLOR_OPTIONS = [

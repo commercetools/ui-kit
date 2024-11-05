@@ -148,7 +148,7 @@ type Story = StoryFn<typeof Filters>;
 
 export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
   // simulate state from parent application for each menuBody input
-  const [primaryColorValue, setPrimaryColorValue] = useState<string[]>(['red']);
+  const [primaryColorValue, setPrimaryColorValue] = useState<string[]>([]);
   const [secondaryColorValue, setSecondaryColorValue] = useState<string[]>([]);
   const [colorNameValue, setColorName] = useState<string>('');
   const [fruitsValue, setFruitsValue] = useState<string>('');

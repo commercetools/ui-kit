@@ -1,8 +1,18 @@
 import { useState } from 'react';
-import { fireEvent, render, screen, within } from '../../../../test/test-utils';
 import Filters, { TFiltersProps } from './filters';
-import { PrimaryColorsInput } from './fixtures/inputs';
 import { FILTER_GROUP_KEYS } from './fixtures/constants';
+import { PrimaryColorsInput, ColorNameTextInput } from './fixtures/inputs';
+import { fireEvent, render, screen } from '../../../../test/test-utils';
+import {
+  getAddFilterButton,
+  getBadgeStatus,
+  getClearAllFiltersButton,
+  openAddFilterDialog,
+  displayedChips,
+  selectFilter,
+  selectFilterValues,
+  toggleFilterList,
+} from './filters.spec.utils';
 
 const mockRenderSearchComponent = (
   <input id="search-text" type="text" placeholder="Search Placeholder" />
@@ -28,7 +38,10 @@ const FilterTestComponent = (
   }
 ) => {
   const [primaryColorValue, setPrimaryColorValue] = useState<string[]>([]);
+  const [colorNameValue, setColorName] = useState<string>('');
+
   const clearPrimaryColorFilter = () => setPrimaryColorValue([]);
+  const clearColorNameFilter = () => setColorName('');
 
   const appliedFilters = [];
 
@@ -39,6 +52,18 @@ const FilterTestComponent = (
         value: value,
         label: value,
       })),
+    });
+  }
+
+  if (colorNameValue) {
+    appliedFilters.push({
+      filterKey: 'colorName',
+      values: [
+        {
+          value: colorNameValue,
+          label: colorNameValue,
+        },
+      ],
     });
   }
   const filters = [
@@ -57,73 +82,207 @@ const FilterTestComponent = (
         onClearRequest: clearPrimaryColorFilter,
       },
     },
+    {
+      key: 'colorName',
+      label: 'Color Name',
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <ColorNameTextInput value={colorNameValue} onChange={setColorName} />
+        ),
+        onClearRequest: clearColorNameFilter,
+      },
+    },
   ];
+
   return (
     <Filters {...props} filters={filters} appliedFilters={appliedFilters} />
   );
 };
 
+//! should the add filter button be disabled once all possible filters are applied?
+//! check on 1 applied filter badge - posed q in figma
+//! user vs fireEvent?
+//? assert chips are visible even before we escape filter dialog
+
 describe('Filters', () => {
   it('should expand & collapse the filter list when `filters` button is clicked', async () => {
     render(<FilterTestComponent {...createTestProps()} />);
-    const filtersButton = await screen.findByRole('button', {
-      name: /filters/i,
-    });
 
-    // initial click will expand the filter list
-    fireEvent.click(filtersButton);
-    const addFilterButton = await screen.findByRole('button', {
-      name: /add filter/i,
-    });
+    //Expand filter list & expect `Add filter` button to be visible
+    await toggleFilterList();
+    const addFilterButton = await getAddFilterButton();
     expect(addFilterButton).toBeVisible();
 
-    // second click will collapse the filter list
-    fireEvent.click(filtersButton);
+    //Collapse filter list &  expect `Add filter` button to be hidden
+    await toggleFilterList();
     expect(addFilterButton).not.toBeVisible();
   });
 
-  it('should select a filter and a text input', async () => {
+  it('should apply values from multiple filters & display an applied filter count badge when collapsed', async () => {
     render(<FilterTestComponent {...createTestProps()} />);
 
-    // expand filterList
-    const filtersButton = await screen.findByRole('button', {
-      name: /filters/i,
-    });
-    fireEvent.click(filtersButton);
+    //Expand filter list
+    await toggleFilterList();
+    const addFilterDialog = await openAddFilterDialog();
 
-    // open add filter dialog
-    const addFilterButton = await screen.findByRole('button', {
-      name: /add filter/i,
+    //Filter 1 - Select Primary Colors filter &  apply a single value
+    await selectFilter(addFilterDialog, 'Primary Colors');
+    await selectFilterValues([/green/i]);
+
+    //Expect chips to display selected filter values
+    const chips = displayedChips('primaryColors');
+    expect(chips).toEqual(['green']);
+
+    //Filter 2 - Select Color Name filter & enter a value
+    const addFilterDialog2 = await openAddFilterDialog();
+    await selectFilter(addFilterDialog2, 'Color Name');
+    const textbox = await screen.findByPlaceholderText(/enter a color name/i);
+    fireEvent.change(textbox, {
+      target: {
+        value: 'cobalt',
+      },
     });
-    fireEvent.click(addFilterButton);
-    // find dialog
-    const addFilterDialog = await screen.findByRole('dialog');
-    // find option for filter to add
-    const option = within(addFilterDialog).getByText('Primary Colors');
-    // select option
-    fireEvent.click(option);
-    // expect add filter dialog to close
-    expect(addFilterDialog).not.toBeInTheDocument();
-    // expect dialog for selected filter to open
-    const selectFilterValuesDialog = await screen.findByRole('dialog');
-    // get filter value to select
-    const filterValueOption = within(selectFilterValuesDialog).getByText(
-      /blue/i
-    );
-    // select value
-    fireEvent.click(filterValueOption);
-    // close filter dialog
-    fireEvent.keyDown(filterValueOption, {
-      key: 'Escape',
+
+    //Expect badge to not display if filter list is expanded
+    let filterTotalBadge = getBadgeStatus();
+    expect(filterTotalBadge).toBeNull();
+
+    //Collapse filter list & expect filterDialogs to be hidden
+    await toggleFilterList();
+    expect(addFilterDialog).not.toBeVisible();
+    expect(addFilterDialog2).not.toBeVisible();
+
+    //Recapture the badge el
+    filterTotalBadge = getBadgeStatus();
+
+    //Expect badge to display count of applied filters visible
+    expect(filterTotalBadge).toHaveTextContent('2');
+    expect(filterTotalBadge).toBeVisible();
+  });
+
+  it('should apply multiple values from a single filter, display as chips, but display no badge on collapse', async () => {
+    render(<FilterTestComponent {...createTestProps()} />);
+
+    //Expand filter list & add filter
+    await toggleFilterList();
+    const addFilterDialog = await openAddFilterDialog();
+
+    //Select Primary Colors filter & apply multiple values
+    await selectFilter(addFilterDialog, 'Primary Colors');
+    await selectFilterValues([
+      /blue/i,
+      /green/i,
+      /pink/i,
+      /lavender/i,
+      /azure/i,
+    ]);
+
+    //Expect chips to display selected filter values
+    const chips = displayedChips('primaryColors');
+    expect(chips).toEqual(['blue', 'green', 'pink', 'lavender', 'azure']);
+
+    //Collapse filter list & expect no badge to display
+    await toggleFilterList();
+    const filterTotalBadge = getBadgeStatus();
+    expect(filterTotalBadge).toBeNull();
+  });
+
+  //!is this needed?
+  it('should render search component', () => {
+    render(<FilterTestComponent {...createTestProps()} />);
+    const searchInput = screen.getByPlaceholderText('Search Placeholder');
+    expect(searchInput).toBeInTheDocument();
+  });
+
+  it('should render `clear all` filters button & clear selections when clicked - >=2 applied filters', async () => {
+    render(<FilterTestComponent {...createTestProps()} />);
+
+    //Expand filter list
+    await toggleFilterList();
+    const addFilterDialog = await openAddFilterDialog();
+
+    //Filter 1 - Select Primary Colors filter & apply a single value
+    await selectFilter(addFilterDialog, 'Primary Colors');
+    await selectFilterValues([/green/i]);
+
+    // Expect chips to display selected filter values
+    const chips = displayedChips('primaryColors');
+    expect(chips).toEqual(['green']);
+
+    //Filter 2 - Select Colors Name filter & enter a text value
+    const addFilterDialog2 = await openAddFilterDialog();
+    await selectFilter(addFilterDialog2, 'Color Name');
+    const textbox = await screen.findByPlaceholderText(/enter a color name/i);
+    fireEvent.change(textbox, {
+      target: {
+        value: 'Falu',
+      },
     });
-    expect(selectFilterValuesDialog).not.toBeInTheDocument();
-    // check to make sure selected value is displayed in selected filter trigger button
-    const selectedValues = screen.getByRole('list', {
+    fireEvent.keyDown(textbox, { key: 'Escape' });
+
+    //Expect chips to display selected filter values
+    const selectedValues = screen.queryByRole('list', {
       name: 'primaryColors selected values',
     });
-    const valueChip = within(selectedValues).getByRole('listitem');
+    expect(selectedValues).toBeInTheDocument();
 
-    expect(valueChip).toBeVisible();
-    expect(valueChip).toHaveTextContent(/blue/i);
+    //Click `Clear all` (filters) button & expect applied filters to be cleared
+    const clearAllFiltersButton = getClearAllFiltersButton();
+    if (clearAllFiltersButton) {
+      fireEvent.click(clearAllFiltersButton);
+    }
+
+    expect(selectedValues).not.toBeInTheDocument();
+  });
+
+  it('should not render `clear all` filters button with a single applied filter', async () => {
+    render(<FilterTestComponent {...createTestProps()} />);
+
+    //Expand filter list
+    await toggleFilterList();
+    const addFilterDialog = await openAddFilterDialog();
+
+    //Filter 1 - select primary colors & apply a single value
+    await selectFilter(addFilterDialog, 'Primary Colors');
+    await selectFilterValues([/green/i]);
+
+    //Expect chips to display selected filter values
+    const chips = displayedChips('primaryColors');
+    expect(chips).toEqual(['green']);
+
+    //Expect Clear all` button to not be accessible
+    const clearAllFiltersButton = getClearAllFiltersButton();
+    expect(clearAllFiltersButton).not.toBeInTheDocument();
+  });
+
+  it('should remove applied filters individually', async () => {
+    render(<FilterTestComponent {...createTestProps()} />);
+
+    //Expand filter list
+    await toggleFilterList();
+    const addFilterDialog = await openAddFilterDialog();
+
+    //Select Primary Colors filter & apply a single value
+    await selectFilter(addFilterDialog, 'Primary Colors');
+    await selectFilterValues([/green/i]);
+
+    //Expect chips to display selected filter values
+    const chips = displayedChips('primaryColors');
+    expect(chips).toEqual(['green']);
+
+    //Click the filter remove button & expect filter to be removed from list
+    const removeFilterButton = screen.queryByRole('button', {
+      name: /remove Primary Colors filter/i,
+    });
+
+    if (removeFilterButton) {
+      fireEvent.click(removeFilterButton);
+    }
+
+    const primaryColorFilter = screen.queryByRole('button', {
+      name: /primary colors/i,
+    });
+
+    expect(primaryColorFilter).not.toBeInTheDocument();
   });
 });

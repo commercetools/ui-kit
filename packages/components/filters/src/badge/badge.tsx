@@ -37,7 +37,7 @@ const badgeStyles = css`
   height: ${designTokens.spacing40};
 `;
 
-const disabledBageStyles = css`
+const disabledBadgeStyles = css`
   background-color: ${designTokens.colorNeutral};
 `;
 
@@ -45,7 +45,7 @@ function Badge(props: TBadgeProps) {
   return (
     <span
       aria-label={props['aria-label']}
-      css={[badgeStyles, props.isDisabled && disabledBageStyles]}
+      css={[badgeStyles, props.isDisabled && disabledBadgeStyles]}
       id={props.id}
       role="status"
     >
