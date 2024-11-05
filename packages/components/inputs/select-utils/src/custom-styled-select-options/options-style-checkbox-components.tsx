@@ -1,14 +1,23 @@
-import { type Props as ReactSelectProps } from 'react-select';
+import { type Props as ReactSelectProps, OptionProps } from 'react-select';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
+import type { TSelectInputProps } from '@commercetools-uikit/select-input';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 
 /**
  * Returns custom components to be used with react-select, when optionStyle is set to "checkbox"
  */
-export const optionStyleCheckboxComponents = () => {
+type OptionType = {
+  label: string;
+  value: string;
+  count: number;
+};
+
+export const optionStyleCheckboxComponents = (
+  appearance: TSelectInputProps['appearance']
+) => {
   return {
-    Option: (props) => {
+    Option: (props: OptionProps<OptionType>) => {
       const {
         innerRef,
         innerProps,
@@ -17,6 +26,7 @@ export const optionStyleCheckboxComponents = () => {
         isFocused,
         isSelected,
         className,
+        data,
       } = props;
 
       return (
@@ -28,6 +38,8 @@ export const optionStyleCheckboxComponents = () => {
             padding: ${designTokens.spacing10} ${designTokens.spacing20};
             ${isFocused &&
             `background-color: ${designTokens.backgroundColorForInputWhenHovered};`}
+            display: flex;
+            justify-content: space-between;
           `}
           className={className}
           aria-disabled={isDisabled}
@@ -39,6 +51,21 @@ export const optionStyleCheckboxComponents = () => {
           >
             {label}
           </CheckboxInput>
+          {appearance === 'filter' && (
+            <div
+              css={css`
+                display: flex;
+                align-items: center;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 18px;
+                color: ${designTokens.colorNeutral50};
+              `}
+            >
+              {data.count}
+            </div>
+          )}
         </div>
       );
     },

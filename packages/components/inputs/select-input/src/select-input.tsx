@@ -386,6 +386,10 @@ export type TSelectInputProps = {
     | 16
     | 'scale'
     | 'auto';
+  /**
+   * An additional value displayed on the select options menu. This value is only available in the checkbox option style when appearance is set to filter.
+   */
+  count: number;
 };
 
 const defaultProps: Pick<
@@ -481,12 +485,18 @@ const SelectInput = (props: TSelectInputProps) => {
                 ClearIndicator: null,
               }),
               ...(props.optionStyle === 'checkbox'
-                ? optionStyleCheckboxComponents()
+                ? optionStyleCheckboxComponents(props.appearance)
                 : {}),
               ...props.components,
             } as ReactSelectProps['components']
           }
-          menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
+          menuIsOpen={
+            props.isReadOnly
+              ? false
+              : props.appearance === 'filter'
+              ? true
+              : props.menuIsOpen
+          }
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
