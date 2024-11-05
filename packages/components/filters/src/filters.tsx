@@ -385,9 +385,8 @@ function Filters({
                     }
                     defaultOpen={
                       activeFilterConfig.isPersistent ||
-                      (!showFilterControls &&
-                        localVisibleFilters.length ===
-                          visibleFiltersFromProps.length)
+                      localVisibleFilters.length ===
+                        visibleFiltersFromProps.length
                         ? false
                         : true
                     }
