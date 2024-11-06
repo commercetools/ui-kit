@@ -40,6 +40,10 @@ export const optionStyleCheckboxComponents = (
             `background-color: ${designTokens.backgroundColorForInputWhenHovered};`}
             display: flex;
             justify-content: space-between;
+            font-size: 14px;
+            span {
+              font-size: 14px;
+            }
           `}
           className={className}
           aria-disabled={isDisabled}
@@ -49,15 +53,13 @@ export const optionStyleCheckboxComponents = (
             isChecked={isSelected}
             onChange={() => {}}
           >
-            {label}
+            <span>{label}</span>
           </CheckboxInput>
           {appearance === 'filter' && (
             <div
               css={css`
                 display: flex;
                 align-items: center;
-                font-size: 12px;
-                font-style: normal;
                 font-weight: 400;
                 line-height: 18px;
                 color: ${designTokens.colorNeutral50};

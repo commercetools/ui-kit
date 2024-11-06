@@ -246,7 +246,10 @@ const menuStyles = (props: TProps) => (base: TBase) => {
     border: `1px solid ${designTokens.colorSurface}`,
     borderRadius: designTokens.borderRadiusForInput,
     backgroundColor: designTokens.backgroundColorForInput,
-    boxShadow: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
+    boxShadow:
+      props.appearance === 'filter'
+        ? 'none'
+        : '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
     fontSize: designTokens.fontSize30,
     fontFamily: 'inherit',
     margin: `${designTokens.spacing10} 0 0 0`,
@@ -325,6 +328,7 @@ const optionStyles = (props: TProps) => (base: TBase, state: TState) => {
       if (state.isDisabled) return designTokens.fontColorForInputWhenDisabled;
       return designTokens.fontColorForInput;
     })(),
+    borderRadius: props.appearance === 'filter' && '4px',
     backgroundColor: (() => {
       if (state.isSelected) return designTokens.colorPrimary95;
       if (state.isFocused)

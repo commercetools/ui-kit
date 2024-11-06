@@ -389,7 +389,7 @@ export type TSelectInputProps = {
   /**
    * An additional value displayed on the select options menu. This value is only available in the checkbox option style when appearance is set to filter.
    */
-  count: number;
+  count?: number;
 };
 
 const defaultProps: Pick<
@@ -506,7 +506,8 @@ const SelectInput = (props: TSelectInputProps) => {
               appearance: props.appearance,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
-              isCondensed: props.isCondensed,
+              isCondensed:
+                props.appearance === 'filter' ? true : props.isCondensed,
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
