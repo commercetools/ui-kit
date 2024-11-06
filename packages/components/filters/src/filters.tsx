@@ -153,9 +153,11 @@ export type TFiltersProps = {
 };
 
 const horizontalDividerStyles = css`
+  color: ${designTokens.colorNeutral90};
+  background-color: ${designTokens.colorNeutral90};
   width: 100%;
   height: 1px;
-  border: 1px solid ${designTokens.colorNeutral90};
+  border: 0;
   margin-top: ${designTokens.spacing25};
   margin-bottom: ${designTokens.spacing30};
 `;
