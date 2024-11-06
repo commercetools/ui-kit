@@ -96,10 +96,10 @@ describe('rendering', () => {
     );
 
     screen.getByLabelText('test button 1').click();
-    expect(handleChange).toBeCalledWith('test-button-1');
+    expect(handleChange).toHaveBeenCalledWith('test-button-1');
 
     screen.getByLabelText('test button 2').click();
-    expect(handleChange).toBeCalledWith('test-button-2');
+    expect(handleChange).toHaveBeenCalledWith('test-button-2');
   });
 
   it('should not call onChange when selected option is clicked', () => {
@@ -112,7 +112,7 @@ describe('rendering', () => {
     );
 
     screen.getByLabelText('test button 1').click();
-    expect(handleChange).not.toBeCalledWith('test-button-1');
+    expect(handleChange).not.toHaveBeenCalledWith('test-button-1');
   });
 
   it('should call onClick when button is clicked', () => {
@@ -129,7 +129,7 @@ describe('rendering', () => {
     );
 
     screen.getByLabelText('Test Button 1').click();
-    expect(handleClick).toBeCalledWith('test-button-1');
+    expect(handleClick).toHaveBeenCalledWith('test-button-1');
   });
 
   it('should not call onClick when button is active', () => {
