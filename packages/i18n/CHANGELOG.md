@@ -1,5 +1,12 @@
 # @commercetools-uikit/i18n
 
+## 19.14.0
+
+### Minor Changes
+
+- [#2975](https://github.com/commercetools/ui-kit/pull/2975) [`32f444f`](https://github.com/commercetools/ui-kit/commit/32f444f2afc25d8728a8ca35c7bfc1d9457f0b15) Thanks [@misama-ct](https://github.com/misama-ct)! - As the filters component is being built, there are some visual modifications that need to happen in the select input to support the designs and ux of the filters pattern.
+  This changes provide the updates needed for the select-input to support the visual styling of filter patterns.
+
 ## 19.13.0
 
 ## 19.12.1

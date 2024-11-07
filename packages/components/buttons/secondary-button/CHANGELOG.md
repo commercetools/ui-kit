@@ -1,5 +1,20 @@
 # @commercetools-uikit/secondary-button
 
+## 19.14.0
+
+### Minor Changes
+
+- [#2968](https://github.com/commercetools/ui-kit/pull/2968) [`1ec85b2`](https://github.com/commercetools/ui-kit/commit/1ec85b2d8ec0dd19e3f916baf6a229c55b1a3eb4) Thanks [@misama-ct](https://github.com/misama-ct)! - new property `iconRight` added to primary- & secondary-button, 2 new caret icons added
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.14.0
+  - @commercetools-uikit/accessible-button@19.14.0
+  - @commercetools-uikit/spacings-inline@19.14.0
+  - @commercetools-uikit/text@19.14.0
+  - @commercetools-uikit/utils@19.14.0
+
 ## 19.13.0
 
 ### Patch Changes
