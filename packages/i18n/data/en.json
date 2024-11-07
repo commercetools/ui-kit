@@ -315,6 +315,10 @@
     "developer_comment": "Default input placeholder text",
     "string": "Select..."
   },
+  "UIKit.SelectInput.selectInputAsFilterPlaceholder": {
+    "developer_comment": "Default input placeholder text when used as filter",
+    "string": "Search"
+  },
   "UIKit.TimeInput.placeholder": {
     "developer_comment": "Placeholder for time input",
     "string": "HH:mm AM/PM"
