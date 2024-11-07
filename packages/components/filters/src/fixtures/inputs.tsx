@@ -1,11 +1,8 @@
 import { useState } from 'react';
-import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
 import RadioInput from '@commercetools-uikit/radio-input';
 import SearchTextInput from '@commercetools-uikit/search-text-input';
 import SelectInput from '@commercetools-uikit/select-input';
 import TextInput from '@commercetools-uikit/text-input';
-import { ContainerProps, MenuProps, MenuListProps } from 'react-select';
 import {
   PRIMARY_COLOR_OPTIONS,
   SECONDARY_COLOR_OPTIONS,
@@ -23,48 +20,6 @@ type TFiltersInputExampleProps = {
   onChange: Function;
 };
 
-const CustomSelectContainer = ({
-  children,
-  innerProps: { ref, ...restInnerProps },
-}: ContainerProps) => (
-  <div
-    data-testid="uikit-custom-filters-select"
-    css={css`
-      height: 100%;
-    `}
-    ref={ref}
-    {...restInnerProps}
-  >
-    {children}
-  </div>
-);
-
-const CustomSelectMenu = ({
-  children,
-  innerProps: { ref, ...restInnerProps },
-}: MenuProps) => (
-  <div
-    ref={ref}
-    css={css`
-      margin-top: ${designTokens.spacing20};
-      max-width: 100%;
-      max-height: calc(100% - ${designTokens.spacing60});
-      overflow: hidden auto;
-    `}
-    {...restInnerProps}
-  >
-    {children}
-  </div>
-);
-const CustomMenuList = ({
-  children,
-  innerProps: { ref, ...restInnerProps },
-}: MenuListProps) => (
-  <div ref={ref} {...restInnerProps}>
-    {children}
-  </div>
-);
-
 export const PrimaryColorsInput = ({
   value,
   onChange,
@@ -78,14 +33,8 @@ export const PrimaryColorsInput = ({
     onChange={(e) =>
       onChange(Array.prototype.concat(e.target.value ? e.target.value : []))
     }
-    components={{
-      SelectContainer: CustomSelectContainer,
-      Menu: CustomSelectMenu,
-      MenuList: CustomMenuList,
-    }}
-    menuIsOpen={true}
-    controlShouldRenderValue={false}
-    hideSelectedOptions={false}
+    appearance="filter"
+    optionStyle="checkbox"
     isMulti
   />
 );
@@ -134,17 +83,9 @@ export const SecondaryColorsInput = ({
     onChange={(e) =>
       onChange(Array.prototype.concat(e.target.value ? e.target.value : []))
     }
-    components={{
-      SelectContainer: CustomSelectContainer,
-      Menu: CustomSelectMenu,
-      MenuList: CustomMenuList,
-    }}
-    menuIsOpen={true}
-    controlShouldRenderValue={false}
+    appearance="filter"
+    optionStyle="checkbox"
     isMulti
-    backspaceRemovesValue={false}
-    isClearable={false}
-    hideSelectedOptions={false}
   />
 );
 

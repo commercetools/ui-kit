@@ -115,18 +115,6 @@ export const menuBodyStyle = css`
 
   /** ensure that body scrolls with overflow now that there is a menu max-height */
   overflow: hidden auto;
-
-  /** using has selector to add some styles based on whether there is a custom select 3 divs down */
-  :has(div > div > [data-testid='uikit-custom-filters-select']) {
-    display: flex;
-    > div {
-      display: flex;
-      min-height: 100%;
-      > div {
-        width: 100%;
-      }
-    }
-  }
 `;
 
 function FilterMenu(props: TFilterMenuProps) {

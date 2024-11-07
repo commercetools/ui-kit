@@ -21,7 +21,6 @@ import SelectInput, {
 } from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import { useIntl } from 'react-intl';
-import { ContainerProps, MenuProps, MenuListProps } from 'react-select';
 import FilterMenu, {
   menuStyles,
   menuBodyStyle,
@@ -176,49 +175,6 @@ const menuListStyles = css`
   align-items: center;
   gap: ${designTokens.spacing20};
 `;
-
-const AddFiltersSelectContainer = ({
-  children,
-  innerProps: { ref, ...restInnerProps },
-}: ContainerProps) => (
-  <div
-    data-testid="uikit-custom-filters-select"
-    css={css`
-      height: 100%;
-    `}
-    ref={ref}
-    {...restInnerProps}
-  >
-    {children}
-  </div>
-);
-
-const AddFiltersSelectMenu = ({
-  children,
-  innerProps: { ref, ...restInnerProps },
-}: MenuProps) => (
-  <div
-    ref={ref}
-    {...restInnerProps}
-    css={css`
-      margin-top: ${designTokens.spacing20};
-      max-width: 100%;
-      max-height: calc(100% - ${designTokens.spacing60});
-      overflow: hidden auto;
-    `}
-  >
-    {children}
-  </div>
-);
-
-const AddFiltersSelectList = ({
-  children,
-  innerProps: { ref, ...restInnerProps },
-}: MenuListProps) => (
-  <div ref={ref} {...restInnerProps}>
-    {children}
-  </div>
-);
 
 function getFilterOptions(
   filters: TFilterConfiguration[],
@@ -420,6 +376,7 @@ function Filters({
                       id="ui-kit-add-filters-select"
                       name="select filters"
                       aria-label="select filters"
+                      appearance="filter"
                       options={
                         getFilterOptions(filters, filterGroups) as TOption[]
                       }
@@ -431,20 +388,11 @@ function Filters({
                         );
                       }}
                       value={localVisibleFilters}
-                      menuIsOpen={true}
-                      components={{
-                        SelectContainer: AddFiltersSelectContainer,
-                        Menu: AddFiltersSelectMenu,
-                        MenuList: AddFiltersSelectList,
-                      }}
-                      controlShouldRenderValue={false}
                       isMulti={true}
                       // @ts-ignore
                       isOptionDisabled={(option: TAddFilterSelectOption) =>
                         option.isDisabled
                       }
-                      backspaceRemovesValue={false}
-                      isClearable={false}
                     />
                   </Popover.Content>
                 </Popover.Portal>
