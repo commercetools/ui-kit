@@ -353,7 +353,7 @@ function Filters({
               })}
               <Popover.Root>
                 <Popover.Trigger asChild>
-                  <div css={{ display: 'inline-flex' }} role="button">
+                  <div css={{ display: 'inline-flex' }}>
                     <FlatButton
                       label={intl.formatMessage(messages.addFilterButtonLabel)}
                       icon={<PlusBoldIcon />}
