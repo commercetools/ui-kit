@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { type Props as ReactSelectProps, OptionProps } from 'react-select';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import type { TSelectInputProps } from '@commercetools-uikit/select-input';
@@ -8,7 +9,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
  * Returns custom components to be used with react-select, when optionStyle is set to "checkbox"
  */
 type OptionType = {
-  label: string;
+  label: ReactNode;
   value: string;
   count: number;
 };
@@ -40,9 +41,9 @@ export const optionStyleCheckboxComponents = (
             `background-color: ${designTokens.backgroundColorForInputWhenHovered};`}
             display: flex;
             justify-content: space-between;
-            font-size: 14px;
+            font-size: ${designTokens.fontSize20};
             span {
-              font-size: 14px;
+              font-size: ${designTokens.fontSize20};
             }
           `}
           className={className}
@@ -61,7 +62,7 @@ export const optionStyleCheckboxComponents = (
                 display: flex;
                 align-items: center;
                 font-weight: 400;
-                line-height: 18px;
+                line-height: ${designTokens.lineHeight05};
                 color: ${designTokens.colorNeutral50};
               `}
             >
