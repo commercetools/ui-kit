@@ -281,6 +281,10 @@ export type TSearchSelectInputProps = {
    * Filter appearance is meant to be used when the async-select is used as a filter.
    */
   appearance?: 'default' | 'filter';
+  /**
+   * An additional value displayed on the select options menu. This value is only available in the checkbox option style when appearance is set to filter.
+   */
+  count?: number;
 };
 
 type TOptionInnerPropsData = {
@@ -362,7 +366,7 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
     <SearchSelectInputWrapper
       isDisabled={props.isDisabled}
       isReadOnly={props.isReadOnly}
-      isCondensed={props.isCondensed}
+      isCondensed={props.appearance === 'filter' ? true : props.isCondensed}
     >
       <AsyncSelectInput
         {...props}
