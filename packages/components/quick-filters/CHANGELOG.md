@@ -1,5 +1,13 @@
 # @commercetools-uikit/quick-filters
 
+## 19.14.0
+
+### Patch Changes
+
+- Updated dependencies [[`32f444f`](https://github.com/commercetools/ui-kit/commit/32f444f2afc25d8728a8ca35c7bfc1d9457f0b15)]:
+  - @commercetools-uikit/tag@19.14.0
+  - @commercetools-uikit/design-system@19.14.0
+
 ## 19.13.0
 
 ### Patch Changes
