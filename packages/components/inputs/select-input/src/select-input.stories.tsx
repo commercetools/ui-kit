@@ -52,24 +52,29 @@ const options = [
   {
     label: 'Animals 1',
     options: [
-      { value: 'platypus', label: 'Platypus' },
-      { value: 'goat', label: 'Goat' },
+      { value: 'platypus', label: 'Platypus', count: 103 },
+      { value: 'goat', label: 'Goat', count: 12.365 },
       { value: 'giraffe', label: 'Giraffe' },
-      { value: 'whale', label: 'Whale' },
-      { value: 'killer-whale', label: 'Killer Whale', isDisabled: true },
-      { value: 'otter', label: 'Otter' },
+      { value: 'whale', label: 'Whale', count: 1123 },
+      {
+        value: 'killer-whale',
+        label: 'Killer Whale',
+        isDisabled: true,
+        count: 1,
+      },
+      { value: 'otter', label: 'Otter', count: 10.356 },
       { value: 'elephant', label: 'Elephant' },
-      { value: 'rat', label: 'Rat' },
-      { value: 'anteater', label: 'Anteater' },
-      { value: 'alligator', label: 'Alligator' },
-      { value: 'dog', label: 'Dog' },
+      { value: 'rat', label: 'Rat', count: 0 },
+      { value: 'anteater', label: 'Anteater', count: 100335456413 },
+      { value: 'alligator', label: 'Alligator', count: 1 },
+      { value: 'dog', label: 'Dog', count: 5 },
       { value: 'pig', label: 'Pig' },
-      { value: 'hippopotamus', label: 'Hippopotamus' },
-      { value: 'lion', label: 'Lion' },
-      { value: 'monkey', label: 'Monkey' },
+      { value: 'hippopotamus', label: 'Hippopotamus', count: 10 },
+      { value: 'lion', label: 'Lion', count: 111 },
+      { value: 'monkey', label: 'Monkey', count: 57 },
       { value: 'kangaroo', label: 'Kangaroo' },
-      { value: 'flamingo', label: 'Flamingo' },
-      { value: 'moose', label: 'Moose' },
+      { value: 'flamingo', label: 'Flamingo', count: 3 },
+      { value: 'moose', label: 'Moose', count: 1003 },
     ],
   },
   {
@@ -99,19 +104,19 @@ const options = [
     label: 'Animals 3',
     options: [
       { value: 'llama', label: 'Llama' },
-      { value: 'seal', label: 'Seal' },
-      { value: 'hawk', label: 'Hawk' },
-      { value: 'wolf', label: 'Wolf' },
-      { value: 'yak', label: 'Yak' },
-      { value: 'rhinoceros', label: 'Rhinoceros' },
-      { value: 'alpaca', label: 'Alpaca' },
-      { value: 'zebra', label: 'Zebra' },
-      { value: 'cat', label: 'Cat' },
+      { value: 'seal', label: 'Seal', count: 245 },
+      { value: 'hawk', label: 'Hawk', count: 23 },
+      { value: 'wolf', label: 'Wolf', count: 89 },
+      { value: 'yak', label: 'Yak', count: 6 },
+      { value: 'rhinoceros', label: 'Rhinoceros', count: 9 },
+      { value: 'alpaca', label: 'Alpaca', count: 54 },
+      { value: 'zebra', label: 'Zebra', count: 302 },
+      { value: 'cat', label: 'Cat', count: 1 },
       { value: 'rabbit', label: 'Rabbit' },
       { value: 'turtle', label: 'Turtle' },
       { value: 'cow', label: 'Cow' },
       { value: 'turkey', label: 'Turkey' },
-      { value: 'deer', label: 'Deer' },
+      { value: 'deer', label: 'Deer', count: 12 },
     ],
   },
 ];
@@ -139,4 +144,33 @@ export const BasicExample: Story = (args) => {
 BasicExample.args = {
   options,
   horizontalConstraint: 7,
+};
+
+export const CheckboxOptionStyle: Story = (args) => {
+  const [value, setValue] = useState<string | string[] | null | undefined>([]);
+
+  useEffect(() => {
+    setValue([]);
+  }, [args.isMulti]);
+
+  return (
+    <div>
+      <SelectInput
+        {...args}
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+      />
+      <pre>{JSON.stringify(value, null, 2)}</pre>
+    </div>
+  );
+};
+
+CheckboxOptionStyle.args = {
+  options,
+  horizontalConstraint: 7,
+  optionStyle: 'checkbox',
+  isMulti: true,
+  appearance: 'filter',
 };

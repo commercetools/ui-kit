@@ -15,8 +15,11 @@ import {
   createSelectStyles,
   messages,
   warnIfMenuPortalPropsAreMissing,
+  optionStyleCheckboxComponents,
+  optionsStyleCheckboxSelectProps,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { SearchIcon } from '@commercetools-uikit/icons';
 
 const customizedComponents = {
   DropdownIndicator,
@@ -27,6 +30,7 @@ const customizedComponents = {
 export type TOption = {
   value: string;
   label?: ReactNode;
+  isDisabled?: boolean;
 };
 
 export type TOptionObject = {
@@ -47,9 +51,10 @@ export type TCustomEvent = {
 export type TSelectInputProps = {
   /**
    * Indicates the appearance of the input.
-   * Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.
+   * `quiet` appearance is meant to be used with the `horizontalConstraint="auto"`.
+   * `filter` appearance provides a different look and feel for the select input when it is used as part of a filter component.
    */
-  appearance?: 'default' | 'quiet';
+  appearance?: 'default' | 'quiet' | 'filter';
   horizontalConstraint?:
     | 3
     | 4
@@ -308,6 +313,8 @@ export type TSelectInputProps = {
    * Array of options that populate the select menu
    */
   options: TOptions;
+  /** defines how options are rendered */
+  optionStyle: 'list' | 'checkbox';
   showOptionGroupDivider?: boolean;
   // pageSize: PropTypes.number,
   /**
@@ -379,16 +386,25 @@ export type TSelectInputProps = {
     | 16
     | 'scale'
     | 'auto';
+  /**
+   * An additional value displayed on the select options menu. This value is only available in the checkbox option style when appearance is set to filter.
+   */
+  count?: number;
 };
 
 const defaultProps: Pick<
   TSelectInputProps,
-  'appearance' | 'maxMenuHeight' | 'menuPortalZIndex' | 'options'
+  | 'appearance'
+  | 'maxMenuHeight'
+  | 'menuPortalZIndex'
+  | 'options'
+  | 'optionStyle'
 > = {
   appearance: 'default',
   maxMenuHeight: 220,
   menuPortalZIndex: 1,
   options: [],
+  optionStyle: 'list',
 };
 
 const isOptionObject = (
@@ -405,7 +421,9 @@ const SelectInput = (props: TSelectInputProps) => {
   });
 
   const placeholder =
-    props.placeholder || intl.formatMessage(messages.placeholder);
+    props.appearance === 'filter' && !props.placeholder
+      ? intl.formatMessage(messages.selectInputAsFilterPlaceholder)
+      : props.placeholder || intl.formatMessage(messages.placeholder);
   // Options can be grouped as
   //   const colourOptions = [{ value: 'green', label: 'Green' }];
   //   const flavourOptions = [{ value: 'vanilla', label: 'Vanilla' }];
@@ -462,10 +480,23 @@ const SelectInput = (props: TSelectInputProps) => {
                     ),
                   }
                 : {}),
+              ...(props.appearance === 'filter' && {
+                DropdownIndicator: () => <SearchIcon color="neutral60" />,
+                ClearIndicator: null,
+              }),
+              ...(props.optionStyle === 'checkbox'
+                ? optionStyleCheckboxComponents(props.appearance)
+                : {}),
               ...props.components,
             } as ReactSelectProps['components']
           }
-          menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
+          menuIsOpen={
+            props.isReadOnly
+              ? false
+              : props.appearance === 'filter'
+              ? true
+              : props.menuIsOpen
+          }
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
@@ -475,7 +506,8 @@ const SelectInput = (props: TSelectInputProps) => {
               appearance: props.appearance,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
-              isCondensed: props.isCondensed,
+              isCondensed:
+                props.appearance === 'filter' ? true : props.isCondensed,
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
@@ -496,7 +528,9 @@ const SelectInput = (props: TSelectInputProps) => {
           isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
-          hideSelectedOptions={props.hideSelectedOptions}
+          {...(props.optionStyle === 'checkbox'
+            ? optionsStyleCheckboxSelectProps()
+            : { hideSelectedOptions: props.hideSelectedOptions })}
           // @ts-ignore
           isReadOnly={props.isReadOnly}
           isMulti={props.isMulti}
@@ -505,6 +539,7 @@ const SelectInput = (props: TSelectInputProps) => {
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
+          // @ts-expect-error: optionStyle 'checkbox' will override this property (if set)
           closeMenuOnSelect={props.closeMenuOnSelect}
           name={props.name}
           noOptionsMessage={
@@ -572,8 +607,15 @@ const SelectInput = (props: TSelectInputProps) => {
           tabSelectsValue={props.tabSelectsValue}
           value={selectedOptions}
           iconLeft={props.iconLeft}
-          controlShouldRenderValue={props.controlShouldRenderValue}
+          controlShouldRenderValue={
+            props.appearance === 'filter'
+              ? false
+              : props.controlShouldRenderValue
+          }
           menuPlacement="auto"
+          {...(props.optionStyle === 'checkbox'
+            ? optionsStyleCheckboxSelectProps()
+            : {})}
         />
       </div>
     </Constraints.Horizontal>
