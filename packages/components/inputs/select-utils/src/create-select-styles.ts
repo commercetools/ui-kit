@@ -548,6 +548,7 @@ const multiValueRemoveStyles =
   };
 
 export default function createSelectStyles(props: TProps) {
+  console.log({ apprance: props });
   return {
     control: controlStyles(props),
     menu: menuStyles(props),

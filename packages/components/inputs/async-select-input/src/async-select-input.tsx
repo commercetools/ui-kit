@@ -424,7 +424,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
                 ClearIndicator: null,
               }),
               ...(props.optionStyle === 'checkbox'
-                ? optionStyleCheckboxComponents()
+                ? optionStyleCheckboxComponents(props.appearance)
                 : {}),
               ...props.components,
             } as ReactSelectAsyncProps['components']
@@ -439,6 +439,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
+              appearance: props.appearance,
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
               menuPortalZIndex: props.menuPortalZIndex,
