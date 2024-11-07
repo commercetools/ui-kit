@@ -4,7 +4,16 @@ import isEmpty from 'lodash/isEmpty';
 import has from 'lodash/has';
 import Select, {
   components as defaultComponents,
+  type InputProps,
+  type OptionProps,
   type Props as ReactSelectProps,
+  type GroupBase,
+  type SelectComponentsConfig,
+  type OptionsOrGroups,
+  type PropsValue,
+  type OnChangeValue,
+  type MultiValue,
+  type SingleValue,
 } from 'react-select';
 import Constraints from '@commercetools-uikit/constraints';
 import {
@@ -15,11 +24,22 @@ import {
   createSelectStyles,
   messages,
   warnIfMenuPortalPropsAreMissing,
-  optionStyleCheckboxComponents,
+  CheckboxSelectOption,
   optionsStyleCheckboxSelectProps,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { SearchIcon } from '@commercetools-uikit/icons';
+
+declare module 'react-select/dist/declarations/src/Select' {
+  export interface Props<
+    Option,
+    IsMulti extends boolean, //eslint-disable-line
+    Group extends GroupBase<Option> //eslint-disable-line
+  > {
+    appearance?: 'default' | 'quiet' | 'filter';
+    optionStyle?: 'list' | 'checkbox';
+  }
+}
 
 const customizedComponents = {
   DropdownIndicator,
@@ -31,6 +51,7 @@ export type TOption = {
   value: string;
   label?: ReactNode;
   isDisabled?: boolean;
+  count?: number;
 };
 
 export type TOptionObject = {
@@ -39,16 +60,24 @@ export type TOptionObject = {
 
 export type TOptions = TOption[] | TOptionObject[];
 
-export type TCustomEvent = {
+export type TCustomEvent<
+  Option,
+  isMulti extends boolean,
+  Group extends GroupBase<Option>
+> = {
   target: {
-    id?: ReactSelectProps['inputId'];
-    name?: ReactSelectProps['name'];
-    value?: string | string[] | null;
+    id?: ReactSelectProps<Option, isMulti, Group>['inputId'];
+    name?: ReactSelectProps<Option, isMulti, Group>['name'];
+    value?: ReactSelectProps<Option, isMulti, Group>['value'];
   };
   persist: () => void;
 };
 
-export type TSelectInputProps = {
+export type TSelectInputProps<
+  Option,
+  isMulti extends boolean,
+  Group extends GroupBase<Option>
+> = {
   /**
    * Indicates the appearance of the input.
    * `quiet` appearance is meant to be used with the `horizontalConstraint="auto"`.
@@ -103,25 +132,33 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-label'?: ReactSelectProps['aria-label'];
+  'aria-label'?: ReactSelectProps<Option, isMulti, Group>['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-labelledby'?: ReactSelectProps['aria-labelledby'];
+  'aria-labelledby'?: ReactSelectProps<
+    Option,
+    isMulti,
+    Group
+  >['aria-labelledby'];
   /**
    * Indicate if the value entered in the input is invalid.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-invalid'?: ReactSelectProps['aria-invalid'];
+  'aria-invalid'?: ReactSelectProps<Option, isMulti, Group>['aria-invalid'];
   /**
    * HTML ID of an element containing an error message related to the input.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-errormessage'?: ReactSelectProps['aria-errormessage'];
+  'aria-errormessage'?: ReactSelectProps<
+    Option,
+    isMulti,
+    Group
+  >['aria-errormessage'];
   /**
    * Focus the control when it is mounted
    */
@@ -131,7 +168,11 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  backspaceRemovesValue?: ReactSelectProps['backspaceRemovesValue'];
+  backspaceRemovesValue?: ReactSelectProps<
+    Option,
+    isMulti,
+    Group
+  >['backspaceRemovesValue'];
   // blurInputOnSelect: PropTypes.bool,
   // captureMenuScroll: PropTypes.bool,
   // className: PropTypes.string,
@@ -143,7 +184,7 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  components?: ReactSelectProps['components'];
+  components?: ReactSelectProps<Option, isMulti, Group>['components'];
   /**
    * Whether the input and options are rendered with condensed paddings
    */
@@ -153,7 +194,11 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  controlShouldRenderValue?: ReactSelectProps['controlShouldRenderValue'];
+  controlShouldRenderValue?: ReactSelectProps<
+    Option,
+    isMulti,
+    Group
+  >['controlShouldRenderValue'];
   // delimiter: PropTypes.string,
   // escapeClearsValue: PropTypes.bool,
   /**
@@ -161,7 +206,7 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  filterOption?: ReactSelectProps['filterOption'];
+  filterOption?: ReactSelectProps<Option, isMulti, Group>['filterOption'];
   // formatGroupLabel: PropTypes.func,
   // formatOptionLabel: PropTypes.func,
   // getOptionLabel: PropTypes.func,
@@ -171,67 +216,75 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  hideSelectedOptions?: ReactSelectProps['hideSelectedOptions'];
+  hideSelectedOptions?: ReactSelectProps<
+    Option,
+    isMulti,
+    Group
+  >['hideSelectedOptions'];
   /**
    * Used as HTML id property. An id is generated automatically when not provided.
    * This forwarded as react-select's "inputId"
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  id?: ReactSelectProps['inputId'];
+  id?: ReactSelectProps<Option, isMulti, Group>['inputId'];
   /**
    * The value of the search input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  inputValue?: ReactSelectProps['inputValue'];
+  inputValue?: ReactSelectProps<Option, isMulti, Group>['inputValue'];
   /**
    * The id to set on the SelectContainer component
    * This is forwarded as react-select's "id"
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  containerId?: ReactSelectProps['id'];
+  containerId?: ReactSelectProps<Option, isMulti, Group>['id'];
   // instanceId: PropTypes.string,
   /**
    * Is the select value clearable
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isClearable?: ReactSelectProps['isClearable'];
+  isClearable?: ReactSelectProps<Option, isMulti, Group>['isClearable'];
   /**
    * Is the select disabled
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isDisabled?: ReactSelectProps['isDisabled'];
+  isDisabled?: ReactSelectProps<Option, isMulti, Group>['isDisabled'];
   // isLoading: PropTypes.bool,
   /**
    * Override the built-in logic to detect whether an option is disabled
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isOptionDisabled?: ReactSelectProps['isOptionDisabled'];
+  isOptionDisabled?: ReactSelectProps<
+    Option,
+    isMulti,
+    Group
+  >['isOptionDisabled'];
   // isOptionSelected: PropTypes.func,
   /**
    * Support multiple selected options
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isMulti?: ReactSelectProps['isMulti'];
+  isMulti?: ReactSelectProps<Option, isMulti, Group>['isMulti'];
   // isRtl: PropTypes.bool,
   /**
    * Whether to enable search functionality
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isSearchable?: ReactSelectProps['isSearchable'];
+  isSearchable?: ReactSelectProps<Option, isMulti, Group>['isSearchable'];
   /**
    * Can be used to enforce the select input to be opened
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuIsOpen?: ReactSelectProps['menuIsOpen'];
+  menuIsOpen?: ReactSelectProps<Option, isMulti, Group>['menuIsOpen'];
   // loadingMessage: PropTypes.func,
   // minMenuHeight: PropTypes.number,
   /**
@@ -239,7 +292,7 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  maxMenuHeight?: ReactSelectProps['maxMenuHeight'];
+  maxMenuHeight?: ReactSelectProps<Option, isMulti, Group>['maxMenuHeight'];
   // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
   // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
   /**
@@ -247,7 +300,11 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
+  menuPortalTarget?: ReactSelectProps<
+    Option,
+    isMulti,
+    Group
+  >['menuPortalTarget'];
   /**
    * z-index value for the menu portal
    * <br>
@@ -259,19 +316,27 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuShouldBlockScroll?: ReactSelectProps['menuShouldBlockScroll'];
+  menuShouldBlockScroll?: ReactSelectProps<
+    Option,
+    isMulti,
+    Group
+  >['menuShouldBlockScroll'];
   /**
    * Whether the menu should close after a value is selected. Defaults to `true`.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  closeMenuOnSelect?: ReactSelectProps['closeMenuOnSelect'];
+  closeMenuOnSelect?: ReactSelectProps<
+    Option,
+    isMulti,
+    Group
+  >['closeMenuOnSelect'];
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  name?: ReactSelectProps['name'];
+  name?: ReactSelectProps<Option, isMulti, Group>['name'];
   /**
    * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with { inputValue: String }.
    * <br />
@@ -279,29 +344,33 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  noOptionsMessage?: ReactSelectProps['noOptionsMessage'];
+  noOptionsMessage?: ReactSelectProps<
+    Option,
+    isMulti,
+    Group
+  >['noOptionsMessage'];
   /**
    * Handle blur events on the control
    */
-  onBlur?: (event: TCustomEvent) => void;
+  onBlur?: (event: TCustomEvent<Option, isMulti, Group>) => void;
   /**
    * Called with a fake event when value changes. The event's target.name will be the name supplied in props. The event's target.value will hold the value.
    * <br/>
    * The value will be the selected option, or an array of options in case isMulti is true.
    */
-  onChange?: (event: TCustomEvent) => void;
+  onChange?: (event: TCustomEvent<Option, isMulti, Group>) => void;
   /**
    * Handle focus events on the control
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onFocus?: ReactSelectProps['onFocus'];
+  onFocus?: ReactSelectProps<Option, isMulti, Group>['onFocus'];
   /**
    * Handle change events on the input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onInputChange?: ReactSelectProps['onInputChange'];
+  onInputChange?: ReactSelectProps<Option, isMulti, Group>['onInputChange'];
   // onKeyDown: PropTypes.func,
   // onMenuOpen: PropTypes.func,
   // onMenuClose: PropTypes.func,
@@ -322,7 +391,7 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  placeholder?: ReactSelectProps['placeholder'];
+  placeholder?: ReactSelectProps<Option, isMulti, Group>['placeholder'];
   // screenReaderStatus: PropTypes.func,
   // styles: PropTypes.objectOf(PropTypes.func),
   // theme: PropTypes.object,
@@ -331,19 +400,19 @@ export type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  tabIndex?: ReactSelectProps['tabIndex'];
+  tabIndex?: ReactSelectProps<Option, isMulti, Group>['tabIndex'];
   /**
    * Select the currently focused option when the user presses tab
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  tabSelectsValue?: ReactSelectProps['tabSelectsValue'];
+  tabSelectsValue?: ReactSelectProps<Option, isMulti, Group>['tabSelectsValue'];
   /**
    * The value of the select; reflected by the selected option
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  value?: ReactSelectProps['value'];
+  value?: string | string[];
   /**
    * The min width (a range of values from the horizontalConrtaint set of values) for which the select-input menu
    * is allowed to shrink. If unset, the menu will shrink to a default value.
@@ -393,7 +462,7 @@ export type TSelectInputProps = {
 };
 
 const defaultProps: Pick<
-  TSelectInputProps,
+  TSelectInputProps<unknown, boolean, GroupBase<unknown>>,
   | 'appearance'
   | 'maxMenuHeight'
   | 'menuPortalZIndex'
@@ -411,7 +480,13 @@ const isOptionObject = (
   option: TOption | TOptionObject
 ): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
-const SelectInput = (props: TSelectInputProps) => {
+const SelectInput = <
+  Option extends TOption = TOption,
+  IsMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: TSelectInputProps<Option, IsMulti, Group>
+) => {
   const intl = useIntl();
 
   warnIfMenuPortalPropsAreMissing({
@@ -450,8 +525,7 @@ const SelectInput = (props: TSelectInputProps) => {
         )
         .filter(Boolean)
     : optionsWithoutGroups.find(
-        (option) =>
-          has(option, 'value') && (option as TOption).value === props.value
+        (option) => has(option, 'value') && option.value === props.value
       ) || null;
 
   return (
@@ -475,7 +549,7 @@ const SelectInput = (props: TSelectInputProps) => {
               // react-select doesn't support readOnly mode; this is a workaround:
               ...(props.isReadOnly
                 ? {
-                    Input: (ownProps) => (
+                    Input: (ownProps: InputProps<Option, IsMulti, Group>) => (
                       <defaultComponents.Input {...ownProps} readOnly />
                     ),
                   }
@@ -485,10 +559,15 @@ const SelectInput = (props: TSelectInputProps) => {
                 ClearIndicator: null,
               }),
               ...(props.optionStyle === 'checkbox'
-                ? optionStyleCheckboxComponents(props.appearance)
+                ? {
+                    Option: (props: OptionProps<Option, IsMulti, Group>) => (
+                      <CheckboxSelectOption {...props} />
+                    ),
+                  }
                 : {}),
               ...props.components,
-            } as ReactSelectProps['components']
+            } as SelectComponentsConfig<Option, boolean, GroupBase<Option>>
+            // }
           }
           menuIsOpen={
             props.isReadOnly
@@ -514,7 +593,7 @@ const SelectInput = (props: TSelectInputProps) => {
               horizontalConstraint: props.horizontalConstraint,
               minMenuWidth: props.minMenuWidth,
               maxMenuWidth: props.maxMenuWidth,
-            }) as ReactSelectProps['styles']
+            }) as ReactSelectProps<Option, boolean, GroupBase<Option>>['styles']
           }
           filterOption={props.filterOption}
           // react-select uses "id" (for the container) and "inputId" (for the input),
@@ -574,18 +653,19 @@ const SelectInput = (props: TSelectInputProps) => {
           onChange={(nextSelectedOptions) => {
             // nextSelectedOptions is either an array, or a single option, or null
             // depending on whether we're in multi-mode or not (isMulti)
-            let value = null;
+            let value: OnChangeValue<Option, IsMulti> | null = null;
 
             if (props.isMulti) {
               if (nextSelectedOptions) {
-                value = (nextSelectedOptions as TOption[]).map(
+                value = (nextSelectedOptions as MultiValue<Option>).map(
                   (option) => option.value
-                );
+                ) as unknown as OnChangeValue<Option, IsMulti>;
               } else {
-                value = [];
+                value = [] as unknown as OnChangeValue<Option, IsMulti>;
               }
             } else if (nextSelectedOptions) {
-              value = (nextSelectedOptions as TOption).value;
+              value = (nextSelectedOptions as SingleValue<Option>)
+                ?.value as unknown as OnChangeValue<Option, IsMulti>;
             }
 
             props.onChange &&
@@ -600,11 +680,11 @@ const SelectInput = (props: TSelectInputProps) => {
           }}
           onFocus={props.onFocus}
           onInputChange={props.onInputChange}
-          options={props.options}
+          options={props.options as unknown as OptionsOrGroups<Option, Group>}
           placeholder={placeholder}
           tabIndex={props.tabIndex}
           tabSelectsValue={props.tabSelectsValue}
-          value={selectedOptions}
+          value={selectedOptions as PropsValue<Option>}
           iconLeft={props.iconLeft}
           controlShouldRenderValue={
             props.appearance === 'filter'
@@ -615,6 +695,8 @@ const SelectInput = (props: TSelectInputProps) => {
           {...(props.optionStyle === 'checkbox'
             ? optionsStyleCheckboxSelectProps()
             : {})}
+          appearance={props.appearance}
+          optionStyle={props.optionStyle}
         />
       </div>
     </Constraints.Horizontal>
