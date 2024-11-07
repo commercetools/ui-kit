@@ -1,5 +1,22 @@
 # @commercetools-uikit/select-utils
 
+## 19.15.0
+
+### Minor Changes
+
+- [#2980](https://github.com/commercetools/ui-kit/pull/2980) [`a6d86ae`](https://github.com/commercetools/ui-kit/commit/a6d86ae5a93aa6544617dbe00623a204b3bc09d1) Thanks [@ddouglasz](https://github.com/ddouglasz)! - As the filters component is being built, there are some visual modifications that need to happen in the async select input to support the designs and ux of the filters pattern. most of these changes are dependent on new props to set these options when the async-select component is used as in a filter component.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/checkbox-input@19.15.0
+  - @commercetools-uikit/design-system@19.15.0
+  - @commercetools-uikit/accessible-button@19.15.0
+  - @commercetools-uikit/icons@19.15.0
+  - @commercetools-uikit/text@19.15.0
+  - @commercetools-uikit/utils@19.15.0
+  - @commercetools-uikit/spacings@19.15.0
+
 ## 19.14.0
 
 ### Minor Changes
