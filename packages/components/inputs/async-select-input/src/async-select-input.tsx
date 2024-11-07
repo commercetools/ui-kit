@@ -368,23 +368,13 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
     componentName: 'AsyncSelectInput',
   });
 
-  // const placeholder =
-  //   props.placeholder || intl.formatMessage(messages.placeholder);
-
-  const placeholder = props.placeholder
-    ? props.placeholder
-    : props.appearance === 'filter'
-    ? 'Search'
-    : intl.formatMessage(messages.placeholder);
-
-  // TODO: uncomment to replace placeholder logic once select-input PR for this has been merged.
-  // const placeholder =
-  //   props.placeholder ||
-  //   intl.formatMessage(
-  //     props.appearance === 'filter'
-  //       ? messages.selectInputAsFilterPlaceholder
-  //       : messages.placeholder
-  //   );
+  const placeholder =
+    props.placeholder ||
+    intl.formatMessage(
+      props.appearance === 'filter'
+        ? messages.selectInputAsFilterPlaceholder
+        : messages.placeholder
+    );
 
   const loadingMessage = () => {
     if (typeof props.loadingMessage === 'function') {
