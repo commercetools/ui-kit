@@ -4,9 +4,10 @@ import Filters, { TFiltersProps } from './filters';
 import { PrimaryColorsInput } from './fixtures/inputs';
 import { FILTER_GROUP_KEYS } from './fixtures/constants';
 
-const mockRenderSearchComponent = () => (
+const mockRenderSearchComponent = (
   <input id="search-text" type="text" placeholder="Search Placeholder" />
 );
+
 const mockOnClearAllRequest = jest.fn();
 
 const createTestProps = (

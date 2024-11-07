@@ -93,7 +93,7 @@ type TFilterConfiguration = {
    */
   isPersistent?: boolean;
   /**
-   * whether or not the filter is disabled
+   * indicates whether the filter is disabled
    */
   isDisabled?: boolean;
   /**
@@ -124,6 +124,7 @@ export type TFiltersProps = {
   appliedFilters: TAppliedFilter[];
   /**
    * configuration for the available filters.
+   *
    */
   filters: TFilterConfiguration[];
   //TODO: add notes about grouped items being sorted below ungrouped items, and groups are displayed in the order they are sorted in this array
@@ -148,7 +149,7 @@ export type TFiltersProps = {
   /**
    * function to render a search input, selectable from applicable UI Kit components.
    */
-  renderSearchComponent: () => ReactNode;
+  renderSearchComponent: ReactNode;
 };
 
 const horizontalDividerStyles = css`
@@ -266,7 +267,7 @@ function Filters(props: TFiltersProps) {
       return isVisible;
     })
     // persistent filters should be first in filter list
-    .sort(({ isPersistent }) => (isPersistent ? -1 : 1));
+    .sort(({ isPersistent }) => (isPersistent ? -1 : 0));
 
   // set initial state as visibleFiltersFromProps
   const [localVisibleFilters, setLocalVisibleFilters] = useState<string[]>(
@@ -284,7 +285,7 @@ function Filters(props: TFiltersProps) {
     <>
       <Spacings.Inline scale="m" alignItems="center">
         <div css={{ maxWidth: `${designTokens.constraint16}` }}>
-          {props.renderSearchComponent()}
+          {props.renderSearchComponent}
         </div>
         <Spacings.Inline scale="s" alignItems="center">
           <FlatButton

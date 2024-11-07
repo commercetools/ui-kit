@@ -37,6 +37,7 @@
     "react-intl": "^6.3.2"
   },
   "devDependencies": {
+    "@commercetools-uikit/primary-button": "workspace:^",
     "@commercetools-uikit/radio-input": "workspace:^",
     "@commercetools-uikit/search-text-input": "workspace:^",
     "@commercetools-uikit/text-input": "workspace:^",
