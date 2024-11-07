@@ -315,6 +315,8 @@ const TooltipWrapper = forwardRef((props, ref) => (
   </div>
 ));
 
+TooltipWrapper.displayName = 'TooltipWrapper';
+
 TooltipWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
