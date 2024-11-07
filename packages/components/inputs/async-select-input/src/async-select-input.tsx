@@ -327,6 +327,10 @@ export type TAsyncSelectInputProps = {
    * Filter appearance is meant to be used when the async-select is used as a filter.
    */
   appearance?: 'default' | 'filter';
+  /**
+   * An additional value displayed on the select options menu. This value is only available in the checkbox option style when appearance is set to filter.
+   */
+  count?: number;
 };
 
 const defaultProps: Pick<
@@ -425,14 +429,21 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               ...props.components,
             } as ReactSelectAsyncProps['components']
           }
-          menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
+          menuIsOpen={
+            props.isReadOnly
+              ? false
+              : props.appearance === 'filter'
+              ? true
+              : props.menuIsOpen
+          }
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
               menuPortalZIndex: props.menuPortalZIndex,
-              isCondensed: props.isCondensed,
+              isCondensed:
+                props.appearance === 'filter' ? true : props.isCondensed,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
