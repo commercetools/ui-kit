@@ -354,12 +354,12 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
         />
       ),
       ...(props.optionStyle === 'checkbox'
-        ? optionStyleCheckboxComponents()
+        ? optionStyleCheckboxComponents(props.appearance)
         : {}),
       ...props.components,
       DropdownIndicator: SearchIconDropdownIndicator,
     }),
-    [props.optionStyle, props.components, optionType]
+    [props.optionStyle, props.appearance, props.components, optionType]
   );
 
   return (
