@@ -11,7 +11,6 @@ import {
   PrimaryColorsRadioInput,
   PrimaryColorsTextInput,
   OperatorsInput,
-  SelectedValueWithOperator,
 } from './fixtures/inputs';
 import {
   FILTER_GROUP_KEYS,
@@ -188,15 +187,8 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
         filterKey: 'primaryColors',
         values: primaryColorValue.map((value) => ({
           value: value,
-          // display selected operator in selected value if an operators input is rendered
-          label: props.renderOperatorsInput ? (
-            <SelectedValueWithOperator
-              operator={primaryColorOperator}
-              value={value}
-            />
-          ) : (
-            value
-          ),
+
+          label: value,
         })),
       });
     }
@@ -284,6 +276,10 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
     {
       key: 'primaryColors',
       label: props.label,
+      // display selected operator if an operators input is rendered
+      operatorLabel: props.renderOperatorsInput
+        ? primaryColorOperator
+        : undefined,
       groupKey: FILTER_GROUP_KEYS.primaryColors,
       isDisabled: props.isDisabled,
       isPersistent: props.isPersistent,

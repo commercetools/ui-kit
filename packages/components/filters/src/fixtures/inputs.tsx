@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { designTokens } from '@commercetools-uikit/design-system';
 import RadioInput from '@commercetools-uikit/radio-input';
 import SearchTextInput from '@commercetools-uikit/search-text-input';
 import SelectInput from '@commercetools-uikit/select-input';
@@ -115,7 +116,7 @@ export const FruitsRadioInput = ({
   >
     {FRUIT_OPTIONS.map((option) => (
       <RadioInput.Option key={option.value} value={option.value}>
-        {option.label}
+        <span css={{ fontSize: designTokens.fontSize20 }}>{option.label}</span>
       </RadioInput.Option>
     ))}
   </RadioInput.Group>
@@ -152,25 +153,4 @@ export const OperatorsInput = ({
       onChange(event.target.value as string);
     }}
   />
-);
-
-export const SelectedValueWithOperator = ({
-  operator,
-  value,
-}: {
-  operator: string;
-  value: string;
-}) => (
-  <div>
-    <span
-      css={{
-        fontStyle: 'italic',
-        marginRight: '4px',
-        fontWeight: '600',
-      }}
-    >
-      {operator}
-    </span>
-    {value}
-  </div>
 );

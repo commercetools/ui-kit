@@ -60,6 +60,10 @@ export type TFilterConfiguration = {
    */
   label: ReactNode;
   /**
+   * formatted message to display the selected operator value
+   */
+  operatorLabel?: ReactNode;
+  /**
    * configuration object for the filter menu.
    */
   filterMenuConfiguration: {
@@ -310,6 +314,7 @@ function Filters({
                     key={activeFilterConfig.key}
                     filterKey={activeFilterConfig.key}
                     label={activeFilterConfig.label}
+                    operatorLabel={activeFilterConfig.operatorLabel}
                     isPersistent={activeFilterConfig.isPersistent}
                     isDisabled={activeFilterConfig.isDisabled}
                     renderMenuBody={

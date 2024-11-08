@@ -91,6 +91,12 @@ export const label = css`
   max-width: ${designTokens.constraint6};
 `;
 
+export const operatorContainer = css`
+  font-style: italic;
+  font-weight: 300;
+  margin-left: ${designTokens.spacing20};
+`;
+
 export const valuesContainer = css`
   display: flex;
   align-items: center;
@@ -99,6 +105,7 @@ export const valuesContainer = css`
   overflow: hidden;
   position: relative;
   padding-left: 0;
+  margin: 0;
 `;
 
 export const badgeContainer = css`

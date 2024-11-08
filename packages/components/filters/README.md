@@ -153,6 +153,10 @@ export default FiltersExample;
    */
   label: ReactNode;
   /**
+   * formatted message to display the selected operator value
+   */
+  operatorLabel?: ReactNode;
+  /**
    * configuration object for the filter menu.
    */
   filterMenuConfiguration: {

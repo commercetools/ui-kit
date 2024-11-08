@@ -52,6 +52,10 @@ export type TFilterMenuProps = {
    */
   renderOperatorsInput?: () => ReactNode;
   /**
+   * formatted message to display the selected operator value
+   */
+  operatorLabel?: ReactNode;
+  /**
    * the values applied to this filter by the user
    */
   appliedFilterValues: TAppliedFilterValue[] | undefined | null;
@@ -153,6 +157,7 @@ function FilterMenu(props: TFilterMenuProps) {
         <TriggerButton
           filterKey={props.filterKey}
           label={props.label}
+          operatorLabel={props.operatorLabel}
           appliedFilterValues={props.appliedFilterValues}
           isDisabled={props.isDisabled}
           isPersistent={props.isPersistent}

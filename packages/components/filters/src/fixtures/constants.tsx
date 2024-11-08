@@ -45,5 +45,5 @@ export const FRUIT_OPTIONS = [
 
 export const OPERATOR_OPTIONS = [
   { value: 'is', label: 'is' },
-  { value: 'is not', label: 'is NOT' },
+  { value: 'is not', label: 'is not' },
 ];

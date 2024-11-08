@@ -71,6 +71,10 @@ export type TFilterMenuTriggerButtonProps = {
    */
   label: ReactNode;
   /**
+   * formatted message to display the selected operator value
+   */
+  operatorLabel?: ReactNode;
+  /**
    * the values applied to this filter by the user
    */
   appliedFilterValues: TAppliedFilterValue[] | undefined | null;
@@ -97,6 +101,7 @@ const TriggerButton = forwardRef(function TriggerButton(
   const {
     filterKey,
     label,
+    operatorLabel,
     appliedFilterValues,
     isDisabled,
     isPersistent,
@@ -117,6 +122,9 @@ const TriggerButton = forwardRef(function TriggerButton(
         id={`${filterKey}-menu-label`}
       >
         {label}:
+        {operatorLabel && (
+          <span css={styles.operatorContainer}>{operatorLabel}</span>
+        )}
       </label>
       {filtersApplied && (
         <ul

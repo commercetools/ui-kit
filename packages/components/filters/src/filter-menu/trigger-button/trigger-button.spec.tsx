@@ -24,6 +24,11 @@ describe('FilterMenu Trigger Button', () => {
     await render(<TriggerButton {...props} />);
     await screen.findByLabelText(/test:/i);
   });
+  it('should render the operator label', async () => {
+    const props = getDefaultProps({ operatorLabel: 'operator' });
+    await render(<TriggerButton {...props} />);
+    await screen.findByText(/operator/i);
+  });
 
   describe('when there are no applied filter values', () => {
     it('should render the CaretDownIcon', async () => {
