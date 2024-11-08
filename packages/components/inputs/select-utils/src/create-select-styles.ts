@@ -243,6 +243,9 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
 const menuStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
+    ...(props.appearance === 'filter'
+      ? { position: 'inherit', zIndex: 'inherit' }
+      : {}),
     border: `1px solid ${designTokens.colorSurface}`,
     borderRadius: designTokens.borderRadiusForInput,
     backgroundColor: designTokens.backgroundColorForInput,

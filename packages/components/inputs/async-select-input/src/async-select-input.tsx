@@ -19,7 +19,10 @@ import {
   messages,
   createSelectStyles,
   warnIfMenuPortalPropsAreMissing,
+  optionStyleCheckboxComponents,
+  optionsStyleCheckboxSelectProps,
 } from '@commercetools-uikit/select-utils';
+import { SearchIcon } from '@commercetools-uikit/icons';
 
 const LoadingIndicator = () => <LoadingSpinner scale="s" />;
 LoadingIndicator.displayName = 'LoadingIndicator';
@@ -317,11 +320,27 @@ export type TAsyncSelectInputProps = {
    * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
    */
   iconLeft?: ReactNode;
+  /** defines how options are rendered */
+  optionStyle: 'list' | 'checkbox';
+  /**
+   * Indicates the appearance of the input.
+   * Filter appearance is meant to be used when the async-select is used as a filter.
+   */
+  appearance?: 'default' | 'filter';
+  /**
+   * An additional value displayed on the select options menu. This value is only available in the checkbox option style when appearance is set to filter.
+   */
+  count?: number;
 };
 
 const defaultProps: Pick<
   TAsyncSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex' | 'controlShouldRenderValue'
+  | 'value'
+  | 'isSearchable'
+  | 'menuPortalZIndex'
+  | 'controlShouldRenderValue'
+  | 'appearance'
+  | 'optionStyle'
 > = {
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
@@ -329,6 +348,8 @@ const defaultProps: Pick<
   isSearchable: true,
   menuPortalZIndex: 1,
   controlShouldRenderValue: true,
+  appearance: 'default',
+  optionStyle: 'list',
 };
 
 const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
@@ -348,7 +369,12 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
   });
 
   const placeholder =
-    props.placeholder || intl.formatMessage(messages.placeholder);
+    props.placeholder ||
+    intl.formatMessage(
+      props.appearance === 'filter'
+        ? messages.selectInputAsFilterPlaceholder
+        : messages.placeholder
+    );
 
   const loadingMessage = () => {
     if (typeof props.loadingMessage === 'function') {
@@ -383,17 +409,32 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
                     ),
                   }
                 : {}),
+              ...(props.appearance === 'filter' && {
+                DropdownIndicator: () => <SearchIcon color="neutral60" />,
+                ClearIndicator: null,
+              }),
+              ...(props.optionStyle === 'checkbox'
+                ? optionStyleCheckboxComponents(props.appearance)
+                : {}),
               ...props.components,
             } as ReactSelectAsyncProps['components']
           }
-          menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
+          menuIsOpen={
+            props.isReadOnly
+              ? false
+              : props.appearance === 'filter'
+              ? true
+              : props.menuIsOpen
+          }
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
+              appearance: props.appearance,
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
               menuPortalZIndex: props.menuPortalZIndex,
-              isCondensed: props.isCondensed,
+              isCondensed:
+                props.appearance === 'filter' ? true : props.isCondensed,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
@@ -404,7 +445,6 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
             }) as ReactSelectAsyncProps['styles']
           }
           filterOption={props.filterOption}
-          hideSelectedOptions={props.hideSelectedOptions}
           // react-select uses "id" (for the container) and "inputId" (for the input),
           // but we use "id" (for the input) and "containerId" (for the container)
           // instead.
@@ -415,6 +455,9 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
+          {...(props.optionStyle === 'checkbox'
+            ? optionsStyleCheckboxSelectProps()
+            : { hideSelectedOptions: props.hideSelectedOptions })}
           isMulti={props.isMulti}
           isSearchable={props.isSearchable}
           maxMenuHeight={props.maxMenuHeight}
@@ -485,7 +528,11 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           // @ts-ignore: passed to the react-select components via `selectProps`.
           isCondensed={props.isCondensed}
           iconLeft={props.iconLeft}
-          controlShouldRenderValue={props.controlShouldRenderValue}
+          controlShouldRenderValue={
+            props.appearance === 'filter'
+              ? false
+              : props.controlShouldRenderValue
+          }
         />
       </div>
     </Constraints.Horizontal>

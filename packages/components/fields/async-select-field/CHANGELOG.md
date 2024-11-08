@@ -1,5 +1,33 @@
 # @commercetools-uikit/async-select-field
 
+## 19.15.0
+
+### Patch Changes
+
+- Updated dependencies [[`a6d86ae`](https://github.com/commercetools/ui-kit/commit/a6d86ae5a93aa6544617dbe00623a204b3bc09d1)]:
+  - @commercetools-uikit/async-select-input@19.15.0
+  - @commercetools-uikit/design-system@19.15.0
+  - @commercetools-uikit/constraints@19.15.0
+  - @commercetools-uikit/field-errors@19.15.0
+  - @commercetools-uikit/field-label@19.15.0
+  - @commercetools-uikit/field-warnings@19.15.0
+  - @commercetools-uikit/utils@19.15.0
+  - @commercetools-uikit/spacings@19.15.0
+
+## 19.14.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@19.14.0
+  - @commercetools-uikit/async-select-input@19.14.0
+  - @commercetools-uikit/design-system@19.14.0
+  - @commercetools-uikit/constraints@19.14.0
+  - @commercetools-uikit/field-errors@19.14.0
+  - @commercetools-uikit/field-warnings@19.14.0
+  - @commercetools-uikit/utils@19.14.0
+  - @commercetools-uikit/spacings@19.14.0
+
 ## 19.13.0
 
 ### Patch Changes

@@ -1,5 +1,31 @@
 # @commercetools-uikit/primary-action-dropdown
 
+## 19.15.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.15.0
+  - @commercetools-uikit/accessible-button@19.15.0
+  - @commercetools-uikit/icons@19.15.0
+  - @commercetools-uikit/text@19.15.0
+  - @commercetools-uikit/hooks@19.15.0
+  - @commercetools-uikit/utils@19.15.0
+  - @commercetools-uikit/buttons@19.15.0
+
+## 19.14.0
+
+### Patch Changes
+
+- Updated dependencies [[`1ec85b2`](https://github.com/commercetools/ui-kit/commit/1ec85b2d8ec0dd19e3f916baf6a229c55b1a3eb4)]:
+  - @commercetools-uikit/icons@19.14.0
+  - @commercetools-uikit/buttons@19.14.0
+  - @commercetools-uikit/design-system@19.14.0
+  - @commercetools-uikit/accessible-button@19.14.0
+  - @commercetools-uikit/text@19.14.0
+  - @commercetools-uikit/hooks@19.14.0
+  - @commercetools-uikit/utils@19.14.0
+
 ## 19.13.0
 
 ### Patch Changes
