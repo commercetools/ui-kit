@@ -22,8 +22,7 @@ const Footer = styled.div<TFooter>`
   background-color: ${designTokens.colorSurface};
   border-top: 1px solid ${designTokens.colorNeutral90};
   border-bottom: 1px solid ${designTokens.colorNeutral90};
-  ${(props) =>
-    props.resizedTotalWidth ? `max-width: ${props.resizedTotalWidth}px;` : ''}
+  width: 100%;
 `;
 Footer.displayName = 'Footer';
 
