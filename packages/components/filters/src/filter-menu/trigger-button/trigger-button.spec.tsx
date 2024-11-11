@@ -1,4 +1,9 @@
-import { screen, render, fireEvent } from '../../../../../../test/test-utils';
+import {
+  screen,
+  render,
+  fireEvent,
+  within,
+} from '../../../../../../test/test-utils';
 import TriggerButton, {
   type TFilterMenuTriggerButtonProps,
 } from './trigger-button';
@@ -18,6 +23,11 @@ describe('FilterMenu Trigger Button', () => {
     const props = getDefaultProps();
     await render(<TriggerButton {...props} />);
     await screen.findByLabelText(/test:/i);
+  });
+  it('should render the operator label', async () => {
+    const props = getDefaultProps({ operatorLabel: 'operator' });
+    await render(<TriggerButton {...props} />);
+    await screen.findByText(/operator/i);
   });
 
   describe('when there are no applied filter values', () => {
@@ -75,6 +85,32 @@ describe('FilterMenu Trigger Button', () => {
         screen.queryByRole('button', { name: 'remove test filter' })
       ).not.toBeInTheDocument();
     });
+    it('should render the correct values in filter chips', async () => {
+      const props = getDefaultProps({
+        appliedFilterValues: [
+          { value: 'one', label: 'one' },
+          { value: 'two', label: 'two' },
+        ],
+      });
+      await render(<TriggerButton {...props} />);
+      const chipsList = await screen.findByRole('list', {
+        name: /test-key selected values/i,
+      });
+      const { getAllByRole } = within(chipsList);
+      const chips = getAllByRole('listitem');
+      const chipValues = chips.map((chip) => chip.textContent);
+      expect(chipValues).toEqual(['one', 'two']);
+    });
+    it('should render the correct number of filter chips', async () => {
+      const props = getDefaultProps({
+        appliedFilterValues: [
+          { value: 'one', label: 'one' },
+          { value: 'two', label: 'two' },
+        ],
+      });
+      await render(<TriggerButton {...props} />);
+      expect(screen.getAllByRole('listitem')).toHaveLength(2);
+    });
     describe('overflow badge', () => {
       // container has right of 300 for all tests
       window.HTMLUListElement.prototype.getBoundingClientRect = () =>
@@ -101,16 +137,6 @@ describe('FilterMenu Trigger Button', () => {
           } as DOMRect);
       });
 
-      it('should render the correct number of filter chips', async () => {
-        const props = getDefaultProps({
-          appliedFilterValues: [
-            { value: 'one', label: 'one' },
-            { value: 'two', label: 'two' },
-          ],
-        });
-        await render(<TriggerButton {...props} />);
-        expect(screen.getAllByText(/one|two/)).toHaveLength(2);
-      });
       it('should display the overflow badge when chips overflow', async () => {
         const props = getDefaultProps({
           appliedFilterValues: [
