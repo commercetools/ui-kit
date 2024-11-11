@@ -21,8 +21,8 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/design-system": "workspace:^",
-    "@commercetools-uikit/tag": "workspace:^",
+    "@commercetools-uikit/design-system": "19.15.0",
+    "@commercetools-uikit/tag": "19.15.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "prop-types": "15.8.1",

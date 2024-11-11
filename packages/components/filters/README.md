@@ -5,9 +5,11 @@
 
 ## Description
 
-The `Filters` component displays all active filters. It also allows for adding and removing filters.
+The `Filters` component pattern is a component that provides the controls to filter the items in a table or list.
 
-This description is a stub and shold be expanded as development continues.
+- Available filter controls are configured in the `filters` array. Each `filter` object includes a `filterMenuConfiguration` object, in which the inputs that allow the user to select a value for that filter are defined.
+
+- The selected values for each filter are passed to the component in the `appliedFilters` array. Values in the `appliedFilters` array will be displayed in each filter's menu button.
 
 ## Installation
 
@@ -34,14 +36,197 @@ npm --save install react
 ```jsx
 import Filters from '@commercetools-uikit/filters';
 
-/**TODO: EXPAND THIS */
-const Example = () => <Filters />;
+/**  Input for a specific filter, provided by parent application */
+import FirstFilterInput from 'path/to/first/filter/input'; // eslint-disable-line import/no-unresolved
 
-export default Example;
+/** Input for search query, provided by parent application */
+import SearchInput from 'path/to/search/input'; // eslint-disable-line import/no-unresolved
+
+/** Input for a specific filter, provided by parent application */
+import SecondFilterInput from 'path/to/second/filter/input'; // eslint-disable-line import/no-unresolved
+
+/** Filter and search state, provided by parent application (does not have to be hook)
+ see storybook code block for more in depth example of simple state management */
+import useFilterState from 'path/to/your/filter/state'; // eslint-disable-line import/no-unresolved
+
+const FiltersExample = () => {
+  const {
+    // change handler for FirstFilterInput
+    onFirstFilterInputChange,
+    // callback to clear FirstFilterInput value
+    onClearFirstFilterInput,
+    // value of FirstFilterInput
+    firstFilterInputValue,
+    // change handler for SecondFilterInput
+    onSecondFilterInputChange,
+    // callback to clear SecondFilterInput value
+    onClearSecondFilterInput,
+    // value of SecondFilterInput
+    secondFilterInputValue,
+    // callback to clear all filter inputs and selected values
+    onClearAllFilters,
+    // selected/applied values of all filters
+    selectedFilterValues,
+  } = useFilterState();
+
+  const filters = [
+    {
+      key: 'firstFilter',
+      label: 'First Filter',
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <FirstFilterInput
+            onChange={onFirstFilterInputChange}
+            value={firstFilterInputValue}
+          />
+        ),
+        onClearRequest: onClearFirstFilterInput,
+      },
+    },
+    {
+      key: 'secondFilter',
+      label: 'Second Filter',
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <SecondFilterInput
+            onChange={onSecondFilterInputChange}
+            value={secondFilterInputValue}
+          />
+        ),
+        onClearRequest: onClearSecondFilterInput,
+      },
+    },
+  ];
+
+  return (
+    <Filters
+      appliedFilters={selectedFilterValues}
+      filters={filters}
+      onClearAllRequest={onClearAllFilters}
+      renderSearchComponent={<SearchInput />}
+    />
+  );
+};
+
+export default FiltersExample;
 ```
 
 ## Properties
 
-| Props   | Type     | Required | Default | Description         |
-| ------- | -------- | :------: | ------- | ------------------- |
-| `label` | `string` |          |         | This is a stub prop |
+| Props                   | Type                                                                               | Required | Default | Description                                                                                                              |
+| ----------------------- | ---------------------------------------------------------------------------------- | :------: | ------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `appliedFilters`        | `Array: TAppliedFilter[]`<br/>[See signature.](#signature-appliedFilters)          |    ✅    |         | array of applied filters, each containing a unique key and an array of values.                                           |
+| `filters`               | `Array: TFilterConfiguration[]`<br/>[See signature.](#signature-filters)           |    ✅    |         | configuration for the available filters.                                                                                 |
+| `filterGroups`          | `Array: TFilterGroupConfiguration[]`<br/>[See signature.](#signature-filterGroups) |          |         | optional configuration for filter groups.                                                                                |
+| `onClearAllRequest`     | `Function`<br/>[See signature.](#signature-onClearAllRequest)                      |    ✅    |         | controls the `clear all` (added filters) button from the menu list, meant to clear the parent application's filter state |
+| `onAddFilterRequest`    | `Function`<br/>[See signature.](#signature-onAddFilterRequest)                     |          |         | optional callback when the add filter button is clicked                                                                  |
+| `renderSearchComponent` | `ReactNode`                                                                        |    ✅    |         | function to render a search input, selectable from applicable UI Kit components.                                         |
+| `defaultOpen`           | `boolean`                                                                          |          | `false` | controls whether the filters list is initially open                                                                      |
+
+## Signatures
+
+### Signature `appliedFilters`
+
+```ts
+{
+  /**
+   * unique identifier for the filter
+   */
+  filterKey: string;
+  /**
+   * the values applied to this filter by the user
+   */
+  values: TAppliedFilterValue[];
+}
+```
+
+### Signature `filters`
+
+```ts
+{
+  /**
+   * unique identifier for the filter
+   */
+  key: string;
+  /**
+   * formatted message to display the filter name
+   */
+  label: ReactNode;
+  /**
+   * formatted message to display the selected operator value
+   */
+  operatorLabel?: ReactNode;
+  /**
+   * configuration object for the filter menu.
+   */
+  filterMenuConfiguration: {
+    /**
+     * the input in which the user selects values for the filter
+     */
+    renderMenuBody: () => ReactNode;
+    /**
+     * the input in which the user can select which operator should be used for this filter
+     */
+    renderOperatorsInput?: () => ReactNode;
+    /**
+     * optional button that allows the user to apply selected filter values
+     */
+    renderApplyButton?: () => ReactNode;
+    /**
+     * controls whether `clear` button in Menu Body Footer is displayed
+     */
+    onClearRequest: (
+      event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+    ) => void;
+    /**
+     * controls whether `sort` button in Menu Body Header is displayed
+     */
+    onSortRequest?: (
+      event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+    ) => void;
+  };
+  /**
+   * optional key to group filters together.
+   */
+  groupKey?: string;
+  /**
+   * indicates whether filter menu can be removed from filters
+   */
+  isPersistent?: boolean;
+  /**
+   * indicates whether the filter is disabled
+   */
+  isDisabled?: boolean;
+}
+```
+
+### Signature `filterGroups`
+
+```ts
+{
+  /**
+   * unique identifier for the filter group
+   */
+  key: string;
+  /**
+   * formatted message to display the filter group name
+   */
+  label: ReactNode;
+}
+```
+
+### Signature `onClearAllRequest`
+
+```ts
+(
+  event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+) => void
+```
+
+### Signature `onAddFilterRequest`
+
+```ts
+(
+  event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+) => void
+```

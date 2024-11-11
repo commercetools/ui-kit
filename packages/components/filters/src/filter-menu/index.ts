@@ -1,1 +1,6 @@
-export { default, type TAppliedFilterValue } from './filter-menu';
+export {
+  default,
+  type TAppliedFilterValue,
+  menuStyles,
+  menuBodyStyle,
+} from './filter-menu';
