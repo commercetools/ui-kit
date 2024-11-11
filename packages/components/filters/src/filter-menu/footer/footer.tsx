@@ -39,7 +39,7 @@ const Footer = ({ renderApplyButton, onClearRequest }: TFooterProps) => {
   if (!renderApplyButton && !onClearRequest) return null;
 
   return (
-    <div css={footerContainerStyles}>
+    <footer css={footerContainerStyles}>
       <div>{renderApplyButton && renderApplyButton()}</div>
       <div>
         {onClearRequest && (
@@ -51,7 +51,7 @@ const Footer = ({ renderApplyButton, onClearRequest }: TFooterProps) => {
           />
         )}
       </div>
-    </div>
+    </footer>
   );
 };
 

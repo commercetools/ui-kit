@@ -64,7 +64,7 @@ export const mainActionButton = css`
   z-index: 1;
   border-radius: ${designTokens.borderRadius20};
   &:focus {
-    box-shadow: 0px 0px 0px 2px ${designTokens.colorPrimary40};
+    box-shadow: 0 0 0 2px ${designTokens.colorPrimary40};
   }
 `;
 
@@ -76,6 +76,9 @@ export const removeButton = css`
   display: flex;
   svg {
     fill: ${designTokens.colorNeutral40} !important;
+    &:hover {
+      fill: ${designTokens.colorPrimary40} !important;
+    }
   }
 `;
 
@@ -88,6 +91,12 @@ export const label = css`
   max-width: ${designTokens.constraint6};
 `;
 
+export const operatorContainer = css`
+  font-style: italic;
+  font-weight: 300;
+  margin-left: ${designTokens.spacing20};
+`;
+
 export const valuesContainer = css`
   display: flex;
   align-items: center;
@@ -96,6 +105,7 @@ export const valuesContainer = css`
   overflow: hidden;
   position: relative;
   padding-left: 0;
+  margin: 0;
 `;
 
 export const badgeContainer = css`

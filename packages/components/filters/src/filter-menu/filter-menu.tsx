@@ -52,6 +52,10 @@ export type TFilterMenuProps = {
    */
   renderOperatorsInput?: () => ReactNode;
   /**
+   * formatted message to display the selected operator value
+   */
+  operatorLabel?: ReactNode;
+  /**
    * the values applied to this filter by the user
    */
   appliedFilterValues: TAppliedFilterValue[] | undefined | null;
@@ -67,7 +71,7 @@ export type TFilterMenuProps = {
    * controls whether `x` in Trigger Button is displayed - required if `isPersistent` is `false`
    */
   onRemoveRequest?: (
-    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+    event?: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
    * optional button that allows the user to apply selected filter values
@@ -97,6 +101,7 @@ export const menuStyles = css`
   align-items: flex-start;
   gap: ${designTokens.spacing30};
   width: ${designTokens.constraint6};
+  max-height: ${designTokens.constraint10};
   padding: ${designTokens.spacing20} ${designTokens.spacing30};
   background-color: ${designTokens.colorSurface};
   border: 1px solid ${designTokens.colorSurface};
@@ -109,8 +114,11 @@ export const menuStyles = css`
   z-index: 5;
 `;
 
-const menuBodyStyle = css`
+export const menuBodyStyle = css`
   width: 100%;
+
+  /** ensure that body scrolls with overflow now that there is a menu max-height */
+  overflow: hidden auto;
 `;
 
 function FilterMenu(props: TFilterMenuProps) {
@@ -132,11 +140,24 @@ function FilterMenu(props: TFilterMenuProps) {
   );
 
   return (
-    <Popover.Root defaultOpen={props.isDisabled ? false : props.defaultOpen}>
+    <Popover.Root
+      defaultOpen={props.isDisabled ? false : props.defaultOpen}
+      onOpenChange={(open) => {
+        if (
+          !open &&
+          !props.appliedFilterValues?.length &&
+          !props.isPersistent &&
+          props.onRemoveRequest
+        ) {
+          props.onRemoveRequest();
+        }
+      }}
+    >
       <Popover.Trigger asChild>
         <TriggerButton
           filterKey={props.filterKey}
           label={props.label}
+          operatorLabel={props.operatorLabel}
           appliedFilterValues={props.appliedFilterValues}
           isDisabled={props.isDisabled}
           isPersistent={props.isPersistent}

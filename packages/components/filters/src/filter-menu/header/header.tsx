@@ -62,7 +62,7 @@ const Header = (props: THeaderProps) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <div css={headerContainerStyles}>
+    <header css={headerContainerStyles}>
       <div
         css={[operatorInputContainer, props.onSortRequest && sortButtonMargin]}
       >
@@ -84,7 +84,7 @@ const Header = (props: THeaderProps) => {
           }}
         />
       )}
-    </div>
+    </header>
   );
 };
 
