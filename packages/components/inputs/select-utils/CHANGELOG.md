@@ -1,5 +1,20 @@
 # @commercetools-uikit/select-utils
 
+## 19.16.0
+
+### Patch Changes
+
+- [#2990](https://github.com/commercetools/ui-kit/pull/2990) [`b43102e`](https://github.com/commercetools/ui-kit/commit/b43102ed265911056561e2851805aa1b67b87139) Thanks [@emmenko](https://github.com/emmenko)! - Fix dependency version reference
+
+- Updated dependencies []:
+  - @commercetools-uikit/checkbox-input@19.16.0
+  - @commercetools-uikit/design-system@19.16.0
+  - @commercetools-uikit/accessible-button@19.16.0
+  - @commercetools-uikit/icons@19.16.0
+  - @commercetools-uikit/text@19.16.0
+  - @commercetools-uikit/utils@19.16.0
+  - @commercetools-uikit/spacings@19.16.0
+
 ## 19.15.0
 
 ### Minor Changes

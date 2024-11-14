@@ -1,5 +1,24 @@
 # @commercetools-uikit/filters
 
+## 19.16.0
+
+### Minor Changes
+
+- [#2971](https://github.com/commercetools/ui-kit/pull/2971) [`4ee54f3`](https://github.com/commercetools/ui-kit/commit/4ee54f3965cb3454e0c0015b91f493ee3fd97d95) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Adds filters component to UI Kit
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-input@19.16.0
+  - @commercetools-uikit/design-system@19.16.0
+  - @commercetools-uikit/flat-button@19.16.0
+  - @commercetools-uikit/icon-button@19.16.0
+  - @commercetools-uikit/secondary-icon-button@19.16.0
+  - @commercetools-uikit/collapsible-motion@19.16.0
+  - @commercetools-uikit/icons@19.16.0
+  - @commercetools-uikit/utils@19.16.0
+  - @commercetools-uikit/spacings@19.16.0
+
 ## 19.15.0
 
 ### Patch Changes
