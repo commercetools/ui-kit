@@ -1,5 +1,12 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 19.16.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@19.16.0
+
 ## 19.15.0
 
 ### Patch Changes

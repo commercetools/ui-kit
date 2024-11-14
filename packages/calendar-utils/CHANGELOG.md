@@ -1,5 +1,21 @@
 # @commercetools-uikit/calendar-utils
 
+## 19.16.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.16.0
+  - @commercetools-uikit/accessible-button@19.16.0
+  - @commercetools-uikit/secondary-icon-button@19.16.0
+  - @commercetools-uikit/icons@19.16.0
+  - @commercetools-uikit/input-utils@19.16.0
+  - @commercetools-uikit/spacings-inline@19.16.0
+  - @commercetools-uikit/text@19.16.0
+  - @commercetools-uikit/tooltip@19.16.0
+  - @commercetools-uikit/hooks@19.16.0
+  - @commercetools-uikit/utils@19.16.0
+
 ## 19.15.0
 
 ### Patch Changes

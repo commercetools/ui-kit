@@ -1,5 +1,21 @@
 # @commercetools-uikit/pagination
 
+## 19.16.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-input@19.16.0
+  - @commercetools-uikit/design-system@19.16.0
+  - @commercetools-uikit/secondary-icon-button@19.16.0
+  - @commercetools-uikit/constraints@19.16.0
+  - @commercetools-uikit/icons@19.16.0
+  - @commercetools-uikit/number-input@19.16.0
+  - @commercetools-uikit/label@19.16.0
+  - @commercetools-uikit/text@19.16.0
+  - @commercetools-uikit/utils@19.16.0
+  - @commercetools-uikit/spacings@19.16.0
+
 ## 19.15.0
 
 ### Patch Changes
