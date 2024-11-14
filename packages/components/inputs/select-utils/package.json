@@ -22,7 +22,7 @@
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/accessible-button": "19.15.0",
-    "@commercetools-uikit/checkbox-input": "workspace:^",
+    "@commercetools-uikit/checkbox-input": "19.15.0",
     "@commercetools-uikit/design-system": "19.15.0",
     "@commercetools-uikit/icons": "19.15.0",
     "@commercetools-uikit/spacings": "19.15.0",
