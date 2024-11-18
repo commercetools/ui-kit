@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/collapsible",
   "description": "A render-prop component to manage a toggle state",
-  "version": "19.15.0",
+  "version": "19.16.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,8 +21,8 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/hooks": "19.15.0",
-    "@commercetools-uikit/utils": "19.15.0",
+    "@commercetools-uikit/hooks": "19.16.0",
+    "@commercetools-uikit/utils": "19.16.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
