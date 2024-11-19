@@ -15,7 +15,7 @@ import * as styles from './trigger-button.styles';
 import { Badge } from '../../badge';
 import { Chip } from '../chip';
 
-const useScrollObserver = (totalCount: number) => {
+const useScrollObserver = (values: TAppliedFilterValue[]) => {
   const [isOverflowing, setIsOverflowing] = useState(false);
   const [overflowCount, setOverflowCount] = useState(0);
   const containerRef = useRef<HTMLUListElement | null>(null);
@@ -48,10 +48,10 @@ const useScrollObserver = (totalCount: number) => {
             }
           });
         }
-        setOverflowCount(totalCount - visibleChipCount);
+        setOverflowCount(values.length - visibleChipCount);
       }
     },
-    [totalCount]
+    [values]
   );
 
   return {
@@ -70,6 +70,10 @@ export type TFilterMenuTriggerButtonProps = {
    * formatted message to display the filter's name
    */
   label: ReactNode;
+  /**
+   * formatted message to display the selected operator value
+   */
+  operatorLabel?: ReactNode;
   /**
    * the values applied to this filter by the user
    */
@@ -97,6 +101,7 @@ const TriggerButton = forwardRef(function TriggerButton(
   const {
     filterKey,
     label,
+    operatorLabel,
     appliedFilterValues,
     isDisabled,
     isPersistent,
@@ -106,9 +111,8 @@ const TriggerButton = forwardRef(function TriggerButton(
   const values = appliedFilterValues || [];
   const filtersApplied: boolean = values.length > 0;
 
-  const { isOverflowing, overflowCount, setContainerRef } = useScrollObserver(
-    values.length
-  );
+  const { isOverflowing, overflowCount, setContainerRef } =
+    useScrollObserver(values);
 
   return (
     <div css={[styles.triggerWrapper, isDisabled && styles.disabled]}>
@@ -118,9 +122,17 @@ const TriggerButton = forwardRef(function TriggerButton(
         id={`${filterKey}-menu-label`}
       >
         {label}:
+        {operatorLabel && (
+          <span css={styles.operatorContainer}>{operatorLabel}</span>
+        )}
       </label>
       {filtersApplied && (
-        <ul ref={setContainerRef} css={styles.valuesContainer}>
+        <ul
+          ref={setContainerRef}
+          css={styles.valuesContainer}
+          aria-label={`${filterKey} selected values`}
+          aria-live="polite"
+        >
           {values.map((value) => (
             <Chip
               key={value.value}
@@ -134,7 +146,7 @@ const TriggerButton = forwardRef(function TriggerButton(
               css={styles.badgeContainer}
             >
               <Badge
-                id="ui-kit-filter-triger-badge"
+                id="ui-kit-filter-trigger-overflow-count-badge"
                 label={`+${overflowCount}`}
                 isDisabled={isDisabled}
               />
