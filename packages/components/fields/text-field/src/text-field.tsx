@@ -264,9 +264,6 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
             aria-invalid={hasError}
             aria-errormessage={errorsContainerId}
           />
-          {this.props.additionalInfo && (
-            <AdditionalInfoMessage message={this.props.additionalInfo} />
-          )}
           <FieldErrors
             id={errorsContainerId}
             errors={this.props.errors}
@@ -279,6 +276,9 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}
           />
+          {this.props.additionalInfo && (
+            <AdditionalInfoMessage message={this.props.additionalInfo} />
+          )}
         </Stack>
       </Constraints.Horizontal>
     );
