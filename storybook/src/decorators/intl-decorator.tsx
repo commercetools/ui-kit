@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { default as en } from '../../../packages/i18n/data/en.json';
 
-export const locales = ['en', 'en-GB', 'de', 'es', 'fr-FR', 'zh-CN'];
+export const locales = ['en', 'en-GB', 'de', 'es', 'fr-FR'];
 
 interface TranslationItem {
   developer_comment: string;
@@ -42,8 +42,6 @@ const getMessagesForLocale = (
       return import('../../../packages/i18n/data/de.json');
     case 'fr-FR':
       return import('../../../packages/i18n/data/fr-FR.json');
-    case 'zh-CN':
-      return import('../../../packages/i18n/data/zh-CN.json');
     default:
       throw new Error(`Unable to load messages for locale ${locale}.`);
   }
