@@ -17,4 +17,9 @@ export default defineMessages({
     description: 'Placeholder text for the input',
     defaultMessage: 'Search by…',
   },
+  searchSelectInputAsFilterPlaceholder: {
+    id: 'UIKit.SearchSelectInput.searchSelectInputAsFilterPlaceholder',
+    description: 'Placeholder text for the input',
+    defaultMessage: 'Search',
+  },
 });
