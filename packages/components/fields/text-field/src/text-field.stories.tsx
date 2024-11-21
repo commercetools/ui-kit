@@ -41,7 +41,7 @@ BasicExample.args = {
   id: 'text-field-id',
   name: 'text-field-name',
   horizontalConstraint: 7,
-  error: { missing: true, customError: true },
+  errors: { missing: true, customError: true },
   renderError: (key: string) => {
     switch (key) {
       case 'customError':
