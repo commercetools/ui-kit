@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 import { WorldIcon } from '../../../icons';
@@ -285,7 +285,7 @@ const OpenRouteWithOptionGroupsAndDivider = () => (
 );
 
 export const component = () => (
-  <Switch>
+  <Routes>
     <Route path={`${routePath}/open`} component={OpenRoute} />
     <Route
       path={`${routePath}/open-with-option-groups`}
@@ -296,5 +296,5 @@ export const component = () => (
       component={OpenRouteWithOptionGroupsAndDivider}
     />
     <Route path={routePath} render={() => <DefaultRoute />} />
-  </Switch>
+  </Routes>
 );

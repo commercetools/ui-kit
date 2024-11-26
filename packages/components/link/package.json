@@ -27,19 +27,17 @@
     "@commercetools-uikit/utils": "19.16.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@types/history": "^4.7.11",
-    "@types/react-router-dom": "^5.3.3",
     "history": "4.10.1",
     "prop-types": "15.8.1"
   },
   "devDependencies": {
     "react": "17.0.2",
     "react-intl": "^6.3.2",
-    "react-router-dom": "5.3.4"
+    "react-router-dom": "6.28.0"
   },
   "peerDependencies": {
     "react": "17.x",
     "react-intl": "6.x",
-    "react-router-dom": "5.x"
+    "react-router-dom": "6.x"
   }
 }

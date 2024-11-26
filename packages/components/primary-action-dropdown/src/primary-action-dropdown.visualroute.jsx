@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import {
   PrimaryActionDropdown,
   PrimaryActionDropdownOption,
@@ -62,8 +62,8 @@ const DefaultRoute = () => (
 );
 
 export const component = () => (
-  <Switch>
+  <Routes>
     <Route path={`${routePath}/interaction`} component={InteractionRoute} />
     <Route path={routePath} component={DefaultRoute} />
-  </Switch>
+  </Routes>
 );

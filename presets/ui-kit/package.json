@@ -66,13 +66,13 @@
     "moment-timezone": "0.5.46",
     "react": "17.0.2",
     "react-intl": "^6.3.2",
-    "react-router-dom": "5.3.4"
+    "react-router-dom": "6.28.0"
   },
   "peerDependencies": {
     "moment": "2.x",
     "moment-timezone": "0.5.x",
     "react": "17.x",
     "react-intl": "6.x",
-    "react-router-dom": "5.x"
+    "react-router-dom": "6.x"
   }
 }

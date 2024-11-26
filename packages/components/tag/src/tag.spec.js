@@ -1,4 +1,5 @@
 import { screen, render } from '../../../../test/test-utils';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Tag from './tag';
 
 it('should render text as children', () => {
@@ -107,31 +108,62 @@ describe('when draggable', () => {
 
 describe('when `to` is set', () => {
   it('should redirect when clicked', () => {
-    const { history } = render(<Tag to="/foo">Bread</Tag>);
-    screen.getByText('Bread').click();
+    render(
+      <Routes>
+        <Route path="/" element={<Tag to="/foo">Bread</Tag>} />
+        <Route path="/foo" element={<div>Redirected to Foo</div>} />
+      </Routes>,
+      { route: '/' }
+    );
 
-    expect(history.location.pathname).toBe('/foo');
+    screen.getByText('Bread').click();
+    expect(screen.getByText('Redirected to Foo')).toBeInTheDocument(); // Assert on UI
   });
 
   it('should still call onClick when clicked', () => {
     const onClick = jest.fn();
-    const { history } = render(
-      <Tag onClick={onClick} to="/foo">
-        Bread
-      </Tag>
+
+    render(
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Tag onClick={onClick} to="/foo">
+              Bread
+            </Tag>
+          }
+        />
+        <Route path="/foo" element={<div>Redirected to Foo</div>} />
+      </Routes>,
+      { route: '/' }
     );
+
     screen.getByText('Bread').click();
-    expect(onClick).toHaveBeenCalled();
-    expect(history.location.pathname).toBe('/foo');
+    expect(onClick).toHaveBeenCalled(); // Assert click handler was called
+    expect(screen.getByText('Redirected to Foo')).toBeInTheDocument(); // Assert redirect
   });
 
   it('should redirect on link click if text children proceed it', () => {
-    const { history } = render(
-      <Tag>
-        <span>Bread</span>
-        <span>Peanut Butter</span>
-        <span onClick={() => history.push('/honey')}>Honey</span>
-      </Tag>
+    const TagWithNavigation = () => {
+      const navigate = useNavigate();
+
+      return <span onClick={() => navigate('/honey')}>Honey</span>;
+    };
+    render(
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Tag>
+              <span>Bread</span>
+              <span>Peanut Butter</span>
+              <TagWithNavigation />
+            </Tag>
+          }
+        />
+        <Route path="/honey" element={<div>Redirected to Honey</div>} />
+      </Routes>,
+      { route: '/' }
     );
 
     expect(screen.getByText('Bread')).toBeInTheDocument();
@@ -139,38 +171,56 @@ describe('when `to` is set', () => {
     expect(screen.getByText('Honey')).toBeInTheDocument();
 
     screen.getByText('Honey').click();
-    expect(history.location.pathname).toBe('/honey');
+    expect(screen.getByText('Redirected to Honey')).toBeInTheDocument(); // Assert redirect
   });
 
   it('should not redirect when removed', () => {
     const onRemove = jest.fn();
-    const { history } = render(
-      <Tag onRemove={onRemove} to="/foo">
-        Bread
-      </Tag>
+
+    render(
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Tag onRemove={onRemove} to="/foo">
+              Bread
+            </Tag>
+          }
+        />
+        <Route path="/foo" element={<div>Redirected to Foo</div>} />
+      </Routes>,
+      { route: '/' }
     );
 
     screen.getByLabelText('Remove').click();
 
-    // ensure "onRemove" is stil called
+    // Ensure "onRemove" is still called
     expect(onRemove).toHaveBeenCalled();
 
-    // ensure the pathname is not "/foo", otherwise a redirect would have
-    // happened
-    expect(history.location.pathname).toBe('/');
+    // Ensure no redirect occurred by checking the current content
+    expect(screen.queryByText('Redirected to Foo')).not.toBeInTheDocument();
   });
 
   it('should not redirect when disabled', () => {
-    const { history } = render(
-      <Tag to="/foo" isDisabled={true}>
-        Bread
-      </Tag>
+    render(
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Tag to="/foo" isDisabled={true}>
+              Bread
+            </Tag>
+          }
+        />
+        <Route path="/foo" element={<div>Redirected to Foo</div>} />
+      </Routes>,
+      { route: '/' }
     );
 
     screen.getByText('Bread').click();
 
-    // ensure the pathname is not "/foo", otherwise a redirect would have
+    // ensure there is not text with `Redirected to Foo`, otherwise a redirect would have
     // happened
-    expect(history.location.pathname).toBe('/');
+    expect(screen.queryByText('Redirected to Foo')).not.toBeInTheDocument();
   });
 });

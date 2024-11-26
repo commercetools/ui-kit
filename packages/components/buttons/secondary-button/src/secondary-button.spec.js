@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
 import {
   screen,
@@ -95,12 +95,25 @@ describe('rendering', () => {
   });
   describe('when using as', () => {
     it('should navigate to link when clicked', async () => {
-      const { history } = render(
-        <SecondaryButton {...props} onClick={null} as={Link} to="/foo/bar" />
+      render(
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <SecondaryButton
+                {...props}
+                onClick={null}
+                as={Link}
+                to="/foo/bar"
+              />
+            }
+          />
+          <Route path="/foo/bar" element={<div>Foo Bar Page</div>} />
+        </Routes>
       );
       fireEvent.click(screen.getByLabelText('Add'));
       await waitFor(() => {
-        expect(history.location.pathname).toBe('/foo/bar');
+        expect(screen.getByText('Foo Bar Page')).toBeInTheDocument();
       });
     });
   });

@@ -1,7 +1,6 @@
-import type { LocationDescriptor } from 'history';
 import { ReactNode, MouseEvent, KeyboardEvent, ElementType } from 'react';
 import { css, type SerializedStyles } from '@emotion/react';
-import { Link } from 'react-router-dom';
+import { Link, LinkProps } from 'react-router-dom';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
@@ -22,7 +21,7 @@ export type TTagProps = {
   /**
    * Link of the tag when not disabled
    */
-  to?: string | LocationDescriptor;
+  to?: LinkProps['to'];
   /**
    * Disable the tag element along with the option to remove it.
    */

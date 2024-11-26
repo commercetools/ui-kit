@@ -2433,13 +2433,13 @@ __metadata:
     moment-timezone: 0.5.46
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
   peerDependencies:
     moment: 2.x
     moment-timezone: 0.5.x
     react: 17.x
     react-intl: 6.x
-    react-router-dom: 5.x
+    react-router-dom: 6.x
   languageName: unknown
   linkType: soft
 
@@ -2710,11 +2710,11 @@ __metadata:
     "@commercetools-uikit/secondary-icon-button": 19.16.0
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
   peerDependencies:
     react: 17.x
     react-intl: 6.x
-    react-router-dom: 5.x
+    react-router-dom: 6.x
   languageName: unknown
   linkType: soft
 
@@ -2778,10 +2778,10 @@ __metadata:
     "@types/react-router-dom": ^5.3.3
     prop-types: 15.8.1
     react: 17.0.2
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
   peerDependencies:
     react: 17.x
-    react-router-dom: 5.x
+    react-router-dom: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3313,11 +3313,11 @@ __metadata:
     "@commercetools-uikit/time-field": 19.16.0
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
   peerDependencies:
     react: 17.x
     react-intl: 6.x
-    react-router-dom: 5.x
+    react-router-dom: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3511,11 +3511,11 @@ __metadata:
     "@commercetools-uikit/toggle-input": 19.16.0
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
   peerDependencies:
     react: 17.x
     react-intl: 6.x
-    react-router-dom: 5.x
+    react-router-dom: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3556,11 +3556,11 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
   peerDependencies:
     react: 17.x
     react-intl: 6.x
-    react-router-dom: 5.x
+    react-router-dom: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3582,11 +3582,11 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
   peerDependencies:
     react: 17.x
     react-intl: 6.x
-    react-router-dom: 5.x
+    react-router-dom: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4365,11 +4365,11 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
   peerDependencies:
     react: 17.x
     react-intl: 6.x
-    react-router-dom: 5.x
+    react-router-dom: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4620,10 +4620,10 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
   peerDependencies:
     react: 17.x
-    react-router-dom: 5.x
+    react-router-dom: 6.x
   languageName: unknown
   linkType: soft
 
@@ -7250,6 +7250,13 @@ __metadata:
   version: 1.1.0
   resolution: "@radix-ui/rect@npm:1.1.0"
   checksum: 1ad93efbc9fc3b878bae5e8bb26ffa1005235d8b5b9fca8339eb5dbcf7bf53abc9ccd2a8ce128557820168c8600521e48e0ea4dda96aa5f116381f66f46aeda3
+  languageName: node
+  linkType: hard
+
+"@remix-run/router@npm:1.21.0":
+  version: 1.21.0
+  resolution: "@remix-run/router@npm:1.21.0"
+  checksum: d9477a7772053ad0ffcf03385cfb1a54e56f8a56d1f9f5062de3b1dfcbd019dd73282a00a5a72aa55c120771110982448c165c1405d64540aaef13051a8e45cc
   languageName: node
   linkType: hard
 
@@ -20700,20 +20707,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:5.3.4":
-  version: 5.3.4
-  resolution: "react-router-dom@npm:5.3.4"
+"react-router-dom@npm:6.28.0":
+  version: 6.28.0
+  resolution: "react-router-dom@npm:6.28.0"
   dependencies:
-    "@babel/runtime": ^7.12.13
-    history: ^4.9.0
-    loose-envify: ^1.3.1
-    prop-types: ^15.6.2
-    react-router: 5.3.4
-    tiny-invariant: ^1.0.2
-    tiny-warning: ^1.0.0
+    "@remix-run/router": 1.21.0
+    react-router: 6.28.0
   peerDependencies:
-    react: ">=15"
-  checksum: b86a6f2f5222f041e38adf4e4b32c7643d6735a1a915ef25855b2db285fd059d72ba8d62e5bcd5d822b8ef9520a80453209e55077f5a90d0f72e908979b8f535
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 0cf4658a92bc66f50ec9d8518c36aa5a402bcadce71fb624ed6f900d73a29ea87ff904a4f2c42279107e75e80cc08c6192563fadcc5d4e642e6d476e38e83b21
   languageName: node
   linkType: hard
 
@@ -20733,6 +20736,17 @@ __metadata:
   peerDependencies:
     react: ">=15"
   checksum: 892d4e274a23bf4f39abc2efca54472fb646d3aed4b584020cf49654d2f50d09a2bacebe7c92b4ec7cb8925077376dfcd0664bad6442a73604397cefec9f01f9
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.28.0":
+  version: 6.28.0
+  resolution: "react-router@npm:6.28.0"
+  dependencies:
+    "@remix-run/router": 1.21.0
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 23246ca957b5c2bc8d6f9a81fee2df2ce4fc3feca3ec27c2fd85999568fc1299a4e8273e4ab70b6f3acd43a1fb45e0c93cb01ef77e68c9f9e1f7e4f42a1419ea
   languageName: node
   linkType: hard
 
@@ -23642,7 +23656,7 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
     react-test-renderer: 17.0.2
     react-value: 0.2.0
     replace: 1.2.2
@@ -24310,7 +24324,7 @@ __metadata:
     react-dom: 17.0.2
     react-intl: ^6.3.2
     react-router: 5.3.4
-    react-router-dom: 5.3.4
+    react-router-dom: 6.28.0
     vite: 5.4.9
   languageName: unknown
   linkType: soft

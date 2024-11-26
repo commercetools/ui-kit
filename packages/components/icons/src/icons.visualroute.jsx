@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { designTokens } from '@commercetools-uikit/design-system';
 import * as icons from '@commercetools-uikit/icons';
 import CustomIcon from '@commercetools-uikit/icons/custom-icon';
@@ -83,7 +83,7 @@ const renderIcon = (iconName, color, size) => {
 };
 
 export const component = () => (
-  <Switch>
+  <Routes>
     <Route path={routePath} exact>
       <ul>
         {colors.map((color) => (
@@ -247,5 +247,5 @@ export const component = () => (
         </Spec>
       </Suite>
     </Route>
-  </Switch>
+  </Routes>
 );

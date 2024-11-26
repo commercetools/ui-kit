@@ -1,5 +1,3 @@
-import type { LocationDescriptor } from 'history';
-
 import { cloneElement, ReactElement } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
@@ -11,6 +9,8 @@ import {
 } from '@commercetools-uikit/utils';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Text from '@commercetools-uikit/text';
+
+type LocationDescriptor = { pathname: string; search?: string; hash?: string };
 
 export type TLinkButtonProps = {
   /**

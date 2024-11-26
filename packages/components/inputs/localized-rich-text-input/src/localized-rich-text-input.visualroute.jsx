@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useState, useCallback, useRef, forwardRef } from 'react';
 import {
   LocalizedRichTextInput,
@@ -306,8 +306,8 @@ const DefaultRoute = () => (
 );
 
 export const component = () => (
-  <Switch>
+  <Routes>
     <Route path={`${routePath}/interactive`} component={InteractiveRoute} />
     <Route path={routePath} component={DefaultRoute} />
-  </Switch>
+  </Routes>
 );
