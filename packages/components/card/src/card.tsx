@@ -3,8 +3,7 @@ import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Inset from '@commercetools-uikit/spacings-inset';
-import { Link } from 'react-router-dom';
-import type { LocationDescriptor } from 'history';
+import { Link, LinkProps } from 'react-router-dom';
 
 export type TCardProps = {
   /**
@@ -34,7 +33,7 @@ export type TCardProps = {
   /**
    * The URL that the Card should point to. If provided, the Card will be rendered as an anchor element.
    */
-  to?: string | LocationDescriptor;
+  to?: LinkProps['to'];
   /**
    * A flag to indicate if the Card points to an external source.
    */
