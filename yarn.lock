@@ -2433,7 +2433,7 @@ __metadata:
     moment-timezone: 0.5.46
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 6.28.0
+    react-router-dom: 6
   peerDependencies:
     moment: 2.x
     moment-timezone: 0.5.x
@@ -2710,7 +2710,7 @@ __metadata:
     "@commercetools-uikit/secondary-icon-button": 19.16.0
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 6.28.0
+    react-router-dom: 6
   peerDependencies:
     react: 17.x
     react-intl: 6.x
@@ -2777,7 +2777,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-router-dom: 6.28.0
+    react-router-dom: 6
   peerDependencies:
     react: 17.x
     react-router-dom: 6.x
@@ -3312,7 +3312,7 @@ __metadata:
     "@commercetools-uikit/time-field": 19.16.0
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 6.28.0
+    react-router-dom: 6
   peerDependencies:
     react: 17.x
     react-intl: 6.x
@@ -3510,7 +3510,7 @@ __metadata:
     "@commercetools-uikit/toggle-input": 19.16.0
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 6.28.0
+    react-router-dom: 6
   peerDependencies:
     react: 17.x
     react-intl: 6.x
@@ -3555,7 +3555,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 6.28.0
+    react-router-dom: 6
   peerDependencies:
     react: 17.x
     react-intl: 6.x
@@ -3579,7 +3579,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 6.28.0
+    react-router-dom: 6
   peerDependencies:
     react: 17.x
     react-intl: 6.x
@@ -4362,7 +4362,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 6.28.0
+    react-router-dom: 6
   peerDependencies:
     react: 17.x
     react-intl: 6.x
@@ -4617,7 +4617,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 6.28.0
+    react-router-dom: 6
   peerDependencies:
     react: 17.x
     react-router-dom: 6.x
@@ -20676,7 +20676,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:6.28.0":
+"react-router-dom@npm:6":
   version: 6.28.0
   resolution: "react-router-dom@npm:6.28.0"
   dependencies:
@@ -23625,7 +23625,7 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     react-intl: ^6.3.2
-    react-router-dom: 6.28.0
+    react-router-dom: 6
     react-test-renderer: 17.0.2
     react-value: 0.2.0
     replace: 1.2.2
@@ -24293,7 +24293,7 @@ __metadata:
     react-dom: 17.0.2
     react-intl: ^6.3.2
     react-router: 5.3.4
-    react-router-dom: 6.28.0
+    react-router-dom: 6
     vite: 5.4.9
   languageName: unknown
   linkType: soft
