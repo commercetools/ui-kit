@@ -17,7 +17,7 @@
 '@commercetools-frontend/ui-kit': major
 ---
 
-These changes introduce an upgrade from react-router v5 to v6. The most obvious change is how the <Link to> component is now used. Unlike the the pattern in v5 where the `to` props in a nested route requires you to manually interpolate `match.url` for a relative route, v6 accepts a string where all urls are automatically relative routes.
+These changes introduce a migration from react-router v5 to v6. The most obvious change is how the <Link to> component is now used. Unlike the the pattern in v5 where the `to` props in a nested route requires you to manually interpolate `match.url` for a relative route, v6 accepts a string where all urls are automatically relative routes.
 
 ```jsx
 // v5: relative path requires you to manually interpolate
