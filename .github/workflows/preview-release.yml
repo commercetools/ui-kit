@@ -81,6 +81,6 @@ jobs:
           BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
           git checkout ${{ github.head_ref }}
           yarn changeset version --snapshot ${BRANCH_NAME}
-          yarn changeset publish --tag preview
+          yarn changeset publish --tag ${BRANCH_NAME}
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
