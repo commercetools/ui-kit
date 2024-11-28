@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { Switch, Route } from 'react-router';
+import { Routes, Route } from 'react-router';
 import { RichTextInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
@@ -165,8 +165,8 @@ const DefaultRoute = () => (
 );
 
 export const component = () => (
-  <Switch>
+  <Routes>
     <Route path={`${routePath}/interactive`} component={InteractiveRoute} />
     <Route path={routePath} component={DefaultRoute} />
-  </Switch>
+  </Routes>
 );
