@@ -130,4 +130,3 @@ const primary = designTokens.colorPrimary;
 ```
 
 > Please look at the [`design-tokens.ts`](https://github.com/commercetools/ui-kit/blob/main/design-system/src/design-tokens.ts) itself to inspect which variables are available.
-> test
