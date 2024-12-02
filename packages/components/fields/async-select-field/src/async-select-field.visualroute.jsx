@@ -168,7 +168,7 @@ const InteractionRoute = () => (
 
 export const component = () => (
   <Routes>
-    <Route path={`${routePath}/interaction`} component={InteractionRoute} />
-    <Route exact path={routePath} component={DefaultRoute} />
+    <Route path={"interaction/*"} element={<InteractionRoute />} />
+    <Route exact path={"/*"} element={<DefaultRoute />} />
   </Routes>
 );
