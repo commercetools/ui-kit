@@ -65,7 +65,7 @@ const App = () => {
           {allSortedComponents.map((Component) => (
             <Route
               key={Component.routePath}
-              path={Component.routePath}
+              path={`${Component.routePath}/*`}
               // eslint-disable-next-line react/jsx-pascal-case
               element={<Component.component />}
             />

@@ -84,7 +84,7 @@ const renderIcon = (iconName, color, size) => {
 
 export const component = () => (
   <Routes>
-    <Route path={"/*"}
+    <Route path="/*"
     element={
       <ul>
         {colors.map((color) => (
@@ -110,7 +110,7 @@ export const component = () => (
     }
     />
     {colors.map((color) => (
-      <Route key={color} path={`${color}/*`}
+      <Route key={color} path={color}
         element={<Suite>
           {sizes.map((size) => (
             <Spec
@@ -129,7 +129,7 @@ export const component = () => (
         }
       />
     ))}
-    <Route path={"inline-svg/*"}
+    <Route path="inline-svg"
     element={
       <Suite>
         <Spacings.Stack>
@@ -157,7 +157,7 @@ export const component = () => (
       </Suite>
     }
     />
-    <Route path={"leading-icon/*"}
+    <Route path="leading-icon"
     element={
       <Suite>
         {leadingIconSizes.map((size) => (
@@ -210,7 +210,7 @@ export const component = () => (
       </Suite>
     }
     />
-    <Route path={"custom-icon/*"}
+    <Route path="custom-icon"
     element={
       <Suite>
         <Spec label={`Custom Icon - React Element`} omitPropsList>
