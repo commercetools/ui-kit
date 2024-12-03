@@ -146,7 +146,7 @@ const InteractionRoute = () => (
       }
     />
     <Route
-      path="interaction/*"
+      path="/*"
       element={
         <Suite>
           <Spec omitPropsList label="with defaultOptions enabled">
