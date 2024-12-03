@@ -128,7 +128,7 @@ const DefaultRoute = () => (
 const InteractionRoute = () => (
   <Routes>
     <Route
-      path="interaction/without-default-options/*"
+      path="without-default-options/*"
       element={
         <Suite>
           <Spec omitPropsList label="with defaultOptions disabled">
