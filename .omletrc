@@ -4,7 +4,7 @@
        "**/node_modules/**",
        "**/*.d.ts",
        "**/stories/**/*",
-       "**/.storybook/**/*",
+       "**/storybook/**/*",
        "**/*.stories.{jsx,tsx,js,ts}",
        "**/*.{spec,test}.{jsx,tsx,js,ts}",
        "**/{__test__,tests}/**/*.{jsx,tsx,js,ts}",
@@ -13,7 +13,10 @@
        "**/docs/**",
        "**/_docs/**",
        "**/*messages.{js,ts}",
-       "**/*styles.{js,ts}"
+       "**/*styles.{js,ts}",
+       "**/visual-testing-app/**",
+       "**/fixtures/**",
+       "**/test/percy/**"
     ],
     "aliases": {
         "@*": "src/*"
@@ -666,7 +669,13 @@
           "./dist/commercetools-uikit-view-switcher.cjs.js": "./src/index.ts",
           "./dist/commercetools-uikit-view-switcher.esm.js": "./src/index.ts"
         }
+      },
+      "@commercetools-uikit/filters": {
+        "exports": {
+          ".": "./src/index.ts",
+          "./dist/commercetools-uikit-filters.cjs.js": "./src/index.ts",
+          "./dist/commercetools-uikit-filters.esm.js": "./src/index.ts"
+        }
       }
     }
   }
-  
