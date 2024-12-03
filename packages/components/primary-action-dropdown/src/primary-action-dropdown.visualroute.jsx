@@ -63,7 +63,7 @@ const DefaultRoute = () => (
 
 export const component = () => (
   <Routes>
-    <Route path={`${routePath}/interaction`} component={InteractionRoute} />
-    <Route path={routePath} component={DefaultRoute} />
+    <Route path="interaction/*" element={<InteractionRoute />} />
+    <Route path="/*" element={<DefaultRoute />} />
   </Routes>
 );
