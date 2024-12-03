@@ -288,7 +288,7 @@ export const component = () => (
   <Routes>
     <Route path="open" element={<OpenRoute />} />
     <Route
-      path={`${routePath}/open-with-option-groups/*`}
+      path="open-with-option-groups/*"
       element={<OpenRouteWithOptionGroups />}
     />
     <Route
