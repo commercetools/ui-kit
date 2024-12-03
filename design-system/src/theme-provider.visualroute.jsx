@@ -192,7 +192,7 @@ const InteractiveRoute = () => {
 
 export const component = () => (
   <Routes>
-    <Route path={`${routePath}/interactive`} component={InteractiveRoute} />
-    <Route path={routePath} component={DefaultRoute} />
+    <Route path="interactive/*" element={<InteractiveRoute />} />
+    <Route path="/*" element={<DefaultRoute />} />
   </Routes>
 );
