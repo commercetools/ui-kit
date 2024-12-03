@@ -2408,6 +2408,7 @@ __metadata:
     "@commercetools-uikit/field-errors": 19.16.0
     "@commercetools-uikit/field-label": 19.16.0
     "@commercetools-uikit/fields": 19.16.0
+    "@commercetools-uikit/filters": 19.16.0
     "@commercetools-uikit/grid": 19.16.0
     "@commercetools-uikit/hooks": 19.16.0
     "@commercetools-uikit/i18n": 19.16.0
@@ -2421,6 +2422,7 @@ __metadata:
     "@commercetools-uikit/pagination": 19.16.0
     "@commercetools-uikit/primary-action-dropdown": 19.16.0
     "@commercetools-uikit/progress-bar": 19.16.0
+    "@commercetools-uikit/quick-filters": 19.16.0
     "@commercetools-uikit/selectable-search-input": 19.16.0
     "@commercetools-uikit/spacings": 19.16.0
     "@commercetools-uikit/stamp": 19.16.0
@@ -3320,7 +3322,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/filters@workspace:packages/components/filters":
+"@commercetools-uikit/filters@19.16.0, @commercetools-uikit/filters@workspace:packages/components/filters":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/filters@workspace:packages/components/filters"
   dependencies:
@@ -4135,7 +4137,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/quick-filters@workspace:packages/components/quick-filters":
+"@commercetools-uikit/quick-filters@19.16.0, @commercetools-uikit/quick-filters@workspace:packages/components/quick-filters":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/quick-filters@workspace:packages/components/quick-filters"
   dependencies:

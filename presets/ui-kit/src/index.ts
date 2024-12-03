@@ -28,6 +28,7 @@ export {
 export { default as DropdownMenu } from '@commercetools-uikit/dropdown-menu';
 export { default as FieldLabel } from '@commercetools-uikit/field-label';
 export { default as FieldErrors } from '@commercetools-uikit/field-errors';
+export { default as Filters } from '@commercetools-uikit/filters';
 export { default as Grid } from '@commercetools-uikit/grid';
 export { default as Label } from '@commercetools-uikit/label';
 export { default as LoadingSpinner } from '@commercetools-uikit/loading-spinner';
@@ -38,6 +39,7 @@ export {
   Pagination,
 } from '@commercetools-uikit/pagination';
 export { default as ProgressBar } from '@commercetools-uikit/progress-bar';
+export { default as QuickFilters } from '@commercetools-uikit/quick-filters';
 export { default as Spacings } from '@commercetools-uikit/spacings';
 export { default as Stamp } from '@commercetools-uikit/stamp';
 export { default as DataTable } from '@commercetools-uikit/data-table';
