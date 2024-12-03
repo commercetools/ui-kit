@@ -129,7 +129,7 @@ const InteractionRoute = () => (
   <Routes>
     <Route
       path="interaction/without-default-options/*"
-      render={() => (
+      renelementder={
         <Suite>
           <Spec omitPropsList label="with defaultOptions disabled">
             <AsyncSelectField
@@ -143,11 +143,11 @@ const InteractionRoute = () => (
             />
           </Spec>
         </Suite>
-      )}
+      }
     />
     <Route
       path="interaction/*"
-      render={() => (
+      element={
         <Suite>
           <Spec omitPropsList label="with defaultOptions enabled">
             <AsyncSelectField
@@ -161,14 +161,14 @@ const InteractionRoute = () => (
             />
           </Spec>
         </Suite>
-      )}
+      }
     />
   </Routes>
 );
 
 export const component = () => (
   <Routes>
-    <Route path={"interaction/*"} element={<InteractionRoute />} />
-    <Route exact path={"/*"} element={<DefaultRoute />} />
+    <Route path="interaction/*" element={<InteractionRoute />} />
+    <Route exact path="/*" element={<DefaultRoute />} />
   </Routes>
 );

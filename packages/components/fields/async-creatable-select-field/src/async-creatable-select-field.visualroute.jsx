@@ -145,7 +145,7 @@ const InteractionRoute = () => (
       }
     />
     <Route
-      path={`interaction/*`}
+      path="interaction/*"
       element={
         <Suite>
           <Spec label="with defaultOptions enabled">
@@ -167,7 +167,7 @@ const InteractionRoute = () => (
 
 export const component = () => (
   <Routes>
-    <Route path={"interaction/*"} element={<InteractionRoute />} />
-    <Route path={"/*"} element={<DefaultRoute />} />
+    <Route path="interaction/*" element={<InteractionRoute />} />
+    <Route path="/*" element={<DefaultRoute />} />
   </Routes>
 );
