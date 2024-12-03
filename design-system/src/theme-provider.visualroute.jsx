@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTheme, designTokens } from '@commercetools-uikit/design-system';
-import { Switch, Route } from 'react-router';
+import { Routes, Route } from 'react-router';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import {
@@ -191,8 +191,8 @@ const InteractiveRoute = () => {
 };
 
 export const component = () => (
-  <Switch>
-    <Route path={`${routePath}/interactive`} component={InteractiveRoute} />
-    <Route path={routePath} component={DefaultRoute} />
-  </Switch>
+  <Routes>
+    <Route path="interactive/*" element={<InteractiveRoute />} />
+    <Route path="/*" element={<DefaultRoute />} />
+  </Routes>
 );

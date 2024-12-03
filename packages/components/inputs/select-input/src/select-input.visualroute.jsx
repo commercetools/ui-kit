@@ -286,15 +286,15 @@ const OpenRouteWithOptionGroupsAndDivider = () => (
 
 export const component = () => (
   <Routes>
-    <Route path={`${routePath}/open`} component={OpenRoute} />
+    <Route path="open" element={<OpenRoute />} />
     <Route
-      path={`${routePath}/open-with-option-groups`}
-      component={OpenRouteWithOptionGroups}
+      path="open-with-option-groups/*"
+      element={<OpenRouteWithOptionGroups />}
     />
     <Route
-      path={`${routePath}/open-with-option-groups-and-divider`}
-      component={OpenRouteWithOptionGroupsAndDivider}
+      path="open-with-option-groups-and-divider/*"
+      element={<OpenRouteWithOptionGroupsAndDivider />}
     />
-    <Route path={routePath} render={() => <DefaultRoute />} />
+    <Route path="/*" element={<DefaultRoute />} />
   </Routes>
 );
