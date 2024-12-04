@@ -1,5 +1,51 @@
 # @commercetools-frontend/ui-kit
 
+## 19.17.1
+
+### Patch Changes
+
+- [#3004](https://github.com/commercetools/ui-kit/pull/3004) [`8bee358`](https://github.com/commercetools/ui-kit/commit/8bee35834ad551cc0ab80ef6f3bb8bd37cbed16a) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Add types for Filters, QuickFilters, Spacings, DataTable, and DataTableManager components to UI Kit preset
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.17.1
+  - @commercetools-uikit/accessible-hidden@19.17.1
+  - @commercetools-uikit/avatar@19.17.1
+  - @commercetools-uikit/card@19.17.1
+  - @commercetools-uikit/collapsible@19.17.1
+  - @commercetools-uikit/collapsible-motion@19.17.1
+  - @commercetools-uikit/collapsible-panel@19.17.1
+  - @commercetools-uikit/constraints@19.17.1
+  - @commercetools-uikit/data-table@19.17.1
+  - @commercetools-uikit/data-table-manager@19.17.1
+  - @commercetools-uikit/dropdown-menu@19.17.1
+  - @commercetools-uikit/field-errors@19.17.1
+  - @commercetools-uikit/field-label@19.17.1
+  - @commercetools-uikit/filters@19.17.1
+  - @commercetools-uikit/grid@19.17.1
+  - @commercetools-uikit/icons@19.17.1
+  - @commercetools-uikit/selectable-search-input@19.17.1
+  - @commercetools-uikit/label@19.17.1
+  - @commercetools-uikit/link@19.17.1
+  - @commercetools-uikit/loading-spinner@19.17.1
+  - @commercetools-uikit/messages@19.17.1
+  - @commercetools-uikit/notifications@19.17.1
+  - @commercetools-uikit/pagination@19.17.1
+  - @commercetools-uikit/primary-action-dropdown@19.17.1
+  - @commercetools-uikit/progress-bar@19.17.1
+  - @commercetools-uikit/quick-filters@19.17.1
+  - @commercetools-uikit/stamp@19.17.1
+  - @commercetools-uikit/tag@19.17.1
+  - @commercetools-uikit/text@19.17.1
+  - @commercetools-uikit/tooltip@19.17.1
+  - @commercetools-uikit/view-switcher@19.17.1
+  - @commercetools-uikit/hooks@19.17.1
+  - @commercetools-uikit/i18n@19.17.1
+  - @commercetools-uikit/utils@19.17.1
+  - @commercetools-uikit/buttons@19.17.1
+  - @commercetools-uikit/fields@19.17.1
+  - @commercetools-uikit/inputs@19.17.1
+  - @commercetools-uikit/spacings@19.17.1
+
 ## 19.17.0
 
 ### Patch Changes

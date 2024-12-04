@@ -1,5 +1,26 @@
 # @commercetools-uikit/localized-rich-text-input
 
+## 19.17.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.17.1
+  - @commercetools-uikit/flat-button@19.17.1
+  - @commercetools-uikit/collapsible-motion@19.17.1
+  - @commercetools-uikit/constraints@19.17.1
+  - @commercetools-uikit/icons@19.17.1
+  - @commercetools-uikit/input-utils@19.17.1
+  - @commercetools-uikit/rich-text-utils@19.17.1
+  - @commercetools-uikit/messages@19.17.1
+  - @commercetools-uikit/spacings-inline@19.17.1
+  - @commercetools-uikit/spacings-stack@19.17.1
+  - @commercetools-uikit/text@19.17.1
+  - @commercetools-uikit/tooltip@19.17.1
+  - @commercetools-uikit/hooks@19.17.1
+  - @commercetools-uikit/localized-utils@19.17.1
+  - @commercetools-uikit/utils@19.17.1
+
 ## 19.17.0
 
 ### Patch Changes
