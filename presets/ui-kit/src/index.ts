@@ -77,7 +77,13 @@ export {
   type TFieldErrors,
 } from '@commercetools-uikit/field-errors';
 /** TODO: Add Types w/next release */
-export { default as Filters } from '@commercetools-uikit/filters';
+export {
+  default as Filters,
+  type TFiltersProps,
+  type TFilterConfiguration,
+  type TFilterGroupConfiguration,
+  type TAppliedFilter,
+} from '@commercetools-uikit/filters';
 export {
   default as Grid,
   type TGridItemProps,
@@ -106,16 +112,39 @@ export {
   type TProgressBarProps,
 } from '@commercetools-uikit/progress-bar';
 /** TODO: Add Types w/next release */
-export { default as QuickFilters } from '@commercetools-uikit/quick-filters';
+export {
+  default as QuickFilters,
+  type TQuickFiltersProps,
+} from '@commercetools-uikit/quick-filters';
 /** TODO: Add Types w/next release */
-export { default as Spacings } from '@commercetools-uikit/spacings';
+export {
+  default as Spacings,
+  type TSpacings,
+  type TInlineProps,
+  type TInsetProps,
+  type TInsetSquishProps,
+  type TStackProps,
+} from '@commercetools-uikit/spacings';
 export {
   default as Stamp,
   type TStampProps,
   type TTone as TStampTone,
 } from '@commercetools-uikit/stamp';
-export { default as DataTable } from '@commercetools-uikit/data-table';
-export { default as DataTableManager } from '@commercetools-uikit/data-table-manager';
+export {
+  default as DataTable,
+  type TRow,
+  type TColumn,
+  type TDataTableProps,
+} from '@commercetools-uikit/data-table';
+export {
+  default as DataTableManager,
+  type TDataTableManagerProps,
+  type TColumnProps,
+  type TColumnData,
+  type TDataTableSettingsProps,
+  type TColumnSettingsManagerProps,
+  type TDataTableManagerContext,
+} from '@commercetools-uikit/data-table-manager';
 export {
   Tag,
   TagList,
