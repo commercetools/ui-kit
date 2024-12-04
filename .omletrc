@@ -134,7 +134,8 @@
       },
       "@commercetools-uikit/data-table-manager": {
         "exports": {
-          ".": "./src/index.ts"
+          ".": "./src/index.ts",
+          "column-settings-manager": "./src/index.ts"
         }
       },
       "@commercetools-uikit/dropdown-menu": {
@@ -249,7 +250,10 @@
       },
       "@commercetools-uikit/icons": {
         "exports": {
-          ".": "./src/index.ts"
+          ".": "./src/index.ts",
+          "inline-svg": "./src/inline-svg/index.ts",
+          "leading-icon": "./src/leading-icon/index.ts",
+          "custom-icon": "./src/custom-icon/index.ts"
         }
       },
       "@commercetools-uikit/icons-custom-icon": {
