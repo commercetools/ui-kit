@@ -1,5 +1,53 @@
 # @commercetools-frontend/ui-kit
 
+## 19.17.0
+
+### Patch Changes
+
+- [#3003](https://github.com/commercetools/ui-kit/pull/3003) [`36a4cc2`](https://github.com/commercetools/ui-kit/commit/36a4cc2a9afa342e2aa714eaad7296dcc29a1837) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Bundles types with UI Kit preset packages, Filters package, QuickFilters package
+
+- [#2995](https://github.com/commercetools/ui-kit/pull/2995) [`6f1d62d`](https://github.com/commercetools/ui-kit/commit/6f1d62d8fdbc5afef904ca50ec7ecbdb8d5a04d8) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Adds Filters and QuickFilters packages to @commercetools-frontend/ui-kit preset package.
+
+- Updated dependencies [[`ca99231`](https://github.com/commercetools/ui-kit/commit/ca99231ebc9b6aae7668a7d85fceda9cdbdebb0c), [`36a4cc2`](https://github.com/commercetools/ui-kit/commit/36a4cc2a9afa342e2aa714eaad7296dcc29a1837)]:
+  - @commercetools-uikit/data-table@19.17.0
+  - @commercetools-uikit/quick-filters@19.17.0
+  - @commercetools-uikit/filters@19.17.0
+  - @commercetools-uikit/spacings@19.17.0
+  - @commercetools-uikit/buttons@19.17.0
+  - @commercetools-uikit/fields@19.17.0
+  - @commercetools-uikit/inputs@19.17.0
+  - @commercetools-uikit/collapsible-panel@19.17.0
+  - @commercetools-uikit/data-table-manager@19.17.0
+  - @commercetools-uikit/pagination@19.17.0
+  - @commercetools-uikit/tag@19.17.0
+  - @commercetools-uikit/primary-action-dropdown@19.17.0
+  - @commercetools-uikit/selectable-search-input@19.17.0
+  - @commercetools-uikit/field-label@19.17.0
+  - @commercetools-uikit/design-system@19.17.0
+  - @commercetools-uikit/accessible-hidden@19.17.0
+  - @commercetools-uikit/avatar@19.17.0
+  - @commercetools-uikit/card@19.17.0
+  - @commercetools-uikit/collapsible@19.17.0
+  - @commercetools-uikit/collapsible-motion@19.17.0
+  - @commercetools-uikit/constraints@19.17.0
+  - @commercetools-uikit/dropdown-menu@19.17.0
+  - @commercetools-uikit/field-errors@19.17.0
+  - @commercetools-uikit/grid@19.17.0
+  - @commercetools-uikit/icons@19.17.0
+  - @commercetools-uikit/label@19.17.0
+  - @commercetools-uikit/link@19.17.0
+  - @commercetools-uikit/loading-spinner@19.17.0
+  - @commercetools-uikit/messages@19.17.0
+  - @commercetools-uikit/notifications@19.17.0
+  - @commercetools-uikit/progress-bar@19.17.0
+  - @commercetools-uikit/stamp@19.17.0
+  - @commercetools-uikit/text@19.17.0
+  - @commercetools-uikit/tooltip@19.17.0
+  - @commercetools-uikit/view-switcher@19.17.0
+  - @commercetools-uikit/hooks@19.17.0
+  - @commercetools-uikit/i18n@19.17.0
+  - @commercetools-uikit/utils@19.17.0
+
 ## 19.16.0
 
 ### Patch Changes

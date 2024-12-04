@@ -1,5 +1,22 @@
 # @commercetools-uikit/text-field
 
+## 19.17.0
+
+### Patch Changes
+
+- [#2994](https://github.com/commercetools/ui-kit/pull/2994) [`73a1d28`](https://github.com/commercetools/ui-kit/commit/73a1d281bae8443bad3a20dd9ddbf340e6035ef0) Thanks [@misama-ct](https://github.com/misama-ct)! - Align position of additional info messages with the rest of the Field-components
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@19.17.0
+  - @commercetools-uikit/design-system@19.17.0
+  - @commercetools-uikit/constraints@19.17.0
+  - @commercetools-uikit/field-errors@19.17.0
+  - @commercetools-uikit/field-warnings@19.17.0
+  - @commercetools-uikit/text-input@19.17.0
+  - @commercetools-uikit/messages@19.17.0
+  - @commercetools-uikit/spacings-stack@19.17.0
+  - @commercetools-uikit/utils@19.17.0
+
 ## 19.16.0
 
 ### Patch Changes
