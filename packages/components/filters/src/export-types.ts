@@ -1,1 +1,6 @@
-export type { TFiltersProps } from './filters';
+export type {
+  TFiltersProps,
+  TFilterConfiguration,
+  TFilterGroupConfiguration,
+  TAppliedFilter,
+} from './filters';
