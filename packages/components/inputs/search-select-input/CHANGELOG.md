@@ -1,5 +1,21 @@
 # @commercetools-uikit/search-select-input
 
+## 19.17.0
+
+### Minor Changes
+
+- [#2981](https://github.com/commercetools/ui-kit/pull/2981) [`c4c40e9`](https://github.com/commercetools/ui-kit/commit/c4c40e9c9e39ad1af30ccc4c535002d3103184d3) Thanks [@ddouglasz](https://github.com/ddouglasz)! - As the filters component is being built, there are some visual modifications that need to happen in the search-select-input to support the designs and ux of the filters pattern. most of these changes are dependent on new props to set these options when the search-select-input component is used as a filter component.
+
+### Patch Changes
+
+- Updated dependencies [[`36a4cc2`](https://github.com/commercetools/ui-kit/commit/36a4cc2a9afa342e2aa714eaad7296dcc29a1837), [`c4c40e9`](https://github.com/commercetools/ui-kit/commit/c4c40e9c9e39ad1af30ccc4c535002d3103184d3)]:
+  - @commercetools-uikit/spacings@19.17.0
+  - @commercetools-uikit/select-utils@19.17.0
+  - @commercetools-uikit/async-select-input@19.17.0
+  - @commercetools-uikit/design-system@19.17.0
+  - @commercetools-uikit/text@19.17.0
+  - @commercetools-uikit/utils@19.17.0
+
 ## 19.16.0
 
 ### Patch Changes

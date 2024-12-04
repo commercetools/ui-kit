@@ -1,5 +1,22 @@
 # @commercetools-uikit/filters
 
+## 19.17.0
+
+### Patch Changes
+
+- [#3003](https://github.com/commercetools/ui-kit/pull/3003) [`36a4cc2`](https://github.com/commercetools/ui-kit/commit/36a4cc2a9afa342e2aa714eaad7296dcc29a1837) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Bundles types with UI Kit preset packages, Filters package, QuickFilters package
+
+- Updated dependencies [[`36a4cc2`](https://github.com/commercetools/ui-kit/commit/36a4cc2a9afa342e2aa714eaad7296dcc29a1837)]:
+  - @commercetools-uikit/spacings@19.17.0
+  - @commercetools-uikit/icon-button@19.17.0
+  - @commercetools-uikit/secondary-icon-button@19.17.0
+  - @commercetools-uikit/select-input@19.17.0
+  - @commercetools-uikit/design-system@19.17.0
+  - @commercetools-uikit/flat-button@19.17.0
+  - @commercetools-uikit/collapsible-motion@19.17.0
+  - @commercetools-uikit/icons@19.17.0
+  - @commercetools-uikit/utils@19.17.0
+
 ## 19.16.0
 
 ### Minor Changes
