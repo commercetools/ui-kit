@@ -6,7 +6,7 @@
        "**/stories/**/*",
        "**/storybook/**/*",
        "**/*.stories.{jsx,tsx,js,ts}",
-       "**/*.{spec,test}.{jsx,tsx,js,ts}",
+       "**/*.{spec,test,proxies}.{jsx,tsx,js,ts}",
        "**/{__test__,tests}/**/*.{jsx,tsx,js,ts}",
        "**/*.visualroute.{jsx,tsx,js,ts}",
        "**/*.visualspec.{jsx,tsx,js,ts}",
@@ -14,12 +14,13 @@
        "**/_docs/**",
        "**/*messages.{js,ts}",
        "**/*styles.{js,ts}",
+       "**/generators/**",
        "**/visual-testing-app/**",
        "**/fixtures/**",
        "**/test/percy/**"
     ],
     "aliases": {
-        "@*": "src/*"
+        "@/*": "src/*"
     },
     "exports": {
         ".": "./src/index.ts",
@@ -28,653 +29,472 @@
     "workspaces": {
       "@commercetools-uikit/buttons": {
         "exports": {
-            ".": "./src/index.ts",
-            "./dist/commercetools-uikit-buttons.cjs.js": "./src/index.ts",
-            "./dist/commercetools-uikit-buttons.esm.js": "./src/index.ts"
+            ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/fields": {
         "exports": {
-            ".": "./src/index.ts",
-            "./dist/commercetools-uikit-fields.cjs.js": "./src/index.ts",
-            "./dist/commercetools-uikit-fields.esm.js": "./src/index.ts"
+            ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/inputs": {
         "exports": {
-            ".": "./src/index.ts",
-            "./dist/commercetools-uikit-inputs.cjs.js": "./src/index.ts",
-            "./dist/commercetools-uikit-inputs.esm.js": "./src/index.ts"
+            ".": "./src/index.ts"
         }
       },
       "@commercetools-frontend/ui-kit": {
         "exports": {
-            ".": "./src/index.ts",
-            "./dist/commercetools-frontend-ui-kit.cjs.js": "./src/index.ts",
-            "./dist/commercetools-frontend-ui-kit.esm.js": "./src/index.ts"
+            ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit": {
         "exports": {
-            ".": "./src/index.ts",
-            "./dist/commercetools-frontend-ui-kit.cjs.js": "./src/index.ts",
-            "./dist/commercetools-frontend-ui-kit.esm.js": "./src/index.ts"
+            ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/design-system": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-design-system.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-design-system.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/accessible-hidden": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-accessible-hidden.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-accessible-hidden.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/avatar": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-avatar.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-avatar.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/accessible-button": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-accessible-button.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-accessible-button.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/flat-button": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-flat-button.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-flat-button.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/icon-button": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-icon-button.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-icon-button.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/link-button": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-link-button.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-link-button.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/primary-button": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-primary-button.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-primary-button.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/secondary-button": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-secondary-button.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-secondary-button.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/secondary-icon-button": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-secondary-icon-button.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-secondary-icon-button.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/card": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-card.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-card.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/collapsible": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-collapsible.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-collapsible.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/collapsible-motion": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-collapsible-motion.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-collapsible-motion.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/collapsible-panel": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-collapsible-panel.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-collapsible-panel.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/constraints": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-constraints.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-constraints.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/data-table": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-data-table.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-data-table.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/data-table-manager": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-data-table-manager.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-data-table-manager.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/dropdown-menu": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-dropdown-menu.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-dropdown-menu.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/field-errors": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-field-errors.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-field-errors.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/field-label": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-field-label.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-field-label.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/field-warnings": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-field-warnings.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-field-warnings.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/async-creatable-select-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-async-creatable-select-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-async-creatable-select-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/async-select-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-async-select-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-async-select-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/creatable-select-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-creatable-select-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-creatable-select-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/date-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-date-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-date-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/date-range-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-date-range-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-date-range-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/date-time-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-date-time-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-date-time-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/localized-multiline-text-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-multiline-text-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-multiline-text-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/localized-text-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-text-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-text-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/money-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-money-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-money-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/multiline-text-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-multiline-text-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-multiline-text-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/number-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-number-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-number-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/password-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-password-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-password-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/radio-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-radio-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-radio-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/search-select-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-search-select-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-search-select-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/select-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-select-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-select-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/text-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-text-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-text-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/time-field": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-time-field.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-time-field.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/grid": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-grid.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-grid.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/icons": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-icons.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-icons.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/icons-custom-icon": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-icons-custom-icon.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-icons-custom-icon.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/icons-inline-svg": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-icons-inline-svg.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-icons-inline-svg.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/icons-leading-icon": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-icons-leading-icon.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-icons-leading-icon.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/async-creatable-select-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-async-creatable-select-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-async-creatable-select-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/async-select-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-async-select-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-async-select-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/checkbox-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-checkbox-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-checkbox-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/creatable-select-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-creatable-select-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-creatable-select-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/date-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-date-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-date-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/date-range-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-date-range-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-date-range-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/date-time-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-date-time-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-date-time-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/input-utils": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-input-utils.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-input-utils.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/localized-money-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-money-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-money-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/localized-multiline-text-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-multiline-text-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-multiline-text-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/localized-rich-text-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-rich-text-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-rich-text-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/localized-text-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-text-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-localized-text-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/money-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-money-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-money-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/multiline-text-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-multiline-text-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-multiline-text-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/number-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-number-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-number-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/password-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-password-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-password-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/radio-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-radio-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-radio-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/rich-text-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-rich-text-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-rich-text-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/rich-text-utils": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-rich-text-utils.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-rich-text-utils.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/search-select-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-search-select-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-search-select-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/search-text-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-search-text-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-search-text-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/select-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-select-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-select-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/select-utils": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-select-utils.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-select-utils.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/selectable-search-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-selectable-search-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-selectable-search-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/text-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-text-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-text-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/time-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-time-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-time-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/toggle-input": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-toggle-input.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-toggle-input.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/label": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-label.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-label.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/link": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-link.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-link.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/loading-spinner": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-loading-spinner.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-loading-spinner.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/messages": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-messages.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-messages.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/notifications": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-notifications.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-notifications.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/pagination": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-pagination.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-pagination.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/primary-action-dropdown": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-primary-action-dropdown.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-primary-action-dropdown.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/progress-bar": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-progress-bar.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-progress-bar.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/spacings-inline": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-spacings-inline.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-spacings-inline.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/spacings-inset": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-spacings-inset.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-spacings-inset.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/spacings-inset-squish": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-spacings-inset-squish.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-spacings-inset-squish.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/spacings-stack": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-spacings-stack.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-spacings-stack.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/stamp": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-stamp.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-stamp.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/tag": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-tag.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-tag.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/text": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-text.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-text.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/tooltip": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-tooltip.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-tooltip.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/view-switcher": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-view-switcher.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-view-switcher.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
         }
       },
       "@commercetools-uikit/filters": {
         "exports": {
-          ".": "./src/index.ts",
-          "./dist/commercetools-uikit-filters.cjs.js": "./src/index.ts",
-          "./dist/commercetools-uikit-filters.esm.js": "./src/index.ts"
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/quick-filters": {
+        "exports": {
+          ".": "./src/index.ts"
         }
       }
     }
