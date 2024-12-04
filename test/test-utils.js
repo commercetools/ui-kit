@@ -2,8 +2,7 @@
 
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { MemoryRouter } from 'react-router-dom';
 
 const getMessagesForLocale = (locale) => {
   switch (locale) {
@@ -24,26 +23,17 @@ const getMessagesForLocale = (locale) => {
 
 const customRender = (
   node,
-  {
-    locale = 'en',
-    route = '/',
-    history = createMemoryHistory({ initialEntries: [route] }),
-    ...rtlOptions
-  } = {}
+  { locale = 'en', route = '/', ...rtlOptions } = {}
 ) => ({
   ...render(
     <IntlProvider locale={locale} messages={getMessagesForLocale(locale)}>
-      <Router history={history}>{node}</Router>
+      <MemoryRouter initialEntries={[route]}>{node}</MemoryRouter>
     </IntlProvider>,
     rtlOptions
   ),
-  // adding `history` to the returned utilities to allow us
-  // to reference it in our tests (just try to avoid using
-  // this to test implementation details).
-  history,
 });
 
-// re-export everything
+// Re-export everything
 export {
   act,
   fireEvent,
@@ -53,5 +43,5 @@ export {
   within,
 } from '@testing-library/react';
 
-// override render method
+// Override render method
 export { customRender as render };

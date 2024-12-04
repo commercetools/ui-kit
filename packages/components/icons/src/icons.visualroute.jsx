@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { designTokens } from '@commercetools-uikit/design-system';
 import * as icons from '@commercetools-uikit/icons';
 import CustomIcon from '@commercetools-uikit/icons/custom-icon';
@@ -83,8 +83,9 @@ const renderIcon = (iconName, color, size) => {
 };
 
 export const component = () => (
-  <Switch>
-    <Route path={routePath} exact>
+  <Routes>
+    <Route path="/*"
+    element={
       <ul>
         {colors.map((color) => (
           <li key={`${routePath}/${color}`}>
@@ -106,10 +107,11 @@ export const component = () => (
           <a href={`${routePath}/custom-icon`}>{`${routePath}/custom-icon`}</a>
         </li>
       </ul>
-    </Route>
+    }
+    />
     {colors.map((color) => (
-      <Route key={color} path={`${routePath}/${color}`} exact>
-        <Suite>
+      <Route key={color} path={color}
+        element={<Suite>
           {sizes.map((size) => (
             <Spec
               key={size}
@@ -124,9 +126,11 @@ export const component = () => (
             </Spec>
           ))}
         </Suite>
-      </Route>
+        }
+      />
     ))}
-    <Route exact path={`${routePath}/inline-svg`}>
+    <Route path="inline-svg"
+    element={
       <Suite>
         <Spacings.Stack>
           {sizes.map((size) => (
@@ -151,8 +155,10 @@ export const component = () => (
           ))}
         </Spacings.Stack>
       </Suite>
-    </Route>
-    <Route exact path={`${routePath}/leading-icon`}>
+    }
+    />
+    <Route path="leading-icon"
+    element={
       <Suite>
         {leadingIconSizes.map((size) => (
           <Spec key={size} label={`Leading Icon - Size: ${size}`} omitPropsList>
@@ -202,8 +208,10 @@ export const component = () => (
           </LeadingIconList>
         </Spec>
       </Suite>
-    </Route>
-    <Route exact path={`${routePath}/custom-icon`}>
+    }
+    />
+    <Route path="custom-icon"
+    element={
       <Suite>
         <Spec label={`Custom Icon - React Element`} omitPropsList>
           <LeadingIconList label={`Custom Icon - React Element`}>
@@ -246,6 +254,7 @@ export const component = () => (
           </LeadingIconList>
         </Spec>
       </Suite>
-    </Route>
-  </Switch>
+    }
+    />
+  </Routes>
 );

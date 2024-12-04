@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { AsyncSelectField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
@@ -126,10 +126,10 @@ const DefaultRoute = () => (
 );
 
 const InteractionRoute = () => (
-  <Switch>
+  <Routes>
     <Route
-      path={`${routePath}/interaction/without-default-options`}
-      render={() => (
+      path="without-default-options/*"
+      element={
         <Suite>
           <Spec omitPropsList label="with defaultOptions disabled">
             <AsyncSelectField
@@ -143,11 +143,11 @@ const InteractionRoute = () => (
             />
           </Spec>
         </Suite>
-      )}
+      }
     />
     <Route
-      path={`${routePath}/interaction`}
-      render={() => (
+      path="/*"
+      element={
         <Suite>
           <Spec omitPropsList label="with defaultOptions enabled">
             <AsyncSelectField
@@ -161,14 +161,14 @@ const InteractionRoute = () => (
             />
           </Spec>
         </Suite>
-      )}
+      }
     />
-  </Switch>
+  </Routes>
 );
 
 export const component = () => (
-  <Switch>
-    <Route path={`${routePath}/interaction`} component={InteractionRoute} />
-    <Route exact path={routePath} component={DefaultRoute} />
-  </Switch>
+  <Routes>
+    <Route path="interaction/*" element={<InteractionRoute />} />
+    <Route path="/*" element={<DefaultRoute />} />
+  </Routes>
 );

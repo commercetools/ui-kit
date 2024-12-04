@@ -1,4 +1,3 @@
-import type { LocationDescriptor } from 'history';
 import type { MessageDescriptor } from 'react-intl';
 import {
   Children,
@@ -7,7 +6,7 @@ import {
   type KeyboardEvent,
 } from 'react';
 import styled from '@emotion/styled';
-import { Link as ReactRouterLink } from 'react-router-dom';
+import { LinkProps, Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -36,9 +35,9 @@ export type TLinkProps = {
    */
   isExternal: boolean;
   /**
-   * The URL that the Link should point to.
+   * The relative URL that the Link should point to.
    */
-  to: string | LocationDescriptor;
+  to: LinkProps['to'];
   /**
    * Color of the link
    */

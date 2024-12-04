@@ -5,6 +5,7 @@ import {
   fireEvent,
   waitFor,
 } from '../../../../../test/test-utils';
+import { Routes, Route } from 'react-router-dom';
 import LinkButton from './link-button';
 
 const createTestProps = (custom) => ({
@@ -38,10 +39,15 @@ describe('rendering', () => {
     expect(screen.getByLabelText('test-button')).toBeEnabled();
   });
   it('should navigate to link when clicked', async () => {
-    const { history } = render(<LinkButton {...props} />);
+    render(
+      <Routes>
+        <Route path="/" element={<LinkButton {...props} />} />
+        <Route path="/foo/bar" element={<div>Foo Bar Page</div>} />
+      </Routes>
+    );
     fireEvent.click(screen.getByLabelText('test-button'));
     await waitFor(() => {
-      expect(history.location.pathname).toBe('/foo/bar');
+      expect(screen.getByText('Foo Bar Page')).toBeInTheDocument();
     });
   });
   it('should pass aria attributes"', () => {
@@ -52,10 +58,18 @@ describe('rendering', () => {
     );
   });
   it('should prevent the navigation when "disabled"', async () => {
-    const { history } = render(<LinkButton {...props} isDisabled={true} />);
+    render(
+      <Routes>
+        <Route path="/" element={<LinkButton {...props} isDisabled={true} />} />
+        <Route path="/foo/bar" element={<div>Foo Bar Page</div>} />
+      </Routes>
+    );
     fireEvent.click(screen.getByLabelText('test-button'));
     await waitFor(() => {
-      expect(history.location.pathname).toBe('/');
+      expect(screen.getByLabelText('test-button')).toBeInTheDocument();
+    });
+    await waitFor(() => {
+      expect(screen.queryByText('Foo Bar Page')).not.toBeInTheDocument();
     });
   });
   it('should render icon', () => {
