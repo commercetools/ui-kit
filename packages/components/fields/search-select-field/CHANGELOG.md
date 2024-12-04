@@ -1,5 +1,20 @@
 # @commercetools-uikit/search-select-field
 
+## 19.17.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.17.1
+  - @commercetools-uikit/constraints@19.17.1
+  - @commercetools-uikit/field-errors@19.17.1
+  - @commercetools-uikit/field-label@19.17.1
+  - @commercetools-uikit/field-warnings@19.17.1
+  - @commercetools-uikit/search-select-input@19.17.1
+  - @commercetools-uikit/hooks@19.17.1
+  - @commercetools-uikit/utils@19.17.1
+  - @commercetools-uikit/spacings@19.17.1
+
 ## 19.17.0
 
 ### Patch Changes
