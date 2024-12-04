@@ -83,11 +83,11 @@ const Card = (props: TCardProps) => {
       // Overrides the default link styles
       display: block;
       // Disables link text styling
-      color: inherit;
       // Changes the opacity of the content, not the card itself
       & > div {
         opacity: ${shouldBeDisabled ? 0.5 : 1};
       }
+      background-color: ${designTokens.colorPrimary} !important;
     `,
     className: props.className,
   };
