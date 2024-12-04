@@ -78,7 +78,3 @@ jobs:
         # This results in the script to run and fail in case of error, but no status
         # code is reported to the github PR.
         #   BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
-      - name: Send component usage to omlet
-        run: yarn run omlet-scan
-        env:
-          OMLET_TOKEN: ${{ secrets.OMLET_TOKEN }}
