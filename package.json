@@ -39,7 +39,7 @@
     "visual-testing-app:preview": "yarn workspace visual-testing-app preview",
     "labels:sync": "github-labels sync",
     "typecheck": "tsc --noEmit --skipLibCheck",
-    "omlet-scan": "yarn omlet analyze --hook-script ./scripts/omlet-hook-script.js"
+    "omlet:scan": "yarn omlet analyze --hook-script ./scripts/omlet-hook-script.js"
   },
   "workspaces": [
     "design-system",
