@@ -3,7 +3,7 @@ import Inset from '@commercetools-uikit/spacings-inset';
 import InsetSquish from '@commercetools-uikit/spacings-inset-squish';
 import Stack from '@commercetools-uikit/spacings-stack';
 
-type TSpacings = {
+export type TSpacings = {
   Inline: typeof Inline;
   Inset: typeof Inset;
   InsetSquish: typeof InsetSquish;

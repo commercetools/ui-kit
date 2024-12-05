@@ -1,5 +1,33 @@
 # @commercetools-uikit/data-table
 
+## 19.17.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.17.1
+  - @commercetools-uikit/accessible-button@19.17.1
+  - @commercetools-uikit/secondary-icon-button@19.17.1
+  - @commercetools-uikit/data-table-manager@19.17.1
+  - @commercetools-uikit/icons@19.17.1
+  - @commercetools-uikit/hooks@19.17.1
+  - @commercetools-uikit/utils@19.17.1
+
+## 19.17.0
+
+### Patch Changes
+
+- [#2989](https://github.com/commercetools/ui-kit/pull/2989) [`ca99231`](https://github.com/commercetools/ui-kit/commit/ca99231ebc9b6aae7668a7d85fceda9cdbdebb0c) Thanks [@ddouglasz](https://github.com/ddouglasz)! - data-table footer should take up full width of the data-table in all browsers.
+
+- Updated dependencies []:
+  - @commercetools-uikit/secondary-icon-button@19.17.0
+  - @commercetools-uikit/data-table-manager@19.17.0
+  - @commercetools-uikit/design-system@19.17.0
+  - @commercetools-uikit/accessible-button@19.17.0
+  - @commercetools-uikit/icons@19.17.0
+  - @commercetools-uikit/hooks@19.17.0
+  - @commercetools-uikit/utils@19.17.0
+
 ## 19.16.0
 
 ### Patch Changes

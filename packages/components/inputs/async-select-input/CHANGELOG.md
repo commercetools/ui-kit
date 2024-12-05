@@ -1,5 +1,33 @@
 # @commercetools-uikit/async-select-input
 
+## 19.17.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.17.1
+  - @commercetools-uikit/constraints@19.17.1
+  - @commercetools-uikit/icons@19.17.1
+  - @commercetools-uikit/select-utils@19.17.1
+  - @commercetools-uikit/loading-spinner@19.17.1
+  - @commercetools-uikit/text@19.17.1
+  - @commercetools-uikit/utils@19.17.1
+  - @commercetools-uikit/spacings@19.17.1
+
+## 19.17.0
+
+### Patch Changes
+
+- Updated dependencies [[`36a4cc2`](https://github.com/commercetools/ui-kit/commit/36a4cc2a9afa342e2aa714eaad7296dcc29a1837), [`c4c40e9`](https://github.com/commercetools/ui-kit/commit/c4c40e9c9e39ad1af30ccc4c535002d3103184d3)]:
+  - @commercetools-uikit/spacings@19.17.0
+  - @commercetools-uikit/select-utils@19.17.0
+  - @commercetools-uikit/design-system@19.17.0
+  - @commercetools-uikit/constraints@19.17.0
+  - @commercetools-uikit/icons@19.17.0
+  - @commercetools-uikit/loading-spinner@19.17.0
+  - @commercetools-uikit/text@19.17.0
+  - @commercetools-uikit/utils@19.17.0
+
 ## 19.16.0
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/grid",
   "description": "The Grid component can be used to implement layouts using CSS-Grid.",
-  "version": "19.16.0",
+  "version": "19.17.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

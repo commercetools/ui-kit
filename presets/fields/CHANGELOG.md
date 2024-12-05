@@ -1,5 +1,53 @@
 # @commercetools-uikit/fields
 
+## 19.17.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@19.17.1
+  - @commercetools-uikit/async-select-field@19.17.1
+  - @commercetools-uikit/creatable-select-field@19.17.1
+  - @commercetools-uikit/date-field@19.17.1
+  - @commercetools-uikit/date-range-field@19.17.1
+  - @commercetools-uikit/date-time-field@19.17.1
+  - @commercetools-uikit/localized-multiline-text-field@19.17.1
+  - @commercetools-uikit/localized-text-field@19.17.1
+  - @commercetools-uikit/money-field@19.17.1
+  - @commercetools-uikit/multiline-text-field@19.17.1
+  - @commercetools-uikit/number-field@19.17.1
+  - @commercetools-uikit/password-field@19.17.1
+  - @commercetools-uikit/radio-field@19.17.1
+  - @commercetools-uikit/search-select-field@19.17.1
+  - @commercetools-uikit/select-field@19.17.1
+  - @commercetools-uikit/text-field@19.17.1
+  - @commercetools-uikit/time-field@19.17.1
+
+## 19.17.0
+
+### Patch Changes
+
+- [#3003](https://github.com/commercetools/ui-kit/pull/3003) [`36a4cc2`](https://github.com/commercetools/ui-kit/commit/36a4cc2a9afa342e2aa714eaad7296dcc29a1837) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Bundles types with UI Kit preset packages, Filters package, QuickFilters package
+
+- Updated dependencies [[`73a1d28`](https://github.com/commercetools/ui-kit/commit/73a1d281bae8443bad3a20dd9ddbf340e6035ef0)]:
+  - @commercetools-uikit/text-field@19.17.0
+  - @commercetools-uikit/async-creatable-select-field@19.17.0
+  - @commercetools-uikit/async-select-field@19.17.0
+  - @commercetools-uikit/creatable-select-field@19.17.0
+  - @commercetools-uikit/date-field@19.17.0
+  - @commercetools-uikit/date-range-field@19.17.0
+  - @commercetools-uikit/date-time-field@19.17.0
+  - @commercetools-uikit/localized-multiline-text-field@19.17.0
+  - @commercetools-uikit/localized-text-field@19.17.0
+  - @commercetools-uikit/money-field@19.17.0
+  - @commercetools-uikit/multiline-text-field@19.17.0
+  - @commercetools-uikit/search-select-field@19.17.0
+  - @commercetools-uikit/select-field@19.17.0
+  - @commercetools-uikit/number-field@19.17.0
+  - @commercetools-uikit/password-field@19.17.0
+  - @commercetools-uikit/radio-field@19.17.0
+  - @commercetools-uikit/time-field@19.17.0
+
 ## 19.16.0
 
 ### Patch Changes

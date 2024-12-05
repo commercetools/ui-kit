@@ -30,6 +30,14 @@ jobs:
           # https://github.community/t/action-does-not-trigger-another-on-push-tag-action/17148/8
           token: ${{ steps.generate_github_token.outputs.token }}
 
+      - name: Validate branch name
+        run: |
+          BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
+          if [[ ! "$BRANCH_NAME" =~ ^preview/[a-zA-Z0-9_-]+$ ]]; then
+            echo "Ignoring PR because of the branch name. Exiting workflow."
+            exit 1
+          fi
+
       - name: Setup Node (uses version in .nvmrc)
         uses: actions/setup-node@v4
         with:

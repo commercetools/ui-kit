@@ -39,7 +39,7 @@ interface TAddFilterOptionGroup extends TOptionObject {
   key: string;
 }
 
-type TAppliedFilter = {
+export type TAppliedFilter = {
   /**
    * unique identifier for the filter
    */
@@ -106,7 +106,7 @@ export type TFilterConfiguration = {
   isDisabled?: boolean;
 };
 
-type TFilterGroupConfiguration = {
+export type TFilterGroupConfiguration = {
   /**
    * unique identifier for the filter group
    */

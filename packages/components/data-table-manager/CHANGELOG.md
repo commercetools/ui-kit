@@ -1,5 +1,61 @@
 # @commercetools-uikit/data-table-manager
 
+## 19.17.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.17.1
+  - @commercetools-uikit/accessible-hidden@19.17.1
+  - @commercetools-uikit/accessible-button@19.17.1
+  - @commercetools-uikit/icon-button@19.17.1
+  - @commercetools-uikit/primary-button@19.17.1
+  - @commercetools-uikit/secondary-button@19.17.1
+  - @commercetools-uikit/secondary-icon-button@19.17.1
+  - @commercetools-uikit/card@19.17.1
+  - @commercetools-uikit/collapsible-motion@19.17.1
+  - @commercetools-uikit/dropdown-menu@19.17.1
+  - @commercetools-uikit/field-label@19.17.1
+  - @commercetools-uikit/grid@19.17.1
+  - @commercetools-uikit/icons@19.17.1
+  - @commercetools-uikit/async-select-input@19.17.1
+  - @commercetools-uikit/radio-input@19.17.1
+  - @commercetools-uikit/select-input@19.17.1
+  - @commercetools-uikit/tag@19.17.1
+  - @commercetools-uikit/text@19.17.1
+  - @commercetools-uikit/tooltip@19.17.1
+  - @commercetools-uikit/hooks@19.17.1
+  - @commercetools-uikit/utils@19.17.1
+  - @commercetools-uikit/spacings@19.17.1
+
+## 19.17.0
+
+### Patch Changes
+
+- Updated dependencies [[`36a4cc2`](https://github.com/commercetools/ui-kit/commit/36a4cc2a9afa342e2aa714eaad7296dcc29a1837)]:
+  - @commercetools-uikit/spacings@19.17.0
+  - @commercetools-uikit/icon-button@19.17.0
+  - @commercetools-uikit/secondary-icon-button@19.17.0
+  - @commercetools-uikit/async-select-input@19.17.0
+  - @commercetools-uikit/tag@19.17.0
+  - @commercetools-uikit/select-input@19.17.0
+  - @commercetools-uikit/field-label@19.17.0
+  - @commercetools-uikit/design-system@19.17.0
+  - @commercetools-uikit/accessible-hidden@19.17.0
+  - @commercetools-uikit/accessible-button@19.17.0
+  - @commercetools-uikit/primary-button@19.17.0
+  - @commercetools-uikit/secondary-button@19.17.0
+  - @commercetools-uikit/card@19.17.0
+  - @commercetools-uikit/collapsible-motion@19.17.0
+  - @commercetools-uikit/dropdown-menu@19.17.0
+  - @commercetools-uikit/grid@19.17.0
+  - @commercetools-uikit/icons@19.17.0
+  - @commercetools-uikit/radio-input@19.17.0
+  - @commercetools-uikit/text@19.17.0
+  - @commercetools-uikit/tooltip@19.17.0
+  - @commercetools-uikit/hooks@19.17.0
+  - @commercetools-uikit/utils@19.17.0
+
 ## 19.16.0
 
 ### Patch Changes
