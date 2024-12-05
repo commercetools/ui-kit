@@ -1,0 +1,505 @@
+{
+    "ignore": [
+       "**/dist/**",
+       "**/node_modules/**",
+       "**/*.d.ts",
+       "**/stories/**/*",
+       "**/storybook/**/*",
+       "**/*.stories.{jsx,tsx,js,ts}",
+       "**/*.{spec,test,proxies}.{jsx,tsx,js,ts}",
+       "**/{__test__,tests}/**/*.{jsx,tsx,js,ts}",
+       "**/*.visualroute.{jsx,tsx,js,ts}",
+       "**/*.visualspec.{jsx,tsx,js,ts}",
+       "**/docs/**",
+       "**/_docs/**",
+       "**/*messages.{js,ts}",
+       "**/*styles.{js,ts}",
+       "**/generators/**",
+       "**/visual-testing-app/**",
+       "**/fixtures/**",
+       "**/test/percy/**"
+    ],
+    "aliases": {
+        "@/*": "src/*"
+    },
+    "exports": {
+        ".": "./src/index.ts",
+        "dist/*": "src/*"
+    },
+    "workspaces": {
+      "@commercetools-uikit/buttons": {
+        "exports": {
+            ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/fields": {
+        "exports": {
+            ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/inputs": {
+        "exports": {
+            ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-frontend/ui-kit": {
+        "exports": {
+            ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit": {
+        "exports": {
+            ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/design-system": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/accessible-hidden": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/avatar": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/accessible-button": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/flat-button": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/icon-button": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/link-button": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/primary-button": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/secondary-button": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/secondary-icon-button": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/card": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/collapsible": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/collapsible-motion": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/collapsible-panel": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/constraints": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/data-table": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/data-table-manager": {
+        "exports": {
+          ".": "./src/index.ts",
+          "column-settings-manager": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/dropdown-menu": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/field-errors": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/field-label": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/field-warnings": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/async-creatable-select-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/async-select-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/creatable-select-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/date-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/date-range-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/date-time-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/localized-multiline-text-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/localized-text-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/money-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/multiline-text-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/number-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/password-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/radio-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/search-select-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/select-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/text-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/time-field": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/grid": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/icons": {
+        "exports": {
+          ".": "./src/index.ts",
+          "inline-svg": "./src/inline-svg/index.ts",
+          "leading-icon": "./src/leading-icon/index.ts",
+          "custom-icon": "./src/custom-icon/index.ts"
+        }
+      },
+      "@commercetools-uikit/icons-custom-icon": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/icons-inline-svg": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/icons-leading-icon": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/async-creatable-select-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/async-select-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/checkbox-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/creatable-select-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/date-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/date-range-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/date-time-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/input-utils": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/localized-money-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/localized-multiline-text-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/localized-rich-text-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/localized-text-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/money-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/multiline-text-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/number-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/password-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/radio-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/rich-text-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/rich-text-utils": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/search-select-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/search-text-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/select-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/select-utils": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/selectable-search-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/text-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/time-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/toggle-input": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/label": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/link": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/loading-spinner": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/messages": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/notifications": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/pagination": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/primary-action-dropdown": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/progress-bar": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/spacings-inline": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/spacings-inset": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/spacings-inset-squish": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/spacings-stack": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/stamp": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/tag": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/text": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/tooltip": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/view-switcher": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/filters": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      },
+      "@commercetools-uikit/quick-filters": {
+        "exports": {
+          ".": "./src/index.ts"
+        }
+      }
+    }
+  }
