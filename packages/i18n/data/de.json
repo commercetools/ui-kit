@@ -1,7 +1,7 @@
 {
   "UIKit.AddFilterButton.addFilterButtonLabel": {
     "developer_comment": "Label for the add filter button",
-    "string": "Add filter"
+    "string": "Filter hinzufügen"
   },
   "UIKit.CalendarHeader.nextMonthTooltip": {
     "developer_comment": "Tooltip title when user hovers the next month button",
@@ -29,7 +29,7 @@
   },
   "UIKit.ClearAllFiltersButton.clearAllFiltersButtonLabel": {
     "developer_comment": "Label for the clear all filters button",
-    "string": "Clear all"
+    "string": "Alle löschen"
   },
   "UIKit.ClearButton.clearButtonLabel": {
     "developer_comment": "Label for the clear button",
@@ -129,7 +129,7 @@
   },
   "UIKit.FiltersButton.filtersButtonLabel": {
     "developer_comment": "Label for the filters button",
-    "string": "Filters"
+    "string": "Filter"
   },
   "UIKit.LocalizedMoneyInput.hide": {
     "developer_comment": "Hide currencies button",
