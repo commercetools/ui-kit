@@ -2554,7 +2554,7 @@ __metadata:
     "@commercetools-uikit/utils": 19.17.1
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    "@types/react-is": ^17.0.3
+    "@types/react-is": ^18.0.0
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
@@ -9265,12 +9265,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-is@npm:^17.0.3":
-  version: 17.0.7
-  resolution: "@types/react-is@npm:17.0.7"
+"@types/react-is@npm:^18.0.0":
+  version: 18.3.0
+  resolution: "@types/react-is@npm:18.3.0"
   dependencies:
-    "@types/react": ^17
-  checksum: a8f11067795dbcf54a54d5fdc1977816be155fd04051e850f7c85dbbad83897f846dd3e474d56bd12a7055e0ae1825185f41c6f56342fd5cd31a08df3b3fbfff
+    "@types/react": "*"
+  checksum: c7c9303a76902ecc2bd38a27047da8ffb9d5a19fe6e1f785e13698e7641e7afff0c6a49ddf1c22fb20b58f4fb689d83a887641f62db4ec2fdea3d04124a84023
   languageName: node
   linkType: hard
 
