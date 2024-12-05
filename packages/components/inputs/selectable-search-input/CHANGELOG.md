@@ -1,5 +1,20 @@
 # @commercetools-uikit/selectable-search-input
 
+## 19.18.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.18.0
+  - @commercetools-uikit/icon-button@19.18.0
+  - @commercetools-uikit/secondary-icon-button@19.18.0
+  - @commercetools-uikit/constraints@19.18.0
+  - @commercetools-uikit/icons@19.18.0
+  - @commercetools-uikit/input-utils@19.18.0
+  - @commercetools-uikit/select-utils@19.18.0
+  - @commercetools-uikit/hooks@19.18.0
+  - @commercetools-uikit/utils@19.18.0
+
 ## 19.17.1
 
 ### Patch Changes
