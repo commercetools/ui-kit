@@ -18,7 +18,6 @@ describe('getLocalizedDateTimeFormatPattern', () => {
     es: 'DD/MM/AAAA',
     'fr-FR': 'JJ/MM/AAAA',
     'pt-BR': 'DD/MM/AAAA',
-    'zh-CN': '年/月/日',
     xx: 'MM/DD/YYYY', // unknown locale returns the default pattern moment provides
   };
 
@@ -30,7 +29,6 @@ describe('getLocalizedDateTimeFormatPattern', () => {
     es: 'HH:mm',
     'fr-FR': 'HH:mm',
     'pt-BR': 'HH:mm',
-    'zh-CN': '小时:分钟',
     xx: 'h:mm A', // unknown locale returns the default pattern moment provides
   };
 
@@ -42,7 +40,6 @@ describe('getLocalizedDateTimeFormatPattern', () => {
     es: 'DD/MM/AAAA - HH:mm',
     'fr-FR': 'JJ/MM/AAAA - HH:mm',
     'pt-BR': 'DD/MM/AAAA - HH:mm',
-    'zh-CN': '年/月/日 - 小时:分钟',
     xx: 'MM/DD/YYYY - h:mm A', // unknown locale returns the default pattern moment provides
   };
 

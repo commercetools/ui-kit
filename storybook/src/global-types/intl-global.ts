@@ -1,4 +1,4 @@
-export const locales = ['en', 'en-GB', 'de', 'es', 'fr-FR', 'zh-CN'];
+export const locales = ['en', 'en-GB', 'de', 'es', 'fr-FR'];
 
 const namifyLocale = (locale: string) => {
   switch (locale) {
@@ -12,8 +12,6 @@ const namifyLocale = (locale: string) => {
       return 'Deutsch';
     case 'fr-FR':
       return 'Français';
-    case 'zh-CN':
-      return '简化字';
     default:
       return locale;
   }
