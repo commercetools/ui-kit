@@ -1,7 +1,7 @@
 {
   "UIKit.AddFilterButton.addFilterButtonLabel": {
     "developer_comment": "Label for the add filter button",
-    "string": "Add filter"
+    "string": "Adicionar filtro"
   },
   "UIKit.CalendarHeader.nextMonthTooltip": {
     "developer_comment": "Tooltip title when user hovers the next month button",
@@ -29,7 +29,7 @@
   },
   "UIKit.ClearAllFiltersButton.clearAllFiltersButtonLabel": {
     "developer_comment": "Label for the clear all filters button",
-    "string": "Clear all"
+    "string": "Limpar tudo"
   },
   "UIKit.ClearButton.clearButtonLabel": {
     "developer_comment": "Label for the clear button",
@@ -129,7 +129,7 @@
   },
   "UIKit.FiltersButton.filtersButtonLabel": {
     "developer_comment": "Label for the filters button",
-    "string": "Filters"
+    "string": "Filtros"
   },
   "UIKit.LocalizedMoneyInput.hide": {
     "developer_comment": "Hide currencies button",
@@ -317,7 +317,7 @@
   },
   "UIKit.SelectInput.selectInputAsFilterPlaceholder": {
     "developer_comment": "Default input placeholder text when used as filter",
-    "string": "Search"
+    "string": "Pesquisa"
   },
   "UIKit.TimeInput.placeholder": {
     "developer_comment": "Placeholder for time input",
