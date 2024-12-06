@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-local/storybook",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "@emotion/css": "^11.10.5",

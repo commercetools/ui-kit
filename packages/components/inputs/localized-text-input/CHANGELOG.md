@@ -1,5 +1,23 @@
 # @commercetools-uikit/localized-text-input
 
+## 19.18.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.18.0
+  - @commercetools-uikit/flat-button@19.18.0
+  - @commercetools-uikit/constraints@19.18.0
+  - @commercetools-uikit/icons@19.18.0
+  - @commercetools-uikit/input-utils@19.18.0
+  - @commercetools-uikit/text-input@19.18.0
+  - @commercetools-uikit/messages@19.18.0
+  - @commercetools-uikit/spacings-stack@19.18.0
+  - @commercetools-uikit/text@19.18.0
+  - @commercetools-uikit/hooks@19.18.0
+  - @commercetools-uikit/localized-utils@19.18.0
+  - @commercetools-uikit/utils@19.18.0
+
 ## 19.17.1
 
 ### Patch Changes
