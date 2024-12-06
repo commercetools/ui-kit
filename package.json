@@ -101,6 +101,7 @@
     "@commercetools/github-labels": "1.1.0",
     "@commitlint/cli": "19.6.1",
     "@commitlint/config-conventional": "19.6.0",
+    "@figma/code-connect": "^1.2.4",
     "@formatjs/cli": "6.3.14",
     "@formatjs/intl-relativetimeformat": "11.4.8",
     "@manypkg/cli": "0.23.0",
