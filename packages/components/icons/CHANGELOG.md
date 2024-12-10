@@ -1,5 +1,17 @@
 # @commercetools-uikit/icons
 
+## 19.19.0
+
+### Minor Changes
+
+- [#3009](https://github.com/commercetools/ui-kit/pull/3009) [`7b1a6ce`](https://github.com/commercetools/ui-kit/commit/7b1a6cedff51db8bbecddab241f516490ee37428) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Add icon-utils to design-system package so that icon styling boilerplate can be standardized and reduced, remove extraneous index.tsx in favor of index.ts files in each generated icon file"
+
+### Patch Changes
+
+- Updated dependencies [[`7b1a6ce`](https://github.com/commercetools/ui-kit/commit/7b1a6cedff51db8bbecddab241f516490ee37428)]:
+  - @commercetools-uikit/design-system@19.19.0
+  - @commercetools-uikit/utils@19.19.0
+
 ## 19.18.0
 
 ### Patch Changes
