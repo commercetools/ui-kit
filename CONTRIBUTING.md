@@ -123,7 +123,7 @@ If you want to modify an existing translation, you will need to manually edit th
 To add new icons in the `@commercetools-uikit/icons` package:
 
 1. Add the raw SVG file to the `packages/components/icons/src/svg` folder. Make sure the file name ends with `.react.svg`.
-2. Run the `yarn generate-icons` command to generate the React component files. The components are generated using the `svgo` CLI and the template file `packages/components/icons/src/templates/icon.styles.tsx`.
+2. Run the `yarn generate-icons` command to generate the React component files. The components are generated using the `svgr` CLI and the template file in `svgr/config.js`
 
 ## Adding changesets
 

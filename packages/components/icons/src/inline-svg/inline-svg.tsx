@@ -1,5 +1,3 @@
-import type { Props } from '../templates/icon.styles';
-
 import {
   cloneElement,
   isValidElement,
@@ -10,9 +8,12 @@ import DOMPurify from 'dompurify';
 import convert from 'react-from-dom';
 import { ClassNames } from '@emotion/react';
 import { canUseDOM } from '@commercetools-uikit/utils';
-import { getIconStyles } from '../templates/icon.styles';
+import {
+  getIconStyles,
+  type TIconProps,
+} from '@commercetools-uikit/design-system';
 
-export type InlineSvgProps = Props & {
+export type InlineSvgProps = TIconProps & {
   data: string;
 };
 
