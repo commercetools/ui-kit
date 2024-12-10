@@ -7,5 +7,6 @@ export {
 export { ThemeProvider, useTheme, withThemeContext } from './theme-provider';
 export * from './export-types';
 export * from './utils';
+export * from './icon-utils';
 
 export { default as version } from './version';
