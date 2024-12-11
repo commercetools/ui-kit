@@ -21,7 +21,7 @@ const SvgTruck = (props: TSVGProps) => (
 );
 SvgTruck.displayName = 'SvgTruck';
 const TruckIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgTruck {...props} className={createClass(getIconStyles(props))} />
     )}

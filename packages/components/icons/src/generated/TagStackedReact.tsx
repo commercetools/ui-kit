@@ -24,7 +24,7 @@ const SvgTagStacked = (props: TSVGProps) => (
 );
 SvgTagStacked.displayName = 'SvgTagStacked';
 const TagStackedIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgTagStacked {...props} className={createClass(getIconStyles(props))} />
     )}

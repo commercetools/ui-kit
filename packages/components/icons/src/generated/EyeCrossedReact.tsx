@@ -21,7 +21,7 @@ const SvgEyeCrossed = (props: TSVGProps) => (
 );
 SvgEyeCrossed.displayName = 'SvgEyeCrossed';
 const EyeCrossedIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgEyeCrossed {...props} className={createClass(getIconStyles(props))} />
     )}

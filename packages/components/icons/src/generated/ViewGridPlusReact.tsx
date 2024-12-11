@@ -21,7 +21,7 @@ const SvgViewGridPlus = (props: TSVGProps) => (
 );
 SvgViewGridPlus.displayName = 'SvgViewGridPlus';
 const ViewGridPlusIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgViewGridPlus
         {...props}

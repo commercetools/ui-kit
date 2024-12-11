@@ -32,7 +32,7 @@ const SvgMoreStyles = (props: TSVGProps) => (
 );
 SvgMoreStyles.displayName = 'SvgMoreStyles';
 const MoreStylesIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgMoreStyles {...props} className={createClass(getIconStyles(props))} />
     )}

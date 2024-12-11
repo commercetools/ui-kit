@@ -21,7 +21,7 @@ const SvgMinimize = (props: TSVGProps) => (
 );
 SvgMinimize.displayName = 'SvgMinimize';
 const MinimizeIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgMinimize {...props} className={createClass(getIconStyles(props))} />
     )}

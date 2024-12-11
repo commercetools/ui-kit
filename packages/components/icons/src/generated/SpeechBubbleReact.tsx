@@ -21,7 +21,7 @@ const SvgSpeechBubble = (props: TSVGProps) => (
 );
 SvgSpeechBubble.displayName = 'SvgSpeechBubble';
 const SpeechBubbleIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSpeechBubble
         {...props}

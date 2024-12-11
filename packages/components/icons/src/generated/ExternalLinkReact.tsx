@@ -21,7 +21,7 @@ const SvgExternalLink = (props: TSVGProps) => (
 );
 SvgExternalLink.displayName = 'SvgExternalLink';
 const ExternalLinkIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgExternalLink
         {...props}

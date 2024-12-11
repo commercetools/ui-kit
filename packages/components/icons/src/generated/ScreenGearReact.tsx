@@ -21,7 +21,7 @@ const SvgScreenGear = (props: TSVGProps) => (
 );
 SvgScreenGear.displayName = 'SvgScreenGear';
 const ScreenGearIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgScreenGear {...props} className={createClass(getIconStyles(props))} />
     )}

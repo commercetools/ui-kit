@@ -24,7 +24,7 @@ const SvgAngleThinLeft = (props: TSVGProps) => (
 );
 SvgAngleThinLeft.displayName = 'SvgAngleThinLeft';
 const AngleThinLeftIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgAngleThinLeft
         {...props}

@@ -25,7 +25,7 @@ const SvgExpandFull = (props: TSVGProps) => (
 );
 SvgExpandFull.displayName = 'SvgExpandFull';
 const ExpandFullIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgExpandFull {...props} className={createClass(getIconStyles(props))} />
     )}

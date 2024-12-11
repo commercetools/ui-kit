@@ -21,7 +21,7 @@ const SvgStar = (props: TSVGProps) => (
 );
 SvgStar.displayName = 'SvgStar';
 const StarIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgStar {...props} className={createClass(getIconStyles(props))} />
     )}

@@ -21,7 +21,7 @@ const SvgFlame = (props: TSVGProps) => (
 );
 SvgFlame.displayName = 'SvgFlame';
 const FlameIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgFlame {...props} className={createClass(getIconStyles(props))} />
     )}

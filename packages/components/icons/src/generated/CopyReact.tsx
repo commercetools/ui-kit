@@ -21,7 +21,7 @@ const SvgCopy = (props: TSVGProps) => (
 );
 SvgCopy.displayName = 'SvgCopy';
 const CopyIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCopy {...props} className={createClass(getIconStyles(props))} />
     )}

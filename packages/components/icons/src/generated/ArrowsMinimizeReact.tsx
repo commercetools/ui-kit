@@ -25,7 +25,7 @@ const SvgArrowsMinimize = (props: TSVGProps) => (
 );
 SvgArrowsMinimize.displayName = 'SvgArrowsMinimize';
 const ArrowsMinimizeIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgArrowsMinimize
         {...props}

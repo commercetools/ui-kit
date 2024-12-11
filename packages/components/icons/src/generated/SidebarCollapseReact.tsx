@@ -35,7 +35,7 @@ const SvgSidebarCollapse = (props: TSVGProps) => (
 );
 SvgSidebarCollapse.displayName = 'SvgSidebarCollapse';
 const SidebarCollapseIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSidebarCollapse
         {...props}

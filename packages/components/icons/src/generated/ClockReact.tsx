@@ -21,7 +21,7 @@ const SvgClock = (props: TSVGProps) => (
 );
 SvgClock.displayName = 'SvgClock';
 const ClockIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgClock {...props} className={createClass(getIconStyles(props))} />
     )}

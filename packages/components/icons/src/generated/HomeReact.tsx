@@ -21,7 +21,7 @@ const SvgHome = (props: TSVGProps) => (
 );
 SvgHome.displayName = 'SvgHome';
 const HomeIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgHome {...props} className={createClass(getIconStyles(props))} />
     )}

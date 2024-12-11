@@ -27,7 +27,7 @@ const SvgSuperscript = (props: TSVGProps) => (
 );
 SvgSuperscript.displayName = 'SvgSuperscript';
 const SuperscriptIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSuperscript
         {...props}

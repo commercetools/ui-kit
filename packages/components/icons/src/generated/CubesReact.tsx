@@ -24,7 +24,7 @@ const SvgCubes = (props: TSVGProps) => (
 );
 SvgCubes.displayName = 'SvgCubes';
 const CubesIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCubes {...props} className={createClass(getIconStyles(props))} />
     )}

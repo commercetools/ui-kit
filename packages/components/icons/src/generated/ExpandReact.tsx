@@ -21,7 +21,7 @@ const SvgExpand = (props: TSVGProps) => (
 );
 SvgExpand.displayName = 'SvgExpand';
 const ExpandIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgExpand {...props} className={createClass(getIconStyles(props))} />
     )}

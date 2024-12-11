@@ -21,7 +21,7 @@ const SvgGear = (props: TSVGProps) => (
 );
 SvgGear.displayName = 'SvgGear';
 const GearIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgGear {...props} className={createClass(getIconStyles(props))} />
     )}

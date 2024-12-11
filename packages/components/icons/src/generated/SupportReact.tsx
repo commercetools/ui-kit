@@ -21,7 +21,7 @@ const SvgSupport = (props: TSVGProps) => (
 );
 SvgSupport.displayName = 'SvgSupport';
 const SupportIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSupport {...props} className={createClass(getIconStyles(props))} />
     )}

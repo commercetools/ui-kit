@@ -21,7 +21,7 @@ const SvgRightTriangleFilled = (props: TSVGProps) => (
 );
 SvgRightTriangleFilled.displayName = 'SvgRightTriangleFilled';
 const RightTriangleFilledIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgRightTriangleFilled
         {...props}

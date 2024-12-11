@@ -21,7 +21,7 @@ const SvgPages = (props: TSVGProps) => (
 );
 SvgPages.displayName = 'SvgPages';
 const PagesIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgPages {...props} className={createClass(getIconStyles(props))} />
     )}

@@ -21,7 +21,7 @@ const SvgUsers = (props: TSVGProps) => (
 );
 SvgUsers.displayName = 'SvgUsers';
 const UsersIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgUsers {...props} className={createClass(getIconStyles(props))} />
     )}

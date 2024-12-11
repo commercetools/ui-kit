@@ -21,7 +21,7 @@ const SvgCheckThin = (props: TSVGProps) => (
 );
 SvgCheckThin.displayName = 'SvgCheckThin';
 const CheckThinIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCheckThin {...props} className={createClass(getIconStyles(props))} />
     )}

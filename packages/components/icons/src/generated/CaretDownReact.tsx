@@ -24,7 +24,7 @@ const SvgCaretDown = (props: TSVGProps) => (
 );
 SvgCaretDown.displayName = 'SvgCaretDown';
 const CaretDownIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCaretDown {...props} className={createClass(getIconStyles(props))} />
     )}

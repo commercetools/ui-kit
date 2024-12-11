@@ -23,7 +23,7 @@ const SvgSubscript = (props: TSVGProps) => (
 );
 SvgSubscript.displayName = 'SvgSubscript';
 const SubscriptIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSubscript {...props} className={createClass(getIconStyles(props))} />
     )}

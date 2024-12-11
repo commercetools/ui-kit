@@ -24,7 +24,7 @@ const SvgBrain = (props: TSVGProps) => (
 );
 SvgBrain.displayName = 'SvgBrain';
 const BrainIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgBrain {...props} className={createClass(getIconStyles(props))} />
     )}

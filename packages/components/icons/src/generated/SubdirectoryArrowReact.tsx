@@ -21,7 +21,7 @@ const SvgSubdirectoryArrow = (props: TSVGProps) => (
 );
 SvgSubdirectoryArrow.displayName = 'SvgSubdirectoryArrow';
 const SubdirectoryArrowIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSubdirectoryArrow
         {...props}

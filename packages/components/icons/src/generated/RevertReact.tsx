@@ -21,7 +21,7 @@ const SvgRevert = (props: TSVGProps) => (
 );
 SvgRevert.displayName = 'SvgRevert';
 const RevertIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgRevert {...props} className={createClass(getIconStyles(props))} />
     )}

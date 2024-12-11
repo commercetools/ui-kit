@@ -25,7 +25,7 @@ const SvgGroupAdd = (props: TSVGProps) => (
 );
 SvgGroupAdd.displayName = 'SvgGroupAdd';
 const GroupAddIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgGroupAdd {...props} className={createClass(getIconStyles(props))} />
     )}

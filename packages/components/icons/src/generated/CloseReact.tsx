@@ -21,7 +21,7 @@ const SvgClose = (props: TSVGProps) => (
 );
 SvgClose.displayName = 'SvgClose';
 const CloseIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgClose {...props} className={createClass(getIconStyles(props))} />
     )}

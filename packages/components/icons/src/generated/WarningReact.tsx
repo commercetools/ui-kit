@@ -21,7 +21,7 @@ const SvgWarning = (props: TSVGProps) => (
 );
 SvgWarning.displayName = 'SvgWarning';
 const WarningIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgWarning {...props} className={createClass(getIconStyles(props))} />
     )}

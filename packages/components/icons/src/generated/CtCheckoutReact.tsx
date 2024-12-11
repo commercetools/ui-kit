@@ -27,7 +27,7 @@ const SvgCtCheckout = (props: TSVGProps) => (
 );
 SvgCtCheckout.displayName = 'SvgCtCheckout';
 const CtCheckoutIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCtCheckout {...props} className={createClass(getIconStyles(props))} />
     )}

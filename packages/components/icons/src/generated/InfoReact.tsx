@@ -27,7 +27,7 @@ const SvgInfo = (props: TSVGProps) => (
 );
 SvgInfo.displayName = 'SvgInfo';
 const InfoIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgInfo {...props} className={createClass(getIconStyles(props))} />
     )}

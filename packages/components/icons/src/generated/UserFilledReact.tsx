@@ -21,7 +21,7 @@ const SvgUserFilled = (props: TSVGProps) => (
 );
 SvgUserFilled.displayName = 'SvgUserFilled';
 const UserFilledIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgUserFilled {...props} className={createClass(getIconStyles(props))} />
     )}

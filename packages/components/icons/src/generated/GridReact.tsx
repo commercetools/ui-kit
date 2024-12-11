@@ -21,7 +21,7 @@ const SvgGrid = (props: TSVGProps) => (
 );
 SvgGrid.displayName = 'SvgGrid';
 const GridIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgGrid {...props} className={createClass(getIconStyles(props))} />
     )}

@@ -21,7 +21,7 @@ const SvgListWithSearch = (props: TSVGProps) => (
 );
 SvgListWithSearch.displayName = 'SvgListWithSearch';
 const ListWithSearchIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgListWithSearch
         {...props}

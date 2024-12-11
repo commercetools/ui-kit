@@ -21,7 +21,7 @@ const SvgArrowLongDown = (props: TSVGProps) => (
 );
 SvgArrowLongDown.displayName = 'SvgArrowLongDown';
 const ArrowLongDownIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgArrowLongDown
         {...props}

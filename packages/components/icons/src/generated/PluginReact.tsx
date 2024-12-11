@@ -21,7 +21,7 @@ const SvgPlugin = (props: TSVGProps) => (
 );
 SvgPlugin.displayName = 'SvgPlugin';
 const PluginIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgPlugin {...props} className={createClass(getIconStyles(props))} />
     )}

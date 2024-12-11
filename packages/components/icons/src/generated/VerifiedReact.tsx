@@ -21,7 +21,7 @@ const SvgVerified = (props: TSVGProps) => (
 );
 SvgVerified.displayName = 'SvgVerified';
 const VerifiedIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgVerified {...props} className={createClass(getIconStyles(props))} />
     )}

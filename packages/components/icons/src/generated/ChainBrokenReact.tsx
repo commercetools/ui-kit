@@ -21,7 +21,7 @@ const SvgChainBroken = (props: TSVGProps) => (
 );
 SvgChainBroken.displayName = 'SvgChainBroken';
 const ChainBrokenIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgChainBroken
         {...props}

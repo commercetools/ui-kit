@@ -21,7 +21,7 @@ const SvgBinLinear = (props: TSVGProps) => (
 );
 SvgBinLinear.displayName = 'SvgBinLinear';
 const BinLinearIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgBinLinear {...props} className={createClass(getIconStyles(props))} />
     )}

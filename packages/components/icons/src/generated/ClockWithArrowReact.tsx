@@ -25,7 +25,7 @@ const SvgClockWithArrow = (props: TSVGProps) => (
 );
 SvgClockWithArrow.displayName = 'SvgClockWithArrow';
 const ClockWithArrowIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgClockWithArrow
         {...props}

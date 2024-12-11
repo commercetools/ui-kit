@@ -25,7 +25,7 @@ const SvgOrderedList = (props: TSVGProps) => (
 );
 SvgOrderedList.displayName = 'SvgOrderedList';
 const OrderedListIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgOrderedList
         {...props}

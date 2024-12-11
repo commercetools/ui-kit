@@ -38,7 +38,7 @@ const SvgPinGear = (props: TSVGProps) => (
 );
 SvgPinGear.displayName = 'SvgPinGear';
 const PinGearIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgPinGear {...props} className={createClass(getIconStyles(props))} />
     )}

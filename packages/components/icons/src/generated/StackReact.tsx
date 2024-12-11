@@ -21,7 +21,7 @@ const SvgStack = (props: TSVGProps) => (
 );
 SvgStack.displayName = 'SvgStack';
 const StackIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgStack {...props} className={createClass(getIconStyles(props))} />
     )}

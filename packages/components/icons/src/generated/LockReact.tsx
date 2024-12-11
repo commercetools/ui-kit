@@ -21,7 +21,7 @@ const SvgLock = (props: TSVGProps) => (
 );
 SvgLock.displayName = 'SvgLock';
 const LockIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgLock {...props} className={createClass(getIconStyles(props))} />
     )}

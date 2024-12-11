@@ -21,7 +21,7 @@ const SvgReview = (props: TSVGProps) => (
 );
 SvgReview.displayName = 'SvgReview';
 const ReviewIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgReview {...props} className={createClass(getIconStyles(props))} />
     )}

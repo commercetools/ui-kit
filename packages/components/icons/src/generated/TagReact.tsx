@@ -21,7 +21,7 @@ const SvgTag = (props: TSVGProps) => (
 );
 SvgTag.displayName = 'SvgTag';
 const TagIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgTag {...props} className={createClass(getIconStyles(props))} />
     )}

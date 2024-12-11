@@ -21,7 +21,7 @@ const SvgAngleUp = (props: TSVGProps) => (
 );
 SvgAngleUp.displayName = 'SvgAngleUp';
 const AngleUpIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgAngleUp {...props} className={createClass(getIconStyles(props))} />
     )}

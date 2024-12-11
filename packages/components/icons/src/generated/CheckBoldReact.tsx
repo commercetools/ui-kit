@@ -21,7 +21,7 @@ const SvgCheckBold = (props: TSVGProps) => (
 );
 SvgCheckBold.displayName = 'SvgCheckBold';
 const CheckBoldIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCheckBold {...props} className={createClass(getIconStyles(props))} />
     )}

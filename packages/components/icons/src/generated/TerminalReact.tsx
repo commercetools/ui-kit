@@ -21,7 +21,7 @@ const SvgTerminal = (props: TSVGProps) => (
 );
 SvgTerminal.displayName = 'SvgTerminal';
 const TerminalIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgTerminal {...props} className={createClass(getIconStyles(props))} />
     )}

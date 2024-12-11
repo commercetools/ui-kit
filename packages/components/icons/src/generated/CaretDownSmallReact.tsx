@@ -27,7 +27,7 @@ const SvgCaretDownSmall = (props: TSVGProps) => (
 );
 SvgCaretDownSmall.displayName = 'SvgCaretDownSmall';
 const CaretDownSmallIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCaretDownSmall
         {...props}

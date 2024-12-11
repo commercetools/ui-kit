@@ -28,7 +28,7 @@ const SvgUndo = (props: TSVGProps) => (
 );
 SvgUndo.displayName = 'SvgUndo';
 const UndoIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgUndo {...props} className={createClass(getIconStyles(props))} />
     )}

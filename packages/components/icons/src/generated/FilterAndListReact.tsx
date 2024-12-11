@@ -21,7 +21,7 @@ const SvgFilterAndList = (props: TSVGProps) => (
 );
 SvgFilterAndList.displayName = 'SvgFilterAndList';
 const FilterAndListIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgFilterAndList
         {...props}

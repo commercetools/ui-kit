@@ -21,7 +21,7 @@ const SvgTreeStructure = (props: TSVGProps) => (
 );
 SvgTreeStructure.displayName = 'SvgTreeStructure';
 const TreeStructureIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgTreeStructure
         {...props}

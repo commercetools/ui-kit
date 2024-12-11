@@ -22,7 +22,7 @@ const SvgIndeterminate = (props: TSVGProps) => (
 );
 SvgIndeterminate.displayName = 'SvgIndeterminate';
 const IndeterminateIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgIndeterminate
         {...props}

@@ -21,7 +21,7 @@ const SvgCoins = (props: TSVGProps) => (
 );
 SvgCoins.displayName = 'SvgCoins';
 const CoinsIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCoins {...props} className={createClass(getIconStyles(props))} />
     )}

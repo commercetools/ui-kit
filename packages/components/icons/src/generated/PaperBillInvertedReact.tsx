@@ -21,7 +21,7 @@ const SvgPaperBillInverted = (props: TSVGProps) => (
 );
 SvgPaperBillInverted.displayName = 'SvgPaperBillInverted';
 const PaperBillInvertedIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgPaperBillInverted
         {...props}

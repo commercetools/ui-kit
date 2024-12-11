@@ -21,7 +21,7 @@ const SvgDragDrop = (props: TSVGProps) => (
 );
 SvgDragDrop.displayName = 'SvgDragDrop';
 const DragDropIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgDragDrop {...props} className={createClass(getIconStyles(props))} />
     )}

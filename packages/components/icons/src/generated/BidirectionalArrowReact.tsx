@@ -21,7 +21,7 @@ const SvgBidirectionalArrow = (props: TSVGProps) => (
 );
 SvgBidirectionalArrow.displayName = 'SvgBidirectionalArrow';
 const BidirectionalArrowIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgBidirectionalArrow
         {...props}

@@ -21,7 +21,7 @@ const SvgCalendar = (props: TSVGProps) => (
 );
 SvgCalendar.displayName = 'SvgCalendar';
 const CalendarIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCalendar {...props} className={createClass(getIconStyles(props))} />
     )}

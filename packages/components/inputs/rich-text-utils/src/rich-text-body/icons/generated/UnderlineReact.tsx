@@ -25,7 +25,7 @@ const SvgUnderline = (props: TSVGProps) => (
 );
 SvgUnderline.displayName = 'SvgUnderline';
 const UnderlineIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgUnderline {...props} className={createClass(getIconStyles(props))} />
     )}

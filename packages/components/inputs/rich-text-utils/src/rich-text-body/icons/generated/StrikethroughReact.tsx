@@ -25,7 +25,7 @@ const SvgStrikethrough = (props: TSVGProps) => (
 );
 SvgStrikethrough.displayName = 'SvgStrikethrough';
 const StrikethroughIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgStrikethrough
         {...props}

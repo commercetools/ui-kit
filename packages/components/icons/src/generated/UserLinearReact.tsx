@@ -21,7 +21,7 @@ const SvgUserLinear = (props: TSVGProps) => (
 );
 SvgUserLinear.displayName = 'SvgUserLinear';
 const UserLinearIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgUserLinear {...props} className={createClass(getIconStyles(props))} />
     )}

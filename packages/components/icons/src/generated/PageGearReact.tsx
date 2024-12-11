@@ -32,7 +32,7 @@ const SvgPageGear = (props: TSVGProps) => (
 );
 SvgPageGear.displayName = 'SvgPageGear';
 const PageGearIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgPageGear {...props} className={createClass(getIconStyles(props))} />
     )}

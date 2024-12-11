@@ -21,7 +21,7 @@ const SvgPaperclip = (props: TSVGProps) => (
 );
 SvgPaperclip.displayName = 'SvgPaperclip';
 const PaperclipIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgPaperclip {...props} className={createClass(getIconStyles(props))} />
     )}

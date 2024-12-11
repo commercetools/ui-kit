@@ -21,7 +21,7 @@ const SvgPinLinear = (props: TSVGProps) => (
 );
 SvgPinLinear.displayName = 'SvgPinLinear';
 const PinLinearIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgPinLinear {...props} className={createClass(getIconStyles(props))} />
     )}

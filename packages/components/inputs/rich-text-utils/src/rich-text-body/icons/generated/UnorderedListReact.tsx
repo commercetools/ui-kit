@@ -32,7 +32,7 @@ const SvgUnorderedList = (props: TSVGProps) => (
 );
 SvgUnorderedList.displayName = 'SvgUnorderedList';
 const UnorderedListIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgUnorderedList
         {...props}

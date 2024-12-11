@@ -24,7 +24,7 @@ const SvgCaretUp = (props: TSVGProps) => (
 );
 SvgCaretUp.displayName = 'SvgCaretUp';
 const CaretUpIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCaretUp {...props} className={createClass(getIconStyles(props))} />
     )}

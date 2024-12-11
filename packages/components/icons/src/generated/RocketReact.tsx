@@ -21,7 +21,7 @@ const SvgRocket = (props: TSVGProps) => (
 );
 SvgRocket.displayName = 'SvgRocket';
 const RocketIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgRocket {...props} className={createClass(getIconStyles(props))} />
     )}

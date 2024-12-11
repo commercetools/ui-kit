@@ -21,7 +21,7 @@ const SvgSwitcher = (props: TSVGProps) => (
 );
 SvgSwitcher.displayName = 'SvgSwitcher';
 const SwitcherIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSwitcher {...props} className={createClass(getIconStyles(props))} />
     )}

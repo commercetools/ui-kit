@@ -21,7 +21,7 @@ const SvgSorting = (props: TSVGProps) => (
 );
 SvgSorting.displayName = 'SvgSorting';
 const SortingIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSorting {...props} className={createClass(getIconStyles(props))} />
     )}

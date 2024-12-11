@@ -21,7 +21,7 @@ const SvgEdit = (props: TSVGProps) => (
 );
 SvgEdit.displayName = 'SvgEdit';
 const EditIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgEdit {...props} className={createClass(getIconStyles(props))} />
     )}

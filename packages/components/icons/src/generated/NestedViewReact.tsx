@@ -24,7 +24,7 @@ const SvgNestedView = (props: TSVGProps) => (
 );
 SvgNestedView.displayName = 'SvgNestedView';
 const NestedViewIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgNestedView {...props} className={createClass(getIconStyles(props))} />
     )}

@@ -21,7 +21,7 @@ const SvgCheckActive = (props: TSVGProps) => (
 );
 SvgCheckActive.displayName = 'SvgCheckActive';
 const CheckActiveIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCheckActive
         {...props}

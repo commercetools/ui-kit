@@ -25,7 +25,7 @@ const SvgHub = (props: TSVGProps) => (
 );
 SvgHub.displayName = 'SvgHub';
 const HubIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgHub {...props} className={createClass(getIconStyles(props))} />
     )}

@@ -21,7 +21,7 @@ const SvgCloseBold = (props: TSVGProps) => (
 );
 SvgCloseBold.displayName = 'SvgCloseBold';
 const CloseBoldIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCloseBold {...props} className={createClass(getIconStyles(props))} />
     )}

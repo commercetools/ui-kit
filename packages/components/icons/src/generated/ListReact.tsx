@@ -21,7 +21,7 @@ const SvgList = (props: TSVGProps) => (
 );
 SvgList.displayName = 'SvgList';
 const ListIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgList {...props} className={createClass(getIconStyles(props))} />
     )}

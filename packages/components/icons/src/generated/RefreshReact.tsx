@@ -21,7 +21,7 @@ const SvgRefresh = (props: TSVGProps) => (
 );
 SvgRefresh.displayName = 'SvgRefresh';
 const RefreshIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgRefresh {...props} className={createClass(getIconStyles(props))} />
     )}

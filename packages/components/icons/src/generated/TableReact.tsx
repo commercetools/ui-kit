@@ -21,7 +21,7 @@ const SvgTable = (props: TSVGProps) => (
 );
 SvgTable.displayName = 'SvgTable';
 const TableIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgTable {...props} className={createClass(getIconStyles(props))} />
     )}

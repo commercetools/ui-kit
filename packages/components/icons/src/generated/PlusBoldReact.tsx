@@ -21,7 +21,7 @@ const SvgPlusBold = (props: TSVGProps) => (
 );
 SvgPlusBold.displayName = 'SvgPlusBold';
 const PlusBoldIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgPlusBold {...props} className={createClass(getIconStyles(props))} />
     )}

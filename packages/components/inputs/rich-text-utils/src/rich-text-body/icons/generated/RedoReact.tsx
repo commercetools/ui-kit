@@ -33,7 +33,7 @@ const SvgRedo = (props: TSVGProps) => (
 );
 SvgRedo.displayName = 'SvgRedo';
 const RedoIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgRedo {...props} className={createClass(getIconStyles(props))} />
     )}

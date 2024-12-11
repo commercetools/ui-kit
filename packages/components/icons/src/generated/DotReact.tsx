@@ -21,7 +21,7 @@ const SvgDot = (props: TSVGProps) => (
 );
 SvgDot.displayName = 'SvgDot';
 const DotIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgDot {...props} className={createClass(getIconStyles(props))} />
     )}

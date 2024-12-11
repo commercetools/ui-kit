@@ -21,7 +21,7 @@ const SvgSpeedometer = (props: TSVGProps) => (
 );
 SvgSpeedometer.displayName = 'SvgSpeedometer';
 const SpeedometerIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSpeedometer
         {...props}

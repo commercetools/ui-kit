@@ -21,7 +21,7 @@ const SvgCheckInactive = (props: TSVGProps) => (
 );
 SvgCheckInactive.displayName = 'SvgCheckInactive';
 const CheckInactiveIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCheckInactive
         {...props}

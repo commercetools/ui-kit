@@ -21,7 +21,7 @@ const SvgClipboard = (props: TSVGProps) => (
 );
 SvgClipboard.displayName = 'SvgClipboard';
 const ClipboardIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgClipboard {...props} className={createClass(getIconStyles(props))} />
     )}

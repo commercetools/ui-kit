@@ -21,7 +21,7 @@ const SvgRightTriangleLinear = (props: TSVGProps) => (
 );
 SvgRightTriangleLinear.displayName = 'SvgRightTriangleLinear';
 const RightTriangleLinearIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgRightTriangleLinear
         {...props}

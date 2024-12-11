@@ -21,7 +21,7 @@ const SvgScreenUser = (props: TSVGProps) => (
 );
 SvgScreenUser.displayName = 'SvgScreenUser';
 const ScreenUserIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgScreenUser {...props} className={createClass(getIconStyles(props))} />
     )}

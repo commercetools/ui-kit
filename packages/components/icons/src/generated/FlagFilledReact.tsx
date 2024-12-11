@@ -21,7 +21,7 @@ const SvgFlagFilled = (props: TSVGProps) => (
 );
 SvgFlagFilled.displayName = 'SvgFlagFilled';
 const FlagFilledIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgFlagFilled {...props} className={createClass(getIconStyles(props))} />
     )}

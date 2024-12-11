@@ -21,7 +21,7 @@ const SvgDomain = (props: TSVGProps) => (
 );
 SvgDomain.displayName = 'SvgDomain';
 const DomainIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgDomain {...props} className={createClass(getIconStyles(props))} />
     )}

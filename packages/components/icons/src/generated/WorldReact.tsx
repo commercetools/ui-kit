@@ -21,7 +21,7 @@ const SvgWorld = (props: TSVGProps) => (
 );
 SvgWorld.displayName = 'SvgWorld';
 const WorldIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgWorld {...props} className={createClass(getIconStyles(props))} />
     )}

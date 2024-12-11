@@ -24,7 +24,7 @@ const SvgConnectedTriangle = (props: TSVGProps) => (
 );
 SvgConnectedTriangle.displayName = 'SvgConnectedTriangle';
 const ConnectedTriangleIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgConnectedTriangle
         {...props}

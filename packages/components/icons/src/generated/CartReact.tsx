@@ -21,7 +21,7 @@ const SvgCart = (props: TSVGProps) => (
 );
 SvgCart.displayName = 'SvgCart';
 const CartIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCart {...props} className={createClass(getIconStyles(props))} />
     )}

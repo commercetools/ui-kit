@@ -21,7 +21,7 @@ const SvgCircle = (props: TSVGProps) => (
 );
 SvgCircle.displayName = 'SvgCircle';
 const CircleIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCircle {...props} className={createClass(getIconStyles(props))} />
     )}

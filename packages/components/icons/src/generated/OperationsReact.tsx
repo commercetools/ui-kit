@@ -24,7 +24,7 @@ const SvgOperations = (props: TSVGProps) => (
 );
 SvgOperations.displayName = 'SvgOperations';
 const OperationsIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgOperations {...props} className={createClass(getIconStyles(props))} />
     )}

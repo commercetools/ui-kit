@@ -21,7 +21,7 @@ const SvgGraduationCap = (props: TSVGProps) => (
 );
 SvgGraduationCap.displayName = 'SvgGraduationCap';
 const GraduationCapIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgGraduationCap
         {...props}

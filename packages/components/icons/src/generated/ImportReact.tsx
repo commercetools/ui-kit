@@ -21,7 +21,7 @@ const SvgImport = (props: TSVGProps) => (
 );
 SvgImport.displayName = 'SvgImport';
 const ImportIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgImport {...props} className={createClass(getIconStyles(props))} />
     )}

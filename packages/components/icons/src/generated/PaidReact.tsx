@@ -40,7 +40,7 @@ const SvgPaid = (props: TSVGProps) => (
 );
 SvgPaid.displayName = 'SvgPaid';
 const PaidIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgPaid {...props} className={createClass(getIconStyles(props))} />
     )}

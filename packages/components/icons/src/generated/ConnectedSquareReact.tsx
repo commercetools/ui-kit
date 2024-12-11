@@ -19,7 +19,7 @@ const SvgConnectedSquare = (props: TSVGProps) => (
 );
 SvgConnectedSquare.displayName = 'SvgConnectedSquare';
 const ConnectedSquareIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgConnectedSquare
         {...props}

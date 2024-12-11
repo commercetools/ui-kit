@@ -21,7 +21,7 @@ const SvgMail = (props: TSVGProps) => (
 );
 SvgMail.displayName = 'SvgMail';
 const MailIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgMail {...props} className={createClass(getIconStyles(props))} />
     )}

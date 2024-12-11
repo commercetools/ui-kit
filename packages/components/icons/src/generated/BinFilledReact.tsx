@@ -21,7 +21,7 @@ const SvgBinFilled = (props: TSVGProps) => (
 );
 SvgBinFilled.displayName = 'SvgBinFilled';
 const BinFilledIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgBinFilled {...props} className={createClass(getIconStyles(props))} />
     )}

@@ -25,7 +25,7 @@ const SvgExport = (props: TSVGProps) => (
 );
 SvgExport.displayName = 'SvgExport';
 const ExportIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgExport {...props} className={createClass(getIconStyles(props))} />
     )}

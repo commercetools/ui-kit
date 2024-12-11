@@ -21,7 +21,7 @@ const SvgArrowTriangleUp = (props: TSVGProps) => (
 );
 SvgArrowTriangleUp.displayName = 'SvgArrowTriangleUp';
 const ArrowTriangleUpIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgArrowTriangleUp
         {...props}

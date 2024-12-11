@@ -35,7 +35,7 @@ const SvgSidebarExpand = (props: TSVGProps) => (
 );
 SvgSidebarExpand.displayName = 'SvgSidebarExpand';
 const SidebarExpandIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSidebarExpand
         {...props}

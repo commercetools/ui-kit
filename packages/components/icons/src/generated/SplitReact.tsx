@@ -21,7 +21,7 @@ const SvgSplit = (props: TSVGProps) => (
 );
 SvgSplit.displayName = 'SvgSplit';
 const SplitIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgSplit {...props} className={createClass(getIconStyles(props))} />
     )}

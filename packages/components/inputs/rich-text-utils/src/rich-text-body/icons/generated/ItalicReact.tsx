@@ -25,7 +25,7 @@ const SvgItalic = (props: TSVGProps) => (
 );
 SvgItalic.displayName = 'SvgItalic';
 const ItalicIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgItalic {...props} className={createClass(getIconStyles(props))} />
     )}

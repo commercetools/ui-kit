@@ -21,7 +21,7 @@ const SvgBox = (props: TSVGProps) => (
 );
 SvgBox.displayName = 'SvgBox';
 const BoxIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgBox {...props} className={createClass(getIconStyles(props))} />
     )}

@@ -50,7 +50,7 @@ import {
 const ${svgComponentName} = (props: TSVGProps) => JSX;
 ${svgComponentName}.displayName = "${svgComponentName}";
 
-const ${reactComponentName} = (props: TIconProps) => (
+const ${reactComponentName} = (props: TIconProps) =>  /* #__PURE__ */(
     <ClassNames>
       {({ css: createClass }) =>
         <${svgComponentName} {...props} className={createClass(getIconStyles(props))} />

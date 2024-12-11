@@ -21,7 +21,7 @@ const SvgBack = (props: TSVGProps) => (
 );
 SvgBack.displayName = 'SvgBack';
 const BackIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgBack {...props} className={createClass(getIconStyles(props))} />
     )}

@@ -40,7 +40,7 @@ const SvgTune = (props: TSVGProps) => (
 );
 SvgTune.displayName = 'SvgTune';
 const TuneIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgTune {...props} className={createClass(getIconStyles(props))} />
     )}

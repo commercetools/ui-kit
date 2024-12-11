@@ -21,7 +21,7 @@ const SvgGraph = (props: TSVGProps) => (
 );
 SvgGraph.displayName = 'SvgGraph';
 const GraphIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgGraph {...props} className={createClass(getIconStyles(props))} />
     )}

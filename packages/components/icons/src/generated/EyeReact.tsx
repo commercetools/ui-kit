@@ -21,7 +21,7 @@ const SvgEye = (props: TSVGProps) => (
 );
 SvgEye.displayName = 'SvgEye';
 const EyeIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgEye {...props} className={createClass(getIconStyles(props))} />
     )}

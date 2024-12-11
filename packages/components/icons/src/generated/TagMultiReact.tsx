@@ -21,7 +21,7 @@ const SvgTagMulti = (props: TSVGProps) => (
 );
 SvgTagMulti.displayName = 'SvgTagMulti';
 const TagMultiIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgTagMulti {...props} className={createClass(getIconStyles(props))} />
     )}

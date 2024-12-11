@@ -25,7 +25,7 @@ const SvgWindowEye = (props: TSVGProps) => (
 );
 SvgWindowEye.displayName = 'SvgWindowEye';
 const WindowEyeIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgWindowEye {...props} className={createClass(getIconStyles(props))} />
     )}

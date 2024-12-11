@@ -25,7 +25,7 @@ const SvgLayers = (props: TSVGProps) => (
 );
 SvgLayers.displayName = 'SvgLayers';
 const LayersIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgLayers {...props} className={createClass(getIconStyles(props))} />
     )}

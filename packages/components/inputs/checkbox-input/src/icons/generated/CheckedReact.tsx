@@ -33,7 +33,7 @@ const SvgChecked = (props: TSVGProps) => (
 );
 SvgChecked.displayName = 'SvgChecked';
 const CheckedIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgChecked {...props} className={createClass(getIconStyles(props))} />
     )}

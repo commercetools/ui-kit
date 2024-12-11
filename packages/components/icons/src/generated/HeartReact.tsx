@@ -21,7 +21,7 @@ const SvgHeart = (props: TSVGProps) => (
 );
 SvgHeart.displayName = 'SvgHeart';
 const HeartIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgHeart {...props} className={createClass(getIconStyles(props))} />
     )}

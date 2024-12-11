@@ -21,7 +21,7 @@ const SvgError = (props: TSVGProps) => (
 );
 SvgError.displayName = 'SvgError';
 const ErrorIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgError {...props} className={createClass(getIconStyles(props))} />
     )}

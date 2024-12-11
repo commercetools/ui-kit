@@ -34,7 +34,7 @@ const SvgDiamond = (props: TSVGProps) => (
 );
 SvgDiamond.displayName = 'SvgDiamond';
 const DiamondIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgDiamond {...props} className={createClass(getIconStyles(props))} />
     )}

@@ -21,7 +21,7 @@ const SvgColumns = (props: TSVGProps) => (
 );
 SvgColumns.displayName = 'SvgColumns';
 const ColumnsIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgColumns {...props} className={createClass(getIconStyles(props))} />
     )}

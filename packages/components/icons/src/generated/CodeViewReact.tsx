@@ -21,7 +21,7 @@ const SvgCodeView = (props: TSVGProps) => (
 );
 SvgCodeView.displayName = 'SvgCodeView';
 const CodeViewIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCodeView {...props} className={createClass(getIconStyles(props))} />
     )}

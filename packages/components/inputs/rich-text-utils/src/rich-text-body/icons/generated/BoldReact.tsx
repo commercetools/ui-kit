@@ -25,7 +25,7 @@ const SvgBold = (props: TSVGProps) => (
 );
 SvgBold.displayName = 'SvgBold';
 const BoldIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgBold {...props} className={createClass(getIconStyles(props))} />
     )}

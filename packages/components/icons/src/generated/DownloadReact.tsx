@@ -21,7 +21,7 @@ const SvgDownload = (props: TSVGProps) => (
 );
 SvgDownload.displayName = 'SvgDownload';
 const DownloadIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgDownload {...props} className={createClass(getIconStyles(props))} />
     )}

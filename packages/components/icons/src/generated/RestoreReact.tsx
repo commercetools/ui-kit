@@ -21,7 +21,7 @@ const SvgRestore = (props: TSVGProps) => (
 );
 SvgRestore.displayName = 'SvgRestore';
 const RestoreIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgRestore {...props} className={createClass(getIconStyles(props))} />
     )}

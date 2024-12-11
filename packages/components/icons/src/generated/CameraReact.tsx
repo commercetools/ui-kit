@@ -21,7 +21,7 @@ const SvgCamera = (props: TSVGProps) => (
 );
 SvgCamera.displayName = 'SvgCamera';
 const CameraIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgCamera {...props} className={createClass(getIconStyles(props))} />
     )}

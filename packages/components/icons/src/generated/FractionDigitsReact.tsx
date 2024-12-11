@@ -31,7 +31,7 @@ const SvgFractionDigits = (props: TSVGProps) => (
 );
 SvgFractionDigits.displayName = 'SvgFractionDigits';
 const FractionDigitsIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgFractionDigits
         {...props}

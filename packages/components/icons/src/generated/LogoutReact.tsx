@@ -21,7 +21,7 @@ const SvgLogout = (props: TSVGProps) => (
 );
 SvgLogout.displayName = 'SvgLogout';
 const LogoutIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgLogout {...props} className={createClass(getIconStyles(props))} />
     )}

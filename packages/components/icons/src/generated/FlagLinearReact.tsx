@@ -21,7 +21,7 @@ const SvgFlagLinear = (props: TSVGProps) => (
 );
 SvgFlagLinear.displayName = 'SvgFlagLinear';
 const FlagLinearIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgFlagLinear {...props} className={createClass(getIconStyles(props))} />
     )}

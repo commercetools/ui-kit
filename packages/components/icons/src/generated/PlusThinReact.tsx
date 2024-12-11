@@ -21,7 +21,7 @@ const SvgPlusThin = (props: TSVGProps) => (
 );
 SvgPlusThin.displayName = 'SvgPlusThin';
 const PlusThinIcon = (props: TIconProps) => (
-  <ClassNames>
+  /* #__PURE__ */ <ClassNames>
     {({ css: createClass }) => (
       <SvgPlusThin {...props} className={createClass(getIconStyles(props))} />
     )}
