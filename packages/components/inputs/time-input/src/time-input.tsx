@@ -230,10 +230,6 @@ TimeInput.to24h = (time: string) => {
   return parsedTime ? format24hr(parsedTime) : '';
 };
 
-TimeInput.defaultProps = {
-  horizontalConstraint: 'scale',
-} as Pick<TTimeInputProps, 'horizontalConstraint'>;
-
 // Converts any value to either a formatted value or an empty string
 // The resulting format might use 12h or 24h, unless the time contains
 // milliseconds. If milliseconds are contained, the

@@ -61,7 +61,10 @@ const UncontrolledCollapsible = (
 };
 UncontrolledCollapsible.displayName = 'UncontrolledCollapsible';
 
-const Collapsible = (props: TCollapsibleProps) => {
+const Collapsible = ({
+  isDefaultClosed = false,
+  ...props
+}: TCollapsibleProps) => {
   const isControlledComponent = !isNil(props.isClosed);
   const hasOnToggle = !isNil(props.onToggle);
 
@@ -81,10 +84,5 @@ const Collapsible = (props: TCollapsibleProps) => {
 };
 
 Collapsible.displayName = 'Collapsible';
-
-const collapsibleDefaultProps: Pick<TCollapsibleProps, 'isDefaultClosed'> = {
-  isDefaultClosed: false,
-};
-Collapsible.defaultProps = collapsibleDefaultProps;
 
 export default Collapsible;

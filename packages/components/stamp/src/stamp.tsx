@@ -155,12 +155,16 @@ const getStampStyles = (props: StylesFunctionParams) => {
   `;
 };
 
-const Stamp = (props: TStampProps) => {
+const Stamp = ({
+  isCondensed = false,
+  tone = 'information',
+  ...props
+}: TStampProps) => {
   const Icon =
     props.icon &&
     cloneElement(props.icon, {
       size: 'medium',
-      color: getIconColor(props, true),
+      color: getIconColor(props as StylesFunctionParams, true),
     });
 
   useWarnDeprecatedProp(
@@ -171,7 +175,7 @@ const Stamp = (props: TStampProps) => {
   );
 
   const StampLabel = ({ children }: { children: string }): ReactElement =>
-    props.isCondensed ? (
+    isCondensed ? (
       <Text.Caption tone="inherit" fontWeight="medium">
         {children}
       </Text.Caption>
@@ -184,26 +188,24 @@ const Stamp = (props: TStampProps) => {
   return (
     <div
       css={[
-        getStampStyles({ ...props, overrideTextColor: true }),
-        getToneStyles({ ...props, overrideTextColor: true }),
-        getPaddingStyle(props),
+        getStampStyles({
+          ...(props as StylesFunctionParams),
+          overrideTextColor: true,
+        }),
+        getToneStyles({
+          ...(props as StylesFunctionParams),
+          overrideTextColor: true,
+        }),
+        getPaddingStyle(props as StylesFunctionParams),
       ]}
     >
-      <SpacingsInline
-        alignItems="center"
-        scale={props.isCondensed ? 'xs' : 's'}
-      >
+      <SpacingsInline alignItems="center" scale={isCondensed ? 'xs' : 's'}>
         {Icon}
         {props.label ? <StampLabel>{props.label}</StampLabel> : props.children}
       </SpacingsInline>
     </div>
   );
 };
-const defaultProps: Pick<TStampProps, 'isCondensed' | 'tone'> = {
-  isCondensed: false,
-  tone: 'information',
-};
 Stamp.displayName = 'Stamp';
-Stamp.defaultProps = defaultProps;
 
 export default Stamp;

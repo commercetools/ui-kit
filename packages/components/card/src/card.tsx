@@ -45,7 +45,12 @@ export type TCardProps = {
   isDisabled?: boolean;
 };
 
-const Card = (props: TCardProps) => {
+const Card = ({
+  type = 'raised',
+  theme = 'light',
+  insetScale = 'm',
+  ...props
+}: TCardProps) => {
   const isClickable = Boolean(!props.isDisabled && (props.onClick || props.to));
   // Only disable styling if the card is not clickable
   const shouldBeDisabled = props.isDisabled && (props.onClick || props.to);
@@ -58,12 +63,12 @@ const Card = (props: TCardProps) => {
       box-sizing: border-box;
       width: 100%;
       font-size: 1rem;
-      box-shadow: ${props.type === 'raised' ? designTokens.shadow17 : 'none'};
+      box-shadow: ${type === 'raised' ? designTokens.shadow17 : 'none'};
       border-radius: ${designTokens.borderRadius4};
-      border: ${props.type === 'raised'
+      border: ${type === 'raised'
         ? `1px solid ${designTokens.colorNeutral90}`
         : 'none'};
-      background: ${props.theme === 'dark'
+      background: ${theme === 'dark'
         ? designTokens.colorNeutral95
         : designTokens.colorSurface};
       cursor: ${shouldBeDisabled
@@ -72,7 +77,7 @@ const Card = (props: TCardProps) => {
         ? 'pointer'
         : 'default'};
       :hover {
-        background: ${props.theme === 'dark'
+        background: ${theme === 'dark'
           ? isClickable
             ? designTokens.colorNeutral90
             : undefined
@@ -93,10 +98,10 @@ const Card = (props: TCardProps) => {
   };
 
   const content =
-    props.insetScale === 'none' ? (
+    insetScale === 'none' ? (
       <div>{props.children}</div>
     ) : (
-      <Inset scale={props.insetScale} height="expanded">
+      <Inset scale={insetScale} height="expanded">
         {props.children}
       </Inset>
     );
@@ -146,13 +151,6 @@ const Card = (props: TCardProps) => {
   );
 };
 
-const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'insetScale'> = {
-  type: 'raised',
-  theme: 'light',
-  insetScale: 'm',
-};
-
 Card.displayName = 'Card';
-Card.defaultProps = defaultProps;
 
 export default Card;

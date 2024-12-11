@@ -25,22 +25,21 @@ const getPadding = (scale?: TScale) => {
   }
 };
 
-const InsetSquish = (props: TInsetSquishProps) => (
+const InsetSquish = ({
+  scale = 'm',
+  height = 'collapsed',
+  ...props
+}: TInsetSquishProps) => (
   <div
     css={css`
-      padding: ${getPadding(props.scale)};
-      height: ${props.height === 'expanded' ? '100%' : 'auto'};
+      padding: ${getPadding(scale)};
+      height: ${height === 'expanded' ? '100%' : 'auto'};
     `}
     {...filterDataAttributes(props)}
   >
     {props.children}
   </div>
 );
-const defaultProps: Pick<TInsetSquishProps, 'scale' | 'height'> = {
-  scale: 'm',
-  height: 'collapsed',
-};
 InsetSquish.displayName = 'InsetSquish';
-InsetSquish.defaultProps = defaultProps;
 
 export default InsetSquish;

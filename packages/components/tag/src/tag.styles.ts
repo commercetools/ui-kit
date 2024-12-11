@@ -16,7 +16,9 @@ export const getToneStyles = ({
   tone,
   onClick,
 }: TTagProps) => {
-  let variant: visualVariantType = isDisabled ? 'disabled' : type || tone;
+  let variant: visualVariantType = isDisabled
+    ? 'disabled'
+    : type || tone || 'primary';
 
   // map deprecated 'normal' type to 'primary' tone
   if (variant === 'normal') variant = 'primary';

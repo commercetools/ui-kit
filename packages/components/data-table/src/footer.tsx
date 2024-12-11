@@ -10,10 +10,6 @@ type TFooter = {
   resizedTotalWidth?: number;
 };
 
-const defaultProps: Pick<TFooter, 'horizontalCellAlignment'> = {
-  horizontalCellAlignment: 'left',
-};
-
 const Footer = styled.div<TFooter>`
   box-sizing: border-box;
   display: block;
@@ -28,5 +24,4 @@ const Footer = styled.div<TFooter>`
 `;
 Footer.displayName = 'Footer';
 
-Footer.defaultProps = defaultProps;
 export default Footer;

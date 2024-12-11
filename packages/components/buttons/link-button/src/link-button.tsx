@@ -41,11 +41,6 @@ export type TLinkButtonProps = {
   isExternal?: boolean;
 };
 
-const defaultProps: Pick<TLinkButtonProps, 'isDisabled' | 'isExternal'> = {
-  isDisabled: false,
-  isExternal: false,
-};
-
 const hoverStyles = css`
   &:hover,
   &:focus,
@@ -98,11 +93,15 @@ const LinkBody = (
 
 LinkBody.displayName = 'LinkBody';
 
-const LinkButton = (props: TLinkButtonProps) => {
+const LinkButton = ({
+  isDisabled = false,
+  isExternal = false,
+  ...props
+}: TLinkButtonProps) => {
   useWarnDeprecatedComponent('LinkButton');
   const remainingProps = filterInvalidAttributes(props);
 
-  if (props.isExternal) {
+  if (isExternal) {
     if (typeof props.to !== 'string') {
       throw new Error('`to` must be a `string` when `isExternal` is provided.');
     }
@@ -112,17 +111,15 @@ const LinkButton = (props: TLinkButtonProps) => {
       // to be provided, instead the `href` is.
       <StyledExternalLink
         href={props.to}
-        onClick={
-          props.isDisabled ? (event) => event.preventDefault() : undefined
-        }
-        disabled={props.isDisabled}
+        onClick={isDisabled ? (event) => event.preventDefault() : undefined}
+        disabled={isDisabled}
         data-track-component="LinkButton"
         aria-label={props.label}
         {...remainingProps}
       >
         <LinkBody
           iconLeft={props.iconLeft}
-          disabled={props.isDisabled}
+          disabled={isDisabled}
           label={props.label}
         />
       </StyledExternalLink>
@@ -133,15 +130,15 @@ const LinkButton = (props: TLinkButtonProps) => {
     <StyledExternalLink
       as={ReactRouterLink}
       to={props.to}
-      disabled={props.isDisabled}
-      onClick={props.isDisabled ? (event) => event.preventDefault() : undefined}
+      disabled={isDisabled}
+      onClick={isDisabled ? (event) => event.preventDefault() : undefined}
       data-track-component="LinkButton"
       aria-label={props.label}
       {...remainingProps}
     >
       <LinkBody
         iconLeft={props.iconLeft}
-        disabled={props.isDisabled}
+        disabled={isDisabled}
         label={props.label}
       />
     </StyledExternalLink>
@@ -149,6 +146,5 @@ const LinkButton = (props: TLinkButtonProps) => {
 };
 
 LinkButton.displayName = 'LinkButton';
-LinkButton.defaultProps = defaultProps;
 
 export default LinkButton;

@@ -28,7 +28,7 @@ export type TToggleInputProps = {
   /**
    * Disables the ToggleInput
    */
-  isDisabled: boolean;
+  isDisabled?: boolean;
   /**
    * Checks the ToggleInput
    */
@@ -44,21 +44,19 @@ export type TToggleInputProps = {
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
-export const defaultProps: Pick<
-  TToggleInputProps,
-  'isDisabled' | 'isChecked' | 'size'
-> = {
-  isDisabled: false,
-  isChecked: false,
-  size: 'big',
-};
+export {};
 
-const ToggleInput = (props: TToggleInputProps) => {
+const ToggleInput = ({
+  isDisabled = false,
+  isChecked = false,
+  size = 'big',
+  ...props
+}: TToggleInputProps) => {
   return (
     <Label
       htmlFor={props.id}
-      size={props.size}
-      isDisabled={props.isDisabled}
+      size={size}
+      isDisabled={isDisabled}
       trackSizes={trackSizes}
       thumbSizes={thumbSizes}
     >
@@ -66,20 +64,24 @@ const ToggleInput = (props: TToggleInputProps) => {
         type="checkbox"
         css={[
           accessibleHiddenInputStyles,
-          getInputStyles({ ...props, trackSizes, thumbSizes }),
+          getInputStyles({
+            ...(props as TToggleInputProps),
+            trackSizes,
+            thumbSizes,
+          }),
         ]}
         id={props.id}
         name={props.name}
         onChange={props.onChange}
-        disabled={props.isDisabled}
-        checked={props.isChecked}
+        disabled={isDisabled}
+        checked={isChecked}
         value={props.value}
         {...filterDataAttributes(props)}
         {...filterAriaAttributes(props)}
       />
       <Span
         aria-hidden="true"
-        size={props.size}
+        size={size}
         trackSizes={trackSizes}
         thumbSizes={thumbSizes}
       />
@@ -88,6 +90,5 @@ const ToggleInput = (props: TToggleInputProps) => {
 };
 
 ToggleInput.displayName = 'Toggle';
-ToggleInput.defaultProps = defaultProps;
 
 export default ToggleInput;

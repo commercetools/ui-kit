@@ -314,7 +314,7 @@ export type TSelectInputProps = {
    */
   options: TOptions;
   /** defines how options are rendered */
-  optionStyle: 'list' | 'checkbox';
+  optionStyle?: 'list' | 'checkbox';
   showOptionGroupDivider?: boolean;
   // pageSize: PropTypes.number,
   /**
@@ -392,36 +392,28 @@ export type TSelectInputProps = {
   count?: number;
 };
 
-const defaultProps: Pick<
-  TSelectInputProps,
-  | 'appearance'
-  | 'maxMenuHeight'
-  | 'menuPortalZIndex'
-  | 'options'
-  | 'optionStyle'
-> = {
-  appearance: 'default',
-  maxMenuHeight: 220,
-  menuPortalZIndex: 1,
-  options: [],
-  optionStyle: 'list',
-};
-
 const isOptionObject = (
   option: TOption | TOptionObject
 ): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
-const SelectInput = (props: TSelectInputProps) => {
+const SelectInput = ({
+  appearance = 'default',
+  maxMenuHeight = 220,
+  menuPortalZIndex = 1,
+  options = [],
+  optionStyle = 'list',
+  ...props
+}: TSelectInputProps) => {
   const intl = useIntl();
 
   warnIfMenuPortalPropsAreMissing({
-    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalZIndex: menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'SelectInput',
   });
 
   const placeholder =
-    props.appearance === 'filter' && !props.placeholder
+    appearance === 'filter' && !props.placeholder
       ? intl.formatMessage(messages.selectInputAsFilterPlaceholder)
       : props.placeholder || intl.formatMessage(messages.placeholder);
   // Options can be grouped as
@@ -432,7 +424,7 @@ const SelectInput = (props: TSelectInputProps) => {
   //     { label: 'Flavours', options: flavourOptions },
   //   ];
   // So we "ungroup" the options by merging them all into one list first.
-  const optionsWithoutGroups = props.options.flatMap((option) => {
+  const optionsWithoutGroups = options.flatMap((option) => {
     if (isOptionObject(option)) {
       return option.options;
     }
@@ -480,12 +472,12 @@ const SelectInput = (props: TSelectInputProps) => {
                     ),
                   }
                 : {}),
-              ...(props.appearance === 'filter' && {
+              ...(appearance === 'filter' && {
                 DropdownIndicator: () => <SearchIcon color="neutral60" />,
                 ClearIndicator: null,
               }),
-              ...(props.optionStyle === 'checkbox'
-                ? optionStyleCheckboxComponents(props.appearance)
+              ...(optionStyle === 'checkbox'
+                ? optionStyleCheckboxComponents(appearance)
                 : {}),
               ...props.components,
             } as ReactSelectProps['components']
@@ -493,7 +485,7 @@ const SelectInput = (props: TSelectInputProps) => {
           menuIsOpen={
             props.isReadOnly
               ? false
-              : props.appearance === 'filter'
+              : appearance === 'filter'
               ? true
               : props.menuIsOpen
           }
@@ -502,12 +494,11 @@ const SelectInput = (props: TSelectInputProps) => {
               hasWarning: props.hasWarning,
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
-              menuPortalZIndex: props.menuPortalZIndex,
-              appearance: props.appearance,
+              menuPortalZIndex: menuPortalZIndex,
+              appearance: appearance,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
-              isCondensed:
-                props.appearance === 'filter' ? true : props.isCondensed,
+              isCondensed: appearance === 'filter' ? true : props.isCondensed,
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
@@ -528,7 +519,7 @@ const SelectInput = (props: TSelectInputProps) => {
           isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
-          {...(props.optionStyle === 'checkbox'
+          {...(optionStyle === 'checkbox'
             ? optionsStyleCheckboxSelectProps()
             : { hideSelectedOptions: props.hideSelectedOptions })}
           // @ts-ignore
@@ -536,7 +527,7 @@ const SelectInput = (props: TSelectInputProps) => {
           isMulti={props.isMulti}
           isSearchable={props.isSearchable}
           isCondensed={props.isCondensed}
-          maxMenuHeight={props.maxMenuHeight}
+          maxMenuHeight={maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
           // @ts-expect-error: optionStyle 'checkbox' will override this property (if set)
@@ -601,19 +592,17 @@ const SelectInput = (props: TSelectInputProps) => {
           }}
           onFocus={props.onFocus}
           onInputChange={props.onInputChange}
-          options={props.options}
+          options={options}
           placeholder={placeholder}
           tabIndex={props.tabIndex}
           tabSelectsValue={props.tabSelectsValue}
           value={selectedOptions}
           iconLeft={props.iconLeft}
           controlShouldRenderValue={
-            props.appearance === 'filter'
-              ? false
-              : props.controlShouldRenderValue
+            appearance === 'filter' ? false : props.controlShouldRenderValue
           }
           menuPlacement="auto"
-          {...(props.optionStyle === 'checkbox'
+          {...(optionStyle === 'checkbox'
             ? optionsStyleCheckboxSelectProps()
             : {})}
         />
@@ -623,7 +612,6 @@ const SelectInput = (props: TSelectInputProps) => {
 };
 
 SelectInput.displayName = 'SelectInput';
-SelectInput.defaultProps = defaultProps;
 
 /**
  * Expose static helper methods.

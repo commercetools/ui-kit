@@ -74,11 +74,6 @@ const warnIfMissingContent = (props: TLinkProps) => {
   );
 };
 
-const defaultProps: Pick<TLinkProps, 'tone' | 'isExternal'> = {
-  tone: 'primary',
-  isExternal: false,
-};
-
 const getTextColorValue = (tone: TLinkProps['tone'] = 'primary') => {
   if (tone === 'primary') {
     return designTokens.colorPrimary30;
@@ -123,17 +118,21 @@ const Wrapper = styled.span`
   }
 `;
 
-const Link = (props: TLinkProps) => {
+const Link = ({
+  tone = 'primary',
+  isExternal = false,
+  ...props
+}: TLinkProps) => {
   const remainingProps = filterInvalidAttributes(props);
 
-  const color = getTextColorValue(props.tone);
-  const hoverColor = getActiveColorValue(props.tone);
+  const color = getTextColorValue(tone);
+  const hoverColor = getActiveColorValue(tone);
 
   // `filterInvalidAttributes` strips off `intlMessage` and `children`
   // so we pass in the "raw" props instead.
-  warnIfMissingContent(props);
+  warnIfMissingContent(props as TLinkProps);
 
-  if (props.isExternal) {
+  if (isExternal) {
     if (typeof props.to !== 'string') {
       throw new Error('`to` must be a `string` when `isExternal` is provided.');
     }
@@ -148,7 +147,7 @@ const Link = (props: TLinkProps) => {
         `}
       >
         <a
-          css={getLinkStyles(props)}
+          css={getLinkStyles(props as TLinkProps)}
           href={props.to}
           target="_blank"
           rel="noopener noreferrer"
@@ -160,14 +159,14 @@ const Link = (props: TLinkProps) => {
             props.children
           )}
         </a>
-        {props.isExternal && <ExternalLinkIcon size="medium" />}
+        {isExternal && <ExternalLinkIcon size="medium" />}
       </Wrapper>
     );
   }
 
   return (
     <ReactRouterLink
-      css={getLinkStyles(props)}
+      css={getLinkStyles(props as TLinkProps)}
       to={props.to}
       {...remainingProps}
     >
@@ -181,6 +180,5 @@ const Link = (props: TLinkProps) => {
 };
 
 Link.displayName = 'Link';
-Link.defaultProps = defaultProps;
 
 export default Link;

@@ -48,17 +48,6 @@ export type TInitialsProps = Pick<
   'firstName' | 'lastName' | 'size'
 >;
 
-const defaultProps: Pick<
-  TAvatarProps,
-  'firstName' | 'lastName' | 'isHighlighted' | 'size' | 'color'
-> = {
-  firstName: '',
-  lastName: '',
-  isHighlighted: false,
-  size: 's',
-  color: 'accent',
-};
-
 const getFirstChar = (str: string) =>
   typeof str === 'string' ? str.trim().slice(0, 1).toUpperCase() : '';
 
@@ -127,11 +116,21 @@ const Initials = (props: TInitialsProps) => {
 };
 Initials.displayName = 'Initials';
 
-const Avatar = (props: TAvatarProps) => {
-  const avatarSize = getWidthSize(props.size);
-  const foregroundColor = getForegroundColor(props.color);
+const Avatar = ({
+  firstName = '',
+  lastName = '',
+  isHighlighted = false,
+  size = 's',
+  color = 'accent',
+  ...props
+}: TAvatarProps) => {
+  const avatarSize = getWidthSize(size);
+  const foregroundColor = getForegroundColor(color);
   return (
-    <div css={getAvatarStyles(props)} {...filterDataAttributes(props)}>
+    <div
+      css={getAvatarStyles(props as TAvatarProps)}
+      {...filterDataAttributes(props)}
+    >
       {props?.icon ? (
         <div
           css={css`
@@ -149,20 +148,15 @@ const Avatar = (props: TAvatarProps) => {
         <>
           <GravatarImg
             gravatarHash={props.gravatarHash}
-            size={props.size}
-            isHighlighted={props.isHighlighted}
+            size={size}
+            isHighlighted={isHighlighted}
           />
-          <Initials
-            size={props.size}
-            firstName={props.firstName}
-            lastName={props.lastName}
-          />
+          <Initials size={size} firstName={firstName} lastName={lastName} />
         </>
       )}
     </div>
   );
 };
 Avatar.displayName = 'Avatar';
-Avatar.defaultProps = defaultProps;
 
 export default Avatar;

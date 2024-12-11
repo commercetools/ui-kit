@@ -81,50 +81,46 @@ export type TSecondaryButtonIconProps<
  * passed to `<SecondaryIconButton>`: <SecondaryIconButton as={Link} to="/foo" label="Foo" />.
  */ ComponentPropsWithRef<TStringOrComponent>;
 
-const SecondaryIconButton = <TStringOrComponent extends ElementType = 'button'>(
-  props: TSecondaryButtonIconProps<TStringOrComponent>
-) => {
+const SecondaryIconButton = ({
+  color = 'solid',
+  type = 'button',
+  size = '40',
+  isDisabled = false,
+  ...props
+}: TSecondaryButtonIconProps) => {
   const buttonAttributes = {
     ...filterInvalidAttributes(omit(props, propsToOmit)),
     'data-track-component': 'SecondaryIconButton',
     // if there is a divergence between `isDisabled` and `disabled`,
     // we fall back to `isDisabled`
-    disabled: props.isDisabled,
+    disabled: isDisabled,
   };
 
   useWarning(
-    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
-    `SecondaryIconButton '${
-      props.size
-    }' value for 'size' property has been deprecated in favor of '${
-      sizeMapping[props.size as TLegacySizes]
+    !Boolean(Object.keys(sizeMapping).indexOf(size) > -1),
+    `SecondaryIconButton '${size}' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[size as TLegacySizes]
     }' Please update that value when using this component`
   );
 
   return (
     <AccessibleButton
       as={props.as}
-      type={props.type}
+      type={type}
       buttonAttributes={buttonAttributes}
       label={props.label}
       onClick={props.onClick}
-      isDisabled={props.isDisabled}
+      isDisabled={isDisabled}
       css={getBaseStyles(props)}
     >
       {props.icon &&
         cloneElement(props.icon, {
-          size: props.size,
+          size: size,
         })}
     </AccessibleButton>
   );
 };
 
 SecondaryIconButton.displayName = 'SecondaryIconButton';
-SecondaryIconButton.defaultProps = {
-  color: 'solid',
-  type: 'button',
-  size: '40',
-  isDisabled: false,
-};
 
 export default SecondaryIconButton;

@@ -176,14 +176,6 @@ type RefWithImperativeResetHandler = MutableRefObject<unknown> & {
   resetValue: (newValue: string | Record<string, string>) => void;
 };
 
-const defaultProps: Pick<
-  TLocalizedRichTextInputProps,
-  'horizontalConstraint' | 'showExpandIcon'
-> = {
-  horizontalConstraint: 'scale',
-  showExpandIcon: false,
-};
-
 const expandedTranslationsReducer = (
   state: TReducerState,
   action: TReducerAction
@@ -416,8 +408,6 @@ LocalizedRichTextInput.RequiredValueErrorMessage = RequiredValueErrorMessage;
 LocalizedRichTextInput.getId = getId;
 
 LocalizedRichTextInput.getName = getName;
-
-LocalizedRichTextInput.defaultProps = defaultProps;
 
 LocalizedRichTextInput.createLocalizedString = localized.createLocalizedString;
 

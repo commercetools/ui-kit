@@ -42,24 +42,23 @@ export type TLoadingSpinnerProps = {
   children?: ReactNode;
 };
 
-const defaultProps: Pick<TLoadingSpinnerProps, 'scale' | 'maxDelayDuration'> = {
-  scale: 'l',
-  maxDelayDuration: 1000,
-};
-
-const LoadingSpinner = (props: TLoadingSpinnerProps) => {
+const LoadingSpinner = ({
+  scale = 'l',
+  maxDelayDuration = 1000,
+  ...props
+}: TLoadingSpinnerProps) => {
   const [showSpinner, setShowSpinner] = useState(false);
-  const size = sizePerScale[props.scale];
+  const size = sizePerScale[scale];
   useEffect(() => {
     const delaySpinnerTimeout = setTimeout(
       () => setShowSpinner(true),
-      props.maxDelayDuration
+      maxDelayDuration
     );
 
     return () => clearTimeout(delaySpinnerTimeout);
-  }, [props.maxDelayDuration]);
+  }, [maxDelayDuration]);
 
-  if (!showSpinner && (props.maxDelayDuration ?? 0) > 0) return null;
+  if (!showSpinner && (maxDelayDuration ?? 0) > 0) return null;
 
   return (
     <Inline alignItems="center">
@@ -100,6 +99,5 @@ const LoadingSpinner = (props: TLoadingSpinnerProps) => {
   );
 };
 LoadingSpinner.displayName = 'LoadingSpinner';
-LoadingSpinner.defaultProps = defaultProps;
 
 export default LoadingSpinner;

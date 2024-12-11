@@ -51,7 +51,10 @@ const getElementVerticalPadding = (element: Element) => {
   return _elementVerticalPadding;
 };
 
-const MultilineInput = (props: TMultiLineInputProps) => {
+const MultilineInput = ({
+  cacheMeasurements = true,
+  ...props
+}: TMultiLineInputProps) => {
   const { onHeightChange } = props;
   const ref = useRef<HTMLTextAreaElement | null>(null);
 
@@ -106,15 +109,12 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       role="textbox"
       minRows={MIN_ROW_COUNT}
       maxRows={props.isOpen ? props.maxRows : MIN_ROW_COUNT}
-      cacheMeasurements={props.cacheMeasurements}
+      cacheMeasurements={cacheMeasurements}
       {...filterDataAttributes(props)}
     />
   );
 };
 
 MultilineInput.displayName = 'MultilineInput';
-MultilineInput.defaultProps = {
-  cacheMeasurements: true,
-};
 
 export default MultilineInput;

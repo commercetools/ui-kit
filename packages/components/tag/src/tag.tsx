@@ -70,24 +70,20 @@ export type TTagProps = {
   /**
    * Indicates the color scheme of the tag.
    */
-  tone: 'primary' | 'warning' | 'surface';
+  tone?: 'primary' | 'warning' | 'surface';
 };
 
-const defaultProps: Pick<
-  TTagProps,
-  'tone' | 'isDisabled' | 'isDraggable' | 'horizontalConstraint'
-> = {
-  tone: 'primary',
-  isDisabled: false,
-  isDraggable: false,
-  horizontalConstraint: 'scale',
-};
-
-const Tag = (props: TTagProps) => {
+const Tag = ({
+  tone = 'primary',
+  isDisabled = false,
+  isDraggable = false,
+  horizontalConstraint = 'scale',
+  ...props
+}: TTagProps) => {
   let tagBodyProps;
 
   switch (true) {
-    case props.isDisabled:
+    case isDisabled:
       tagBodyProps = {};
       break;
     case Boolean(props.to):
@@ -101,17 +97,17 @@ const Tag = (props: TTagProps) => {
   }
 
   const isInteractive =
-    !props.isDisabled && (Boolean(props.onClick) || Boolean(props.to));
+    !isDisabled && (Boolean(props.onClick) || Boolean(props.to));
 
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <div
         css={css`
           a {
             text-decoration: none;
           }
           box-sizing: border-box;
-          cursor: ${props.isDisabled
+          cursor: ${isDisabled
             ? 'not-allowed'
             : isInteractive
             ? 'pointer'
@@ -122,7 +118,7 @@ const Tag = (props: TTagProps) => {
           border-style: solid;
           border-width: 1px;
           user-select: none;
-          ${getToneStyles(props)};
+          ${getToneStyles(props as TTagProps)};
 
           &:focus-within {
             outline: ${designTokens.borderWidth2} solid
@@ -135,16 +131,16 @@ const Tag = (props: TTagProps) => {
           styles={props.styles}
           onClick={props.onClick}
           onRemove={props.onRemove}
-          isDisabled={props.isDisabled}
-          isDraggable={props.isDraggable}
+          isDisabled={isDisabled}
+          isDraggable={isDraggable}
         >
           {props.children}
         </TagBody>
 
-        {Boolean(props.onRemove) && !props.isDisabled && (
+        {Boolean(props.onRemove) && !isDisabled && (
           <AccessibleButton
             label="Remove"
-            isDisabled={props.isDisabled}
+            isDisabled={isDisabled}
             onClick={props.onRemove}
             css={[
               css`
@@ -174,7 +170,6 @@ const Tag = (props: TTagProps) => {
   );
 };
 
-Tag.defaultProps = defaultProps;
 Tag.displayName = 'Tag';
 
 export default Tag;

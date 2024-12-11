@@ -91,43 +91,39 @@ export type TPasswordInputProps = {
   autoComplete?: 'on' | 'off' | 'current-password' | 'new-password';
 };
 
-const defaultProps: Pick<
-  TPasswordInputProps,
-  'horizontalConstraint' | 'isDisabled' | 'isReadOnly' | 'isPasswordVisible'
-> = {
-  horizontalConstraint: 'scale',
-  isDisabled: false,
-  isReadOnly: false,
-  isPasswordVisible: false,
-};
-
-const PasswordInput = (props: TPasswordInputProps) => {
-  if (!props.isReadOnly) {
+const PasswordInput = ({
+  horizontalConstraint = 'scale',
+  isDisabled = false,
+  isReadOnly = false,
+  isPasswordVisible = false,
+  ...props
+}: TPasswordInputProps) => {
+  if (!isReadOnly) {
     warning(
       Boolean(props.onChange),
       'PasswordInput: `onChange` is required when is not read only.'
     );
   }
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <input
         id={props.id}
         name={props.name}
-        type={props.isPasswordVisible ? 'text' : 'password'}
+        type={isPasswordVisible ? 'text' : 'password'}
         value={props.value}
         onChange={props.onChange}
         onBlur={props.onBlur}
         onFocus={props.onFocus}
-        disabled={props.isDisabled}
+        disabled={isDisabled}
         placeholder={props.placeholder}
         autoComplete={props.autoComplete}
         css={getInputStyles(props)}
-        readOnly={props.isReadOnly}
+        readOnly={isReadOnly}
         autoFocus={props.isAutofocussed}
         {...filterDataAttributes(props)}
         /* ARIA */
-        aria-readonly={props.isReadOnly}
-        contentEditable={!props.isReadOnly}
+        aria-readonly={isReadOnly}
+        contentEditable={!isReadOnly}
         aria-invalid={props['aria-invalid']}
         aria-errormessage={props['aria-errormessage']}
       />
@@ -136,7 +132,6 @@ const PasswordInput = (props: TPasswordInputProps) => {
 };
 
 PasswordInput.displayName = 'PasswordInput';
-PasswordInput.defaultProps = defaultProps;
 PasswordInput.isEmpty = (value: TPasswordInputProps['value']) =>
   !value || value.trim().length === 0;
 

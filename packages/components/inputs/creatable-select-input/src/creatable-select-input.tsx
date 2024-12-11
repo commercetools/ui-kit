@@ -326,24 +326,12 @@ export type TCreatableSelectInputProps = {
   createOptionPosition?: ReactSelectCreatableProps['createOptionPosition'];
 };
 
-const defaultProps: Pick<
-  TCreatableSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex'
-> = {
-  // Using "null" will ensure that the currently selected value disappears in
-  // case "undefined" gets passed as the next value
-  value: null,
-  // The input needs to be searchable, otherwise it's not possible to create
-  // new options.
-  // We still allow consumers to pass isSearchable={false} so that they can
-  // use CreatableSelectInput as an alternative to SelectInput, which does
-  // not do the option/value mapping going on there and therefore provides
-  // the default API of react-select.
-  isSearchable: true,
-  menuPortalZIndex: 1,
-};
-
-const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
+const CreatableSelectInput = ({
+  value = null,
+  isSearchable = true,
+  menuPortalZIndex = 1,
+  ...props
+}: TCreatableSelectInputProps) => {
   const intl = useIntl();
 
   if (!props.isReadOnly) {
@@ -392,13 +380,13 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
               hasWarning: props.hasWarning,
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
-              menuPortalZIndex: props.menuPortalZIndex,
+              menuPortalZIndex: menuPortalZIndex,
               isCondensed: props.isCondensed,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
-              hasValue: !isEmpty(props.value),
+              hasValue: !isEmpty(value),
               horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectCreatableProps['styles']
           }
@@ -414,7 +402,7 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
           isMulti={props.isMulti}
-          isSearchable={props.isSearchable}
+          isSearchable={isSearchable}
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
@@ -474,7 +462,7 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
           placeholder={placeholder}
           tabIndex={props.tabIndex}
           tabSelectsValue={props.tabSelectsValue}
-          value={props.value}
+          value={value}
           // Creatable props
           allowCreateWhileLoading={props.allowCreateWhileLoading}
           formatCreateLabel={
@@ -497,7 +485,6 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
   );
 };
 CreatableSelectInput.displayName = 'CreatableSelectInput';
-CreatableSelectInput.defaultProps = defaultProps;
 
 /**
  * Expose static helper methods.

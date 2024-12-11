@@ -272,7 +272,10 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
 
 LocalizedInput.displayName = 'LocalizedInput';
 
-const LocalizedMoneyInput = (props: TLocalizedMoneyInputProps) => {
+const LocalizedMoneyInput = ({
+  horizontalConstraint = 'scale',
+  ...props
+}: TLocalizedMoneyInputProps) => {
   const intl = useIntl();
 
   const defaultExpansionState =
@@ -324,7 +327,7 @@ const LocalizedMoneyInput = (props: TLocalizedMoneyInputProps) => {
   }
 
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <Stack scale="xs">
         <Stack scale="s">
           {currencies.map((currency, index) => {
@@ -391,10 +394,6 @@ LocalizedMoneyInput.displayName = 'LocalizedMoneyInput';
 LocalizedMoneyInput.getId = getId;
 
 LocalizedMoneyInput.getName = getName;
-
-LocalizedMoneyInput.defaultProps = {
-  horizontalConstraint: 'scale',
-};
 
 LocalizedMoneyInput.convertToMoneyValues = (
   values: TValue[],

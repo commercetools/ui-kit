@@ -99,31 +99,23 @@ export type TIconButtonProps<
  * passed to `<IconButton>`: <IconButton as={Link} to="/foo" label="Foo" />.
  */ ComponentPropsWithRef<TStringOrComponent>;
 
-const defaultProps: Pick<
-  TIconButtonProps,
-  'type' | 'theme' | 'size' | 'shape' | 'isToggleButton'
-> = {
-  type: 'button',
-  theme: 'default',
-  size: '40',
-  shape: 'round',
-  isToggleButton: false,
-};
-
-const IconButton = <TStringOrComponent extends ElementType = 'button'>(
-  props: TIconButtonProps<TStringOrComponent>
-) => {
+const IconButton = ({
+  type = 'button',
+  theme = 'default',
+  size = '40',
+  shape = 'round',
+  isToggleButton = false,
+  ...props
+}: TIconButtonProps) => {
   warning(
-    !(props.theme !== 'default' && !props.isToggleButton),
+    !(theme !== 'default' && !isToggleButton),
     `Invalid prop \`theme\` supplied to \`IconButton\`. Only toggle buttons may have a theme.`
   );
 
   useWarning(
-    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
-    `IconButton '${
-      props.size
-    }' value for 'size' property has been deprecated in favor of '${
-      sizeMapping[props.size as TLegacySizes]
+    !Boolean(Object.keys(sizeMapping).indexOf(size) > -1),
+    `IconButton '${size}' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[size as TLegacySizes]
     }' Please update that value when using this component`
   );
 
@@ -131,16 +123,16 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
     'data-track-component': 'IconButton',
     ...filterInvalidAttributes(props),
   };
-  const isActive = Boolean(props.isToggleButton && props.isToggled);
+  const isActive = Boolean(isToggleButton && props.isToggled);
 
   return (
     <AccessibleButton
       as={props.as}
       buttonAttributes={buttonAttributes}
-      type={props.type}
+      type={type}
       label={props.label}
       onClick={props.onClick}
-      isToggleButton={props.isToggleButton}
+      isToggleButton={isToggleButton}
       isToggled={props.isToggled}
       isDisabled={props.isDisabled}
       css={[
@@ -160,22 +152,21 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
           transition: background-color ${designTokens.transitionLinear80Ms},
             box-shadow 150ms ease-in-out;
         `,
-        getBaseStyles(props.theme, props.isDisabled, isActive),
-        getShapeStyles('square', props.size),
-        getSizeStyles(props.size),
-        getHoverStyles(props.isDisabled, props.theme),
+        getBaseStyles(theme, props.isDisabled, isActive),
+        getShapeStyles('square', size),
+        getSizeStyles(size),
+        getHoverStyles(props.isDisabled, theme),
       ]}
     >
       {props.icon &&
         cloneElement(props.icon, {
-          size: props.size,
+          size: size,
           color: getIconThemeColor(props),
         })}
     </AccessibleButton>
   );
 };
 
-IconButton.defaultProps = defaultProps;
 IconButton.displayName = 'IconButton';
 
 export default IconButton;

@@ -79,11 +79,10 @@ export type TCalendarBody = {
   theme?: Theme;
 };
 
-const defaultProps: Pick<TCalendarBody, 'isClearable'> = {
-  isClearable: true,
-};
-
-export const CalendarBody = (props: TCalendarBody) => {
+export const CalendarBody = ({
+  isClearable = true,
+  ...props
+}: TCalendarBody) => {
   const [isFocused, toggleIsFocused] = useToggleState(false);
 
   const onInputFocus = props.inputProps?.onFocus;
@@ -141,7 +140,7 @@ export const CalendarBody = (props: TCalendarBody) => {
           onBlur={handleInputBlur}
           aria-readonly={props.isReadOnly}
         />
-        {!disabledOrReadOnly && props.hasSelection && props.isClearable && (
+        {!disabledOrReadOnly && props.hasSelection && isClearable && (
           <ClearSection
             isCondensed={props.isCondensed}
             hasError={props.hasError}
@@ -177,7 +176,5 @@ export const CalendarBody = (props: TCalendarBody) => {
 };
 
 CalendarBody.displayName = 'CalendarBody';
-
-CalendarBody.defaultProps = defaultProps;
 
 export default CalendarBody;
