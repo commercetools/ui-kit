@@ -1,5 +1,49 @@
 # @commercetools-frontend/ui-kit
 
+## 19.19.0
+
+### Patch Changes
+
+- Updated dependencies [[`7b1a6ce`](https://github.com/commercetools/ui-kit/commit/7b1a6cedff51db8bbecddab241f516490ee37428)]:
+  - @commercetools-uikit/icons@19.19.0
+  - @commercetools-uikit/design-system@19.19.0
+  - @commercetools-uikit/inputs@19.19.0
+  - @commercetools-uikit/collapsible-panel@19.19.0
+  - @commercetools-uikit/data-table@19.19.0
+  - @commercetools-uikit/data-table-manager@19.19.0
+  - @commercetools-uikit/field-label@19.19.0
+  - @commercetools-uikit/filters@19.19.0
+  - @commercetools-uikit/selectable-search-input@19.19.0
+  - @commercetools-uikit/link@19.19.0
+  - @commercetools-uikit/notifications@19.19.0
+  - @commercetools-uikit/pagination@19.19.0
+  - @commercetools-uikit/primary-action-dropdown@19.19.0
+  - @commercetools-uikit/tag@19.19.0
+  - @commercetools-uikit/avatar@19.19.0
+  - @commercetools-uikit/card@19.19.0
+  - @commercetools-uikit/constraints@19.19.0
+  - @commercetools-uikit/dropdown-menu@19.19.0
+  - @commercetools-uikit/label@19.19.0
+  - @commercetools-uikit/loading-spinner@19.19.0
+  - @commercetools-uikit/progress-bar@19.19.0
+  - @commercetools-uikit/quick-filters@19.19.0
+  - @commercetools-uikit/stamp@19.19.0
+  - @commercetools-uikit/text@19.19.0
+  - @commercetools-uikit/tooltip@19.19.0
+  - @commercetools-uikit/view-switcher@19.19.0
+  - @commercetools-uikit/buttons@19.19.0
+  - @commercetools-uikit/fields@19.19.0
+  - @commercetools-uikit/spacings@19.19.0
+  - @commercetools-uikit/messages@19.19.0
+  - @commercetools-uikit/field-errors@19.19.0
+  - @commercetools-uikit/accessible-hidden@19.19.0
+  - @commercetools-uikit/collapsible@19.19.0
+  - @commercetools-uikit/collapsible-motion@19.19.0
+  - @commercetools-uikit/grid@19.19.0
+  - @commercetools-uikit/hooks@19.19.0
+  - @commercetools-uikit/i18n@19.19.0
+  - @commercetools-uikit/utils@19.19.0
+
 ## 19.18.0
 
 ### Patch Changes
