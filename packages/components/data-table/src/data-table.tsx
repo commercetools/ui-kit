@@ -47,26 +47,6 @@ const shouldRenderRowBottomBorder = (
   return false;
 };
 
-const defaultProps: Pick<
-  TDataTableProps,
-  | 'columns'
-  | 'isCondensed'
-  | 'wrapHeaderLabels'
-  | 'horizontalCellAlignment'
-  | 'verticalCellAlignment'
-  | 'disableSelfContainment'
-  | 'itemRenderer'
-> = {
-  columns: [],
-  isCondensed: true,
-  wrapHeaderLabels: true,
-  verticalCellAlignment: 'top',
-  horizontalCellAlignment: 'left',
-  disableSelfContainment: false,
-  // @ts-ignore
-  itemRenderer: (row, column) => row[column.key],
-};
-
 export type TColumn<Row extends TRow = TRow> = {
   /**
    * The unique key of the column that is used to identify your data type.
@@ -274,14 +254,21 @@ export type TDataTableProps<Row extends TRow = TRow> = {
   maxExpandableHeight?: number;
 };
 
-const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
+const DataTable = ({
+  wrapHeaderLabels = true,
+  verticalCellAlignment = 'top',
+  horizontalCellAlignment = 'left',
+  disableSelfContainment = false,
+  itemRenderer = (row, column) => row[column.key as keyof TRow],
+  ...props
+}: TDataTableProps) => {
   const { columns, isCondensed } = useDataTableManagerContext();
   const isValueFromProvider = Boolean(columns && columns.length !== 0);
-  const columnsData = isValueFromProvider ? columns : props.columns;
+  const columnsData = isValueFromProvider ? columns : columns;
   const condensedValue =
     isValueFromProvider && isCondensed !== undefined
       ? isCondensed
-      : props.isCondensed;
+      : isCondensed;
 
   //  TODO - initial poc for the nested rows
   // const [openedItemIds, setOpenedItemIds] = useState<string[]>([]);
@@ -332,14 +319,14 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
       maxWidth={props.maxWidth}
       maxHeight={props.maxHeight}
       isBeingResized={columnResizingReducer.getIsAnyColumnBeingResized()}
-      disableSelfContainment={!!props.disableSelfContainment}
+      disableSelfContainment={!!disableSelfContainment}
     >
       <TableGrid
         ref={tableRef as LegacyRef<HTMLTableElement>}
         {...filterDataAttributes(props)}
         columns={columnsData as TColumn<TRow>[]}
         maxHeight={props.maxHeight}
-        disableSelfContainment={!!props.disableSelfContainment}
+        disableSelfContainment={!!disableSelfContainment}
         resizedTotalWidth={resizedTotalWidth}
       >
         <ColumnResizingContext.Provider value={columnResizingReducer}>
@@ -348,15 +335,17 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
               {columnsData.map((column) => (
                 <HeaderCell
                   key={column.key}
-                  shouldWrap={props.wrapHeaderLabels}
+                  shouldWrap={wrapHeaderLabels}
                   isCondensed={condensedValue}
                   iconComponent={column.headerIcon}
                   onColumnResized={props.onColumnResized}
                   disableResizing={column.disableResizing}
                   horizontalCellAlignment={
-                    column.align ? column.align : props.horizontalCellAlignment
+                    column.align ? column.align : horizontalCellAlignment
                   }
-                  disableHeaderStickiness={props.disableHeaderStickiness}
+                  disableHeaderStickiness={
+                    props.disableHeaderStickiness as boolean
+                  }
                   columnWidth={column.width}
                   /* Sorting Props */
                   onClick={props.onSortChange && props.onSortChange}
@@ -402,7 +391,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
               </td >
             ))} */}
             {props.rows.map((row, rowIndex) => (
-              <DataRow<Row>
+              <DataRow
                 {...props}
                 isCondensed={condensedValue}
                 columns={columnsData}
@@ -411,13 +400,14 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
                 rowIndex={rowIndex}
                 shouldClipContent={
                   columnResizingReducer.getIsAnyColumnBeingResized() ||
-                  hasTableBeenResized
+                  (hasTableBeenResized as boolean)
                 }
                 shouldRenderBottomBorder={shouldRenderRowBottomBorder(
                   rowIndex,
                   props.rows.length,
                   props.footer
                 )}
+                itemRenderer={itemRenderer}
               />
             ))}
           </TableBody>
@@ -427,7 +417,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         <Footer
           data-testid="footer"
           isCondensed={condensedValue}
-          horizontalCellAlignment={props.horizontalCellAlignment}
+          horizontalCellAlignment={horizontalCellAlignment}
           resizedTotalWidth={resizedTotalWidth}
         >
           {props.footer}
@@ -437,7 +427,6 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   );
 };
 
-DataTable.defaultProps = defaultProps;
 DataTable.displayName = 'DataTable';
 
 export default DataTable;

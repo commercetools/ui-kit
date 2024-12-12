@@ -2,9 +2,9 @@ import type { TToggleInputProps } from './toggle-input';
 
 import { useState } from 'react';
 import { screen, render } from '../../../../../test/test-utils';
-import ToggleInput, { defaultProps } from './toggle-input';
+import ToggleInput from './toggle-input';
 
-const TestComponent = (props: TToggleInputProps) => {
+const TestComponent = ({ size = 'big', ...props }: TToggleInputProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -20,18 +20,23 @@ const TestComponent = (props: TToggleInputProps) => {
             props.onChange(evt);
           }
         }}
+        size="big"
       />
     </div>
   );
 };
-TestComponent.defaultProps = defaultProps;
 
 it('should render children', () => {
   const onChange = jest.fn();
   render(
     <div>
       <label htmlFor="toggle">Toggle</label>
-      <ToggleInput id="toggle" isChecked={false} onChange={onChange} />
+      <ToggleInput
+        id="toggle"
+        isChecked={false}
+        onChange={onChange}
+        size="big"
+      />
     </div>
   );
 
@@ -43,7 +48,14 @@ it('should call onChange when clicked', () => {
     event.persist();
   });
 
-  render(<TestComponent id="toggle" isChecked={false} onChange={onChange} />);
+  render(
+    <TestComponent
+      id="toggle"
+      isChecked={false}
+      onChange={onChange}
+      size="big"
+    />
+  );
 
   screen.getByLabelText('Toggle').click();
 
@@ -61,6 +73,7 @@ it('should not call onChange when clicked while disabled', () => {
         isChecked={false}
         onChange={onChange}
         isDisabled={true}
+        size="big"
       />
     </div>
   );
@@ -76,7 +89,12 @@ describe('checked attribute', () => {
     render(
       <div>
         <label htmlFor="toggle">Toggle</label>
-        <ToggleInput id="toggle" isChecked={true} onChange={onChange} />
+        <ToggleInput
+          id="toggle"
+          isChecked={true}
+          onChange={onChange}
+          size="big"
+        />
       </div>
     );
 
@@ -88,7 +106,12 @@ describe('checked attribute', () => {
     render(
       <div>
         <label htmlFor="toggle">Toggle</label>
-        <ToggleInput id="toggle" isChecked={false} onChange={onChange} />
+        <ToggleInput
+          id="toggle"
+          isChecked={false}
+          onChange={onChange}
+          size="big"
+        />
       </div>
     );
 

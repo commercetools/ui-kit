@@ -102,6 +102,10 @@ export type TSecondaryButtonProps<
    * Indicates the tone of the button.
    */
   tone?: 'secondary' | 'info';
+  /**
+   * The URL to link to when the button is clicked.
+   */
+  to?: string;
 } & /**
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
@@ -125,17 +129,6 @@ export const getIconColor = (
   if (props.isDisabled) return 'neutral60';
   // if button is not disabled nor has a theme, return icon's default color
   return icon?.props.color;
-};
-
-const defaultProps: Pick<
-  TSecondaryButtonProps,
-  'type' | 'theme' | 'size' | 'isToggleButton' | 'tone'
-> = {
-  type: 'button',
-  theme: 'default',
-  tone: 'secondary',
-  size: '20',
-  isToggleButton: false,
 };
 
 const PositionedIcon = ({
@@ -163,12 +156,15 @@ const PositionedIcon = ({
   );
 };
 
-export const SecondaryButton = <
-  TStringOrComponent extends ElementType = 'button'
->(
-  props: TSecondaryButtonProps<TStringOrComponent>
-) => {
-  const isActive = Boolean(props.isToggleButton && props.isToggled);
+export const SecondaryButton = ({
+  type = 'button',
+  theme = 'default',
+  tone = 'secondary',
+  size = '20',
+  isToggleButton = false,
+  ...props
+}: TSecondaryButtonProps) => {
+  const isActive = Boolean(isToggleButton && props.isToggled);
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.to);
   const buttonAttributes = {
     'data-track-component': 'SecondaryButton',
@@ -177,16 +173,14 @@ export const SecondaryButton = <
   };
 
   warning(
-    !(props.theme !== 'default' && !props.isToggleButton),
+    !(theme !== 'default' && !isToggleButton),
     `Invalid prop \`theme\` supplied to \`SecondaryButton\`. Only toggle buttons may have a theme.`
   );
 
   useWarning(
-    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
-    `SecondaryButton '${
-      props.size
-    }' value for 'size' property has been deprecated in favor of '${
-      sizeMapping[props.size as TLegacySizes]
+    !Boolean(Object.keys(sizeMapping).indexOf(size) > -1),
+    `SecondaryButton '${size}' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[size as TLegacySizes]
     }' Please update that value when using this component`
   );
 
@@ -207,20 +201,20 @@ export const SecondaryButton = <
       transition: background-color ${designTokens.transitionLinear80Ms},
         box-shadow ${designTokens.transitionEaseinout150Ms};
     `,
-    getThemeStyles(props.theme),
-    getStateStyles(props.isDisabled, isActive, props.tone),
-    getSizeStyles(props.size),
-    getToneStyles(props.tone, props.isDisabled, isActive),
+    getThemeStyles(theme),
+    getStateStyles(props.isDisabled as boolean, isActive, tone),
+    getSizeStyles(size),
+    getToneStyles(tone, props.isDisabled as boolean, isActive),
   ];
 
   return (
     <AccessibleButton
       as={(shouldUseLinkTag ? Link : props.as) as ComponentType}
-      type={props.type}
+      type={type}
       buttonAttributes={buttonAttributes}
       label={props.label}
       onClick={props.onClick}
-      isToggleButton={props.isToggleButton}
+      isToggleButton={isToggleButton}
       isToggled={props.isToggled}
       isDisabled={props.isDisabled}
       css={containerStyles}
@@ -229,7 +223,7 @@ export const SecondaryButton = <
         {props.iconLeft && (
           <PositionedIcon
             icon={props.iconLeft}
-            size={props.size}
+            size={size}
             color={getIconColor(props, props.iconLeft)}
           />
         )}
@@ -237,7 +231,7 @@ export const SecondaryButton = <
         {props.iconRight && (
           <PositionedIcon
             icon={props.iconRight}
-            size={props.size}
+            size={size}
             color={getIconColor(props, props.iconRight)}
           />
         )}
@@ -247,6 +241,5 @@ export const SecondaryButton = <
 };
 
 SecondaryButton.displayName = 'SecondaryButton';
-SecondaryButton.defaultProps = defaultProps;
 
 export default SecondaryButton;

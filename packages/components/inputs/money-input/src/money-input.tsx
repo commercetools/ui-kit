@@ -540,16 +540,12 @@ type TMoneyInputProps = {
   isCurrencyInputDisabled?: boolean;
 };
 
-const defaultProps: Pick<
-  TMoneyInputProps,
-  'currencies' | 'horizontalConstraint' | 'menuPortalZIndex'
-> = {
-  currencies: [],
-  horizontalConstraint: 'scale',
-  menuPortalZIndex: 1,
-};
-
-const MoneyInput = (props: TMoneyInputProps) => {
+const MoneyInput = ({
+  currencies = [],
+  horizontalConstraint = 'scale',
+  menuPortalZIndex = 1,
+  ...props
+}: TMoneyInputProps) => {
   const intl = useIntl();
   const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
   const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
@@ -567,7 +563,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
   }
 
   warnIfMenuPortalPropsAreMissing({
-    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalZIndex: menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'MoneyInput',
   });
@@ -593,6 +589,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
     if (
       amount.length > 0 &&
       props.value.currencyCode &&
+      // @ts-ignore
       currencies[props.value.currencyCode]
     ) {
       const formattedAmount = formatAmount(
@@ -617,13 +614,14 @@ const MoneyInput = (props: TMoneyInputProps) => {
       }
     }
   }, [
-    intl.locale,
-    onChange,
-    moneyInputId,
-    props.name,
     props.value.amount,
     props.value.currencyCode,
+    props.name,
     toggleAmountHasFocus,
+    currencies,
+    intl.locale,
+    moneyInputId,
+    onChange,
   ]);
 
   const handleAmountChange = useCallback(
@@ -716,7 +714,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
     toggleCurrencyHasFocus(false);
   }, [toggleCurrencyHasFocus]);
 
-  const hasNoCurrencies = props.currencies.length === 0;
+  const hasNoCurrencies = currencies.length === 0;
   const hasFocus = currencyHasFocus || amountHasFocus;
   const currencySelectStyles = createCurrencySelectStyles({
     hasWarning: props.hasWarning,
@@ -724,10 +722,10 @@ const MoneyInput = (props: TMoneyInputProps) => {
     isCondensed: props.isCondensed,
     isDisabled: props.isDisabled,
     isReadOnly: props.isReadOnly,
-    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalZIndex: menuPortalZIndex,
     currencyHasFocus,
   });
-  const options = props.currencies.map((currencyCode) => ({
+  const options = currencies.map((currencyCode) => ({
     label: currencyCode,
     value: currencyCode,
   }));
@@ -783,7 +781,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
   );
 
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <div
         ref={containerRef}
         css={css`
@@ -890,7 +888,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
                 }
               >
                 <Tooltip
-                  off={props.isDisabled}
+                  off={props.isDisabled as boolean}
                   placement="top-end"
                   // we use negative margin to make up for the padding in the Tooltip Wrapper
                   // so that the tooltip is flush with the component
@@ -997,7 +995,5 @@ type TTouched = {
 
 MoneyInput.isTouched = (touched?: TTouched) =>
   Boolean(touched && touched.currencyCode && touched.amount);
-
-MoneyInput.defaultProps = defaultProps;
 
 export default MoneyInput;

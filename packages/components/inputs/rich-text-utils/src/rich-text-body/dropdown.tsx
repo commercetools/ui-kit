@@ -39,17 +39,21 @@ type THeadings = {
   label?: string;
 };
 
-const Label = styled.div;
+const Label = styled.div``;
 
-const Dropdown = (props: TDropdownProps) => {
+const Dropdown = ({
+  components = { Item: StyledDropdownItem, Label },
+  isMulti = false,
+  ...props
+}: TDropdownProps) => {
   const DropdownItem: FunctionComponent<{
     value: string;
     isSelected: boolean;
-  }> = props.components.Item;
-  const DropdownLabel = props.components.Label;
+  }> = components.Item;
+  const DropdownLabel = components.Label;
 
   const isIndeterminate =
-    props.isMulti &&
+    isMulti &&
     props.options.some((item) => props.getIsItemSelected(item) === true);
 
   const Downshift = DownshiftUntyped as ElementType;
@@ -80,7 +84,7 @@ const Dropdown = (props: TDropdownProps) => {
                 css={getButtonStyles({
                   isOpen,
                   isIndeterminate,
-                  isStyleButton: !props.isMulti,
+                  isStyleButton: !isMulti,
                   isDisabled: props.isDisabled,
                   isReadOnly: props.isReadOnly,
                 })}
@@ -126,13 +130,5 @@ const Dropdown = (props: TDropdownProps) => {
 };
 
 Dropdown.displayName = 'Dropdown';
-
-Dropdown.defaultProps = {
-  components: {
-    Item: StyledDropdownItem,
-    Label,
-  },
-  isMulti: false,
-};
 
 export default Dropdown;

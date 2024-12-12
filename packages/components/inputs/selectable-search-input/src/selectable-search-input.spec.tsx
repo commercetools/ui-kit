@@ -8,9 +8,20 @@ import { components, OptionProps } from 'react-select';
 
 // We use this component to simulate the whole flow of
 // changing a value and submitting.
-const TestComponent = (props: TSelectableSearchInputProps) => {
-  const [dropdownValue, setDropdownValue] = useState(props.value.option);
-  const [textInputValue, setTextInputValue] = useState(props.value.text);
+const TestComponent = ({
+  id = 'test-id',
+  name = 'test-name',
+  options = [
+    { value: 'foo', label: 'Foo' },
+    { value: 'bar', label: 'Bar' },
+    { value: 'baz', label: 'Baz' },
+  ],
+  onChange = () => {},
+  onSubmit = () => {},
+  ...props
+}: TSelectableSearchInputProps) => {
+  const [dropdownValue, setDropdownValue] = useState('test-value');
+  const [textInputValue, setTextInputValue] = useState('foo');
 
   const value = {
     text: textInputValue,
@@ -24,33 +35,22 @@ const TestComponent = (props: TSelectableSearchInputProps) => {
     if (event.target.name && event.target.name.endsWith('.dropdown')) {
       setDropdownValue(event.target.value as string);
     }
-    props.onChange && props.onChange(event);
+    onChange && onChange(event);
   };
 
   return (
     <div>
-      <label htmlFor={SelectableSearchInput.getTextInputId(props.id)}>
+      <label htmlFor={SelectableSearchInput.getTextInputId(id)}>
         test-label
       </label>
-      <SelectableSearchInput {...props} value={value} onChange={handleChange} />
+      <SelectableSearchInput
+        {...props}
+        value={value}
+        onChange={handleChange}
+        onSubmit={() => {}}
+      />
     </div>
   );
-};
-
-TestComponent.defaultProps = {
-  id: 'test-id',
-  name: 'test-name',
-  value: {
-    text: 'test-value',
-    option: 'foo',
-  },
-  options: [
-    { value: 'foo', label: 'Foo' },
-    { value: 'bar', label: 'Bar' },
-    { value: 'baz', label: 'Baz' },
-  ],
-  onChange: () => {},
-  onSubmit: () => {},
 };
 
 describe('SelectableSearchInput.getTextInputId', () => {
@@ -104,7 +104,16 @@ describe('SelectableSearchInput.isEmpty', () => {
 
 describe('SelectableSearchInput', () => {
   it('should forward data-attributes', () => {
-    render(<TestComponent data-foo="bar" />);
+    render(
+      <TestComponent
+        data-foo="bar"
+        value={{
+          text: '',
+          option: '',
+        }}
+        onSubmit={() => {}}
+      />
+    );
     expect(screen.getByLabelText('test-label')).toHaveAttribute(
       'data-foo',
       'bar'
@@ -112,7 +121,16 @@ describe('SelectableSearchInput', () => {
   });
 
   it('should have an HTML name based on the passed name', () => {
-    render(<TestComponent name="foo" />);
+    render(
+      <TestComponent
+        name="foo"
+        value={{
+          text: 'foo',
+          option: 'bar',
+        }}
+        onSubmit={() => {}}
+      />
+    );
     expect(screen.getByLabelText('test-label')).toHaveAttribute(
       'name',
       'foo.textInput'
@@ -120,7 +138,16 @@ describe('SelectableSearchInput', () => {
   });
 
   it('should pass autoComplete', () => {
-    render(<TestComponent autoComplete="off" />);
+    render(
+      <TestComponent
+        autoComplete="off"
+        value={{
+          text: '',
+          option: '',
+        }}
+        onSubmit={() => {}}
+      />
+    );
     expect(screen.getByLabelText('test-label')).toHaveAttribute(
       'autocomplete',
       'off'
@@ -128,7 +155,12 @@ describe('SelectableSearchInput', () => {
   });
 
   it('should show the passed value', () => {
-    render(<TestComponent value={{ text: 'foo', option: 'bar' }} />);
+    render(
+      <TestComponent
+        value={{ text: 'foo', option: 'bar' }}
+        onSubmit={() => {}}
+      />
+    );
     expect(screen.getByLabelText('test-label')).toHaveAttribute('value', 'foo');
     expect(
       screen.getByTestId('selectable-search-input-container')
@@ -140,6 +172,7 @@ describe('SelectableSearchInput', () => {
       <TestComponent
         value={{ text: 'foo', option: 'bar' }}
         _experimentalValue={{ text: 'experimental', option: 'bar' }}
+        onSubmit={() => {}}
       />
     );
     expect(screen.getByLabelText('test-label')).toHaveAttribute(
@@ -156,6 +189,7 @@ describe('SelectableSearchInput', () => {
       <TestComponent
         value={{ text: 'foo', option: 'bar' }}
         _experimentalValue={{ text: '', option: 'bar' }}
+        onSubmit={() => {}}
       />
     );
     expect(screen.getByLabelText('test-label')).toHaveAttribute('value', '');
@@ -170,6 +204,7 @@ describe('SelectableSearchInput', () => {
       <TestComponent
         value={{ text: 'test value', option: 'bar' }}
         onFocus={onFocus}
+        onSubmit={() => {}}
       />
     );
 
@@ -199,6 +234,7 @@ describe('SelectableSearchInput', () => {
         value={{ text: 'test value', option: 'bar' }}
         onFocus={onFocus}
         selectCustomComponents={{ Option }}
+        onSubmit={() => {}}
       />
     );
 
@@ -216,6 +252,7 @@ describe('SelectableSearchInput', () => {
       <TestComponent
         value={{ text: 'test value', option: 'bar' }}
         onBlur={onBlur}
+        onSubmit={() => {}}
       />
     );
     screen.getByLabelText('test-label').focus();
@@ -232,22 +269,58 @@ describe('SelectableSearchInput', () => {
   });
 
   it('should focus the text input automatically when isAutofocussed is passed', () => {
-    render(<TestComponent isAutofocussed={true} />);
+    render(
+      <TestComponent
+        isAutofocussed={true}
+        value={{
+          text: '',
+          option: '',
+        }}
+        onSubmit={() => {}}
+      />
+    );
     expect(screen.getByLabelText('test-label')).toHaveFocus();
   });
 
   it('should render a readonly input when readonly', () => {
-    render(<TestComponent isReadOnly={true} />);
+    render(
+      <TestComponent
+        isReadOnly={true}
+        value={{
+          text: '',
+          option: '',
+        }}
+        onSubmit={() => {}}
+      />
+    );
     expect(screen.getByLabelText('test-label')).toHaveAttribute('readonly');
   });
 
   it('should render a readonly dropdown when readonly', () => {
-    render(<TestComponent isReadOnly={true} />);
+    render(
+      <TestComponent
+        isReadOnly={true}
+        value={{
+          text: '',
+          option: '',
+        }}
+        onSubmit={() => {}}
+      />
+    );
     expect(screen.getByLabelText('Foo').inputMode).toBe('none');
   });
 
   it('should render with auto-generated ids', () => {
-    const { container } = render(<TestComponent id="" />);
+    const { container } = render(
+      <TestComponent
+        id=""
+        value={{
+          text: '',
+          option: '',
+        }}
+        onSubmit={() => {}}
+      />
+    );
 
     expect(
       container.querySelector('#selectable-search-input-1\\.dropdown')
@@ -261,7 +334,16 @@ describe('SelectableSearchInput', () => {
     const onChange = jest.fn();
     const onSubmit = jest.fn();
 
-    render(<TestComponent onChange={onChange} onSubmit={onSubmit} />);
+    render(
+      <TestComponent
+        onChange={onChange}
+        onSubmit={onSubmit}
+        value={{
+          text: '',
+          option: '',
+        }}
+      />
+    );
 
     const event = { target: { value: 'avengers' } };
 
@@ -296,7 +378,16 @@ describe('SelectableSearchInput', () => {
   it('should call the passed onReset function', () => {
     const onReset = jest.fn();
 
-    const { container } = render(<TestComponent onReset={onReset} />);
+    const { container } = render(
+      <TestComponent
+        onReset={onReset}
+        value={{
+          text: '',
+          option: '',
+        }}
+        onSubmit={() => {}}
+      />
+    );
 
     const event = { target: { value: 'hello' } };
     const textInput = screen.getByTestId('selectable-input');
