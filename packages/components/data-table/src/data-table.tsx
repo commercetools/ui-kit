@@ -156,7 +156,7 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    *
    * [Colum signatures with description](/?path=/docs/components-datatable-readme--props#signatures)
    */
-  columns: TColumn<Row>[];
+  columns?: TColumn<Row>[];
   /**
    * The columns of the nested items to be rendered in the table. Just like the columns, Each object requires a unique `key` which should correspond to property key of
    * the items of `rows` that you want to render under this column, and a `label`
@@ -211,7 +211,7 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    * The default function used to render the content of each item in a cell.
    * In case a column has its own `renderItem` render function, it will take precedence over this function.
    */
-  itemRenderer: (
+  itemRenderer?: (
     item: Row,
     column: TColumn<Row>,
     isRowCollapsed: boolean

@@ -10,15 +10,15 @@ export type TCardProps = {
   /**
    * Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.
    */
-  type: 'raised' | 'flat';
+  type?: 'raised' | 'flat';
   /**
    * Determines the spacing (padding) that the content should have from the card borders. In case there is no space needed, you can pass `none`.
    */
-  insetScale: 'none' | 's' | 'm' | 'l' | 'xl';
+  insetScale?: 'none' | 's' | 'm' | 'l' | 'xl';
   /**
    * Determines the background color of the card.
    */
-  theme: 'light' | 'dark';
+  theme?: 'light' | 'dark';
   /**
    * Pass a custom CSS class, useful to override the styles.
    * <br>

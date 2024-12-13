@@ -81,13 +81,15 @@ export type TSecondaryButtonIconProps<
  * passed to `<SecondaryIconButton>`: <SecondaryIconButton as={Link} to="/foo" label="Foo" />.
  */ ComponentPropsWithRef<TStringOrComponent>;
 
-const SecondaryIconButton = ({
+const SecondaryIconButton = <
+  TStringOrComponent extends ElementType = 'button'
+>({
   color = 'solid',
   type = 'button',
   size = '40',
   isDisabled = false,
   ...props
-}: TSecondaryButtonIconProps) => {
+}: TSecondaryButtonIconProps<TStringOrComponent>) => {
   const buttonAttributes = {
     ...filterInvalidAttributes(omit(props, propsToOmit)),
     'data-track-component': 'SecondaryIconButton',
@@ -111,7 +113,7 @@ const SecondaryIconButton = ({
       label={props.label}
       onClick={props.onClick}
       isDisabled={isDisabled}
-      css={getBaseStyles(props)}
+      css={getBaseStyles(props as TSecondaryButtonIconProps)}
     >
       {props.icon &&
         cloneElement(props.icon, {

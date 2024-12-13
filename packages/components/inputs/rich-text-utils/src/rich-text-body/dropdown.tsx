@@ -18,7 +18,7 @@ export type TDropdownLabel = {
 
 export type TDropdownProps = {
   label: string;
-  isMulti: boolean;
+  isMulti?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
   onChange?: ({ value }: TItem) => void;

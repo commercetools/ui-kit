@@ -495,7 +495,7 @@ export default class AsyncCreatableSelectField extends Component<
             hasWarning={hasWarning}
             maxMenuHeight={this.props.maxMenuHeight}
             menuPortalTarget={this.props.menuPortalTarget}
-            menuPortalZIndex={this.props.menuPortalZIndex}
+            menuPortalZIndex={this.props.menuPortalZIndex as number}
             menuShouldBlockScroll={this.props.menuShouldBlockScroll}
             name={this.props.name}
             noOptionsMessage={this.props.noOptionsMessage}

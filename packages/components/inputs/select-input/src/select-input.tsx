@@ -312,7 +312,7 @@ export type TSelectInputProps = {
   /**
    * Array of options that populate the select menu
    */
-  options: TOptions;
+  options?: TOptions;
   /** defines how options are rendered */
   optionStyle?: 'list' | 'checkbox';
   showOptionGroupDivider?: boolean;

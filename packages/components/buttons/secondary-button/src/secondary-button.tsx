@@ -156,14 +156,16 @@ const PositionedIcon = ({
   );
 };
 
-export const SecondaryButton = ({
+export const SecondaryButton = <
+  TStringOrComponent extends ElementType = 'button'
+>({
   type = 'button',
   theme = 'default',
   tone = 'secondary',
   size = '20',
   isToggleButton = false,
   ...props
-}: TSecondaryButtonProps) => {
+}: TSecondaryButtonProps<TStringOrComponent>) => {
   const isActive = Boolean(isToggleButton && props.isToggled);
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.to);
   const buttonAttributes = {

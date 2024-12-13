@@ -125,13 +125,13 @@ export type TPrimaryButtonProps<
  * passed to `<PrimaryButton>`: <PrimaryButton as={Link} to="/foo" label="Foo" />.
  */ ComponentPropsWithRef<TStringOrComponent>;
 
-const PrimaryButton = ({
+const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>({
   type = 'button',
   size = '20',
   isToggleButton = false,
   tone = 'primary',
   ...props
-}: TPrimaryButtonProps) => {
+}: TPrimaryButtonProps<TStringOrComponent>) => {
   const buttonAttributes = {
     'data-track-component': 'PrimaryButton',
     ...filterInvalidAttributes(omit(props, propsToOmit)),

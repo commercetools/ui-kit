@@ -61,7 +61,7 @@ export type TTooltipProps = {
   /**
    * Determines if the tooltip should not appear.
    */
-  off: boolean;
+  off?: boolean;
   /**
    * An identifier for the tooltip, used for `aria-describedby`.
    */

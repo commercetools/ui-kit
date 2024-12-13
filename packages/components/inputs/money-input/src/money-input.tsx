@@ -451,7 +451,7 @@ type TMoneyInputProps = {
   /**
    * List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.
    */
-  currencies: string[];
+  currencies?: string[];
   /**
    * Placeholder text for the input
    */
