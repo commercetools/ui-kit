@@ -12,7 +12,7 @@ For all icons to have an entrypoint in the `icons` package, there must be a fold
 
 ### Adding an svg
 
-- Add the svg markup to `./src/svg`. For example, `./src/svg/aatest.react.svg`.
+- Add the raw SVG file ending in `.react.svg` to `./src/svg`.
 - Run `yarn build` from the root of the application.
 - Say yes to the prompt that asks: `? @commercetools-uikit/icons/generated/AatestReact A package.json file does not exist for this entrypoint, would you like to create one automatically? (Y/n) `.
 
@@ -23,7 +23,7 @@ For all icons to have an entrypoint in the `icons` package, there must be a fold
 
 ### Deleting an svg
 
-- delete the svg from `./src/svg`
+- delete the raw svg from `./src/svg`
 - delete the `./generated` and `./src/generated` folders. This insures that the deleted icon does not persist in the generated files.
 - run `yarn build`
 - Hit `a` to select all packages when the prompt asks `🎁 ? A package.json file does not exist for this entrypoint, would you like to create one automatically? … `. This insures that there is an entrypoint package for each icon in `src/generated`.
