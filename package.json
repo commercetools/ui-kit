@@ -85,7 +85,7 @@
     "react-from-dom": "0.6.2"
   },
   "engines": {
-    "node": ">=18 <19",
+    "node": "<23",
     "npm": ">=6",
     "yarn": ">=3"
   },
@@ -118,7 +118,7 @@
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "8.0.1",
     "@types/is-hotkey": "^0.1.7",
-    "@types/node": "18.19.68",
+    "@types/node": "22.10.2",
     "@types/prettier": "^2.7.3",
     "@typescript-eslint/eslint-plugin": "8.18.0",
     "@typescript-eslint/parser": "8.18.0",
