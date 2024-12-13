@@ -27,7 +27,7 @@
     "remark-gfm": "^4.0.0",
     "serve": "^14.2.3",
     "storybook": "^8.2.9",
-    "vite": "5.4.11"
+    "vite": "6.0.3"
   },
   "scripts": {
     "start": "storybook dev -p 6006",
