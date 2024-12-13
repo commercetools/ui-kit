@@ -112,7 +112,7 @@ export default function transformer(fileInfo, api) {
         }
       } else {
         const propsParam = params[0];
-        // check if the props parameter is an object pattern or a rest parameter
+        // check if the props parameter is an object pattern
         if (propsParam.type === 'ObjectPattern') {
           defaultProps.forEach((prop) => {
             const keyName = prop.key.name;
