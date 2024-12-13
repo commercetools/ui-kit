@@ -72,14 +72,9 @@ type Props = {
 
   isAlive: boolean;
 };
-const defaultProps: Pick<Props, 'power' | 'isAlive'> = {
-  power: 1,
-  isAlive: true,
-};
 
-const JusticeLeague = (props: Props) => (
+const JusticeLeague = ({ power = 1, isAlive = true, ...props }: Props) => (
   <div>{`JusticeLeague: ${props.name}`}</div>
 );
-JusticeLeague.defaultProps = defaultProps;
 
 export default JusticeLeague;
