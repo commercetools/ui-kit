@@ -118,7 +118,7 @@ const Tag = ({
           border-style: solid;
           border-width: 1px;
           user-select: none;
-          ${getToneStyles(props as TTagProps)};
+          ${getToneStyles(props)};
 
           &:focus-within {
             outline: ${designTokens.borderWidth2} solid

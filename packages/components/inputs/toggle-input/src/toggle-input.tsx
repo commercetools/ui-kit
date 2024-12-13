@@ -65,7 +65,7 @@ const ToggleInput = ({
         css={[
           accessibleHiddenInputStyles,
           getInputStyles({
-            ...(props as TToggleInputProps),
+            ...{ isChecked, size, ...props },
             trackSizes,
             thumbSizes,
           }),

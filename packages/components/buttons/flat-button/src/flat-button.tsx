@@ -160,13 +160,25 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>({
     >
       {props.icon && iconPosition === 'left' && (
         <ButtonIcon<TStringOrComponent>
-          {...(props as TFlatButtonProps<TStringOrComponent>)}
+          {...({
+            tone,
+            type,
+            iconPosition,
+            isDisabled,
+            ...props,
+          } as TFlatButtonProps<TStringOrComponent>)}
         />
       )}
       <span>{props.label}</span>
       {props.icon && iconPosition === 'right' && (
         <ButtonIcon<TStringOrComponent>
-          {...(props as TFlatButtonProps<TStringOrComponent>)}
+          {...({
+            tone,
+            type,
+            iconPosition,
+            isDisabled,
+            ...props,
+          } as TFlatButtonProps<TStringOrComponent>)}
         />
       )}
     </AccessibleButton>

@@ -130,7 +130,7 @@ const Link = ({
 
   // `filterInvalidAttributes` strips off `intlMessage` and `children`
   // so we pass in the "raw" props instead.
-  warnIfMissingContent(props as TLinkProps);
+  warnIfMissingContent({ tone, isExternal, ...props });
 
   if (isExternal) {
     if (typeof props.to !== 'string') {
@@ -147,7 +147,7 @@ const Link = ({
         `}
       >
         <a
-          css={getLinkStyles(props as TLinkProps)}
+          css={getLinkStyles({ tone, isExternal, ...props })}
           href={props.to}
           target="_blank"
           rel="noopener noreferrer"
@@ -166,7 +166,7 @@ const Link = ({
 
   return (
     <ReactRouterLink
-      css={getLinkStyles(props as TLinkProps)}
+      css={getLinkStyles({ tone, isExternal, ...props })}
       to={props.to}
       {...remainingProps}
     >

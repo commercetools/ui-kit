@@ -164,7 +164,7 @@ const Stamp = ({
     props.icon &&
     cloneElement(props.icon, {
       size: 'medium',
-      color: getIconColor(props as StylesFunctionParams, true),
+      color: getIconColor({ isCondensed, tone, ...props }, true),
     });
 
   useWarnDeprecatedProp(
@@ -189,14 +189,14 @@ const Stamp = ({
     <div
       css={[
         getStampStyles({
-          ...(props as StylesFunctionParams),
+          ...{ isCondensed, tone, ...props },
           overrideTextColor: true,
         }),
         getToneStyles({
-          ...(props as StylesFunctionParams),
+          ...{ isCondensed, tone, ...props },
           overrideTextColor: true,
         }),
-        getPaddingStyle(props as StylesFunctionParams),
+        getPaddingStyle({ isCondensed, tone, ...props }),
       ]}
     >
       <SpacingsInline alignItems="center" scale={isCondensed ? 'xs' : 's'}>

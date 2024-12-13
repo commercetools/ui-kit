@@ -113,7 +113,10 @@ const SecondaryIconButton = <
       label={props.label}
       onClick={props.onClick}
       isDisabled={isDisabled}
-      css={getBaseStyles(props as TSecondaryButtonIconProps)}
+      css={getBaseStyles({
+        color,
+        ...props,
+      } as TSecondaryButtonIconProps<TStringOrComponent>)}
     >
       {props.icon &&
         cloneElement(props.icon, {

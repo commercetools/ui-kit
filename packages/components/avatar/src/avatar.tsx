@@ -128,8 +128,22 @@ const Avatar = ({
   const foregroundColor = getForegroundColor(color);
   return (
     <div
-      css={getAvatarStyles(props as TAvatarProps)}
-      {...filterDataAttributes(props)}
+      css={getAvatarStyles({
+        firstName,
+        lastName,
+        isHighlighted: false,
+        size,
+        color,
+        ...props,
+      })}
+      {...filterDataAttributes({
+        firstName,
+        lastName,
+        isHighlighted: false,
+        size,
+        color,
+        ...props,
+      })}
     >
       {props?.icon ? (
         <div
