@@ -24,7 +24,7 @@ const getPadding = (scale?: TScale) => {
 
 export type TInsetProps = {
   /** sets the amount of `padding` applied around the children */
-  scale: TScale;
+  scale?: TScale;
   /** sets the height of the component to 100% of the available width ('expanded') or 'auto' */
   height?: 'collapsed' | 'expanded';
   children?: ReactNode;

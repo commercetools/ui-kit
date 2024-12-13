@@ -186,7 +186,7 @@ export const BasicExample: Story = (args) => {
         ),
         disableResizing: true,
       },
-      ...columns,
+      ...(columns || []),
     ];
   }, [columns, checkedRowsState]);
 

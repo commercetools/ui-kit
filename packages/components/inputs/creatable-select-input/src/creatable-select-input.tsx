@@ -205,7 +205,7 @@ export type TCreatableSelectInputProps = {
    * <br>
    * Use in conjunction with `menuPortalTarget`
    */
-  menuPortalZIndex: number;
+  menuPortalZIndex?: number;
   /**
    * whether the menu should block scroll while open
    * <br>

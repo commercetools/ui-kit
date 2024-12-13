@@ -26,7 +26,7 @@ const defaultParentSelector = (): HTMLElement | null =>
 
 type TApplyTheme = {
   newTheme?: string;
-  parentSelector: typeof defaultParentSelector;
+  parentSelector?: typeof defaultParentSelector;
   themeOverrides?: Record<string, string>;
 };
 
@@ -65,8 +65,8 @@ const applyTheme = ({
 };
 
 type ThemeProviderProps = {
-  parentSelector: typeof defaultParentSelector;
-  theme: string;
+  parentSelector?: typeof defaultParentSelector;
+  theme?: string;
   themeOverrides?: Record<string, string>;
 };
 
