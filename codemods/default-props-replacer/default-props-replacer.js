@@ -19,19 +19,23 @@ export default function transformer(fileInfo, api) {
         const defaultPropsVariable = root.find(jscodeshift.VariableDeclarator, {
           id: { name: defaultPropsNode.name },
         });
-
+        // check if we have a variable declaration for the defaultProps and remove it.
         if (defaultPropsVariable.size() > 0) {
           const defaultPropsObject = defaultPropsVariable.get(0).node.init;
           if (
             defaultPropsObject &&
             defaultPropsObject.type === 'ObjectExpression'
           ) {
-            applyDefaultProps(componentName, defaultPropsObject.properties);
+            applyDefaultPropsInline(
+              componentName,
+              defaultPropsObject.properties
+            );
             defaultPropsVariable.remove();
           }
         }
+        // otherwise, apply the default props inline since it's an object expression and no variable to remove
       } else if (defaultPropsNode.type === 'ObjectExpression') {
-        applyDefaultProps(componentName, defaultPropsNode.properties);
+        applyDefaultPropsInline(componentName, defaultPropsNode.properties);
       }
 
       // Remove the `defaultProps` assignment
@@ -43,6 +47,7 @@ export default function transformer(fileInfo, api) {
     const params = initNode.params;
     let typeName;
 
+    //check for type annotation of the component props
     if (params.length > 0 && params[0].type === 'Identifier') {
       const typeAnnotation = params[0].typeAnnotation;
 
@@ -59,13 +64,8 @@ export default function transformer(fileInfo, api) {
     return typeName;
   }
 
-  // Process function declarations
-  root.find(jscodeshift.FunctionDeclaration).forEach((path) => {
-    getTypeName(path);
-  });
-
   // Helper to apply default props to a component
-  function applyDefaultProps(componentName, defaultProps) {
+  function applyDefaultPropsInline(componentName, defaultProps) {
     let destructuredKeys = [];
     const component = root.find(jscodeshift.FunctionDeclaration, {
       id: { name: componentName },
@@ -97,7 +97,7 @@ export default function transformer(fileInfo, api) {
             })
             .join(', ')}, ...props}`
         );
-
+        // check if the component is a function declaration or an arrow function
         if (compPath.node.type === 'FunctionDeclaration') {
           compPath.node.params = [functionParams];
           compPath.node.params[0].typeAnnotation = jscodeshift.tsTypeAnnotation(
@@ -112,7 +112,7 @@ export default function transformer(fileInfo, api) {
         }
       } else {
         const propsParam = params[0];
-
+        // check if the props parameter is an object pattern or a rest parameter
         if (propsParam.type === 'ObjectPattern') {
           defaultProps.forEach((prop) => {
             const keyName = prop.key.name;
@@ -120,7 +120,7 @@ export default function transformer(fileInfo, api) {
             const existingProp = propsParam.properties.find(
               (p) => p.key.name === keyName
             );
-
+            // check if the prop already exists in the destructured props
             if (!existingProp) {
               propsParam.properties.push(
                 jscodeshift.property(
@@ -143,6 +143,7 @@ export default function transformer(fileInfo, api) {
                   prop.value
                 );
                 destructuredKeys.push(prop.key.name);
+                // check if the prop value is a string and add quotes or just add the value
                 if (typeof prop.value.value === 'string') {
                   return `${keyValueAssignment.left.name} = '${keyValueAssignment.right.value}'`;
                 }
