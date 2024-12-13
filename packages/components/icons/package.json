@@ -22,10 +22,17 @@
       "./index.ts",
       "./custom-icon/index.ts",
       "./inline-svg/index.ts",
-      "./leading-icon/index.ts"
+      "./leading-icon/index.ts",
+      "./generated/*.tsx"
     ]
   },
-  "files": ["dist", "custom-icon", "inline-svg", "leading-icon"],
+  "files": [
+    "dist",
+    "custom-icon",
+    "inline-svg",
+    "leading-icon",
+    "generated/**"
+  ],
   "scripts": {
     "generate-icons": "svgr -d src/generated -- src/svg"
   },

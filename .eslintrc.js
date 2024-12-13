@@ -7,6 +7,7 @@ const path = require('path');
  */
 module.exports = {
   extends: ['@commercetools-frontend/eslint-config-mc-app'],
+
   rules: {
     'testing-library/no-node-access': 'off',
     'testing-library/no-container': 'off',

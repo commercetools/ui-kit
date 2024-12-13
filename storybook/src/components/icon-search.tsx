@@ -13,14 +13,18 @@ const DEPRECATED_ICONS_NAMES = [
   'CubesIcon',
 ];
 
-const iconList = Object.keys(icons).map((iconName) => {
-  return {
-    name: iconName,
-    icon: icons[iconName as keyof typeof icons],
-    deprecated: DEPRECATED_ICONS_NAMES.includes(iconName),
-    importString: `import { ${iconName} } from '@commercetools-uikit/icons';`,
-  };
-});
+const EXCLUDED_ICON_COMPONENTS = ['CustomIcon', 'InlineSvg', 'LeadingIcon'];
+
+const iconList = Object.keys(icons)
+  .filter((iconName) => !EXCLUDED_ICON_COMPONENTS.includes(iconName))
+  .map((iconName) => {
+    return {
+      name: iconName,
+      Icon: icons[iconName as keyof typeof icons],
+      deprecated: DEPRECATED_ICONS_NAMES.includes(iconName),
+      importString: `import { ${iconName} } from '@commercetools-uikit/icons';`,
+    };
+  });
 
 const Grid = styled.ul`
   display: grid;
@@ -90,7 +94,7 @@ const IconItem = styled.div`
     display: block;
     width: 48px;
     height: 48px;
-    fill: currentColor;
+    fill: currentcolor;
   }
 `;
 
@@ -134,7 +138,7 @@ export const IconSearch: FC = () => {
         {filteredIcons.map((icon) => (
           <GridItem key={icon.name} deprecated={icon.deprecated}>
             <IconItem>
-              <icon.icon />
+              <icon.Icon />
             </IconItem>
             <IconName deprecated={icon.deprecated}>{icon.name}</IconName>
             <CopyContainer>
