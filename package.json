@@ -178,7 +178,6 @@
     "ts-jest": "29.2.5",
     "ts-node": "10.9.2",
     "tsc-files": "1.1.4",
-    "typescript": "5.7.2",
-    "webpack": "5.97.1"
+    "typescript": "5.7.2"
   }
 }
