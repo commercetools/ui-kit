@@ -14107,6 +14107,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-tree-shaking@npm:^1.12.2":
+  version: 1.12.2
+  resolution: "eslint-plugin-tree-shaking@npm:1.12.2"
+  checksum: 5ff1d457827ab878bdbe0b45d4cb34caccbf9c76101d28bc8463fbab478464ceb161ec6ee6ea2ea57ad1abb88d03fca889bbe2b9140181657420d13b8e64a2d5
+  languageName: node
+  linkType: hard
+
 "eslint-rule-docs@npm:^1.1.5":
   version: 1.1.235
   resolution: "eslint-rule-docs@npm:1.1.235"
@@ -24690,6 +24697,7 @@ __metadata:
     cross-env: 7.0.3
     eslint: 8.57.1
     eslint-formatter-pretty: 4.1.0
+    eslint-plugin-tree-shaking: ^1.12.2
     execa: 6.1.0
     formik: ^2.2.9
     glob: 8.1.0
