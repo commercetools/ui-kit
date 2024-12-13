@@ -1,4 +1,8 @@
 {
+  "UIKit.AddFilterButton.addFilterButtonLabel": {
+    "developer_comment": "Label for the add filter button",
+    "string": "Adicionar filtro"
+  },
   "UIKit.CalendarHeader.nextMonthTooltip": {
     "developer_comment": "Tooltip title when user hovers the next month button",
     "string": "Próximo mês"
@@ -21,6 +25,10 @@
   },
   "UIKit.ClearAllButton.clearAllButtonLabel": {
     "developer_comment": "Label for the clear all button",
+    "string": "Limpar tudo"
+  },
+  "UIKit.ClearAllFiltersButton.clearAllFiltersButtonLabel": {
+    "developer_comment": "Label for the clear all filters button",
     "string": "Limpar tudo"
   },
   "UIKit.ClearButton.clearButtonLabel": {
@@ -118,6 +126,10 @@
   "UIKit.FieldErrors.missingRequiredField": {
     "developer_comment": "Error message for missing required value",
     "string": "Este campo é obrigatório. Forneça um valor."
+  },
+  "UIKit.FiltersButton.filtersButtonLabel": {
+    "developer_comment": "Label for the filters button",
+    "string": "Filtros"
   },
   "UIKit.LocalizedMoneyInput.hide": {
     "developer_comment": "Hide currencies button",
@@ -302,6 +314,10 @@
   "UIKit.SelectInput.placeholder": {
     "developer_comment": "Default input placeholder text",
     "string": "Selecionar"
+  },
+  "UIKit.SelectInput.selectInputAsFilterPlaceholder": {
+    "developer_comment": "Default input placeholder text when used as filter",
+    "string": "Pesquisa"
   },
   "UIKit.TimeInput.placeholder": {
     "developer_comment": "Placeholder for time input",
