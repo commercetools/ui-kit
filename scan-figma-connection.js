@@ -1,5 +1,6 @@
 const fs = require('node:fs/promises');
 const path = require('path');
+const { fetchFigmaComponentIds } = require('./get-figma-ids');
 
 /*
  * This script is used to assist with maintaining figma connect files for components
@@ -17,7 +18,10 @@ const path = require('path');
  */
 
 // Helpers
-const getConnectFileContent = (componentName) => {
+const getConnectFileContent = (
+  componentName,
+  componentId = '<placeholder>'
+) => {
   return `// @ts-nocheck
 import { ${componentName} } from '@commercetools-frontend/ui-kit';
 import figma from '@figma/code-connect';
@@ -25,7 +29,7 @@ import figma from '@figma/code-connect';
 // REQUIRED: supply node id for the figma component
 figma.connect(
   ${componentName},
-  'https://www.figma.com/design/UoqmtHSHwxvEZRcbsM4A3Z/CT-product-design-system?node-id=<placeholder>',
+  'https://www.figma.com/design/UoqmtHSHwxvEZRcbsM4A3Z/CT-product-design-system?node-id=${componentId}',
   {
     props: {
       // *This file was generated from a script*
@@ -38,11 +42,15 @@ figma.connect(
 `;
 };
 
-const getComponentName = (str) => {
+const getReactComponentName = (str) => {
   return str
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join('');
+};
+
+const normalizeComponentName = (str) => {
+  return str.toLowerCase().replace(/[^a-z0-9]/g, '');
 };
 
 /**
@@ -56,6 +64,9 @@ const getComponentName = (str) => {
  */
 
 const scanConnectedComponents = async (dir) => {
+  // Fetch figma component ids
+  const figmaComponentMap = await fetchFigmaComponentIds();
+  // Read the given directory
   const entries = await fs.readdir(dir, { withFileTypes: true });
 
   for (const entry of entries) {
@@ -101,12 +112,22 @@ const scanConnectedComponents = async (dir) => {
         }
       } catch (err) {
         if (err.code === 'ENOENT') {
+          // check if our figma component map has the component
+          const matchingFigmaComponent = figmaComponentMap.get(
+            normalizeComponentName(componentName)
+          );
+          if (matchingFigmaComponent === undefined) {
+            continue;
+          }
           // `.figma.tsx` file does not exist, create it
           await fs.writeFile(
             figmaFilePath,
-            getConnectFileContent(getComponentName(componentName))
+            getConnectFileContent(
+              getReactComponentName(componentName),
+              matchingFigmaComponent.nodeId
+            )
           );
-          console.log(`Created Figma connect file: ${figmaFilePath}`);
+          console.log(`Created Connect file at ${figmaFilePath}`);
         } else {
           console.error(`Error checking file: ${figmaFilePath}`, err);
         }
