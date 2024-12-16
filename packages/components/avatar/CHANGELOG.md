@@ -1,5 +1,13 @@
 # @commercetools-uikit/avatar
 
+## 19.20.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.20.0
+  - @commercetools-uikit/utils@19.20.0
+
 ## 19.19.0
 
 ### Patch Changes

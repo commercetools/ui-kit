@@ -1,5 +1,15 @@
 # @commercetools-uikit/notifications
 
+## 19.20.0
+
+### Patch Changes
+
+- Updated dependencies [[`81e4488`](https://github.com/commercetools/ui-kit/commit/81e44883ec5d725708cb7f064f6d69b79da0a1ec)]:
+  - @commercetools-uikit/icons@19.20.0
+  - @commercetools-uikit/design-system@19.20.0
+  - @commercetools-uikit/accessible-button@19.20.0
+  - @commercetools-uikit/utils@19.20.0
+
 ## 19.19.0
 
 ### Patch Changes
