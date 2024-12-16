@@ -1,5 +1,21 @@
 # @commercetools-uikit/rich-text-utils
 
+## 19.20.0
+
+### Minor Changes
+
+- [#3014](https://github.com/commercetools/ui-kit/pull/3014) [`81e4488`](https://github.com/commercetools/ui-kit/commit/81e44883ec5d725708cb7f064f6d69b79da0a1ec) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Update handling of icons to reduce file size of each icon, update bundling of icons package so that each icon has its own entrypoint to allow for better tree shaking in consuming applications
+
+### Patch Changes
+
+- Updated dependencies [[`81e4488`](https://github.com/commercetools/ui-kit/commit/81e44883ec5d725708cb7f064f6d69b79da0a1ec)]:
+  - @commercetools-uikit/icons@19.20.0
+  - @commercetools-uikit/input-utils@19.20.0
+  - @commercetools-uikit/design-system@19.20.0
+  - @commercetools-uikit/spacings-inline@19.20.0
+  - @commercetools-uikit/tooltip@19.20.0
+  - @commercetools-uikit/utils@19.20.0
+
 ## 19.19.0
 
 ### Minor Changes
