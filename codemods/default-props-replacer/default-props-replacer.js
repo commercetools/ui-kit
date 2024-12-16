@@ -178,30 +178,11 @@ export default function transformer(fileInfo, api) {
         }
       }
 
-      // Process arrow function components
-      root.find(jscodeshift.VariableDeclarator).forEach((path) => {
-        if (
-          path.node.init &&
-          path.node.init.type === 'ArrowFunctionExpression'
-        ) {
-          if (destructuredKeys.length > 0) {
-            replacePropsUsage(destructuredKeys, root);
-          }
-        }
-      });
-
-      // Process function declarations
-      root.find(jscodeshift.FunctionDeclaration).forEach((path) => {
-        if (destructuredKeys.length > 0) {
-          replacePropsUsage(destructuredKeys, root);
-        }
-      });
-
-      // Replace `props.<name>` usage with `<name>` if destructured.
+      // Helper to replace `props.<name>` usage with `<name>` if destructured.
       // This is done to avoid the `props` object being used in the component body.
       // Since we are destructuring the props already, we can directly use the prop name.
-      function replacePropsUsage(destructuredKeys, astRoot) {
-        astRoot
+      function replacePropsUsage(destructuredKeys, scope) {
+        scope
           .find(jscodeshift.MemberExpression, {
             object: { type: 'Identifier', name: 'props' },
           })
@@ -214,6 +195,34 @@ export default function transformer(fileInfo, api) {
             }
           });
       }
+
+      // Process arrow function components
+      root.find(jscodeshift.VariableDeclarator).forEach((path) => {
+        if (
+          destructuredKeys.length > 0 &&
+          path.node.id.name === componentName &&
+          path.node.init &&
+          path.node.init.type === 'ArrowFunctionExpression'
+        ) {
+          // Get the function body scope so we only do the replacement
+          // within the component function we're currently processing
+          const functionScope = jscodeshift(path.get('init', 'body').node);
+          replacePropsUsage(destructuredKeys, functionScope);
+        }
+      });
+
+      // Process function declarations
+      root.find(jscodeshift.FunctionDeclaration).forEach((path) => {
+        if (
+          destructuredKeys.length > 0 &&
+          path.node.id.name === componentName
+        ) {
+          // Get the function body scope so we only do the replacement
+          // within the component function we're currently processing
+          const functionScope = jscodeshift(path.get('init', 'body').node);
+          replacePropsUsage(destructuredKeys, functionScope);
+        }
+      });
     };
 
     if (component.size() > 0) {
