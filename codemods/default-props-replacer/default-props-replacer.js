@@ -194,6 +194,34 @@ export default function transformer(fileInfo, api) {
               );
             }
           });
+
+        scope
+          .find(jscodeshift.CallExpression, {
+            arguments: [
+              {
+                type: 'Identifier',
+                name: 'props',
+              },
+            ],
+          })
+          .forEach((callPath) => {
+            // Create a destructured object
+            const objectExpression = jscodeshift.objectExpression(
+              destructuredKeys
+                .map((key) => {
+                  const id = jscodeshift.identifier(key);
+                  const newProp = jscodeshift.property('init', id, id);
+                  newProp.shorthand = true;
+                  return newProp;
+                })
+                .concat(
+                  jscodeshift.spreadElement(jscodeshift.identifier('props'))
+                )
+            );
+
+            // Replace the 'props' argument with the destructured object
+            callPath.node.arguments[0] = objectExpression;
+          });
       }
 
       // Process arrow function components
