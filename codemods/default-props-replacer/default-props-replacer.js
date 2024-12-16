@@ -1,6 +1,13 @@
-export default function transformer(fileInfo, api) {
+import prettier from 'prettier';
+
+const ignoredFiledRegex = /node_modules|dist/;
+
+export default async function transformer(fileInfo, api) {
   const jscodeshift = api.jscodeshift;
 
+  if (ignoredFiledRegex.test(fileInfo.path)) {
+    return null;
+  }
   const root = jscodeshift(fileInfo.source);
   // Go over every file and search for default props assignment
   root
@@ -170,11 +177,9 @@ export default function transformer(fileInfo, api) {
           );
 
           const initNode = compPath.node.init || compPath.node;
-
+          // Keep the same type annotation in the new params
+          functionParams.typeAnnotation = initNode.params[0].typeAnnotation;
           initNode.params[0] = functionParams;
-          initNode.params[0].typeAnnotation = jscodeshift.tsTypeAnnotation(
-            jscodeshift.tsTypeReference(jscodeshift.identifier(typeName))
-          );
         }
       }
 
@@ -182,6 +187,21 @@ export default function transformer(fileInfo, api) {
       // This is done to avoid the `props` object being used in the component body.
       // Since we are destructuring the props already, we can directly use the prop name.
       function replacePropsUsage(destructuredKeys, scope) {
+        /*
+          Next code block replaces destructured props usage in the component body.
+          ```
+            // BEFORE
+              const MyComponent = (props) => {
+                return <div>{props.prop1}</div>;
+              }
+            }
+
+            // AFTER
+            const MyComponent = ({ prop1, ...props }) => {
+              return <div>{prop1}</div>;
+            }
+          ```
+        */
         scope
           .find(jscodeshift.MemberExpression, {
             object: { type: 'Identifier', name: 'props' },
@@ -195,6 +215,21 @@ export default function transformer(fileInfo, api) {
             }
           });
 
+        /*
+          Next code block replaces props usage in the component body where
+          props is passed as an argument to a function.
+          ```
+            // BEFORE
+            const MyComponent = (props) => {
+              return <div>{getStyles(props)}</div>;
+            }
+
+            // AFTER
+            const MyComponent = ({ prop1, ...props }) => {
+              return <div>{getStyles({ prop1, ...props })}</div>;
+            }
+          ```
+        */
         scope
           .find(jscodeshift.CallExpression, {
             arguments: [
@@ -224,6 +259,31 @@ export default function transformer(fileInfo, api) {
           });
       }
 
+      // Helper to make sure the definition of the component props type
+      // is updated since all the destructured keys must be optional props.
+      function updateComponentTypes(typeName, destructuredKeys) {
+        // Find the type definition of the component props
+        root.find(jscodeshift.TSTypeAliasDeclaration).forEach((typePath) => {
+          if (typePath.node.id.name === typeName) {
+            const typeAnnotation = typePath.node.typeAnnotation;
+
+            if (typeAnnotation.type === 'TSTypeLiteral') {
+              typeAnnotation.members.forEach((member) => {
+                if (
+                  member.type === 'TSPropertySignature' &&
+                  member.key.type === 'Identifier' &&
+                  destructuredKeys.includes(member.key.name)
+                ) {
+                  member.optional = true;
+                  // Instead of setting semi directly, we can preserve the existing semicolon
+                  // by not modifying the original formatting
+                }
+              });
+            }
+          }
+        });
+      }
+
       // Process arrow function components
       root.find(jscodeshift.VariableDeclarator).forEach((path) => {
         if (
@@ -236,6 +296,7 @@ export default function transformer(fileInfo, api) {
           // within the component function we're currently processing
           const functionScope = jscodeshift(path.get('init', 'body').node);
           replacePropsUsage(destructuredKeys, functionScope);
+          updateComponentTypes(typeName, destructuredKeys);
         }
       });
 
@@ -249,6 +310,7 @@ export default function transformer(fileInfo, api) {
           // within the component function we're currently processing
           const functionScope = jscodeshift(path.get('init', 'body').node);
           replacePropsUsage(destructuredKeys, functionScope);
+          updateComponentTypes(typeName, destructuredKeys);
         }
       });
     };
@@ -262,5 +324,9 @@ export default function transformer(fileInfo, api) {
     }
   }
 
-  return root.toSource();
+  // Format output code with prettier
+  const prettierConfig = await prettier.resolveConfig(fileInfo.path);
+  return prettier.format(root.toSource(), prettierConfig);
+
+  // return root.toSource();
 }
