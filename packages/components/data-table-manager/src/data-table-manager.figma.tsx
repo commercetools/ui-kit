@@ -2,7 +2,6 @@
 import { DataTableManager } from '@commercetools-frontend/ui-kit';
 import figma from '@figma/code-connect';
 
-// REQUIRED: supply node id for the figma component
 figma.connect(
   DataTableManager,
   'https://www.figma.com/design/UoqmtHSHwxvEZRcbsM4A3Z/CT-product-design-system?node-id=5602%3A26092',

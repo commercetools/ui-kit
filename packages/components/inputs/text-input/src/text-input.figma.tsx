@@ -2,7 +2,6 @@
 import { TextInput } from '@commercetools-frontend/ui-kit';
 import figma from '@figma/code-connect';
 
-// REQUIRED: supply node id for the figma component
 figma.connect(
   TextInput,
   'https://www.figma.com/design/UoqmtHSHwxvEZRcbsM4A3Z/CT-product-design-system?node-id=107%3A18819',

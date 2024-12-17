@@ -2,7 +2,6 @@
 import { SelectInput } from '@commercetools-frontend/ui-kit';
 import figma from '@figma/code-connect';
 
-// REQUIRED: supply node id for the figma component
 figma.connect(
   SelectInput,
   'https://www.figma.com/design/UoqmtHSHwxvEZRcbsM4A3Z/CT-product-design-system?node-id=120%3A17426',

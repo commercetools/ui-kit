@@ -1,5 +1,6 @@
 {
   "codeConnect": {
+    "parser": "react",
     "importPaths": {
       "packages/components/**/*": "@commercetools-frontend/ui-kit"
     },

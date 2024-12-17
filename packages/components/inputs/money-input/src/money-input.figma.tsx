@@ -2,7 +2,6 @@
 import { MoneyInput } from '@commercetools-frontend/ui-kit';
 import figma from '@figma/code-connect';
 
-// REQUIRED: supply node id for the figma component
 figma.connect(
   MoneyInput,
   'https://www.figma.com/design/UoqmtHSHwxvEZRcbsM4A3Z/CT-product-design-system?node-id=453%3A26481',
