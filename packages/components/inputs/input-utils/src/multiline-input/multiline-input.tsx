@@ -51,7 +51,10 @@ const getElementVerticalPadding = (element: Element) => {
   return _elementVerticalPadding;
 };
 
-const MultilineInput = (props: TMultiLineInputProps) => {
+const MultilineInput = ({
+  cacheMeasurements = true,
+  ...props
+}: TMultiLineInputProps) => {
   const { onHeightChange } = props;
   const ref = useRef<HTMLTextAreaElement | null>(null);
 
@@ -93,7 +96,10 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       placeholder={props.placeholder}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
-      css={getTextareaStyles(props)}
+      css={getTextareaStyles({
+        cacheMeasurements,
+        ...props,
+      })}
       // Allow to override the styles by passing a `className` prop.
       // Custom styles can also be passed using the `css` prop from emotion.
       // https://emotion.sh/docs/css-prop#style-precedence
@@ -106,15 +112,15 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       role="textbox"
       minRows={MIN_ROW_COUNT}
       maxRows={props.isOpen ? props.maxRows : MIN_ROW_COUNT}
-      cacheMeasurements={props.cacheMeasurements}
-      {...filterDataAttributes(props)}
+      cacheMeasurements={cacheMeasurements}
+      {...filterDataAttributes({
+        cacheMeasurements,
+        ...props,
+      })}
     />
   );
 };
 
 MultilineInput.displayName = 'MultilineInput';
-MultilineInput.defaultProps = {
-  cacheMeasurements: true,
-};
 
 export default MultilineInput;

@@ -254,7 +254,10 @@ const RequiredValueErrorMessage = () => (
 
 RequiredValueErrorMessage.displayName = 'RequiredValueErrorMessage';
 
-const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
+const LocalizedTextInput = ({
+  horizontalConstraint = 'scale',
+  ...props
+}: TLocalizedTextInputProps) => {
   const defaultExpansionState =
     props.hideLanguageExpansionControls ||
     props.defaultExpandLanguages || // default to `false`, because useToggleState defaults to `true`
@@ -310,7 +313,7 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
   }
 
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <Stack scale="xs">
         <Stack>
           {languages.map((language, index) => {
@@ -346,7 +349,13 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                         (props.warnings && props.warnings[language])
                     )}
                     warning={props.warnings && props.warnings[language]}
-                    {...createLocalizedDataAttributes(props, language)}
+                    {...createLocalizedDataAttributes(
+                      {
+                        horizontalConstraint,
+                        ...props,
+                      },
+                      language
+                    )}
                     /* ARIA */
                     aria-invalid={props['aria-invalid']}
                     aria-errormessage={props['aria-errormessage']}
@@ -388,10 +397,6 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
 LocalizedTextInput.displayName = 'LocalizedTextInput';
 
 LocalizedTextInput.RequiredValueErrorMessage = RequiredValueErrorMessage;
-
-LocalizedTextInput.defaultProps = {
-  horizontalConstraint: 'scale',
-};
 
 LocalizedTextInput.getId = getId;
 

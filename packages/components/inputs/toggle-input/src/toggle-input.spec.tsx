@@ -2,7 +2,7 @@ import type { TToggleInputProps } from './toggle-input';
 
 import { useState } from 'react';
 import { screen, render } from '../../../../../test/test-utils';
-import ToggleInput, { defaultProps } from './toggle-input';
+import ToggleInput from './toggle-input';
 
 const TestComponent = (props: TToggleInputProps) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -24,7 +24,6 @@ const TestComponent = (props: TToggleInputProps) => {
     </div>
   );
 };
-TestComponent.defaultProps = defaultProps;
 
 it('should render children', () => {
   const onChange = jest.fn();

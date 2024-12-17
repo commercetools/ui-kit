@@ -149,7 +149,7 @@ export type TLocalizedRichTextInputProps = {
   /**
    * Shows an `expand` icon in the toolbar
    */
-  showExpandIcon: boolean;
+  showExpandIcon?: boolean;
   /**
    * Called when the `expand` button is clicked
    */
@@ -174,14 +174,6 @@ type TReducerAction =
 
 type RefWithImperativeResetHandler = MutableRefObject<unknown> & {
   resetValue: (newValue: string | Record<string, string>) => void;
-};
-
-const defaultProps: Pick<
-  TLocalizedRichTextInputProps,
-  'horizontalConstraint' | 'showExpandIcon'
-> = {
-  horizontalConstraint: 'scale',
-  showExpandIcon: false,
 };
 
 const expandedTranslationsReducer = (
@@ -219,7 +211,14 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
   TLocalizedRichTextInputProps & RefAttributes<unknown>
 > &
   Partial<StaticProps> = forwardRef(
-  (props: TLocalizedRichTextInputProps, ref) => {
+  (
+    {
+      horizontalConstraint = 'scale',
+      showExpandIcon = false,
+      ...props
+    }: TLocalizedRichTextInputProps,
+    ref
+  ) => {
     if (!props.isReadOnly) {
       warning(
         typeof props.onChange === 'function',
@@ -227,7 +226,7 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
       );
     }
 
-    if (props.showExpandIcon) {
+    if (showExpandIcon) {
       warning(
         typeof props.onClickExpand === 'function',
         'LocalizedRichTextInput: "onClickExpand" is required when showExpandIcon is true'
@@ -328,7 +327,7 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
       languages.length > 1 && !props.hideLanguageExpansionControls;
 
     return (
-      <Constraints.Horizontal max={props.horizontalConstraint}>
+      <Constraints.Horizontal max={horizontalConstraint}>
         <Stack scale="xs">
           <Stack>
             {languages.map((language, index) => {
@@ -369,7 +368,7 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
                   additionalInfo={
                     props.additionalInfo && props.additionalInfo[language]
                   }
-                  showExpandIcon={props.showExpandIcon}
+                  showExpandIcon={showExpandIcon}
                   onClickExpand={props.onClickExpand}
                   hasLanguagesControl={hasLanguagesControl}
                   defaultExpandMultilineText={Boolean(
@@ -416,8 +415,6 @@ LocalizedRichTextInput.RequiredValueErrorMessage = RequiredValueErrorMessage;
 LocalizedRichTextInput.getId = getId;
 
 LocalizedRichTextInput.getName = getName;
-
-LocalizedRichTextInput.defaultProps = defaultProps;
 
 LocalizedRichTextInput.createLocalizedString = localized.createLocalizedString;
 

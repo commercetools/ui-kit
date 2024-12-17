@@ -24,15 +24,15 @@ export type TToggleInputProps = {
   /**
    * The size of the ToggleInput component.
    */
-  size: 'small' | 'big';
+  size?: 'small' | 'big';
   /**
    * Disables the ToggleInput
    */
-  isDisabled: boolean;
+  isDisabled?: boolean;
   /**
    * Checks the ToggleInput
    */
-  isChecked: boolean;
+  isChecked?: boolean;
   /**
    * Determines the toggle state.
    */
@@ -44,21 +44,19 @@ export type TToggleInputProps = {
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
-export const defaultProps: Pick<
-  TToggleInputProps,
-  'isDisabled' | 'isChecked' | 'size'
-> = {
-  isDisabled: false,
-  isChecked: false,
-  size: 'big',
-};
+export {};
 
-const ToggleInput = (props: TToggleInputProps) => {
+const ToggleInput = ({
+  isDisabled = false,
+  isChecked = false,
+  size = 'big',
+  ...props
+}: TToggleInputProps) => {
   return (
     <Label
       htmlFor={props.id}
-      size={props.size}
-      isDisabled={props.isDisabled}
+      size={size}
+      isDisabled={isDisabled}
       trackSizes={trackSizes}
       thumbSizes={thumbSizes}
     >
@@ -66,20 +64,30 @@ const ToggleInput = (props: TToggleInputProps) => {
         type="checkbox"
         css={[
           accessibleHiddenInputStyles,
-          getInputStyles({ ...props, trackSizes, thumbSizes }),
+          getInputStyles({ trackSizes, thumbSizes, size, ...props }),
         ]}
         id={props.id}
         name={props.name}
         onChange={props.onChange}
-        disabled={props.isDisabled}
-        checked={props.isChecked}
+        disabled={isDisabled}
+        checked={isChecked}
         value={props.value}
-        {...filterDataAttributes(props)}
-        {...filterAriaAttributes(props)}
+        {...filterDataAttributes({
+          isDisabled,
+          isChecked,
+          size,
+          ...props,
+        })}
+        {...filterAriaAttributes({
+          isDisabled,
+          isChecked,
+          size,
+          ...props,
+        })}
       />
       <Span
         aria-hidden="true"
-        size={props.size}
+        size={size}
         trackSizes={trackSizes}
         thumbSizes={thumbSizes}
       />
@@ -88,6 +96,5 @@ const ToggleInput = (props: TToggleInputProps) => {
 };
 
 ToggleInput.displayName = 'Toggle';
-ToggleInput.defaultProps = defaultProps;
 
 export default ToggleInput;

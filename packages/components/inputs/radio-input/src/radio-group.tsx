@@ -27,7 +27,7 @@ export type TGroupProps = {
   isReadOnly?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
-  horizontalConstraint:
+  horizontalConstraint?:
     | 7
     | 8
     | 9
@@ -42,9 +42,9 @@ export type TGroupProps = {
     | 'auto';
   /** Pick the desired layout. Possible values are `stack` or `inline`, (= Radio.Option items will be
    * wrapped with the `Spacing.Stack` or `Spacing.Inline` component)*/
-  direction: 'stack' | 'inline';
+  direction?: 'stack' | 'inline';
   /** Props uesed to configue the selected layout component that was picked via the `direction` property */
-  directionProps: {
+  directionProps?: {
     scale?: TInlineProps['scale'];
     alignItems?: TInlineProps['alignItems'];
     justifyContent?: TInlineProps['justifyContent'];
@@ -60,22 +60,18 @@ export type TGroupProps = {
   'aria-errormessage'?: string;
 };
 
-const defaultProps: Pick<
-  TGroupProps,
-  'horizontalConstraint' | 'direction' | 'directionProps'
-> = {
-  horizontalConstraint: 'scale',
-  direction: 'stack',
-  directionProps: {
-    scale: 'm',
-  },
-};
-
 type TReactChild = {
   type?: { displayName: string };
 } & ReactElement;
 
-const Group = (props: TGroupProps) => {
+const Group = ({
+  horizontalConstraint = 'scale',
+  direction = 'stack',
+  directionProps = {
+    scale: 'm',
+  },
+  ...props
+}: TGroupProps) => {
   useEffect(() => {
     // NOTE: We allow mixed children rendered as (e.g. spacers)
     // as a result we need to filter out children of the correct type.
@@ -114,14 +110,21 @@ const Group = (props: TGroupProps) => {
     }
     return child;
   });
-  if (props.direction === 'inline') {
+  if (direction === 'inline') {
     return (
       <div
         aria-labelledby={props.id}
         aria-invalid={props['aria-invalid']}
         aria-errormessage={props['aria-errormessage']}
       >
-        <Inline {...props.directionProps} {...filterDataAttributes(props)}>
+        <Inline
+          {...directionProps}
+          {...filterDataAttributes({
+            horizontalConstraint,
+            direction,
+            ...props,
+          })}
+        >
           {optionElements}
         </Inline>
       </div>
@@ -133,8 +136,15 @@ const Group = (props: TGroupProps) => {
       aria-invalid={props['aria-invalid']}
       aria-errormessage={props['aria-errormessage']}
     >
-      <Constraints.Horizontal max={props.horizontalConstraint}>
-        <Stack {...props.directionProps} {...filterDataAttributes(props)}>
+      <Constraints.Horizontal max={horizontalConstraint}>
+        <Stack
+          {...directionProps}
+          {...filterDataAttributes({
+            horizontalConstraint,
+            direction,
+            ...props,
+          })}
+        >
           {optionElements}
         </Stack>
       </Constraints.Horizontal>
@@ -143,6 +153,5 @@ const Group = (props: TGroupProps) => {
 };
 
 Group.displayName = 'RadioGroup';
-Group.defaultProps = defaultProps;
 
 export default Group;

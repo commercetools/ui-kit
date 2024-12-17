@@ -132,19 +132,15 @@ export type TMultilineTextInputProps = {
   maxRows?: number;
 };
 
-const defaultProps: Pick<
-  TMultilineTextInputProps,
-  'defaultExpandMultilineText'
-> = {
-  defaultExpandMultilineText: false,
-};
-
-const MultilineTextInput = (props: TMultilineTextInputProps) => {
+const MultilineTextInput = ({
+  defaultExpandMultilineText = false,
+  ...props
+}: TMultilineTextInputProps) => {
   const intl = useIntl();
   const [shouldRenderToggleButton, setShouldRenderToggleButton] =
     useState(false);
 
-  const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
+  const [isOpen, toggle] = useToggleState(defaultExpandMultilineText);
 
   const { onFocus } = props;
   const handleFocus = useCallback<FocusEventHandler<HTMLTextAreaElement>>(
@@ -201,13 +197,21 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
             `}
             isCondensed={props.isCondensed}
             maxRows={props.maxRows}
-            {...filterDataAttributes(props)}
+            {...filterDataAttributes({
+              defaultExpandMultilineText,
+              ...props,
+            })}
             /* ARIA */
             aria-invalid={props['aria-invalid']}
             aria-errormessage={props['aria-errormessage']}
           />
           {props.rightActionIcon && props.rightActionProps && (
-            <div css={getMultilineTextInputActionIconStyles(props)}>
+            <div
+              css={getMultilineTextInputActionIconStyles({
+                defaultExpandMultilineText,
+                ...props,
+              })}
+            >
               <SecondaryIconButton
                 color="info"
                 isDisabled={props.isDisabled || props.isReadOnly}
@@ -252,6 +256,5 @@ MultilineTextInput.displayName = 'MultilineTextInput';
 
 MultilineTextInput.isEmpty = (value: TMultilineTextInputProps['value']) =>
   !value || value.trim().length === 0;
-MultilineTextInput.defaultProps = defaultProps;
 
 export default MultilineTextInput;
