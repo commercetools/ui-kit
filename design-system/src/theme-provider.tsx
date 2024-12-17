@@ -65,13 +65,17 @@ const applyTheme = ({
 };
 
 type ThemeProviderProps = {
-  parentSelector: typeof defaultParentSelector;
-  theme: string;
+  parentSelector?: typeof defaultParentSelector;
+  theme?: string;
   themeOverrides?: Record<string, string>;
 };
 
-const ThemeProvider = (props: ThemeProviderProps) => {
-  const parentSelectorRef = useRef(props.parentSelector);
+const ThemeProvider = ({
+  parentSelector = defaultParentSelector,
+  theme = 'default',
+  ...props
+}: ThemeProviderProps) => {
+  const parentSelectorRef = useRef(parentSelector);
   const themeNameRef = useRef<string>();
   const themeOverridesRef = useRef<Record<string, string>>();
 
@@ -80,25 +84,21 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     // provided include a new object with the same theme overrides
     // (eg: users providing an inline object as prop to the ThemeProvider)
     if (
-      themeNameRef.current !== props.theme ||
+      themeNameRef.current !== theme ||
       !isEqual(themeOverridesRef.current, props.themeOverrides)
     ) {
-      themeNameRef.current = props.theme;
+      themeNameRef.current = theme;
       themeOverridesRef.current = props.themeOverrides;
 
       applyTheme({
-        newTheme: props.theme,
+        newTheme: theme,
         parentSelector: parentSelectorRef.current,
         themeOverrides: props.themeOverrides,
       });
     }
-  }, [props.theme, props.themeOverrides]);
+  }, [theme, props.themeOverrides]);
 
   return null;
-};
-ThemeProvider.defaultProps = {
-  parentSelector: defaultParentSelector,
-  theme: 'default',
 };
 
 type TUseThemeResult = {
