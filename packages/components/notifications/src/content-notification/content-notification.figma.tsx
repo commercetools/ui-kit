@@ -2,7 +2,6 @@
 import { ContentNotification } from '@commercetools-frontend/ui-kit';
 import figma from '@figma/code-connect';
 
-// REQUIRED: supply node id for the figma component
 figma.connect(
   ContentNotification,
   'https://www.figma.com/design/UoqmtHSHwxvEZRcbsM4A3Z/CT-product-design-system?node-id=212%3A20449',
