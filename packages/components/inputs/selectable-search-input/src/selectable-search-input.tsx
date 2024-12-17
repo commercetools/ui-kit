@@ -156,7 +156,7 @@ export type TSelectableSearchInputProps = {
   /**
    * Array of options that populate the select menu
    */
-  options: TOptions;
+  options?: TOptions;
   /**
    * z-index value for the menu portal
    * <br>
@@ -243,23 +243,6 @@ export type TSelectableSearchInputProps = {
   rightActionProps?: TIconButtonProps;
 };
 
-const defaultProps: Pick<
-  TSelectableSearchInputProps,
-  | 'horizontalConstraint'
-  | 'isClearable'
-  | 'menuHorizontalConstraint'
-  | 'showSubmitButton'
-  | 'menuPortalZIndex'
-  | 'options'
-> = {
-  horizontalConstraint: 'scale',
-  isClearable: true,
-  menuHorizontalConstraint: 3,
-  showSubmitButton: true,
-  menuPortalZIndex: 1,
-  options: [],
-};
-
 const selectableSearchInputSequentialId = createSequentialId(
   'selectable-search-input-'
 );
@@ -276,7 +259,15 @@ const transformDataProps = (dataProps?: Record<string, string>) =>
     ])
   );
 
-const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
+const SelectableSearchInput = ({
+  horizontalConstraint = 'scale',
+  isClearable = true,
+  menuHorizontalConstraint = 3,
+  showSubmitButton = true,
+  menuPortalZIndex = 1,
+  options = undefined,
+  ...props
+}: TSelectableSearchInputProps) => {
   const [dropdownHasFocus, toggleDropdownHasFocus] = useToggleState(false);
   const [searchValue, setSearchValue] = useState(props.value.text || '');
   const [searchOption, setSearchOption] = useState(props.value.option || '');
@@ -289,14 +280,14 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const searchInputValue = props._experimentalValue?.text ?? searchValue;
   const searchInputOption = props._experimentalValue?.option ?? searchOption;
 
-  const optionsWithoutGroups = props.options.flatMap((option) => {
+  const optionsWithoutGroups = options?.flatMap((option) => {
     if (isOptionObject(option)) {
       return option.options;
     }
     return option;
   });
 
-  const selectedOption = optionsWithoutGroups.find(
+  const selectedOption = optionsWithoutGroups?.find(
     (option) => option.value === searchInputOption
   );
 
@@ -319,7 +310,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   }
 
   warnIfMenuPortalPropsAreMissing({
-    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalZIndex: menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'SelectableSearchInput',
   });
@@ -450,17 +441,17 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
       }
       textInputRef.current?.focus();
     },
-    [props.onChange, selectablSearchInputId, name]
+    [props, selectablSearchInputId, name]
   );
 
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <Container
         ref={containerRef}
         onBlur={handleContainerBlur}
         data-testid="selectable-search-input-container"
       >
-        <Constraints.Horizontal max={props.menuHorizontalConstraint}>
+        <Constraints.Horizontal max={menuHorizontalConstraint}>
           <SelectableSelect
             {...props}
             id={SelectableSearchInput.getDropdownId(selectablSearchInputId)}
@@ -518,7 +509,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
               }
             }}
           />
-          {props.isClearable &&
+          {isClearable &&
             searchInputValue &&
             !props.isDisabled &&
             !props.isReadOnly && (
@@ -530,7 +521,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
                 css={getClearIconButtonStyles(props)}
               />
             )}
-          {props.showSubmitButton && (
+          {showSubmitButton && (
             <SecondaryIconButton
               icon={<SearchIcon />}
               size={props.isCondensed ? '20' : '40'}
@@ -564,7 +555,6 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
 };
 
 SelectableSearchInput.displayName = 'SelectableSearchInput';
-SelectableSearchInput.defaultProps = defaultProps;
 SelectableSearchInput.isEmpty = (
   formValue: TSelectableSearchInputProps['value']
 ) => !formValue || formValue.text.trim() === '';

@@ -53,10 +53,6 @@ export type TCollapsibleMotionProps = {
   isDefaultClosed?: boolean;
 };
 
-const defaultProps: Pick<TCollapsibleMotionProps, 'minHeight'> = {
-  minHeight: 0,
-};
-
 const getMinHeight = (minHeight: number) =>
   minHeight !== 0 ? `${minHeight}px` : minHeight;
 
@@ -174,11 +170,14 @@ const ControlledCollapsibleMotion = (props: TCollapsibleMotionProps) => {
 };
 ControlledCollapsibleMotion.displayName = 'ControlledCollapsibleMotion';
 
-const UncontrolledCollapsibleMotion = (props: TCollapsibleMotionProps) => {
+const UncontrolledCollapsibleMotion = ({
+  minHeight = 0,
+  ...props
+}: TCollapsibleMotionProps) => {
   const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
 
   const [animation, containerStyles, animationToggle, registerContentNode] =
-    useToggleAnimation(isOpen, toggle, props.minHeight);
+    useToggleAnimation(isOpen, toggle, minHeight);
 
   return (
     <ClassNames>
@@ -213,7 +212,6 @@ const UncontrolledCollapsibleMotion = (props: TCollapsibleMotionProps) => {
   );
 };
 UncontrolledCollapsibleMotion.displayName = 'UncontrolledCollapsibleMotion';
-UncontrolledCollapsibleMotion.defaultProps = defaultProps;
 
 const CollapsibleMotion = (props: TCollapsibleMotionProps) => {
   const isControlledComponent = !isNil(props.isClosed);
@@ -225,6 +223,5 @@ const CollapsibleMotion = (props: TCollapsibleMotionProps) => {
   return <UncontrolledCollapsibleMotion {...props} />;
 };
 CollapsibleMotion.displayName = 'CollapsibleMotion';
-CollapsibleMotion.defaultProps = defaultProps;
 
 export default CollapsibleMotion;

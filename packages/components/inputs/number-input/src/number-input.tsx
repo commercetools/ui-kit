@@ -102,11 +102,10 @@ export type TNumberInputProps = {
     | 'auto';
 };
 
-const defaultProps: Pick<TNumberInputProps, 'horizontalConstraint'> = {
-  horizontalConstraint: 'scale',
-};
-
-const NumberInput = (props: TNumberInputProps) => {
+const NumberInput = ({
+  horizontalConstraint = 'scale',
+  ...props
+}: TNumberInputProps) => {
   if (!props.isReadOnly) {
     warning(
       Boolean(props.onChange),
@@ -114,7 +113,7 @@ const NumberInput = (props: TNumberInputProps) => {
     );
   }
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <input
         id={props.id}
         name={props.name}
@@ -145,7 +144,6 @@ const NumberInput = (props: TNumberInputProps) => {
 };
 
 NumberInput.displayName = 'NumberInput';
-NumberInput.defaultProps = defaultProps;
 
 NumberInput.toFormValue = (numberOrString: number | string) => {
   if (

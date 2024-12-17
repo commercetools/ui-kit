@@ -209,9 +209,11 @@ const expandedTranslationsReducer = (
 // can get quite confusing. We try to stick to expand/collapse for the
 // multiline inputs, while we use show/hide/open/close for the remaining
 // languages.
-const LocalizedMultilineTextInput = (
-  props: TLocalizedMultilineTextInputProps
-) => {
+const LocalizedMultilineTextInput = ({
+  horizontalConstraint = 'scale',
+  cacheMeasurements = true,
+  ...props
+}: TLocalizedMultilineTextInputProps) => {
   const intl = useIntl();
 
   const initialExpandedTranslationsState = Object.keys(props.value).reduce(
@@ -289,7 +291,7 @@ const LocalizedMultilineTextInput = (
   }
 
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <Stack scale="xs">
         <Stack scale="s">
           {languages.map((language, index) => {
@@ -317,7 +319,7 @@ const LocalizedMultilineTextInput = (
                 onBlur={props.onBlur}
                 onFocus={props.onFocus}
                 isAutofocussed={index === 0 && props.isAutofocussed}
-                cacheMeasurements={props.cacheMeasurements}
+                cacheMeasurements={cacheMeasurements}
                 isCondensed={props.isCondensed}
                 isDisabled={props.isDisabled}
                 isReadOnly={props.isReadOnly}
@@ -369,11 +371,6 @@ LocalizedMultilineTextInput.RequiredValueErrorMessage =
 LocalizedMultilineTextInput.getId = getId;
 
 LocalizedMultilineTextInput.getName = getName;
-
-LocalizedMultilineTextInput.defaultProps = {
-  horizontalConstraint: 'scale',
-  cacheMeasurements: true,
-};
 
 LocalizedMultilineTextInput.createLocalizedString = createLocalizedString;
 

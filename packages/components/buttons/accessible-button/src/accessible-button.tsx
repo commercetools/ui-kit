@@ -84,30 +84,29 @@ export type TAccessibleButtonProps = {
   buttonAttributes?: Record<string, unknown>;
 };
 
-const defaultProps: Pick<
-  TAccessibleButtonProps,
-  'type' | 'buttonAttributes' | 'isToggleButton' | 'isToggled'
-> = {
-  type: 'button',
-  buttonAttributes: {},
-  isToggleButton: false,
-  isToggled: false,
-};
-
 const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
-  (props: TAccessibleButtonProps, ref) => {
+  (
+    {
+      type = 'button',
+      buttonAttributes = {},
+      isToggleButton = false,
+      isToggled = false,
+      ...props
+    }: TAccessibleButtonProps,
+    ref
+  ) => {
     warning(
       props.as ? isValidElementType(props.as) : true,
       `ui-kit/AccessibleButton: "as" must be a valid element type.`
     );
 
     warning(
-      !(props.as && props.type !== 'button'),
+      !(props.as && type !== 'button'),
       `ui-kit/AccessibleButton: "type" does not have any effect when "as" is set.`
     );
 
     warning(
-      !(props.isToggleButton && props.isToggled === undefined),
+      !(isToggleButton && isToggled === undefined),
       `ui-kit/AccessibleButton: "isToggled" is required if "isToggleButton" is "true"`
     );
 
@@ -144,7 +143,7 @@ const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
     let buttonProps = {};
     if (isButton) {
       buttonProps = {
-        type: props.type,
+        type,
       };
     } else {
       buttonProps = {
@@ -177,8 +176,8 @@ const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
         className={props.className}
         disabled={props.isDisabled}
         aria-disabled={props.isDisabled}
-        {...(props.isToggleButton ? { 'aria-pressed': props.isToggled } : {})}
-        {...omit(props.buttonAttributes, propsToOmit)}
+        {...(isToggleButton ? { 'aria-pressed': isToggled } : {})}
+        {...omit(buttonAttributes, propsToOmit)}
         {...buttonProps}
         {...filterAriaAttributes(props)}
         {...filterDataAttributes(props)}
@@ -189,6 +188,5 @@ const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
   }
 );
 AccessibleButton.displayName = 'AccessibleButton';
-AccessibleButton.defaultProps = defaultProps;
 
 export default AccessibleButton;

@@ -41,13 +41,17 @@ export type TPaginationProps = {
   onPerPageChange: (newPerPage: number) => void;
 };
 
-const Pagination = (props: TPaginationProps) => {
-  const totalPages = Math.ceil(props.totalItems / props.perPage);
+const Pagination = ({
+  perPage = 20,
+  perPageRange = 's',
+  ...props
+}: TPaginationProps) => {
+  const totalPages = Math.ceil(props.totalItems / perPage);
 
   const pageItems =
     props.page === totalPages
-      ? props.totalItems - props.perPage * (props.page - 1)
-      : props.perPage;
+      ? props.totalItems - perPage * (props.page - 1)
+      : perPage;
 
   return (
     <Spacings.Inline justifyContent="space-between">
@@ -58,8 +62,8 @@ const Pagination = (props: TPaginationProps) => {
       >
         <PageSizeSelector
           pageItems={pageItems}
-          perPage={props.perPage}
-          perPageRange={props.perPageRange}
+          perPage={perPage}
+          perPageRange={perPageRange}
           onPerPageChange={props.onPerPageChange}
         />
       </div>
@@ -73,12 +77,6 @@ const Pagination = (props: TPaginationProps) => {
 };
 
 Pagination.displayName = 'Pagination';
-
-const defaultProps: Pick<TPaginationProps, 'perPage' | 'perPageRange'> = {
-  perPage: 20,
-  perPageRange: 's',
-};
-Pagination.defaultProps = defaultProps;
 
 export type { TPageRangeSize };
 

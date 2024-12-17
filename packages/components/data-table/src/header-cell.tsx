@@ -119,28 +119,24 @@ export type THeaderCell = {
   iconComponent?: ReactNode;
 };
 
-const defaultProps: Pick<
-  THeaderCell,
-  'sortDirection' | 'disableHeaderStickiness' | 'horizontalCellAlignment'
-> = {
-  sortDirection: 'desc',
-  disableHeaderStickiness: false,
-  horizontalCellAlignment: 'left',
-};
-
-const HeaderCell = (props: THeaderCell) => {
+const HeaderCell = ({
+  sortDirection = 'desc',
+  disableHeaderStickiness = false,
+  horizontalCellAlignment = 'left',
+  ...props
+}: THeaderCell) => {
   let sortableHeaderProps = {};
   let SortingIcon!: typeof ArrowDownIcon;
 
   if (props.isSortable) {
     const isActive = props.sortedBy === props.columnKey;
     const nextSortDirection =
-      !isActive || props.sortDirection === 'desc' ? 'asc' : 'desc';
-    SortingIcon = props.sortDirection === 'desc' ? ArrowDownIcon : ArrowUpIcon;
+      !isActive || sortDirection === 'desc' ? 'asc' : 'desc';
+    SortingIcon = sortDirection === 'desc' ? ArrowDownIcon : ArrowUpIcon;
 
     sortableHeaderProps = {
       as: 'button',
-      label: props.sortDirection,
+      label: sortDirection,
       onClick: () =>
         props.onClick && props.onClick(props.columnKey, nextSortDirection),
       isActive,
@@ -159,12 +155,12 @@ const HeaderCell = (props: THeaderCell) => {
       columnKey={props.columnKey}
       onColumnResized={props.onColumnResized}
       disableResizing={props.disableResizing}
-      disableHeaderStickiness={props.disableHeaderStickiness}
+      disableHeaderStickiness={disableHeaderStickiness}
     >
       <HeaderCellInner
         shouldWrap={props.shouldWrap}
         isCondensed={props.isCondensed}
-        horizontalCellAlignment={props.horizontalCellAlignment}
+        horizontalCellAlignment={horizontalCellAlignment}
         {...sortableHeaderProps}
       >
         <HeaderLabelWrapper>
@@ -198,6 +194,5 @@ const HeaderCell = (props: THeaderCell) => {
   );
 };
 HeaderCell.displayName = 'HeaderCell';
-HeaderCell.defaultProps = defaultProps;
 
 export default HeaderCell;

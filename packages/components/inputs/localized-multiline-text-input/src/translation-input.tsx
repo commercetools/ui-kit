@@ -95,7 +95,10 @@ const Row = styled.div`
   justify-content: flex-end;
 `;
 
-const TranslationInput = (props: TranslationInputProps) => {
+const TranslationInput = ({
+  cacheMeasurements = true,
+  ...props
+}: TranslationInputProps) => {
   const [inputHasSeveralRows, setInputHasSeveralRows] = useState(false);
 
   const handleHeightChange = useCallback(
@@ -187,7 +190,7 @@ const TranslationInput = (props: TranslationInputProps) => {
           isCondensed={props.isCondensed}
           isReadOnly={props.isReadOnly}
           isAutofocussed={props.isAutofocussed}
-          cacheMeasurements={props.cacheMeasurements}
+          cacheMeasurements={cacheMeasurements}
           isOpen={!props.isCollapsed}
           {...filterDataAttributes(props)}
           /* ARIA */
@@ -264,8 +267,5 @@ const TranslationInput = (props: TranslationInputProps) => {
 };
 
 TranslationInput.displayName = 'TranslationInput';
-TranslationInput.defaultProps = {
-  cacheMeasurements: true,
-};
 
 export default TranslationInput;

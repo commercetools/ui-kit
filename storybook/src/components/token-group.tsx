@@ -1,6 +1,8 @@
 // @ts-expect-error
 import definition from './../../../design-system/materials/internals/definition.yaml';
-import DataTable from '@commercetools-uikit/data-table';
+import DataTable, {
+  type TDataTableProps,
+} from '@commercetools-uikit/data-table';
 import {
   BorderRadiusDemo,
   ColorDemo,
@@ -98,7 +100,11 @@ export const TokenGroup = ({ path, visualizer }: TTokenGroupProps) => {
 
   return (
     <div style={{ margin: '1.5rem 0 3rem' }}>
-      <DataTable rows={rows} columns={columns} footer={null} />
+      <DataTable
+        rows={rows}
+        columns={columns as TDataTableProps['columns']}
+        footer={null}
+      />
     </div>
   );
 };

@@ -130,7 +130,10 @@ const selectInputComponents = {
   DropdownIndicator,
 };
 
-export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
+export const ColumnSettingsManager = ({
+  availableColumns = [],
+  ...props
+}: TColumnSettingsManagerProps) => {
   if (props.areHiddenColumnsSearchable) {
     warning(
       typeof props.searchHiddenColumns !== 'undefined',
@@ -149,11 +152,11 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
   const hiddenColumns = useMemo(
     () =>
       differenceWith(
-        props.availableColumns,
+        availableColumns,
         props.selectedColumns,
         (a, b) => a.key === b.key
       ),
-    [props.availableColumns, props.selectedColumns]
+    [availableColumns, props.selectedColumns]
   );
 
   const handleDragEnd = useCallback<(dragResult: DropResult) => void>(
@@ -162,10 +165,10 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
         dragResult,
         props.onUpdateColumns,
         props.selectedColumns,
-        props.availableColumns,
+        availableColumns,
         setIsDragging
       ),
-    [props.onUpdateColumns, props.selectedColumns, props.availableColumns]
+    [props.onUpdateColumns, props.selectedColumns, availableColumns]
   );
 
   const debouncedSearchHiddenColumns = useMemo(
@@ -255,10 +258,5 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
 };
 
 ColumnSettingsManager.displayName = 'ColumnSettingsManager';
-
-const defaultProps: Pick<TColumnSettingsManagerProps, 'availableColumns'> = {
-  availableColumns: [],
-};
-ColumnSettingsManager.defaultProps = defaultProps;
 
 export default ColumnSettingsManager;

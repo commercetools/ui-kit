@@ -22,11 +22,11 @@ type TOption = {
   iconLeft?: ReactNode;
 };
 
-const Option = (props: TOption) => (
+const Option = ({ isDisabled = false, ...props }: TOption) => (
   <AccessibleButton
     label={props.children}
     onClick={props.onClick}
-    isDisabled={props.isDisabled}
+    isDisabled={isDisabled}
     css={[
       css`
         display: block;
@@ -46,7 +46,7 @@ const Option = (props: TOption) => (
           background-color: ${designTokens.colorNeutral95};
         }
       `,
-      props.isDisabled &&
+      isDisabled &&
         css`
           color: ${designTokens.colorNeutral};
         `,
@@ -56,8 +56,5 @@ const Option = (props: TOption) => (
   </AccessibleButton>
 );
 Option.displayName = 'Option';
-Option.defaultProps = {
-  isDisabled: false,
-};
 
 export default Option;

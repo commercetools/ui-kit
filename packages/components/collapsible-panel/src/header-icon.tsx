@@ -19,7 +19,7 @@ type THeaderIcon = {
   size: 'small' | 'medium' | 'big' | 'scale';
 };
 
-const HeaderIcon = (props: THeaderIcon) => {
+const HeaderIcon = ({ tone = 'primary', ...props }: THeaderIcon) => {
   return (
     <div
       css={[
@@ -39,7 +39,7 @@ const HeaderIcon = (props: THeaderIcon) => {
       {props.isClosed ? (
         <AngleRightIcon
           color={getArrowColor({
-            tone: props.tone,
+            tone: tone,
             isDisabled: props.isDisabled,
           })}
           size={props.size}
@@ -47,7 +47,7 @@ const HeaderIcon = (props: THeaderIcon) => {
       ) : (
         <AngleDownIcon
           color={getArrowColor({
-            tone: props.tone,
+            tone: tone,
             isDisabled: props.isDisabled,
           })}
           size={props.size}
@@ -58,8 +58,5 @@ const HeaderIcon = (props: THeaderIcon) => {
 };
 
 HeaderIcon.displayName = 'HeaderIcon';
-HeaderIcon.defaultProps = {
-  tone: 'primary',
-};
 
 export default HeaderIcon;

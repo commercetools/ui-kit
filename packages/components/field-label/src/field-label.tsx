@@ -103,7 +103,10 @@ const LabelRowWrapper = styled.div`
   }
 `;
 
-const FieldLabel = (props: TFieldLabelProps) => {
+const FieldLabel = ({
+  horizontalConstraint = 'scale',
+  ...props
+}: TFieldLabelProps) => {
   if (props.hintIcon) {
     warning(
       props.hintIcon.props.size === undefined,
@@ -117,7 +120,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
   }
 
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <Inline alignItems={'center'} scale="xs">
         <Text.Wrap>
           <Label
@@ -139,7 +142,6 @@ const FieldLabel = (props: TFieldLabelProps) => {
           />
         )}
       </Inline>
-
       {props.hint && (
         <LabelRowWrapper>
           <Inline alignItems={'center'} scale="xs">
@@ -172,7 +174,6 @@ const FieldLabel = (props: TFieldLabelProps) => {
           </Text.Wrap>
         </LabelRowWrapper>
       )}
-
       {props.badge && (
         <div
           css={css`
@@ -188,8 +189,5 @@ const FieldLabel = (props: TFieldLabelProps) => {
 };
 
 FieldLabel.displayName = 'FieldLabel';
-FieldLabel.defaultProps = {
-  horizontalConstraint: 'scale',
-};
 
 export default FieldLabel;

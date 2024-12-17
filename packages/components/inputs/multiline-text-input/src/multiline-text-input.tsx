@@ -132,19 +132,15 @@ export type TMultilineTextInputProps = {
   maxRows?: number;
 };
 
-const defaultProps: Pick<
-  TMultilineTextInputProps,
-  'defaultExpandMultilineText'
-> = {
-  defaultExpandMultilineText: false,
-};
-
-const MultilineTextInput = (props: TMultilineTextInputProps) => {
+const MultilineTextInput = ({
+  defaultExpandMultilineText = false,
+  ...props
+}: TMultilineTextInputProps) => {
   const intl = useIntl();
   const [shouldRenderToggleButton, setShouldRenderToggleButton] =
     useState(false);
 
-  const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
+  const [isOpen, toggle] = useToggleState(defaultExpandMultilineText);
 
   const { onFocus } = props;
   const handleFocus = useCallback<FocusEventHandler<HTMLTextAreaElement>>(
@@ -252,6 +248,5 @@ MultilineTextInput.displayName = 'MultilineTextInput';
 
 MultilineTextInput.isEmpty = (value: TMultilineTextInputProps['value']) =>
   !value || value.trim().length === 0;
-MultilineTextInput.defaultProps = defaultProps;
 
 export default MultilineTextInput;

@@ -34,12 +34,16 @@ export type TDensityManagerProps = {
   managerTheme?: 'light' | 'dark';
 };
 
-const DensityManager = (props: TDensityManagerProps) => {
+const DensityManager = ({
+  isCondensed = true,
+  isWrappingText = false,
+  ...props
+}: TDensityManagerProps) => {
   const intl = useIntl();
-  const textWrappingOption = props.isWrappingText
+  const textWrappingOption = isWrappingText
     ? SHOW_HIDE_ON_DEMAND
     : WRAPPED_TEXT_VISIBLE;
-  const densityDisplayOption = props.isCondensed
+  const densityDisplayOption = isCondensed
     ? DENSITY_COMPACT
     : DENSITY_COMFORTABLE;
 
@@ -121,14 +125,5 @@ const DensityManager = (props: TDensityManagerProps) => {
 };
 
 DensityManager.displayName = 'DensityManager';
-
-const defaultProps: Pick<
-  TDensityManagerProps,
-  'isCondensed' | 'isWrappingText'
-> = {
-  isCondensed: true,
-  isWrappingText: false,
-};
-DensityManager.defaultProps = defaultProps;
 
 export default DensityManager;
