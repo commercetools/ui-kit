@@ -130,21 +130,6 @@ export type TCollapsiblePanel = {
     | 'auto';
 };
 
-const defaultProps: Pick<
-  TCollapsiblePanel,
-  | 'theme'
-  | 'condensed'
-  | 'isDisabled'
-  | 'headerControlsAlignment'
-  | 'horizontalConstraint'
-> = {
-  theme: 'dark',
-  condensed: false,
-  isDisabled: false,
-  headerControlsAlignment: 'right',
-  horizontalConstraint: 'scale',
-};
-
 const HeadLineText = (
   props: Pick<TCollapsiblePanel, 'condensed' | 'header'>
 ) => {
@@ -166,12 +151,26 @@ const HeadLineText = (
 
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
-const CollapsiblePanel = (props: TCollapsiblePanel) => {
+const CollapsiblePanel = ({
+  theme = 'dark',
+  condensed = false,
+  isDisabled = false,
+  headerControlsAlignment = 'right',
+  horizontalConstraint = 'scale',
+  ...props
+}: TCollapsiblePanel) => {
   const panelButtonId = useFieldId(props.id, panelButtonSequentialId);
   const panelContentId = useFieldId(undefined, panelContentSequentialId);
   // Pass only `data-*` props
-  const dataProps = filterDataAttributes(props);
-  const scale = props.condensed ? 's' : 'm';
+  const dataProps = filterDataAttributes({
+    theme,
+    condensed,
+    isDisabled,
+    headerControlsAlignment,
+    horizontalConstraint,
+    ...props,
+  });
+  const scale = condensed ? 's' : 'm';
 
   const isClosedAndIsDefaultClosed =
     !isNil(props.isClosed) && !isNil(props.isDefaultClosed);
@@ -206,7 +205,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
       isDefaultClosed={props.isDefaultClosed}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
-        <Constraints.Horizontal max={props.horizontalConstraint}>
+        <Constraints.Horizontal max={horizontalConstraint}>
           <div
             css={[baseContainerStyles, getThemeStyle('light')]}
             // Allow to override the styles by passing a `className` prop.
@@ -217,13 +216,21 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
             <HeaderContainer
               as="div"
               css={[
-                getHeaderContainerStyles(props, isOpen),
+                getHeaderContainerStyles(
+                  {
+                    condensed,
+                    isDisabled,
+                    headerControlsAlignment,
+                    ...props,
+                  },
+                  isOpen
+                ),
                 getThemeStyle('light'),
               ]}
               id={panelButtonId}
               label=""
-              onClick={props.isDisabled ? undefined : toggle}
-              isDisabled={props.isDisabled}
+              onClick={isDisabled ? undefined : toggle}
+              isDisabled={isDisabled}
               buttonAttributes={dataProps}
               aria-controls={panelContentId}
               aria-expanded={isOpen ? 'true' : 'false'}
@@ -232,16 +239,13 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                 {!props.hideExpansionControls && (
                   <HeaderIcon
                     isClosed={!isOpen}
-                    isDisabled={props.isDisabled || false}
+                    isDisabled={isDisabled || false}
                     tone={props.tone}
                     size={'medium'}
                   />
                 )}
                 <Spacings.Inline alignItems="baseline" scale={scale}>
-                  <HeadLineText
-                    header={props.header}
-                    condensed={props.condensed}
-                  />
+                  <HeadLineText header={props.header} condensed={condensed} />
                   {props.secondaryHeader && (
                     <Text.Detail tone="secondary" truncate={true}>
                       {props.secondaryHeader}
@@ -261,7 +265,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               <SectionWrapper
                 // @ts-ignore
                 ref={registerContentNode}
-                condensed={props.condensed}
+                condensed={condensed}
                 isExpandControlHidden={props.hideExpansionControls}
               >
                 {props.description && (
@@ -295,7 +299,6 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
  */
 CollapsiblePanel.getPanelContentId = () => '';
 CollapsiblePanel.displayName = 'CollapsiblePanel';
-CollapsiblePanel.defaultProps = defaultProps;
 CollapsiblePanel.Header = CollapsiblePanelHeader;
 
 export default CollapsiblePanel;
