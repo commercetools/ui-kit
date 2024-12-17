@@ -1,5 +1,11 @@
 # @commercetools-uikit/i18n
 
+## 19.20.1
+
+### Patch Changes
+
+- [#3025](https://github.com/commercetools/ui-kit/pull/3025) [`cbc222d`](https://github.com/commercetools/ui-kit/commit/cbc222d4f7792296cbf7b1a69acb04381cc51bd5) Thanks [@emmenko](https://github.com/emmenko)! - Fix regression of removing the `zh-CN.json` file. Even though we don't support chinese locale anymore, we still need to keep the file (as empty) for backwards compatibility with Application Kit packages version `<22.36.0` as they still expect the file to be defined.
+
 ## 19.20.0
 
 ## 19.19.0
