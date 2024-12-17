@@ -33,6 +33,13 @@ async function fetchFigmaComponentIds() {
       .filter((component) =>
         component.containing_frame.hasOwnProperty('containingStateGroup')
       )
+      .reduce((acc, component) => {
+        // Dedupe components with the same name
+        if (!acc.some((item) => item.name === component.name)) {
+          acc.push(component);
+        }
+        return acc;
+      }, [])
       // create a new array with a normalized name of the component
       // and the encoded node id of the component
       .map((component) => {
@@ -47,7 +54,7 @@ async function fetchFigmaComponentIds() {
           ),
         };
       });
-    // Use a Map arranged by name for lookups TODO: needs to be deduped
+    // Use a Map arranged by name for lookups
     return new Map(
       componentListArray.map((component) => [component.name, component])
     );
