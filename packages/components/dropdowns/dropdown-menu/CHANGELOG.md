@@ -1,5 +1,19 @@
 # @commercetools-uikit/dropdown-menu
 
+## 19.20.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.20.1
+  - @commercetools-uikit/accessible-button@19.20.1
+  - @commercetools-uikit/secondary-button@19.20.1
+  - @commercetools-uikit/constraints@19.20.1
+  - @commercetools-uikit/spacings-inline@19.20.1
+  - @commercetools-uikit/spacings-stack@19.20.1
+  - @commercetools-uikit/hooks@19.20.1
+  - @commercetools-uikit/utils@19.20.1
+
 ## 19.20.0
 
 ### Patch Changes

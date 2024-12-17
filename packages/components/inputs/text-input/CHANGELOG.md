@@ -1,5 +1,15 @@
 # @commercetools-uikit/text-input
 
+## 19.20.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.20.1
+  - @commercetools-uikit/constraints@19.20.1
+  - @commercetools-uikit/input-utils@19.20.1
+  - @commercetools-uikit/utils@19.20.1
+
 ## 19.20.0
 
 ### Patch Changes
