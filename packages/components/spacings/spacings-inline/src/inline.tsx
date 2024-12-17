@@ -29,32 +29,41 @@ export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 
 export type TInlineProps = {
   /** sets the amount of spacing between individual items */
-  scale: TScale;
+  scale?: TScale;
   /**
    * sets the `align-self` value on all direct children.
    * https://developer.mozilla.org/en-US/docs/Web/CSS/align-items */
-  alignItems: TAlignItem;
+  alignItems?: TAlignItem;
   /**
    * defines how the browser distributes space between and around content items along the main-axis.
    * https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content */
-  justifyContent: TJustifyContent;
+  justifyContent?: TJustifyContent;
   children: ReactNode;
 };
 
-const Inline = (props: TInlineProps) => (
-  <span css={getStyles(props)} {...filterDataAttributes(props)}>
+const Inline = ({
+  scale = 's',
+  alignItems = 'flex-start',
+  justifyContent = 'flex-start',
+  ...props
+}: TInlineProps) => (
+  <span
+    css={getStyles({
+      scale,
+      alignItems,
+      justifyContent,
+      ...props,
+    })}
+    {...filterDataAttributes({
+      scale,
+      alignItems,
+      justifyContent,
+      ...props,
+    })}
+  >
     {props.children}
   </span>
 );
-const defaultProps: Pick<
-  TInlineProps,
-  'scale' | 'alignItems' | 'justifyContent'
-> = {
-  scale: 's',
-  alignItems: 'flex-start',
-  justifyContent: 'flex-start',
-};
-Inline.defaultProps = defaultProps;
 Inline.displayName = 'Inline';
 
 export default Inline;
