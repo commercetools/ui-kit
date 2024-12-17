@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import DataTable from './data-table';
+import DataTable, { type TColumn } from './data-table';
 
 import CheckboxInput from '../../inputs/checkbox-input';
 
@@ -172,7 +172,6 @@ export const BasicExample: Story = (args) => {
         // label: <CheckboxInput onChange={() => {}} />,
         shouldIgnoreRowClick: true,
         align: 'center',
-        // @ts-expect-error
         renderItem: (row) => (
           <CheckboxInput
             isChecked={checkedRowsState[row.id]}
@@ -186,8 +185,8 @@ export const BasicExample: Story = (args) => {
         ),
         disableResizing: true,
       },
-      ...columns,
-    ];
+      ...(columns || []),
+    ] as TColumn[];
   }, [columns, checkedRowsState]);
 
   const onSortRequest = (key: SortState['key'], dir: SortState['dir']) => {
@@ -200,7 +199,6 @@ export const BasicExample: Story = (args) => {
         <DataTable
           {...args}
           rows={rows}
-          // @ts-expect-error
           columns={tableColumns}
           sortedBy={sort.key}
           sortDirection={sort.dir}
