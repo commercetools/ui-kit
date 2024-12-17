@@ -127,17 +127,6 @@ export const getIconColor = (
   return icon?.props.color;
 };
 
-const defaultProps: Pick<
-  TSecondaryButtonProps,
-  'type' | 'theme' | 'size' | 'isToggleButton' | 'tone'
-> = {
-  type: 'button',
-  theme: 'default',
-  tone: 'secondary',
-  size: '20',
-  isToggleButton: false,
-};
-
 const PositionedIcon = ({
   size,
   icon,
@@ -165,28 +154,38 @@ const PositionedIcon = ({
 
 export const SecondaryButton = <
   TStringOrComponent extends ElementType = 'button'
->(
-  props: TSecondaryButtonProps<TStringOrComponent>
-) => {
-  const isActive = Boolean(props.isToggleButton && props.isToggled);
+>({
+  type = 'button',
+  theme = 'default',
+  tone = 'secondary',
+  size = '20',
+  isToggleButton = false,
+  ...props
+}: TSecondaryButtonProps<TStringOrComponent>) => {
+  const isActive = Boolean(isToggleButton && props.isToggled);
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.to);
   const buttonAttributes = {
     'data-track-component': 'SecondaryButton',
-    ...filterInvalidAttributes(props),
+    ...filterInvalidAttributes({
+      type,
+      theme,
+      tone,
+      size,
+      isToggleButton,
+      ...props,
+    }),
     ...(shouldUseLinkTag ? { to: props.to } : {}),
   };
 
   warning(
-    !(props.theme !== 'default' && !props.isToggleButton),
+    !(theme !== 'default' && !isToggleButton),
     `Invalid prop \`theme\` supplied to \`SecondaryButton\`. Only toggle buttons may have a theme.`
   );
 
   useWarning(
-    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
-    `SecondaryButton '${
-      props.size
-    }' value for 'size' property has been deprecated in favor of '${
-      sizeMapping[props.size as TLegacySizes]
+    !Boolean(Object.keys(sizeMapping).indexOf(size) > -1),
+    `SecondaryButton '${size}' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[size as TLegacySizes]
     }' Please update that value when using this component`
   );
 
@@ -207,20 +206,20 @@ export const SecondaryButton = <
       transition: background-color ${designTokens.transitionLinear80Ms},
         box-shadow ${designTokens.transitionEaseinout150Ms};
     `,
-    getThemeStyles(props.theme),
-    getStateStyles(props.isDisabled, isActive, props.tone),
-    getSizeStyles(props.size),
-    getToneStyles(props.tone, props.isDisabled, isActive),
+    getThemeStyles(theme),
+    getStateStyles(props.isDisabled, isActive, tone),
+    getSizeStyles(size),
+    getToneStyles(tone, props.isDisabled, isActive),
   ];
 
   return (
     <AccessibleButton
       as={(shouldUseLinkTag ? Link : props.as) as ComponentType}
-      type={props.type}
+      type={type}
       buttonAttributes={buttonAttributes}
       label={props.label}
       onClick={props.onClick}
-      isToggleButton={props.isToggleButton}
+      isToggleButton={isToggleButton}
       isToggled={props.isToggled}
       isDisabled={props.isDisabled}
       css={containerStyles}
@@ -229,16 +228,36 @@ export const SecondaryButton = <
         {props.iconLeft && (
           <PositionedIcon
             icon={props.iconLeft}
-            size={props.size}
-            color={getIconColor(props, props.iconLeft)}
+            size={size}
+            color={getIconColor(
+              {
+                type,
+                theme,
+                tone,
+                size,
+                isToggleButton,
+                ...props,
+              },
+              props.iconLeft
+            )}
           />
         )}
         <span>{props.label}</span>
         {props.iconRight && (
           <PositionedIcon
             icon={props.iconRight}
-            size={props.size}
-            color={getIconColor(props, props.iconRight)}
+            size={size}
+            color={getIconColor(
+              {
+                type,
+                theme,
+                tone,
+                size,
+                isToggleButton,
+                ...props,
+              },
+              props.iconRight
+            )}
           />
         )}
       </Inline>
@@ -247,6 +266,5 @@ export const SecondaryButton = <
 };
 
 SecondaryButton.displayName = 'SecondaryButton';
-SecondaryButton.defaultProps = defaultProps;
 
 export default SecondaryButton;

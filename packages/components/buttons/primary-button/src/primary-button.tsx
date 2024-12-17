@@ -125,56 +125,59 @@ export type TPrimaryButtonProps<
  * passed to `<PrimaryButton>`: <PrimaryButton as={Link} to="/foo" label="Foo" />.
  */ ComponentPropsWithRef<TStringOrComponent>;
 
-const defaultProps: Pick<
-  TPrimaryButtonProps,
-  'type' | 'tone' | 'size' | 'isToggleButton'
-> = {
-  type: 'button',
-  size: '20',
-  isToggleButton: false,
-  tone: 'primary',
-};
-
-const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
-  props: TPrimaryButtonProps<TStringOrComponent>
-) => {
+const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>({
+  type = 'button',
+  size = '20',
+  isToggleButton = false,
+  tone = 'primary',
+  ...props
+}: TPrimaryButtonProps<TStringOrComponent>) => {
   const buttonAttributes = {
     'data-track-component': 'PrimaryButton',
-    ...filterInvalidAttributes(omit(props, propsToOmit)),
+    ...filterInvalidAttributes(
+      omit(
+        {
+          type,
+          size,
+          isToggleButton,
+          tone,
+          ...props,
+        },
+        propsToOmit
+      )
+    ),
     // if there is a divergence between `isDisabled` and `disabled`,
     // we fall back to `isDisabled`
     disabled: props.isDisabled,
   };
 
   useWarning(
-    !Boolean(Object.keys(sizeMapping).indexOf(props.size) > -1),
-    `PrimaryButton '${
-      props.size
-    }' value for 'size' property has been deprecated in favor of '${
-      sizeMapping[props.size as TLegacySizes]
+    !Boolean(Object.keys(sizeMapping).indexOf(size) > -1),
+    `PrimaryButton '${size}' value for 'size' property has been deprecated in favor of '${
+      sizeMapping[size as TLegacySizes]
     }' Please update that value when using this component`
   );
 
-  const isActive = Boolean(props.isToggleButton && props.isToggled);
+  const isActive = Boolean(isToggleButton && props.isToggled);
 
   return (
     <AccessibleButton
       as={props.as}
-      type={props.type}
+      type={type}
       buttonAttributes={buttonAttributes}
       label={props.label}
       onClick={props.onClick}
-      isToggleButton={props.isToggleButton}
+      isToggleButton={isToggleButton}
       isToggled={props.isToggled}
       isDisabled={props.isDisabled}
-      css={getButtonStyles(props.isDisabled, isActive, props.tone, props.size)}
+      css={getButtonStyles(props.isDisabled, isActive, tone, size)}
     >
       <Inline alignItems="center" scale="s">
         {props.iconLeft && (
           <PositionedIcon
             icon={props.iconLeft}
             isDisabled={props.isDisabled}
-            size={props.size}
+            size={size}
           />
         )}
         <span>{props.label}</span>
@@ -182,7 +185,7 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
           <PositionedIcon
             icon={props.iconRight}
             isDisabled={props.isDisabled}
-            size={props.size}
+            size={size}
           />
         )}
       </Inline>
@@ -190,7 +193,6 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
   );
 };
 
-PrimaryButton.defaultProps = defaultProps;
 PrimaryButton.displayName = 'PrimaryButton';
 
 export default PrimaryButton;

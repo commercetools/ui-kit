@@ -63,16 +63,6 @@ export type TFlatButtonProps<
  * passed to `<FlatButton>`: <FlatButton as={Link} to="/foo" label="Foo" />.
  */ ComponentPropsWithRef<TStringOrComponent>;
 
-const defaultProps: Pick<
-  TFlatButtonProps,
-  'tone' | 'isDisabled' | 'type' | 'iconPosition'
-> = {
-  tone: 'primary',
-  type: 'button',
-  iconPosition: 'left',
-  isDisabled: false,
-};
-
 const ButtonIcon = <TStringOrComponent extends ElementType = 'button'>(
   props: TFlatButtonProps<TStringOrComponent>
 ) => {
@@ -95,25 +85,47 @@ const ButtonIcon = <TStringOrComponent extends ElementType = 'button'>(
 };
 ButtonIcon.displayName = 'ButtonIcon';
 
-const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
-  props: TFlatButtonProps<TStringOrComponent>
-) => {
+const FlatButton = <TStringOrComponent extends ElementType = 'button'>({
+  tone = 'primary',
+  type = 'button',
+  iconPosition = 'left',
+  isDisabled = false,
+  ...props
+}: TFlatButtonProps<TStringOrComponent>) => {
   const buttonAttributes = {
     'data-track-component': 'FlatButton',
     // Forward valid attributes to the `<AccessibleButton>`.
-    ...filterInvalidAttributes(omit(props, propsToOmit)),
+    ...filterInvalidAttributes(
+      omit(
+        {
+          tone,
+          type,
+          iconPosition,
+          isDisabled,
+          ...props,
+        },
+        propsToOmit
+      )
+    ),
     // if there is a divergence between `isDisabled` and `disabled`,
     // we fall back to `isDisabled`
-    disabled: props.isDisabled,
+    disabled: isDisabled,
   };
+  const buttonIconProps = {
+    tone,
+    type,
+    iconPosition,
+    isDisabled,
+    ...props,
+  } as TFlatButtonProps<TStringOrComponent>;
 
   return (
     <AccessibleButton
       as={props.as}
-      type={props.type}
+      type={type}
       label={props.label}
       onClick={props.onClick}
-      isDisabled={props.isDisabled}
+      isDisabled={isDisabled}
       css={css`
         min-height: initial;
         align-items: center;
@@ -124,14 +136,14 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
 
         span {
           color: ${getTextColor({
-            tone: props.tone,
-            isDisabled: props.isDisabled,
+            tone: tone,
+            isDisabled: isDisabled,
           })};
         }
 
         fill: ${getTextColor({
-          tone: props.tone,
-          isDisabled: props.isDisabled,
+          tone: tone,
+          isDisabled: isDisabled,
           isIcon: true,
         })};
 
@@ -140,22 +152,22 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
           margin-left: ${designTokens.spacing10};
         }
 
-        ${!props.isDisabled
+        ${!isDisabled
           ? `
             &:hover,
             &:focus {
               span {
                 color: ${getTextColor({
-                  tone: props.tone,
+                  tone: tone,
                   isHover: true,
-                  isDisabled: props.isDisabled,
+                  isDisabled: isDisabled,
                 })};
               }
               svg * {
                 fill: ${getTextColor({
-                  tone: props.tone,
+                  tone: tone,
                   isHover: true,
-                  isDisabled: props.isDisabled,
+                  isDisabled: isDisabled,
                   isIcon: true,
                 })};
               }
@@ -164,18 +176,17 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
       `}
       buttonAttributes={buttonAttributes}
     >
-      {props.icon && props.iconPosition === 'left' && (
-        <ButtonIcon<TStringOrComponent> {...props} />
+      {props.icon && iconPosition === 'left' && (
+        <ButtonIcon<TStringOrComponent> {...buttonIconProps} />
       )}
       <span>{props.label}</span>
-      {props.icon && props.iconPosition === 'right' && (
-        <ButtonIcon<TStringOrComponent> {...props} />
+      {props.icon && iconPosition === 'right' && (
+        <ButtonIcon<TStringOrComponent> {...buttonIconProps} />
       )}
     </AccessibleButton>
   );
 };
 
 FlatButton.displayName = 'FlatButton';
-FlatButton.defaultProps = defaultProps;
 
 export default FlatButton;
