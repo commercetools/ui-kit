@@ -32,7 +32,7 @@ figma.connect(
   {
     props: {
       // *This file was generated from a script*
-      // TODO: manually map props here, see https://www.figma.com/code-connect-docs/react/#figmaconnect
+      // TODO: (optional) To manually map props here, see https://www.figma.com/code-connect-docs/react/#figmaconnect
       children: figma.children('*'),
     },
     example: (props) => <${componentName}>{props.children}</${componentName}>,
