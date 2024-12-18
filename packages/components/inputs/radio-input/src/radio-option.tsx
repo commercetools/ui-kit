@@ -62,7 +62,7 @@ export type TStylesProps = Pick<
   | 'isChecked'
 >;
 
-const Option = ({ ...props }: TOptionProps) => {
+const Option = (props: TOptionProps) => {
   const labelProps = props.id ? { htmlFor: props.id } : {};
 
   if (!props.isReadOnly) {
@@ -120,9 +120,7 @@ const Option = ({ ...props }: TOptionProps) => {
           checked={props.isChecked}
           type="radio"
           readOnly={props.isReadOnly}
-          {...filterDataAttributes({
-            ...props,
-          })}
+          {...filterDataAttributes(props)}
         />
         <RadioOptionContainer {...stylesProps}>
           <RadioOptionBorder {...stylesProps}>
@@ -142,5 +140,9 @@ const Option = ({ ...props }: TOptionProps) => {
   );
 };
 Option.displayName = 'RadioOption';
+
+Option.defaultProps = {
+  components: {},
+};
 
 export default Option;

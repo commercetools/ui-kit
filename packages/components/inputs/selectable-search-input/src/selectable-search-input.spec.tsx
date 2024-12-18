@@ -60,6 +60,8 @@ const TestComponent = ({
       </label>
       <SelectableSearchInput
         {...props}
+        id={id}
+        name={name}
         options={options}
         value={_value}
         onSubmit={onSubmit}

@@ -361,6 +361,11 @@ const SearchSelectInput = ({
     >
       <AsyncSelectInput
         {...props}
+        value={value}
+        menuPortalZIndex={menuPortalZIndex}
+        maxMenuHeight={maxMenuHeight}
+        appearance={appearance}
+        optionStyle={optionStyle}
         components={components as ReactSelectAsyncProps['components']}
         placeholder={placeholder}
         iconLeft={props.iconLeft}

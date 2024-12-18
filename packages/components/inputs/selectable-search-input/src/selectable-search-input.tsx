@@ -273,6 +273,14 @@ const SelectableSearchInput = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
 
+  const allProps = {
+    horizontalConstraint,
+    isClearable,
+    menuHorizontalConstraint,
+    showSubmitButton,
+    menuPortalZIndex,
+    ...props,
+  };
   const legacyDataProps = filterDataAttributes(props);
   const transformedSelectDataProps = transformDataProps(props.selectDataProps);
   const transformedInputDataProps = transformDataProps(props.inputDataProps);
@@ -452,7 +460,7 @@ const SelectableSearchInput = ({
       >
         <Constraints.Horizontal max={menuHorizontalConstraint}>
           <SelectableSelect
-            {...props}
+            {...allProps}
             id={SelectableSearchInput.getDropdownId(selectablSearchInputId)}
             name={getDropdownName(props.name)}
             dropdownHasFocus={dropdownHasFocus}
@@ -468,10 +476,7 @@ const SelectableSearchInput = ({
         </Constraints.Horizontal>
         <div
           css={[
-            getSelectableSearchInputContainerStyles({
-              horizontalConstraint,
-              ...props,
-            }),
+            getSelectableSearchInputContainerStyles(allProps),
             dropdownHasFocus &&
               !props.isReadOnly &&
               css`
@@ -498,10 +503,7 @@ const SelectableSearchInput = ({
             autoComplete={props.autoComplete}
             aria-readonly={props.isReadOnly}
             contentEditable={!props.isReadOnly}
-            css={getSelectableSearchInputStyles({
-              horizontalConstraint,
-              ...props,
-            })}
+            css={getSelectableSearchInputStyles(allProps)}
             {...transformedInputDataProps}
             {...legacyDataProps}
             /* ARIA */
@@ -523,10 +525,7 @@ const SelectableSearchInput = ({
                 size={props.isCondensed ? '10' : '20'}
                 label={'clear-button'}
                 onClick={handleClear}
-                css={getClearIconButtonStyles({
-                  horizontalConstraint,
-                  ...props,
-                })}
+                css={getClearIconButtonStyles(allProps)}
               />
             )}
           {showSubmitButton && (
@@ -535,10 +534,7 @@ const SelectableSearchInput = ({
               size={props.isCondensed ? '20' : '40'}
               label={'search-button'}
               onClick={handleSubmit}
-              css={getSearchIconButtonStyles({
-                horizontalConstraint,
-                ...props,
-              })}
+              css={getSearchIconButtonStyles(allProps)}
               isDisabled={props.isDisabled}
             />
           )}

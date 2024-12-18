@@ -232,7 +232,13 @@ const CheckboxInput = ({
       isHovered={props.isHovered}
       isIndeterminate={props.isIndeterminate}
     >
-      <Checkbox {...props} id={id} />
+      <Checkbox
+        {...props}
+        id={id}
+        isChecked={isChecked}
+        isDisabled={isDisabled}
+        hasError={hasError}
+      />
       <CheckboxIcon
         hasError={hasError}
         isDisabled={isDisabled}
