@@ -105,7 +105,7 @@ const Group = ({
         onFocus: props.onFocus,
         onBlur: props.onBlur,
       });
-      const { wrapper } = child.props.components;
+      const { wrapper } = child.props.components || {};
       return wrapper ? wrapper(clonedChild) : clonedChild;
     }
     return child;

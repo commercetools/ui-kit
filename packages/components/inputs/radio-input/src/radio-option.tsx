@@ -62,7 +62,7 @@ export type TStylesProps = Pick<
   | 'isChecked'
 >;
 
-const Option = (props: TOptionProps) => {
+const Option = ({ components = {}, ...props }: TOptionProps) => {
   const labelProps = props.id ? { htmlFor: props.id } : {};
 
   if (!props.isReadOnly) {
@@ -72,17 +72,17 @@ const Option = (props: TOptionProps) => {
     );
   }
 
-  if (props.components?.wrapper) {
+  if (components.wrapper) {
     warning(
-      typeof props.components?.wrapper === 'function',
+      typeof components.wrapper === 'function',
       `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the prop is not a function`
     );
     warning(
-      props.components?.wrapper.length === 1,
+      components.wrapper.length === 1,
       `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the supplied function should expect one argument`
     );
     warning(
-      isValidElement(props.components?.wrapper(<></>)),
+      isValidElement(components.wrapper(<></>)),
       `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the function supplied should return a valid react element`
     );
   }
@@ -140,9 +140,5 @@ const Option = (props: TOptionProps) => {
   );
 };
 Option.displayName = 'RadioOption';
-
-Option.defaultProps = {
-  components: {},
-};
 
 export default Option;
