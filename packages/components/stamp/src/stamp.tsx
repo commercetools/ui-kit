@@ -21,7 +21,7 @@ export type TStampProps = {
   /**
    * If `true`, renders a condensed version of the stamp.
    */
-  isCondensed: boolean;
+  isCondensed?: boolean;
   /**
    * Content to render within the stamp.
    * @deprecated in favor of `label`.
@@ -155,12 +155,17 @@ const getStampStyles = (props: StylesFunctionParams) => {
   `;
 };
 
-const Stamp = (props: TStampProps) => {
+const Stamp = ({
+  isCondensed = false,
+  tone = 'information',
+  ...props
+}: TStampProps) => {
+  const allProps = { isCondensed, tone, ...props };
   const Icon =
     props.icon &&
     cloneElement(props.icon, {
       size: 'medium',
-      color: getIconColor(props, true),
+      color: getIconColor(allProps, true),
     });
 
   useWarnDeprecatedProp(
@@ -171,7 +176,7 @@ const Stamp = (props: TStampProps) => {
   );
 
   const StampLabel = ({ children }: { children: string }): ReactElement =>
-    props.isCondensed ? (
+    isCondensed ? (
       <Text.Caption tone="inherit" fontWeight="medium">
         {children}
       </Text.Caption>
@@ -184,26 +189,22 @@ const Stamp = (props: TStampProps) => {
   return (
     <div
       css={[
-        getStampStyles({ ...props, overrideTextColor: true }),
-        getToneStyles({ ...props, overrideTextColor: true }),
-        getPaddingStyle(props),
+        getStampStyles({ ...allProps, overrideTextColor: true }),
+        getToneStyles({ ...allProps, overrideTextColor: true }),
+        getPaddingStyle({
+          isCondensed,
+          tone,
+          ...props,
+        }),
       ]}
     >
-      <SpacingsInline
-        alignItems="center"
-        scale={props.isCondensed ? 'xs' : 's'}
-      >
+      <SpacingsInline alignItems="center" scale={isCondensed ? 'xs' : 's'}>
         {Icon}
         {props.label ? <StampLabel>{props.label}</StampLabel> : props.children}
       </SpacingsInline>
     </div>
   );
 };
-const defaultProps: Pick<TStampProps, 'isCondensed' | 'tone'> = {
-  isCondensed: false,
-  tone: 'information',
-};
 Stamp.displayName = 'Stamp';
-Stamp.defaultProps = defaultProps;
 
 export default Stamp;

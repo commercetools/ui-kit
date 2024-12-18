@@ -90,21 +90,17 @@ function useScrollBlock(isOpen: boolean, triggerRef: RefObject<HTMLElement>) {
   }, [isOpen, scrollableParentRef, triggerRef]);
 }
 
-const defaultProps: Pick<
-  TDropdownMenuProps,
-  'menuPosition' | 'menuType' | 'menuHorizontalConstraint'
-> = {
-  menuHorizontalConstraint: 'auto',
-  menuPosition: 'left',
-  menuType: 'default',
-};
-
 const Container = styled.div`
   position: relative;
   display: inline-block;
 `;
 
-function DropdownMenu(props: TDropdownMenuProps) {
+function DropdownMenu({
+  menuHorizontalConstraint = 'auto',
+  menuPosition = 'left',
+  menuType = 'default',
+  ...props
+}: TDropdownMenuProps) {
   const [isOpen, toggle] = useToggleState(false);
   const triggerRef = useRef<HTMLDivElement>(null);
 
@@ -116,8 +112,7 @@ function DropdownMenu(props: TDropdownMenuProps) {
     }),
     [isOpen, toggle]
   );
-  const Menu =
-    props.menuType === 'default' ? DropdownContentMenu : DropdownListMenu;
+  const Menu = menuType === 'default' ? DropdownContentMenu : DropdownListMenu;
 
   // Close the dropdown when clicking outside of it
   const handleGlobalClick = useCallback(
@@ -154,12 +149,17 @@ function DropdownMenu(props: TDropdownMenuProps) {
         </DropdownTrigger>
 
         <Menu
-          horizontalConstraint={props.menuHorizontalConstraint!}
+          horizontalConstraint={menuHorizontalConstraint!}
           isOpen={isOpen}
-          menuPosition={props.menuPosition!}
+          menuPosition={menuPosition!}
           menuMaxHeight={props.menuMaxHeight}
           triggerElementRef={triggerRef}
-          {...filterDataAttributes(props)}
+          {...filterDataAttributes({
+            menuHorizontalConstraint,
+            menuPosition,
+            menuType,
+            ...props,
+          })}
         >
           {props.children}
         </Menu>
@@ -167,7 +167,6 @@ function DropdownMenu(props: TDropdownMenuProps) {
     </DropdownMenuContext.Provider>
   );
 }
-DropdownMenu.defaultProps = defaultProps;
 
 DropdownMenu.ListMenuItem = DropdownListMenuItem;
 

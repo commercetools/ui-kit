@@ -1,0 +1,6 @@
+tree 0003675ccdfb583bbe7bf1a3380aefaad9ce7c12
+parent 48f9768bafc86dc11cc337479bd519a15de2567a
+author Carlos Cortizas <carlos.martines@commercetools.com> 1734515432 +0100
+committer Carlos Cortizas <carlos.martines@commercetools.com> 1734515432 +0100
+
+refactor(inputs): adjust missing parts

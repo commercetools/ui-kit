@@ -328,12 +328,10 @@ export type TSearchSelectFieldProps = {
   iconLeft?: ReactNode;
 };
 
-const defaultProps: Pick<TSearchSelectFieldProps, 'controlShouldRenderValue'> =
-  {
-    controlShouldRenderValue: true,
-  };
-
-const SearchSelectField = (props: TSearchSelectFieldProps) => {
+const SearchSelectField = ({
+  controlShouldRenderValue = true,
+  ...props
+}: TSearchSelectFieldProps) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
   const hasWarning =
     props.hasWarning || (Boolean(props.touched) && hasWarnings(props.warnings));
@@ -381,7 +379,10 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           htmlFor={id}
         />
         <SearchSelectInput
-          {...filterDataAttributes(props)}
+          {...filterDataAttributes({
+            controlShouldRenderValue,
+            ...props,
+          })}
           horizontalConstraint="scale"
           hasError={hasError}
           aria-label={props['aria-label']}
@@ -421,7 +422,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           cacheOptions={props.cacheOptions}
           showOptionGroupDivider={props.showOptionGroupDivider}
           optionType={props.optionType}
-          controlShouldRenderValue={props.controlShouldRenderValue}
+          controlShouldRenderValue={controlShouldRenderValue}
           iconLeft={props.iconLeft}
         />
         <FieldErrors
@@ -440,7 +441,6 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
     </Constraints.Horizontal>
   );
 };
-SearchSelectField.defaultProps = defaultProps;
 SearchSelectField.displayName = 'SearchSelectField';
 /**
  * Use this function to convert the Formik `errors` object type to

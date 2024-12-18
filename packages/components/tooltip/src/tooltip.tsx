@@ -61,7 +61,7 @@ export type TTooltipProps = {
   /**
    * Determines if the tooltip should not appear.
    */
-  off: boolean;
+  off?: boolean;
   /**
    * An identifier for the tooltip, used for `aria-describedby`.
    */
@@ -134,18 +134,14 @@ const TooltipWrapper = (props: Pick<TTooltipProps, 'children'>) => (
 );
 TooltipWrapper.displayName = 'TooltipWrapperComponent';
 
-const tooltipDefaultProps: Pick<
-  TTooltipProps,
-  'showAfter' | 'closeAfter' | 'horizontalConstraint' | 'off' | 'placement'
-> = {
-  showAfter: 300,
-  closeAfter: 200,
-  horizontalConstraint: 'scale',
-  off: false,
-  placement: 'top',
-};
-
-const Tooltip = (props: TTooltipProps) => {
+const Tooltip = ({
+  showAfter = 300,
+  closeAfter = 200,
+  horizontalConstraint = 'scale',
+  off = false,
+  placement = 'top',
+  ...props
+}: TTooltipProps) => {
   const enterTimer = useRef<ReturnType<typeof setTimeout>>();
   const leaveTimer = useRef<ReturnType<typeof setTimeout>>();
 
@@ -180,7 +176,7 @@ const Tooltip = (props: TTooltipProps) => {
   }, []);
 
   const { reference, popper, popperInstance } = usePopper({
-    placement: props.placement,
+    placement: placement,
     modifiers: props.modifiers,
   });
   const [state, setState] = useState<TTooltipState>('closed');
@@ -205,7 +201,7 @@ const Tooltip = (props: TTooltipProps) => {
   );
 
   const { onFocus, onMouseOver } = props.children.props;
-  const { showAfter, onOpen } = props;
+  const { onOpen } = props;
   const handleEnter = useCallback(
     (event?: ChangeEvent | FocusEvent) => {
       if (event) {
@@ -236,7 +232,6 @@ const Tooltip = (props: TTooltipProps) => {
   );
 
   const { onBlur, onMouseLeave } = props.children.props;
-  const { closeAfter } = props;
 
   const handleLeave = useCallback(
     (event) => {
@@ -277,7 +272,7 @@ const Tooltip = (props: TTooltipProps) => {
   useEffect(() => {
     // if tooltip was open, and then component
     // updated to be off, we should close the tooltip
-    if (state === 'opened' && props.off) {
+    if (state === 'opened' && off) {
       if (closeAfter) {
         leaveTimer.current = setTimeout(() => {
           handleClose();
@@ -286,7 +281,7 @@ const Tooltip = (props: TTooltipProps) => {
         handleClose();
       }
     }
-  }, [props.off, closeAfter, handleClose, state]);
+  }, [off, closeAfter, handleClose, state]);
 
   const childrenProps = {
     // don't pass event listeners to children
@@ -296,7 +291,7 @@ const Tooltip = (props: TTooltipProps) => {
     onBlur: null,
   };
 
-  const tooltipProps = !props.off
+  const tooltipProps = !off
     ? {
         'aria-describedby': tooltipIsOpen ? id : null,
         // for seo and accessibility, we add the tooltip's title
@@ -310,7 +305,7 @@ const Tooltip = (props: TTooltipProps) => {
       }
     : {};
 
-  const eventListeners = !props.off
+  const eventListeners = !off
     ? {
         onMouseEnter: handleEnter,
         onMouseLeave: handleLeave,
@@ -345,7 +340,7 @@ const Tooltip = (props: TTooltipProps) => {
             css={css({
               ...popper.styles,
               ...getBodyStyles({
-                constraint: props.horizontalConstraint,
+                constraint: horizontalConstraint,
                 placement: popper.placement,
                 customStyles: props.styles?.body,
               }),
@@ -368,6 +363,5 @@ const Tooltip = (props: TTooltipProps) => {
 };
 
 Tooltip.displayName = 'ToolTip';
-Tooltip.defaultProps = tooltipDefaultProps;
 
 export default Tooltip;

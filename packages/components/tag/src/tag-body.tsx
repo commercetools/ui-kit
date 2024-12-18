@@ -18,11 +18,6 @@ export type TTagBodyProps = {
   styles?: TTagProps['styles'];
 };
 
-const defaultProps: Pick<TTagProps, 'isDisabled' | 'isDraggable'> = {
-  isDisabled: false,
-  isDraggable: false,
-};
-
 type TBody = Pick<TTagBodyProps, 'to' | 'as'>;
 const Body = styled.div<TBody>``;
 
@@ -68,16 +63,24 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
   `;
 };
 
-const TagBody = (props: TTagBodyProps) => {
-  const textTone = props.isDisabled ? 'secondary' : 'inherit';
+const TagBody = ({
+  isDisabled = false,
+  isDraggable = false,
+  ...props
+}: TTagBodyProps) => {
+  const textTone = isDisabled ? 'secondary' : 'inherit';
 
   return (
     <Body
       to={props.to}
       as={props.as}
       css={[
-        getContentWrapperStyles(props),
-        !props.isDisabled &&
+        getContentWrapperStyles({
+          isDisabled,
+          isDraggable,
+          ...props,
+        }),
+        !isDisabled &&
           Boolean(props.onClick) &&
           css`
             &:hover {
@@ -86,9 +89,9 @@ const TagBody = (props: TTagBodyProps) => {
           `,
         props.styles?.body,
       ]}
-      onClick={props.isDisabled ? undefined : props.onClick}
+      onClick={isDisabled ? undefined : props.onClick}
     >
-      {props.isDraggable && !props.isDisabled ? (
+      {isDraggable && !isDisabled ? (
         <DragIcon data-testid="drag-icon" size="medium" />
       ) : null}
       <Text.Detail tone={textTone} as="span">
@@ -98,7 +101,6 @@ const TagBody = (props: TTagBodyProps) => {
   );
 };
 
-TagBody.defaultProps = defaultProps;
 TagBody.displayName = 'TagBody';
 
 export default TagBody;

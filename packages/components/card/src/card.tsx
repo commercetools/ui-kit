@@ -10,15 +10,15 @@ export type TCardProps = {
   /**
    * Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.
    */
-  type: 'raised' | 'flat';
+  type?: 'raised' | 'flat';
   /**
    * Determines the spacing (padding) that the content should have from the card borders. In case there is no space needed, you can pass `none`.
    */
-  insetScale: 'none' | 's' | 'm' | 'l' | 'xl';
+  insetScale?: 'none' | 's' | 'm' | 'l' | 'xl';
   /**
    * Determines the background color of the card.
    */
-  theme: 'light' | 'dark';
+  theme?: 'light' | 'dark';
   /**
    * Pass a custom CSS class, useful to override the styles.
    * <br>
@@ -45,25 +45,35 @@ export type TCardProps = {
   isDisabled?: boolean;
 };
 
-const Card = (props: TCardProps) => {
+const Card = ({
+  type = 'raised',
+  theme = 'light',
+  insetScale = 'm',
+  ...props
+}: TCardProps) => {
   const isClickable = Boolean(!props.isDisabled && (props.onClick || props.to));
   // Only disable styling if the card is not clickable
   const shouldBeDisabled = props.isDisabled && (props.onClick || props.to);
 
   const commonProps = {
-    ...filterDataAttributes(props),
+    ...filterDataAttributes({
+      type,
+      theme,
+      insetScale,
+      ...props,
+    }),
     onClick: isClickable ? props.onClick : undefined,
     'aria-disabled': props.isDisabled ? true : undefined,
     css: css`
       box-sizing: border-box;
       width: 100%;
       font-size: 1rem;
-      box-shadow: ${props.type === 'raised' ? designTokens.shadow17 : 'none'};
+      box-shadow: ${type === 'raised' ? designTokens.shadow17 : 'none'};
       border-radius: ${designTokens.borderRadius4};
-      border: ${props.type === 'raised'
+      border: ${type === 'raised'
         ? `1px solid ${designTokens.colorNeutral90}`
         : 'none'};
-      background: ${props.theme === 'dark'
+      background: ${theme === 'dark'
         ? designTokens.colorNeutral95
         : designTokens.colorSurface};
       cursor: ${shouldBeDisabled
@@ -72,7 +82,7 @@ const Card = (props: TCardProps) => {
         ? 'pointer'
         : 'default'};
       :hover {
-        background: ${props.theme === 'dark'
+        background: ${theme === 'dark'
           ? isClickable
             ? designTokens.colorNeutral90
             : undefined
@@ -93,10 +103,10 @@ const Card = (props: TCardProps) => {
   };
 
   const content =
-    props.insetScale === 'none' ? (
+    insetScale === 'none' ? (
       <div>{props.children}</div>
     ) : (
-      <Inset scale={props.insetScale} height="expanded">
+      <Inset scale={insetScale} height="expanded">
         {props.children}
       </Inset>
     );
@@ -146,13 +156,6 @@ const Card = (props: TCardProps) => {
   );
 };
 
-const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'insetScale'> = {
-  type: 'raised',
-  theme: 'light',
-  insetScale: 'm',
-};
-
 Card.displayName = 'Card';
-Card.defaultProps = defaultProps;
 
 export default Card;

@@ -1,7 +1,12 @@
 import { css, keyframes } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
-import { defaultProps, type TProgressBarProps } from './progress-bar';
+import { type TProgressBarProps } from './progress-bar';
+
+export const defaultStyles = {
+  height: '20',
+  labelWidth: 'scale',
+} as const;
 
 export const heightPerScale = {
   '10': designTokens.spacing25,
@@ -20,9 +25,9 @@ const progressPulse = keyframes`
 export const getLabelStyles = (
   props: TProgressBarProps & { textAlignment: string }
 ) => css`
-  min-height: ${heightPerScale[props.height ?? defaultProps.height!]};
+  min-height: ${heightPerScale[props.height ?? defaultStyles.height]};
   max-width: ${Constraints.getMaxPropTokenValue(
-    props.labelWidth || defaultProps.labelWidth!
+    props.labelWidth || defaultStyles.labelWidth
   )};
 `;
 
@@ -32,7 +37,7 @@ export const getBackgroundBarStyles = (props: TProgressBarProps) => css`
     ? 'rgba(255, 255, 255, 0.4)'
     : designTokens.colorNeutral90};
   border-radius: ${designTokens.spacingL};
-  height: ${heightPerScale[props.height ?? defaultProps.height!]};
+  height: ${heightPerScale[props.height ?? defaultStyles.height]};
   overflow: hidden;
 `;
 
@@ -40,7 +45,7 @@ export const getForegroundBarStyles = (props: TProgressBarProps) => css`
   width: ${props.progress}%;
   transition: width 500ms ease-in-out;
   display: block;
-  height: ${heightPerScale[props.height ?? defaultProps.height!]};
+  height: ${heightPerScale[props.height ?? defaultStyles.height]};
   background: ${props.isInverted
     ? designTokens.colorSurface
     : `linear-gradient(

@@ -7,6 +7,7 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import Text from '@commercetools-uikit/text';
 import isNil from 'lodash/isNil';
 import {
+  defaultStyles,
   getLabelStyles,
   getBackgroundBarStyles,
   getForegroundBarStyles,
@@ -132,26 +133,35 @@ const layoutConfigMapping = {
   },
 } as const;
 
-const ProgressBar = (props: TProgressBarProps) => {
-  const layoutConfig = layoutConfigMapping[props.labelPosition || 'top'];
+const ProgressBar = ({
+  progress = 0,
+  label = null,
+  labelPosition = 'top',
+  labelWidth = defaultStyles.labelWidth,
+  isInverted = false,
+  isAnimated = true,
+  height = defaultStyles.height,
+  barWidth = 6,
+}: TProgressBarProps) => {
+  const layoutConfig = layoutConfigMapping[labelPosition || 'top'];
 
   const BarWithProps = (
     <Bar
-      progress={props.progress}
-      barWidth={props.barWidth}
-      isInverted={props.isInverted}
-      height={props.height}
-      isAnimated={props.isAnimated}
+      progress={progress}
+      barWidth={barWidth}
+      isInverted={isInverted}
+      height={height}
+      isAnimated={isAnimated}
     />
   );
 
   const LabelWithProps = (
     <ProgressBarLabel
-      label={props.label}
-      labelWidth={props.labelWidth}
-      labelPosition={props.labelPosition}
-      isInverted={props.isInverted}
-      height={props.height}
+      label={label}
+      labelWidth={labelWidth}
+      labelPosition={labelPosition}
+      isInverted={isInverted}
+      height={height}
       textAlignment={layoutConfig.textAlignment}
     />
   );
@@ -160,33 +170,19 @@ const ProgressBar = (props: TProgressBarProps) => {
   let firstComponent = LabelWithProps;
   let secondComponent = BarWithProps;
 
-  if (props.labelPosition === 'right' || props.labelPosition === 'bottom') {
+  if (labelPosition === 'right' || labelPosition === 'bottom') {
     firstComponent = BarWithProps;
     secondComponent = LabelWithProps;
   }
 
   return (
-    <WrappingComponent
-      scale={props.height === '20' ? 'm' : 's'}
-      alignItems="center"
-    >
+    <WrappingComponent scale={height === '20' ? 'm' : 's'} alignItems="center">
       {firstComponent}
       {secondComponent}
     </WrappingComponent>
   );
 };
 
-export const defaultProps: TProgressBarProps = {
-  progress: 0,
-  label: null,
-  labelPosition: 'top',
-  labelWidth: 'scale',
-  isInverted: false,
-  isAnimated: true,
-  height: '20',
-  barWidth: 6,
-};
 ProgressBar.displayName = 'ProgressBar';
-ProgressBar.defaultProps = defaultProps;
 
 export default ProgressBar;

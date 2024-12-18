@@ -7,6 +7,10 @@ type visualVariantType = Exclude<
   undefined
 >;
 
+type TToneStylesProps = Omit<TTagProps, 'tone'> & {
+  tone: NonNullable<TTagProps['tone']>;
+};
+
 /**
  * Returns the required tone styles for the tag based on the props.
  */
@@ -15,7 +19,7 @@ export const getToneStyles = ({
   type,
   tone,
   onClick,
-}: TTagProps) => {
+}: TToneStylesProps) => {
   let variant: visualVariantType = isDisabled ? 'disabled' : type || tone;
 
   // map deprecated 'normal' type to 'primary' tone

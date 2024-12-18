@@ -21,17 +21,28 @@ export type TCustomIconProps = {
   icon: ReactElement | string;
 };
 
-const defaultProps: Required<Pick<TCustomIconProps, 'size' | 'hasBorder'>> = {
-  size: '20',
-  hasBorder: true,
-};
-
-const CustomIcon = (props: TCustomIconProps) => (
+const CustomIcon = ({
+  size = '20',
+  hasBorder = true,
+  ...props
+}: TCustomIconProps) => (
   <div
     role="img"
-    css={getCustomIconStyles(props)}
-    {...filterDataAttributes(props)}
-    {...filterAriaAttributes(props)}
+    css={getCustomIconStyles({
+      size,
+      hasBorder,
+      ...props,
+    })}
+    {...filterDataAttributes({
+      size,
+      hasBorder,
+      ...props,
+    })}
+    {...filterAriaAttributes({
+      size,
+      hasBorder,
+      ...props,
+    })}
   >
     {typeof props.icon === 'string' ? (
       <InlineSvg data={props.icon} size={'scale'} />
@@ -42,6 +53,5 @@ const CustomIcon = (props: TCustomIconProps) => (
 );
 
 CustomIcon.displayName = 'CustomIcon';
-CustomIcon.defaultProps = defaultProps;
 
 export default CustomIcon;
