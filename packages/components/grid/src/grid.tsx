@@ -18,7 +18,7 @@ export type TGridItemProps = {
 export type TGridProps = {
   children: ReactNode;
   // List based on https://css-tricks.com/snippets/css/complete-guide-grid
-  display: 'grid' | 'inline-grid';
+  display?: 'grid' | 'inline-grid';
   gridTemplateColumns?: string;
   gridTemplateRows?: string;
   gridTemplateAreas?: string;
@@ -99,12 +99,10 @@ const GridContainer = styled.div<TGridProps>((props) => ({
   gridAutoRows: props.gridAutoRows,
   gridAutoFlow: props.gridAutoFlow,
 }));
-const defaultProps: Pick<TGridProps, 'display'> = {
-  display: 'grid',
-};
-const Grid = (props: TGridProps) => <GridContainer {...props} />;
+const Grid = ({ display = 'grid', ...props }: TGridProps) => (
+  <GridContainer display={display} {...props} />
+);
 Grid.displayName = 'Grid';
-Grid.defaultProps = defaultProps;
 // Assign GridItem as a static property of Grid
 Grid.Item = GridItem;
 

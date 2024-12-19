@@ -149,7 +149,7 @@ const dispatchReactChangeEvent = (node: HTMLInputElement, value?: string) => {
   node.dispatchEvent(new Event('change', { bubbles: true }));
 };
 
-const TimeInput = (props: TTimeInputProps) => {
+const TimeInput = ({ ...props }: TTimeInputProps) => {
   const id = useFieldId(props.id, sequentialId);
   const intl = useIntl();
   const element = useRef<HTMLInputElement>(null);
@@ -212,7 +212,9 @@ const TimeInput = (props: TTimeInputProps) => {
             ? props.placeholder
             : intl.formatMessage(messages.placeholder)
         }
-        {...filterDataAttributes(props)}
+        {...filterDataAttributes({
+          ...props,
+        })}
         /* ARIA */
         aria-invalid={props['aria-invalid']}
         aria-errormessage={props['aria-errormessage']}
@@ -229,10 +231,6 @@ TimeInput.to24h = (time: string) => {
   const parsedTime = parseTime(time);
   return parsedTime ? format24hr(parsedTime) : '';
 };
-
-TimeInput.defaultProps = {
-  horizontalConstraint: 'scale',
-} as Pick<TTimeInputProps, 'horizontalConstraint'>;
 
 // Converts any value to either a formatted value or an empty string
 // The resulting format might use 12h or 24h, unless the time contains

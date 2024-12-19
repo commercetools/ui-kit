@@ -109,14 +109,18 @@ Props.propTypes = {
   propsToList: PropTypes.arrayOf(PropTypes.string),
 };
 
-const Spec = (props) => {
+const Spec = ({
+  omitPropsList = false,
+  listPropsOfNestedChild = false,
+  ...props
+}) => {
   return (
     <SpecContainer>
       <Label>{props.label}</Label>
-      {!props.omitPropsList && (
+      {!omitPropsList && (
         <Props
           propsToList={props.propsToList}
-          listPropsOfNestedChild={props.listPropsOfNestedChild}
+          listPropsOfNestedChild={listPropsOfNestedChild}
         >
           {props.children}
         </Props>
@@ -133,11 +137,6 @@ Spec.propTypes = {
   propsToList: PropTypes.arrayOf(PropTypes.string),
   omitPropsList: PropTypes.bool,
   backgroundColor: PropTypes.string,
-};
-
-Spec.defaultProps = {
-  omitPropsList: false,
-  listPropsOfNestedChild: false,
 };
 
 Spec.displayName = 'Spec';

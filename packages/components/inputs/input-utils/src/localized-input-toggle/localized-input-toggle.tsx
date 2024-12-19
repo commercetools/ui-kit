@@ -16,22 +16,18 @@ export type TLocalizedInputToggleProps = {
       | boolean
   ) => void;
   isDisabled?: boolean;
-  showMessage: string | MessageDescriptor;
-  hideMessage: string | MessageDescriptor;
+  showMessage?: string | MessageDescriptor;
+  hideMessage?: string | MessageDescriptor;
   remainingLocalizations?: number;
 };
 
-const defaultProps: Pick<
-  TLocalizedInputToggleProps,
-  'showMessage' | 'hideMessage'
-> = {
-  hideMessage: messages.hide,
-  showMessage: messages.show,
-};
-
-const LocalizedInputToggle = (props: TLocalizedInputToggleProps) => {
+const LocalizedInputToggle = ({
+  hideMessage = messages.hide,
+  showMessage = messages.show,
+  ...props
+}: TLocalizedInputToggleProps) => {
   const intl = useIntl();
-  const labelMessage = props.isOpen ? props.hideMessage : props.showMessage;
+  const labelMessage = props.isOpen ? hideMessage : showMessage;
   const label =
     typeof labelMessage === 'string'
       ? labelMessage
@@ -54,6 +50,5 @@ const LocalizedInputToggle = (props: TLocalizedInputToggleProps) => {
   );
 };
 
-LocalizedInputToggle.defaultProps = defaultProps;
 LocalizedInputToggle.displayName = 'LocalizedInputToggle';
 export default LocalizedInputToggle;

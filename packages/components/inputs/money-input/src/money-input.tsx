@@ -25,7 +25,7 @@ import {
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
-import currencies from './currencies';
+import allCurrencies from './currencies';
 import {
   getHighPrecisionWrapperStyles,
   getCurrencyLabelStyles,
@@ -177,7 +177,7 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
   };
 };
 
-export type TCurrencyCode = keyof typeof currencies;
+export type TCurrencyCode = keyof typeof allCurrencies;
 
 type TMoneyConditionalProps =
   | { type: 'highPrecision'; preciseAmount: number }
@@ -303,7 +303,7 @@ export const createMoneyValue = (
 ): TMoneyValue | null => {
   if (!currencyCode) return null;
 
-  const currency = currencies[currencyCode];
+  const currency = allCurrencies[currencyCode];
   if (!currency) return null;
 
   if (rawAmount.length === 0 || !isNumberish(rawAmount)) return null;
@@ -380,7 +380,7 @@ const getAmountAsNumberFromMoneyValue = (moneyValue: TMoneyValue) =>
   moneyValue.type === 'highPrecision'
     ? moneyValue.preciseAmount / 10 ** moneyValue.fractionDigits
     : moneyValue.centAmount /
-      10 ** currencies[moneyValue.currencyCode].fractionDigits;
+      10 ** allCurrencies[moneyValue.currencyCode].fractionDigits;
 
 // gets called with a string and should return a formatted string
 const formatAmount = (
@@ -397,7 +397,7 @@ const formatAmount = (
 
   const fractionDigits = moneyValue.preciseAmount
     ? moneyValue.fractionDigits
-    : currencies[moneyValue.currencyCode].fractionDigits;
+    : allCurrencies[moneyValue.currencyCode].fractionDigits;
 
   return isNaN(amount)
     ? ''
@@ -451,7 +451,7 @@ type TMoneyInputProps = {
   /**
    * List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.
    */
-  currencies: string[];
+  currencies?: string[];
   /**
    * Placeholder text for the input
    */
@@ -540,16 +540,12 @@ type TMoneyInputProps = {
   isCurrencyInputDisabled?: boolean;
 };
 
-const defaultProps: Pick<
-  TMoneyInputProps,
-  'currencies' | 'horizontalConstraint' | 'menuPortalZIndex'
-> = {
-  currencies: [],
-  horizontalConstraint: 'scale',
-  menuPortalZIndex: 1,
-};
-
-const MoneyInput = (props: TMoneyInputProps) => {
+const MoneyInput = ({
+  currencies = [],
+  horizontalConstraint = 'scale',
+  menuPortalZIndex = 1,
+  ...props
+}: TMoneyInputProps) => {
   const intl = useIntl();
   const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
   const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
@@ -567,7 +563,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
   }
 
   warnIfMenuPortalPropsAreMissing({
-    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalZIndex: menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'MoneyInput',
   });
@@ -593,7 +589,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
     if (
       amount.length > 0 &&
       props.value.currencyCode &&
-      currencies[props.value.currencyCode]
+      allCurrencies[props.value.currencyCode]
     ) {
       const formattedAmount = formatAmount(
         amount,
@@ -716,7 +712,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
     toggleCurrencyHasFocus(false);
   }, [toggleCurrencyHasFocus]);
 
-  const hasNoCurrencies = props.currencies.length === 0;
+  const hasNoCurrencies = currencies.length === 0;
   const hasFocus = currencyHasFocus || amountHasFocus;
   const currencySelectStyles = createCurrencySelectStyles({
     hasWarning: props.hasWarning,
@@ -724,10 +720,10 @@ const MoneyInput = (props: TMoneyInputProps) => {
     isCondensed: props.isCondensed,
     isDisabled: props.isDisabled,
     isReadOnly: props.isReadOnly,
-    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalZIndex: menuPortalZIndex,
     currencyHasFocus,
   });
-  const options = props.currencies.map((currencyCode) => ({
+  const options = currencies.map((currencyCode) => ({
     label: currencyCode,
     value: currencyCode,
   }));
@@ -783,7 +779,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
   );
 
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <div
         ref={containerRef}
         css={css`
@@ -874,7 +870,11 @@ const MoneyInput = (props: TMoneyInputProps) => {
             disabled={props.isDisabled}
             readOnly={props.isReadOnly}
             autoFocus={props.isAutofocussed}
-            {...filterDataAttributes(props)}
+            {...filterDataAttributes({
+              horizontalConstraint,
+              menuPortalZIndex,
+              ...props,
+            })}
             /* ARIA */
             aria-invalid={props['aria-invalid']}
             aria-errormessage={props['aria-errormessage']}
@@ -953,7 +953,7 @@ MoneyInput.parseMoneyValue = (
   );
 
   warning(
-    has(currencies, moneyValue.currencyCode),
+    has(allCurrencies, moneyValue.currencyCode),
     'MoneyInput.parseMoneyValue: Value must use known currency code'
   );
 
@@ -997,7 +997,5 @@ type TTouched = {
 
 MoneyInput.isTouched = (touched?: TTouched) =>
   Boolean(touched && touched.currencyCode && touched.amount);
-
-MoneyInput.defaultProps = defaultProps;
 
 export default MoneyInput;

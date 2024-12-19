@@ -34,7 +34,7 @@ export type TLinkProps = {
    * <bt />
    * If `true`, a regular `<a>` is rendered instead of the default `react-router`s `<Link />`
    */
-  isExternal: boolean;
+  isExternal?: boolean;
   /**
    * The URL that the Link should point to.
    */
@@ -72,11 +72,6 @@ const warnIfMissingContent = (props: TLinkProps) => {
       'but its value is `undefined`',
     ].join(' ')
   );
-};
-
-const defaultProps: Pick<TLinkProps, 'tone' | 'isExternal'> = {
-  tone: 'primary',
-  isExternal: false,
 };
 
 const getTextColorValue = (tone: TLinkProps['tone'] = 'primary') => {
@@ -123,17 +118,22 @@ const Wrapper = styled.span`
   }
 `;
 
-const Link = (props: TLinkProps) => {
-  const remainingProps = filterInvalidAttributes(props);
+const Link = ({
+  tone = 'primary',
+  isExternal = false,
+  ...props
+}: TLinkProps) => {
+  const allProps = { tone, isExternal, ...props };
+  const remainingProps = filterInvalidAttributes(allProps);
 
-  const color = getTextColorValue(props.tone);
-  const hoverColor = getActiveColorValue(props.tone);
+  const color = getTextColorValue(tone);
+  const hoverColor = getActiveColorValue(tone);
 
   // `filterInvalidAttributes` strips off `intlMessage` and `children`
   // so we pass in the "raw" props instead.
-  warnIfMissingContent(props);
+  warnIfMissingContent(allProps);
 
-  if (props.isExternal) {
+  if (isExternal) {
     if (typeof props.to !== 'string') {
       throw new Error('`to` must be a `string` when `isExternal` is provided.');
     }
@@ -148,7 +148,7 @@ const Link = (props: TLinkProps) => {
         `}
       >
         <a
-          css={getLinkStyles(props)}
+          css={getLinkStyles(allProps)}
           href={props.to}
           target="_blank"
           rel="noopener noreferrer"
@@ -160,14 +160,14 @@ const Link = (props: TLinkProps) => {
             props.children
           )}
         </a>
-        {props.isExternal && <ExternalLinkIcon size="medium" />}
+        {isExternal && <ExternalLinkIcon size="medium" />}
       </Wrapper>
     );
   }
 
   return (
     <ReactRouterLink
-      css={getLinkStyles(props)}
+      css={getLinkStyles(allProps)}
       to={props.to}
       {...remainingProps}
     >
@@ -181,6 +181,5 @@ const Link = (props: TLinkProps) => {
 };
 
 Link.displayName = 'Link';
-Link.defaultProps = defaultProps;
 
 export default Link;

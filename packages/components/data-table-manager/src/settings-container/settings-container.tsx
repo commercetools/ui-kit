@@ -38,13 +38,16 @@ const CardContentWrapper = styled.div`
   padding: ${designTokens.spacing40} ${designTokens.spacing50};
 `;
 
-const SettingsContainer = (props: TSettingsContainerProps) => {
+const SettingsContainer = ({
+  containerTheme = 'dark',
+  ...props
+}: TSettingsContainerProps) => {
   const intl = useIntl();
 
   return (
     <CollapsibleMotion isDefaultClosed={false}>
       {({ registerContentNode, containerStyles }) => (
-        <Card type="raised" insetScale="none" theme={props.containerTheme}>
+        <Card type="raised" insetScale="none" theme={containerTheme}>
           <CardContentWrapper>
             <Spacings.Stack scale="xl">
               <HeaderContainer>
@@ -84,10 +87,5 @@ const SettingsContainer = (props: TSettingsContainerProps) => {
 };
 
 SettingsContainer.displayName = 'SettingsContainer';
-
-const defaultProps: Pick<TSettingsContainerProps, 'containerTheme'> = {
-  containerTheme: 'dark',
-};
-SettingsContainer.defaultProps = defaultProps;
 
 export default SettingsContainer;

@@ -61,7 +61,10 @@ const UncontrolledCollapsible = (
 };
 UncontrolledCollapsible.displayName = 'UncontrolledCollapsible';
 
-const Collapsible = (props: TCollapsibleProps) => {
+const Collapsible = ({
+  isDefaultClosed = false,
+  ...props
+}: TCollapsibleProps) => {
   const isControlledComponent = !isNil(props.isClosed);
   const hasOnToggle = !isNil(props.onToggle);
 
@@ -77,14 +80,11 @@ const Collapsible = (props: TCollapsibleProps) => {
     !hasOnToggle,
     `ui-kit/Collapsible: the prop "onToggle" does not have any effect (uncontrolled component). Please remove it.`
   );
-  return <UncontrolledCollapsible {...props} />;
+  return (
+    <UncontrolledCollapsible isDefaultClosed={isDefaultClosed} {...props} />
+  );
 };
 
 Collapsible.displayName = 'Collapsible';
-
-const collapsibleDefaultProps: Pick<TCollapsibleProps, 'isDefaultClosed'> = {
-  isDefaultClosed: false,
-};
-Collapsible.defaultProps = collapsibleDefaultProps;
 
 export default Collapsible;

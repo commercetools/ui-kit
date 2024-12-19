@@ -216,7 +216,7 @@ const createMoreStylesDropdownOptions = (intl: TStyleDropdownOptions) => {
 const RichTextEditorBody = forwardRef<
   TRichtTextEditorBodyRef,
   TRichTextEditorBody
->((props, ref) => {
+>(({ styles = {}, ...props }, ref) => {
   // NOTE: the forwarded ref is an object of refs, thus making it a bit trickier to type.
   const { registerContentNode, containerRef } =
     ref as unknown as TRichtTextEditorBodyRef;
@@ -267,7 +267,7 @@ const RichTextEditorBody = forwardRef<
 
   return (
     <Container
-      css={props.styles?.container}
+      css={styles?.container}
       hasError={props.hasError}
       hasWarning={props.hasWarning}
       isReadOnly={props.isReadOnly}
@@ -458,12 +458,6 @@ const RichTextEditorBody = forwardRef<
   );
 });
 
-const defaultProps: Pick<TRichTextEditorBody, 'styles'> = {
-  styles: {},
-};
-
 RichTextEditorBody.displayName = 'RichTextEditorBody';
-
-RichTextEditorBody.defaultProps = defaultProps;
 
 export default RichTextEditorBody;

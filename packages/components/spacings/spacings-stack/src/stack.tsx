@@ -21,24 +21,34 @@ export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 
 export type TStackProps = {
   /** specifies the spacing between individual items */
-  scale: TScale;
+  scale?: TScale;
   /**
    * sets the `align-self` value on all direct children.
    * https://developer.mozilla.org/en-US/docs/Web/CSS/align-items */
-  alignItems: TAlignItem;
+  alignItems?: TAlignItem;
   children: ReactNode;
 };
 
-const Stack = (props: TStackProps) => (
-  <div css={getStyles(props)} {...filterDataAttributes(props)}>
+const Stack = ({
+  scale = 's',
+  alignItems = 'stretch',
+  ...props
+}: TStackProps) => (
+  <div
+    css={getStyles({
+      scale,
+      alignItems,
+      ...props,
+    })}
+    {...filterDataAttributes({
+      scale,
+      alignItems,
+      ...props,
+    })}
+  >
     {props.children}
   </div>
 );
-const defaultProps: Pick<TStackProps, 'scale' | 'alignItems'> = {
-  scale: 's',
-  alignItems: 'stretch',
-};
 Stack.displayName = 'Stack';
-Stack.defaultProps = defaultProps;
 
 export default Stack;

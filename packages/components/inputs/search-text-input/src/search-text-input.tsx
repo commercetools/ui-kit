@@ -125,19 +125,18 @@ type StaticProps = {
   isEmpty: typeof isEmpty;
 };
 
-const defaultProps: Pick<
-  TSearchTextInputProps,
-  'horizontalConstraint' | 'isClearable'
-> = {
-  horizontalConstraint: 'scale',
-  isClearable: true,
-};
-
 const SearchTextInput: ForwardRefExoticComponent<
   TSearchTextInputProps & RefAttributes<HTMLInputElement>
 > &
   Partial<StaticProps> = forwardRef(
-  (props: TSearchTextInputProps, forwardedRef) => {
+  (
+    {
+      horizontalConstraint = 'scale',
+      isClearable = true,
+      ...props
+    }: TSearchTextInputProps,
+    forwardedRef
+  ) => {
     if (!props.isReadOnly) {
       warning(
         typeof props.onChange === 'function',
@@ -174,7 +173,7 @@ const SearchTextInput: ForwardRefExoticComponent<
     };
 
     return (
-      <Constraints.Horizontal max={props.horizontalConstraint}>
+      <Constraints.Horizontal max={horizontalConstraint}>
         <div css={getSearchTextInputContainerStyles(props)}>
           <input
             id={props.id}
@@ -202,7 +201,7 @@ const SearchTextInput: ForwardRefExoticComponent<
               }
             }}
           />
-          {props.isClearable &&
+          {isClearable &&
             searchValue &&
             !props.isDisabled &&
             !props.isReadOnly && (
@@ -229,7 +228,6 @@ const SearchTextInput: ForwardRefExoticComponent<
 );
 
 SearchTextInput.displayName = 'SearchTextInput';
-SearchTextInput.defaultProps = defaultProps;
 
 const isEmpty = (value: TSearchTextInputProps['value']) =>
   !value || value.trim().length === 0;

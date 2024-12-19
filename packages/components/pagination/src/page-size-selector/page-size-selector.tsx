@@ -52,16 +52,18 @@ const mapRangeToListOfOptions = (perPageRange: TPageRangeSize) => {
   }
 };
 
-const PageSizeSelector = (props: TPageSizeSelectorProps) => {
+const PageSizeSelector = ({
+  perPage = 20,
+  perPageRange = 's',
+  ...props
+}: TPageSizeSelectorProps) => {
   const [perPageSelectorId] = useState(uniqueId('per-page-selector-'));
-  const options = mapRangeToListOfOptions(props.perPageRange);
-  const hasValidPerPageOption = options.includes(props.perPage);
+  const options = mapRangeToListOfOptions(perPageRange);
+  const hasValidPerPageOption = options.includes(perPage);
 
   warning(
     hasValidPerPageOption,
-    `@commercetools-uikit/pagination: invalid page size ${
-      props.perPage
-    }. It must be one of the values of the selected range in "${options.toString()}".`
+    `@commercetools-uikit/pagination: invalid page size ${perPage}. It must be one of the values of the selected range in "${options.toString()}".`
   );
 
   const { onPerPageChange } = props;
@@ -79,7 +81,7 @@ const PageSizeSelector = (props: TPageSizeSelectorProps) => {
           id={perPageSelectorId}
           isSearchable={false}
           name="per-page-selector"
-          value={props.perPage.toString()}
+          value={perPage.toString()}
           options={options.map((option) => ({
             value: option.toString(),
             label: option.toString(),
@@ -101,12 +103,5 @@ const PageSizeSelector = (props: TPageSizeSelectorProps) => {
 };
 
 PageSizeSelector.displayName = 'PageSizeSelector';
-
-const defaultProps: Pick<TPageSizeSelectorProps, 'perPage' | 'perPageRange'> = {
-  perPage: 20,
-  perPageRange: 's',
-};
-
-PageSizeSelector.defaultProps = defaultProps;
 
 export default PageSizeSelector;

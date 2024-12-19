@@ -2,17 +2,43 @@ import { useState } from 'react';
 import SelectableSearchInput, {
   type TSelectableSearchInputProps,
   type TCustomEvent,
+  TValue,
+  TOptions,
 } from './selectable-search-input';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import { components, OptionProps } from 'react-select';
 
+type TTestComponentProps = Omit<
+  TSelectableSearchInputProps,
+  'value' | 'options' | 'onSubmit'
+> & {
+  value?: TValue;
+  options?: TOptions;
+  onSubmit?: (value: TValue) => void;
+};
+
 // We use this component to simulate the whole flow of
 // changing a value and submitting.
-const TestComponent = (props: TSelectableSearchInputProps) => {
-  const [dropdownValue, setDropdownValue] = useState(props.value.option);
-  const [textInputValue, setTextInputValue] = useState(props.value.text);
+const TestComponent = ({
+  id = 'test-id',
+  name = 'test-name',
+  value = {
+    text: 'test-value',
+    option: 'foo',
+  },
+  options = [
+    { value: 'foo', label: 'Foo' },
+    { value: 'bar', label: 'Bar' },
+    { value: 'baz', label: 'Baz' },
+  ],
+  onChange = () => {},
+  onSubmit = () => {},
+  ...props
+}: TTestComponentProps) => {
+  const [dropdownValue, setDropdownValue] = useState(value.option);
+  const [textInputValue, setTextInputValue] = useState(value.text);
 
-  const value = {
+  const _value = {
     text: textInputValue,
     option: dropdownValue,
   };
@@ -24,33 +50,25 @@ const TestComponent = (props: TSelectableSearchInputProps) => {
     if (event.target.name && event.target.name.endsWith('.dropdown')) {
       setDropdownValue(event.target.value as string);
     }
-    props.onChange && props.onChange(event);
+    onChange && onChange(event);
   };
 
   return (
     <div>
-      <label htmlFor={SelectableSearchInput.getTextInputId(props.id)}>
+      <label htmlFor={SelectableSearchInput.getTextInputId(id)}>
         test-label
       </label>
-      <SelectableSearchInput {...props} value={value} onChange={handleChange} />
+      <SelectableSearchInput
+        {...props}
+        id={id}
+        name={name}
+        options={options}
+        value={_value}
+        onSubmit={onSubmit}
+        onChange={handleChange}
+      />
     </div>
   );
-};
-
-TestComponent.defaultProps = {
-  id: 'test-id',
-  name: 'test-name',
-  value: {
-    text: 'test-value',
-    option: 'foo',
-  },
-  options: [
-    { value: 'foo', label: 'Foo' },
-    { value: 'bar', label: 'Bar' },
-    { value: 'baz', label: 'Baz' },
-  ],
-  onChange: () => {},
-  onSubmit: () => {},
 };
 
 describe('SelectableSearchInput.getTextInputId', () => {

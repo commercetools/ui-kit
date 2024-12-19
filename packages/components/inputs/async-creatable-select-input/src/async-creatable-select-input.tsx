@@ -210,7 +210,7 @@ export type TAsyncCreatableSelectInputProps = {
    * <br>
    * Use in conjunction with `menuPortalTarget`
    */
-  menuPortalZIndex: number;
+  menuPortalZIndex?: number;
   /**
    * whether the menu should block scroll while open
    * <br>
@@ -342,18 +342,14 @@ export type TAsyncCreatableSelectInputProps = {
   showOptionGroupDivider?: boolean;
 };
 
-const defaultProps: Pick<
-  TAsyncCreatableSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex'
-> = {
+const AsyncCreatableSelectInput = ({
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
-  value: null,
-  isSearchable: true,
-  menuPortalZIndex: 1,
-};
-
-const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
+  value = null,
+  isSearchable = true,
+  menuPortalZIndex = 1,
+  ...props
+}: TAsyncCreatableSelectInputProps) => {
   const intl = useIntl();
 
   const placeholder =
@@ -368,20 +364,27 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
 
   if (props.isMulti) {
     warning(
-      Array.isArray(props.value),
+      Array.isArray(value),
       'AsyncCreatableSelectInput: `value` is expected to be an array when isMulti is true'
     );
   }
 
   warnIfMenuPortalPropsAreMissing({
-    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalZIndex: menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'AsyncCreatableSelectInput',
   });
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
-      <div {...filterDataAttributes(props)}>
+      <div
+        {...filterDataAttributes({
+          value,
+          isSearchable,
+          menuPortalZIndex,
+          ...props,
+        })}
+      >
         <AsyncCreatableSelect
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
@@ -414,13 +417,13 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
               hasWarning: props.hasWarning,
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
-              menuPortalZIndex: props.menuPortalZIndex,
+              menuPortalZIndex: menuPortalZIndex,
               isCondensed: props.isCondensed,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
-              hasValue: !isEmpty(props.value),
+              hasValue: !isEmpty(value),
               horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectAsyncCreatableProps['styles']
           }
@@ -436,7 +439,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
           isMulti={props.isMulti}
-          isSearchable={props.isSearchable}
+          isSearchable={isSearchable}
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
@@ -493,7 +496,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
           placeholder={placeholder}
           tabIndex={props.tabIndex}
           tabSelectsValue={props.tabSelectsValue}
-          value={props.value}
+          value={value}
           // Async react-select props
           defaultOptions={props.defaultOptions}
           loadOptions={props.loadOptions}
@@ -520,7 +523,6 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
   );
 };
 AsyncCreatableSelectInput.displayName = 'AsyncCreatableSelectInput';
-AsyncCreatableSelectInput.defaultProps = defaultProps;
 
 /**
  * Expose static helper methods.

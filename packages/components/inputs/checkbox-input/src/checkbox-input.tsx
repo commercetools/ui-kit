@@ -69,15 +69,6 @@ type TLabelProps = Pick<
   | 'isHovered'
 >;
 
-const defaultProps: Pick<
-  TCheckboxProps,
-  'isChecked' | 'isDisabled' | 'hasError'
-> = {
-  isChecked: false,
-  isDisabled: false,
-  hasError: false,
-};
-
 const getBorderColor = (props: TLabelProps) => {
   if (props.hasError) {
     return designTokens.colorError;
@@ -222,35 +213,46 @@ const Label = styled.label<TLabelProps>`
   }
 `;
 
-const CheckboxInput = (props: TCheckboxProps) => {
+const CheckboxInput = ({
+  isChecked = false,
+  isDisabled = false,
+  hasError = false,
+  ...props
+}: TCheckboxProps) => {
   // We generate an id in case no id is provided by the parent to attach the
   // label to the input component.
   const id = props.id || sequentialId();
   return (
     <Label
       htmlFor={id}
-      hasError={props.hasError}
-      isDisabled={props.isDisabled}
+      hasError={hasError}
+      isDisabled={isDisabled}
       isReadOnly={props.isReadOnly}
-      isChecked={props.isChecked}
+      isChecked={isChecked}
       isHovered={props.isHovered}
       isIndeterminate={props.isIndeterminate}
     >
-      <Checkbox {...props} id={id} />
+      <Checkbox
+        {...props}
+        id={id}
+        isChecked={isChecked}
+        isDisabled={isDisabled}
+        hasError={hasError}
+      />
       <CheckboxIcon
-        hasError={props.hasError}
-        isDisabled={props.isDisabled}
+        hasError={hasError}
+        isDisabled={isDisabled}
         isReadOnly={props.isReadOnly}
-        isChecked={props.isChecked}
+        isChecked={isChecked}
         isHovered={props.isHovered}
         isIndeterminate={props.isIndeterminate}
       />
       {props.children && (
         <LabelTextWrapper
-          hasError={props.hasError}
-          isDisabled={props.isDisabled}
+          hasError={hasError}
+          isDisabled={isDisabled}
           isReadOnly={props.isReadOnly}
-          isChecked={props.isChecked}
+          isChecked={isChecked}
           isHovered={props.isHovered}
           isIndeterminate={props.isIndeterminate}
           // To allow focusing the Label in readOnly mode, because the checkbox gets disabled and therefore unfocusable
@@ -264,6 +266,5 @@ const CheckboxInput = (props: TCheckboxProps) => {
 };
 
 CheckboxInput.displayName = 'CheckboxInput';
-CheckboxInput.defaultProps = defaultProps;
 
 export default CheckboxInput;

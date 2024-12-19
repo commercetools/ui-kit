@@ -193,7 +193,7 @@ export type TSearchSelectInputProps = {
    * <br>
    * Use in conjunction with `menuPortalTarget`
    */
-  menuPortalZIndex: number;
+  menuPortalZIndex?: number;
   /**
    * whether the menu should block scroll while open
    * <br>
@@ -275,7 +275,7 @@ export type TSearchSelectInputProps = {
    */
   iconLeft?: ReactNode;
   /** defines how options are rendered */
-  optionStyle: 'list' | 'checkbox';
+  optionStyle?: 'list' | 'checkbox';
   /**
    * Indicates the appearance of the input.
    * Filter appearance is meant to be used when the async-select is used as a filter.
@@ -297,24 +297,15 @@ type TOptionInnerProps = {
   data?: TOptionInnerPropsData;
 } & OptionProps;
 
-const defaultProps: Pick<
-  TSearchSelectInputProps,
-  | 'value'
-  | 'menuPortalZIndex'
-  | 'maxMenuHeight'
-  | 'controlShouldRenderValue'
-  | 'appearance'
-  | 'optionStyle'
-> = {
-  value: null,
-  menuPortalZIndex: 1,
-  maxMenuHeight: 220,
-  controlShouldRenderValue: true,
-  appearance: 'default',
-  optionStyle: 'list',
-};
-
-const SearchSelectInput = (props: TSearchSelectInputProps) => {
+const SearchSelectInput = ({
+  value = null,
+  menuPortalZIndex = 1,
+  maxMenuHeight = 220,
+  controlShouldRenderValue = true,
+  appearance = 'default',
+  optionStyle = 'list',
+  ...props
+}: TSearchSelectInputProps) => {
   const intl = useIntl();
 
   if (!props.isReadOnly) {
@@ -325,7 +316,7 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
   }
 
   warnIfMenuPortalPropsAreMissing({
-    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalZIndex: menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'SearchSelectInput',
   });
@@ -338,7 +329,7 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
     props.loadingMessage || intl.formatMessage(messages.loadingOptionsMessage);
 
   const placeholder =
-    props.appearance === 'filter' && !props.placeholder
+    appearance === 'filter' && !props.placeholder
       ? intl.formatMessage(messages.searchSelectInputAsFilterPlaceholder)
       : props.placeholder || intl.formatMessage(messages.placeholderMessage);
 
@@ -353,23 +344,28 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
           optionInnerProps={optionInnerProps}
         />
       ),
-      ...(props.optionStyle === 'checkbox'
-        ? optionStyleCheckboxComponents(props.appearance)
+      ...(optionStyle === 'checkbox'
+        ? optionStyleCheckboxComponents(appearance)
         : {}),
       ...props.components,
       DropdownIndicator: SearchIconDropdownIndicator,
     }),
-    [props.optionStyle, props.appearance, props.components, optionType]
+    [optionStyle, appearance, props.components, optionType]
   );
 
   return (
     <SearchSelectInputWrapper
       isDisabled={props.isDisabled}
       isReadOnly={props.isReadOnly}
-      isCondensed={props.appearance === 'filter' ? true : props.isCondensed}
+      isCondensed={appearance === 'filter' ? true : props.isCondensed}
     >
       <AsyncSelectInput
         {...props}
+        value={value}
+        menuPortalZIndex={menuPortalZIndex}
+        maxMenuHeight={maxMenuHeight}
+        appearance={appearance}
+        optionStyle={optionStyle}
         components={components as ReactSelectAsyncProps['components']}
         placeholder={placeholder}
         iconLeft={props.iconLeft}
@@ -378,18 +374,17 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
         isSearchable={true}
         // @ts-expect-error
         closeMenuOnSelect={props.closeMenuOnSelect}
-        {...(props.optionStyle === 'checkbox'
+        {...(optionStyle === 'checkbox'
           ? optionsStyleCheckboxSelectProps()
           : {})}
         controlShouldRenderValue={
-          props.appearance === 'filter' ? false : props.controlShouldRenderValue
+          appearance === 'filter' ? false : controlShouldRenderValue
         }
       />
     </SearchSelectInputWrapper>
   );
 };
 
-SearchSelectInput.defaultProps = defaultProps;
 SearchSelectInput.displayName = 'SearchSelectInput';
 
 export default SearchSelectInput;

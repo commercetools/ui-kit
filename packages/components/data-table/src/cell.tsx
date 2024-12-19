@@ -23,15 +23,11 @@ export type TDataCell = {
   isRowCollapsed?: boolean;
 };
 
-const defaultProps: Pick<
-  TDataCell,
-  'isTruncated' | 'shouldRenderBottomBorder'
-> = {
-  isTruncated: false,
-  shouldRenderBottomBorder: true,
-};
-
-const DataCell = (props: TDataCell) => {
+const DataCell = ({
+  isTruncated = false,
+  shouldRenderBottomBorder = true,
+  ...props
+}: TDataCell) => {
   if (props.shouldRenderCollapseButton) {
     warning(
       typeof props.handleRowCollapseClick === 'function',
@@ -51,17 +47,19 @@ const DataCell = (props: TDataCell) => {
     <BaseCell
       onClick={props.onCellClick}
       shouldIgnoreRowClick={props.shouldIgnoreRowClick}
-      shouldClipContent={
-        props.isTruncated && !props.shouldRenderResizingIndicator
-      }
-      shouldRenderBottomBorder={props.shouldRenderBottomBorder}
+      shouldClipContent={isTruncated && !props.shouldRenderResizingIndicator}
+      shouldRenderBottomBorder={shouldRenderBottomBorder}
     >
       <CellInner
         isCondensed={props.isCondensed}
-        isTruncated={props.isTruncated}
+        isTruncated={isTruncated}
         verticalCellAlignment={props.verticalCellAlignment}
         horizontalCellAlignment={props.horizontalCellAlignment}
-        {...filterDataAttributes(props)}
+        {...filterDataAttributes({
+          isTruncated,
+          shouldRenderBottomBorder,
+          ...props,
+        })}
       >
         {props.children}
       </CellInner>
@@ -82,7 +80,5 @@ const DataCell = (props: TDataCell) => {
   );
 };
 DataCell.displayName = 'DataCell';
-
-DataCell.defaultProps = defaultProps;
 
 export default DataCell;

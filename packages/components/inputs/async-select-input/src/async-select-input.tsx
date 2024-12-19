@@ -223,7 +223,7 @@ export type TAsyncSelectInputProps = {
    * <br>
    * Use in conjunction with `menuPortalTarget`
    */
-  menuPortalZIndex: number;
+  menuPortalZIndex?: number;
   /**
    * whether the menu should block scroll while open
    * <br>
@@ -321,7 +321,7 @@ export type TAsyncSelectInputProps = {
    */
   iconLeft?: ReactNode;
   /** defines how options are rendered */
-  optionStyle: 'list' | 'checkbox';
+  optionStyle?: 'list' | 'checkbox';
   /**
    * Indicates the appearance of the input.
    * Filter appearance is meant to be used when the async-select is used as a filter.
@@ -333,26 +333,17 @@ export type TAsyncSelectInputProps = {
   count?: number;
 };
 
-const defaultProps: Pick<
-  TAsyncSelectInputProps,
-  | 'value'
-  | 'isSearchable'
-  | 'menuPortalZIndex'
-  | 'controlShouldRenderValue'
-  | 'appearance'
-  | 'optionStyle'
-> = {
+const AsyncSelectInput = ({
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
-  value: null,
-  isSearchable: true,
-  menuPortalZIndex: 1,
-  controlShouldRenderValue: true,
-  appearance: 'default',
-  optionStyle: 'list',
-};
-
-const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
+  value = null,
+  isSearchable = true,
+  menuPortalZIndex = 1,
+  controlShouldRenderValue = true,
+  appearance = 'default',
+  optionStyle = 'list',
+  ...props
+}: TAsyncSelectInputProps) => {
   const intl = useIntl();
 
   if (!props.isReadOnly) {
@@ -363,7 +354,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
   }
 
   warnIfMenuPortalPropsAreMissing({
-    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalZIndex: menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'AsyncSelectInput',
   });
@@ -371,7 +362,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
   const placeholder =
     props.placeholder ||
     intl.formatMessage(
-      props.appearance === 'filter'
+      appearance === 'filter'
         ? messages.selectInputAsFilterPlaceholder
         : messages.placeholder
     );
@@ -385,7 +376,17 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
-      <div {...filterDataAttributes(props)}>
+      <div
+        {...filterDataAttributes({
+          value,
+          isSearchable,
+          menuPortalZIndex,
+          controlShouldRenderValue,
+          appearance,
+          optionStyle,
+          ...props,
+        })}
+      >
         <AsyncSelect
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
@@ -409,12 +410,12 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
                     ),
                   }
                 : {}),
-              ...(props.appearance === 'filter' && {
+              ...(appearance === 'filter' && {
                 DropdownIndicator: () => <SearchIcon color="neutral60" />,
                 ClearIndicator: null,
               }),
-              ...(props.optionStyle === 'checkbox'
-                ? optionStyleCheckboxComponents(props.appearance)
+              ...(optionStyle === 'checkbox'
+                ? optionStyleCheckboxComponents(appearance)
                 : {}),
               ...props.components,
             } as ReactSelectAsyncProps['components']
@@ -422,25 +423,24 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           menuIsOpen={
             props.isReadOnly
               ? false
-              : props.appearance === 'filter'
+              : appearance === 'filter'
               ? true
               : props.menuIsOpen
           }
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
-              appearance: props.appearance,
+              appearance: appearance,
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
-              menuPortalZIndex: props.menuPortalZIndex,
-              isCondensed:
-                props.appearance === 'filter' ? true : props.isCondensed,
+              menuPortalZIndex: menuPortalZIndex,
+              isCondensed: appearance === 'filter' ? true : props.isCondensed,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
-              hasValue: !isEmpty(props.value),
-              controlShouldRenderValue: props.controlShouldRenderValue,
+              hasValue: !isEmpty(value),
+              controlShouldRenderValue: controlShouldRenderValue,
               horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectAsyncProps['styles']
           }
@@ -455,11 +455,11 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
-          {...(props.optionStyle === 'checkbox'
+          {...(optionStyle === 'checkbox'
             ? optionsStyleCheckboxSelectProps()
             : { hideSelectedOptions: props.hideSelectedOptions })}
           isMulti={props.isMulti}
-          isSearchable={props.isSearchable}
+          isSearchable={isSearchable}
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
@@ -519,7 +519,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           placeholder={placeholder}
           tabIndex={props.tabIndex}
           tabSelectsValue={props.tabSelectsValue}
-          value={props.value}
+          value={value}
           // Async react-select props
           defaultOptions={props.defaultOptions}
           loadOptions={props.loadOptions}
@@ -529,9 +529,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           isCondensed={props.isCondensed}
           iconLeft={props.iconLeft}
           controlShouldRenderValue={
-            props.appearance === 'filter'
-              ? false
-              : props.controlShouldRenderValue
+            appearance === 'filter' ? false : controlShouldRenderValue
           }
         />
       </div>
@@ -539,7 +537,6 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
   );
 };
 AsyncSelectInput.displayName = 'AsyncSelectInput';
-AsyncSelectInput.defaultProps = defaultProps;
 
 /**
  * Expose static helper methods.

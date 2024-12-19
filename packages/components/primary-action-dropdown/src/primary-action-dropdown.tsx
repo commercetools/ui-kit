@@ -288,20 +288,20 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
     >
       <DropdownHead
         iconLeft={primaryOption.props.iconLeft}
-        isDisabled={primaryOption.props.isDisabled}
+        isDisabled={Boolean(primaryOption.props.isDisabled)}
         onClick={handleClickOnHead}
         chevron={
           <DropdownChevron
             ref={ref as ForwardedRef<HTMLButtonElement>}
             onClick={handleClickOnChevron}
-            isDisabled={primaryOption.props.isDisabled}
+            isDisabled={Boolean(primaryOption.props.isDisabled)}
             isOpen={isOpen}
           />
         }
       >
         {primaryOption.props.children}
       </DropdownHead>
-      {isOpen && !primaryOption.props.isDisabled && (
+      {isOpen && !Boolean(primaryOption.props.isDisabled) && (
         <Options>{childrenAsArray}</Options>
       )}
     </div>

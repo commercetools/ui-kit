@@ -30,15 +30,13 @@ export type TLeadingIconProps = {
   svg?: string;
 };
 
-const defaultProps: Required<
-  Pick<TLeadingIconProps, 'color' | 'size' | 'isInverted'>
-> = {
-  color: 'neutral',
-  size: '20',
-  isInverted: false,
-};
-
-const LeadingIcon = (props: TLeadingIconProps) => {
+const LeadingIcon = ({
+  color = 'neutral',
+  size = '20',
+  isInverted = false,
+  ...props
+}: TLeadingIconProps) => {
+  const allProps = { color, size, isInverted, ...props };
   if (!props.svg && !props.icon) {
     warning(
       false,
@@ -50,9 +48,9 @@ const LeadingIcon = (props: TLeadingIconProps) => {
   return (
     <div
       role="img"
-      css={getLeadingIconStyles(props)}
-      {...filterDataAttributes(props)}
-      {...filterAriaAttributes(props)}
+      css={getLeadingIconStyles(allProps)}
+      {...filterDataAttributes(allProps)}
+      {...filterAriaAttributes(allProps)}
     >
       {props.svg ? (
         <InlineSvg data={props.svg} size={'scale'} />
@@ -67,6 +65,5 @@ const LeadingIcon = (props: TLeadingIconProps) => {
 };
 
 LeadingIcon.displayName = 'LeadingIcon';
-LeadingIcon.defaultProps = defaultProps;
 
 export default LeadingIcon;

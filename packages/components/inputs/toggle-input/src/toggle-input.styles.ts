@@ -8,9 +8,16 @@ type SizesProps = {
   thumbSizes: typeof thumbSizes;
 };
 
-type TStyledLabelProps = Pick<TToggleInputProps, 'isDisabled' | 'size'> &
-  SizesProps;
-type TStyledSpanProps = Pick<TToggleInputProps, 'size'> & SizesProps;
+type TStyledLabelProps = {
+  isDisabled: NonNullable<TToggleInputProps['isDisabled']>;
+  size: NonNullable<TToggleInputProps['size']>;
+} & SizesProps;
+type TStyledSpanProps = {
+  size: NonNullable<TToggleInputProps['size']>;
+} & SizesProps;
+type TInputStylesProps = {
+  size: NonNullable<TToggleInputProps['size']>;
+} & SizesProps;
 
 const trackSizes = {
   small: {
@@ -136,7 +143,7 @@ const Span = styled.span<TStyledSpanProps>`
   }
 `;
 
-const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
+const getInputStyles = (props: TInputStylesProps) => css`
   /* when checked */
   &:checked {
     + span::before {

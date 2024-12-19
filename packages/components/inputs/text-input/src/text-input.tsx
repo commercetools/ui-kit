@@ -95,11 +95,10 @@ export type TTextInputProps = {
   maxLength?: number;
 };
 
-const defaultProps: Pick<TTextInputProps, 'horizontalConstraint'> = {
-  horizontalConstraint: 'scale',
-};
-
-const TextInput = (props: TTextInputProps) => {
+const TextInput = ({
+  horizontalConstraint = 'scale',
+  ...props
+}: TTextInputProps) => {
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
@@ -107,7 +106,7 @@ const TextInput = (props: TTextInputProps) => {
     );
   }
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <input
         id={props.id}
         name={props.name}
@@ -127,7 +126,10 @@ const TextInput = (props: TTextInputProps) => {
         // Custom styles can also be passed using the `css` prop from emotion.
         // https://emotion.sh/docs/css-prop#style-precedence
         className={props.className}
-        {...filterDataAttributes(props)}
+        {...filterDataAttributes({
+          horizontalConstraint,
+          ...props,
+        })}
         /* ARIA */
         aria-readonly={props.isReadOnly}
         contentEditable={!props.isReadOnly}
@@ -139,7 +141,6 @@ const TextInput = (props: TTextInputProps) => {
 };
 
 TextInput.displayName = 'TextInput';
-TextInput.defaultProps = defaultProps;
 TextInput.isEmpty = (value: TTextInputProps['value']) =>
   !value || value.trim().length === 0;
 

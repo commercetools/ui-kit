@@ -21,33 +21,28 @@ export type TDataRow<Row extends TRow = TRow> = {
   | 'itemRenderer'
 >;
 
-const defaultItemRenderer = (row: TRow, column: TColumn): ReactNode => {
+const defaultItemRenderer = <Row extends TRow = TRow>(
+  row: TRow,
+  column: TColumn<Row>,
+  _isRowCollapsed: boolean
+): ReactNode => {
   // @ts-ignore
   return row[column.key];
-};
-
-const defaultProps: Pick<
-  TDataRow,
-  | 'isCondensed'
-  | 'shouldClipContent'
-  | 'verticalCellAlignment'
-  | 'horizontalCellAlignment'
-  | 'shouldRenderBottomBorder'
-  | 'itemRenderer'
-> = {
-  isCondensed: true,
-  shouldClipContent: false,
-  verticalCellAlignment: 'top',
-  horizontalCellAlignment: 'left',
-  shouldRenderBottomBorder: true,
-  itemRenderer: defaultItemRenderer,
 };
 
 type TColumnResizingContext = {
   getIsColumnBeingResized: (columnIndex: number) => boolean;
 };
 
-const DataRow = <Row extends TRow = TRow>(props: TDataRow<Row>) => {
+const DataRow = <Row extends TRow = TRow>({
+  isCondensed = true,
+  shouldClipContent = false,
+  verticalCellAlignment = 'top',
+  horizontalCellAlignment = 'left',
+  shouldRenderBottomBorder = true,
+  itemRenderer = defaultItemRenderer,
+  ...props
+}: TDataRow<Row>) => {
   const { getIsColumnBeingResized } = useContext(
     ColumnResizingContext
   ) as TColumnResizingContext;
@@ -81,11 +76,11 @@ const DataRow = <Row extends TRow = TRow>(props: TDataRow<Row>) => {
           key={`${props.row.id}-${column.key}`}
           data-testid={`cell-${props.rowIndex}-${column.key}`}
           isTruncated={column.isTruncated && isRowCollapsed}
-          isCondensed={props.isCondensed}
+          isCondensed={isCondensed}
           isRowCollapsed={isRowCollapsed}
-          verticalCellAlignment={props.verticalCellAlignment}
+          verticalCellAlignment={verticalCellAlignment}
           horizontalCellAlignment={
-            column.align ? column.align : props.horizontalCellAlignment
+            column.align ? column.align : horizontalCellAlignment
           }
           shouldIgnoreRowClick={column.shouldIgnoreRowClick}
           handleRowCollapseClick={handleRowCollapseClick}
@@ -98,19 +93,18 @@ const DataRow = <Row extends TRow = TRow>(props: TDataRow<Row>) => {
               ? () => props.onRowClick?.(props.row, props.rowIndex, column.key)
               : undefined
           }
-          shouldRenderBottomBorder={props.shouldRenderBottomBorder}
+          shouldRenderBottomBorder={shouldRenderBottomBorder}
           shouldRenderResizingIndicator={getIsColumnBeingResized(columnIndex)}
         >
           {column.renderItem
             ? column.renderItem(props.row, isRowCollapsed)
-            : props.itemRenderer(props.row, column, isRowCollapsed)}
+            : itemRenderer(props.row, column, isRowCollapsed)}
         </DataCell>
       ))}
     </TableRow>
   );
 };
 
-DataRow.defaultProps = defaultProps;
 DataRow.displayName = 'DataRow';
 
 export default DataRow;

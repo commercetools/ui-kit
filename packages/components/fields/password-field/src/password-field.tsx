@@ -187,15 +187,11 @@ type TTogglePasswordVisibilityHandler = (
     | KeyboardEvent<HTMLButtonElement>
 ) => void;
 
-const defaultProps: Pick<
-  TPasswordField,
-  'horizontalConstraint' | 'renderShowHideButton'
-> = {
-  horizontalConstraint: 'scale',
-  renderShowHideButton: true,
-};
-
-const PasswordField = (props: TPasswordField) => {
+const PasswordField = ({
+  horizontalConstraint = 'scale',
+  renderShowHideButton = true,
+  ...props
+}: TPasswordField) => {
   const intl = useIntl();
   const [isPasswordVisible, togglePasswordVisibility] = useToggleState(false);
   const id = useFieldId(props.id, sequentialId);
@@ -204,7 +200,7 @@ const PasswordField = (props: TPasswordField) => {
   const hasError = props.touched && hasErrors(props.errors);
   const hasWarning = props.touched && hasWarnings(props.warnings);
   const canInteract =
-    !props.isDisabled && !props.isReadOnly && props.renderShowHideButton;
+    !props.isDisabled && !props.isReadOnly && renderShowHideButton;
 
   if (!props.isReadOnly) {
     warning(
@@ -221,7 +217,7 @@ const PasswordField = (props: TPasswordField) => {
   }
 
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal max={horizontalConstraint}>
       <Stack scale="xs">
         <Inline alignItems="flex-end" justifyContent="space-between">
           <FieldLabel
@@ -265,7 +261,11 @@ const PasswordField = (props: TPasswordField) => {
           placeholder={props.placeholder}
           autoComplete={props.autoComplete}
           horizontalConstraint="scale"
-          {...filterDataAttributes(props)}
+          {...filterDataAttributes({
+            horizontalConstraint,
+            renderShowHideButton,
+            ...props,
+          })}
           /* ARIA */
           aria-invalid={hasError}
           aria-errormessage={errorsContainerId}
@@ -288,7 +288,6 @@ const PasswordField = (props: TPasswordField) => {
 };
 
 PasswordField.displayName = 'PasswordField';
-PasswordField.defaultProps = defaultProps;
 /**
  * Use this function to convert the Formik `errors` object type to
  * our custom field errors type.

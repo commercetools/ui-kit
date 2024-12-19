@@ -79,11 +79,10 @@ export type TCalendarBody = {
   theme?: Theme;
 };
 
-const defaultProps: Pick<TCalendarBody, 'isClearable'> = {
-  isClearable: true,
-};
-
-export const CalendarBody = (props: TCalendarBody) => {
+export const CalendarBody = ({
+  isClearable = true,
+  ...props
+}: TCalendarBody) => {
   const [isFocused, toggleIsFocused] = useToggleState(false);
 
   const onInputFocus = props.inputProps?.onFocus;
@@ -130,18 +129,29 @@ export const CalendarBody = (props: TCalendarBody) => {
 
   return (
     <Inline alignItems="center">
-      <div css={getInputContainerStyles(props, { isFocused })}>
+      <div
+        css={getInputContainerStyles(
+          {
+            isClearable,
+            ...props,
+          },
+          { isFocused }
+        )}
+      >
         <input
           ref={props.inputRef}
           {...props.inputProps}
           disabled={props.isDisabled}
           readOnly={props.isReadOnly}
-          css={getDateTimeInputStyles(props)}
+          css={getDateTimeInputStyles({
+            isClearable,
+            ...props,
+          })}
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
           aria-readonly={props.isReadOnly}
         />
-        {!disabledOrReadOnly && props.hasSelection && props.isClearable && (
+        {!disabledOrReadOnly && props.hasSelection && isClearable && (
           <ClearSection
             isCondensed={props.isCondensed}
             hasError={props.hasError}
@@ -153,7 +163,13 @@ export const CalendarBody = (props: TCalendarBody) => {
         )}
         <button
           type="button"
-          css={getCalendarIconContainerStyles(props, { isFocused })}
+          css={getCalendarIconContainerStyles(
+            {
+              isClearable,
+              ...props,
+            },
+            { isFocused }
+          )}
           {...props.toggleButtonProps}
           onFocus={handleToggleFocus}
           onBlur={handleToggleBlur}
@@ -177,7 +193,5 @@ export const CalendarBody = (props: TCalendarBody) => {
 };
 
 CalendarBody.displayName = 'CalendarBody';
-
-CalendarBody.defaultProps = defaultProps;
 
 export default CalendarBody;
