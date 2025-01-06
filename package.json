@@ -116,7 +116,6 @@
     "@svgr/plugin-svgo": "8.1.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.1.0",
-    "@testing-library/react-hooks": "8.0.1",
     "@types/is-hotkey": "^0.1.7",
     "@types/node": "18.19.68",
     "@types/prettier": "^2.7.3",
