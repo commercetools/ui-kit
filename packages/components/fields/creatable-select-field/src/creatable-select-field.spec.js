@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, act } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import CreatableSelectField from './creatable-select-field';
@@ -74,20 +74,20 @@ it('should have an HTML name', () => {
   expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderCreatableSelectField({ onFocus });
-  getByLabelText('CreatableSelectField').focus();
+  await act(async () => getByLabelText('CreatableSelectField').focus());
   expect(getByLabelText('CreatableSelectField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderCreatableSelectField({ onBlur });
-  getByLabelText('CreatableSelectField').focus();
+  await act(async () => getByLabelText('CreatableSelectField').focus());
   expect(getByLabelText('CreatableSelectField')).toHaveFocus();
-  getByLabelText('CreatableSelectField').blur();
+  await act(async () => getByLabelText('CreatableSelectField').blur());
   expect(getByLabelText('CreatableSelectField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -107,7 +107,7 @@ it('should call onChange when changing the value', () => {
   const input = getByLabelText('CreatableSelectField');
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
-  getByText('Shipped').click();
+  fireEvent.click(getByText('Shipped'));
   expect(onChange).toHaveBeenCalled();
 });
 
@@ -172,7 +172,7 @@ describe('when showing an info button', () => {
     const { getByLabelText } = renderCreatableSelectField({
       onInfoButtonClick,
     });
-    getByLabelText('More Info').click();
+    fireEvent.click(getByLabelText('More Info'));
     expect(onInfoButtonClick).toHaveBeenCalled();
   });
 });

@@ -1,4 +1,4 @@
-import { screen, render } from '../../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import LocalizedRichTextInput from './localized-rich-text-input';
 
 // mocks
@@ -65,7 +65,7 @@ describe('LocalizedRichTextInput', () => {
 
   describe('when disabled', () => {
     describe('when expanded', () => {
-      it('should render a disabled input for each language (en, de)', () => {
+      it('should render a disabled input for each language (en, de)', async () => {
         render(
           <LocalizedRichTextInput
             {...baseProps}
@@ -73,7 +73,8 @@ describe('LocalizedRichTextInput', () => {
             isDisabled={true}
           />
         );
-        screen.getByLabelText(/show all languages/i).click();
+        const showAllLangBtn = await screen.findByText(/show all languages/i);
+        fireEvent.click(showAllLangBtn);
 
         // eslint-disable-next-line jest-dom/prefer-enabled-disabled
         expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
@@ -103,7 +104,7 @@ describe('LocalizedRichTextInput', () => {
   });
   describe('when readonly', () => {
     describe('when expanded', () => {
-      it('should render a readonly input for each language (en, de)', () => {
+      it('should render a readonly input for each language (en, de)', async () => {
         render(
           <LocalizedRichTextInput
             {...baseProps}
@@ -111,7 +112,8 @@ describe('LocalizedRichTextInput', () => {
             isReadOnly={true}
           />
         );
-        screen.getByLabelText(/show all languages/i).click();
+        const showAllLangBtn = await screen.findByText(/show all languages/i);
+        fireEvent.click(showAllLangBtn);
         expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
           'contenteditable',
           'false'
@@ -121,7 +123,7 @@ describe('LocalizedRichTextInput', () => {
           'false'
         );
       });
-      it('should display all additionalInfo', () => {
+      it('should display all additionalInfo', async () => {
         render(
           <LocalizedRichTextInput
             {...baseProps}
@@ -133,7 +135,9 @@ describe('LocalizedRichTextInput', () => {
             }}
           />
         );
-        screen.getByLabelText(/show all languages/i).click();
+        const showAllLangBtn = await screen.findByText(/show all languages/i);
+        fireEvent.click(showAllLangBtn);
+
         expect(screen.getByText('cool description')).toBeInTheDocument();
         expect(screen.getByText('eine beschreibung')).toBeInTheDocument();
       });

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, act } from 'react';
 import PropTypes from 'prop-types';
 import {
   render,
@@ -81,20 +81,20 @@ it('should have an HTML name', () => {
   expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   renderSearchSelectField({ onFocus });
-  screen.getByLabelText('SearchSelectField').focus();
+  await act(async () => screen.getByLabelText('SearchSelectField').focus());
   expect(screen.getByLabelText('SearchSelectField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   renderSearchSelectField({ onBlur });
-  screen.getByLabelText('SearchSelectField').focus();
+  await act(async () => screen.getByLabelText('SearchSelectField').focus());
   expect(screen.getByLabelText('SearchSelectField')).toHaveFocus();
-  screen.getByLabelText('SearchSelectField').blur();
+  await act(async () => screen.getByLabelText('SearchSelectField').blur());
   expect(screen.getByLabelText('SearchSelectField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -115,7 +115,7 @@ it('should call onChange when changing the value', async () => {
   fireEvent.focus(input);
   fireEvent.change(input, { target: { value: 'mango' } });
   await waitFor(() => screen.findByText('Mango'));
-  screen.getByText('Mango').click();
+  fireEvent.click(screen.getByText('Mango'));
   expect(onChange).toHaveBeenCalled();
 });
 

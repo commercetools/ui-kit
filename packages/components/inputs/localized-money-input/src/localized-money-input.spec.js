@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, act } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import LocalizedMoneyInput from './localized-money-input';
@@ -94,7 +94,7 @@ it('should have the selected currency', () => {
   expect(getByLabelText('CAD')).toBeInTheDocument();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderLocalizedMoneyInput({
     name: 'foo',
@@ -102,9 +102,9 @@ it('should call onBlur when input loses focus', () => {
     onBlur,
   });
   const input = getByLabelText('CAD');
-  input.focus();
+  await act(async () => input.focus());
   expect(input).toHaveFocus();
-  input.blur();
+  await act(async () => input.blur());
   expect(input).not.toHaveFocus();
 });
 
@@ -139,7 +139,8 @@ describe('when input is expanded', () => {
       selectedCurrency: 'CAD',
     });
     expect(queryByLabelText('USD')).not.toBeInTheDocument();
-    getByLabelText(/show all currencies/i).click();
+
+    fireEvent.click(getByLabelText(/show all currencies/i));
     expect(getByLabelText('USD')).toBeInTheDocument();
   });
   it('should allow changing the USD input', () => {
@@ -147,7 +148,8 @@ describe('when input is expanded', () => {
       name: 'foo',
       selectedCurrency: 'CAD',
     });
-    getByLabelText(/show all currencies/i).click();
+    const showAllCurBtn = getByLabelText(/show all currencies/i);
+    fireEvent.click(showAllCurBtn);
     const event = { target: { value: '12.98' } };
     const usdInput = getByLabelText('USD');
     fireEvent.focus(usdInput);
@@ -206,7 +208,8 @@ describe('when disabled', () => {
         isDisabled: true,
         selectedCurrency: 'CAD',
       });
-      getByLabelText(/show all currencies/i).click();
+      const showAllCurBtn = getByLabelText(/show all currencies/i);
+      fireEvent.click(showAllCurBtn);
       const usdInput = getByLabelText('USD');
       const CADInput = getByLabelText('CAD');
 

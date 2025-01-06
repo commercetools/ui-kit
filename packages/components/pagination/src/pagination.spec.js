@@ -1,3 +1,4 @@
+import { act } from 'react';
 import { screen, render, fireEvent } from '../../../../test/test-utils';
 import Pagination from './pagination';
 
@@ -68,7 +69,7 @@ describe('page navigator interaction', () => {
     );
 
     const nextPageButton = await screen.findByLabelText(/Next page/);
-    nextPageButton.click();
+    fireEvent.click(nextPageButton);
 
     await screen.findByLabelText('Page');
     expect(onPageChange).toHaveBeenCalledWith(2);
@@ -86,7 +87,7 @@ describe('page navigator interaction', () => {
     );
 
     const prevPageButton = await screen.findByLabelText(/Previous page/);
-    prevPageButton.click();
+    fireEvent.click(prevPageButton);
 
     await screen.findByLabelText('Page');
     expect(onPageChange).toHaveBeenCalledWith(1);
@@ -120,9 +121,9 @@ describe('per page selector interaction', () => {
 
     const perPageSelector = await screen.findByLabelText(/Items per page/);
 
-    perPageSelector.focus();
+    await act(async () => perPageSelector.focus());
     fireEvent.keyDown(perPageSelector, { key: 'ArrowDown' });
-    screen.getByText('50').click();
+    fireEvent.click(screen.getByText('50'));
     expect(onPerPageChange).toHaveBeenCalledWith(50);
   });
 });

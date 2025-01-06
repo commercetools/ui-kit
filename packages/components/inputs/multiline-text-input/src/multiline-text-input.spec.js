@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, act } from 'react';
 import PropTypes from 'prop-types';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import MultilineTextInput from './multiline-text-input';
@@ -139,22 +139,22 @@ describe('MultilineTextInput', () => {
     expect(screen.getByLabelText('Description')).toBeDisabled();
   });
 
-  it('should call onFocus when the input is focused', () => {
+  it('should call onFocus when the input is focused', async () => {
     const onFocus = jest.fn();
     render(<TestComponent onFocus={onFocus} />);
     const textArea = screen.getByLabelText('Description');
-    textArea.focus();
+    await act(async () => textArea.focus());
     expect(textArea).toHaveFocus();
     expect(onFocus).toHaveBeenCalled();
   });
 
-  it('should call onBlur when the input is loses focus', () => {
+  it('should call onBlur when the input is loses focus', async () => {
     const onBlur = jest.fn();
     render(<TestComponent onBlur={onBlur} />);
     const textArea = screen.getByLabelText('Description');
-    textArea.focus();
+    await act(async () => textArea.focus());
     expect(textArea).toHaveFocus();
-    textArea.blur();
+    await act(async () => textArea.blur());
     expect(onBlur).toHaveBeenCalled();
   });
 

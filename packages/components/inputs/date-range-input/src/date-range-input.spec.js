@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, act } from 'react';
 import PropTypes from 'prop-types';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import DateRangeInput from './date-range-input';
@@ -45,44 +45,44 @@ const renderDateRangeInput = (props, options) =>
   render(<Story {...props} />, options);
 
 describe('DateRangeInput.isEmpty', () => {
-  it('should return true when called with an empty range', () => {
+  it('should return true when called with an empty range', async () => {
     expect(DateRangeInput.isEmpty([])).toBe(true);
   });
-  it('should return false when called with a range', () => {
+  it('should return false when called with a range', async () => {
     expect(DateRangeInput.isEmpty(['2018-09-20', '2018-09-20'])).toBe(false);
     expect(DateRangeInput.isEmpty(['2018-09-20', '2018-09-24'])).toBe(false);
   });
 });
 
-it('should render an input', () => {
+it('should render an input', async () => {
   const { getByLabelText } = renderDateRangeInput();
   expect(getByLabelText('Date')).toBeTruthy();
 });
 
-it('should forward data-attributes', () => {
+it('should forward data-attributes', async () => {
   const { container } = renderDateRangeInput({ 'data-foo': 'bar' });
   expect(container.querySelector('[data-foo="bar"]')).toBeTruthy();
 });
 
-it('should have an HTML name', () => {
+it('should have an HTML name', async () => {
   const { container } = renderDateRangeInput({ name: 'foo' });
   expect(container.querySelector('[name="foo"]')).toBeTruthy();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { container } = renderDateRangeInput({ onFocus });
-  container.querySelector('input').focus();
+  await act(async () => container.querySelector('input').focus());
   expect(container.querySelector('input')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { container } = renderDateRangeInput({ onBlur });
-  container.querySelector('input').focus();
+  await act(async () => container.querySelector('input').focus());
   expect(container.querySelector('input')).toHaveFocus();
-  container.querySelector('input').blur();
+  await act(async () => container.querySelector('input').blur());
   expect(container.querySelector('input')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -95,22 +95,24 @@ describe('when disabled', () => {
 });
 
 describe('when `isClearable` is true', () => {
-  it('should allow clearing input with keyboard', () => {
+  it('should allow clearing input with keyboard', async () => {
     const onChange = jest.fn();
-    const { queryByLabelText, getByLabelText } = renderDateRangeInput({
+    const { queryByLabelText, findByLabelText } = renderDateRangeInput({
       onChange,
     });
     const event = { target: { value: '09/18/2018 - 09/20/2018' } };
-    fireEvent.click(getByLabelText('Date'));
-    fireEvent.change(getByLabelText('Date'), event);
-    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
-    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+    const dateInput = await findByLabelText('Date');
+    fireEvent.click(dateInput);
+    fireEvent.change(dateInput, event);
+    fireEvent.keyDown(dateInput, { key: 'Enter' });
+    fireEvent.keyUp(dateInput, { key: 'Enter' });
 
     const clearEvent = { target: { value: '' } };
-    fireEvent.click(getByLabelText('Date'));
-    fireEvent.change(getByLabelText('Date'), clearEvent);
-    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
-    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+    const dateInput2 = await findByLabelText('Date');
+    fireEvent.click(dateInput2);
+    fireEvent.change(dateInput2, clearEvent);
+    fireEvent.keyDown(dateInput2, { key: 'Enter' });
+    fireEvent.keyUp(dateInput2, { key: 'Enter' });
 
     expect(queryByLabelText('clear')).not.toBeInTheDocument();
     expect(onChange).toHaveBeenCalledWith({
@@ -121,20 +123,21 @@ describe('when `isClearable` is true', () => {
       },
     });
   });
-  it('should allow clearing the input with icon button', () => {
+  it('should allow clearing the input with icon button', async () => {
     const onChange = jest.fn();
-    const { queryByLabelText, getByLabelText } = renderDateRangeInput({
+    const { queryByLabelText, findByLabelText } = renderDateRangeInput({
       onChange,
     });
     const event = { target: { value: '09/18/2018 - 09/20/2018' } };
-    fireEvent.click(getByLabelText('Date'));
-    fireEvent.change(getByLabelText('Date'), event);
-    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
-    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+    const dateInput = await findByLabelText('Date');
+    fireEvent.click(dateInput);
+    fireEvent.change(dateInput, event);
+    fireEvent.keyDown(dateInput, { key: 'Enter' });
+    fireEvent.keyUp(dateInput, { key: 'Enter' });
 
-    expect(getByLabelText('clear')).toBeInTheDocument();
+    const clearableInput = await findByLabelText('clear');
 
-    getByLabelText('clear').click();
+    fireEvent.click(clearableInput);
     expect(onChange).toHaveBeenCalledWith({
       target: {
         id: 'date-range-input',
@@ -240,7 +243,7 @@ describe('when locale is "de"', () => {
   });
 });
 
-it('should open the date picker on clicking', () => {
+it('should open the date picker on clicking', async () => {
   renderDateRangeInput({ value: ['2020-09-10', '2020-09-20'] });
 
   const dateInput = screen.getByLabelText('Date');

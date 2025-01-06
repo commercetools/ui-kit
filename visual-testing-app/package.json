@@ -19,7 +19,7 @@
     "prop-types": "15.8.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-intl": "^6.3.2",
+    "react-intl": "^7.1.0",
     "react-router": "5.3.4",
     "react-router-dom": "5.3.4"
   },

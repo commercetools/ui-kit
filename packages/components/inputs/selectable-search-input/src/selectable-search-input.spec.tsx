@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, act } from 'react';
 import SelectableSearchInput, {
   type TSelectableSearchInputProps,
   type TCustomEvent,
@@ -191,7 +191,7 @@ describe('SelectableSearchInput', () => {
       />
     );
 
-    screen.getByLabelText('Bar').focus();
+    await act(async () => screen.getByLabelText('Bar').focus());
     expect(onFocus).toHaveBeenCalledWith({
       target: {
         id: 'test-id.dropdown',
@@ -228,7 +228,7 @@ describe('SelectableSearchInput', () => {
     ).toHaveTextContent('Custom text');
   });
 
-  it('should call onBlur twice when input loses focus for outside element', () => {
+  it('should call onBlur twice when input loses focus for outside element', async () => {
     const onBlur = jest.fn();
     render(
       <TestComponent
@@ -275,7 +275,7 @@ describe('SelectableSearchInput', () => {
     ).toBeInTheDocument();
   });
 
-  it('should call onChange when changing the value and onSubmit when submit button is clicked', () => {
+  it('should call onChange when changing the value and onSubmit when submit button is clicked', async () => {
     const onChange = jest.fn();
     const onSubmit = jest.fn();
 
@@ -293,7 +293,8 @@ describe('SelectableSearchInput', () => {
     });
 
     fireEvent.keyDown(screen.getByLabelText('Foo'), { key: 'ArrowDown' });
-    screen.getByText('Bar').click();
+    const barOption = await screen.findByText('Bar');
+    fireEvent.click(barOption);
 
     expect(onChange).toHaveBeenCalledWith({
       target: {

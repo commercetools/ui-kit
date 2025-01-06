@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, act } from 'react';
 import PropTypes from 'prop-types';
 import MoneyInput from './money-input';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
@@ -474,7 +474,7 @@ describe('MoneyInput', () => {
     );
   });
 
-  it('should call onFocus when the currency select is focused', () => {
+  it('should call onFocus when the currency select is focused', async () => {
     const onFocus = jest.fn();
     render(
       <TestComponent
@@ -482,14 +482,14 @@ describe('MoneyInput', () => {
         onFocus={onFocus}
       />
     );
-    screen.getByLabelText('EUR').focus();
+    await act(async () => screen.getByLabelText('EUR').focus());
     expect(screen.getByLabelText('EUR')).toHaveFocus();
     expect(onFocus).toHaveBeenCalledWith({
       target: { id: 'some-id.currencyCode', name: 'some-name.currencyCode' },
     });
   });
 
-  it('should call onBlur twice when amount input loses focus for outside element', () => {
+  it('should call onBlur twice when amount input loses focus for outside element', async () => {
     const onBlur = jest.fn();
     render(
       <TestComponent
@@ -497,9 +497,9 @@ describe('MoneyInput', () => {
         onBlur={onBlur}
       />
     );
-    screen.getByLabelText('Amount').focus();
+    await act(async () => screen.getByLabelText('Amount').focus());
     expect(screen.getByLabelText('Amount')).toHaveFocus();
-    screen.getByLabelText('Amount').blur();
+    await act(async () => screen.getByLabelText('Amount').blur());
     expect(screen.getByLabelText('Amount')).not.toHaveFocus();
 
     // onBlur should be called twice as we want to mark both,
@@ -513,7 +513,7 @@ describe('MoneyInput', () => {
     });
   });
 
-  it('should call onBlur twice when currency select loses focus', () => {
+  it('should call onBlur twice when currency select loses focus', async () => {
     const onBlur = jest.fn();
     render(
       <TestComponent
@@ -521,9 +521,9 @@ describe('MoneyInput', () => {
         onBlur={onBlur}
       />
     );
-    screen.getByLabelText('EUR').focus();
+    await act(async () => screen.getByLabelText('EUR').focus());
     expect(screen.getByLabelText('EUR')).toHaveFocus();
-    screen.getByLabelText('EUR').blur();
+    await act(async () => screen.getByLabelText('EUR').blur());
     expect(screen.getByLabelText('EUR')).not.toHaveFocus();
 
     // onBlur should be called twice as we want to mark both,
@@ -537,7 +537,7 @@ describe('MoneyInput', () => {
     });
   });
 
-  it('should not call onBlur when focus switches from currency to amount', () => {
+  it('should not call onBlur when focus switches from currency to amount', async () => {
     const onBlur = jest.fn();
     render(
       <TestComponent
@@ -545,17 +545,17 @@ describe('MoneyInput', () => {
         onBlur={onBlur}
       />
     );
-    screen.getByLabelText('EUR').focus();
+    await act(async () => screen.getByLabelText('EUR').focus());
     expect(screen.getByLabelText('EUR')).toHaveFocus();
 
-    screen.getByLabelText('Amount').focus();
+    await act(async () => screen.getByLabelText('Amount').focus());
     expect(screen.getByLabelText('EUR')).not.toHaveFocus();
     expect(screen.getByLabelText('Amount')).toHaveFocus();
 
     expect(onBlur).not.toHaveBeenCalled();
   });
 
-  it('should not call onBlur when focus switches from amount to currency', () => {
+  it('should not call onBlur when focus switches from amount to currency', async () => {
     const onBlur = jest.fn();
     render(
       <TestComponent
@@ -564,10 +564,10 @@ describe('MoneyInput', () => {
       />
     );
 
-    screen.getByLabelText('Amount').focus();
+    await act(async () => screen.getByLabelText('Amount').focus());
     expect(screen.getByLabelText('Amount')).toHaveFocus();
 
-    screen.getByLabelText('EUR').focus();
+    await act(async () => screen.getByLabelText('EUR').focus());
     expect(screen.getByLabelText('EUR')).toHaveFocus();
     expect(screen.getByLabelText('Amount')).not.toHaveFocus();
 
@@ -697,7 +697,7 @@ describe('MoneyInput', () => {
   });
 
   describe('when the locale is custom', () => {
-    it('should format the amount on blur to US format when locale is en', () => {
+    it('should format the amount on blur to US format when locale is en', async () => {
       render(
         <TestComponent
           currencies={['EUR']}
@@ -707,7 +707,7 @@ describe('MoneyInput', () => {
       );
 
       //
-      screen.getByLabelText('Amount').focus();
+      await act(async () => screen.getByLabelText('Amount').focus());
       fireEvent.blur(screen.getByLabelText('Amount'));
 
       // We can't use .toHaveAttribute() as the attribute
@@ -732,7 +732,7 @@ describe('MoneyInput', () => {
   });
 
   describe('when there are no currencies', () => {
-    it('should call onFocus when the input is focused', () => {
+    it('should call onFocus when the input is focused', async () => {
       const onFocus = jest.fn();
       render(
         <TestComponent
@@ -742,7 +742,7 @@ describe('MoneyInput', () => {
         />
       );
       const input = screen.getByLabelText('EUR');
-      input.focus();
+      await act(async () => input.focus());
       expect(input).toHaveFocus();
       expect(onFocus).toHaveBeenCalledWith({
         target: { id: 'some-id.amount', name: 'some-name.amount' },

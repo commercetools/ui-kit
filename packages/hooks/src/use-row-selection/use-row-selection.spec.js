@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { screen, render } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 import useRowSelection from './use-row-selection';
 
 const testData = [
@@ -73,7 +73,7 @@ it('should be possible to toggle a row selection state', () => {
 
   expect(screen.queryByTestId('system-crasher')).toHaveTextContent('false');
 
-  screen.queryByTestId('toggle system-crasher').click();
+  fireEvent.click(screen.queryByTestId('toggle system-crasher'));
   expect(screen.queryByTestId('system-crasher')).toHaveTextContent('true');
 });
 
@@ -82,17 +82,17 @@ it('should be possible to select a row', () => {
 
   expect(screen.queryByTestId('system-crasher')).toHaveTextContent('false');
 
-  screen.queryByTestId('select system-crasher').click();
+  fireEvent.click(screen.queryByTestId('select system-crasher'));
   expect(screen.queryByTestId('system-crasher')).toHaveTextContent('true');
 });
 
 it('should be possible to deselect a row', () => {
   render(<TestComponent keyName="checked" items={testData} />);
 
-  screen.queryByTestId('select system-crasher').click();
+  fireEvent.click(screen.queryByTestId('select system-crasher'));
   expect(screen.queryByTestId('system-crasher')).toHaveTextContent('true');
 
-  screen.queryByTestId('deselect system-crasher').click();
+  fireEvent.click(screen.queryByTestId('deselect system-crasher'));
   expect(screen.queryByTestId('system-crasher')).toHaveTextContent('false');
 });
 
@@ -101,15 +101,15 @@ it('should get the correct count of selected rows', () => {
 
   expect(screen.queryByTestId('selectedCount')).toHaveTextContent('0');
 
-  screen.queryByTestId('select system-crasher').click();
+  fireEvent.click(screen.queryByTestId('select system-crasher'));
 
   expect(screen.queryByTestId('selectedCount')).toHaveTextContent('1');
 
-  screen.queryByTestId('select birds-of-passage').click();
+  fireEvent.click(screen.queryByTestId('select birds-of-passage'));
 
   expect(screen.queryByTestId('selectedCount')).toHaveTextContent('2');
 
-  screen.queryByTestId('deselect system-crasher').click();
+  fireEvent.click(screen.queryByTestId('deselect system-crasher'));
 
   expect(screen.queryByTestId('selectedCount')).toHaveTextContent('1');
 });
@@ -117,7 +117,7 @@ it('should get the correct count of selected rows', () => {
 it('should be possible to select all rows', () => {
   render(<TestComponent keyName="checked" items={testData} />);
 
-  screen.queryByTestId('selectAll').click();
+  fireEvent.click(screen.queryByTestId('selectAll'));
 
   expect(screen.queryByTestId('selectedCount')).toHaveTextContent('3');
 
@@ -129,11 +129,11 @@ it('should be possible to select all rows', () => {
 it('should be possible to deselect all rows', () => {
   render(<TestComponent keyName="checked" items={testData} />);
 
-  screen.queryByTestId('selectAll').click();
+  fireEvent.click(screen.queryByTestId('selectAll'));
 
   expect(screen.queryByTestId('selectedCount')).toHaveTextContent('3');
 
-  screen.queryByTestId('deselectAll').click();
+  fireEvent.click(screen.queryByTestId('deselectAll'));
 
   expect(screen.queryByTestId('selectedCount')).toHaveTextContent('0');
 

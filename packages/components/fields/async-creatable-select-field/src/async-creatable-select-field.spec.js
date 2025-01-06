@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, act } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
 import AsyncCreatableSelectField from './async-creatable-select-field';
@@ -94,7 +94,7 @@ it('should call onFocus when the input is focused', async () => {
   const asyncCreatableSelectField = await findByLabelText(
     'AsyncCreatableSelectField'
   );
-  asyncCreatableSelectField.focus();
+  await act(async () => asyncCreatableSelectField.focus());
   expect(asyncCreatableSelectField).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -105,9 +105,9 @@ it('should call onBlur when input loses focus', async () => {
   const asyncCreatableSelectField = await findByLabelText(
     'AsyncCreatableSelectField'
   );
-  asyncCreatableSelectField.focus();
+  await act(async () => asyncCreatableSelectField.focus());
   expect(asyncCreatableSelectField).toHaveFocus();
-  asyncCreatableSelectField.blur();
+  await act(async () => asyncCreatableSelectField.blur());
   expect(asyncCreatableSelectField).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -129,7 +129,7 @@ it('should call onChange when changing the value', async () => {
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   await waitFor(() => findByText('Shipped'));
-  getByText('Shipped').click();
+  fireEvent.click(getByText('Shipped'));
   expect(onChange).toHaveBeenCalled();
 });
 

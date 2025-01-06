@@ -28,10 +28,10 @@
   },
   "devDependencies": {
     "react": "19.0.0",
-    "react-intl": "^6.3.2"
+    "react-intl": "^7.1.0"
   },
   "peerDependencies": {
     "react": "19.x",
-    "react-intl": "6.x"
+    "react-intl": "7.x"
   }
 }

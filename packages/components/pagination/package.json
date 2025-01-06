@@ -33,16 +33,16 @@
     "@commercetools-uikit/utils": "19.20.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "formik": "^2.2.9",
+    "formik": "^2.4.6",
     "lodash": "4.17.21",
     "prop-types": "15.8.1"
   },
   "devDependencies": {
     "react": "19.0.0",
-    "react-intl": "^6.3.2"
+    "react-intl": "^7.1.0"
   },
   "peerDependencies": {
     "react": "19.x",
-    "react-intl": "6.x"
+    "react-intl": "7.x"
   }
 }

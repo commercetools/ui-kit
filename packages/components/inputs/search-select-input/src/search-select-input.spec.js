@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, act } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent, screen } from '../../../../../test/test-utils';
 import SearchSelectInput from './search-select-input';
@@ -78,22 +78,22 @@ it('should have focus automatically when isAutofocussed is passed', () => {
   expect(screen.getByLabelText('Fruit')).toHaveFocus();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   renderInput({ onFocus });
   const input = screen.getByLabelText('Fruit');
-  input.focus();
+  await act(async () => input.focus());
   expect(input).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   renderInput({ onBlur });
   const input = screen.getByLabelText('Fruit');
-  input.focus();
+  await act(async () => input.focus());
   expect(input).toHaveFocus();
-  input.blur();
+  await act(async () => input.blur());
   expect(input).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -154,7 +154,7 @@ describe('in single mode', () => {
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
       await screen.findByText('Mango');
-      screen.getByText('Mango').click();
+      fireEvent.click(screen.getByText('Mango'));
       // new selected value should be Mango
       expect(screen.getByText('Mango')).toBeInTheDocument();
       // list should closed and not visible
@@ -170,7 +170,7 @@ describe('in single mode', () => {
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
       await screen.findByText('Mango');
-      screen.getByText('Mango').click();
+      fireEvent.click(screen.getByText('Mango'));
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
@@ -220,7 +220,7 @@ describe('in multi mode', () => {
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
       await screen.findByText('Mango');
-      screen.getByText('Mango').click();
+      fireEvent.click(screen.getByText('Mango'));
       // new selected value should be Mango
       expect(screen.getByText('Mango')).toBeInTheDocument();
       // open list again
@@ -228,7 +228,7 @@ describe('in multi mode', () => {
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'banana' } });
       await screen.findByText('Banana');
-      screen.getByText('Banana').click();
+      fireEvent.click(screen.getByText('Banana'));
       // new values should be Banana and Mango
       expect(screen.getByText('Banana')).toBeInTheDocument();
       expect(screen.getByText('Mango')).toBeInTheDocument();
@@ -245,7 +245,7 @@ describe('in multi mode', () => {
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
       await screen.findByText('Mango');
-      screen.getByText('Mango').click();
+      fireEvent.click(screen.getByText('Mango'));
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
@@ -260,7 +260,7 @@ describe('in multi mode', () => {
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'raspberry' } });
       await screen.findByText('Raspberry');
-      screen.getByText('Raspberry').click();
+      fireEvent.click(screen.getByText('Raspberry'));
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {

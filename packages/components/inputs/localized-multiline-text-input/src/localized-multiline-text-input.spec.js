@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, act } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import LocalizedMultilineTextInput from './localized-multiline-text-input';
@@ -89,22 +89,22 @@ describe('when collapsed', () => {
   });
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderLocalizedMultilineTextInput({ onFocus });
   const input = getByLabelText('EN');
-  input.focus();
+  await act(async () => input.focus());
   expect(input).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderLocalizedMultilineTextInput({ onBlur });
   const input = getByLabelText('EN');
-  input.focus();
+  await act(async () => input.focus());
   expect(input).toHaveFocus();
-  input.blur();
+  await act(async () => input.blur());
   expect(input).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -123,25 +123,30 @@ describe('when input is collapsed', () => {
 });
 
 describe('when input is expanded', () => {
-  it('should expand and show all language inputs when `Show all languages` is clicked', () => {
-    const { getByLabelText } = renderLocalizedMultilineTextInput();
-    getByLabelText(/show all languages/i).click();
+  it('should expand and show all language inputs when `Show all languages` is clicked', async () => {
+    const { getByLabelText, findByLabelText } =
+      renderLocalizedMultilineTextInput();
+    const showAllLangBtn = await findByLabelText(/show all languages/i);
+    fireEvent.click(showAllLangBtn);
     expect(getByLabelText('FR')).toBeInTheDocument();
   });
-  it('should display all additionalInfo', () => {
-    const { getByLabelText, getByText } = renderLocalizedMultilineTextInput({
+  it('should display all additionalInfo', async () => {
+    const { getByText, findByLabelText } = renderLocalizedMultilineTextInput({
       additionalInfo: {
         en: 'cool description',
         fr: 'une description',
       },
     });
-    getByLabelText(/show all languages/i).click();
+    const showAllLangBtn = await findByLabelText(/show all languages/i);
+    fireEvent.click(showAllLangBtn);
     expect(getByText('cool description')).toBeInTheDocument();
     expect(getByText('une description')).toBeInTheDocument();
   });
-  it('should allow changing the french input', () => {
-    const { getByLabelText } = renderLocalizedMultilineTextInput();
-    getByLabelText(/show all languages/i).click();
+  it('should allow changing the french input', async () => {
+    const { getByLabelText, findByLabelText } =
+      renderLocalizedMultilineTextInput();
+    const showAllLangBtn = await findByLabelText(/show all languages/i);
+    fireEvent.click(showAllLangBtn);
     const event = { target: { value: 'Je veux manger du poulet' } };
     const frenchInput = getByLabelText('FR');
     fireEvent.focus(frenchInput);
@@ -185,11 +190,13 @@ describe('when disabled', () => {
     });
   });
   describe('when expanded', () => {
-    it('should be able to expand, and all inputs are disabled', () => {
-      const { getByLabelText } = renderLocalizedMultilineTextInput({
-        isDisabled: true,
-      });
-      getByLabelText(/show all languages/i).click();
+    it('should be able to expand, and all inputs are disabled', async () => {
+      const { getByLabelText, findByLabelText } =
+        renderLocalizedMultilineTextInput({
+          isDisabled: true,
+        });
+      const showAllLangBtn = await findByLabelText(/show all languages/i);
+      fireEvent.click(showAllLangBtn);
       expect(getByLabelText('EN')).toBeDisabled();
       expect(getByLabelText('FR')).toBeDisabled();
     });
@@ -208,11 +215,13 @@ describe('when read-only', () => {
     });
   });
   describe('when expanded', () => {
-    it('should be able to expand, and all inputs are readonly', () => {
-      const { getByLabelText } = renderLocalizedMultilineTextInput({
-        isReadOnly: true,
-      });
-      getByLabelText(/show all languages/i).click();
+    it('should be able to expand, and all inputs are readonly', async () => {
+      const { getByLabelText, findByLabelText } =
+        renderLocalizedMultilineTextInput({
+          isReadOnly: true,
+        });
+      const showAllLangBtn = await findByLabelText(/show all languages/i);
+      fireEvent.click(showAllLangBtn);
       expect(getByLabelText('EN')).toHaveAttribute('readonly');
       expect(getByLabelText('FR')).toHaveAttribute('readonly');
     });
