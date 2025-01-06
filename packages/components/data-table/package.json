@@ -37,9 +37,9 @@
   "devDependencies": {
     "@testing-library/react-hooks": "8.0.1",
     "formik": "^2.2.9",
-    "react": "17.0.2"
+    "react": "19.0.0"
   },
   "peerDependencies": {
-    "react": "17.x"
+    "react": "19.x"
   }
 }

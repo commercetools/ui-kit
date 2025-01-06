@@ -35,9 +35,9 @@
     "react-is": "17.0.2"
   },
   "devDependencies": {
-    "react": "17.0.2"
+    "react": "19.0.0"
   },
   "peerDependencies": {
-    "react": "17.x"
+    "react": "19.x"
   }
 }

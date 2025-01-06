@@ -43,12 +43,12 @@
   },
   "devDependencies": {
     "moment": "2.30.1",
-    "react": "17.0.2",
+    "react": "19.0.0",
     "react-intl": "^6.3.2"
   },
   "peerDependencies": {
     "moment": "2.x",
-    "react": "17.x",
+    "react": "19.x",
     "react-intl": "6.x"
   }
 }
