@@ -118,8 +118,8 @@ function DropdownMenu({
   const Menu = menuType === 'default' ? DropdownContentMenu : DropdownListMenu;
 
   // Close the dropdown when clicking outside of it
-  const handleGlobalClick = useCallback(
-    (event: MouseEvent) => {
+  const handleGlobalClick: EventListener = useCallback(
+    (event: Event) => {
       const triggerElement = triggerRef.current;
       if (
         isOpen &&
