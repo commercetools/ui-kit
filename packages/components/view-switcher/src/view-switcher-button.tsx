@@ -59,7 +59,7 @@ const ViewSwitcherButton = (props: TViewSwitcherButtonProps) => {
           `}
         >
           {cloneElement(props.icon, {
-            size: props.isCondensed ? '30' : '40',
+            size: props.isCondensed ? '20' : '40',
           })}
         </span>
       )}

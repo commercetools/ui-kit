@@ -164,7 +164,7 @@ const Stamp = ({
   const Icon =
     props.icon &&
     cloneElement(props.icon, {
-      size: '30',
+      size: '20',
       color: getIconColor(allProps, true),
     });
 
