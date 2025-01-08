@@ -128,7 +128,7 @@ const renderLeaf = (props: RenderLeafProps) => <Leaf {...props} />;
 
 const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
   const intl = useIntl();
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
 
   const createEditorWithPlugins = pipe(withReact, withHistory);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -362,7 +362,9 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
             </Row>
             {props.additionalInfo && (
               <LeftColumn>
-                <AdditionalInfoMessage message={props.additionalInfo} />
+                <AdditionalInfoMessage
+                  message={props.additionalInfo as string}
+                />
               </LeftColumn>
             )}
           </Stack>

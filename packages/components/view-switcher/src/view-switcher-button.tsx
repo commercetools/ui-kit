@@ -12,7 +12,7 @@ import { getButtonStyles } from './view-switcher.styles';
 
 export type TViewSwitcherButtonProps = {
   children?: string;
-  icon?: ReactElement;
+  icon?: ReactElement<{ size?: string }>;
   isActive?: boolean;
   isDisabled?: boolean;
   isCondensed?: boolean;
@@ -59,7 +59,7 @@ const ViewSwitcherButton = (props: TViewSwitcherButtonProps) => {
           `}
         >
           {cloneElement(props.icon, {
-            size: props.isCondensed ? 'medium' : 'big',
+            size: props.isCondensed ? '30' : '40',
           })}
         </span>
       )}

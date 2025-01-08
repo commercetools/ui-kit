@@ -54,7 +54,12 @@ const HeaderCellWrapper = (
   const headerRef = useRef<THeaderRef>(null);
 
   const onStartResizing = (event: MouseEvent) => {
-    columnResizingReducer.startResizing(headerRef, event);
+    if (headerRef?.current) {
+      columnResizingReducer.startResizing(
+        headerRef as RefObject<THeaderRef>,
+        event
+      );
+    }
   };
 
   const onDrag = (event: globalThis.MouseEvent) =>
@@ -116,7 +121,7 @@ export type THeaderCell = {
   onColumnResized?: (args: TColumn[]) => void;
   disableHeaderStickiness: boolean;
   horizontalCellAlignment: 'left' | 'center' | 'right';
-  iconComponent?: ReactNode;
+  iconComponent?: ReactNode | Function;
 };
 
 const HeaderCell = ({

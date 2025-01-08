@@ -248,7 +248,11 @@ export type TDataTableManagerProps<Row extends TRow = TRow> = {
    * <br>
    * Note that the child component will implicitly receive the props `columns` and `isCondensed` from the `<DataTableManager>`.
    */
-  children?: ReactElement;
+  children?: ReactElement<
+    {
+      isCondensed: boolean;
+    } & Record<string, unknown>
+  >;
 
   /**
    * The managed display settings of the table.

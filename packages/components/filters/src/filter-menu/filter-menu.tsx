@@ -125,7 +125,7 @@ function FilterMenu(props: TFilterMenuProps) {
   const menuBodyRef = useRef<HTMLDivElement>(null);
 
   const focusMenuBody = useCallback(
-    (e) => {
+    (e: Event) => {
       if (menuBodyRef.current) {
         const firstFocusableElementInMenuBody = findFirstFocusable(
           menuBodyRef.current

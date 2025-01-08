@@ -16,6 +16,8 @@ import Inline from '@commercetools-uikit/spacings-inline';
 import Label from '@commercetools-uikit/label';
 import { designTokens } from '@commercetools-uikit/design-system';
 
+export type TFieldLabelHintIconProps = { size?: string; color?: string };
+
 export type TFieldLabelProps = {
   /**
    * Title of the label
@@ -42,7 +44,7 @@ export type TFieldLabelProps = {
   /**
    * Icon to be displayed beside the hint text. Will only get rendered when hint is passed as well.
    */
-  hintIcon?: ReactElement;
+  hintIcon?: ReactElement<TFieldLabelHintIconProps>;
   /**
    * Badge to be displayed beside the label. Might be used to display additional information about the content of the field (E.g verified email)
    */
@@ -148,8 +150,7 @@ const FieldLabel = ({
             {props.hintIcon && (
               <Inline data-key="field-label-hint-wrapper">
                 {cloneElement(props.hintIcon, {
-                  // FIXME: add proper tone when tones are refactored
-                  size: 'medium',
+                  size: '30',
                   color: props.hintIcon.props.color || 'warning',
                 })}
               </Inline>

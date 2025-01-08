@@ -23,7 +23,7 @@ export type TDropdownProps = {
   isReadOnly?: boolean;
   onChange?: ({ value }: TItem) => void;
   components?: {
-    Item: FunctionComponent<unknown>;
+    Item: FunctionComponent;
     Label: FunctionComponent<TDropdownLabel>;
   };
   options: Array<TItem>;
@@ -52,6 +52,7 @@ const Dropdown = ({
   const DropdownItem: FunctionComponent<{
     value: string;
     isSelected: boolean;
+    children: ReactNode;
   }> = components.Item;
   const DropdownLabel = components.Label;
 

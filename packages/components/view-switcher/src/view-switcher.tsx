@@ -11,9 +11,14 @@ import { css } from '@emotion/react';
 import ViewSwitcherButton from './view-switcher-button';
 import { warning } from '@commercetools-uikit/utils';
 
+export type TViewSwitcherChildProps = {
+  value: string;
+  onClick?: Function;
+} & Record<string, unknown>;
+
 type TReactChild = {
   type?: { displayName: string };
-} & ReactElement;
+} & ReactElement<TViewSwitcherChildProps>;
 
 export type TViewSwitcherProps = {
   /**
@@ -69,36 +74,39 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
     'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
   );
 
-  const viewSwitcherElements = Children.map(props.children, (child, index) => {
-    if (
-      child &&
-      isValidElement(child) &&
-      (child as TReactChild).type.displayName === ViewSwitcherButton.displayName
-    ) {
-      const isButtonActive =
-        (isControlledComponent ? props.selectedValue : selectedButton) ===
-        child.props.value;
-      const clonedChild = cloneElement(child as TReactChild, {
-        onClick: () => {
-          if (!isControlledComponent) {
-            setSelectedButton(child.props.value);
-          }
+  const viewSwitcherElements = Children.map(
+    props.children as TReactChild[],
+    (child, index) => {
+      if (
+        child &&
+        isValidElement(child) &&
+        child.type.displayName === ViewSwitcherButton.displayName
+      ) {
+        const isButtonActive =
+          (isControlledComponent ? props.selectedValue : selectedButton) ===
+          child.props.value;
+        const clonedChild = cloneElement(child, {
+          onClick: () => {
+            if (!isControlledComponent) {
+              setSelectedButton(child.props.value);
+            }
 
-          if (!isButtonActive) {
-            child.props.onClick?.(child.props.value);
-            props.onChange?.(child.props.value);
-          }
-        },
-        isCondensed: props.isCondensed,
-        isActive: isButtonActive,
-        isFirstButton: index === 0,
-        isLastButton:
-          index === ((props.children as TReactChild[]).length ?? 1) - 1,
-      });
-      return clonedChild;
+            if (!isButtonActive) {
+              child.props.onClick?.(child.props.value);
+              props.onChange?.(child.props.value);
+            }
+          },
+          isCondensed: props.isCondensed,
+          isActive: isButtonActive,
+          isFirstButton: index === 0,
+          isLastButton:
+            index === ((props.children as TReactChild[]).length ?? 1) - 1,
+        });
+        return clonedChild;
+      }
+      return child;
     }
-    return child;
-  });
+  );
 
   return (
     <div

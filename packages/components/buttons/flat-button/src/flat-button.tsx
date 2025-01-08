@@ -15,6 +15,14 @@ import { getTextColor } from './flat-button.styles';
 
 const propsToOmit = ['type'];
 
+/**
+ * Props for child icons
+ */
+type TButtonIconProps = {
+  color?: string;
+  size?: string;
+} & Record<string, unknown>;
+
 export type TFlatButtonProps<
   TStringOrComponent extends ElementType = 'button'
 > = {
@@ -46,7 +54,7 @@ export type TFlatButtonProps<
   /**
    * The icon of the button.
    */
-  icon?: ReactElement;
+  icon?: ReactElement<TButtonIconProps>;
   /**
    * The position of the icon.
    */
@@ -64,7 +72,7 @@ export type TFlatButtonProps<
  */ ComponentPropsWithRef<TStringOrComponent>;
 
 const ButtonIcon = <TStringOrComponent extends ElementType = 'button'>(
-  props: TFlatButtonProps<TStringOrComponent>
+  props: Pick<TFlatButtonProps<TStringOrComponent>, 'icon' | 'as'>
 ) => {
   if (!props.icon) return null;
   const Icon = cloneElement(props.icon, {
@@ -177,11 +185,11 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>({
       buttonAttributes={buttonAttributes}
     >
       {props.icon && iconPosition === 'left' && (
-        <ButtonIcon<TStringOrComponent> {...buttonIconProps} />
+        <ButtonIcon {...buttonIconProps} />
       )}
       <span>{props.label}</span>
       {props.icon && iconPosition === 'right' && (
-        <ButtonIcon<TStringOrComponent> {...buttonIconProps} />
+        <ButtonIcon {...buttonIconProps} />
       )}
     </AccessibleButton>
   );

@@ -1,4 +1,4 @@
-import { cloneElement } from 'react';
+import { cloneElement, type JSX } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import {
@@ -51,7 +51,7 @@ const WrapperWithIcon = <Type extends 'singleValue' | 'placeholder'>(
     <>
       {props.selectProps.iconLeft &&
         cloneElement(props.selectProps.iconLeft, {
-          size: props.selectProps.isCondensed ? 'medium' : 'big',
+          size: props.selectProps.isCondensed ? '30' : '40',
         })}
       <span
         // react-select uses absolute positioning for the SingleValue/Placeholder

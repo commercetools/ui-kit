@@ -1,4 +1,10 @@
-import { useMemo, cloneElement, useState } from 'react';
+import {
+  useMemo,
+  cloneElement,
+  useState,
+  type PropsWithChildren,
+  isValidElement,
+} from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings from './data-table-settings';
 import type {
@@ -10,7 +16,7 @@ import type {
 import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
 
 const DataTableManager = <Row extends TRow = TRow>(
-  props: TDataTableManagerProps<Row>
+  props: PropsWithChildren<TDataTableManagerProps<Row>>
 ) => {
   const dataTableManagerContext = useDataTableManagerContext();
 
@@ -84,7 +90,8 @@ const DataTableManager = <Row extends TRow = TRow>(
         selectedColumns={selectedColumns ?? []}
         customColumnManager={customColumnManager ?? undefined}
       />
-      {props.children
+      {(props.children as TDataTableManagerProps<Row>['children']) &&
+      isValidElement(props.children)
         ? cloneElement(props.children, {
             columns,
             customColumns,

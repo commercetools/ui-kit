@@ -37,7 +37,7 @@ const InlineSvg = (props: InlineSvgProps) => {
     return (
       <ClassNames>
         {({ css }) =>
-          cloneElement(svgElement, {
+          cloneElement(svgElement as ReactElement<{ className: string }>, {
             className: css(getIconStyles(props)),
           })
         }

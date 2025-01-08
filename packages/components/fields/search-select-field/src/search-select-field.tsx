@@ -15,7 +15,9 @@ import {
 import Constraints from '@commercetools-uikit/constraints';
 import { useFieldId } from '@commercetools-uikit/hooks';
 import Spacings from '@commercetools-uikit/spacings';
-import FieldLabel from '@commercetools-uikit/field-label';
+import FieldLabel, {
+  type TFieldLabelHintIconProps,
+} from '@commercetools-uikit/field-label';
 import SearchSelectInput from '@commercetools-uikit/search-select-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import FieldWarnings from '@commercetools-uikit/field-warnings';
@@ -315,7 +317,7 @@ export type TSearchSelectFieldProps = {
    * <br />
    * Will only get rendered when `hint` is passed as well.
    */
-  hintIcon?: ReactElement;
+  hintIcon?: ReactElement<TFieldLabelHintIconProps>;
   /**
    * Badge to be displayed beside the label.
    * <br />

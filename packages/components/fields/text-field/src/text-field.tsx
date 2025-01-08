@@ -8,7 +8,9 @@ import {
 } from 'react';
 import Constraints from '@commercetools-uikit/constraints';
 import Stack from '@commercetools-uikit/spacings-stack';
-import FieldLabel from '@commercetools-uikit/field-label';
+import FieldLabel, {
+  type TFieldLabelHintIconProps,
+} from '@commercetools-uikit/field-label';
 import TextInput from '@commercetools-uikit/text-input';
 import {
   filterDataAttributes,
@@ -160,7 +162,7 @@ export type TTextFieldProps = {
   /**
    * Icon to be displayed beside the hint text. Will only get rendered when hint is passed as well.
    */
-  hintIcon?: ReactElement;
+  hintIcon?: ReactElement<TFieldLabelHintIconProps>;
   /**
    * Badge to be displayed beside the label. Might be used to display additional information about the content of the field (E.g verified email)
    */

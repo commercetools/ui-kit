@@ -1,4 +1,4 @@
-import { useCallback, type ReactNode } from 'react';
+import { useCallback, type ReactNode, type ChangeEvent } from 'react';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/react';
 import { useToggleState, useFieldId } from '@commercetools-uikit/hooks';
@@ -25,6 +25,10 @@ import {
 } from '@commercetools-uikit/utils';
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import messages from './messages';
+
+interface HTMLLocalizedCurrencyInputElement extends HTMLInputElement {
+  currency: string;
+}
 
 type TCustomEvent = {
   target: {
@@ -223,7 +227,7 @@ export const sortCurrencies = (
 const LocalizedInput = (props: TLocalizedInputProps) => {
   const { onChange } = props;
   const handleChange = useCallback(
-    (event) => {
+    (event: ChangeEvent<HTMLLocalizedCurrencyInputElement>) => {
       // We manipulate the event to add the currency to the target.
       // That way the users  can read
       // event.target.currency and event.target.value to determine the next value.
@@ -252,7 +256,7 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
         <MoneyInput
           name={props.name}
           value={props.value}
-          onChange={handleChange}
+          onChange={handleChange as (event: TCustomEvent) => void}
           onBlur={props.onBlur}
           isCondensed={props.isCondensed}
           isDisabled={props.isDisabled}

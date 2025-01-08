@@ -82,7 +82,7 @@ const ProgressBarLabel = (
     children: props.label.hasOwnProperty('defaultMessage') ? (
       <FormattedMessage {...(props.label as MessageDescriptor)} />
     ) : (
-      props.label
+      (props.label as ReactNode)
     ),
   } as const;
 

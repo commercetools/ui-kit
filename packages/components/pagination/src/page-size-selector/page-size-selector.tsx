@@ -6,6 +6,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import { warning } from '@commercetools-uikit/utils';
 import Label from '@commercetools-uikit/label';
 import messages from './messages';
+import { TCustomEvent } from '../../../fields/select-field';
 
 export type TPageRangeSize = 's' | 'm' | 'l';
 
@@ -68,8 +69,8 @@ const PageSizeSelector = ({
 
   const { onPerPageChange } = props;
   const handleSelectPerPage = useCallback(
-    (event) => {
-      onPerPageChange(Number(event.target.value));
+    (event: TCustomEvent) => {
+      onPerPageChange(Number((event.target as HTMLInputElement).value));
     },
     [onPerPageChange]
   );

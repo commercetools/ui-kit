@@ -1,7 +1,7 @@
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import type { ReactNode, MouseEvent, KeyboardEvent } from 'react';
+import type { ReactNode, MouseEventHandler } from 'react';
 
 export type TRichTextBodyButtonProps = {
   isDisabled?: boolean;
@@ -9,9 +9,7 @@ export type TRichTextBodyButtonProps = {
   isActive?: boolean;
   isReadOnly?: boolean;
   children: ReactNode;
-  onClick?: (
-    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
-  ) => void;
+  onClick?: MouseEventHandler;
 };
 
 const propsToOmit = ['isActive', 'label', 'isDisabled', 'isReadOnly'];
@@ -44,9 +42,8 @@ const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
           align-items: center;
           border-radius: ${designTokens.spacing10};
           padding: ${designTokens.spacing20};
-          margin: 0 ${designTokens.spacing05} ${designTokens.spacing20}
-            ${designTokens.spacing05};
-
+          /* prettier-ignore */
+          margin: 0 ${designTokens.spacing05} ${designTokens.spacing20} ${designTokens.spacing05};
           &:focus {
             outline: none;
           }

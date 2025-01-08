@@ -16,7 +16,9 @@ import {
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Stack, { type TStackProps } from '@commercetools-uikit/spacings-stack';
-import FieldLabel from '@commercetools-uikit/field-label';
+import FieldLabel, {
+  type TFieldLabelHintIconProps,
+} from '@commercetools-uikit/field-label';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import RadioInput from '@commercetools-uikit/radio-input';
 import FieldWarnings from '@commercetools-uikit/field-warnings';
@@ -159,7 +161,7 @@ export type TRadioFieldProps = {
    * <br />
    * Will only get rendered when `hint` is passed as well.
    */
-  hintIcon?: ReactElement;
+  hintIcon?: ReactElement<TFieldLabelHintIconProps>;
   /**
    * Badge to be displayed beside the label.
    * <br />

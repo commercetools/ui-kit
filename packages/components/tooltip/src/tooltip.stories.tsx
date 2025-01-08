@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { forwardRef, type FC } from 'react';
+import { forwardRef, type FC, type ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Tooltip, { TTooltipProps } from './tooltip';
 import PrimaryButton from '@commercetools-uikit/primary-button';
@@ -124,7 +124,8 @@ CustomTooltipDesign.args = {
   title: 'I use a custom BodyComponent',
 };
 
-const Portal: FC = (props) => createPortal(props.children, document.body);
+const Portal: FC<{ children?: ReactNode }> = (props) =>
+  createPortal(props.children, document.body);
 
 /**
  * When you are dealing with virtualized components, it can be useful to render

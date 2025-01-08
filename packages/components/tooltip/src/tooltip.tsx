@@ -1,12 +1,12 @@
 // inspired from https://github.com/mui-org/material-ui/blob/9ecc8db8abbfb829111d3b5c0678267827984024/packages/material-ui/src/Tooltip/Tooltip.js
 import { Modifiers } from 'popper.js';
 import {
-  ComponentType,
-  FocusEvent,
-  ChangeEvent,
-  LegacyRef,
-  CSSProperties,
-  ReactElement,
+  type ComponentType,
+  type FocusEvent,
+  type ChangeEvent,
+  type Ref,
+  type CSSProperties,
+  type ReactElement,
   useRef,
   useEffect,
   useCallback,
@@ -43,8 +43,15 @@ export type TComponents = {
   WrapperComponent?: ComponentType;
 };
 
+export type TTooltipChildProps = {
+  onFocus?: Function | null;
+  onMouseOver?: Function | null;
+  onBlur?: Function | null;
+  onMouseLeave?: Function | null;
+} & Record<string, unknown>;
+
 export type TTooltipProps = {
-  children: ReactElement;
+  children: ReactElement<TTooltipChildProps>;
 
   /**
    * Delay (in milliseconds) between the start of the user interaction, and showing the tooltip.
@@ -142,8 +149,8 @@ const Tooltip = ({
   placement = 'top',
   ...props
 }: TTooltipProps) => {
-  const enterTimer = useRef<ReturnType<typeof setTimeout>>();
-  const leaveTimer = useRef<ReturnType<typeof setTimeout>>();
+  const enterTimer = useRef<ReturnType<typeof setTimeout>>(null);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout>>(null);
 
   if (props.components?.BodyComponent) {
     warning(
@@ -234,9 +241,9 @@ const Tooltip = ({
   const { onBlur, onMouseLeave } = props.children.props;
 
   const handleLeave = useCallback(
-    (event) => {
-      clearTimeout(enterTimer.current);
-      clearTimeout(leaveTimer.current);
+    (event: ChangeEvent | FocusEvent) => {
+      clearTimeout(enterTimer.current!);
+      clearTimeout(leaveTimer.current!);
 
       if (event.type === 'mouseleave' && onMouseLeave) {
         onMouseLeave(event);
@@ -336,7 +343,7 @@ const Tooltip = ({
           <div
             // ref accepts `LegacyRef`, which is a union of `RefObject` and `string`
             // propper.ref returns `RefObject`
-            ref={popper.ref as LegacyRef<HTMLDivElement>}
+            ref={popper.ref as Ref<HTMLDivElement>}
             css={css({
               ...popper.styles,
               ...getBodyStyles({

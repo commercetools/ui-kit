@@ -17,7 +17,9 @@ import {
 import Constraints from '@commercetools-uikit/constraints';
 import { type MessageDescriptor } from 'react-intl';
 import Spacings from '@commercetools-uikit/spacings';
-import FieldLabel from '@commercetools-uikit/field-label';
+import FieldLabel, {
+  type TFieldLabelHintIconProps,
+} from '@commercetools-uikit/field-label';
 import LocalizedTextInput from '@commercetools-uikit/localized-text-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import FieldWarnings from '@commercetools-uikit/field-warnings';
@@ -192,7 +194,7 @@ export type TLocalizedTextFieldProps = {
    * <br />
    * Will only get rendered when `hint` is passed as well.
    */
-  hintIcon?: ReactElement;
+  hintIcon?: ReactElement<TFieldLabelHintIconProps>;
   /**
    * Badge to be displayed beside the label.
    * <br />

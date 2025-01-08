@@ -1,1 +1,1 @@
-export type { TFieldLabelProps } from './field-label';
+export type { TFieldLabelProps, TFieldLabelHintIconProps } from './field-label';

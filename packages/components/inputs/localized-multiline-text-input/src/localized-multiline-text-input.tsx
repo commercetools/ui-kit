@@ -224,12 +224,10 @@ const LocalizedMultilineTextInput = ({
     {} as TExpandedTranslationsReducerState
   );
 
-  const [expandedTranslationsState, expandedTranslationsDispatch] = useReducer<
-    (
-      prevState: TExpandedTranslationsReducerState,
-      action: TExpandedTranslationsReducerAction
-    ) => TExpandedTranslationsReducerState
-  >(expandedTranslationsReducer, initialExpandedTranslationsState);
+  const [expandedTranslationsState, expandedTranslationsDispatch] = useReducer(
+    expandedTranslationsReducer,
+    initialExpandedTranslationsState
+  );
 
   const defaultExpansionState =
     props.hideLanguageExpansionControls ||
@@ -242,7 +240,7 @@ const LocalizedMultilineTextInput = ({
   );
 
   const toggleLanguage = useCallback(
-    (language) => {
+    (language: string) => {
       expandedTranslationsDispatch({ type: 'toggle', payload: language });
     },
     [expandedTranslationsDispatch]

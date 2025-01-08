@@ -12,6 +12,14 @@ import {
 import Inline from '@commercetools-uikit/spacings-inline';
 import Text from '@commercetools-uikit/text';
 
+/**
+ * Props for child icons
+ */
+type TButtonIconProps = {
+  color?: string;
+  size?: string;
+} & Record<string, unknown>;
+
 export type TLinkButtonProps = {
   /**
    * Should describe what the button is for.
@@ -26,7 +34,7 @@ export type TLinkButtonProps = {
   /**
    * The icon of the button.
    */
-  iconLeft?: ReactElement;
+  iconLeft?: ReactElement<TButtonIconProps>;
 
   /**
    * Determines if the button is disabled.

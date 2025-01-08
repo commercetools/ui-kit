@@ -29,6 +29,13 @@ type TLegacySizes = 'small' | 'medium' | 'big';
 type TSizes = '10' | '20';
 
 /**
+ * Props for child icons
+ */
+type TButtonIconProps = {
+  color?: string;
+} & Record<string, unknown>;
+
+/**
  * Mapping of legacy sizes to new sizes.
  */
 const sizeMapping: Record<TLegacySizes, TSizes> = {
@@ -84,11 +91,11 @@ export type TPrimaryButtonProps<
   /**
    * The left icon displayed within the button.
    */
-  iconLeft?: ReactElement;
+  iconLeft?: ReactElement<TButtonIconProps>;
   /**
    * The right icon displayed within the button.
    */
-  iconRight?: ReactElement;
+  iconRight?: ReactElement<TButtonIconProps>;
   /**
    * If this is active, it means the button will persist in an "active" state when toggled (see `isToggled`), and back to normal state when untoggled
    */

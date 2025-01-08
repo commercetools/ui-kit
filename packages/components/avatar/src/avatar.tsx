@@ -152,11 +152,18 @@ const Avatar = ({
             width: calc(${avatarSize} - 45%);
           `}
         >
-          {cloneElement(props?.icon, {
-            size: 'scale',
-            color: foregroundColor,
-            backgroundcolor: foregroundColor,
-          })}
+          {cloneElement(
+            props?.icon as ReactElement<{
+              size?: string;
+              color?: string;
+              backgroundcolor?: string;
+            }>,
+            {
+              size: 'scale',
+              color: foregroundColor,
+              backgroundcolor: foregroundColor,
+            }
+          )}
         </div>
       ) : (
         <>

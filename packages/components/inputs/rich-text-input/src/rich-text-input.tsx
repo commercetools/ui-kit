@@ -22,7 +22,7 @@ type TBaseEvent = {
   };
 };
 
-type TChangeEvent = {
+export type TChangeEvent = {
   target: TBaseEvent['target'] & {
     value: string;
   };

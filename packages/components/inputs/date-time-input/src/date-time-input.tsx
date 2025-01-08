@@ -2,6 +2,7 @@ import {
   createRef,
   Component,
   type FocusEventHandler,
+  type MouseEventHandler,
   type KeyboardEvent,
   type RefObject,
   type FocusEvent,
@@ -54,14 +55,11 @@ const activationTypes = [
 type TActivationTypes = (typeof activationTypes)[number];
 
 type TPreventDownshiftDefaultEvent = {
-  relatedTarget?: unknown;
+  relatedTarget: (EventTarget & Element) | null;
   nativeEvent?: {
     preventDownshiftDefault?: boolean;
   };
 } & KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
-
-type TCreateBlurHandlerEvent = TPreventDownshiftDefaultEvent &
-  FocusEvent<HTMLButtonElement>;
 
 const preventDownshiftDefault = (event: TPreventDownshiftDefaultEvent) => {
   event.nativeEvent.preventDownshiftDefault = true;
@@ -71,11 +69,13 @@ const preventDownshiftDefault = (event: TPreventDownshiftDefaultEvent) => {
 // blurring the regular input/toggle button)
 const createBlurHandler =
   (timeInputRef: RefObject<HTMLInputElement>, cb: () => void = () => {}) =>
-  (event: TCreateBlurHandlerEvent) => {
+  (event: FocusEvent<HTMLButtonElement>) => {
     event.persist();
 
     if (event.relatedTarget === timeInputRef.current) {
-      preventDownshiftDefault(event);
+      preventDownshiftDefault(
+        event as unknown as TPreventDownshiftDefaultEvent
+      );
     }
 
     cb();
@@ -427,15 +427,21 @@ class DateTimeInput extends Component<
                       // arrow keys to move the cursor when hovering
                       if (isOpen) setHighlightedIndex(-1);
                     },
-                    onKeyDown: (event: TPreventDownshiftDefaultEvent) => {
+                    onKeyDown: (
+                      event: KeyboardEvent<HTMLInputElement | HTMLButtonElement>
+                    ) => {
                       if (this.props.isReadOnly) {
-                        preventDownshiftDefault(event);
+                        preventDownshiftDefault(
+                          event as TPreventDownshiftDefaultEvent
+                        );
                         return;
                       }
                       // parse input when user presses enter on regular input,
                       // close menu and notify parent
                       if (event.key === 'Enter' && highlightedIndex === null) {
-                        preventDownshiftDefault(event);
+                        preventDownshiftDefault(
+                          event as TPreventDownshiftDefaultEvent
+                        );
 
                         const parsedDate = parseInputText(
                           inputValue as string,
@@ -459,7 +465,9 @@ class DateTimeInput extends Component<
                         ) {
                           // if it's the end of the month
                           // then bypass normal arrow navigation
-                          preventDownshiftDefault(event);
+                          preventDownshiftDefault(
+                            event as TPreventDownshiftDefaultEvent
+                          );
                           // then jump to start of next month
                           this.jumpMonths(1, 0);
                         }
@@ -473,7 +481,9 @@ class DateTimeInput extends Component<
                         if (Number(highlightedIndex) <= 0) {
                           // if it's the start of the month
                           // then bypass normal arrow navigation
-                          preventDownshiftDefault(event);
+                          preventDownshiftDefault(
+                            event as TPreventDownshiftDefaultEvent
+                          );
                           const numberOfDaysOfPrevMonth = getDaysInMonth(
                             previousDay,
                             this.props.timeZone
@@ -483,19 +493,26 @@ class DateTimeInput extends Component<
                         }
                       }
                     },
-                    onClick: this.props.isReadOnly ? undefined : openMenu,
+                    onClick: this.props.isReadOnly
+                      ? undefined
+                      : (openMenu as unknown as MouseEventHandler<HTMLInputElement>),
                     // validate the input on blur, and emit the value if it's valid
-                    onBlur: createBlurHandler(this.timeInputRef, () => {
-                      const inputValue = this.inputRef.current?.value || '';
-                      const parsedDate = parseInputText(
-                        inputValue,
-                        this.props.intl.locale,
-                        this.props.timeZone
-                      );
+                    onBlur: (event: FocusEvent<HTMLInputElement>) => {
+                      createBlurHandler(
+                        this.timeInputRef as RefObject<HTMLInputElement>,
+                        () => {
+                          const inputValue = this.inputRef.current?.value || '';
+                          const parsedDate = parseInputText(
+                            inputValue,
+                            this.props.intl.locale,
+                            this.props.timeZone
+                          );
 
-                      if (inputValue.length > 0 && !parsedDate) return;
-                      this.emit(parsedDate);
-                    }),
+                          if (inputValue.length > 0 && !parsedDate) return;
+                          this.emit(parsedDate);
+                        }
+                      )(event as FocusEvent<HTMLButtonElement>);
+                    },
                     onChange: (event: TCustomEvent) => {
                       // keep timeInput and regular input in sync when user
                       // types into regular input
@@ -534,7 +551,10 @@ class DateTimeInput extends Component<
                   isDisabled={this.props.isDisabled}
                   isReadOnly={this.props.isReadOnly}
                   toggleButtonProps={getToggleButtonProps({
-                    onBlur: createBlurHandler(this.timeInputRef),
+                    onBlur: (event) =>
+                      createBlurHandler(
+                        this.timeInputRef as RefObject<HTMLInputElement>
+                      )(event as FocusEvent<HTMLButtonElement>),
                   })}
                   hasError={this.props.hasError}
                   hasWarning={this.props.hasWarning}
