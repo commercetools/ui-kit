@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import MoneyInput from './money-input';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
@@ -482,7 +482,7 @@ describe('MoneyInput', () => {
         onFocus={onFocus}
       />
     );
-    await act(async () => screen.getByLabelText('EUR').focus());
+    await fireEvent.asyncFocus(screen.getByLabelText('EUR'));
     expect(screen.getByLabelText('EUR')).toHaveFocus();
     expect(onFocus).toHaveBeenCalledWith({
       target: { id: 'some-id.currencyCode', name: 'some-name.currencyCode' },
@@ -497,9 +497,9 @@ describe('MoneyInput', () => {
         onBlur={onBlur}
       />
     );
-    await act(async () => screen.getByLabelText('Amount').focus());
+    await fireEvent.asyncFocus(screen.getByLabelText('Amount'));
     expect(screen.getByLabelText('Amount')).toHaveFocus();
-    await act(async () => screen.getByLabelText('Amount').blur());
+    await fireEvent.asyncBlur(screen.getByLabelText('Amount'));
     expect(screen.getByLabelText('Amount')).not.toHaveFocus();
 
     // onBlur should be called twice as we want to mark both,
@@ -521,9 +521,9 @@ describe('MoneyInput', () => {
         onBlur={onBlur}
       />
     );
-    await act(async () => screen.getByLabelText('EUR').focus());
+    await fireEvent.asyncFocus(screen.getByLabelText('EUR'));
     expect(screen.getByLabelText('EUR')).toHaveFocus();
-    await act(async () => screen.getByLabelText('EUR').blur());
+    await fireEvent.asyncBlur(screen.getByLabelText('EUR'));
     expect(screen.getByLabelText('EUR')).not.toHaveFocus();
 
     // onBlur should be called twice as we want to mark both,
@@ -545,10 +545,10 @@ describe('MoneyInput', () => {
         onBlur={onBlur}
       />
     );
-    await act(async () => screen.getByLabelText('EUR').focus());
+    await fireEvent.asyncFocus(screen.getByLabelText('EUR'));
     expect(screen.getByLabelText('EUR')).toHaveFocus();
 
-    await act(async () => screen.getByLabelText('Amount').focus());
+    await fireEvent.asyncFocus(screen.getByLabelText('Amount'));
     expect(screen.getByLabelText('EUR')).not.toHaveFocus();
     expect(screen.getByLabelText('Amount')).toHaveFocus();
 
@@ -564,10 +564,10 @@ describe('MoneyInput', () => {
       />
     );
 
-    await act(async () => screen.getByLabelText('Amount').focus());
+    await fireEvent.asyncFocus(screen.getByLabelText('Amount'));
     expect(screen.getByLabelText('Amount')).toHaveFocus();
 
-    await act(async () => screen.getByLabelText('EUR').focus());
+    await fireEvent.asyncFocus(screen.getByLabelText('EUR'));
     expect(screen.getByLabelText('EUR')).toHaveFocus();
     expect(screen.getByLabelText('Amount')).not.toHaveFocus();
 
@@ -706,8 +706,7 @@ describe('MoneyInput', () => {
         { locale: 'en' }
       );
 
-      //
-      await act(async () => screen.getByLabelText('Amount').focus());
+      await fireEvent.asyncFocus(screen.getByLabelText('Amount'));
       fireEvent.blur(screen.getByLabelText('Amount'));
 
       // We can't use .toHaveAttribute() as the attribute
@@ -742,7 +741,7 @@ describe('MoneyInput', () => {
         />
       );
       const input = screen.getByLabelText('EUR');
-      await act(async () => input.focus());
+      await fireEvent.asyncFocus(input);
       expect(input).toHaveFocus();
       expect(onFocus).toHaveBeenCalledWith({
         target: { id: 'some-id.amount', name: 'some-name.amount' },

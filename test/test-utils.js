@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 
-import { render } from '@testing-library/react';
+import { act } from 'react';
+import { fireEvent as originalFireEvent, render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
@@ -44,7 +45,7 @@ const customRender = (
 // re-export everything
 export {
   act,
-  fireEvent,
+  // fireEvent,
   screen,
   waitFor,
   waitForElementToBeRemoved,
@@ -53,3 +54,13 @@ export {
 
 // override render method
 export { customRender as render };
+
+// Custom events for async focus and blur.
+// This helps abstractinv the act() call from the tests.
+originalFireEvent.asyncFocus = (element) => {
+  return act(async () => element.focus());
+};
+originalFireEvent.asyncBlur = (element) => {
+  return act(async () => element.blur());
+};
+export { originalFireEvent as fireEvent };
