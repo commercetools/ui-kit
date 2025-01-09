@@ -1,4 +1,4 @@
-import { useState, act } from 'react';
+import { useState } from 'react';
 import SelectableSearchInput, {
   type TSelectableSearchInputProps,
   type TCustomEvent,
@@ -191,7 +191,7 @@ describe('SelectableSearchInput', () => {
       />
     );
 
-    await act(async () => screen.getByLabelText('Bar').focus());
+    fireEvent.asyncFocus(screen.getByLabelText('Bar'));
     expect(onFocus).toHaveBeenCalledWith({
       target: {
         id: 'test-id.dropdown',

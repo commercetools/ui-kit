@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
 import AsyncCreatableSelectField from './async-creatable-select-field';
@@ -94,7 +94,7 @@ it('should call onFocus when the input is focused', async () => {
   const asyncCreatableSelectField = await findByLabelText(
     'AsyncCreatableSelectField'
   );
-  await act(async () => asyncCreatableSelectField.focus());
+  fireEvent.asyncFocus(asyncCreatableSelectField);
   expect(asyncCreatableSelectField).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -105,9 +105,9 @@ it('should call onBlur when input loses focus', async () => {
   const asyncCreatableSelectField = await findByLabelText(
     'AsyncCreatableSelectField'
   );
-  await act(async () => asyncCreatableSelectField.focus());
+  fireEvent.asyncFocus(asyncCreatableSelectField);
   expect(asyncCreatableSelectField).toHaveFocus();
-  await act(async () => asyncCreatableSelectField.blur());
+  fireEvent.asyncBlur(asyncCreatableSelectField);
   expect(asyncCreatableSelectField).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

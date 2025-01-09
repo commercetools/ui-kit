@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
 import AsyncSelectField from './async-select-field';
@@ -87,7 +87,7 @@ it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { findByLabelText } = renderAsyncSelectField({ onFocus });
   const asyncSelectField = await findByLabelText('AsyncSelectField');
-  await act(async () => asyncSelectField.focus());
+  fireEvent.asyncFocus(asyncSelectField);
   expect(asyncSelectField).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -96,9 +96,9 @@ it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { findByLabelText } = renderAsyncSelectField({ onBlur });
   const asyncSelectField = await findByLabelText('AsyncSelectField');
-  await act(async () => asyncSelectField.focus());
+  fireEvent.asyncFocus(asyncSelectField);
   expect(asyncSelectField).toHaveFocus();
-  await act(async () => asyncSelectField.blur());
+  fireEvent.asyncBlur(asyncSelectField.blur());
   expect(asyncSelectField).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   screen,
@@ -67,7 +67,7 @@ it('should have an HTML name', () => {
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { container } = renderDateInput({ onFocus });
-  await act(async () => container.querySelector('input').focus());
+  fireEvent.asyncFocus(container.querySelector('input'));
   expect(container.querySelector('input')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -75,9 +75,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { container } = renderDateInput({ onBlur });
-  await act(async () => container.querySelector('input').focus());
+  fireEvent.asyncFocus(container.querySelector('input'));
   expect(container.querySelector('input')).toHaveFocus();
-  await act(async () => container.querySelector('input').blur());
+  fireEvent.asyncBlur(container.querySelector('input'));
   expect(container.querySelector('input')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

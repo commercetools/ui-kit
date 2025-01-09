@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import DateField from './date-field';
@@ -69,7 +69,7 @@ it('should have an HTML name', () => {
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderDateField({ onFocus });
-  await act(async () => getByLabelText('DateField').focus());
+  fireEvent.asyncFocus(getByLabelText('DateField'));
   expect(getByLabelText('DateField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -77,9 +77,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderDateField({ onBlur });
-  await act(async () => getByLabelText('DateField').focus());
+  fireEvent.asyncFocus(getByLabelText('DateField'));
   expect(getByLabelText('DateField')).toHaveFocus();
-  await act(async () => getByLabelText('DateField').blur());
+  fireEvent.asyncBlur(getByLabelText('DateField'));
   expect(getByLabelText('DateField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import CreatableSelectField from './creatable-select-field';
@@ -77,7 +77,7 @@ it('should have an HTML name', () => {
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderCreatableSelectField({ onFocus });
-  await act(async () => getByLabelText('CreatableSelectField').focus());
+  fireEvent.asyncFocus(getByLabelText('CreatableSelectField'));
   expect(getByLabelText('CreatableSelectField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -85,9 +85,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderCreatableSelectField({ onBlur });
-  await act(async () => getByLabelText('CreatableSelectField').focus());
+  fireEvent.asyncFocus(getByLabelText('CreatableSelectField'));
   expect(getByLabelText('CreatableSelectField')).toHaveFocus();
-  await act(async () => getByLabelText('CreatableSelectField').blur());
+  fireEvent.asyncBlur(getByLabelText('CreatableSelectField'));
   expect(getByLabelText('CreatableSelectField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

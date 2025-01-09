@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import MultilineTextField from './multiline-text-field';
@@ -68,7 +68,7 @@ it('should have an HTML name', () => {
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderMultilineTextField({ onFocus });
-  await act(async () => getByLabelText('MultilineTextField').focus());
+  fireEvent.asyncFocus(getByLabelText('MultilineTextField'));
   expect(getByLabelText('MultilineTextField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -76,9 +76,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderMultilineTextField({ onBlur });
-  await act(async () => getByLabelText('MultilineTextField').focus());
+  fireEvent.asyncFocus(getByLabelText('MultilineTextField'));
   expect(getByLabelText('MultilineTextField')).toHaveFocus();
-  await act(async () => getByLabelText('MultilineTextField').blur());
+  fireEvent.asyncBlur(getByLabelText('MultilineTextField'));
   expect(getByLabelText('MultilineTextField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

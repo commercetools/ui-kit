@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import MoneyField from './money-field';
@@ -91,7 +91,7 @@ it('should pass autocomplete', () => {
 it('should call onFocus when amount input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderMoneyField({ onFocus });
-  await act(async () => getByLabelText('Amount').focus());
+  fireEvent.asyncFocus(getByLabelText('Amount'));
   expect(getByLabelText('Amount')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -99,7 +99,7 @@ it('should call onFocus when amount input is focused', async () => {
 it('should call onFocus when currency select is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderMoneyField({ onFocus });
-  await act(async () => getByLabelText('EUR').focus());
+  fireEvent.asyncFocus(getByLabelText('EUR'));
   expect(getByLabelText('EUR')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -107,9 +107,9 @@ it('should call onFocus when currency select is focused', async () => {
 it('should call onBlur when amount input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderMoneyField({ onBlur });
-  await act(async () => getByLabelText('Amount').focus());
+  fireEvent.asyncFocus(getByLabelText('Amount'));
   expect(getByLabelText('Amount')).toHaveFocus();
-  await act(async () => getByLabelText('Amount').blur());
+  fireEvent.asyncBlur(getByLabelText('Amount'));
   expect(getByLabelText('Amount')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -117,9 +117,9 @@ it('should call onBlur when amount input loses focus', async () => {
 it('should call onBlur when currency select loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderMoneyField({ onBlur });
-  await act(async () => getByLabelText('EUR').focus());
+  fireEvent.asyncFocus(getByLabelText('EUR'));
   expect(getByLabelText('EUR')).toHaveFocus();
-  await act(async () => getByLabelText('EUR').blur());
+  fireEvent.asyncBlur(getByLabelText('EUR'));
   expect(getByLabelText('EUR')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

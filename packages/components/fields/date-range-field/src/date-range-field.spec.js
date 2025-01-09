@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import DateRangeField from './date-range-field';
@@ -69,7 +69,7 @@ it('should have an HTML name', () => {
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderDateRangeField({ onFocus });
-  await act(async () => getByLabelText('DateRangeField').focus());
+  fireEvent.asyncFocus(getByLabelText('DateRangeField'));
   expect(getByLabelText('DateRangeField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -77,9 +77,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderDateRangeField({ onBlur });
-  await act(async () => getByLabelText('DateRangeField').focus());
+  fireEvent.asyncFocus(getByLabelText('DateRangeField'));
   expect(getByLabelText('DateRangeField')).toHaveFocus();
-  await act(async () => getByLabelText('DateRangeField').blur());
+  fireEvent.asyncBlur(getByLabelText('DateRangeField'));
   expect(getByLabelText('DateRangeField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

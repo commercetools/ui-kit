@@ -1,4 +1,3 @@
-import { act } from 'react';
 import { screen, render, fireEvent } from '../../../../test/test-utils';
 import Pagination from './pagination';
 
@@ -121,7 +120,7 @@ describe('per page selector interaction', () => {
 
     const perPageSelector = await screen.findByLabelText(/Items per page/);
 
-    await act(async () => perPageSelector.focus());
+    fireEvent.asyncFocus(perPageSelector);
     fireEvent.keyDown(perPageSelector, { key: 'ArrowDown' });
     fireEvent.click(screen.getByText('50'));
     expect(onPerPageChange).toHaveBeenCalledWith(50);

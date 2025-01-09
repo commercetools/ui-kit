@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import LocalizedMultilineTextInput from './localized-multiline-text-input';
@@ -93,7 +93,7 @@ it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderLocalizedMultilineTextInput({ onFocus });
   const input = getByLabelText('EN');
-  await act(async () => input.focus());
+  fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -102,9 +102,9 @@ it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderLocalizedMultilineTextInput({ onBlur });
   const input = getByLabelText('EN');
-  await act(async () => input.focus());
+  fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
-  await act(async () => input.blur());
+  fireEvent.asyncBlur(input);
   expect(input).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

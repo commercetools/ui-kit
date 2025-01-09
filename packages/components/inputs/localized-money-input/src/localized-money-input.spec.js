@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import LocalizedMoneyInput from './localized-money-input';
@@ -102,9 +102,9 @@ it('should call onBlur when input loses focus', async () => {
     onBlur,
   });
   const input = getByLabelText('CAD');
-  await act(async () => input.focus());
+  fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
-  await act(async () => input.blur());
+  fireEvent.asyncBlur(input);
   expect(input).not.toHaveFocus();
 });
 

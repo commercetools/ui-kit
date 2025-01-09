@@ -1,6 +1,6 @@
+import { act } from 'react';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
-
-import { act, screen, render, fireEvent } from '../../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import DropdownMenu from './dropdown-menu';
 
 describe('DropdownMenu', () => {

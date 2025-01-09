@@ -1,4 +1,4 @@
-import { Component, act } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   render,
@@ -84,7 +84,7 @@ it('should have an HTML name', () => {
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   renderSearchSelectField({ onFocus });
-  await act(async () => screen.getByLabelText('SearchSelectField').focus());
+  fireEvent.asyncFocus(screen.getByLabelText('SearchSelectField'));
   expect(screen.getByLabelText('SearchSelectField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -92,9 +92,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   renderSearchSelectField({ onBlur });
-  await act(async () => screen.getByLabelText('SearchSelectField').focus());
+  fireEvent.asyncFocus(screen.getByLabelText('SearchSelectField'));
   expect(screen.getByLabelText('SearchSelectField')).toHaveFocus();
-  await act(async () => screen.getByLabelText('SearchSelectField').blur());
+  fireEvent.asyncBlur(screen.getByLabelText('SearchSelectField'));
   expect(screen.getByLabelText('SearchSelectField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
