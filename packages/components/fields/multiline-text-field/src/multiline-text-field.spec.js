@@ -68,7 +68,7 @@ it('should have an HTML name', () => {
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderMultilineTextField({ onFocus });
-  fireEvent.asyncFocus(getByLabelText('MultilineTextField'));
+  await fireEvent.asyncFocus(getByLabelText('MultilineTextField'));
   expect(getByLabelText('MultilineTextField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -76,9 +76,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderMultilineTextField({ onBlur });
-  fireEvent.asyncFocus(getByLabelText('MultilineTextField'));
+  await fireEvent.asyncFocus(getByLabelText('MultilineTextField'));
   expect(getByLabelText('MultilineTextField')).toHaveFocus();
-  fireEvent.asyncBlur(getByLabelText('MultilineTextField'));
+  await fireEvent.asyncBlur(getByLabelText('MultilineTextField'));
   expect(getByLabelText('MultilineTextField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

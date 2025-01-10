@@ -82,7 +82,7 @@ it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   renderInput({ onFocus });
   const input = screen.getByLabelText('Fruit');
-  fireEvent.asyncFocus(input);
+  await fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -91,9 +91,9 @@ it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   renderInput({ onBlur });
   const input = screen.getByLabelText('Fruit');
-  fireEvent.asyncFocus(input);
+  await fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
-  fireEvent.asyncBlur(input);
+  await fireEvent.asyncBlur(input);
   expect(input).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

@@ -87,7 +87,7 @@ it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { findByLabelText } = renderAsyncSelectField({ onFocus });
   const asyncSelectField = await findByLabelText('AsyncSelectField');
-  fireEvent.asyncFocus(asyncSelectField);
+  await fireEvent.asyncFocus(asyncSelectField);
   expect(asyncSelectField).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -96,9 +96,9 @@ it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { findByLabelText } = renderAsyncSelectField({ onBlur });
   const asyncSelectField = await findByLabelText('AsyncSelectField');
-  fireEvent.asyncFocus(asyncSelectField);
+  await fireEvent.asyncFocus(asyncSelectField);
   expect(asyncSelectField).toHaveFocus();
-  fireEvent.asyncBlur(asyncSelectField.blur());
+  await fireEvent.asyncBlur(asyncSelectField);
   expect(asyncSelectField).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

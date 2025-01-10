@@ -68,7 +68,7 @@ it('should have an HTML name', () => {
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { container } = renderDateTimeInput({ onFocus });
-  fireEvent.asyncFocus(container.querySelector('input'));
+  await fireEvent.asyncFocus(container.querySelector('input'));
   expect(container.querySelector('input')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -76,9 +76,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { container } = renderDateTimeInput({ onBlur });
-  fireEvent.asyncFocus(container.querySelector('input'));
+  await fireEvent.asyncFocus(container.querySelector('input'));
   expect(container.querySelector('input')).toHaveFocus();
-  fireEvent.asyncBlur(container.querySelector('input'));
+  await fireEvent.asyncBlur(container.querySelector('input'));
   expect(container.querySelector('input')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -176,7 +176,7 @@ describe('date picker keyboard navigation', () => {
 
     expect(screen.getByText('September')).toBeInTheDocument();
 
-    fireEvent.asyncFocus(dateInput);
+    await fireEvent.asyncFocus(dateInput);
 
     // ArrowUp
     fireEvent.keyDown(dateInput, { keyCode: 38 });

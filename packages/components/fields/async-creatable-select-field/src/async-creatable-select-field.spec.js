@@ -94,7 +94,7 @@ it('should call onFocus when the input is focused', async () => {
   const asyncCreatableSelectField = await findByLabelText(
     'AsyncCreatableSelectField'
   );
-  fireEvent.asyncFocus(asyncCreatableSelectField);
+  await fireEvent.asyncFocus(asyncCreatableSelectField);
   expect(asyncCreatableSelectField).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -105,9 +105,9 @@ it('should call onBlur when input loses focus', async () => {
   const asyncCreatableSelectField = await findByLabelText(
     'AsyncCreatableSelectField'
   );
-  fireEvent.asyncFocus(asyncCreatableSelectField);
+  await fireEvent.asyncFocus(asyncCreatableSelectField);
   expect(asyncCreatableSelectField).toHaveFocus();
-  fireEvent.asyncBlur(asyncCreatableSelectField);
+  await fireEvent.asyncBlur(asyncCreatableSelectField);
   expect(asyncCreatableSelectField).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

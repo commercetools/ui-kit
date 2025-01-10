@@ -143,7 +143,7 @@ describe('MultilineTextInput', () => {
     const onFocus = jest.fn();
     render(<TestComponent onFocus={onFocus} />);
     const textArea = screen.getByLabelText('Description');
-    fireEvent.asyncFocus(textArea);
+    await fireEvent.asyncFocus(textArea);
     expect(textArea).toHaveFocus();
     expect(onFocus).toHaveBeenCalled();
   });
@@ -152,9 +152,9 @@ describe('MultilineTextInput', () => {
     const onBlur = jest.fn();
     render(<TestComponent onBlur={onBlur} />);
     const textArea = screen.getByLabelText('Description');
-    fireEvent.asyncFocus(textArea);
+    await fireEvent.asyncFocus(textArea);
     expect(textArea).toHaveFocus();
-    fireEvent.asyncBlur(textArea);
+    await fireEvent.asyncBlur(textArea);
     expect(onBlur).toHaveBeenCalled();
   });
 

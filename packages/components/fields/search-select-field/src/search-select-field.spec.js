@@ -84,7 +84,7 @@ it('should have an HTML name', () => {
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   renderSearchSelectField({ onFocus });
-  fireEvent.asyncFocus(screen.getByLabelText('SearchSelectField'));
+  await fireEvent.asyncFocus(screen.getByLabelText('SearchSelectField'));
   expect(screen.getByLabelText('SearchSelectField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -92,9 +92,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   renderSearchSelectField({ onBlur });
-  fireEvent.asyncFocus(screen.getByLabelText('SearchSelectField'));
+  await fireEvent.asyncFocus(screen.getByLabelText('SearchSelectField'));
   expect(screen.getByLabelText('SearchSelectField')).toHaveFocus();
-  fireEvent.asyncBlur(screen.getByLabelText('SearchSelectField'));
+  await fireEvent.asyncBlur(screen.getByLabelText('SearchSelectField'));
   expect(screen.getByLabelText('SearchSelectField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

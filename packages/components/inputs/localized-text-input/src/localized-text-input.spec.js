@@ -86,7 +86,7 @@ it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderLocalizedTextInput({ onFocus });
   const input = getByLabelText('EN');
-  fireEvent.asyncFocus(input);
+  await fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -95,9 +95,9 @@ it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderLocalizedTextInput({ onBlur });
   const input = getByLabelText('EN');
-  fireEvent.asyncFocus(input);
+  await fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
-  fireEvent.asyncBlur(input);
+  await fireEvent.asyncBlur(input);
   expect(input).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

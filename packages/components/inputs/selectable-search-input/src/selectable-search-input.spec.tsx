@@ -191,7 +191,7 @@ describe('SelectableSearchInput', () => {
       />
     );
 
-    fireEvent.asyncFocus(screen.getByLabelText('Bar'));
+    await fireEvent.asyncFocus(screen.getByLabelText('Bar'));
     expect(onFocus).toHaveBeenCalledWith({
       target: {
         id: 'test-id.dropdown',
@@ -200,7 +200,7 @@ describe('SelectableSearchInput', () => {
     });
   });
 
-  it('should render custom dropdown component', async () => {
+  it('should render custom dropdown component', () => {
     const onFocus = jest.fn();
 
     const Option = (props: OptionProps) => {
@@ -228,7 +228,7 @@ describe('SelectableSearchInput', () => {
     ).toHaveTextContent('Custom text');
   });
 
-  it('should call onBlur twice when input loses focus for outside element', async () => {
+  it('should call onBlur twice when input loses focus for outside element', () => {
     const onBlur = jest.fn();
     render(
       <TestComponent

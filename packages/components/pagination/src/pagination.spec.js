@@ -120,7 +120,7 @@ describe('per page selector interaction', () => {
 
     const perPageSelector = await screen.findByLabelText(/Items per page/);
 
-    fireEvent.asyncFocus(perPageSelector);
+    await fireEvent.asyncFocus(perPageSelector);
     fireEvent.keyDown(perPageSelector, { key: 'ArrowDown' });
     fireEvent.click(screen.getByText('50'));
     expect(onPerPageChange).toHaveBeenCalledWith(50);

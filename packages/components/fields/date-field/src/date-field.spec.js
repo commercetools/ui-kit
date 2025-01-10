@@ -69,7 +69,7 @@ it('should have an HTML name', () => {
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderDateField({ onFocus });
-  fireEvent.asyncFocus(getByLabelText('DateField'));
+  await fireEvent.asyncFocus(getByLabelText('DateField'));
   expect(getByLabelText('DateField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -77,9 +77,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderDateField({ onBlur });
-  fireEvent.asyncFocus(getByLabelText('DateField'));
+  await fireEvent.asyncFocus(getByLabelText('DateField'));
   expect(getByLabelText('DateField')).toHaveFocus();
-  fireEvent.asyncBlur(getByLabelText('DateField'));
+  await fireEvent.asyncBlur(getByLabelText('DateField'));
   expect(getByLabelText('DateField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

@@ -102,9 +102,9 @@ it('should call onBlur when input loses focus', async () => {
     onBlur,
   });
   const input = getByLabelText('CAD');
-  fireEvent.asyncFocus(input);
+  await fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
-  fireEvent.asyncBlur(input);
+  await fireEvent.asyncBlur(input);
   expect(input).not.toHaveFocus();
 });
 

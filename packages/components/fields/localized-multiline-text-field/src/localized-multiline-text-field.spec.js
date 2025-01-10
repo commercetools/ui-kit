@@ -99,7 +99,7 @@ it('should have an HTML name for every input when all inputs are visible', () =>
 it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderLocalizedMultilineTextField({ onFocus });
-  fireEvent.asyncFocus(getByLabelText('EN'));
+  await fireEvent.asyncFocus(getByLabelText('EN'));
   expect(getByLabelText('EN')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -107,9 +107,9 @@ it('should call onFocus when the input is focused', async () => {
 it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderLocalizedMultilineTextField({ onBlur });
-  fireEvent.asyncFocus(getByLabelText('EN'));
+  await fireEvent.asyncFocus(getByLabelText('EN'));
   expect(getByLabelText('EN')).toHaveFocus();
-  fireEvent.asyncBlur(getByLabelText('EN'));
+  await fireEvent.asyncBlur(getByLabelText('EN'));
   expect(getByLabelText('EN')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
