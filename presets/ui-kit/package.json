@@ -66,14 +66,14 @@
   "devDependencies": {
     "moment": "2.30.1",
     "moment-timezone": "0.5.46",
-    "react": "17.0.2",
+    "react": "19.0.0",
     "react-intl": "^6.3.2",
     "react-router-dom": "5.3.4"
   },
   "peerDependencies": {
     "moment": "2.x",
     "moment-timezone": "0.5.x",
-    "react": "17.x",
+    "react": "19.x",
     "react-intl": "6.x",
     "react-router-dom": "5.x"
   }
