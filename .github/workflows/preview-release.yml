@@ -86,19 +86,20 @@ jobs:
         env:
           CI: true
 
-      - name: Storing release version for changeset
-        id: release_version
-        run: echo "VALUE=$(./scripts/print_release_version.sh)" >> $GITHUB_OUTPUT
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
-
       # Publish preview releases only if the branch starts with "preview/" and the pr comment contains "[preview_deployment]"
       - name: Publishing preview releases to npm registry
         run: |
-          BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
-          git checkout ${{ github.head_ref }}
-          yarn changeset version --snapshot ${BRANCH_NAME}
-          yarn changeset publish --tag ${BRANCH_NAME}
+          PREVIEW_TAG=$(echo "$BRANCH_NAME" | sed -e 's/^preview\///')
+          pnpm changeset version --snapshot ${PREVIEW_TAG}
+          pnpm changeset publish --tag ${PREVIEW_TAG}
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
+          BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
+
+      - name: Post workflow result on PR as a comment
+        if: always()
+        run: |
+          gh issue comment ${{ github.event.issue.number }} \
+           --body "Release workflow ${{ job.status == 'success' && 'succeeded ✅' || 'failed ❌' }}\nSee details: [Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
