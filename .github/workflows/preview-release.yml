@@ -102,4 +102,4 @@ jobs:
           gh issue comment ${{ github.event.issue.number }} \
            --body "Release workflow ${{ job.status == 'success' && 'succeeded ✅' || 'failed ❌' }}\nSee details: [Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
