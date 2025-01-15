@@ -1,16 +1,21 @@
-name: Preview release
-
-on:
-  push:
-    branches:
-      - 'preview/**'
+name: Preview Release on Comment
 
 permissions:
   id-token: write
+  contents: read
+  pull-requests: write
+  issues: write
+
+on:
+  issue_comment:
+    types: [created]
 
 jobs:
-  release:
+  release-preview-on-comment:
+    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '[preview_deployment]')
     runs-on: ubuntu-latest
+
+    timeout-minutes: 15
 
     steps:
       # Get GitHub token via the CT Changesets App
@@ -21,6 +26,19 @@ jobs:
           app_id: ${{ secrets.CT_CHANGESETS_APP_ID }}
           private_key: ${{ secrets.CT_CHANGESETS_APP_PEM }}
 
+      - name: Get branch of PR
+        uses: xt0rted/pull-request-comment-branch@v1
+        id: comment-branch
+
+      - name: Validate branch name
+        run: |
+          if [[ ! "$BRANCH_NAME" =~ ^preview/[a-zA-Z0-9_-]+$ ]]; then
+            echo "Ignoring PR because of the branch name. Exiting workflow."
+            exit 1
+          fi
+        env:
+          BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -28,15 +46,8 @@ jobs:
           # other workflows
           # https://help.github.com/en/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token
           # https://github.community/t/action-does-not-trigger-another-on-push-tag-action/17148/8
+          ref: ${{ steps.comment-branch.outputs.head_ref }}
           token: ${{ steps.generate_github_token.outputs.token }}
-
-      - name: Validate branch name
-        run: |
-          BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
-          if [[ ! "$BRANCH_NAME" =~ ^preview/[a-zA-Z0-9_-]+$ ]]; then
-            echo "Ignoring PR because of the branch name. Exiting workflow."
-            exit 1
-          fi
 
       - name: Setup Node (uses version in .nvmrc)
         uses: actions/setup-node@v4
@@ -82,9 +93,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
 
-      # Publish preview releases only if the branch starts with "preview/" and the commit message contains "[publish_preview]"
+      # Publish preview releases only if the branch starts with "preview/" and the pr comment contains "[preview_deployment]"
       - name: Publishing preview releases to npm registry
-        if: startsWith(github.ref, 'refs/heads/preview/') && contains(github.event.head_commit.message, '[publish_preview]')
         run: |
           BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
           git checkout ${{ github.head_ref }}
