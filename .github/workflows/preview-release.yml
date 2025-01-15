@@ -90,8 +90,8 @@ jobs:
       - name: Publishing preview releases to npm registry
         run: |
           PREVIEW_TAG=$(echo "$BRANCH_NAME" | sed -e 's/^preview\///')
-          pnpm changeset version --snapshot ${PREVIEW_TAG}
-          pnpm changeset publish --tag ${PREVIEW_TAG}
+          yarn changeset version --snapshot ${PREVIEW_TAG}
+          yarn changeset publish --tag ${PREVIEW_TAG}
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
           BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
