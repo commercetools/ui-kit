@@ -103,3 +103,4 @@ jobs:
            --body "Release workflow ${{ job.status == 'success' && 'succeeded ✅' || 'failed ❌' }}\nSee details: [Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
+
