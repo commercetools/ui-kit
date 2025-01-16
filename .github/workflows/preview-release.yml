@@ -1,16 +1,21 @@
-name: Preview release
-
-on:
-  push:
-    branches:
-      - 'preview/**'
+name: Preview Release on Comment
 
 permissions:
   id-token: write
+  contents: read
+  pull-requests: write
+  issues: write
+
+on:
+  issue_comment:
+    types: [created]
 
 jobs:
-  release:
+  release-preview-on-comment:
+    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '[preview_deployment]')
     runs-on: ubuntu-latest
+
+    timeout-minutes: 15
 
     steps:
       # Get GitHub token via the CT Changesets App
@@ -21,6 +26,19 @@ jobs:
           app_id: ${{ secrets.CT_CHANGESETS_APP_ID }}
           private_key: ${{ secrets.CT_CHANGESETS_APP_PEM }}
 
+      - name: Get branch of PR
+        uses: xt0rted/pull-request-comment-branch@v1
+        id: comment-branch
+
+      - name: Validate branch name
+        run: |
+          if [[ ! "$BRANCH_NAME" =~ ^preview/[a-zA-Z0-9_-]+$ ]]; then
+            echo "Ignoring PR because of the branch name. Exiting workflow."
+            exit 1
+          fi
+        env:
+          BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -28,15 +46,8 @@ jobs:
           # other workflows
           # https://help.github.com/en/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token
           # https://github.community/t/action-does-not-trigger-another-on-push-tag-action/17148/8
+          ref: ${{ steps.comment-branch.outputs.head_ref }}
           token: ${{ steps.generate_github_token.outputs.token }}
-
-      - name: Validate branch name
-        run: |
-          BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
-          if [[ ! "$BRANCH_NAME" =~ ^preview/[a-zA-Z0-9_-]+$ ]]; then
-            echo "Ignoring PR because of the branch name. Exiting workflow."
-            exit 1
-          fi
 
       - name: Setup Node (uses version in .nvmrc)
         uses: actions/setup-node@v4
@@ -75,20 +86,21 @@ jobs:
         env:
           CI: true
 
-      - name: Storing release version for changeset
-        id: release_version
-        run: echo "VALUE=$(./scripts/print_release_version.sh)" >> $GITHUB_OUTPUT
-        shell: bash
+      # Publish preview releases only if the branch starts with "preview/" and the pr comment contains "[preview_deployment]"
+      - name: Publishing preview releases to npm registry
+        run: |
+          PREVIEW_TAG=$(echo "$BRANCH_NAME" | sed -e 's/^preview\///')
+          yarn changeset version --snapshot ${PREVIEW_TAG}
+          yarn changeset publish --tag ${PREVIEW_TAG}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
+          BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
+
+      - name: Post workflow result on PR as a comment
+        if: always()
+        run: |
+          gh issue comment ${{ github.event.issue.number }} \
+           --body "Release workflow ${{ job.status == 'success' && 'succeeded ✅' || 'failed ❌' }}\nSee details: [Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
 
-      # Publish preview releases only if the branch starts with "preview/" and the commit message contains "[publish_preview]"
-      - name: Publishing preview releases to npm registry
-        if: startsWith(github.ref, 'refs/heads/preview/') && contains(github.event.head_commit.message, '[publish_preview]')
-        run: |
-          BRANCH_NAME=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-')
-          git checkout ${{ github.head_ref }}
-          yarn changeset version --snapshot ${BRANCH_NAME}
-          yarn changeset publish --tag ${BRANCH_NAME}
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}

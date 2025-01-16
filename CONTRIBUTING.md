@@ -151,11 +151,15 @@ On `main` branch, we automatically publish **canary** releases from CI to the `c
 
 Canary releases are useful to test early changes that should not be released yet to `next` or `latest`. They are automatically triggered and released after a Pull Request merged into `main`.
 
-### Branch-specific canary releases
+### Branch-specific preview release
 
-To release a canary version for a specific branch other than the `main` branch, follow these steps:
+To release a preview npm package for a specific branch other than the `main` branch, follow these steps:
 
-1. Create a PR with a branch name that starts with the prefix `preview/`  example: `preview/canary-branch`
-2. To avoid creating versions every time we push, to trigger a canary version with your change, the commit message has to contain the trigger string `[publish_preview]` example: `git commit -m"chore(xxx): [publish_preview] test with a commit trigger"` .
+1. Create a branch whose name starts with the prefix `preview/`  example: `preview/my-branch`
+2. Create a PR for the branch in github.
+3. Make sure that the branch includes a changeset for the packages you want to publish.
+4. Add a comment to the github PR that starts with the string `[preview_deployment]`.
+5. The preview release action will add a comment to the PR on success.
+6. The release will be available on npm under an npm tag that is the branch name without `preview/`. e.g. if you are releasing `@commercetools-uikit/utils` from `preview/my-branch`, the preview can be installed as `@commercetools-uikit/utils@my-branch`.
 
 Note that canary releases **will not create git tags and version bump commits**.
