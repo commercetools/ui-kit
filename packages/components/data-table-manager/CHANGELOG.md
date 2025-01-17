@@ -1,5 +1,37 @@
 # @commercetools-uikit/data-table-manager
 
+## 19.22.0
+
+### Minor Changes
+
+- [#3044](https://github.com/commercetools/ui-kit/pull/3044) [`22c290f`](https://github.com/commercetools/ui-kit/commit/22c290f75144ee60e4121f388a17f0fccd6315df) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Update types for props that were formerly defaultProps to be optional so that consuming apps do not need to change how they declare certain components.
+
+### Patch Changes
+
+- Updated dependencies [[`22c290f`](https://github.com/commercetools/ui-kit/commit/22c290f75144ee60e4121f388a17f0fccd6315df)]:
+  - @commercetools-uikit/design-system@19.22.0
+  - @commercetools-uikit/async-select-input@19.22.0
+  - @commercetools-uikit/accessible-button@19.22.0
+  - @commercetools-uikit/icon-button@19.22.0
+  - @commercetools-uikit/primary-button@19.22.0
+  - @commercetools-uikit/secondary-button@19.22.0
+  - @commercetools-uikit/secondary-icon-button@19.22.0
+  - @commercetools-uikit/card@19.22.0
+  - @commercetools-uikit/dropdown-menu@19.22.0
+  - @commercetools-uikit/field-label@19.22.0
+  - @commercetools-uikit/icons@19.22.0
+  - @commercetools-uikit/radio-input@19.22.0
+  - @commercetools-uikit/select-input@19.22.0
+  - @commercetools-uikit/tag@19.22.0
+  - @commercetools-uikit/text@19.22.0
+  - @commercetools-uikit/tooltip@19.22.0
+  - @commercetools-uikit/spacings@19.22.0
+  - @commercetools-uikit/accessible-hidden@19.22.0
+  - @commercetools-uikit/collapsible-motion@19.22.0
+  - @commercetools-uikit/grid@19.22.0
+  - @commercetools-uikit/hooks@19.22.0
+  - @commercetools-uikit/utils@19.22.0
+
 ## 19.21.0
 
 ### Patch Changes
