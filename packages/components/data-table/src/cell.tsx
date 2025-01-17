@@ -16,7 +16,7 @@ export type TDataCell = {
   shouldIgnoreRowClick?: boolean;
   verticalCellAlignment?: 'top' | 'center' | 'bottom';
   horizontalCellAlignment?: 'left' | 'center' | 'right';
-  shouldRenderBottomBorder: boolean;
+  shouldRenderBottomBorder?: boolean;
   shouldRenderCollapseButton: boolean;
   shouldRenderResizingIndicator: boolean;
   handleRowCollapseClick?: () => void;

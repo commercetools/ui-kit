@@ -43,7 +43,7 @@ export type TColumnData = {
 
 export type TColumnSettingsManagerProps = {
   title?: string;
-  availableColumns: TColumnData[];
+  availableColumns?: TColumnData[];
   selectedColumns: TColumnData[];
   onUpdateColumns: (updatedColums: TColumnData[]) => void;
   areHiddenColumnsSearchable?: boolean;
@@ -101,7 +101,7 @@ export const handleColumnsUpdate = (
       : selectedColumns;
 
     const columns = isSwap ? selectedColumns : availableColumns;
-    const draggedColumn = columns.find(
+    const draggedColumn = columns?.find(
       (col) => col.key === dragResult.draggableId
     );
 

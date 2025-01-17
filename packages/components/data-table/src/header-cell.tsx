@@ -114,8 +114,8 @@ export type THeaderCell = {
   sortDirection?: 'desc' | 'asc';
   disableResizing?: boolean;
   onColumnResized?: (args: TColumn[]) => void;
-  disableHeaderStickiness: boolean;
-  horizontalCellAlignment: 'left' | 'center' | 'right';
+  disableHeaderStickiness?: boolean;
+  horizontalCellAlignment?: 'left' | 'center' | 'right';
   iconComponent?: ReactNode;
 };
 

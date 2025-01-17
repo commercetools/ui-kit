@@ -26,7 +26,7 @@ const defaultParentSelector = (): HTMLElement | null =>
 
 type TApplyTheme = {
   newTheme?: string;
-  parentSelector: typeof defaultParentSelector;
+  parentSelector?: typeof defaultParentSelector;
   themeOverrides?: Record<string, string>;
 };
 
@@ -88,7 +88,7 @@ const ThemeProvider = ({
       !isEqual(themeOverridesRef.current, props.themeOverrides)
     ) {
       themeNameRef.current = theme;
-      themeOverridesRef.current = props.themeOverrides;
+      themeOverridesRef.current = props.themeOverrides!;
 
       applyTheme({
         newTheme: theme,

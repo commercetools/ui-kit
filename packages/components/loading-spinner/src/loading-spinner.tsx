@@ -35,7 +35,7 @@ export type TLoadingSpinnerProps = {
   /**
    * Set the size of the loading spinner.
    */
-  scale: 's' | 'l';
+  scale?: 's' | 'l';
   /**
    * The content rendered inside the `LoadingSpinner`.
    */
