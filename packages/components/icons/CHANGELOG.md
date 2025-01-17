@@ -1,5 +1,17 @@
 # @commercetools-uikit/icons
 
+## 19.21.0
+
+### Minor Changes
+
+- [#3028](https://github.com/commercetools/ui-kit/pull/3028) [`791a094`](https://github.com/commercetools/ui-kit/commit/791a0945d2482f49feccd48e1b785f83b3277df4) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Adds IconFrontendStudio and IconPrivacyPolicy, updates IconGraduationCap in Icons package.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.21.0
+  - @commercetools-uikit/utils@19.21.0
+
 ## 19.20.1
 
 ### Patch Changes
