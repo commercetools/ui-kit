@@ -112,7 +112,7 @@ describe('generate README (for TS file)', () => {
 
       ## Description
 
-      Render a Justice League
+      Render an Justice League
 
       ## Installation
 
