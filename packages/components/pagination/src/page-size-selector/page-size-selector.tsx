@@ -13,7 +13,7 @@ export type TPageSizeSelectorProps = {
   /**
    * Number of items per page, according to the pre-defined range values.
    */
-  perPage: number;
+  perPage?: number;
 
   /**
    * Range of items per page.
@@ -24,7 +24,7 @@ export type TPageSizeSelectorProps = {
    * <br/>
    * `LARGE: 200,500`
    */
-  perPageRange: TPageRangeSize;
+  perPageRange?: TPageRangeSize;
 
   /**
    * A callback function, called when `perPage` is changed.
