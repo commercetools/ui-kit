@@ -36,19 +36,18 @@
     "@commercetools-uikit/utils": "19.22.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "downshift": "6.1.12",
-    "prop-types": "15.8.1",
-    "react-is": "17.0.2",
+    "downshift": "9.0.8",
+    "react-is": "19.0.0",
     "warning": "4.0.3"
   },
   "devDependencies": {
     "moment": "2.30.1",
-    "react": "17.0.2",
+    "react": "19.0.0",
     "react-intl": "^6.3.2"
   },
   "peerDependencies": {
     "moment": "2.x",
-    "react": "17.x",
+    "react": "19.x",
     "react-intl": "6.x"
   }
 }

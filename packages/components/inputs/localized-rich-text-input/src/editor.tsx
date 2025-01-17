@@ -7,14 +7,13 @@ import {
   useImperativeHandle,
   forwardRef,
   type ReactNode,
-  type LegacyRef,
   type RefObject,
   type Ref,
   type FocusEventHandler,
 } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { MessageDescriptor, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
@@ -27,6 +26,7 @@ import {
   AdditionalInfoMessage,
   ErrorMessage,
   WarningMessage,
+  type TAdditionalInfoProps,
 } from '@commercetools-uikit/messages';
 import {
   RichTextBody,
@@ -93,12 +93,7 @@ export type TEditorProps = {
   hasError?: boolean;
   error?: ReactNode;
   warning?: ReactNode;
-  additionalInfo?:
-    | string
-    | ReactNode
-    | (MessageDescriptor & {
-        values: Record<string, ReactNode>;
-      });
+  additionalInfo?: TAdditionalInfoProps['message'];
   defaultExpandMultilineText: boolean;
   toggleLanguage: (language: string) => void;
   language: string;
@@ -116,7 +111,7 @@ export type TEditorProps = {
 
 type TNodeRefObject = {
   clientHeight: number;
-} & LegacyRef<HTMLDivElement>;
+} & Ref<HTMLDivElement>;
 
 type TRichTextEditorBodyRef = {
   registerContentNode: TNodeRefObject;
@@ -128,7 +123,7 @@ const renderLeaf = (props: RenderLeafProps) => <Leaf {...props} />;
 
 const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
   const intl = useIntl();
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
 
   const createEditorWithPlugins = pipe(withReact, withHistory);
   // eslint-disable-next-line react-hooks/exhaustive-deps

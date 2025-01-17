@@ -1,13 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import LocalizedRichTextInput, {
-  TLocalizedRichTextInputProps,
+  type TLocalizedRichTextInputProps,
+  type TCustomEvent,
 } from './localized-rich-text-input';
-import { ChangeEvent, useCallback, useRef, useState } from 'react';
+import { type ChangeEvent, useCallback, useRef, useState } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 import Constraints from '@commercetools-uikit/constraints';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import Text from '@commercetools-uikit/text';
+
+interface HTMLLocalizedInputElement extends HTMLInputElement {
+  language: string;
+}
 
 const meta: Meta<typeof LocalizedRichTextInput> = {
   title: 'Form/Inputs/LocalizedRichTextInput',
@@ -49,7 +54,7 @@ export const BasicExample: Story = ({
   });
 
   const onChange = useCallback(
-    (event) => {
+    (event: ChangeEvent<HTMLLocalizedInputElement>) => {
       setValue((currentValue) => ({
         ...currentValue,
         [event.target.language]: event.target.value,
@@ -121,7 +126,7 @@ export const BasicExample: Story = ({
         ref={ref}
         value={value}
         {...args}
-        onChange={onChange}
+        onChange={onChange as (event: TCustomEvent) => void}
       />
       <Text.Headline as="h3">Output</Text.Headline>
       <pre>{JSON.stringify(value, null, 2)}</pre>

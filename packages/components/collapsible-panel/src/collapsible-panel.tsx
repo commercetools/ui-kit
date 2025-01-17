@@ -1,4 +1,4 @@
-import { ReactNode, cloneElement } from 'react';
+import { ReactNode, ReactElement, cloneElement, isValidElement } from 'react';
 import isNil from 'lodash/isNil';
 import styled from '@emotion/styled';
 import {
@@ -41,7 +41,7 @@ export type TCollapsiblePanel = {
   /**
    * The title being rendered at top left of the panel
    */
-  header: ReactNode;
+  header: ReactElement<{ isCondensed?: boolean }> | ReactNode;
   /**
    * A secondary header for the panel (only pass if needed)
    */
@@ -139,12 +139,11 @@ const HeadLineText = (
 
   return (
     <Text.Subheadline as="h4" truncate>
-      {/* TODO: this is a temporary fix, which will be refactored after we align with the desing team on how to proceed */}
-      {typeof props.header === 'string'
-        ? props.header
-        : cloneElement(props.header as React.ReactElement, {
+      {isValidElement<{ isCondensed?: boolean }>(props.header)
+        ? cloneElement(props.header, {
             isCondensed: props.condensed,
-          })}
+          })
+        : props.header}
     </Text.Subheadline>
   );
 };

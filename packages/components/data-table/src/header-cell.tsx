@@ -2,6 +2,7 @@ import {
   useContext,
   useRef,
   type ReactNode,
+  type ReactElement,
   type MouseEvent,
   type RefObject,
 } from 'react';
@@ -10,6 +11,7 @@ import {
   ArrowDownIcon,
   ArrowUpIcon,
 } from '@commercetools-uikit/icons';
+import { TIconProps } from '@commercetools-uikit/design-system';
 import {
   BaseHeaderCell,
   HeaderCellInner,
@@ -54,7 +56,12 @@ const HeaderCellWrapper = (
   const headerRef = useRef<THeaderRef>(null);
 
   const onStartResizing = (event: MouseEvent) => {
-    columnResizingReducer.startResizing(headerRef, event);
+    if (headerRef?.current) {
+      columnResizingReducer.startResizing(
+        headerRef as RefObject<THeaderRef>,
+        event
+      );
+    }
   };
 
   const onDrag = (event: globalThis.MouseEvent) =>
@@ -116,7 +123,7 @@ export type THeaderCell = {
   onColumnResized?: (args: TColumn[]) => void;
   disableHeaderStickiness?: boolean;
   horizontalCellAlignment?: 'left' | 'center' | 'right';
-  iconComponent?: ReactNode;
+  iconComponent?: ReactNode | (() => ReactElement<TIconProps>);
 };
 
 const HeaderCell = ({
@@ -168,7 +175,9 @@ const HeaderCell = ({
 
           {props.iconComponent && (
             <HeaderIconWrapper>
-              {typeof props.iconComponent === 'function'
+              {typeof props.iconComponent === 'string'
+                ? props.iconComponent
+                : typeof props.iconComponent === 'function'
                 ? props.iconComponent()
                 : props.iconComponent}
             </HeaderIconWrapper>

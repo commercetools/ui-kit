@@ -523,7 +523,9 @@ class DateRangeInput extends Component<
                     },
                     // we only do this for readOnly because the input
                     // doesn't ignore these events, unlike when its disabled
-                    onClick: this.props.isReadOnly ? undefined : openMenu,
+                    onClick: this.props.isReadOnly
+                      ? undefined
+                      : () => openMenu(),
                     ...filterDataAttributes(this.props),
                   })}
                   hasSelection={this.props.value.length === 2}

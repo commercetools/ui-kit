@@ -71,9 +71,10 @@ const useRowSelection = <RowItem extends TRowItem = TRowItem>(
   keyName: string,
   rows: RowItem[]
 ) => {
-  const [selectionState, dispatch] = useReducer<
-    (prevState: TSelectionState, action: TSelectionAction) => TSelectionState
-  >(selectionReducer, getInitialState<RowItem>(keyName, rows));
+  const [selectionState, dispatch] = useReducer(
+    selectionReducer,
+    getInitialState<RowItem>(keyName, rows)
+  );
 
   useDebugValue(selectionState);
 

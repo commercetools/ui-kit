@@ -16,6 +16,7 @@ import {
   useWarning,
   warning,
 } from '@commercetools-uikit/utils';
+import { type TIconProps } from '@commercetools-uikit/design-system';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
   getStateStyles,
@@ -64,11 +65,11 @@ export type TSecondaryButtonProps<
   /**
    * The left icon displayed within the button.
    */
-  iconLeft?: ReactElement;
+  iconLeft?: ReactElement<TIconProps>;
   /**
    * The righr icon displayed within the button.
    */
-  iconRight?: ReactElement;
+  iconRight?: ReactElement<TIconProps>;
   /**
    * If this is active, it means the button will persist in an "active" state when toggled (see `isToggled`), and back to normal state when untoggled
    */
@@ -133,8 +134,8 @@ const PositionedIcon = ({
   color,
 }: {
   size: string;
-  icon: ReactElement;
-  color: string;
+  icon: ReactElement<TIconProps>;
+  color: TIconProps['color'];
 }) => {
   return (
     <span
@@ -229,17 +230,19 @@ export const SecondaryButton = <
           <PositionedIcon
             icon={props.iconLeft}
             size={size}
-            color={getIconColor(
-              {
-                type,
-                theme,
-                tone,
-                size,
-                isToggleButton,
-                ...props,
-              },
-              props.iconLeft
-            )}
+            color={
+              getIconColor(
+                {
+                  type,
+                  theme,
+                  tone,
+                  size,
+                  isToggleButton,
+                  ...props,
+                },
+                props.iconLeft
+              )!
+            }
           />
         )}
         <span>{props.label}</span>
@@ -247,17 +250,19 @@ export const SecondaryButton = <
           <PositionedIcon
             icon={props.iconRight}
             size={size}
-            color={getIconColor(
-              {
-                type,
-                theme,
-                tone,
-                size,
-                isToggleButton,
-                ...props,
-              },
-              props.iconRight
-            )}
+            color={
+              getIconColor(
+                {
+                  type,
+                  theme,
+                  tone,
+                  size,
+                  isToggleButton,
+                  ...props,
+                },
+                props.iconRight
+              )!
+            }
           />
         )}
       </Inline>

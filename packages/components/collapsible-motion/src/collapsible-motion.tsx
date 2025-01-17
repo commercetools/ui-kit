@@ -84,8 +84,8 @@ const useToggleAnimation = (
   toggle?: () => void,
   minHeight = 0
 ) => {
-  const nodeRef = useRef<TNodeRefObject>();
-  const animationRef = useRef<ReturnType<typeof keyframes> | null>(null);
+  const nodeRef = useRef<TNodeRefObject>(null);
+  const animationRef = useRef<ReturnType<typeof keyframes>>(null);
   const prevIsOpen = usePrevious(isOpen);
 
   useEffect(

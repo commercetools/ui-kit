@@ -61,8 +61,11 @@ function getScrollableParent(element: HTMLElement | null): HTMLElement | null {
   return getScrollableParent(element.parentElement);
 }
 
-function useScrollBlock(isOpen: boolean, triggerRef: RefObject<HTMLElement>) {
-  const scrollableParentRef = useRef<HTMLElement | null>();
+function useScrollBlock(
+  isOpen: boolean,
+  triggerRef: RefObject<HTMLElement | null>
+) {
+  const scrollableParentRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!scrollableParentRef.current) {
@@ -115,15 +118,15 @@ function DropdownMenu({
   const Menu = menuType === 'default' ? DropdownContentMenu : DropdownListMenu;
 
   // Close the dropdown when clicking outside of it
-  const handleGlobalClick = useCallback(
+  const handleGlobalClick: EventListener = useCallback(
     (event) => {
       const triggerElement = triggerRef.current;
       if (
         isOpen &&
         triggerElement &&
         event.target !== triggerElement &&
-        window.document.contains(event.target) &&
-        !triggerElement.parentElement?.contains(event.target)
+        window.document.contains(event.target as Node) &&
+        !triggerElement.parentElement?.contains(event.target as Node)
       ) {
         toggle(false);
       }

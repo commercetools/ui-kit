@@ -363,7 +363,7 @@ const DateInput = (props: TDateInput) => {
                   onBlur: onInputBlur,
                   // we only do this for readOnly because the input
                   // doesn't ignore these events, unlike when its disabled
-                  onClick: props.isReadOnly ? undefined : openMenu,
+                  onClick: props.isReadOnly ? undefined : () => openMenu(),
                   ...filterDataAttributes(props),
                 })}
                 hasSelection={Boolean(selectedItem)}

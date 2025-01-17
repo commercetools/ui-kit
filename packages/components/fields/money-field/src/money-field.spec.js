@@ -88,38 +88,38 @@ it('should pass autocomplete', () => {
   expect(getByLabelText('Amount')).toHaveAttribute('autocomplete', 'off');
 });
 
-it('should call onFocus when amount input is focused', () => {
+it('should call onFocus when amount input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderMoneyField({ onFocus });
-  getByLabelText('Amount').focus();
+  await fireEvent.asyncFocus(getByLabelText('Amount'));
   expect(getByLabelText('Amount')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onFocus when currency select is focused', () => {
+it('should call onFocus when currency select is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderMoneyField({ onFocus });
-  getByLabelText('EUR').focus();
+  await fireEvent.asyncFocus(getByLabelText('EUR'));
   expect(getByLabelText('EUR')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when amount input loses focus', () => {
+it('should call onBlur when amount input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderMoneyField({ onBlur });
-  getByLabelText('Amount').focus();
+  await fireEvent.asyncFocus(getByLabelText('Amount'));
   expect(getByLabelText('Amount')).toHaveFocus();
-  getByLabelText('Amount').blur();
+  await fireEvent.asyncBlur(getByLabelText('Amount'));
   expect(getByLabelText('Amount')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
 
-it('should call onBlur when currency select loses focus', () => {
+it('should call onBlur when currency select loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderMoneyField({ onBlur });
-  getByLabelText('EUR').focus();
+  await fireEvent.asyncFocus(getByLabelText('EUR'));
   expect(getByLabelText('EUR')).toHaveFocus();
-  getByLabelText('EUR').blur();
+  await fireEvent.asyncBlur(getByLabelText('EUR'));
   expect(getByLabelText('EUR')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -224,7 +224,7 @@ describe('when showing an info button', () => {
   it('should call onInfoButtonClick when button is clicked', () => {
     const onInfoButtonClick = jest.fn();
     const { getByLabelText } = renderMoneyField({ onInfoButtonClick });
-    getByLabelText('More Info').click();
+    fireEvent.click(getByLabelText('More Info'));
     expect(onInfoButtonClick).toHaveBeenCalled();
   });
 });

@@ -58,9 +58,9 @@ export default Example;
 
 ### Properties
 
-| Props      | Type                    | Required | Default | Description        |
-| ---------- | ----------------------- | :------: | ------- | ------------------ |
-| `children` | `Array: ReactElement[]` |    ✅    |         | Any React element. |
+| Props      | Type                                   | Required | Default | Description        |
+| ---------- | -------------------------------------- | :------: | ------- | ------------------ |
+| `children` | `Array: ReactElement<TDropdownHead>[]` |    ✅    |         | Any React element. |
 
 ## Option
 

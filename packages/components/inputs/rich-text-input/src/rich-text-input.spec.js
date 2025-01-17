@@ -1,4 +1,4 @@
-import { screen, render } from '../../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import RichTextInput from './rich-text-input';
 
 // mocks
@@ -58,7 +58,7 @@ describe('RichTextInput', () => {
 
         const button = screen.getByText('Expand');
         expect(button).toBeInTheDocument(); // is this line necessary since getByText will fail if it's not found :thinking:
-        button.click();
+        fireEvent.click(button);
         expect(screen.getByText('Collapse')).toBeInTheDocument();
       });
     });
@@ -103,7 +103,7 @@ describe('RichTextInput', () => {
 
         const button = screen.getByText('Collapse');
         expect(button).toBeInTheDocument();
-        button.click();
+        fireEvent.click(button);
         expect(screen.getByText('Expand')).toBeInTheDocument();
       });
     });

@@ -23,7 +23,7 @@ export type TLeadingIconProps = {
   /**
    * An <Icon /> component, must pass either an icon prop or an svg prop
    */
-  icon?: ReactElement;
+  icon?: ReactElement<{ size?: string }>;
   /**
    * Custom SVG to be displayed, must pass either an svg prop or an icon prop
    */

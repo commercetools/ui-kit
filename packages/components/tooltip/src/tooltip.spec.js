@@ -236,10 +236,10 @@ describe('Tooltip', () => {
         triggerElement: button,
         onOpenCallback: onOpen,
       });
-
+      const button1 = await screen.findByText('Submit');
       await closeAndValidateTooltip({
         eventType: 'mouseLeave',
-        triggerElement: button,
+        triggerElement: button1,
         closeAfter,
         exitCallbacks: [onMouseLeave, onClose],
       });
@@ -273,10 +273,10 @@ describe('Tooltip', () => {
         triggerElement: button,
         onOpenCallback: onOpen,
       });
-
+      const button1 = await screen.findByText('Submit');
       await closeAndValidateTooltip({
         eventType: 'blur',
-        triggerElement: button,
+        triggerElement: button1,
         closeAfter,
         exitCallbacks: [onBlur, onClose],
       });
@@ -292,10 +292,10 @@ describe('Tooltip', () => {
       expect(
         screen.queryByText('What kind of bear is best?')
       ).not.toBeInTheDocument();
-      toggleButton.click();
+      fireEvent.click(toggleButton);
       // should show the tooltip
       await screen.findByText('What kind of bear is best?');
-      toggleButton.click();
+      fireEvent.click(toggleButton);
       // tooltip should be hidden
       expect(
         screen.queryByText('What kind of bear is best?')
@@ -403,17 +403,17 @@ describe('when used with a custom wrapper component', () => {
     ).toBeInTheDocument();
 
     // Get the tooltip triggering element
-    const button = screen.getByText('Submit');
+    const button = await screen.findByText('Submit');
 
     await openAndValidateTooltip({
       eventType: 'focus',
       triggerElement: button,
       onOpenCallback: onOpen,
     });
-
+    const button1 = await screen.findByText('Submit');
     await closeAndValidateTooltip({
       eventType: 'blur',
-      triggerElement: button,
+      triggerElement: button1,
       closeAfter,
       exitCallbacks: [onBlur, onClose],
     });

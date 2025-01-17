@@ -191,7 +191,7 @@ describe('SelectableSearchInput', () => {
       />
     );
 
-    screen.getByLabelText('Bar').focus();
+    await fireEvent.asyncFocus(screen.getByLabelText('Bar'));
     expect(onFocus).toHaveBeenCalledWith({
       target: {
         id: 'test-id.dropdown',
@@ -200,7 +200,7 @@ describe('SelectableSearchInput', () => {
     });
   });
 
-  it('should render custom dropdown component', async () => {
+  it('should render custom dropdown component', () => {
     const onFocus = jest.fn();
 
     const Option = (props: OptionProps) => {
@@ -275,7 +275,7 @@ describe('SelectableSearchInput', () => {
     ).toBeInTheDocument();
   });
 
-  it('should call onChange when changing the value and onSubmit when submit button is clicked', () => {
+  it('should call onChange when changing the value and onSubmit when submit button is clicked', async () => {
     const onChange = jest.fn();
     const onSubmit = jest.fn();
 
@@ -293,7 +293,8 @@ describe('SelectableSearchInput', () => {
     });
 
     fireEvent.keyDown(screen.getByLabelText('Foo'), { key: 'ArrowDown' });
-    screen.getByText('Bar').click();
+    const barOption = await screen.findByText('Bar');
+    fireEvent.click(barOption);
 
     expect(onChange).toHaveBeenCalledWith({
       target: {

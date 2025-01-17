@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { MouseEventHandler, useCallback } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
@@ -34,9 +34,12 @@ const CalendarHeader = (props: TCalendarHeader) => {
 
   // we prevent all our defined onClicks inside of the CalendarHeader
   // from blurring our input.
-  const onMouseDown = useCallback((event) => {
-    event.preventDefault();
-  }, []);
+  const onMouseDown: MouseEventHandler<HTMLDivElement> = useCallback(
+    (event) => {
+      event.preventDefault();
+    },
+    []
+  );
   return (
     <div
       onMouseDown={onMouseDown}
