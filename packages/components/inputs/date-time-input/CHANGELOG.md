@@ -1,5 +1,28 @@
 # @commercetools-uikit/date-time-input
 
+## 19.22.0
+
+### Minor Changes
+
+- [#3044](https://github.com/commercetools/ui-kit/pull/3044) [`22c290f`](https://github.com/commercetools/ui-kit/commit/22c290f75144ee60e4121f388a17f0fccd6315df) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Update types for props that were formerly defaultProps to be optional so that consuming apps do not need to change how they declare certain components.
+
+### Patch Changes
+
+- Updated dependencies [[`22c290f`](https://github.com/commercetools/ui-kit/commit/22c290f75144ee60e4121f388a17f0fccd6315df)]:
+  - @commercetools-uikit/design-system@19.22.0
+  - @commercetools-uikit/calendar-utils@19.22.0
+  - @commercetools-uikit/accessible-button@19.22.0
+  - @commercetools-uikit/secondary-icon-button@19.22.0
+  - @commercetools-uikit/constraints@19.22.0
+  - @commercetools-uikit/icons@19.22.0
+  - @commercetools-uikit/select-utils@19.22.0
+  - @commercetools-uikit/spacings-inline@19.22.0
+  - @commercetools-uikit/text@19.22.0
+  - @commercetools-uikit/tooltip@19.22.0
+  - @commercetools-uikit/calendar-time-utils@19.22.0
+  - @commercetools-uikit/hooks@19.22.0
+  - @commercetools-uikit/utils@19.22.0
+
 ## 19.21.0
 
 ### Patch Changes

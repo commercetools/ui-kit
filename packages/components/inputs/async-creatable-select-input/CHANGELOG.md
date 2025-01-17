@@ -1,5 +1,19 @@
 # @commercetools-uikit/async-creatable-select-input
 
+## 19.22.0
+
+### Patch Changes
+
+- Updated dependencies [[`22c290f`](https://github.com/commercetools/ui-kit/commit/22c290f75144ee60e4121f388a17f0fccd6315df)]:
+  - @commercetools-uikit/loading-spinner@19.22.0
+  - @commercetools-uikit/design-system@19.22.0
+  - @commercetools-uikit/constraints@19.22.0
+  - @commercetools-uikit/icons@19.22.0
+  - @commercetools-uikit/select-utils@19.22.0
+  - @commercetools-uikit/text@19.22.0
+  - @commercetools-uikit/spacings@19.22.0
+  - @commercetools-uikit/utils@19.22.0
+
 ## 19.21.0
 
 ### Patch Changes
