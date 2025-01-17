@@ -1,6 +1,8 @@
 import { useState, useCallback } from 'react';
 import uniqueId from 'lodash/uniqueId';
-import SelectInput from '@commercetools-uikit/select-input';
+import SelectInput, {
+  type TCustomEvent,
+} from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import Constraints from '@commercetools-uikit/constraints';
 import { warning } from '@commercetools-uikit/utils';
@@ -68,8 +70,8 @@ const PageSizeSelector = ({
 
   const { onPerPageChange } = props;
   const handleSelectPerPage = useCallback(
-    (event) => {
-      onPerPageChange(Number(event.target.value));
+    (event: TCustomEvent) => {
+      onPerPageChange(Number((event.target as HTMLInputElement).value));
     },
     [onPerPageChange]
   );

@@ -1,5 +1,5 @@
 import isNil from 'lodash/isNil';
-import { screen, render } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 import useToggleState from '../use-toggle-state';
 import usePrevious from './use-previous';
 
@@ -43,10 +43,10 @@ it('should be `undefined` when no previous state', () => {
 it('should maintain the previous state after changing state', () => {
   render(<TestComponent />);
   expect(screen.getByTestId('openState')).toHaveTextContent('open');
-  screen.getByTestId('toggle').click();
+  fireEvent.click(screen.getByTestId('toggle'));
   expect(screen.getByTestId('openState')).toHaveTextContent('closed');
   expect(screen.getByTestId('prevOpenState')).toHaveTextContent('open');
-  screen.getByTestId('toggle').click();
+  fireEvent.click(screen.getByTestId('toggle'));
   expect(screen.getByTestId('prevOpenState')).toHaveTextContent('closed');
   expect(screen.getByTestId('openState')).toHaveTextContent('open');
 });

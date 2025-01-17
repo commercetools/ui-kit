@@ -45,13 +45,12 @@
     "@emotion/styled": "^11.10.5",
     "@types/dompurify": "^2.4.0",
     "dompurify": "2.5.8",
-    "prop-types": "15.8.1",
-    "react-from-dom": "0.6.2"
+    "react-from-dom": "0.7.3"
   },
   "devDependencies": {
-    "react": "17.0.2"
+    "react": "19.0.0"
   },
   "peerDependencies": {
-    "react": "17.x"
+    "react": "19.x"
   }
 }

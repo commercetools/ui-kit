@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { screen, render } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 import useToggleState from './use-toggle-state';
 
 const TestComponent = (props) => {
@@ -37,16 +37,16 @@ it('should be open by default', () => {
 it('should be possible to toggle the open state', () => {
   render(<TestComponent />);
   expect(screen.getByTestId('openState')).toHaveTextContent('open');
-  screen.getByTestId('toggle').click();
+  fireEvent.click(screen.getByTestId('toggle'));
   expect(screen.getByTestId('openState')).toHaveTextContent('closed');
 });
 
 it('should be possible to set the state on and off', () => {
   render(<TestComponent />);
   expect(screen.getByTestId('openState')).toHaveTextContent('open');
-  screen.getByTestId('setOff').click();
+  fireEvent.click(screen.getByTestId('setOff'));
   expect(screen.getByTestId('openState')).toHaveTextContent('closed');
-  screen.getByTestId('setOn').click();
+  fireEvent.click(screen.getByTestId('setOn'));
   expect(screen.getByTestId('openState')).toHaveTextContent('open');
 });
 

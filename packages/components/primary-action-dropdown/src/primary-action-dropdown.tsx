@@ -7,8 +7,8 @@ import {
   Children,
   ReactElement,
   isValidElement,
-  MouseEvent,
-  KeyboardEvent,
+  type MouseEvent,
+  type KeyboardEvent,
   ForwardedRef,
 } from 'react';
 import { css } from '@emotion/react';
@@ -55,7 +55,7 @@ const getButtonStyles = (isDisabled: boolean) => {
 };
 
 type TDropdownHead = {
-  iconLeft: ReactElement;
+  iconLeft: ReactElement<{ size: string; color: string }>;
   onClick?: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
@@ -94,7 +94,7 @@ const DropdownHead = (props: TDropdownHead) => {
           `}
         >
           {cloneElement(props.iconLeft, {
-            size: 'big',
+            size: '40',
             color: props.isDisabled ? 'neutral60' : 'primary',
           })}
         </span>
@@ -188,9 +188,7 @@ const Options = styled.div`
   position: absolute;
   z-index: 5;
   width: 100%;
-  top: calc(
-    ${designTokens.spacing20} + ${designTokens.heightForButtonAs30}
-  );
+  top: calc(${designTokens.spacing20} + ${designTokens.heightForButtonAs30});
   border: 1px solid ${designTokens.colorSurface};
   border-radius: ${designTokens.borderRadius4};
   box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.15);
@@ -205,6 +203,7 @@ const Options = styled.div`
     &:hover {
       background-color: ${designTokens.colorPrimary98};
     }
+  }
 `;
 
 /*
@@ -221,20 +220,20 @@ export type TPrimaryActionDropdown = {
   /**
    * Any React element.
    */
-  children: ReactElement[];
+  children: ReactElement<TDropdownHead>[];
 };
 
 const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
-  const ref = useRef<HTMLButtonElement>();
+  const ref = useRef<HTMLButtonElement>(null);
   const [isOpen, toggle] = useToggleState(false);
 
   const handleGlobalClick = useCallback(
-    (event) => {
+    (event: Event) => {
       const dropdownButton = ref.current;
       if (
         dropdownButton &&
         event.target !== dropdownButton &&
-        !dropdownButton.contains(event.target)
+        !dropdownButton.contains(event.target as HTMLElement)
       ) {
         toggle(false);
       }
@@ -248,18 +247,23 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
     };
   }, [handleGlobalClick]);
 
-  const childrenAsArray = Children.toArray(props.children);
-  const primaryOption = (childrenAsArray.find(
-    (option) => isValidElement(option) && !option.props.isDisabled
-  ) || childrenAsArray[0]) as ReactElement;
+  const childrenAsArray = Children.toArray(
+    props.children
+  ) as ReactElement<TDropdownHead>[];
+  const primaryOption =
+    childrenAsArray.find(
+      (option) => isValidElement(option) && !option.props.isDisabled
+    ) || childrenAsArray[0];
 
   const { onClick } = primaryOption.props;
 
   const handleClickOnHead = useCallback(
-    (event) => {
+    (
+      event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+    ) => {
       if (isOpen) {
         toggle(true);
-      } else {
+      } else if (onClick) {
         onClick(event);
       }
     },

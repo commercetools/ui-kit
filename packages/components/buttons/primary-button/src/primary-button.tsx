@@ -8,6 +8,7 @@ import {
 } from 'react';
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
+import { type TIconProps } from '@commercetools-uikit/design-system';
 import Inline from '@commercetools-uikit/spacings-inline';
 import {
   filterInvalidAttributes,
@@ -84,11 +85,11 @@ export type TPrimaryButtonProps<
   /**
    * The left icon displayed within the button.
    */
-  iconLeft?: ReactElement;
+  iconLeft?: ReactElement<TIconProps>;
   /**
-   * The right icon displayed within the button.
+   * The right icon displayed within the .
    */
-  iconRight?: ReactElement;
+  iconRight?: ReactElement<TIconProps>;
   /**
    * If this is active, it means the button will persist in an "active" state when toggled (see `isToggled`), and back to normal state when untoggled
    */

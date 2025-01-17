@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { warning } from '@commercetools-uikit/utils';
-import { screen, render } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 import Group, { type TViewSwitcherProps } from './view-switcher';
 import Button from './view-switcher-button';
 
@@ -82,7 +82,7 @@ describe('rendering', () => {
       </Group>
     );
 
-    screen.getByLabelText('disabled button').click();
+    fireEvent.click(screen.getByLabelText('disabled button'));
     expect(handleChange).not.toHaveBeenCalled();
   });
 
@@ -95,10 +95,10 @@ describe('rendering', () => {
       />
     );
 
-    screen.getByLabelText('test button 1').click();
+    fireEvent.click(screen.getByLabelText('test button 1'));
     expect(handleChange).toHaveBeenCalledWith('test-button-1');
 
-    screen.getByLabelText('test button 2').click();
+    fireEvent.click(screen.getByLabelText('test button 2'));
     expect(handleChange).toHaveBeenCalledWith('test-button-2');
   });
 
@@ -111,7 +111,7 @@ describe('rendering', () => {
       />
     );
 
-    screen.getByLabelText('test button 1').click();
+    fireEvent.click(screen.getByLabelText('test button 1'));
     expect(handleChange).not.toHaveBeenCalledWith('test-button-1');
   });
 
@@ -128,7 +128,7 @@ describe('rendering', () => {
       </Group>
     );
 
-    screen.getByLabelText('Test Button 1').click();
+    fireEvent.click(screen.getByLabelText('Test Button 1'));
     expect(handleClick).toHaveBeenCalledWith('test-button-1');
   });
 
@@ -142,7 +142,7 @@ describe('rendering', () => {
       </Group>
     );
 
-    screen.getByLabelText('Test Button 1').click();
+    fireEvent.click(screen.getByLabelText('Test Button 1'));
     expect(handleClick).not.toHaveBeenCalled();
   });
 
@@ -165,15 +165,15 @@ describe('rendering', () => {
     render(<TestComponent defaultSelected="test-button-1" />);
 
     // test-button-1 is already active so onClick is not called.
-    screen.getByLabelText('Test Button 1').click();
+    fireEvent.click(screen.getByLabelText('Test Button 1'));
     expect(handleClick).not.toHaveBeenCalled();
 
     // test-button-2 is not active so onClick is called.
-    screen.getByLabelText('Test Button 2').click();
+    fireEvent.click(screen.getByLabelText('Test Button 2'));
     expect(handleClick).toHaveBeenCalled();
 
     // test-button-2 is now active so onClick is not called again.
-    screen.getByLabelText('Test Button 2').click();
+    fireEvent.click(screen.getByLabelText('Test Button 2'));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });

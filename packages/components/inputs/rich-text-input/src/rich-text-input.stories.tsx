@@ -1,5 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import RichTextInput, { TRichTextInputProps } from './rich-text-input';
+import RichTextInput, {
+  TRichTextInputProps,
+  TChangeEvent,
+} from './rich-text-input';
 import { useCallback, useRef, useState } from 'react';
 import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 import Constraints from '@commercetools-uikit/constraints';
@@ -48,14 +51,14 @@ export const PlaygroundExample: Story = () => {
   const [value, setValue] = useState(initialValue);
   const [resetValue, setResetValue] = useState(initialValue);
   const onChange = useCallback(
-    (event) => {
-      setValue(event.target.value);
+    (event: TChangeEvent) => {
+      setValue((event.target as HTMLInputElement).value);
     },
     [setValue]
   );
   const onResetValueChange = useCallback(
-    (event) => {
-      setResetValue(event.target.value);
+    (event: TChangeEvent) => {
+      setResetValue((event.target as HTMLInputElement).value);
     },
     [setResetValue]
   );

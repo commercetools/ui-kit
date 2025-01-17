@@ -1,4 +1,4 @@
-import { screen, render } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 import Link from './link';
 
 const createTestProps = (custom) => ({
@@ -23,7 +23,7 @@ describe('rendering', () => {
       const onClickMock = jest.fn();
       const linkProps = { ...props, onClick: onClickMock };
       render(<Link {...linkProps}>Link</Link>);
-      screen.getByText('Link').click();
+      fireEvent.click(screen.getByText('Link'));
       expect(onClickMock).toHaveBeenCalled();
     });
   });
@@ -44,7 +44,7 @@ describe('rendering', () => {
       const onClickMock = jest.fn();
       const linkProps = { ...props, onClick: onClickMock };
       render(<Link {...linkProps}>Link</Link>);
-      screen.getByText('Link').click();
+      fireEvent.click(screen.getByText('Link'));
       expect(onClickMock).toHaveBeenCalled();
     });
   });

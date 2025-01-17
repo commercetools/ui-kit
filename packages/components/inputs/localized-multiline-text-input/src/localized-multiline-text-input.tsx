@@ -5,7 +5,7 @@ import {
   type ChangeEventHandler,
   type FocusEventHandler,
 } from 'react';
-import { useIntl, type MessageDescriptor } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -25,6 +25,7 @@ import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 import { warning } from '@commercetools-uikit/utils';
+import { type TAdditionalInfoProps } from '@commercetools-uikit/messages';
 
 type TExpandedTranslationsReducerState = Record<string, boolean>;
 type TExpandedTranslationsReducerAction = {
@@ -168,14 +169,7 @@ export type TLocalizedMultilineTextInputProps = {
       es: 'Algún valor',
     }
    */
-  additionalInfo?: Record<
-    string,
-    | string
-    | ReactNode
-    | (MessageDescriptor & {
-        values: Record<string, ReactNode>;
-      })
-  >;
+  additionalInfo?: Record<string, TAdditionalInfoProps['message']>;
 };
 
 const expandedTranslationsReducer = (
@@ -224,12 +218,10 @@ const LocalizedMultilineTextInput = ({
     {} as TExpandedTranslationsReducerState
   );
 
-  const [expandedTranslationsState, expandedTranslationsDispatch] = useReducer<
-    (
-      prevState: TExpandedTranslationsReducerState,
-      action: TExpandedTranslationsReducerAction
-    ) => TExpandedTranslationsReducerState
-  >(expandedTranslationsReducer, initialExpandedTranslationsState);
+  const [expandedTranslationsState, expandedTranslationsDispatch] = useReducer(
+    expandedTranslationsReducer,
+    initialExpandedTranslationsState
+  );
 
   const defaultExpansionState =
     props.hideLanguageExpansionControls ||
@@ -242,7 +234,7 @@ const LocalizedMultilineTextInput = ({
   );
 
   const toggleLanguage = useCallback(
-    (language) => {
+    (language: string) => {
       expandedTranslationsDispatch({ type: 'toggle', payload: language });
     },
     [expandedTranslationsDispatch]

@@ -94,7 +94,7 @@ it('should call onFocus when the input is focused', async () => {
   const asyncCreatableSelectField = await findByLabelText(
     'AsyncCreatableSelectField'
   );
-  asyncCreatableSelectField.focus();
+  await fireEvent.asyncFocus(asyncCreatableSelectField);
   expect(asyncCreatableSelectField).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -105,9 +105,9 @@ it('should call onBlur when input loses focus', async () => {
   const asyncCreatableSelectField = await findByLabelText(
     'AsyncCreatableSelectField'
   );
-  asyncCreatableSelectField.focus();
+  await fireEvent.asyncFocus(asyncCreatableSelectField);
   expect(asyncCreatableSelectField).toHaveFocus();
-  asyncCreatableSelectField.blur();
+  await fireEvent.asyncBlur(asyncCreatableSelectField);
   expect(asyncCreatableSelectField).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -129,7 +129,7 @@ it('should call onChange when changing the value', async () => {
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   await waitFor(() => findByText('Shipped'));
-  getByText('Shipped').click();
+  fireEvent.click(getByText('Shipped'));
   expect(onChange).toHaveBeenCalled();
 });
 

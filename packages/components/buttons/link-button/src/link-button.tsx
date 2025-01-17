@@ -4,7 +4,10 @@ import { cloneElement, ReactElement } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { designTokens } from '@commercetools-uikit/design-system';
+import {
+  designTokens,
+  type TIconProps,
+} from '@commercetools-uikit/design-system';
 import {
   useWarnDeprecatedComponent,
   filterInvalidAttributes,
@@ -26,7 +29,7 @@ export type TLinkButtonProps = {
   /**
    * The icon of the button.
    */
-  iconLeft?: ReactElement;
+  iconLeft?: ReactElement<TIconProps>;
 
   /**
    * Determines if the button is disabled.

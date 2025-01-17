@@ -22,7 +22,12 @@ it('should render the column tag when rendering a column', () => {
 
   render(
     <DragDropContext>
-      <Droppable droppableId="droppableId">
+      <Droppable
+        droppableId="droppableId"
+        isDropDisabled={false}
+        isCombineEnabled={false}
+        ignoreContainerClipping={false}
+      >
         {(provided) => (
           <div ref={provided.innerRef}>
             <DraggableTag {...props} />

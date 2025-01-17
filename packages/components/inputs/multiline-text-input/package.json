@@ -34,16 +34,15 @@
     "@commercetools-uikit/utils": "19.22.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "downshift": "6.1.12",
-    "prop-types": "15.8.1",
+    "downshift": "9.0.8",
     "react-textarea-autosize": "8.4.0"
   },
   "devDependencies": {
-    "react": "17.0.2",
+    "react": "19.0.0",
     "react-intl": "^6.3.2"
   },
   "peerDependencies": {
-    "react": "17.x",
+    "react": "19.x",
     "react-intl": "6.x"
   }
 }

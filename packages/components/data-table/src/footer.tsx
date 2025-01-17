@@ -10,11 +10,7 @@ type TFooter = {
   resizedTotalWidth?: number;
 };
 
-const defaultProps: Pick<TFooter, 'horizontalCellAlignment'> = {
-  horizontalCellAlignment: 'left',
-};
-
-const Footer = styled.div<TFooter>`
+const FooterEl = styled.div<TFooter>`
   box-sizing: border-box;
   display: block;
   ${getPaddingStyle}
@@ -26,7 +22,9 @@ const Footer = styled.div<TFooter>`
   ${(props) =>
     props.resizedTotalWidth ? `max-width: ${props.resizedTotalWidth}px;` : ''}
 `;
-Footer.displayName = 'Footer';
 
-Footer.defaultProps = defaultProps;
+const Footer = ({ horizontalCellAlignment = 'left', ...props }: TFooter) => (
+  <FooterEl {...props} horizontalCellAlignment={horizontalCellAlignment} />
+);
+Footer.displayName = 'Footer';
 export default Footer;

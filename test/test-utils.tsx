@@ -1,11 +1,12 @@
 /* eslint-disable global-require */
 
-import { render } from '@testing-library/react';
+import { act, type ReactNode } from 'react';
+import { fireEvent, render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-const getMessagesForLocale = (locale) => {
+const getMessagesForLocale = (locale: string) => {
   switch (locale) {
     case 'de':
       return require('@commercetools-uikit/i18n/compiled-data/de.json');
@@ -21,7 +22,7 @@ const getMessagesForLocale = (locale) => {
 };
 
 const customRender = (
-  node,
+  node: ReactNode,
   {
     locale = 'en',
     route = '/',
@@ -44,7 +45,6 @@ const customRender = (
 // re-export everything
 export {
   act,
-  fireEvent,
   screen,
   waitFor,
   waitForElementToBeRemoved,
@@ -53,3 +53,18 @@ export {
 
 // override render method
 export { customRender as render };
+
+// Custom events for async focus and blur.
+// This helps abstractinv the act() call from the tests.
+type TCustomFireEventApi = typeof fireEvent & {
+  asyncFocus: (element: HTMLElement) => Promise<void>;
+  asyncBlur: (element: HTMLElement) => Promise<void>;
+};
+const originalFireEvent = fireEvent as TCustomFireEventApi;
+originalFireEvent.asyncFocus = (element) => {
+  return act(async () => element.focus());
+};
+originalFireEvent.asyncBlur = (element) => {
+  return act(async () => element.blur());
+};
+export { originalFireEvent as fireEvent };

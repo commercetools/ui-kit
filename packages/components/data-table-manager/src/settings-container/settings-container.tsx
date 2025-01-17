@@ -53,7 +53,7 @@ const SettingsContainer = ({
               <HeaderContainer>
                 {props.customSettingsTitle ? (
                   <Text.Headline as="h2">
-                    {props.customSettingsTitle}
+                    {props.customSettingsTitle as ReactNode}
                   </Text.Headline>
                 ) : (
                   <Text.Headline as="h2" intlMessage={props.title} />

@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, type FocusEvent } from 'react';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 
 type THiddenInputProps = {
@@ -12,7 +12,7 @@ type THiddenInputProps = {
 const HiddenInput = (props: THiddenInputProps) => {
   const { handleFocus } = props;
   const onFocus = useCallback(
-    (event) => {
+    (event: FocusEvent) => {
       event.preventDefault();
       if (!props.isFocused) {
         handleFocus();
@@ -21,7 +21,7 @@ const HiddenInput = (props: THiddenInputProps) => {
     [props.isFocused, handleFocus]
   );
 
-  const onBlur = useCallback((event) => {
+  const onBlur = useCallback((event: FocusEvent) => {
     event.preventDefault();
   }, []);
 

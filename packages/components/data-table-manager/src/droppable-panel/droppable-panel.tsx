@@ -22,7 +22,12 @@ export type TDroppablePanelProps = {
 
 const DroppablePanel = (props: TDroppablePanelProps) => {
   return (
-    <Droppable droppableId={props.droppableId}>
+    <Droppable
+      droppableId={props.droppableId}
+      isDropDisabled={false}
+      isCombineEnabled={false}
+      ignoreContainerClipping={false}
+    >
       {(provided) => (
         <TagContainerEditable
           data-testid={props.droppableId}

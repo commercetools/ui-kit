@@ -51,7 +51,7 @@ export type TSelectInputCustomComponentProps<
   selectProps: T['selectProps'] & {
     isCondensed?: boolean;
     isReadOnly?: boolean;
-    iconLeft?: ReactElement;
+    iconLeft?: ReactElement<{ size?: string }>;
   };
 };
 
