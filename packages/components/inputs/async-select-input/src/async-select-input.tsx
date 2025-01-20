@@ -1,8 +1,11 @@
-import type { ReactNode, FocusEvent } from 'react';
+import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import {
   components as defaultComponents,
+  type InputProps,
+  type OnChangeValue,
+  type SelectComponentsConfig,
   type ActionMeta,
   type GroupBase,
   type OptionsOrGroups,
@@ -34,18 +37,30 @@ const customizedComponents = {
   MultiValueRemove: TagRemove,
 };
 
-type TCustomEvent = {
+type TCustomEvent<
+  Option,
+  isMulti extends boolean,
+  Group extends GroupBase<Option>
+> = {
   target: {
-    id?: ReactSelectAsyncProps['inputId'];
-    name?: ReactSelectAsyncProps['name'];
-    value?: unknown;
+    id?: ReactSelectAsyncProps<Option, isMulti, Group>['inputId'];
+    name?: ReactSelectAsyncProps<Option, isMulti, Group>['name'];
+    value?: ReactSelectAsyncProps<Option, isMulti, Group>['value'];
   };
   persist: () => void;
 };
 
-type ReactSelectAsyncProps = AsyncProps<unknown, boolean, GroupBase<unknown>>;
+type ReactSelectAsyncProps<
+  Option,
+  isMulti extends boolean,
+  Group extends GroupBase<Option>
+> = AsyncProps<Option, isMulti, Group>;
 
-export type TAsyncSelectInputProps = {
+export type TAsyncSelectInputProps<
+  Option = unknown,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = {
   /**
    * Horizontal size limit of the input fields.
    */
@@ -92,25 +107,37 @@ export type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-label'?: ReactSelectAsyncProps['aria-label'];
+  'aria-label'?: ReactSelectAsyncProps<Option, isMulti, Group>['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-labelledby'?: ReactSelectAsyncProps['aria-labelledby'];
+  'aria-labelledby'?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['aria-labelledby'];
   /**
    * Indicate if the value entered in the input is invalid.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-invalid'?: ReactSelectAsyncProps['aria-invalid'];
+  'aria-invalid'?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['aria-invalid'];
   /**
    * HTML ID of an element containing an error message related to the input.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-errormessage'?: ReactSelectAsyncProps['aria-errormessage'];
+  'aria-errormessage'?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['aria-errormessage'];
   // renamed autoFocus of react-select
   /**
    * Focus the control when it is mounted
@@ -121,57 +148,69 @@ export type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  backspaceRemovesValue?: ReactSelectAsyncProps['backspaceRemovesValue'];
+  backspaceRemovesValue?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['backspaceRemovesValue'];
   /**
    * Map of components to overwrite the default ones, see [what components you can override](https://react-select.com/components)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  components?: ReactSelectAsyncProps['components'];
+  components?: ReactSelectAsyncProps<Option, isMulti, Group>['components'];
   /**
    * Control whether the selected values should be rendered in the control
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  controlShouldRenderValue?: ReactSelectAsyncProps['controlShouldRenderValue'];
+  controlShouldRenderValue?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['controlShouldRenderValue'];
   /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  filterOption?: ReactSelectAsyncProps['filterOption'];
+  filterOption?: ReactSelectAsyncProps<Option, isMulti, Group>['filterOption'];
   /**
    * Custom method to determine whether selected options should be displayed in the menu
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  hideSelectedOptions?: ReactSelectAsyncProps['hideSelectedOptions'];
+  hideSelectedOptions?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['hideSelectedOptions'];
   // This forwarded as react-select's "inputId"
   /**
    * The id of the search input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  id?: ReactSelectAsyncProps['inputId'];
+  id?: ReactSelectAsyncProps<Option, isMulti, Group>['inputId'];
   /**
    * The value of the search input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  inputValue?: ReactSelectAsyncProps['inputValue'];
+  inputValue?: ReactSelectAsyncProps<Option, isMulti, Group>['inputValue'];
   // This is forwarded as react-select's "id"
   /**
    * The id to set on the SelectContainer component
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  containerId?: ReactSelectAsyncProps['id'];
+  containerId?: ReactSelectAsyncProps<Option, isMulti, Group>['id'];
   /**
    * Is the select value clearable
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isClearable?: ReactSelectAsyncProps['isClearable'];
+  isClearable?: ReactSelectAsyncProps<Option, isMulti, Group>['isClearable'];
   /**
    * Use this property to reduce the paddings of the component for a ui compact variant
    */
@@ -181,43 +220,55 @@ export type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isDisabled?: ReactSelectAsyncProps['isDisabled'];
+  isDisabled?: ReactSelectAsyncProps<Option, isMulti, Group>['isDisabled'];
   /**
    * Override the built-in logic to detect whether an option is disabled
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isOptionDisabled?: ReactSelectAsyncProps['isOptionDisabled'];
+  isOptionDisabled?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['isOptionDisabled'];
   /**
    * Support multiple selected options
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isMulti?: ReactSelectAsyncProps['isMulti'];
+  isMulti?: ReactSelectAsyncProps<Option, isMulti, Group>['isMulti'];
   /**
    * Whether to enable search functionality
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isSearchable?: ReactSelectAsyncProps['isSearchable'];
+  isSearchable?: ReactSelectAsyncProps<Option, isMulti, Group>['isSearchable'];
   /**
    * Can be used to enforce the select input to be opened
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuIsOpen?: ReactSelectAsyncProps['menuIsOpen'];
+  menuIsOpen?: ReactSelectAsyncProps<Option, isMulti, Group>['menuIsOpen'];
   /**
    * Maximum height of the menu before scrolling
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  maxMenuHeight?: ReactSelectAsyncProps['maxMenuHeight'];
+  maxMenuHeight?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['maxMenuHeight'];
   /**
    * Dom element to portal the select menu to
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuPortalTarget?: ReactSelectAsyncProps['menuPortalTarget'];
+  menuPortalTarget?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['menuPortalTarget'];
   /**
    * z-index value for the menu portal
    * <br>
@@ -229,51 +280,70 @@ export type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuShouldBlockScroll?: ReactSelectAsyncProps['menuShouldBlockScroll'];
+  menuShouldBlockScroll?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['menuShouldBlockScroll'];
   /**
    * Whether the menu should close after a value is selected. Defaults to `true`.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  closeMenuOnSelect?: ReactSelectAsyncProps['closeMenuOnSelect'];
+  closeMenuOnSelect?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['closeMenuOnSelect'];
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  name?: ReactSelectAsyncProps['name'];
+  name?: ReactSelectAsyncProps<Option, isMulti, Group>['name'];
   /**
    * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with `{ inputValue: String }`. `inputValue` will be an empty string when no search text is present.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  noOptionsMessage?: ReactSelectAsyncProps['noOptionsMessage'];
+  noOptionsMessage?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['noOptionsMessage'];
   /**
    * Handle blur events on the control
    */
-  onBlur?: (event: TCustomEvent) => void;
+  onBlur?: (event: TCustomEvent<Option, isMulti, Group>) => void;
   /**
    * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
    */
-  onChange?: (event: TCustomEvent, info: ActionMeta<unknown>) => void;
+  onChange?: (
+    event: TCustomEvent<Option, isMulti, Group>,
+    info: ActionMeta<unknown>
+  ) => void;
   /**
    * Handle focus events on the control
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onFocus?: ReactSelectAsyncProps['onFocus'];
+  onFocus?: ReactSelectAsyncProps<Option, isMulti, Group>['onFocus'];
   /**
    * Handle change events on the input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onInputChange?: ReactSelectAsyncProps['onInputChange'];
+  onInputChange?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['onInputChange'];
   /**
    * Placeholder text for the select value
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  placeholder?: ReactSelectAsyncProps['placeholder'];
+  placeholder?: ReactSelectAsyncProps<Option, isMulti, Group>['placeholder'];
   /**
    * loading message shown while the options are being loaded
    */
@@ -283,19 +353,23 @@ export type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  tabIndex?: ReactSelectAsyncProps['tabIndex'];
+  tabIndex?: ReactSelectAsyncProps<Option, isMulti, Group>['tabIndex'];
   /**
    * Select the currently focused option when the user presses tab
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  tabSelectsValue?: ReactSelectAsyncProps['tabSelectsValue'];
+  tabSelectsValue?: ReactSelectAsyncProps<
+    Option,
+    isMulti,
+    Group
+  >['tabSelectsValue'];
   /**
    * The value of the select; reflected by the selected option
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  value?: ReactSelectAsyncProps['value'];
+  value?: ReactSelectAsyncProps<Option, isMulti, Group>['value'];
 
   // Async props
   /**
@@ -303,15 +377,15 @@ export type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  defaultOptions?: OptionsOrGroups<unknown, GroupBase<unknown>> | boolean;
+  defaultOptions?: OptionsOrGroups<Option, Group> | boolean;
   /**
    * Function that returns a promise, which is the set of options to be used once the promise resolves.
    */
-  loadOptions: ReactSelectAsyncProps['loadOptions'];
+  loadOptions: ReactSelectAsyncProps<Option, isMulti, Group>['loadOptions'];
   /**
    * If cacheOptions is truthy, then the loaded data will be cached. The cache will remain until cacheOptions changes value.
    */
-  cacheOptions?: ReactSelectAsyncProps['cacheOptions'];
+  cacheOptions?: ReactSelectAsyncProps<Option, isMulti, Group>['cacheOptions'];
   /**
    * Determines if option groups will be separated by a divider
    */
@@ -333,7 +407,11 @@ export type TAsyncSelectInputProps = {
   count?: number;
 };
 
-const AsyncSelectInput = ({
+const AsyncSelectInput = <
+  Option = unknown,
+  IsMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>({
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
   value = null,
@@ -343,7 +421,7 @@ const AsyncSelectInput = ({
   appearance = 'default',
   optionStyle = 'list',
   ...props
-}: TAsyncSelectInputProps) => {
+}: TAsyncSelectInputProps<Option, IsMulti, Group>) => {
   const intl = useIntl();
 
   if (!props.isReadOnly) {
@@ -405,7 +483,7 @@ const AsyncSelectInput = ({
               // react-select doesn't support readOnly mode; this is a workaround:
               ...(props.isReadOnly
                 ? {
-                    Input: (ownProps) => (
+                    Input: (ownProps: InputProps<Option, IsMulti, Group>) => (
                       <defaultComponents.Input {...ownProps} readOnly />
                     ),
                   }
@@ -418,7 +496,7 @@ const AsyncSelectInput = ({
                 ? optionStyleCheckboxComponents(appearance)
                 : {}),
               ...props.components,
-            } as ReactSelectAsyncProps['components']
+            } as SelectComponentsConfig<Option, IsMulti, Group>
           }
           menuIsOpen={
             props.isReadOnly
@@ -442,7 +520,7 @@ const AsyncSelectInput = ({
               hasValue: !isEmpty(value),
               controlShouldRenderValue: controlShouldRenderValue,
               horizontalConstraint: props.horizontalConstraint,
-            }) as ReactSelectAsyncProps['styles']
+            }) as ReactSelectAsyncProps<Option, IsMulti, Group>['styles']
           }
           filterOption={props.filterOption}
           // react-select uses "id" (for the container) and "inputId" (for the input),
@@ -493,17 +571,14 @@ const AsyncSelectInput = ({
                     },
                     persist: () => {},
                   };
-                  props.onBlur &&
-                    props.onBlur(
-                      event as FocusEvent<HTMLInputElement, Element>
-                    );
+                  props.onBlur && props.onBlur(event);
                 }
               : undefined
           }
           onChange={(value, info) => {
             let newValue = value;
             if (props.isMulti && !newValue) {
-              newValue = [];
+              newValue = [] as OnChangeValue<Option, IsMulti>;
             }
 
             props.onChange?.(

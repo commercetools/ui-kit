@@ -1,11 +1,25 @@
-import { components, DropdownIndicatorProps } from 'react-select';
+import { components, DropdownIndicatorProps, GroupBase } from 'react-select';
 import { SearchIcon } from '@commercetools-uikit/icons';
 import { TSelectInputCustomComponentProps } from '../types';
 
-export type TDropdownIndicatorProps =
-  TSelectInputCustomComponentProps<DropdownIndicatorProps>;
+export type TDropdownIndicatorProps<
+  Option = unknown,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = TSelectInputCustomComponentProps<
+  DropdownIndicatorProps<Option, isMulti, Group>,
+  Option,
+  isMulti,
+  Group
+>;
 
-const SearchIconDropdownIndicator = (props: TDropdownIndicatorProps) => {
+const SearchIconDropdownIndicator = <
+  Option = unknown,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: TDropdownIndicatorProps<Option, isMulti, Group>
+) => {
   return (
     <components.DropdownIndicator {...props}>
       <SearchIcon
