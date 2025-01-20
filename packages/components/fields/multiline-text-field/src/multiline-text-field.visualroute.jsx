@@ -93,6 +93,15 @@ export const component = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
+    <Spec label="with max rows">
+      <MultilineTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        maxRows={3}
+      />
+    </Spec>
     {/* <Spec label="when expanded by default">
       <MultilineTextField
         title="Welcome Text"
