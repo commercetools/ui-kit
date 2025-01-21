@@ -178,7 +178,7 @@ shouldIgnoreRowClick?: boolean;
    */
   shouldIgnoreRowClick?: boolean;
 }
-````
+```
 
 ### Signature `customColumns`
 
@@ -289,3 +289,4 @@ shouldIgnoreRowClick?: boolean;
 ```ts
 (row: Row) => ReactNode;
 ```
+````
