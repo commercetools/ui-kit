@@ -9,7 +9,7 @@ import {
   type Dispatch,
 } from 'react';
 import { useIntl } from 'react-intl';
-import { DragDropContext, type DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, type DropResult } from '@hello-pangea/dnd';
 import debounce from 'debounce-promise';
 import differenceWith from 'lodash/differenceWith';
 import styled from '@emotion/styled';

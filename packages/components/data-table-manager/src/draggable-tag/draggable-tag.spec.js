@@ -1,4 +1,4 @@
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { screen, render } from '../../../../../test/test-utils';
 import DraggableTag from './draggable-tag';
 
@@ -22,12 +22,7 @@ it('should render the column tag when rendering a column', () => {
 
   render(
     <DragDropContext>
-      <Droppable
-        droppableId="droppableId"
-        isDropDisabled={false}
-        isCombineEnabled={false}
-        ignoreContainerClipping={false}
-      >
+      <Droppable droppableId="droppableId">
         {(provided) => (
           <div ref={provided.innerRef}>
             <DraggableTag {...props} />

@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
-import { Droppable } from 'react-beautiful-dnd';
+import { type ReactNode } from 'react';
+import { Droppable } from '@hello-pangea/dnd';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import DraggableTag from '../draggable-tag';
@@ -22,12 +22,7 @@ export type TDroppablePanelProps = {
 
 const DroppablePanel = (props: TDroppablePanelProps) => {
   return (
-    <Droppable
-      droppableId={props.droppableId}
-      isDropDisabled={false}
-      isCombineEnabled={false}
-      ignoreContainerClipping={false}
-    >
+    <Droppable droppableId={props.droppableId}>
       {(provided) => (
         <TagContainerEditable
           data-testid={props.droppableId}
