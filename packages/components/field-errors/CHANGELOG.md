@@ -1,5 +1,12 @@
 # @commercetools-uikit/field-errors
 
+## 19.22.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@19.22.1
+
 ## 19.22.0
 
 ### Patch Changes

@@ -1,0 +1,23 @@
+name: Label Checker
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+  merge_group:
+    types: [checks_requested]
+
+jobs:
+  check_labels:
+    if: github.event_name == 'pull_request'
+    name: Prevent merge with blocking labels
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          none_of: '👁 👨‍🎨 Status: UI/UX Review,🖐 🖐 Status: On Hold,🛑 Status: blocked,🚧 Status: WIP,🚨 🚨 🚨DO NOT MERGE🚨 🚨 🚨'
+          repo_token: ${{ secrets.GITHUB_TOKEN }}

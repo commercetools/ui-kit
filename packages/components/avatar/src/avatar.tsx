@@ -24,7 +24,7 @@ export type TAvatarProps = {
   /**
    * The size of the rendered avatar.
    */
-  size: 's' | 'm' | 'l';
+  size?: 's' | 'm' | 'l';
   /**
    * The color of the avatar.
    */

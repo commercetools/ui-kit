@@ -1,5 +1,19 @@
 # @commercetools-uikit/async-select-input
 
+## 19.22.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.1
+  - @commercetools-uikit/constraints@19.22.1
+  - @commercetools-uikit/icons@19.22.1
+  - @commercetools-uikit/select-utils@19.22.1
+  - @commercetools-uikit/loading-spinner@19.22.1
+  - @commercetools-uikit/text@19.22.1
+  - @commercetools-uikit/utils@19.22.1
+  - @commercetools-uikit/spacings@19.22.1
+
 ## 19.22.0
 
 ### Patch Changes
