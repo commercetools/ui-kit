@@ -48,11 +48,11 @@ export const getFontSize = (
   avatarSize: TAvatarProps['size']
 ) => {
   const widthCode = avatarInitials.length > 1 ? 'wide' : 'narrow';
-  return fontSizeMap[avatarSize][widthCode];
+  return fontSizeMap[avatarSize!][widthCode];
 };
 
 export const getWidthSize = (avatarSize: TAvatarProps['size']) =>
-  widthSizeMap[avatarSize];
+  widthSizeMap[avatarSize!];
 
 export const getBackgroundColor = (
   avatarColor: TAvatarProps['color'] = 'accent',
