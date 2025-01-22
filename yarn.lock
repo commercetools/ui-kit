@@ -2852,7 +2852,8 @@ __metadata:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
     "@commercetools-uikit/utils": 19.22.1
-    "@testing-library/react": 16.1.0
+    "@testing-library/dom": ^10.4.0
+    "@testing-library/react": ^16.2.0
     "@types/raf-schd": ^4.0.1
     lodash: 4.17.21
     raf-schd: ^4.0.3
@@ -7875,7 +7876,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:10.4.0":
+"@testing-library/dom@npm:10.4.0, @testing-library/dom@npm:^10.4.0":
   version: 10.4.0
   resolution: "@testing-library/dom@npm:10.4.0"
   dependencies:
@@ -7953,9 +7954,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:16.1.0":
-  version: 16.1.0
-  resolution: "@testing-library/react@npm:16.1.0"
+"@testing-library/react@npm:^16.2.0":
+  version: 16.2.0
+  resolution: "@testing-library/react@npm:16.2.0"
   dependencies:
     "@babel/runtime": ^7.12.5
   peerDependencies:
@@ -7969,7 +7970,7 @@ __metadata:
       optional: true
     "@types/react-dom":
       optional: true
-  checksum: 5dc8e7abda23d108c29f43cdacd43fad750e981ee87ee8902fb349a2683f2f774ef1136f2d3ef3d9efb87e8b04426c43d7b46e95511cd7c9d37b10c3bdd3e9e2
+  checksum: 4a687200e4d5dc7c7bd83c01f847a26e2c78f08acf54e5dbde8132969221401c6c595f624f5bd47e758346edc5f516d0bb07bffaae8a2e149910343eed4ae39f
   languageName: node
   linkType: hard
 
@@ -22563,8 +22564,9 @@ __metadata:
     "@svgr/core": 8.1.0
     "@svgr/plugin-jsx": 8.1.0
     "@svgr/plugin-svgo": 8.1.0
+    "@testing-library/dom": ^10.4.0
     "@testing-library/jest-dom": 6.6.3
-    "@testing-library/react": 16.1.0
+    "@testing-library/react": ^16.2.0
     "@types/is-hotkey": ^0.1.7
     "@types/jest": ^29.5.14
     "@types/node": 18.19.68
