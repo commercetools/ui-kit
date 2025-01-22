@@ -32,7 +32,7 @@
     "@commercetools-uikit/utils": "19.22.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@radix-ui/react-popover": "^1.1.2",
+    "@radix-ui/react-popover": "^1.1.4",
     "react-intl": "^6.3.2"
   },
   "devDependencies": {
@@ -40,9 +40,11 @@
     "@commercetools-uikit/radio-input": "workspace:^",
     "@commercetools-uikit/search-text-input": "workspace:^",
     "@commercetools-uikit/text-input": "workspace:^",
-    "react": "19.0.0"
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "19.x",
+    "react-dom": "19.x"
   }
 }
