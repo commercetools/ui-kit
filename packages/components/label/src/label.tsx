@@ -1,4 +1,4 @@
-import type { MessageDescriptor } from 'react-intl';
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 
 import { Children, type ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -46,15 +46,13 @@ export type TLabelProps = {
   // Indicates the tone to be applied to the label
   tone?: 'primary' | 'inverted';
   /**
-   * A `MessageDescriptor` rendered `children` to `Label`.
+   * An `IntlMessage` object rendered `children` to `Label`.
    * <br />
    * When a value is provided, `intlMessage` will be rendered instead of `children`
    * <br />
    * This is required when `children` is `undefined` and vice versa
    */
-  intlMessage?: MessageDescriptor & {
-    values?: Record<string, ReactNode>;
-  };
+  intlMessage?: IntlMessage;
   /**
    * Rendered as `children` to `Label`.
    * <br />

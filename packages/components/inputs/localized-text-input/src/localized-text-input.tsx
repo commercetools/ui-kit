@@ -5,7 +5,8 @@ import {
   type ReactNode,
   useCallback,
 } from 'react';
-import { FormattedMessage, type MessageDescriptor } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import {
@@ -150,14 +151,7 @@ export type TLocalizedTextInputProps = {
       es: 'Algún valor',
     }
    */
-  additionalInfo?: Record<
-    string,
-    | string
-    | ReactNode
-    | (MessageDescriptor & {
-        values: Record<string, ReactNode>;
-      })
-  >;
+  additionalInfo?: Record<string, string | ReactNode | IntlMessage>;
 };
 
 export type TLocalizedInputProps = {

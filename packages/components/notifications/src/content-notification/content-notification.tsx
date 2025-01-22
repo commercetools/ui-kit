@@ -1,5 +1,4 @@
-import type { MessageDescriptor } from 'react-intl';
-
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 import {
   Children,
   type ReactNode,
@@ -30,9 +29,7 @@ export type TContentNotificationProps = {
    * <br />
    * Required if `children` is not provided.
    */
-  intlMessage?: MessageDescriptor & {
-    values?: Record<string, ReactNode>;
-  };
+  intlMessage?: IntlMessage;
 
   /**
    * When provided, a close button will be rendered and this callback will be

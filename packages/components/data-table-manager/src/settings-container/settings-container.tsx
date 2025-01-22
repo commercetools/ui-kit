@@ -1,5 +1,6 @@
 import type { KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
-import { useIntl, type MessageDescriptor } from 'react-intl';
+import { useIntl } from 'react-intl';
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
@@ -9,15 +10,11 @@ import Text from '@commercetools-uikit/text';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import { designTokens } from '@commercetools-uikit/design-system';
 
-export type TIntlMessage = MessageDescriptor & {
-  values?: Record<string, React.ReactNode>;
-};
+export type TIntlMessage = IntlMessage;
 
 type TSettingsContainerProps = {
   title?: TIntlMessage;
-  closeButtonLabel: MessageDescriptor & {
-    values?: Record<string, React.ReactNode>;
-  };
+  closeButtonLabel: IntlMessage;
   onClose: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
