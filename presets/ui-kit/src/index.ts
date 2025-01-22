@@ -180,6 +180,7 @@ export {
   /** @deprecated use `designTokens` instead */
   customProperties,
   designTokens,
+  type TIconProps,
 } from '@commercetools-uikit/design-system';
 
 export { default as version } from './version';
