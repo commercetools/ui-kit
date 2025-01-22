@@ -22,7 +22,7 @@
     "@vitejs/plugin-react-swc": "^3.7.2",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-intl": "^6.3.2",
+    "react-intl": "^7.1.4",
     "remark-gfm": "^4.0.0",
     "serve": "^14.2.3",
     "storybook": "^8.2.9",

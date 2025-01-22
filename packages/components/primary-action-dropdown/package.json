@@ -31,7 +31,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
-    "react-intl": "^6.3.2"
+    "react-intl": "^7.1.4"
   },
   "devDependencies": {
     "react": "19.0.0"
