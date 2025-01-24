@@ -1,5 +1,20 @@
 # @commercetools-uikit/data-table
 
+## 19.22.1
+
+### Patch Changes
+
+- [#3050](https://github.com/commercetools/ui-kit/pull/3050) [`8bd13d4`](https://github.com/commercetools/ui-kit/commit/8bd13d4489dcbe72e5ed7320ffefc7b5f2538885) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Update TAvatarProps.size type to be optional for backward compatibility, update readmes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.1
+  - @commercetools-uikit/accessible-button@19.22.1
+  - @commercetools-uikit/secondary-icon-button@19.22.1
+  - @commercetools-uikit/data-table-manager@19.22.1
+  - @commercetools-uikit/icons@19.22.1
+  - @commercetools-uikit/hooks@19.22.1
+  - @commercetools-uikit/utils@19.22.1
+
 ## 19.22.0
 
 ### Minor Changes
