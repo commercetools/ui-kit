@@ -3,22 +3,16 @@ import {
   isValidElement,
   cloneElement,
   useState,
-  type ReactNode,
   type ReactElement,
 } from 'react';
 import isNil from 'lodash/isNil';
 import { css } from '@emotion/react';
-import ViewSwitcherButton from './view-switcher-button';
+import ViewSwitcherButton, {
+  TViewSwitcherButtonProps,
+} from './view-switcher-button';
 import { warning } from '@commercetools-uikit/utils';
 
-export type TViewSwitcherChildProps = {
-  value: string;
-  onClick?: Function;
-} & Record<string, unknown>;
-
-type TReactChild = {
-  type?: { displayName: string };
-} & ReactElement<TViewSwitcherChildProps>;
+type TViewSwitcherButtonElement = ReactElement<TViewSwitcherButtonProps>;
 
 export type TViewSwitcherProps = {
   /**
@@ -28,7 +22,7 @@ export type TViewSwitcherProps = {
   /**
    * Pass one or more `ViewSwitcher.Button` components.
    */
-  children: ReactNode;
+  children: TViewSwitcherButtonElement | TViewSwitcherButtonElement[];
   /**
    * Will be triggered whenever a `ViewSwitcher.Button` is selected. Called with the ViewSwitcherButton value.
    * This function is only required when the component is controlled.
@@ -70,43 +64,38 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
   );
 
   warning(
-    (props.children as TReactChild[]).length > 0,
+    (props.children as TViewSwitcherButtonElement[]).length > 0,
     'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
   );
 
-  const viewSwitcherElements = Children.map(
-    props.children as TReactChild[],
-    (child, index) => {
-      if (
-        child &&
-        isValidElement(child) &&
-        child.type.displayName === ViewSwitcherButton.displayName
-      ) {
-        const isButtonActive =
-          (isControlledComponent ? props.selectedValue : selectedButton) ===
-          child.props.value;
-        const clonedChild = cloneElement(child, {
-          onClick: () => {
-            if (!isControlledComponent) {
-              setSelectedButton(child.props.value);
-            }
+  const viewSwitcherElements = Children.map(props.children, (child, index) => {
+    if (
+      child &&
+      isValidElement<TViewSwitcherButtonProps>(child) &&
+      child.type === ViewSwitcherButton
+    ) {
+      const isButtonActive =
+        (isControlledComponent ? props.selectedValue : selectedButton) ===
+        child.props.value;
+      return cloneElement(child, {
+        onClick: () => {
+          if (!isControlledComponent) {
+            setSelectedButton(child.props.value);
+          }
 
-            if (!isButtonActive) {
-              child.props.onClick?.(child.props.value);
-              props.onChange?.(child.props.value);
-            }
-          },
-          isCondensed: props.isCondensed,
-          isActive: isButtonActive,
-          isFirstButton: index === 0,
-          isLastButton:
-            index === ((props.children as TReactChild[]).length ?? 1) - 1,
-        });
-        return clonedChild;
-      }
-      return child;
+          if (!isButtonActive) {
+            child.props.onClick?.(child.props.value);
+            props.onChange?.(child.props.value);
+          }
+        },
+        isCondensed: props.isCondensed,
+        isActive: isButtonActive,
+        isFirstButton: index === 0,
+        isLastButton: index === Children.count(props.children) - 1,
+      });
     }
-  );
+    return child;
+  });
 
   return (
     <div
@@ -118,5 +107,7 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
     </div>
   );
 };
+
+ViewSwitcher.displayName = 'ViewSwitcher.Group';
 
 export default ViewSwitcher;
