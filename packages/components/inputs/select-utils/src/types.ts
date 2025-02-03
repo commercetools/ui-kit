@@ -5,6 +5,7 @@ import type {
   ContainerProps,
   ControlProps,
   DropdownIndicatorProps,
+  GroupBase,
   GroupHeadingProps,
   GroupProps,
   IndicatorSeparatorProps,
@@ -23,30 +24,37 @@ import type {
   ValueContainerProps,
 } from 'react-select';
 
-export type TReactSelectCustomComponentsProps =
-  | ClearIndicatorProps
-  | ControlProps
-  | DropdownIndicatorProps
-  | GroupProps
-  | GroupHeadingProps
-  | IndicatorsContainerProps
-  | IndicatorSeparatorProps
-  | InputProps
-  | LoadingIndicatorProps
-  | MenuProps
-  | MenuListProps
-  | NoticeProps
-  | MultiValueProps
-  | MultiValueGenericProps
-  | MultiValueRemoveProps
-  | OptionProps
-  | PlaceholderProps
-  | ContainerProps
-  | SingleValueProps
-  | ValueContainerProps;
+export type TReactSelectCustomComponentsProps<
+  Option = unknown,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> =
+  | ClearIndicatorProps<Option, isMulti, Group>
+  | ControlProps<Option, isMulti, Group>
+  | DropdownIndicatorProps<Option, isMulti, Group>
+  | GroupProps<Option, isMulti, Group>
+  | GroupHeadingProps<Option, isMulti, Group>
+  | IndicatorsContainerProps<Option, isMulti, Group>
+  | IndicatorSeparatorProps<Option, isMulti, Group>
+  | InputProps<Option, isMulti, Group>
+  | LoadingIndicatorProps<Option, isMulti, Group>
+  | MenuProps<Option, isMulti, Group>
+  | MenuListProps<Option, isMulti, Group>
+  | NoticeProps<Option, isMulti, Group>
+  | MultiValueProps<Option, isMulti, Group>
+  | MultiValueGenericProps<Option, isMulti, Group>
+  | MultiValueRemoveProps<Option, isMulti, Group>
+  | OptionProps<Option, isMulti, Group>
+  | PlaceholderProps<Option, isMulti, Group>
+  | ContainerProps<Option, isMulti, Group>
+  | SingleValueProps<Option, isMulti, Group>
+  | ValueContainerProps<Option, isMulti, Group>;
 
 export type TSelectInputCustomComponentProps<
-  T extends TReactSelectCustomComponentsProps
+  T extends TReactSelectCustomComponentsProps<Option, isMulti, Group>,
+  Option = unknown,
+  isMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
 > = T & {
   selectProps: T['selectProps'] & {
     isCondensed?: boolean;

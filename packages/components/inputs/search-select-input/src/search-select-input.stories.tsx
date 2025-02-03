@@ -1,5 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import SearchSelectInput from './search-select-input';
+import SearchSelectInput, {
+  TOptionInnerPropsData,
+} from './search-select-input';
 import { iconArgType } from '@/storybook-helpers';
 import { useState } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
@@ -62,16 +64,16 @@ const loadOptions = (inputValue: string) =>
   delay(500).then(() => filterColors(inputValue));
 
 export const BasicExample: Story = ({ isMulti, ...args }) => {
-  const [value, onChange] = useState<string | string[] | undefined>(
-    isMulti ? [] : undefined
-  );
+  const [value, onChange] = useState<
+    TOptionInnerPropsData | readonly TOptionInnerPropsData[] | null | undefined
+  >(isMulti ? [] : null);
 
   return (
     <div style={{ height: 400 }}>
       <Spacings.Stack scale="m">
         <SearchSelectInput
           onChange={(event) => {
-            onChange(event.target.value as string | string[] | undefined);
+            onChange(event.target.value);
           }}
           value={value}
           {...args}
@@ -129,16 +131,16 @@ BasicExample.args = {
 };
 
 export const CheckboxOptionStyle: Story = ({ isMulti, ...args }) => {
-  const [value, onChange] = useState<string | string[] | undefined>(
-    isMulti ? [] : undefined
-  );
+  const [value, onChange] = useState<
+    TOptionInnerPropsData | readonly TOptionInnerPropsData[] | null | undefined
+  >(isMulti ? [] : undefined);
 
   return (
     <div style={{ height: 400 }}>
       <Spacings.Stack scale="m">
         <SearchSelectInput
           onChange={(event) => {
-            onChange(event.target.value as string | string[] | undefined);
+            onChange(event.target.value);
           }}
           value={value}
           {...args}
