@@ -85,7 +85,7 @@
     "react-from-dom": "0.6.2"
   },
   "engines": {
-    "node": ">=18 <19",
+    "node": ">=22",
     "npm": ">=6",
     "yarn": ">=3"
   },
