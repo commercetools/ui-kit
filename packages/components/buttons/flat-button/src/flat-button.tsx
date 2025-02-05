@@ -177,10 +177,12 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>({
       buttonAttributes={buttonAttributes}
     >
       {props.icon && iconPosition === 'left' && (
+        // @ts-ignore: relates to https://github.com/emotion-js/emotion/issues/3245
         <ButtonIcon<TStringOrComponent> {...buttonIconProps} />
       )}
       <span>{props.label}</span>
       {props.icon && iconPosition === 'right' && (
+        // @ts-ignore: relates to https://github.com/emotion-js/emotion/issues/3245
         <ButtonIcon<TStringOrComponent> {...buttonIconProps} />
       )}
     </AccessibleButton>

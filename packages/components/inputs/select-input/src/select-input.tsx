@@ -1,10 +1,33 @@
-import type { ReactNode } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import has from 'lodash/has';
 import Select, {
   components as defaultComponents,
   type Props as ReactSelectProps,
+  type ClearIndicatorProps,
+  type ContainerProps,
+  type ControlProps,
+  type DropdownIndicatorProps,
+  type GroupHeadingProps,
+  type GroupProps,
+  type IndicatorsContainerProps,
+  type InputProps,
+  type MenuListProps,
+  type MultiValueGenericProps,
+  type MultiValueProps,
+  type MultiValueRemoveProps,
+  type NoticeProps,
+  type OptionProps,
+  type PlaceholderProps,
+  type SingleValueProps,
+  type ValueContainerProps,
+  type GroupBase,
+  type LoadingIndicatorProps,
+  type MenuProps,
+  type CommonPropsAndClassName,
+  type MenuPlacement,
+  type MenuPosition,
 } from 'react-select';
 import Constraints from '@commercetools-uikit/constraints';
 import {
@@ -632,30 +655,105 @@ SelectInput.isTouched = (touched: boolean | unknown[]) => Boolean(touched);
  * Expose react-select components for customization purposes.
  */
 
-SelectInput.ClearIndicator = customizedComponents.ClearIndicator;
-SelectInput.Control = defaultComponents.Control;
-SelectInput.CrossIcon = defaultComponents.CrossIcon;
-SelectInput.DownChevron = defaultComponents.DownChevron;
-SelectInput.DropdownIndicator = customizedComponents.DropdownIndicator;
-SelectInput.Group = defaultComponents.Group;
-SelectInput.GroupHeading = defaultComponents.GroupHeading;
-SelectInput.IndicatorSeparator = defaultComponents.IndicatorSeparator;
-SelectInput.IndicatorsContainer = defaultComponents.IndicatorsContainer;
-SelectInput.Input = defaultComponents.Input;
-SelectInput.LoadingIndicator = defaultComponents.LoadingIndicator;
-SelectInput.LoadingMessage = defaultComponents.LoadingMessage;
-SelectInput.Menu = defaultComponents.Menu;
-SelectInput.MenuList = defaultComponents.MenuList;
-SelectInput.MenuPortal = defaultComponents.MenuPortal;
-SelectInput.MultiValue = defaultComponents.MultiValue;
-SelectInput.MultiValueContainer = defaultComponents.MultiValueContainer;
-SelectInput.MultiValueLabel = defaultComponents.MultiValueLabel;
-SelectInput.MultiValueRemove = customizedComponents.MultiValueRemove;
-SelectInput.NoOptionsMessage = defaultComponents.NoOptionsMessage;
-SelectInput.Option = defaultComponents.Option;
-SelectInput.Placeholder = defaultComponents.Placeholder;
-SelectInput.SelectContainer = defaultComponents.SelectContainer;
-SelectInput.SingleValue = defaultComponents.SingleValue;
-SelectInput.ValueContainer = defaultComponents.ValueContainer;
+// custom
+SelectInput.ClearIndicator =
+  customizedComponents.ClearIndicator as ComponentType<
+    ClearIndicatorProps<{}, false, GroupBase<{}>>
+  >;
+SelectInput.Control = defaultComponents.Control as ComponentType<
+  ControlProps<{}, false, GroupBase<{}>>
+>;
+SelectInput.CrossIcon = defaultComponents.CrossIcon as ComponentType<
+  JSX.IntrinsicElements['svg'] & {
+    size?: number;
+  }
+>;
+SelectInput.DownChevron = defaultComponents.DownChevron as ComponentType<
+  JSX.IntrinsicElements['svg'] & {
+    size?: number;
+  }
+>;
+// custom
+SelectInput.DropdownIndicator =
+  customizedComponents.DropdownIndicator as ComponentType<
+    DropdownIndicatorProps<{}, false, GroupBase<{}>>
+  >;
+SelectInput.Group = defaultComponents.Group as ComponentType<
+  GroupProps<{}, false, GroupBase<{}>>
+>;
+SelectInput.GroupHeading = defaultComponents.GroupHeading as ComponentType<
+  GroupHeadingProps<{}, false, GroupBase<{}>>
+>;
+SelectInput.IndicatorSeparator =
+  defaultComponents.IndicatorSeparator as ComponentType<
+    LoadingIndicatorProps<{}, false, GroupBase<{}>>
+  >;
+SelectInput.IndicatorsContainer =
+  defaultComponents.IndicatorsContainer as ComponentType<
+    IndicatorsContainerProps<{}, false, GroupBase<{}>>
+  >;
+SelectInput.Input = defaultComponents.Input as ComponentType<
+  InputProps<{}, false, GroupBase<{}>>
+>;
+// custom
+SelectInput.LoadingIndicator =
+  defaultComponents.LoadingIndicator as ComponentType<
+    LoadingIndicatorProps<{}, false, GroupBase<{}>>
+  >;
+SelectInput.LoadingMessage = defaultComponents.LoadingMessage as ComponentType<
+  NoticeProps<{}, false, GroupBase<{}>>
+>;
+SelectInput.Menu = defaultComponents.Menu as ComponentType<
+  MenuProps<{}, false, GroupBase<{}>>
+>;
+SelectInput.MenuList = defaultComponents.MenuList as ComponentType<
+  MenuListProps<{}, false, GroupBase<{}>>
+>;
+SelectInput.MenuPortal = defaultComponents.MenuPortal as ComponentType<
+  CommonPropsAndClassName<{}, false, GroupBase<{}>> & {
+    appendTo: HTMLElement | undefined;
+    children: ReactNode;
+    controlElement: HTMLDivElement | null;
+    innerProps: JSX.IntrinsicElements['div'];
+    menuPlacement: MenuPlacement;
+    menuPosition: MenuPosition;
+  }
+>;
+SelectInput.MultiValue = defaultComponents.MultiValue as ComponentType<
+  MultiValueProps<{}, false, GroupBase<{}>>
+>;
+SelectInput.MultiValueContainer =
+  defaultComponents.MultiValueContainer as ComponentType<
+    MultiValueGenericProps<{}, false, GroupBase<{}>>
+  >;
+SelectInput.MultiValueLabel =
+  defaultComponents.MultiValueLabel as ComponentType<
+    MultiValueGenericProps<{}, false, GroupBase<{}>>
+  >;
+// custom
+SelectInput.MultiValueRemove =
+  customizedComponents.MultiValueRemove as ComponentType<
+    MultiValueRemoveProps<{}, false, GroupBase<{}>>
+  >;
+SelectInput.NoOptionsMessage =
+  defaultComponents.NoOptionsMessage as ComponentType<
+    NoticeProps<{}, false, GroupBase<{}>>
+  >;
+SelectInput.Option = defaultComponents.Option as ComponentType<
+  OptionProps<{}, false, GroupBase<{}>>
+>;
+SelectInput.Placeholder = defaultComponents.Placeholder as ComponentType<
+  PlaceholderProps<{}, false, GroupBase<{}>>
+>;
+SelectInput.SelectContainer =
+  defaultComponents.SelectContainer as ComponentType<
+    ContainerProps<{}, false, GroupBase<{}>>
+  >;
+SelectInput.SingleValue = defaultComponents.SingleValue as ComponentType<
+  SingleValueProps<{}, false, GroupBase<{}>>
+>;
+SelectInput.ValueContainer = defaultComponents.ValueContainer as ComponentType<
+  ValueContainerProps<{}, false, GroupBase<{}>>
+>;
 
 export default SelectInput;
