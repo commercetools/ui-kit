@@ -546,7 +546,7 @@ CreatableSelectInput.Menu = defaultComponents.Menu;
 CreatableSelectInput.MenuList = defaultComponents.MenuList;
 //https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
 CreatableSelectInput.MenuPortal = defaultComponents.MenuPortal as ComponentType<
-  CommonPropsAndClassName<{}, false, GroupBase<{}>> & {
+  CommonPropsAndClassName<unknown, false, GroupBase<unknown>> & {
     appendTo: HTMLElement | undefined;
     children: ReactNode;
     controlElement: HTMLDivElement | null;
