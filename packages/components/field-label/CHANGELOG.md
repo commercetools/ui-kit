@@ -1,5 +1,21 @@
 # @commercetools-uikit/field-label
 
+## 19.22.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.2
+  - @commercetools-uikit/icon-button@19.22.2
+  - @commercetools-uikit/secondary-icon-button@19.22.2
+  - @commercetools-uikit/constraints@19.22.2
+  - @commercetools-uikit/icons@19.22.2
+  - @commercetools-uikit/label@19.22.2
+  - @commercetools-uikit/spacings-inline@19.22.2
+  - @commercetools-uikit/spacings-stack@19.22.2
+  - @commercetools-uikit/text@19.22.2
+  - @commercetools-uikit/utils@19.22.2
+
 ## 19.22.1
 
 ### Patch Changes
