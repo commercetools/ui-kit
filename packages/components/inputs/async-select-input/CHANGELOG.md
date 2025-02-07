@@ -1,5 +1,21 @@
 # @commercetools-uikit/async-select-input
 
+## 19.22.2
+
+### Patch Changes
+
+- [#3054](https://github.com/commercetools/ui-kit/pull/3054) [`3f97470`](https://github.com/commercetools/ui-kit/commit/3f974700aa04f259a9746d71f84bf41d6e8b6cc8) Thanks [@emmenko](https://github.com/emmenko)! - We are now using `moduleResolution: bundler` which attempts to optimize to avoid long paths. The re-exported components from `react-select` need to be explicitly typed now, to avoid TypeScript having to infer an internal import path.
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-utils@19.22.2
+  - @commercetools-uikit/design-system@19.22.2
+  - @commercetools-uikit/constraints@19.22.2
+  - @commercetools-uikit/icons@19.22.2
+  - @commercetools-uikit/loading-spinner@19.22.2
+  - @commercetools-uikit/text@19.22.2
+  - @commercetools-uikit/utils@19.22.2
+  - @commercetools-uikit/spacings@19.22.2
+
 ## 19.22.1
 
 ### Patch Changes
