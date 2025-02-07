@@ -1,10 +1,32 @@
-import type { ReactNode } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import {
   components as defaultComponents,
-  type GroupBase,
+  type ClearIndicatorProps,
+  type ContainerProps,
+  type ControlProps,
+  type DropdownIndicatorProps,
+  type GroupHeadingProps,
+  type GroupProps,
+  type IndicatorsContainerProps,
+  type InputProps,
+  type MenuListProps,
+  type MultiValueGenericProps,
+  type MultiValueProps,
+  type MultiValueRemoveProps,
+  type NoticeProps,
+  type OptionProps,
+  type PlaceholderProps,
+  type SingleValueProps,
+  type ValueContainerProps,
   type ActionMeta,
+  type GroupBase,
+  type LoadingIndicatorProps,
+  type MenuProps,
+  type CommonPropsAndClassName,
+  type MenuPlacement,
+  type MenuPosition,
 } from 'react-select';
 import CreatableSelect, { type CreatableProps } from 'react-select/creatable';
 import Constraints from '@commercetools-uikit/constraints';
@@ -514,34 +536,110 @@ CreatableSelectInput.isTouched = (touched: unknown) => Boolean(touched);
  */
 
 // custom
-CreatableSelectInput.ClearIndicator = customizedComponents.ClearIndicator;
-CreatableSelectInput.Control = defaultComponents.Control;
-CreatableSelectInput.CrossIcon = defaultComponents.CrossIcon;
-CreatableSelectInput.DownChevron = defaultComponents.DownChevron;
+CreatableSelectInput.ClearIndicator =
+  customizedComponents.ClearIndicator as ComponentType<
+    ClearIndicatorProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.Control = defaultComponents.Control as ComponentType<
+  ControlProps<{}, false, GroupBase<{}>>
+>;
+CreatableSelectInput.CrossIcon = defaultComponents.CrossIcon as ComponentType<
+  JSX.IntrinsicElements['svg'] & {
+    size?: number;
+  }
+>;
+CreatableSelectInput.DownChevron =
+  defaultComponents.DownChevron as ComponentType<
+    JSX.IntrinsicElements['svg'] & {
+      size?: number;
+    }
+  >;
 // custom
-CreatableSelectInput.DropdownIndicator = customizedComponents.DropdownIndicator;
-CreatableSelectInput.Group = defaultComponents.Group;
-CreatableSelectInput.GroupHeading = defaultComponents.GroupHeading;
-CreatableSelectInput.IndicatorSeparator = defaultComponents.IndicatorSeparator;
+CreatableSelectInput.DropdownIndicator =
+  customizedComponents.DropdownIndicator as ComponentType<
+    DropdownIndicatorProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.Group = defaultComponents.Group as ComponentType<
+  GroupProps<{}, false, GroupBase<{}>>
+>;
+CreatableSelectInput.GroupHeading =
+  defaultComponents.GroupHeading as ComponentType<
+    GroupHeadingProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.IndicatorSeparator =
+  defaultComponents.IndicatorSeparator as ComponentType<
+    LoadingIndicatorProps<{}, false, GroupBase<{}>>
+  >;
 CreatableSelectInput.IndicatorsContainer =
-  defaultComponents.IndicatorsContainer;
-CreatableSelectInput.Input = defaultComponents.Input;
-CreatableSelectInput.LoadingIndicator = defaultComponents.LoadingIndicator;
-CreatableSelectInput.LoadingMessage = defaultComponents.LoadingMessage;
-CreatableSelectInput.Menu = defaultComponents.Menu;
-CreatableSelectInput.MenuList = defaultComponents.MenuList;
-CreatableSelectInput.MenuPortal = defaultComponents.MenuPortal;
-CreatableSelectInput.MultiValue = defaultComponents.MultiValue;
-CreatableSelectInput.MultiValueContainer =
-  defaultComponents.MultiValueContainer;
-CreatableSelectInput.MultiValueLabel = defaultComponents.MultiValueLabel;
+  defaultComponents.IndicatorsContainer as ComponentType<
+    IndicatorsContainerProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.Input = defaultComponents.Input as ComponentType<
+  InputProps<{}, false, GroupBase<{}>>
+>;
 // custom
-CreatableSelectInput.MultiValueRemove = customizedComponents.MultiValueRemove;
-CreatableSelectInput.NoOptionsMessage = defaultComponents.NoOptionsMessage;
-CreatableSelectInput.Option = defaultComponents.Option;
-CreatableSelectInput.Placeholder = defaultComponents.Placeholder;
-CreatableSelectInput.SelectContainer = defaultComponents.SelectContainer;
-CreatableSelectInput.SingleValue = defaultComponents.SingleValue;
-CreatableSelectInput.ValueContainer = defaultComponents.ValueContainer;
+CreatableSelectInput.LoadingIndicator =
+  defaultComponents.LoadingIndicator as ComponentType<
+    LoadingIndicatorProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.LoadingMessage =
+  defaultComponents.LoadingMessage as ComponentType<
+    NoticeProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.Menu = defaultComponents.Menu as ComponentType<
+  MenuProps<{}, false, GroupBase<{}>>
+>;
+CreatableSelectInput.MenuList = defaultComponents.MenuList as ComponentType<
+  MenuListProps<{}, false, GroupBase<{}>>
+>;
+CreatableSelectInput.MenuPortal = defaultComponents.MenuPortal as ComponentType<
+  CommonPropsAndClassName<{}, false, GroupBase<{}>> & {
+    appendTo: HTMLElement | undefined;
+    children: ReactNode;
+    controlElement: HTMLDivElement | null;
+    innerProps: JSX.IntrinsicElements['div'];
+    menuPlacement: MenuPlacement;
+    menuPosition: MenuPosition;
+  }
+>;
+CreatableSelectInput.MultiValue = defaultComponents.MultiValue as ComponentType<
+  MultiValueProps<{}, false, GroupBase<{}>>
+>;
+CreatableSelectInput.MultiValueContainer =
+  defaultComponents.MultiValueContainer as ComponentType<
+    MultiValueGenericProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.MultiValueLabel =
+  defaultComponents.MultiValueLabel as ComponentType<
+    MultiValueGenericProps<{}, false, GroupBase<{}>>
+  >;
+// custom
+CreatableSelectInput.MultiValueRemove =
+  customizedComponents.MultiValueRemove as ComponentType<
+    MultiValueRemoveProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.NoOptionsMessage =
+  defaultComponents.NoOptionsMessage as ComponentType<
+    NoticeProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.Option = defaultComponents.Option as ComponentType<
+  OptionProps<{}, false, GroupBase<{}>>
+>;
+CreatableSelectInput.Placeholder =
+  defaultComponents.Placeholder as ComponentType<
+    PlaceholderProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.SelectContainer =
+  defaultComponents.SelectContainer as ComponentType<
+    ContainerProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.SingleValue =
+  defaultComponents.SingleValue as ComponentType<
+    SingleValueProps<{}, false, GroupBase<{}>>
+  >;
+CreatableSelectInput.ValueContainer =
+  defaultComponents.ValueContainer as ComponentType<
+    ValueContainerProps<{}, false, GroupBase<{}>>
+  >;
 
 export default CreatableSelectInput;
