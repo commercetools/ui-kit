@@ -1,5 +1,13 @@
 # @commercetools-uikit/quick-filters
 
+## 19.22.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.3
+  - @commercetools-uikit/tag@19.22.3
+
 ## 19.22.2
 
 ### Patch Changes
