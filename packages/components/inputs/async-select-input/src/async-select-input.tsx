@@ -6,25 +6,6 @@ import {
   type ActionMeta,
   type GroupBase,
   type OptionsOrGroups,
-  type ClearIndicatorProps,
-  type ContainerProps,
-  type ControlProps,
-  type DropdownIndicatorProps,
-  type GroupHeadingProps,
-  type GroupProps,
-  type IndicatorsContainerProps,
-  type InputProps,
-  type MenuListProps,
-  type MultiValueGenericProps,
-  type MultiValueProps,
-  type MultiValueRemoveProps,
-  type NoticeProps,
-  type OptionProps,
-  type PlaceholderProps,
-  type SingleValueProps,
-  type ValueContainerProps,
-  type LoadingIndicatorProps,
-  type MenuProps,
   type CommonPropsAndClassName,
   type MenuPlacement,
   type MenuPosition,
@@ -575,62 +556,35 @@ AsyncSelectInput.isTouched = (touched: unknown) => Boolean(touched);
  */
 
 // custom
-AsyncSelectInput.ClearIndicator =
-  customizedComponents.ClearIndicator as ComponentType<
-    ClearIndicatorProps<{}, false, GroupBase<{}>>
-  >;
-AsyncSelectInput.Control = defaultComponents.Control as ComponentType<
-  ControlProps<{}, false, GroupBase<{}>>
->;
+AsyncSelectInput.ClearIndicator = customizedComponents.ClearIndicator;
+AsyncSelectInput.Control = defaultComponents.Control;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
 AsyncSelectInput.CrossIcon = defaultComponents.CrossIcon as ComponentType<
   JSX.IntrinsicElements['svg'] & {
     size?: number;
   }
 >;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
 AsyncSelectInput.DownChevron = defaultComponents.DownChevron as ComponentType<
   JSX.IntrinsicElements['svg'] & {
     size?: number;
   }
 >;
 // custom
-AsyncSelectInput.DropdownIndicator =
-  customizedComponents.DropdownIndicator as ComponentType<
-    DropdownIndicatorProps<{}, false, GroupBase<{}>>
-  >;
-AsyncSelectInput.Group = defaultComponents.Group as ComponentType<
-  GroupProps<{}, false, GroupBase<{}>>
->;
-AsyncSelectInput.GroupHeading = defaultComponents.GroupHeading as ComponentType<
-  GroupHeadingProps<{}, false, GroupBase<{}>>
->;
-AsyncSelectInput.IndicatorSeparator =
-  defaultComponents.IndicatorSeparator as ComponentType<
-    LoadingIndicatorProps<{}, false, GroupBase<{}>>
-  >;
-AsyncSelectInput.IndicatorsContainer =
-  defaultComponents.IndicatorsContainer as ComponentType<
-    IndicatorsContainerProps<{}, false, GroupBase<{}>>
-  >;
-AsyncSelectInput.Input = defaultComponents.Input as ComponentType<
-  InputProps<{}, false, GroupBase<{}>>
->;
+AsyncSelectInput.DropdownIndicator = customizedComponents.DropdownIndicator;
+AsyncSelectInput.Group = defaultComponents.Group;
+AsyncSelectInput.GroupHeading = defaultComponents.GroupHeading;
+AsyncSelectInput.IndicatorSeparator = defaultComponents.IndicatorSeparator;
+AsyncSelectInput.IndicatorsContainer = defaultComponents.IndicatorsContainer;
+AsyncSelectInput.Input = defaultComponents.Input;
 // custom
-AsyncSelectInput.LoadingIndicator =
-  customizedComponents.LoadingIndicator as ComponentType<
-    LoadingIndicatorProps<{}, false, GroupBase<{}>>
-  >;
-AsyncSelectInput.LoadingMessage =
-  defaultComponents.LoadingMessage as ComponentType<
-    NoticeProps<{}, false, GroupBase<{}>>
-  >;
-AsyncSelectInput.Menu = defaultComponents.Menu as ComponentType<
-  MenuProps<{}, false, GroupBase<{}>>
->;
-AsyncSelectInput.MenuList = defaultComponents.MenuList as ComponentType<
-  MenuListProps<{}, false, GroupBase<{}>>
->;
+AsyncSelectInput.LoadingIndicator = customizedComponents.LoadingIndicator;
+AsyncSelectInput.LoadingMessage = defaultComponents.LoadingMessage;
+AsyncSelectInput.Menu = defaultComponents.Menu;
+AsyncSelectInput.MenuList = defaultComponents.MenuList;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
 AsyncSelectInput.MenuPortal = defaultComponents.MenuPortal as ComponentType<
-  CommonPropsAndClassName<{}, false, GroupBase<{}>> & {
+  CommonPropsAndClassName<unknown, false, GroupBase<unknown>> & {
     appendTo: HTMLElement | undefined;
     children: ReactNode;
     controlElement: HTMLDivElement | null;
@@ -639,42 +593,16 @@ AsyncSelectInput.MenuPortal = defaultComponents.MenuPortal as ComponentType<
     menuPosition: MenuPosition;
   }
 >;
-AsyncSelectInput.MultiValue = defaultComponents.MultiValue as ComponentType<
-  MultiValueProps<{}, false, GroupBase<{}>>
->;
-AsyncSelectInput.MultiValueContainer =
-  defaultComponents.MultiValueContainer as ComponentType<
-    MultiValueGenericProps<{}, false, GroupBase<{}>>
-  >;
-AsyncSelectInput.MultiValueLabel =
-  defaultComponents.MultiValueLabel as ComponentType<
-    MultiValueGenericProps<{}, false, GroupBase<{}>>
-  >;
+AsyncSelectInput.MultiValue = defaultComponents.MultiValue;
+AsyncSelectInput.MultiValueContainer = defaultComponents.MultiValueContainer;
+AsyncSelectInput.MultiValueLabel = defaultComponents.MultiValueLabel;
 // custom
-AsyncSelectInput.MultiValueRemove =
-  customizedComponents.MultiValueRemove as ComponentType<
-    MultiValueRemoveProps<{}, false, GroupBase<{}>>
-  >;
-AsyncSelectInput.NoOptionsMessage =
-  defaultComponents.NoOptionsMessage as ComponentType<
-    NoticeProps<{}, false, GroupBase<{}>>
-  >;
-AsyncSelectInput.Option = defaultComponents.Option as ComponentType<
-  OptionProps<{}, false, GroupBase<{}>>
->;
-AsyncSelectInput.Placeholder = defaultComponents.Placeholder as ComponentType<
-  PlaceholderProps<{}, false, GroupBase<{}>>
->;
-AsyncSelectInput.SelectContainer =
-  defaultComponents.SelectContainer as ComponentType<
-    ContainerProps<{}, false, GroupBase<{}>>
-  >;
-AsyncSelectInput.SingleValue = defaultComponents.SingleValue as ComponentType<
-  SingleValueProps<{}, false, GroupBase<{}>>
->;
-AsyncSelectInput.ValueContainer =
-  defaultComponents.ValueContainer as ComponentType<
-    ValueContainerProps<{}, false, GroupBase<{}>>
-  >;
+AsyncSelectInput.MultiValueRemove = customizedComponents.MultiValueRemove;
+AsyncSelectInput.NoOptionsMessage = defaultComponents.NoOptionsMessage;
+AsyncSelectInput.Option = defaultComponents.Option;
+AsyncSelectInput.Placeholder = defaultComponents.Placeholder;
+AsyncSelectInput.SelectContainer = defaultComponents.SelectContainer;
+AsyncSelectInput.SingleValue = defaultComponents.SingleValue;
+AsyncSelectInput.ValueContainer = defaultComponents.ValueContainer;
 
 export default AsyncSelectInput;

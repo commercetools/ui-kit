@@ -3,28 +3,9 @@ import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import {
   components as defaultComponents,
-  type ClearIndicatorProps,
-  type ContainerProps,
-  type ControlProps,
-  type DropdownIndicatorProps,
-  type GroupHeadingProps,
-  type GroupProps,
-  type IndicatorsContainerProps,
-  type InputProps,
-  type MenuListProps,
-  type MultiValueGenericProps,
-  type MultiValueProps,
-  type MultiValueRemoveProps,
-  type NoticeProps,
-  type OptionProps,
-  type PlaceholderProps,
-  type SingleValueProps,
-  type ValueContainerProps,
   type ActionMeta,
-  type GroupBase,
-  type LoadingIndicatorProps,
-  type MenuProps,
   type CommonPropsAndClassName,
+  type GroupBase,
   type MenuPlacement,
   type MenuPosition,
 } from 'react-select';
@@ -561,19 +542,16 @@ AsyncCreatableSelectInput.isTouched = (touched: unknown) => Boolean(touched);
  */
 
 // custom
-AsyncCreatableSelectInput.ClearIndicator =
-  customizedComponents.ClearIndicator as ComponentType<
-    ClearIndicatorProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.Control = defaultComponents.Control as ComponentType<
-  ControlProps<{}, false, GroupBase<{}>>
->;
+AsyncCreatableSelectInput.ClearIndicator = customizedComponents.ClearIndicator;
+AsyncCreatableSelectInput.Control = defaultComponents.Control;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
 AsyncCreatableSelectInput.CrossIcon =
   defaultComponents.CrossIcon as ComponentType<
     JSX.IntrinsicElements['svg'] & {
       size?: number;
     }
   >;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
 AsyncCreatableSelectInput.DownChevron =
   defaultComponents.DownChevron as ComponentType<
     JSX.IntrinsicElements['svg'] & {
@@ -582,46 +560,24 @@ AsyncCreatableSelectInput.DownChevron =
   >;
 // custom
 AsyncCreatableSelectInput.DropdownIndicator =
-  customizedComponents.DropdownIndicator as ComponentType<
-    DropdownIndicatorProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.Group = defaultComponents.Group as ComponentType<
-  GroupProps<{}, false, GroupBase<{}>>
->;
-AsyncCreatableSelectInput.GroupHeading =
-  defaultComponents.GroupHeading as ComponentType<
-    GroupHeadingProps<{}, false, GroupBase<{}>>
-  >;
+  customizedComponents.DropdownIndicator;
+AsyncCreatableSelectInput.Group = defaultComponents.Group;
+AsyncCreatableSelectInput.GroupHeading = defaultComponents.GroupHeading;
 AsyncCreatableSelectInput.IndicatorSeparator =
-  defaultComponents.IndicatorSeparator as ComponentType<
-    LoadingIndicatorProps<{}, false, GroupBase<{}>>
-  >;
+  defaultComponents.IndicatorSeparator;
 AsyncCreatableSelectInput.IndicatorsContainer =
-  defaultComponents.IndicatorsContainer as ComponentType<
-    IndicatorsContainerProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.Input = defaultComponents.Input as ComponentType<
-  InputProps<{}, false, GroupBase<{}>>
->;
+  defaultComponents.IndicatorsContainer;
+AsyncCreatableSelectInput.Input = defaultComponents.Input;
 // custom
 AsyncCreatableSelectInput.LoadingIndicator =
-  customizedComponents.LoadingIndicator as ComponentType<
-    LoadingIndicatorProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.LoadingMessage =
-  defaultComponents.LoadingMessage as ComponentType<
-    NoticeProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.Menu = defaultComponents.Menu as ComponentType<
-  MenuProps<{}, false, GroupBase<{}>>
->;
-AsyncCreatableSelectInput.MenuList =
-  defaultComponents.MenuList as ComponentType<
-    MenuListProps<{}, false, GroupBase<{}>>
-  >;
+  customizedComponents.LoadingIndicator;
+AsyncCreatableSelectInput.LoadingMessage = defaultComponents.LoadingMessage;
+AsyncCreatableSelectInput.Menu = defaultComponents.Menu;
+AsyncCreatableSelectInput.MenuList = defaultComponents.MenuList;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
 AsyncCreatableSelectInput.MenuPortal =
   defaultComponents.MenuPortal as ComponentType<
-    CommonPropsAndClassName<{}, false, GroupBase<{}>> & {
+    CommonPropsAndClassName<unknown, false, GroupBase<unknown>> & {
       appendTo: HTMLElement | undefined;
       children: ReactNode;
       controlElement: HTMLDivElement | null;
@@ -630,45 +586,18 @@ AsyncCreatableSelectInput.MenuPortal =
       menuPosition: MenuPosition;
     }
   >;
-AsyncCreatableSelectInput.MultiValue =
-  defaultComponents.MultiValue as ComponentType<
-    MultiValueProps<{}, false, GroupBase<{}>>
-  >;
+AsyncCreatableSelectInput.MultiValue = defaultComponents.MultiValue;
 AsyncCreatableSelectInput.MultiValueContainer =
-  defaultComponents.MultiValueContainer as ComponentType<
-    MultiValueGenericProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.MultiValueLabel =
-  defaultComponents.MultiValueLabel as ComponentType<
-    MultiValueGenericProps<{}, false, GroupBase<{}>>
-  >;
+  defaultComponents.MultiValueContainer;
+AsyncCreatableSelectInput.MultiValueLabel = defaultComponents.MultiValueLabel;
 // custom
 AsyncCreatableSelectInput.MultiValueRemove =
-  customizedComponents.MultiValueRemove as ComponentType<
-    MultiValueRemoveProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.NoOptionsMessage =
-  defaultComponents.NoOptionsMessage as ComponentType<
-    NoticeProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.Option = defaultComponents.Option as ComponentType<
-  OptionProps<{}, false, GroupBase<{}>>
->;
-AsyncCreatableSelectInput.Placeholder =
-  defaultComponents.Placeholder as ComponentType<
-    PlaceholderProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.SelectContainer =
-  defaultComponents.SelectContainer as ComponentType<
-    ContainerProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.SingleValue =
-  defaultComponents.SingleValue as ComponentType<
-    SingleValueProps<{}, false, GroupBase<{}>>
-  >;
-AsyncCreatableSelectInput.ValueContainer =
-  defaultComponents.ValueContainer as ComponentType<
-    ValueContainerProps<{}, false, GroupBase<{}>>
-  >;
+  customizedComponents.MultiValueRemove;
+AsyncCreatableSelectInput.NoOptionsMessage = defaultComponents.NoOptionsMessage;
+AsyncCreatableSelectInput.Option = defaultComponents.Option;
+AsyncCreatableSelectInput.Placeholder = defaultComponents.Placeholder;
+AsyncCreatableSelectInput.SelectContainer = defaultComponents.SelectContainer;
+AsyncCreatableSelectInput.SingleValue = defaultComponents.SingleValue;
+AsyncCreatableSelectInput.ValueContainer = defaultComponents.ValueContainer;
 
 export default AsyncCreatableSelectInput;
