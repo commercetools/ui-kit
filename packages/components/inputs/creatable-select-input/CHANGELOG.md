@@ -1,5 +1,18 @@
 # @commercetools-uikit/creatable-select-input
 
+## 19.22.5
+
+### Patch Changes
+
+- Updated dependencies [[`eaceab0`](https://github.com/commercetools/ui-kit/commit/eaceab09a3df4b7b55ef7237d79a1a7c9d96a6d7)]:
+  - @commercetools-uikit/icons@19.22.5
+  - @commercetools-uikit/select-utils@19.22.5
+  - @commercetools-uikit/design-system@19.22.5
+  - @commercetools-uikit/constraints@19.22.5
+  - @commercetools-uikit/text@19.22.5
+  - @commercetools-uikit/utils@19.22.5
+  - @commercetools-uikit/spacings@19.22.5
+
 ## 19.22.4
 
 ### Patch Changes
