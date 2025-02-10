@@ -111,6 +111,7 @@ export { default as RightTriangleLinearIcon } from './RightTriangleLinearReact';
 export { default as RocketIcon } from './RocketReact';
 export { default as ScreenGearIcon } from './ScreenGearReact';
 export { default as ScreenUserIcon } from './ScreenUserReact';
+export { default as SdkIcon } from './SdkReact';
 export { default as SearchIcon } from './SearchReact';
 export { default as SidebarCollapseIcon } from './SidebarCollapseReact';
 export { default as SidebarExpandIcon } from './SidebarExpandReact';
