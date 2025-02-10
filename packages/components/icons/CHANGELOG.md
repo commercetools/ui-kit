@@ -1,5 +1,15 @@
 # @commercetools-uikit/icons
 
+## 19.22.5
+
+### Patch Changes
+
+- [#3060](https://github.com/commercetools/ui-kit/pull/3060) [`eaceab0`](https://github.com/commercetools/ui-kit/commit/eaceab09a3df4b7b55ef7237d79a1a7c9d96a6d7) Thanks [@jaikamat](https://github.com/jaikamat)! - Remove default fill from subset of icons
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.5
+  - @commercetools-uikit/utils@19.22.5
+
 ## 19.22.4
 
 ### Patch Changes
