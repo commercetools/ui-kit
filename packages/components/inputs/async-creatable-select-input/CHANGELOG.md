@@ -1,5 +1,23 @@
 # @commercetools-uikit/async-creatable-select-input
 
+## 19.22.3
+
+### Patch Changes
+
+- [#3056](https://github.com/commercetools/ui-kit/pull/3056) [`e717a65`](https://github.com/commercetools/ui-kit/commit/e717a650b6465dc35f380ddd753f98bd91d46ea5) Thanks [@ByronDWall](https://github.com/ByronDWall)! - We are now using `moduleResolution: bundler` which attempts to optimize to avoid long paths. The re-exported components from `react-select` need to be explicitly typed now, to avoid TypeScript having to infer an internal import path.
+
+- [#3056](https://github.com/commercetools/ui-kit/pull/3056) [`e717a65`](https://github.com/commercetools/ui-kit/commit/e717a650b6465dc35f380ddd753f98bd91d46ea5) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Remove type annotations from re-exported react-select child components where they are not necessary to reduce verbosity and maintain type consistency
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-utils@19.22.3
+  - @commercetools-uikit/design-system@19.22.3
+  - @commercetools-uikit/constraints@19.22.3
+  - @commercetools-uikit/icons@19.22.3
+  - @commercetools-uikit/loading-spinner@19.22.3
+  - @commercetools-uikit/text@19.22.3
+  - @commercetools-uikit/utils@19.22.3
+  - @commercetools-uikit/spacings@19.22.3
+
 ## 19.22.2
 
 ### Patch Changes

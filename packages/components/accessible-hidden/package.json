@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/accessible-hidden",
   "description": "Component to hide content offscreen while keeping it accessible. This is also helpful for testing purposes.",
-  "version": "19.22.2",
+  "version": "19.22.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
