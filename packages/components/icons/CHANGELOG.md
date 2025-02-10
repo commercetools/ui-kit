@@ -1,5 +1,15 @@
 # @commercetools-uikit/icons
 
+## 19.22.4
+
+### Patch Changes
+
+- [#3058](https://github.com/commercetools/ui-kit/pull/3058) [`975a87b`](https://github.com/commercetools/ui-kit/commit/975a87b4a36573d41be29a236a01a34fb38a2c5d) Thanks [@jaikamat](https://github.com/jaikamat)! - Include new SDK icon
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.4
+  - @commercetools-uikit/utils@19.22.4
+
 ## 19.22.3
 
 ### Patch Changes
