@@ -369,7 +369,10 @@ const parsePropTypesToMarkdown = (
                 propTypeNode = [
                   inlineCode('Object'),
                   html('<br/>'),
-                  link(`#signature-${propName}`, 'See signature.'),
+                  link(
+                    `#signature-${propName.toLowerCase()}`,
+                    'See signature.'
+                  ),
                 ];
                 signatures.push(
                   ...[
@@ -387,7 +390,10 @@ const parsePropTypesToMarkdown = (
                 propTypeNode = [
                   inlineCode('Function'),
                   html('<br/>'),
-                  link(`#signature-${propName}`, 'See signature.'),
+                  link(
+                    `#signature-${propName.toLowerCase()}`,
+                    'See signature.'
+                  ),
                 ];
                 signatures.push(
                   ...[
@@ -416,7 +422,7 @@ const parsePropTypesToMarkdown = (
               propTypeNode = [
                 inlineCode(`Array: ${propInfoType.raw.replace('\n', '')}`),
                 html('<br/>'),
-                link(`#signature-${propName}`, 'See signature.'),
+                link(`#signature-${propName.toLowerCase()}`, 'See signature.'),
               ];
               signatures.push(
                 ...[
@@ -470,7 +476,10 @@ const parsePropTypesToMarkdown = (
               ...(possibleSignatures.length > 0
                 ? [
                     html('<br/>'),
-                    link(`#signature-${propName}`, 'See signature.'),
+                    link(
+                      `#signature-${propName.toLowerCase()}`,
+                      'See signature.'
+                    ),
                   ]
                 : []),
             ];
