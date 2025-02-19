@@ -68,7 +68,7 @@ export default App;
 | Props         | Type                                                                | Required | Default | Description                                                                                                                                                                         |
 | ------------- | ------------------------------------------------------------------- | :------: | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `items`       | `Array: TQuickFiltersItem[]`<br/>[See signature.](#signature-items) |    ✅    |         | collection of quick filter items@param item.id unique identifier for the item.&#xA;@param item.label label to display&#xA;@param item.isActive the current active state of the item |
-| `onItemClick` | `Function`<br/>[See signature.](#signature-onItemClick)             |    ✅    |         | callback fn, executed when an item is clicked                                                                                                                                       |
+| `onItemClick` | `Function`<br/>[See signature.](#signature-onitemclick)             |    ✅    |         | callback fn, executed when an item is clicked                                                                                                                                       |
 
 ## Signatures
 
