@@ -87,7 +87,7 @@ it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { findByLabelText } = renderAsyncSelectField({ onFocus });
   const asyncSelectField = await findByLabelText('AsyncSelectField');
-  asyncSelectField.focus();
+  await fireEvent.asyncFocus(asyncSelectField);
   expect(asyncSelectField).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
@@ -96,9 +96,9 @@ it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { findByLabelText } = renderAsyncSelectField({ onBlur });
   const asyncSelectField = await findByLabelText('AsyncSelectField');
-  asyncSelectField.focus();
+  await fireEvent.asyncFocus(asyncSelectField);
   expect(asyncSelectField).toHaveFocus();
-  asyncSelectField.blur();
+  await fireEvent.asyncBlur(asyncSelectField);
   expect(asyncSelectField).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -119,7 +119,7 @@ it('should call onChange when changing the value', async () => {
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   await findByText('Shipped');
-  getByText('Shipped').click();
+  fireEvent.click(getByText('Shipped'));
   expect(onChange).toHaveBeenCalled();
 });
 
@@ -185,7 +185,7 @@ describe('when showing an info button', () => {
       onInfoButtonClick,
     });
     const moreInfoButton = await findByLabelText('More Info');
-    moreInfoButton.click();
+    fireEvent.click(moreInfoButton);
     expect(onInfoButtonClick).toHaveBeenCalled();
   });
 });

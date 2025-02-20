@@ -1,5 +1,5 @@
 import type { LocationDescriptor } from 'history';
-import type { MessageDescriptor } from 'react-intl';
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 import {
   Children,
   type ReactNode,
@@ -26,9 +26,7 @@ export type TLinkProps = {
    * <br />
    * Required if `children` is not provided.
    */
-  intlMessage?: MessageDescriptor & {
-    values?: Record<string, ReactNode>;
-  };
+  intlMessage?: IntlMessage;
   /**
    * A flag to indicate if the Link points to an external source.
    * <bt />

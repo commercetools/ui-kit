@@ -1,4 +1,11 @@
-import { useRef, useCallback, type ReactNode } from 'react';
+import {
+  useRef,
+  useCallback,
+  type ReactNode,
+  type ComponentType,
+  type ChangeEvent,
+  type FocusEvent,
+} from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
 import Select, {
@@ -16,7 +23,7 @@ import {
   filterDataAttributes,
   createSequentialId,
 } from '@commercetools-uikit/utils';
-import Tooltip from '@commercetools-uikit/tooltip';
+import Tooltip, { type TTooltipProps } from '@commercetools-uikit/tooltip';
 import {
   DropdownIndicator,
   createSelectStyles,
@@ -623,14 +630,14 @@ const MoneyInput = ({
   ]);
 
   const handleAmountChange = useCallback(
-    (event) => {
-      if (isNumberish(event.target.value)) {
+    (event: ChangeEvent | FocusEvent) => {
+      if (isNumberish((event.target as HTMLInputElement)?.value)) {
         onChange?.({
           persist: () => {},
           target: {
             id: MoneyInput.getAmountInputId(moneyInputId),
             name: getAmountInputName(props.name),
-            value: event.target.value,
+            value: (event.target as HTMLInputElement)?.value,
           },
         });
       }
@@ -639,7 +646,7 @@ const MoneyInput = ({
   );
 
   const handleCurrencyChange = useCallback(
-    (option) => {
+    (option: { value: TCurrencyCode }) => {
       const currencyCode = option.value;
       if (props.value.currencyCode !== currencyCode) {
         // When the user changes from a currency with 3 fraction digits to
@@ -749,12 +756,12 @@ const MoneyInput = ({
 
   const { onBlur } = props;
   const handleContainerBlur = useCallback(
-    (event) => {
+    (event: FocusEvent) => {
       // ensures that both fields are marked as touched when one of them
       // is blurred
       if (
         typeof onBlur === 'function' &&
-        !containerRef.current?.contains(event.relatedTarget)
+        !containerRef.current?.contains(event.relatedTarget as Node)
       ) {
         onBlur({
           target: {
@@ -774,7 +781,9 @@ const MoneyInput = ({
   );
 
   const TooltipPortal = useCallback(
-    (remainingProps) => <Portal {...remainingProps} id={props.id} />,
+    (remainingProps: TTooltipProps & { id: string }) => (
+      <Portal {...remainingProps} id={props.id!} />
+    ),
     [props.id]
   );
 
@@ -789,7 +798,9 @@ const MoneyInput = ({
           display: flex;
         `}
         data-testid="money-input-container"
-        onBlur={handleContainerBlur}
+        onBlur={(event) =>
+          handleContainerBlur(event as FocusEvent<HTMLDivElement>)
+        }
       >
         {hasNoCurrencies ? (
           <CurrencyLabel
@@ -831,7 +842,7 @@ const MoneyInput = ({
             menuPortalTarget={props.menuPortalTarget}
             menuShouldBlockScroll={props.menuShouldBlockScroll}
             onBlur={handleCurrencyBlur}
-            onChange={handleCurrencyChange}
+            onChange={handleCurrencyChange as ReactSelectProps['onChange']}
             data-testid="currency-dropdown"
           />
         )}
@@ -901,7 +912,7 @@ const MoneyInput = ({
                   }}
                   title={intl.formatMessage(messages.highPrecision)}
                   components={{
-                    TooltipWrapperComponent: TooltipPortal,
+                    TooltipWrapperComponent: TooltipPortal as ComponentType,
                     WrapperComponent: TooltipWrapper,
                   }}
                 >

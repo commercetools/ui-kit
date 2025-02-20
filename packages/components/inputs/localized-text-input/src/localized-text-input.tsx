@@ -1,10 +1,12 @@
 import {
   type FocusEventHandler,
   type ChangeEventHandler,
+  type ChangeEvent,
   type ReactNode,
   useCallback,
 } from 'react';
-import { FormattedMessage, type MessageDescriptor } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import {
@@ -149,14 +151,7 @@ export type TLocalizedTextInputProps = {
       es: 'Algún valor',
     }
    */
-  additionalInfo?: Record<
-    string,
-    | string
-    | ReactNode
-    | (MessageDescriptor & {
-        values: Record<string, ReactNode>;
-      })
-  >;
+  additionalInfo?: Record<string, string | ReactNode | IntlMessage>;
 };
 
 export type TLocalizedInputProps = {
@@ -198,7 +193,7 @@ const sequentialId = createSequentialId('localized-text-input-');
 const LocalizedInput = (props: TLocalizedInputProps) => {
   const { onChange } = props;
   const handleChange = useCallback(
-    (event) => {
+    (event: ChangeEvent<HTMLLocalizedInputElement>) => {
       // We manipulate the event to add the language to the target.
       // That way the users of LocalizedTextInput's onChange can read
       // event.target.language and event.target.value to determine the next value.
@@ -368,7 +363,7 @@ const LocalizedTextInput = ({
                   )}
                   {props.additionalInfo?.[language] && (
                     <AdditionalInfoMessage
-                      message={props.additionalInfo[language]}
+                      message={props.additionalInfo[language] as ReactNode}
                     />
                   )}
                 </Stack>

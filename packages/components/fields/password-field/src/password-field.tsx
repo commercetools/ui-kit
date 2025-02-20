@@ -17,7 +17,7 @@ import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import Constraints from '@commercetools-uikit/constraints';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Stack from '@commercetools-uikit/spacings-stack';
-import FieldLabel from '@commercetools-uikit/field-label';
+import FieldLabel, { type TIconProps } from '@commercetools-uikit/field-label';
 import PasswordInput from '@commercetools-uikit/password-input';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { EyeIcon, EyeCrossedIcon } from '@commercetools-uikit/icons';
@@ -167,7 +167,7 @@ export type TPasswordField = {
    * <br />
    * Will only get rendered when `hint` is passed as well.
    */
-  hintIcon?: ReactElement;
+  hintIcon?: ReactElement<TIconProps>;
   /**
    * Badge to be displayed beside the label.
    * <br />

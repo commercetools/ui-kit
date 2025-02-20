@@ -22,7 +22,7 @@ const getInputStyles = () => css`
 `;
 
 type TDateCalendarTimeInputProps = {
-  timeInputRef: RefObject<HTMLInputElement>;
+  timeInputRef: RefObject<HTMLInputElement | null>;
   onKeyDown: KeyboardEventHandler<HTMLInputElement>;
 } & Pick<
   TDateTimeInputProps,

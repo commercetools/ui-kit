@@ -1,4 +1,4 @@
-import type { CSSProperties, LegacyRef } from 'react';
+import type { CSSProperties, Ref, JSX } from 'react';
 import type { ClearIndicatorProps } from 'react-select';
 import { css } from '@emotion/react';
 import { useIntl } from 'react-intl';
@@ -8,7 +8,7 @@ import messages from './messages';
 import { TSelectInputCustomComponentProps } from '../types';
 
 type TInnerProps = {
-  ref: LegacyRef<HTMLButtonElement>;
+  ref: Ref<HTMLButtonElement>;
 } & JSX.IntrinsicElements['button'];
 
 export type TClearIndicatorProps = {

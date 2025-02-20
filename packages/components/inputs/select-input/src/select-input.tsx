@@ -1,4 +1,4 @@
-import type { ComponentType, ReactNode } from 'react';
+import type { ComponentType, ReactNode, JSX } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import has from 'lodash/has';

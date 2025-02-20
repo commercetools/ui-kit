@@ -16,7 +16,7 @@ import {
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Stack from '@commercetools-uikit/spacings-stack';
-import FieldLabel from '@commercetools-uikit/field-label';
+import FieldLabel, { type TIconProps } from '@commercetools-uikit/field-label';
 import TimeInput from '@commercetools-uikit/time-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import FieldWarnings from '@commercetools-uikit/field-warnings';
@@ -177,7 +177,7 @@ export type TTimeFieldProps = {
   /**
    * Icon to be displayed beside the hint text. Will only get rendered when hint is passed as well.
    */
-  hintIcon?: ReactElement;
+  hintIcon?: ReactElement<TIconProps>;
 
   /**
    * Badge to be displayed beside the label.
