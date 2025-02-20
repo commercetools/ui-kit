@@ -1,6 +1,8 @@
 import * as i18n from '@commercetools-uikit/i18n';
+import * as utils from '@commercetools-uikit/utils';
+import * as selectUtils from '@commercetools-uikit/select-utils';
 
-export { i18n };
+export { i18n, utils, selectUtils };
 
 // NOTE: to make sure that the following preset packages to not
 // export a `version` property, as export properties cannot be overridden.
@@ -144,6 +146,7 @@ export {
   type TDataTableSettingsProps,
   type TColumnSettingsManagerProps,
   type TDataTableManagerContext,
+  DataTableManagerProvider,
 } from '@commercetools-uikit/data-table-manager';
 export {
   Tag,
