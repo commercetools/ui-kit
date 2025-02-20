@@ -1,5 +1,23 @@
 # @commercetools-uikit/rich-text-input
 
+## 19.22.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.6
+  - @commercetools-uikit/flat-button@19.22.6
+  - @commercetools-uikit/collapsible-motion@19.22.6
+  - @commercetools-uikit/constraints@19.22.6
+  - @commercetools-uikit/icons@19.22.6
+  - @commercetools-uikit/input-utils@19.22.6
+  - @commercetools-uikit/rich-text-utils@19.22.6
+  - @commercetools-uikit/spacings-inline@19.22.6
+  - @commercetools-uikit/spacings-stack@19.22.6
+  - @commercetools-uikit/tooltip@19.22.6
+  - @commercetools-uikit/hooks@19.22.6
+  - @commercetools-uikit/utils@19.22.6
+
 ## 19.22.5
 
 ### Patch Changes

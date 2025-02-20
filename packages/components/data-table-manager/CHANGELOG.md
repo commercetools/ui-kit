@@ -1,5 +1,35 @@
 # @commercetools-uikit/data-table-manager
 
+## 19.22.6
+
+### Patch Changes
+
+- [#3064](https://github.com/commercetools/ui-kit/pull/3064) [`731d7db`](https://github.com/commercetools/ui-kit/commit/731d7db2039d5c368c9aa19e52892966ae680a58) Thanks [@ragafus](https://github.com/ragafus)! - Fix the type of the prop `onSettingsChange` in DataTableManagerProvider
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.6
+  - @commercetools-uikit/accessible-hidden@19.22.6
+  - @commercetools-uikit/accessible-button@19.22.6
+  - @commercetools-uikit/icon-button@19.22.6
+  - @commercetools-uikit/primary-button@19.22.6
+  - @commercetools-uikit/secondary-button@19.22.6
+  - @commercetools-uikit/secondary-icon-button@19.22.6
+  - @commercetools-uikit/card@19.22.6
+  - @commercetools-uikit/collapsible-motion@19.22.6
+  - @commercetools-uikit/dropdown-menu@19.22.6
+  - @commercetools-uikit/field-label@19.22.6
+  - @commercetools-uikit/grid@19.22.6
+  - @commercetools-uikit/icons@19.22.6
+  - @commercetools-uikit/async-select-input@19.22.6
+  - @commercetools-uikit/radio-input@19.22.6
+  - @commercetools-uikit/select-input@19.22.6
+  - @commercetools-uikit/tag@19.22.6
+  - @commercetools-uikit/text@19.22.6
+  - @commercetools-uikit/tooltip@19.22.6
+  - @commercetools-uikit/hooks@19.22.6
+  - @commercetools-uikit/utils@19.22.6
+  - @commercetools-uikit/spacings@19.22.6
+
 ## 19.22.5
 
 ### Patch Changes
