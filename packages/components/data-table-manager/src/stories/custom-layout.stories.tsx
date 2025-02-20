@@ -586,8 +586,8 @@ export const WithCustomLayout: Story = (args) => {
     <DataTableManagerProvider
       // @ts-expect-error
       columns={withRowSelection ? columnsWithSelect : visibleColumns}
-      // @ts-expect-error
       onSettingsChange={(action, nextValue, key) => {
+        // @ts-expect-error
         tableSettingsChangeHandler[action](nextValue, key);
       }}
       columnManager={columnManager}
