@@ -135,7 +135,8 @@
       "@commercetools-uikit/data-table-manager": {
         "exports": {
           ".": "./src/index.ts",
-          "column-settings-manager": "./src/index.ts"
+          "column-settings-manager": "./src/index.ts",
+          "data-table-manager-provider": "./src/index.ts"
         }
       },
       "@commercetools-uikit/dropdown-menu": {
