@@ -1,5 +1,70 @@
 # @commercetools-uikit/data-table
 
+## 19.22.6
+
+### Patch Changes
+
+- Updated dependencies [[`731d7db`](https://github.com/commercetools/ui-kit/commit/731d7db2039d5c368c9aa19e52892966ae680a58)]:
+  - @commercetools-uikit/data-table-manager@19.22.6
+  - @commercetools-uikit/design-system@19.22.6
+  - @commercetools-uikit/accessible-button@19.22.6
+  - @commercetools-uikit/secondary-icon-button@19.22.6
+  - @commercetools-uikit/icons@19.22.6
+  - @commercetools-uikit/hooks@19.22.6
+  - @commercetools-uikit/utils@19.22.6
+
+## 19.22.5
+
+### Patch Changes
+
+- Updated dependencies [[`eaceab0`](https://github.com/commercetools/ui-kit/commit/eaceab09a3df4b7b55ef7237d79a1a7c9d96a6d7)]:
+  - @commercetools-uikit/icons@19.22.5
+  - @commercetools-uikit/data-table-manager@19.22.5
+  - @commercetools-uikit/design-system@19.22.5
+  - @commercetools-uikit/accessible-button@19.22.5
+  - @commercetools-uikit/secondary-icon-button@19.22.5
+  - @commercetools-uikit/hooks@19.22.5
+  - @commercetools-uikit/utils@19.22.5
+
+## 19.22.4
+
+### Patch Changes
+
+- Updated dependencies [[`975a87b`](https://github.com/commercetools/ui-kit/commit/975a87b4a36573d41be29a236a01a34fb38a2c5d)]:
+  - @commercetools-uikit/icons@19.22.4
+  - @commercetools-uikit/data-table-manager@19.22.4
+  - @commercetools-uikit/design-system@19.22.4
+  - @commercetools-uikit/accessible-button@19.22.4
+  - @commercetools-uikit/secondary-icon-button@19.22.4
+  - @commercetools-uikit/hooks@19.22.4
+  - @commercetools-uikit/utils@19.22.4
+
+## 19.22.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/data-table-manager@19.22.3
+  - @commercetools-uikit/design-system@19.22.3
+  - @commercetools-uikit/accessible-button@19.22.3
+  - @commercetools-uikit/secondary-icon-button@19.22.3
+  - @commercetools-uikit/icons@19.22.3
+  - @commercetools-uikit/hooks@19.22.3
+  - @commercetools-uikit/utils@19.22.3
+
+## 19.22.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/data-table-manager@19.22.2
+  - @commercetools-uikit/design-system@19.22.2
+  - @commercetools-uikit/accessible-button@19.22.2
+  - @commercetools-uikit/secondary-icon-button@19.22.2
+  - @commercetools-uikit/icons@19.22.2
+  - @commercetools-uikit/hooks@19.22.2
+  - @commercetools-uikit/utils@19.22.2
+
 ## 19.22.1
 
 ### Patch Changes

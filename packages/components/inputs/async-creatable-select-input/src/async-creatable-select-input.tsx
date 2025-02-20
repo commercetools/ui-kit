@@ -1,10 +1,13 @@
-import type { ReactNode } from 'react';
+import type { ComponentType, ReactNode, JSX } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import {
   components as defaultComponents,
   type ActionMeta,
+  type CommonPropsAndClassName,
   type GroupBase,
+  type MenuPlacement,
+  type MenuPosition,
 } from 'react-select';
 import AsyncCreatableSelect, {
   type AsyncCreatableProps,
@@ -541,8 +544,20 @@ AsyncCreatableSelectInput.isTouched = (touched: unknown) => Boolean(touched);
 // custom
 AsyncCreatableSelectInput.ClearIndicator = customizedComponents.ClearIndicator;
 AsyncCreatableSelectInput.Control = defaultComponents.Control;
-AsyncCreatableSelectInput.CrossIcon = defaultComponents.CrossIcon;
-AsyncCreatableSelectInput.DownChevron = defaultComponents.DownChevron;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+AsyncCreatableSelectInput.CrossIcon =
+  defaultComponents.CrossIcon as ComponentType<
+    JSX.IntrinsicElements['svg'] & {
+      size?: number;
+    }
+  >;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+AsyncCreatableSelectInput.DownChevron =
+  defaultComponents.DownChevron as ComponentType<
+    JSX.IntrinsicElements['svg'] & {
+      size?: number;
+    }
+  >;
 // custom
 AsyncCreatableSelectInput.DropdownIndicator =
   customizedComponents.DropdownIndicator;
@@ -559,7 +574,18 @@ AsyncCreatableSelectInput.LoadingIndicator =
 AsyncCreatableSelectInput.LoadingMessage = defaultComponents.LoadingMessage;
 AsyncCreatableSelectInput.Menu = defaultComponents.Menu;
 AsyncCreatableSelectInput.MenuList = defaultComponents.MenuList;
-AsyncCreatableSelectInput.MenuPortal = defaultComponents.MenuPortal;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+AsyncCreatableSelectInput.MenuPortal =
+  defaultComponents.MenuPortal as ComponentType<
+    CommonPropsAndClassName<unknown, false, GroupBase<unknown>> & {
+      appendTo: HTMLElement | undefined;
+      children: ReactNode;
+      controlElement: HTMLDivElement | null;
+      innerProps: JSX.IntrinsicElements['div'];
+      menuPlacement: MenuPlacement;
+      menuPosition: MenuPosition;
+    }
+  >;
 AsyncCreatableSelectInput.MultiValue = defaultComponents.MultiValue;
 AsyncCreatableSelectInput.MultiValueContainer =
   defaultComponents.MultiValueContainer;

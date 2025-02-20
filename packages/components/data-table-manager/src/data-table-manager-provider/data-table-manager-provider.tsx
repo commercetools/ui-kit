@@ -54,7 +54,11 @@ export const DataTableManagerProvider = ({
   columns: TDataTableManagerColumnProps[];
   displaySettings: TDataTableSettingsProps['displaySettings'];
   topBar: string;
-  onSettingsChange: () => void;
+  onSettingsChange: (
+    settingName: string,
+    settingValue: boolean | Record<string, unknown> | string[],
+    key?: string
+  ) => void;
   columnManager: TColumnManagerProps;
   customSettings?: TCustomSettingsProps[];
   selectedColumns?: TColumnData[];

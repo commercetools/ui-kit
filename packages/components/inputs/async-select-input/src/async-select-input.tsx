@@ -1,4 +1,4 @@
-import type { ReactNode, FocusEvent } from 'react';
+import type { ReactNode, FocusEvent, ComponentType, JSX } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import {
@@ -6,6 +6,9 @@ import {
   type ActionMeta,
   type GroupBase,
   type OptionsOrGroups,
+  type CommonPropsAndClassName,
+  type MenuPlacement,
+  type MenuPosition,
 } from 'react-select';
 import AsyncSelect, { type AsyncProps } from 'react-select/async';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
@@ -555,8 +558,18 @@ AsyncSelectInput.isTouched = (touched: unknown) => Boolean(touched);
 // custom
 AsyncSelectInput.ClearIndicator = customizedComponents.ClearIndicator;
 AsyncSelectInput.Control = defaultComponents.Control;
-AsyncSelectInput.CrossIcon = defaultComponents.CrossIcon;
-AsyncSelectInput.DownChevron = defaultComponents.DownChevron;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+AsyncSelectInput.CrossIcon = defaultComponents.CrossIcon as ComponentType<
+  JSX.IntrinsicElements['svg'] & {
+    size?: number;
+  }
+>;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+AsyncSelectInput.DownChevron = defaultComponents.DownChevron as ComponentType<
+  JSX.IntrinsicElements['svg'] & {
+    size?: number;
+  }
+>;
 // custom
 AsyncSelectInput.DropdownIndicator = customizedComponents.DropdownIndicator;
 AsyncSelectInput.Group = defaultComponents.Group;
@@ -569,7 +582,17 @@ AsyncSelectInput.LoadingIndicator = customizedComponents.LoadingIndicator;
 AsyncSelectInput.LoadingMessage = defaultComponents.LoadingMessage;
 AsyncSelectInput.Menu = defaultComponents.Menu;
 AsyncSelectInput.MenuList = defaultComponents.MenuList;
-AsyncSelectInput.MenuPortal = defaultComponents.MenuPortal;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+AsyncSelectInput.MenuPortal = defaultComponents.MenuPortal as ComponentType<
+  CommonPropsAndClassName<unknown, false, GroupBase<unknown>> & {
+    appendTo: HTMLElement | undefined;
+    children: ReactNode;
+    controlElement: HTMLDivElement | null;
+    innerProps: JSX.IntrinsicElements['div'];
+    menuPlacement: MenuPlacement;
+    menuPosition: MenuPosition;
+  }
+>;
 AsyncSelectInput.MultiValue = defaultComponents.MultiValue;
 AsyncSelectInput.MultiValueContainer = defaultComponents.MultiValueContainer;
 AsyncSelectInput.MultiValueLabel = defaultComponents.MultiValueLabel;

@@ -131,37 +131,17 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    */
   rows: Row[];
   /**
+   * The list of columns to be rendered.
    * Each object requires a unique `key` which should correspond to property key of
    * the items of `rows` that you want to render under this column, and a `label`
    * which defines the name shown on the header.
-   * The list of columns to be rendered.
-   *
-   * Column item shape:
-   *
-   * ```
-   * {
-   *   key: string;
-   *   label: ReactNode;
-   *   width?: string;
-   *   align?: 'left' | 'center' | 'right';
-   *   onClick?: (event: MouseEventHandler) => void;
-   *   renderItem?: (row: Row, isRowCollapsed: boolean) => ReactNode;
-   *   headerIcon?: ReactNode;
-   *   isTruncated?: boolean;
-   *   isSortable?: boolean;
-   *   disableResizing?: boolean;
-   *   shouldIgnoreRowClick?: boolean;
-   * }
-   * ```
-   *
-   * [Colum signatures with description](/?path=/docs/components-datatable-readme--props#signatures)
    */
   columns?: TColumn<Row>[];
   /**
+   * The list of columns to be rendered.
    * The columns of the nested items to be rendered in the table. Just like the columns, Each object requires a unique `key` which should correspond to property key of
    * the items of `rows` that you want to render under this column, and a `label`
    * which defines the name shown on the header.
-   * The list of columns to be rendered.
    */
   customColumns?: TColumn<Row>[];
   /**

@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/flat-button",
   "description": "Flat buttons are minimal and a flat variation of primary and secondary buttons.",
-  "version": "19.22.1",
+  "version": "19.22.6",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,11 +21,11 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/accessible-button": "19.22.1",
-    "@commercetools-uikit/design-system": "19.22.1",
-    "@commercetools-uikit/spacings-inline": "19.22.1",
-    "@commercetools-uikit/text": "19.22.1",
-    "@commercetools-uikit/utils": "19.22.1",
+    "@commercetools-uikit/accessible-button": "19.22.6",
+    "@commercetools-uikit/design-system": "19.22.6",
+    "@commercetools-uikit/spacings-inline": "19.22.6",
+    "@commercetools-uikit/text": "19.22.6",
+    "@commercetools-uikit/utils": "19.22.6",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",

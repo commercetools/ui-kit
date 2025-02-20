@@ -1,5 +1,80 @@
 # @commercetools-uikit/text-field
 
+## 19.22.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.6
+  - @commercetools-uikit/constraints@19.22.6
+  - @commercetools-uikit/field-errors@19.22.6
+  - @commercetools-uikit/field-label@19.22.6
+  - @commercetools-uikit/field-warnings@19.22.6
+  - @commercetools-uikit/text-input@19.22.6
+  - @commercetools-uikit/messages@19.22.6
+  - @commercetools-uikit/spacings-stack@19.22.6
+  - @commercetools-uikit/utils@19.22.6
+
+## 19.22.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@19.22.5
+  - @commercetools-uikit/text-input@19.22.5
+  - @commercetools-uikit/design-system@19.22.5
+  - @commercetools-uikit/constraints@19.22.5
+  - @commercetools-uikit/field-errors@19.22.5
+  - @commercetools-uikit/field-warnings@19.22.5
+  - @commercetools-uikit/messages@19.22.5
+  - @commercetools-uikit/spacings-stack@19.22.5
+  - @commercetools-uikit/utils@19.22.5
+
+## 19.22.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@19.22.4
+  - @commercetools-uikit/text-input@19.22.4
+  - @commercetools-uikit/design-system@19.22.4
+  - @commercetools-uikit/constraints@19.22.4
+  - @commercetools-uikit/field-errors@19.22.4
+  - @commercetools-uikit/field-warnings@19.22.4
+  - @commercetools-uikit/messages@19.22.4
+  - @commercetools-uikit/spacings-stack@19.22.4
+  - @commercetools-uikit/utils@19.22.4
+
+## 19.22.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/text-input@19.22.3
+  - @commercetools-uikit/design-system@19.22.3
+  - @commercetools-uikit/constraints@19.22.3
+  - @commercetools-uikit/field-errors@19.22.3
+  - @commercetools-uikit/field-label@19.22.3
+  - @commercetools-uikit/field-warnings@19.22.3
+  - @commercetools-uikit/messages@19.22.3
+  - @commercetools-uikit/spacings-stack@19.22.3
+  - @commercetools-uikit/utils@19.22.3
+
+## 19.22.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/text-input@19.22.2
+  - @commercetools-uikit/design-system@19.22.2
+  - @commercetools-uikit/constraints@19.22.2
+  - @commercetools-uikit/field-errors@19.22.2
+  - @commercetools-uikit/field-label@19.22.2
+  - @commercetools-uikit/field-warnings@19.22.2
+  - @commercetools-uikit/messages@19.22.2
+  - @commercetools-uikit/spacings-stack@19.22.2
+  - @commercetools-uikit/utils@19.22.2
+
 ## 19.22.1
 
 ### Patch Changes

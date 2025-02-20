@@ -159,7 +159,6 @@
     "postcss-value-parser": "4.2.0",
     "pptr-testing-library": "0.8.0",
     "prettier": "2.8.8",
-    "prop-types": "^15.8.1",
     "puppeteer": "22.15.0",
     "qs": "6.13.1",
     "rcfile": "1.0.3",

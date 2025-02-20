@@ -1,10 +1,13 @@
-import type { ReactNode } from 'react';
+import type { ComponentType, ReactNode, JSX } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import {
   components as defaultComponents,
-  type GroupBase,
   type ActionMeta,
+  type GroupBase,
+  type CommonPropsAndClassName,
+  type MenuPlacement,
+  type MenuPosition,
 } from 'react-select';
 import CreatableSelect, { type CreatableProps } from 'react-select/creatable';
 import Constraints from '@commercetools-uikit/constraints';
@@ -516,8 +519,19 @@ CreatableSelectInput.isTouched = (touched: unknown) => Boolean(touched);
 // custom
 CreatableSelectInput.ClearIndicator = customizedComponents.ClearIndicator;
 CreatableSelectInput.Control = defaultComponents.Control;
-CreatableSelectInput.CrossIcon = defaultComponents.CrossIcon;
-CreatableSelectInput.DownChevron = defaultComponents.DownChevron;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+CreatableSelectInput.CrossIcon = defaultComponents.CrossIcon as ComponentType<
+  JSX.IntrinsicElements['svg'] & {
+    size?: number;
+  }
+>;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+CreatableSelectInput.DownChevron =
+  defaultComponents.DownChevron as ComponentType<
+    JSX.IntrinsicElements['svg'] & {
+      size?: number;
+    }
+  >;
 // custom
 CreatableSelectInput.DropdownIndicator = customizedComponents.DropdownIndicator;
 CreatableSelectInput.Group = defaultComponents.Group;
@@ -530,7 +544,17 @@ CreatableSelectInput.LoadingIndicator = defaultComponents.LoadingIndicator;
 CreatableSelectInput.LoadingMessage = defaultComponents.LoadingMessage;
 CreatableSelectInput.Menu = defaultComponents.Menu;
 CreatableSelectInput.MenuList = defaultComponents.MenuList;
-CreatableSelectInput.MenuPortal = defaultComponents.MenuPortal;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+CreatableSelectInput.MenuPortal = defaultComponents.MenuPortal as ComponentType<
+  CommonPropsAndClassName<unknown, false, GroupBase<unknown>> & {
+    appendTo: HTMLElement | undefined;
+    children: ReactNode;
+    controlElement: HTMLDivElement | null;
+    innerProps: JSX.IntrinsicElements['div'];
+    menuPlacement: MenuPlacement;
+    menuPosition: MenuPosition;
+  }
+>;
 CreatableSelectInput.MultiValue = defaultComponents.MultiValue;
 CreatableSelectInput.MultiValueContainer =
   defaultComponents.MultiValueContainer;

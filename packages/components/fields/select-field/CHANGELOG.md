@@ -1,5 +1,75 @@
 # @commercetools-uikit/select-field
 
+## 19.22.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.6
+  - @commercetools-uikit/constraints@19.22.6
+  - @commercetools-uikit/field-errors@19.22.6
+  - @commercetools-uikit/field-label@19.22.6
+  - @commercetools-uikit/field-warnings@19.22.6
+  - @commercetools-uikit/select-input@19.22.6
+  - @commercetools-uikit/utils@19.22.6
+  - @commercetools-uikit/spacings@19.22.6
+
+## 19.22.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@19.22.5
+  - @commercetools-uikit/select-input@19.22.5
+  - @commercetools-uikit/design-system@19.22.5
+  - @commercetools-uikit/constraints@19.22.5
+  - @commercetools-uikit/field-errors@19.22.5
+  - @commercetools-uikit/field-warnings@19.22.5
+  - @commercetools-uikit/utils@19.22.5
+  - @commercetools-uikit/spacings@19.22.5
+
+## 19.22.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@19.22.4
+  - @commercetools-uikit/select-input@19.22.4
+  - @commercetools-uikit/design-system@19.22.4
+  - @commercetools-uikit/constraints@19.22.4
+  - @commercetools-uikit/field-errors@19.22.4
+  - @commercetools-uikit/field-warnings@19.22.4
+  - @commercetools-uikit/utils@19.22.4
+  - @commercetools-uikit/spacings@19.22.4
+
+## 19.22.3
+
+### Patch Changes
+
+- Updated dependencies [[`e717a65`](https://github.com/commercetools/ui-kit/commit/e717a650b6465dc35f380ddd753f98bd91d46ea5), [`e717a65`](https://github.com/commercetools/ui-kit/commit/e717a650b6465dc35f380ddd753f98bd91d46ea5)]:
+  - @commercetools-uikit/select-input@19.22.3
+  - @commercetools-uikit/design-system@19.22.3
+  - @commercetools-uikit/constraints@19.22.3
+  - @commercetools-uikit/field-errors@19.22.3
+  - @commercetools-uikit/field-label@19.22.3
+  - @commercetools-uikit/field-warnings@19.22.3
+  - @commercetools-uikit/utils@19.22.3
+  - @commercetools-uikit/spacings@19.22.3
+
+## 19.22.2
+
+### Patch Changes
+
+- Updated dependencies [[`3f97470`](https://github.com/commercetools/ui-kit/commit/3f974700aa04f259a9746d71f84bf41d6e8b6cc8)]:
+  - @commercetools-uikit/select-input@19.22.2
+  - @commercetools-uikit/design-system@19.22.2
+  - @commercetools-uikit/constraints@19.22.2
+  - @commercetools-uikit/field-errors@19.22.2
+  - @commercetools-uikit/field-label@19.22.2
+  - @commercetools-uikit/field-warnings@19.22.2
+  - @commercetools-uikit/utils@19.22.2
+  - @commercetools-uikit/spacings@19.22.2
+
 ## 19.22.1
 
 ### Patch Changes

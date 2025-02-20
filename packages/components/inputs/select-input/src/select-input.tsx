@@ -1,10 +1,14 @@
-import type { ReactNode } from 'react';
+import type { ComponentType, ReactNode, JSX } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import has from 'lodash/has';
 import Select, {
   components as defaultComponents,
   type Props as ReactSelectProps,
+  type GroupBase,
+  type CommonPropsAndClassName,
+  type MenuPlacement,
+  type MenuPosition,
 } from 'react-select';
 import Constraints from '@commercetools-uikit/constraints';
 import {
@@ -632,10 +636,22 @@ SelectInput.isTouched = (touched: boolean | unknown[]) => Boolean(touched);
  * Expose react-select components for customization purposes.
  */
 
+// custom
 SelectInput.ClearIndicator = customizedComponents.ClearIndicator;
 SelectInput.Control = defaultComponents.Control;
-SelectInput.CrossIcon = defaultComponents.CrossIcon;
-SelectInput.DownChevron = defaultComponents.DownChevron;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+SelectInput.CrossIcon = defaultComponents.CrossIcon as ComponentType<
+  JSX.IntrinsicElements['svg'] & {
+    size?: number;
+  }
+>;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+SelectInput.DownChevron = defaultComponents.DownChevron as ComponentType<
+  JSX.IntrinsicElements['svg'] & {
+    size?: number;
+  }
+>;
+// custom
 SelectInput.DropdownIndicator = customizedComponents.DropdownIndicator;
 SelectInput.Group = defaultComponents.Group;
 SelectInput.GroupHeading = defaultComponents.GroupHeading;
@@ -646,10 +662,21 @@ SelectInput.LoadingIndicator = defaultComponents.LoadingIndicator;
 SelectInput.LoadingMessage = defaultComponents.LoadingMessage;
 SelectInput.Menu = defaultComponents.Menu;
 SelectInput.MenuList = defaultComponents.MenuList;
-SelectInput.MenuPortal = defaultComponents.MenuPortal;
+//https://github.com/commercetools/ui-kit/pull/3054/files#r1943026570
+SelectInput.MenuPortal = defaultComponents.MenuPortal as ComponentType<
+  CommonPropsAndClassName<unknown, false, GroupBase<unknown>> & {
+    appendTo: HTMLElement | undefined;
+    children: ReactNode;
+    controlElement: HTMLDivElement | null;
+    innerProps: JSX.IntrinsicElements['div'];
+    menuPlacement: MenuPlacement;
+    menuPosition: MenuPosition;
+  }
+>;
 SelectInput.MultiValue = defaultComponents.MultiValue;
 SelectInput.MultiValueContainer = defaultComponents.MultiValueContainer;
 SelectInput.MultiValueLabel = defaultComponents.MultiValueLabel;
+// custom
 SelectInput.MultiValueRemove = customizedComponents.MultiValueRemove;
 SelectInput.NoOptionsMessage = defaultComponents.NoOptionsMessage;
 SelectInput.Option = defaultComponents.Option;

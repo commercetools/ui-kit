@@ -1,5 +1,64 @@
 # @commercetools-uikit/flat-button
 
+## 19.22.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.6
+  - @commercetools-uikit/accessible-button@19.22.6
+  - @commercetools-uikit/spacings-inline@19.22.6
+  - @commercetools-uikit/text@19.22.6
+  - @commercetools-uikit/utils@19.22.6
+
+## 19.22.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.5
+  - @commercetools-uikit/accessible-button@19.22.5
+  - @commercetools-uikit/spacings-inline@19.22.5
+  - @commercetools-uikit/text@19.22.5
+  - @commercetools-uikit/utils@19.22.5
+
+## 19.22.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.4
+  - @commercetools-uikit/accessible-button@19.22.4
+  - @commercetools-uikit/spacings-inline@19.22.4
+  - @commercetools-uikit/text@19.22.4
+  - @commercetools-uikit/utils@19.22.4
+
+## 19.22.3
+
+### Patch Changes
+
+- [#3056](https://github.com/commercetools/ui-kit/pull/3056) [`e717a65`](https://github.com/commercetools/ui-kit/commit/e717a650b6465dc35f380ddd753f98bd91d46ea5) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Remove type annotations from re-exported react-select child components where they are not necessary to reduce verbosity and maintain type consistency
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.3
+  - @commercetools-uikit/accessible-button@19.22.3
+  - @commercetools-uikit/spacings-inline@19.22.3
+  - @commercetools-uikit/text@19.22.3
+  - @commercetools-uikit/utils@19.22.3
+
+## 19.22.2
+
+### Patch Changes
+
+- [#3054](https://github.com/commercetools/ui-kit/pull/3054) [`3f97470`](https://github.com/commercetools/ui-kit/commit/3f974700aa04f259a9746d71f84bf41d6e8b6cc8) Thanks [@emmenko](https://github.com/emmenko)! - We are now using `moduleResolution: bundler` which attempts to optimize to avoid long paths. The re-exported components from `react-select` need to be explicitly typed now, to avoid TypeScript having to infer an internal import path.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.2
+  - @commercetools-uikit/accessible-button@19.22.2
+  - @commercetools-uikit/spacings-inline@19.22.2
+  - @commercetools-uikit/text@19.22.2
+  - @commercetools-uikit/utils@19.22.2
+
 ## 19.22.1
 
 ### Patch Changes
