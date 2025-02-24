@@ -1,15 +1,15 @@
-import React from 'react';
+import { useState, useCallback, useRef } from 'react';
 import RichTextInput from '@commercetools-uikit/rich-text-input';
 
 const html = '<p>hello world</p>';
 
 const Example = (props) => {
-  const [value, setValue] = React.useState(html);
-  const handleChange = React.useCallback((event) => {
+  const [value, setValue] = useState(html);
+  const handleChange = useCallback((event) => {
     setValue(event.target.value);
   }, []);
-  const ref = React.useRef(null);
-  const handleReset = React.useCallback(() => {
+  const ref = useRef(null);
+  const handleReset = useCallback(() => {
     ref.current?.resetValue('<p>after reset</p>');
   }, []);
 

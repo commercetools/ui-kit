@@ -2,9 +2,10 @@ import {
   forwardRef,
   useCallback,
   type ReactNode,
-  type LegacyRef,
+  type Ref,
   type CSSProperties,
   type ElementType,
+  type MouseEvent,
 } from 'react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { warning } from '@commercetools-uikit/utils';
@@ -15,6 +16,7 @@ import styled from '@emotion/styled';
 import Tooltip from '@commercetools-uikit/tooltip';
 import { CaretDownIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
+import type { Format } from '../html';
 import {
   BoldIcon,
   ExpandIcon,
@@ -74,11 +76,11 @@ type TStyleDropdownOptions = {
 
 type TNodeRefObject = {
   clientHeight: number;
-} & LegacyRef<HTMLDivElement>;
+} & Ref<HTMLDivElement>;
 
 export type TRichtTextEditorBodyRef = {
   registerContentNode: TNodeRefObject;
-  containerRef?: LegacyRef<HTMLDivElement>;
+  containerRef?: Ref<HTMLDivElement>;
 };
 
 export type TRichTextEditorBody = {
@@ -230,23 +232,23 @@ const RichTextEditorBody = forwardRef<
   const hasRedos = editor.history.redos.length > 0;
 
   const onClickBlock = useCallback(
-    ({ value: format }) => {
+    ({ value: format }: { value: Format }) => {
       toggleBlock(editor, format);
     },
     [editor]
   );
   const onClickMoreStyleMark = useCallback(
-    ({ value: format }) => {
+    ({ value: format }: { value: Format }) => {
       toggleMark(editor, format);
     },
     [editor]
   );
   const getIsMoreStyleMarkItemSelected = useCallback(
-    ({ value: format }) => isMarkActive(editor, format),
+    ({ value: format }: { value: Format }) => isMarkActive(editor, format),
     [editor]
   );
   const getIsBlockItemSelected = useCallback(
-    ({ value: format }) => isBlockActive(editor, format),
+    ({ value: format }: { value: Format }) => isBlockActive(editor, format),
     [editor]
   );
 
@@ -254,9 +256,12 @@ const RichTextEditorBody = forwardRef<
   // we prevent all our defined onClicks inside of the CalendarHeader
   // from blurring our input.
 
-  const onToolbarMouseDown = useCallback((event) => {
-    event.preventDefault();
-  }, []);
+  const onToolbarMouseDown = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      event.preventDefault();
+    },
+    []
+  );
 
   if (props.showExpandIcon) {
     warning(

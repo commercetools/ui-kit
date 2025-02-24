@@ -5,7 +5,6 @@ import {
   type FocusEventHandler,
   type ReactNode,
 } from 'react';
-import { MessageDescriptor } from 'react-intl';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import FlatButton from '@commercetools-uikit/flat-button';
@@ -21,6 +20,7 @@ import {
   AdditionalInfoMessage,
   ErrorMessage,
   WarningMessage,
+  type TAdditionalInfoProps,
 } from '@commercetools-uikit/messages';
 import {
   getTextareaStyles,
@@ -49,12 +49,7 @@ type TranslationInputProps = {
   hasLanguagesControl?: boolean;
   warning?: ReactNode;
   error?: ReactNode;
-  additionalInfo?:
-    | string
-    | ReactNode
-    | (MessageDescriptor & {
-        values: Record<string, ReactNode>;
-      });
+  additionalInfo?: TAdditionalInfoProps['message'];
   id?: string;
   name?: string;
   autoComplete?: string;
@@ -102,7 +97,7 @@ const TranslationInput = ({
   const [inputHasSeveralRows, setInputHasSeveralRows] = useState(false);
 
   const handleHeightChange = useCallback(
-    (_, rowCount) => {
+    (_: unknown, rowCount: number) => {
       // This checks if the content in the textarea is greater than one row. If it is, then the toggle button will be shown.
       // This is to prevent the toggle button from showing when there is not enough content to expand/collapse.
       setInputHasSeveralRows(rowCount > 1);

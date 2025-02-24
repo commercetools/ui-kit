@@ -65,20 +65,20 @@ it('should have an HTML name', () => {
   expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderMultilineTextField({ onFocus });
-  getByLabelText('MultilineTextField').focus();
+  await fireEvent.asyncFocus(getByLabelText('MultilineTextField'));
   expect(getByLabelText('MultilineTextField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderMultilineTextField({ onBlur });
-  getByLabelText('MultilineTextField').focus();
+  await fireEvent.asyncFocus(getByLabelText('MultilineTextField'));
   expect(getByLabelText('MultilineTextField')).toHaveFocus();
-  getByLabelText('MultilineTextField').blur();
+  await fireEvent.asyncBlur(getByLabelText('MultilineTextField'));
   expect(getByLabelText('MultilineTextField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });

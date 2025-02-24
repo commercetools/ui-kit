@@ -87,7 +87,7 @@ export const CalendarBody = ({
 
   const onInputFocus = props.inputProps?.onFocus;
 
-  const handleInputFocus = useCallback(
+  const handleInputFocus: FocusEventHandler = useCallback(
     (event) => {
       toggleIsFocused(true);
       if (onInputFocus) onInputFocus(event);
@@ -97,7 +97,7 @@ export const CalendarBody = ({
 
   const onInputBlur = props.inputProps?.onBlur;
 
-  const handleInputBlur = useCallback(
+  const handleInputBlur: FocusEventHandler = useCallback(
     (event) => {
       toggleIsFocused(false);
       if (onInputBlur) onInputBlur(event);
@@ -107,7 +107,7 @@ export const CalendarBody = ({
 
   const onToggleFocus = props.toggleButtonProps?.onFocus;
 
-  const handleToggleFocus = useCallback(
+  const handleToggleFocus: FocusEventHandler = useCallback(
     (event) => {
       toggleIsFocused(true);
       if (onToggleFocus) onToggleFocus(event);
@@ -117,7 +117,7 @@ export const CalendarBody = ({
 
   const onToggleBlur = props.toggleButtonProps?.onBlur;
 
-  const handleToggleBlur = useCallback(
+  const handleToggleBlur: FocusEventHandler = useCallback(
     (event) => {
       toggleIsFocused(false);
       if (onToggleBlur) onToggleBlur(event);

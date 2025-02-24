@@ -67,20 +67,20 @@ it('should have an HTML name', () => {
   expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderDateTimeField({ onFocus });
-  getByLabelText('DateTimeField').focus();
+  await fireEvent.asyncFocus(getByLabelText('DateTimeField'));
   expect(getByLabelText('DateTimeField')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderDateTimeField({ onBlur });
-  getByLabelText('DateTimeField').focus();
+  await fireEvent.asyncFocus(getByLabelText('DateTimeField'));
   expect(getByLabelText('DateTimeField')).toHaveFocus();
-  getByLabelText('DateTimeField').blur();
+  await fireEvent.asyncBlur(getByLabelText('DateTimeField'));
   expect(getByLabelText('DateTimeField')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -145,7 +145,7 @@ describe('when showing an info button', () => {
   it('should call onInfoButtonClick when button is clicked', () => {
     const onInfoButtonClick = jest.fn();
     const { getByLabelText } = renderDateTimeField({ onInfoButtonClick });
-    getByLabelText('More Info').click();
+    fireEvent.click(getByLabelText('More Info'));
     expect(onInfoButtonClick).toHaveBeenCalled();
   });
 });

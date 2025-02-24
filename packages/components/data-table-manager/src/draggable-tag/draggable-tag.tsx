@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable } from '@hello-pangea/dnd';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Tag from '@commercetools-uikit/tag';
 import DraggingContainer from './draggable-tag.styles';

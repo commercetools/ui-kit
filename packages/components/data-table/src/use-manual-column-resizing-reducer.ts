@@ -1,7 +1,7 @@
-import { useReducer, useDebugValue, MutableRefObject, Dispatch } from 'react';
+import { useReducer, useDebugValue, RefObject, Dispatch } from 'react';
 import type { TColumn } from './data-table';
 
-type TTableRef = MutableRefObject<HTMLTableElement | undefined>;
+type TTableRef = RefObject<HTMLTableElement | undefined | null>;
 
 type TState = {
   tableRef?: TTableRef;
@@ -108,9 +108,10 @@ function reducer(state: TState, action: TAction) {
 const useManualResizingReducer = (
   tableRef?: TTableRef
 ): [TState, Dispatch<TAction>] => {
-  const [manualResizingState, dispatch] = useReducer<
-    (prevState: TState, action: TAction) => TState
-  >(reducer, initialState(tableRef));
+  const [manualResizingState, dispatch] = useReducer(
+    reducer,
+    initialState(tableRef)
+  );
 
   useDebugValue(manualResizingState);
 
@@ -144,7 +145,7 @@ const useManualColumnResizing = (tableRef?: TTableRef) => {
     cellIndex: number;
   } & HTMLTableElement;
   const startResizing = (
-    headerRef: MutableRefObject<THeaderRef>,
+    headerRef: RefObject<THeaderRef>,
     mouseEvent: MouseEvent
   ) => {
     dispatch({

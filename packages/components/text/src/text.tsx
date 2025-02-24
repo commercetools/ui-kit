@@ -1,4 +1,4 @@
-import type { MessageDescriptor } from 'react-intl';
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 
 import { Children, ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -26,9 +26,7 @@ export type TFontWeight = 'regular' | 'medium' | 'bold';
 
 export type TBasicTextProps = {
   id?: string;
-  intlMessage?: MessageDescriptor & {
-    values?: Record<string, React.ReactNode>;
-  };
+  intlMessage?: IntlMessage;
   children?: ReactNode;
 };
 
