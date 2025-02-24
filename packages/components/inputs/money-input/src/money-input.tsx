@@ -830,6 +830,7 @@ const MoneyInput = ({
             onFocus={handleCurrencyFocus}
             menuPortalTarget={props.menuPortalTarget}
             menuShouldBlockScroll={props.menuShouldBlockScroll}
+            menuPlacement="auto"
             onBlur={handleCurrencyBlur}
             onChange={handleCurrencyChange}
             data-testid="currency-dropdown"
