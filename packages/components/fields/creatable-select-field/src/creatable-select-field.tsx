@@ -168,7 +168,7 @@ export type TCreatableSelectFieldProps = {
   /**
    * Is the select read-only
    */
-  isReadOnly?: ConstrainBooleanParameters;
+  isReadOnly?: boolean;
   /**
    * Override the built-in logic to detect whether an option is disabled
    * <br>

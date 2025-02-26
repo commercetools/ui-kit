@@ -8,7 +8,6 @@ const meta: Meta<typeof SelectField> = {
   // @ts-expect-error, fix story and/or types
   component: SelectField,
   argTypes: {
-    // @ts-expect-error
     touched: { control: 'boolean' },
     'aria-label': { control: 'text' },
     'aria-labelledby': { control: 'text' },
@@ -84,14 +83,11 @@ export const BasicExample: Story = (args) => {
   );
 
   useEffect(() => {
-    // @ts-expect-error
     onChange(args.isMulti ? [] : undefined);
-    // @ts-expect-error
   }, [args.isMulti]);
 
   return (
     <div style={{ height: 400 }}>
-      {/** @ts-expect-error */}
       <SelectField
         {...args}
         value={value}
@@ -104,7 +100,6 @@ export const BasicExample: Story = (args) => {
 };
 
 BasicExample.args = {
-  // @ts-expect-error
   id: 'select-field-id',
   name: 'select-field-name',
   horizontalConstraint: 7,

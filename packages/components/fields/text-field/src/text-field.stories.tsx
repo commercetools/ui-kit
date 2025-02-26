@@ -25,7 +25,6 @@ export const BasicExample: Story = (args) => {
   const [value, onChange] = useState('');
 
   return (
-    // @ts-expect-error
     <TextField
       {...args}
       value={value}

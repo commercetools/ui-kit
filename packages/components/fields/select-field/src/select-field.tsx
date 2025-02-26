@@ -72,9 +72,7 @@ export type TSelectFieldProps = {
    * <br/>
    * Unknown errors will be forwarded to renderError.
    */
-  errors?: {
-    missing?: boolean;
-  };
+  errors?: TFieldErrors;
   /**
    * This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    * <br/>
