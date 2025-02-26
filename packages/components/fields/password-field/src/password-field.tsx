@@ -12,6 +12,7 @@ import {
   filterDataAttributes,
   createSequentialId,
   warning,
+  hasFieldLabel,
 } from '@commercetools-uikit/utils';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import Constraints from '@commercetools-uikit/constraints';
@@ -145,7 +146,7 @@ export type TPasswordField = {
   /**
    * Title of the label
    */
-  title: string | ReactNode;
+  title?: string | ReactNode;
   /**
    * 	Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas `description` can describe it in more depth. Can also receive a `hintIcon`.
    */
@@ -220,16 +221,18 @@ const PasswordField = ({
     <Constraints.Horizontal max={horizontalConstraint}>
       <Stack scale="xs">
         <Inline alignItems="flex-end" justifyContent="space-between">
-          <FieldLabel
-            hint={props.hint}
-            title={props.title}
-            badge={props.badge}
-            htmlFor={id}
-            hintIcon={props.hintIcon}
-            description={props.description}
-            onInfoButtonClick={props.onInfoButtonClick}
-            hasRequiredIndicator={props.isRequired}
-          />
+          {hasFieldLabel(props) && (
+            <FieldLabel
+              hint={props.hint}
+              title={props.title}
+              badge={props.badge}
+              htmlFor={id}
+              hintIcon={props.hintIcon}
+              description={props.description}
+              onInfoButtonClick={props.onInfoButtonClick}
+              hasRequiredIndicator={props.isRequired}
+            />
+          )}
           {canInteract && (
             <FlatButton
               icon={isPasswordVisible ? <EyeCrossedIcon /> : <EyeIcon />}

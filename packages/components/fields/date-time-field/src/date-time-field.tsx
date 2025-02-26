@@ -12,6 +12,7 @@ import {
   getFieldId,
   createSequentialId,
   warning,
+  hasFieldLabel,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
@@ -148,7 +149,7 @@ export type TDateTimeFieldProps = {
   /**
    * Title of the label
    */
-  title: ReactNode;
+  title?: ReactNode;
   /**
    * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas `description` can describe it in more depth. Can also receive a `hintIcon`.
    */
@@ -244,16 +245,18 @@ class DateTimeField extends Component<
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
-          <FieldLabel
-            title={this.props.title}
-            hint={this.props.hint}
-            description={this.props.description}
-            onInfoButtonClick={this.props.onInfoButtonClick}
-            hintIcon={this.props.hintIcon}
-            badge={this.props.badge}
-            hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
-          />
+          {hasFieldLabel(this.props) && (
+            <FieldLabel
+              title={this.props.title}
+              hint={this.props.hint}
+              description={this.props.description}
+              onInfoButtonClick={this.props.onInfoButtonClick}
+              hintIcon={this.props.hintIcon}
+              badge={this.props.badge}
+              hasRequiredIndicator={this.props.isRequired}
+              htmlFor={this.state.id}
+            />
+          )}
           <DateTimeInput
             id={this.state.id}
             name={this.props.name}

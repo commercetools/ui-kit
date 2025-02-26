@@ -10,6 +10,7 @@ import {
   createSequentialId,
   filterDataAttributes,
   getFieldId,
+  hasFieldLabel,
   warning,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -262,7 +263,7 @@ export type TSelectFieldProps = {
   /**
    * Title of the label
    */
-  title: ReactNode;
+  title?: ReactNode;
   /**
    * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas description can describe it in more depth.
    * <br/>
@@ -384,16 +385,18 @@ export default class SelectField extends Component<TSelectFieldProps> {
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
-          <FieldLabel
-            title={this.props.title}
-            hint={this.props.hint}
-            description={this.props.description}
-            onInfoButtonClick={this.props.onInfoButtonClick}
-            hintIcon={this.props.hintIcon}
-            badge={this.props.badge}
-            hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
-          />
+          {hasFieldLabel(this.props) && (
+            <FieldLabel
+              title={this.props.title}
+              hint={this.props.hint}
+              description={this.props.description}
+              onInfoButtonClick={this.props.onInfoButtonClick}
+              hintIcon={this.props.hintIcon}
+              badge={this.props.badge}
+              hasRequiredIndicator={this.props.isRequired}
+              htmlFor={this.state.id}
+            />
+          )}
           <SelectInput
             horizontalConstraint="scale"
             hasError={hasError}
