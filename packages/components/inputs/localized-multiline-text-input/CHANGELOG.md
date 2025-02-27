@@ -1,5 +1,22 @@
 # @commercetools-uikit/localized-multiline-text-input
 
+## 19.22.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.7
+  - @commercetools-uikit/flat-button@19.22.7
+  - @commercetools-uikit/constraints@19.22.7
+  - @commercetools-uikit/icons@19.22.7
+  - @commercetools-uikit/input-utils@19.22.7
+  - @commercetools-uikit/messages@19.22.7
+  - @commercetools-uikit/spacings-stack@19.22.7
+  - @commercetools-uikit/text@19.22.7
+  - @commercetools-uikit/hooks@19.22.7
+  - @commercetools-uikit/localized-utils@19.22.7
+  - @commercetools-uikit/utils@19.22.7
+
 ## 19.22.6
 
 ### Patch Changes
