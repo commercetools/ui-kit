@@ -24,7 +24,6 @@ export const BasicExample: Story = (args) => {
 
   return (
     <div style={{ height: 400 }}>
-      {/* @ts-expect-error, @todo refactory component and/or component-types */}
       <DateField
         {...args}
         value={value || ''}
