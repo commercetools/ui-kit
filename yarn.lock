@@ -2612,7 +2612,7 @@ __metadata:
     "@manypkg/find-root": 1.1.0
     "@manypkg/get-packages": 1.1.3
     "@types/node": ^22.13.1
-    cac: 6.7.14
+    commander: ^13.1.0
     omit-empty-es: 1.2.0
     prettier: 2.8.8
     rcfile: 1.0.3
@@ -2638,7 +2638,7 @@ __metadata:
     "@types/shelljs": 0.8.15
     "@types/unist": 3.0.3
     "@types/vfile": 4.0.0
-    cac: 6.7.14
+    commander: ^13.1.0
     listr: 0.14.3
     listr-verbose-renderer: 0.6.0
     lodash: 4.17.21
@@ -11191,13 +11191,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cac@npm:6.7.14":
-  version: 6.7.14
-  resolution: "cac@npm:6.7.14"
-  checksum: 45a2496a9443abbe7f52a49b22fbe51b1905eff46e03fd5e6c98e3f85077be3f8949685a1849b1a9cd2bc3e5567dfebcf64f01ce01847baf918f1b37c839791a
-  languageName: node
-  linkType: hard
-
 "cacache@npm:^18.0.0":
   version: 18.0.4
   resolution: "cacache@npm:18.0.4"
@@ -11844,6 +11837,13 @@ __metadata:
   version: 11.0.0
   resolution: "commander@npm:11.0.0"
   checksum: 6621954e1e1d078b4991c1f5bbd9439ad37aa7768d6ab4842de1dbd4d222c8a27e1b8e62108b3a92988614af45031d5bb2a2aaa92951f4d0c934d1a1ac564bb4
+  languageName: node
+  linkType: hard
+
+"commander@npm:^13.1.0":
+  version: 13.1.0
+  resolution: "commander@npm:13.1.0"
+  checksum: 8ca2fcb33caf2aa06fba3722d7a9440921331d54019dabf906f3603313e7bf334b009b862257b44083ff65d5a3ab19e83ad73af282bd5319f01dc228bdf87ef0
   languageName: node
   linkType: hard
 
@@ -24305,8 +24305,8 @@ __metadata:
     babel-plugin-typescript-to-proptypes: 1.4.2
     browserslist: 4.24.3
     bundlesize: 0.18.2
-    cac: 6.7.14
     colors: 1.4.0
+    commander: ^13.1.0
     conventional-changelog-cli: 5.0.0
     cross-env: 7.0.3
     eslint: 8.57.1
