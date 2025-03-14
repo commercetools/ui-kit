@@ -344,8 +344,6 @@ export type TSelectInputProps = {
   tabSelectsValue?: ReactSelectProps<TOption>['tabSelectsValue'];
   /**
    * The value of the select; reflected by the selected option
-   * <br>
-   * [Props from React select was used](https://react-select.com/props)
    */
   value?: string | string[] | null;
   /**

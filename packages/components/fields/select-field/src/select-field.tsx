@@ -31,8 +31,8 @@ export type TOptionObject = {
 export type TOptions = TOption[] | TOptionObject[];
 export type TCustomEvent = {
   target: {
-    id?: ReactSelectProps['inputId'];
-    name?: ReactSelectProps['name'];
+    id?: ReactSelectProps<TOption>['inputId'];
+    name?: ReactSelectProps<TOption>['name'];
     value?: string | string[] | null;
   };
   persist: () => void;
@@ -111,13 +111,13 @@ export type TSelectFieldProps = {
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-label'?: ReactSelectProps['aria-label'];
+  'aria-label'?: ReactSelectProps<TOption>['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-labelledby'?: ReactSelectProps['aria-labelledby'];
+  'aria-labelledby'?: ReactSelectProps<TOption>['aria-labelledby'];
   /**
    * Focus the control when it is mounted
    */
@@ -131,19 +131,19 @@ export type TSelectFieldProps = {
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  components?: ReactSelectProps['components'];
+  components?: ReactSelectProps<TOption>['components'];
   /**
    * Control whether the selected values should be rendered in the control
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  controlShouldRenderValue?: ReactSelectProps['controlShouldRenderValue'];
+  controlShouldRenderValue?: ReactSelectProps<TOption>['controlShouldRenderValue'];
   /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  filterOption?: ReactSelectProps['filterOption'];
+  filterOption?: ReactSelectProps<TOption>['filterOption'];
   /**
    * The id to set on the SelectContainer component
    */
@@ -169,7 +169,7 @@ export type TSelectFieldProps = {
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isOptionDisabled?: ReactSelectProps['isOptionDisabled'];
+  isOptionDisabled?: ReactSelectProps<TOption>['isOptionDisabled'];
   /**
    * Support multiple selected options
    */
@@ -187,7 +187,7 @@ export type TSelectFieldProps = {
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
+  menuPortalTarget?: ReactSelectProps<TOption>['menuPortalTarget'];
   /**
    * z-index value for the menu portal
    * <br>
@@ -209,7 +209,7 @@ export type TSelectFieldProps = {
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  noOptionsMessage?: ReactSelectProps['noOptionsMessage'];
+  noOptionsMessage?: ReactSelectProps<TOption>['noOptionsMessage'];
   /**
    * Handle blur events on the control
    */
@@ -225,13 +225,13 @@ export type TSelectFieldProps = {
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onFocus?: ReactSelectProps['onFocus'];
+  onFocus?: ReactSelectProps<TOption>['onFocus'];
   /**
    * Handle change events on the input
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onInputChange?: ReactSelectProps['onInputChange'];
+  onInputChange?: ReactSelectProps<TOption>['onInputChange'];
   /**
    * Array of options that populate the select menu
    */
@@ -246,17 +246,15 @@ export type TSelectFieldProps = {
    *  <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  tabIndex?: ReactSelectProps['tabIndex'];
+  tabIndex?: ReactSelectProps<TOption>['tabIndex'];
   /**
    * Select the currently focused option when the user presses tab
    */
   tabSelectsValue?: boolean;
   /**
    * The value of the select; reflected by the selected option
-   * <br/>
-   * [Props from React select was used](https://react-select.com/props)
    */
-  value?: ReactSelectProps['value'];
+  value?: string | string[] | null;
 
   // LabelField
   /**
@@ -303,7 +301,7 @@ export type TSelectFieldProps = {
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  inputValue?: ReactSelectProps['inputValue'];
+  inputValue?: ReactSelectProps<TOption>['inputValue'];
 };
 
 type TFieldState = Pick<TSelectFieldProps, 'id'>;
