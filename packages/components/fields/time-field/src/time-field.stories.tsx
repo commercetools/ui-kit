@@ -24,7 +24,6 @@ export const BasicExample: Story = (args) => {
   const [value, onChange] = useState('12:30 PM');
 
   return (
-    // @ts-expect-error
     <TimeField
       {...args}
       value={value}
