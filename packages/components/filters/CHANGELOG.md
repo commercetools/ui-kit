@@ -1,5 +1,20 @@
 # @commercetools-uikit/filters
 
+## 19.22.8
+
+### Patch Changes
+
+- Updated dependencies [[`b8022e1`](https://github.com/commercetools/ui-kit/commit/b8022e1ae1b7eccf41f1bcd400972fa79f9178f0)]:
+  - @commercetools-uikit/select-input@19.22.8
+  - @commercetools-uikit/design-system@19.22.8
+  - @commercetools-uikit/flat-button@19.22.8
+  - @commercetools-uikit/icon-button@19.22.8
+  - @commercetools-uikit/secondary-icon-button@19.22.8
+  - @commercetools-uikit/collapsible-motion@19.22.8
+  - @commercetools-uikit/icons@19.22.8
+  - @commercetools-uikit/utils@19.22.8
+  - @commercetools-uikit/spacings@19.22.8
+
 ## 19.22.7
 
 ### Patch Changes

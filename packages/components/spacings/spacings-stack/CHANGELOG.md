@@ -1,5 +1,13 @@
 # @commercetools-uikit/spacings-stack
 
+## 19.22.8
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.8
+  - @commercetools-uikit/utils@19.22.8
+
 ## 19.22.7
 
 ### Patch Changes
