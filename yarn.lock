@@ -2684,7 +2684,7 @@ __metadata:
     "@storybook/react": ^8.2.9
     "@storybook/react-vite": ^8.2.9
     "@storybook/test": ^8.2.9
-    "@swc/plugin-emotion": ^4.0.0
+    "@swc/plugin-emotion": ^8.0.0
     "@vitejs/plugin-react-swc": ^3.7.0
     prop-types: 15.8.1
     react: 17.0.2
@@ -8757,12 +8757,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/plugin-emotion@npm:^4.0.0":
-  version: 4.0.2
-  resolution: "@swc/plugin-emotion@npm:4.0.2"
+"@swc/plugin-emotion@npm:^8.0.0":
+  version: 8.0.3
+  resolution: "@swc/plugin-emotion@npm:8.0.3"
   dependencies:
     "@swc/counter": ^0.1.3
-  checksum: 51d52d492a62417d6ae1ee0538899d8afabe293e0877bb4248291c4392728094093131f07b5709244ab8f325dc5b940d0ac092eb7cd6993eb41708add0f13556
+  checksum: 88bba8d4ca76e739d4546ed23faafc7553082aeeb11a5f5857e5f1d8e1a57ea9da494b3fb9ec372424d7b34b8618c453667a6605803ffe9455d96ca37b080082
   languageName: node
   linkType: hard
 
