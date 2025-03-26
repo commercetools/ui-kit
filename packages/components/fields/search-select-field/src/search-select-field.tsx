@@ -11,6 +11,7 @@ import {
   filterDataAttributes,
   createSequentialId,
   warning,
+  hasFieldLabel,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { useFieldId } from '@commercetools-uikit/hooks';
@@ -293,7 +294,7 @@ export type TSearchSelectFieldProps = {
   /**
    * Title of the label
    */
-  title: ReactNode;
+  title?: ReactNode;
   /**
    * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas `description` can describe it in more depth. Can also receive a `hintIcon`.
    */
@@ -368,16 +369,18 @@ const SearchSelectField = ({
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Spacings.Stack scale="xs">
-        <FieldLabel
-          title={props.title}
-          hint={props.hint}
-          description={props.description}
-          onInfoButtonClick={props.onInfoButtonClick}
-          hintIcon={props.hintIcon}
-          badge={props.badge}
-          hasRequiredIndicator={props.isRequired}
-          htmlFor={id}
-        />
+        {hasFieldLabel(props) && (
+          <FieldLabel
+            title={props.title}
+            hint={props.hint}
+            description={props.description}
+            onInfoButtonClick={props.onInfoButtonClick}
+            hintIcon={props.hintIcon}
+            badge={props.badge}
+            hasRequiredIndicator={props.isRequired}
+            htmlFor={id}
+          />
+        )}
         <SearchSelectInput
           {...filterDataAttributes({
             controlShouldRenderValue,
