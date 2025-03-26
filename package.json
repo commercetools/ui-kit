@@ -133,7 +133,7 @@
     "cross-env": "7.0.3",
     "eslint": "8.57.1",
     "eslint-formatter-pretty": "4.1.0",
-    "execa": "6.1.0",
+    "execa": "9.5.2",
     "formik": "^2.2.9",
     "glob": "8.1.0",
     "global": "4.4.0",
