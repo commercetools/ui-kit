@@ -157,6 +157,11 @@ export type TMultiTextFieldProps = {
    * Might be used to display additional information about the content of the field (E.g verified email)
    */
   badge?: string;
+  /**
+   * Set this to value to determine the maximum text rows of the text area.
+   * Any text overflow past this row number would implement a scroll
+   */
+  maxRows?: number;
 };
 
 type TState = {
@@ -253,6 +258,7 @@ class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
             hasWarning={hasWarning}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
+            maxRows={this.props.maxRows}
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
             aria-errormessage={errorsContainerId}
