@@ -116,6 +116,7 @@ export { default as SearchIcon } from './SearchReact';
 export { default as SidebarCollapseIcon } from './SidebarCollapseReact';
 export { default as SidebarExpandIcon } from './SidebarExpandReact';
 export { default as SortingIcon } from './SortingReact';
+export { default as SparklesIcon } from './SparklesReact';
 export { default as SpeechBubbleIcon } from './SpeechBubbleReact';
 export { default as SpeedometerIcon } from './SpeedometerReact';
 export { default as SplitIcon } from './SplitReact';
