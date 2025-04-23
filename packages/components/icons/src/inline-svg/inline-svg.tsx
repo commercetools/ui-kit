@@ -24,12 +24,11 @@ const InlineSvg = (props: InlineSvgProps) => {
     }
     return DOMPurify.sanitize(props.data, {
       USE_PROFILES: { svg: true },
-      RETURN_DOM: true,
       FORBID_ATTR: [
         // To avoid injection by using `style="filter:url(\"data:image/svg+xml,<svg`
         'style',
       ],
-    }).innerHTML;
+    });
   }, [props.data]);
   const svgElement = useStringToReactElement(sanitized);
 
