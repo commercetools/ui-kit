@@ -18,7 +18,7 @@
     "@storybook/react": "^8.2.9",
     "@storybook/react-vite": "^8.2.9",
     "@storybook/test": "^8.2.9",
-    "@swc/plugin-emotion": "^4.0.0",
+    "@swc/plugin-emotion": "^9.0.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
     "prop-types": "15.8.1",
     "react": "17.0.2",
