@@ -2693,7 +2693,7 @@ __metadata:
     remark-gfm: ^4.0.0
     serve: ^14.2.3
     storybook: ^8.2.9
-    vite: 6.0.9
+    vite: 6.0.15
   languageName: unknown
   linkType: soft
 
@@ -25086,13 +25086,13 @@ __metadata:
     react-intl: ^6.3.2
     react-router: 5.3.4
     react-router-dom: 5.3.4
-    vite: 6.0.9
+    vite: 6.0.15
   languageName: unknown
   linkType: soft
 
-"vite@npm:6.0.9":
-  version: 6.0.9
-  resolution: "vite@npm:6.0.9"
+"vite@npm:6.0.15":
+  version: 6.0.15
+  resolution: "vite@npm:6.0.15"
   dependencies:
     esbuild: ^0.24.2
     fsevents: ~2.3.3
@@ -25138,7 +25138,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: f29c654116192228b2a6024e1cce4aaefe74a0561b7dc5ac8072261f6fcb8f602b555ffd7052774754ad88c9af2eec0aa8c71584e3efda41506addc7674c3462
+  checksum: 12e5d5c2e5651ea14a3ec0c94e39abee0e1ffafadf37e50cd37eb765469e52f33faf6b0611eb7cd64a1fc5f3903ba386d1694fb2193004f6a37b1f7d85868917
   languageName: node
   linkType: hard
 
