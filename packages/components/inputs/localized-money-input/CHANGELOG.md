@@ -1,5 +1,26 @@
 # @commercetools-uikit/localized-money-input
 
+## 19.23.0
+
+### Patch Changes
+
+- [#3031](https://github.com/commercetools/ui-kit/pull/3031) [`6521a61`](https://github.com/commercetools/ui-kit/commit/6521a6168c7b4664b1e0f3668dcec59b72cc7794) Thanks [@renovate](https://github.com/apps/renovate)! - update non-major dependencies
+
+- Updated dependencies [[`6521a61`](https://github.com/commercetools/ui-kit/commit/6521a6168c7b4664b1e0f3668dcec59b72cc7794), [`a7452cc`](https://github.com/commercetools/ui-kit/commit/a7452cc7ed9597e518b69a356e7c5dc6f8c33f53), [`0e82903`](https://github.com/commercetools/ui-kit/commit/0e82903a697cf68f3b01e871041a39c825bc45d4)]:
+  - @commercetools-uikit/select-utils@19.23.0
+  - @commercetools-uikit/money-input@19.23.0
+  - @commercetools-uikit/icons@19.23.0
+  - @commercetools-uikit/input-utils@19.23.0
+  - @commercetools-uikit/design-system@19.23.0
+  - @commercetools-uikit/flat-button@19.23.0
+  - @commercetools-uikit/constraints@19.23.0
+  - @commercetools-uikit/messages@19.23.0
+  - @commercetools-uikit/spacings-stack@19.23.0
+  - @commercetools-uikit/tooltip@19.23.0
+  - @commercetools-uikit/hooks@19.23.0
+  - @commercetools-uikit/localized-utils@19.23.0
+  - @commercetools-uikit/utils@19.23.0
+
 ## 19.22.7
 
 ### Patch Changes

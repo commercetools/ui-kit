@@ -1,5 +1,52 @@
 # @commercetools-frontend/ui-kit
 
+## 19.23.0
+
+### Patch Changes
+
+- [#3031](https://github.com/commercetools/ui-kit/pull/3031) [`6521a61`](https://github.com/commercetools/ui-kit/commit/6521a6168c7b4664b1e0f3668dcec59b72cc7794) Thanks [@renovate](https://github.com/apps/renovate)! - update non-major dependencies
+
+- Updated dependencies [[`6521a61`](https://github.com/commercetools/ui-kit/commit/6521a6168c7b4664b1e0f3668dcec59b72cc7794), [`a7452cc`](https://github.com/commercetools/ui-kit/commit/a7452cc7ed9597e518b69a356e7c5dc6f8c33f53), [`0e82903`](https://github.com/commercetools/ui-kit/commit/0e82903a697cf68f3b01e871041a39c825bc45d4)]:
+  - @commercetools-uikit/selectable-search-input@19.23.0
+  - @commercetools-uikit/select-utils@19.23.0
+  - @commercetools-uikit/icons@19.23.0
+  - @commercetools-uikit/inputs@19.23.0
+  - @commercetools-uikit/data-table-manager@19.23.0
+  - @commercetools-uikit/filters@19.23.0
+  - @commercetools-uikit/pagination@19.23.0
+  - @commercetools-uikit/collapsible-panel@19.23.0
+  - @commercetools-uikit/data-table@19.23.0
+  - @commercetools-uikit/field-label@19.23.0
+  - @commercetools-uikit/link@19.23.0
+  - @commercetools-uikit/notifications@19.23.0
+  - @commercetools-uikit/primary-action-dropdown@19.23.0
+  - @commercetools-uikit/tag@19.23.0
+  - @commercetools-uikit/fields@19.23.0
+  - @commercetools-uikit/quick-filters@19.23.0
+  - @commercetools-uikit/design-system@19.23.0
+  - @commercetools-uikit/accessible-hidden@19.23.0
+  - @commercetools-uikit/avatar@19.23.0
+  - @commercetools-uikit/card@19.23.0
+  - @commercetools-uikit/collapsible@19.23.0
+  - @commercetools-uikit/collapsible-motion@19.23.0
+  - @commercetools-uikit/constraints@19.23.0
+  - @commercetools-uikit/dropdown-menu@19.23.0
+  - @commercetools-uikit/field-errors@19.23.0
+  - @commercetools-uikit/grid@19.23.0
+  - @commercetools-uikit/label@19.23.0
+  - @commercetools-uikit/loading-spinner@19.23.0
+  - @commercetools-uikit/messages@19.23.0
+  - @commercetools-uikit/progress-bar@19.23.0
+  - @commercetools-uikit/stamp@19.23.0
+  - @commercetools-uikit/text@19.23.0
+  - @commercetools-uikit/tooltip@19.23.0
+  - @commercetools-uikit/view-switcher@19.23.0
+  - @commercetools-uikit/hooks@19.23.0
+  - @commercetools-uikit/i18n@19.23.0
+  - @commercetools-uikit/utils@19.23.0
+  - @commercetools-uikit/buttons@19.23.0
+  - @commercetools-uikit/spacings@19.23.0
+
 ## 19.22.7
 
 ### Patch Changes

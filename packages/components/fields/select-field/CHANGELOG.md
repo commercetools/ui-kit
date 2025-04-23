@@ -1,5 +1,21 @@
 # @commercetools-uikit/select-field
 
+## 19.23.0
+
+### Patch Changes
+
+- [#3073](https://github.com/commercetools/ui-kit/pull/3073) [`b8022e1`](https://github.com/commercetools/ui-kit/commit/b8022e1ae1b7eccf41f1bcd400972fa79f9178f0) Thanks [@ragafus](https://github.com/ragafus)! - Improve TSelectInputProps and TSelectFieldProps types
+
+- Updated dependencies [[`6521a61`](https://github.com/commercetools/ui-kit/commit/6521a6168c7b4664b1e0f3668dcec59b72cc7794), [`b8022e1`](https://github.com/commercetools/ui-kit/commit/b8022e1ae1b7eccf41f1bcd400972fa79f9178f0)]:
+  - @commercetools-uikit/select-input@19.23.0
+  - @commercetools-uikit/field-label@19.23.0
+  - @commercetools-uikit/design-system@19.23.0
+  - @commercetools-uikit/constraints@19.23.0
+  - @commercetools-uikit/field-errors@19.23.0
+  - @commercetools-uikit/field-warnings@19.23.0
+  - @commercetools-uikit/utils@19.23.0
+  - @commercetools-uikit/spacings@19.23.0
+
 ## 19.22.7
 
 ### Patch Changes
