@@ -22,7 +22,7 @@
   "devDependencies": {
     "prettier": "2.8.8",
     "ts-node": "10.9.2",
-    "typescript": "5.7.2"
+    "typescript": "5.8.3"
   },
   "peerDependencies": {
     "prettier": "2.x",
