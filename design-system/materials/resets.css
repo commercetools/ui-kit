@@ -1,41 +1,43 @@
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
 
-html,
-body {
-  color: var(--color-solid);
-  font-family: var(--font-family);
-  margin: 0;
-  padding: 0;
-}
+  html,
+  body {
+    color: var(--color-solid);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+  }
 
-html {
-  box-sizing: border-box;
-}
+  html {
+    box-sizing: border-box;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
 
-button {
-  cursor: pointer;
-}
+  button {
+    cursor: pointer;
+  }
 
-a {
-  color: var(--color-primary);
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.2s ease-in;
-}
+  a {
+    color: var(--color-primary);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease-in;
+  }
 
-p {
-  margin: 0;
+  p {
+    margin: 0;
+  }
 }
