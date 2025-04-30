@@ -1,5 +1,20 @@
 # @commercetools-uikit/tag
 
+## 19.24.0
+
+### Patch Changes
+
+- [#3085](https://github.com/commercetools/ui-kit/pull/3085) [`49b6c7f`](https://github.com/commercetools/ui-kit/commit/49b6c7f35e506de3eb7baf67f86c18a5d0c0451a) Thanks [@ByronDWall](https://github.com/ByronDWall)! - "fix(tag body types): insure that tag body accepts an 'as' prop that is typed as a react-router-dom Link or an ElementType"
+
+- Updated dependencies [[`2108ace`](https://github.com/commercetools/ui-kit/commit/2108aced9b2507f253738c25a7e7c221fbaf93e1)]:
+  - @commercetools-uikit/icons@19.24.0
+  - @commercetools-uikit/design-system@19.24.0
+  - @commercetools-uikit/accessible-button@19.24.0
+  - @commercetools-uikit/constraints@19.24.0
+  - @commercetools-uikit/text@19.24.0
+  - @commercetools-uikit/utils@19.24.0
+  - @commercetools-uikit/spacings@19.24.0
+
 ## 19.23.0
 
 ### Patch Changes

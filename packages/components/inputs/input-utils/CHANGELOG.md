@@ -1,5 +1,15 @@
 # @commercetools-uikit/input-utils
 
+## 19.24.0
+
+### Patch Changes
+
+- Updated dependencies [[`2108ace`](https://github.com/commercetools/ui-kit/commit/2108aced9b2507f253738c25a7e7c221fbaf93e1)]:
+  - @commercetools-uikit/icons@19.24.0
+  - @commercetools-uikit/design-system@19.24.0
+  - @commercetools-uikit/flat-button@19.24.0
+  - @commercetools-uikit/utils@19.24.0
+
 ## 19.23.0
 
 ### Patch Changes
