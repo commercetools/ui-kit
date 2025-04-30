@@ -90,6 +90,25 @@ describe('html', () => {
           );
         });
       });
+
+      describe('with links', () => {
+        it('should properly serialize and preserve links', () => {
+          const htmlValue =
+            '<p>This is a <a href="https://example.com" target="_blank" title="Example Site">link</a> in text</p>';
+          expect(html.serialize(html.deserialize(htmlValue))).toEqual(
+            '<p>This is a <a href="https://example.com" target="_blank" title="Example Site">link</a> in text</p>'
+          );
+        });
+
+        it('should handle links with minimal attributes', () => {
+          const htmlValue =
+            '<p>This is another <a href="https://minimal.com">link</a> with minimal attributes</p>';
+          expect(html.serialize(html.deserialize(htmlValue))).toEqual(
+            '<p>This is another <a href="https://minimal.com" target="_self">link</a> with minimal attributes</p>'
+          );
+        });
+      });
+
       describe('mixed', () => {
         it('should properly serialize', () => {
           const htmlValue =

@@ -91,6 +91,8 @@ const serializeNode = (node: TNode): Html => {
           </pre>`;
     case 'span':
       return `<span>${children}</span>`;
+    case 'link':
+      return `<a>${children}</a>`;
     case 'bulleted-list':
       return `<ul>${children}</ul>`;
     case 'numbered-list':
@@ -146,6 +148,7 @@ const ELEMENT_TAGS = {
   P: () => ({ type: 'paragraph' }),
   PRE: () => ({ type: 'code' }),
   UL: () => ({ type: 'bulleted-list' }),
+  A: () => ({ type: 'link' }),
 };
 
 const TEXT_TAGS = {

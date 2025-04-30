@@ -35,6 +35,12 @@ const Element = ({ attributes, children, element }: RenderElementProps) => {
           {children}
         </blockquote>
       );
+    case BLOCK_TAGS.a:
+      return (
+        <a style={style} {...attributes} rel="noopener noreferrer">
+          {children}
+        </a>
+      );
     case BLOCK_TAGS.ul:
       return (
         <ul style={style} {...attributes}>

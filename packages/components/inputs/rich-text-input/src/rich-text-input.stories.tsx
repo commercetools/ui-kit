@@ -112,3 +112,48 @@ export const PlaygroundExample: Story = () => {
     </Spacings.Stack>
   );
 };
+
+/** This story specifically tests the preservation of links in the rich text editor, will be taken off once finished */
+export const LinkPreservationTest: Story = () => {
+  const initialHtmlWithLink =
+    '<p>This is a paragraph with a <a href="https://commercetools.com">link to commercetools</a> that should be preserved.</p>';
+  const [value, setValue] = useState(initialHtmlWithLink);
+  const ref = useRef(null);
+
+  const onChange = useCallback(
+    (event) => {
+      setValue(event.target.value);
+    },
+    [setValue]
+  );
+
+  return (
+    <Spacings.Stack scale="l">
+      <Text.Headline as="h3">Test Link Preservation</Text.Headline>
+      <Text.Body>
+        The rich text below contains a link. Try to edit the content around the
+        link and observe whether the link is preserved or destroyed.
+      </Text.Body>
+      <RichTextInput
+        name="link-test"
+        defaultExpandMultilineText={true}
+        ref={ref}
+        onChange={onChange}
+        value={value}
+        placeholder="Type here..."
+        showExpandIcon={false}
+      />
+      <Text.Headline as="h3">HTML Output</Text.Headline>
+      <code>{value}</code>
+      <Text.Headline as="h3">Visual Representation</Text.Headline>
+      <div
+        style={{
+          padding: '16px',
+          border: '1px solid #ccc',
+          borderRadius: '4px',
+        }}
+        dangerouslySetInnerHTML={{ __html: value }}
+      />
+    </Spacings.Stack>
+  );
+};
