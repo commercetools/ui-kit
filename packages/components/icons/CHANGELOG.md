@@ -1,5 +1,17 @@
 # @commercetools-uikit/icons
 
+## 19.24.0
+
+### Minor Changes
+
+- [#3086](https://github.com/commercetools/ui-kit/pull/3086) [`2108ace`](https://github.com/commercetools/ui-kit/commit/2108aced9b2507f253738c25a7e7c221fbaf93e1) Thanks [@valoriecarli](https://github.com/valoriecarli)! - Add bag & location icons.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.24.0
+  - @commercetools-uikit/utils@19.24.0
+
 ## 19.23.0
 
 ### Minor Changes

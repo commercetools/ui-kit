@@ -1,5 +1,25 @@
 # @commercetools-uikit/pagination
 
+## 19.24.0
+
+### Minor Changes
+
+- [#3083](https://github.com/commercetools/ui-kit/pull/3083) [`eb607ca`](https://github.com/commercetools/ui-kit/commit/eb607ca35c026601c2061b7f0925942ec9d35ce5) Thanks [@misama-ct](https://github.com/misama-ct)! - added 'xs' option to pageRangeSize selector
+
+### Patch Changes
+
+- Updated dependencies [[`2108ace`](https://github.com/commercetools/ui-kit/commit/2108aced9b2507f253738c25a7e7c221fbaf93e1)]:
+  - @commercetools-uikit/icons@19.24.0
+  - @commercetools-uikit/select-input@19.24.0
+  - @commercetools-uikit/number-input@19.24.0
+  - @commercetools-uikit/design-system@19.24.0
+  - @commercetools-uikit/secondary-icon-button@19.24.0
+  - @commercetools-uikit/constraints@19.24.0
+  - @commercetools-uikit/label@19.24.0
+  - @commercetools-uikit/text@19.24.0
+  - @commercetools-uikit/utils@19.24.0
+  - @commercetools-uikit/spacings@19.24.0
+
 ## 19.23.0
 
 ### Patch Changes
