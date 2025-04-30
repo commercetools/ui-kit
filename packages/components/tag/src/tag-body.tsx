@@ -1,5 +1,6 @@
 import type { TTagProps } from './tag';
 
+import { Link } from 'react-router-dom';
 import { ElementType, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -9,7 +10,7 @@ import { DragIcon } from '@commercetools-uikit/icons';
 
 export type TTagBodyProps = {
   to?: TTagProps['to'];
-  as?: ElementType;
+  as?: ElementType | Link;
   onClick?: TTagProps['onClick'];
   onRemove?: TTagProps['onRemove'];
   isDisabled?: boolean;
