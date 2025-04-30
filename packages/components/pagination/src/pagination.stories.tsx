@@ -23,7 +23,7 @@ export const BasicExample: Story = {
     totalItems: 200,
     page: 1,
     onPageChange: () => alert('onPageChange Request'),
-    onPerPageChange: () => alert('onPerPageChange Request'),
+    onPerPageChange: (v) => alert(`onPerPageChange Request: ${v}`),
     perPage: 20,
   },
   decorators: [

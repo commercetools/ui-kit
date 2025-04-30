@@ -7,7 +7,7 @@ import { warning } from '@commercetools-uikit/utils';
 import Label from '@commercetools-uikit/label';
 import messages from './messages';
 
-export type TPageRangeSize = 's' | 'm' | 'l';
+export type TPageRangeSize = 'xs' | 's' | 'm' | 'l';
 
 export type TPageSizeSelectorProps = {
   /**
@@ -17,6 +17,8 @@ export type TPageSizeSelectorProps = {
 
   /**
    * Range of items per page.
+   * <br/>
+   * `XS: 5,10,15,20`
    * <br/>
    * `SMALL: 20,50`
    * <br/>
@@ -39,6 +41,8 @@ export type TPageSizeSelectorProps = {
 
 const mapRangeToListOfOptions = (perPageRange: TPageRangeSize) => {
   switch (perPageRange) {
+    case 'xs':
+      return [5, 10, 15, 20];
     case 's':
       return [20, 50];
     case 'm':
@@ -47,7 +51,7 @@ const mapRangeToListOfOptions = (perPageRange: TPageRangeSize) => {
       return [200, 500];
     default:
       throw new Error(
-        `Invalid page range "${perPageRange}", expected one of "s,m,l".`
+        `Invalid page range "${perPageRange}", expected one of "xs,s,m,l".`
       );
   }
 };
