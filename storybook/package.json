@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-local/storybook",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "devDependencies": {
     "@emotion/css": "^11.10.5",
@@ -26,7 +26,7 @@
     "remark-gfm": "^4.0.0",
     "serve": "^14.2.3",
     "storybook": "^8.2.9",
-    "vite": "6.0.3"
+    "vite": "6.3.2"
   },
   "scripts": {
     "start": "storybook dev -p 6006",

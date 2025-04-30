@@ -1,5 +1,44 @@
 # @commercetools-uikit/data-table
 
+## 19.24.0
+
+### Patch Changes
+
+- Updated dependencies [[`2108ace`](https://github.com/commercetools/ui-kit/commit/2108aced9b2507f253738c25a7e7c221fbaf93e1)]:
+  - @commercetools-uikit/icons@19.24.0
+  - @commercetools-uikit/data-table-manager@19.24.0
+  - @commercetools-uikit/design-system@19.24.0
+  - @commercetools-uikit/accessible-button@19.24.0
+  - @commercetools-uikit/secondary-icon-button@19.24.0
+  - @commercetools-uikit/hooks@19.24.0
+  - @commercetools-uikit/utils@19.24.0
+
+## 19.23.0
+
+### Patch Changes
+
+- Updated dependencies [[`6521a61`](https://github.com/commercetools/ui-kit/commit/6521a6168c7b4664b1e0f3668dcec59b72cc7794), [`a7452cc`](https://github.com/commercetools/ui-kit/commit/a7452cc7ed9597e518b69a356e7c5dc6f8c33f53), [`0e82903`](https://github.com/commercetools/ui-kit/commit/0e82903a697cf68f3b01e871041a39c825bc45d4)]:
+  - @commercetools-uikit/icons@19.23.0
+  - @commercetools-uikit/data-table-manager@19.23.0
+  - @commercetools-uikit/design-system@19.23.0
+  - @commercetools-uikit/accessible-button@19.23.0
+  - @commercetools-uikit/secondary-icon-button@19.23.0
+  - @commercetools-uikit/hooks@19.23.0
+  - @commercetools-uikit/utils@19.23.0
+
+## 19.22.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.7
+  - @commercetools-uikit/accessible-button@19.22.7
+  - @commercetools-uikit/secondary-icon-button@19.22.7
+  - @commercetools-uikit/data-table-manager@19.22.7
+  - @commercetools-uikit/icons@19.22.7
+  - @commercetools-uikit/hooks@19.22.7
+  - @commercetools-uikit/utils@19.22.7
+
 ## 19.22.6
 
 ### Patch Changes

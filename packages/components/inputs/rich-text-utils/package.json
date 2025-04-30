@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/rich-text-utils",
   "description": "Utilities for working with rich-text components.",
-  "version": "19.22.6",
+  "version": "19.24.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -24,12 +24,12 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/design-system": "19.22.6",
-    "@commercetools-uikit/icons": "19.22.6",
-    "@commercetools-uikit/input-utils": "19.22.6",
-    "@commercetools-uikit/spacings-inline": "19.22.6",
-    "@commercetools-uikit/tooltip": "19.22.6",
-    "@commercetools-uikit/utils": "19.22.6",
+    "@commercetools-uikit/design-system": "19.24.0",
+    "@commercetools-uikit/icons": "19.24.0",
+    "@commercetools-uikit/input-utils": "19.24.0",
+    "@commercetools-uikit/spacings-inline": "19.24.0",
+    "@commercetools-uikit/tooltip": "19.24.0",
+    "@commercetools-uikit/utils": "19.24.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@types/escape-html": "1.0.4",
@@ -38,7 +38,7 @@
     "is-hotkey": "0.2.0",
     "lodash": "4.17.21",
     "slate": "0.75.0",
-    "slate-history": "0.110.3",
+    "slate-history": "0.113.1",
     "slate-hyperscript": "0.100.0",
     "slate-react": "0.75.0",
     "style-to-object": "0.4.4"

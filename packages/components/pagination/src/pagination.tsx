@@ -27,6 +27,8 @@ export type TPaginationProps = {
   /**
    * Range of items per page.
    * <br/>
+   * `xs: 5,10,15,20`
+   * <br/>
    * `s: 20,50`
    * <br/>
    * `m: 20,50,100`

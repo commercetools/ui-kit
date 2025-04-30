@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/field-warnings",
   "description": "Renders warnings based on configuration.",
-  "version": "19.22.6",
+  "version": "19.24.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/messages": "19.22.6",
+    "@commercetools-uikit/messages": "19.24.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5"
   },

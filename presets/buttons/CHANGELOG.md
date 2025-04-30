@@ -1,5 +1,47 @@
 # @commercetools-uikit/buttons
 
+## 19.24.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.24.0
+  - @commercetools-uikit/accessible-button@19.24.0
+  - @commercetools-uikit/flat-button@19.24.0
+  - @commercetools-uikit/icon-button@19.24.0
+  - @commercetools-uikit/link-button@19.24.0
+  - @commercetools-uikit/primary-button@19.24.0
+  - @commercetools-uikit/secondary-button@19.24.0
+  - @commercetools-uikit/secondary-icon-button@19.24.0
+
+## 19.23.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.23.0
+  - @commercetools-uikit/accessible-button@19.23.0
+  - @commercetools-uikit/flat-button@19.23.0
+  - @commercetools-uikit/icon-button@19.23.0
+  - @commercetools-uikit/link-button@19.23.0
+  - @commercetools-uikit/primary-button@19.23.0
+  - @commercetools-uikit/secondary-button@19.23.0
+  - @commercetools-uikit/secondary-icon-button@19.23.0
+
+## 19.22.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.7
+  - @commercetools-uikit/accessible-button@19.22.7
+  - @commercetools-uikit/flat-button@19.22.7
+  - @commercetools-uikit/icon-button@19.22.7
+  - @commercetools-uikit/link-button@19.22.7
+  - @commercetools-uikit/primary-button@19.22.7
+  - @commercetools-uikit/secondary-button@19.22.7
+  - @commercetools-uikit/secondary-icon-button@19.22.7
+
 ## 19.22.6
 
 ### Patch Changes

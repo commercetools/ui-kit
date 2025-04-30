@@ -1,5 +1,35 @@
 # @commercetools-uikit/tooltip
 
+## 19.24.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.24.0
+  - @commercetools-uikit/constraints@19.24.0
+  - @commercetools-uikit/hooks@19.24.0
+  - @commercetools-uikit/utils@19.24.0
+
+## 19.23.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.23.0
+  - @commercetools-uikit/constraints@19.23.0
+  - @commercetools-uikit/hooks@19.23.0
+  - @commercetools-uikit/utils@19.23.0
+
+## 19.22.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.7
+  - @commercetools-uikit/constraints@19.22.7
+  - @commercetools-uikit/hooks@19.22.7
+  - @commercetools-uikit/utils@19.22.7
+
 ## 19.22.6
 
 ### Patch Changes

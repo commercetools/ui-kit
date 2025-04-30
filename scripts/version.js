@@ -2,27 +2,29 @@
 
 /* eslint-disable no-console */
 
-const cac = require('cac').cac;
+const { program } = require('commander');
 const path = require('path');
 const fs = require('fs');
 const replace = require('replace');
 
-const cli = cac('version');
+program.name('version');
 
 const versionOfPackage = process.env.npm_package_version;
 const nameOfPackage = process.env.npm_package_name;
 
 const execute = async () => {
-  cli.command('').action(cli.outputHelp);
+  program
+    .command('print')
+    .description('Prints the version and package name')
+    .action(() => {
+      console.log(
+        `Version for ${nameOfPackage} of release will be ${versionOfPackage}`
+      );
+    });
 
-  cli.command('print', 'Prints the version and package name').action(() => {
-    console.log(
-      `Version for ${nameOfPackage} of release will be ${versionOfPackage}`
-    );
-  });
-
-  cli
-    .command('replace', 'Replaces the version to the built files')
+  program
+    .command('replace')
+    .description('Replaces the version to the built files')
     .action(() => {
       const pkgDirectory = fs.realpathSync(process.cwd());
       const resolvePkg = (relativePath) =>
@@ -43,11 +45,7 @@ const execute = async () => {
       );
     });
 
-  cli.help();
-
-  cli.parse(process.argv, { run: false });
-
-  await cli.runMatchedCommand();
+  program.parse();
 };
 
 execute().catch((error) => {

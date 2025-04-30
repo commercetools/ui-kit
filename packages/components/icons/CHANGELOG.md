@@ -1,5 +1,41 @@
 # @commercetools-uikit/icons
 
+## 19.24.0
+
+### Minor Changes
+
+- [#3086](https://github.com/commercetools/ui-kit/pull/3086) [`2108ace`](https://github.com/commercetools/ui-kit/commit/2108aced9b2507f253738c25a7e7c221fbaf93e1) Thanks [@valoriecarli](https://github.com/valoriecarli)! - Add bag & location icons.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.24.0
+  - @commercetools-uikit/utils@19.24.0
+
+## 19.23.0
+
+### Minor Changes
+
+- [#3078](https://github.com/commercetools/ui-kit/pull/3078) [`0e82903`](https://github.com/commercetools/ui-kit/commit/0e82903a697cf68f3b01e871041a39c825bc45d4) Thanks [@LucasGrahn](https://github.com/LucasGrahn)! - Adds sparkles icon to the icons package
+
+### Patch Changes
+
+- [#3031](https://github.com/commercetools/ui-kit/pull/3031) [`6521a61`](https://github.com/commercetools/ui-kit/commit/6521a6168c7b4664b1e0f3668dcec59b72cc7794) Thanks [@renovate](https://github.com/apps/renovate)! - update non-major dependencies
+
+- [#3063](https://github.com/commercetools/ui-kit/pull/3063) [`a7452cc`](https://github.com/commercetools/ui-kit/commit/a7452cc7ed9597e518b69a356e7c5dc6f8c33f53) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade dompurify from 2.5.8 to 3.2.4
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.23.0
+  - @commercetools-uikit/utils@19.23.0
+
+## 19.22.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.22.7
+  - @commercetools-uikit/utils@19.22.7
+
 ## 19.22.6
 
 ### Patch Changes
