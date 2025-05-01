@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 const meta: Meta<TMultiTextFieldProps> = {
   title: 'Form/Fields/MultilineTextField',
-  component: MultilineTextField,
+  component: MultilineTextField as React.ComponentType<TMultiTextFieldProps>,
   argTypes: {
     title: { control: 'text' },
     hint: { control: 'text' },
