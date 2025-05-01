@@ -1,7 +1,8 @@
 import {
-  type ReactNode,
-  type MouseEvent,
   type KeyboardEvent,
+  type MouseEvent,
+  type ReactNode,
+  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -22,8 +23,8 @@ import SelectInput, {
 import Spacings from '@commercetools-uikit/spacings';
 import { useIntl } from 'react-intl';
 import FilterMenu, {
-  menuStyles,
   menuBodyStyle,
+  menuStyles,
   type TAppliedFilterValue,
 } from './filter-menu';
 import messages from './messages';
@@ -259,6 +260,25 @@ function Filters({
   const [localVisibleFilters, setLocalVisibleFilters] = useState<string[]>(
     visibleFiltersFromProps.map(({ key }) => key)
   );
+
+  // Update localVisibleFilters if appliedFilters or filters prop changes
+  useEffect(() => {
+    const persistedFilterKeys = filters
+      .filter((filter) => filter.isPersistent)
+      .map((filter) => filter.key);
+
+    const visibleFiltersFromProps = filters
+      .filter(({ key, isPersistent }) => {
+        return (
+          Boolean(isPersistent) ||
+          appliedFilters.some((af) => af.filterKey === key)
+        );
+      })
+      .map((filter) => filter.key);
+
+    setLocalVisibleFilters(visibleFiltersFromProps);
+    persistedFiltersRef.current = persistedFilterKeys;
+  }, [appliedFilters, filters, setLocalVisibleFilters]);
 
   //update localVisibleFilters if persisted filter count changes
   if (persistedFiltersRef.current.length !== persistedFilterKeys.length) {
