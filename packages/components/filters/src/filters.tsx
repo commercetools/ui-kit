@@ -249,9 +249,7 @@ function Filters({
   // applied filters must have corresponding filter in `props.filters`,
   const visibleFiltersFromProps = filters
     .filter(({ key, isPersistent }) => {
-      const isVisible =
-        Boolean(isPersistent) || appliedFilterKeys.includes(key);
-      return isVisible;
+      return Boolean(isPersistent) || appliedFilterKeys.includes(key);
     })
     // persistent filters should be first in filter list
     .sort(({ isPersistent }) => (isPersistent ? -1 : 1));
@@ -263,22 +261,36 @@ function Filters({
 
   // Update localVisibleFilters if appliedFilters or filters prop changes
   useEffect(() => {
+    const allFilterKeys = filters.map((f) => f.key);
     const persistedFilterKeys = filters
       .filter((filter) => filter.isPersistent)
       .map((filter) => filter.key);
 
-    const visibleFiltersFromProps = filters
-      .filter(({ key, isPersistent }) => {
-        return (
-          Boolean(isPersistent) ||
-          appliedFilters.some((af) => af.filterKey === key)
-        );
-      })
-      .map((filter) => filter.key);
+    const appliedFilterKeysWithValues = appliedFilters.map(
+      (af) => af.filterKey
+    );
 
-    setLocalVisibleFilters(visibleFiltersFromProps);
+    // Calculate keys that *must* be visible based on props
+    const requiredVisibleKeys = new Set([
+      ...persistedFilterKeys,
+      ...appliedFilterKeysWithValues,
+    ]);
+
+    // Update state: keep existing keys, add required keys, remove keys no longer in props.filters
+    setLocalVisibleFilters((currentVisibleFilters) => {
+      const combinedKeys = new Set([
+        ...currentVisibleFilters,
+        ...requiredVisibleKeys,
+      ]);
+      // Ensure all keys in the final state actually exist in the filters prop
+      return Array.from(combinedKeys).filter((key) =>
+        allFilterKeys.includes(key)
+      );
+    });
+
+    // Update the ref for persisted keys (used elsewhere)
     persistedFiltersRef.current = persistedFilterKeys;
-  }, [appliedFilters, filters, setLocalVisibleFilters]);
+  }, [appliedFilters, filters]); // Keep dependencies correct
 
   //update localVisibleFilters if persisted filter count changes
   if (persistedFiltersRef.current.length !== persistedFilterKeys.length) {
