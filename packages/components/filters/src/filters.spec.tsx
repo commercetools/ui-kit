@@ -17,6 +17,7 @@ import {
   selectFilterValues,
   toggleFilterList,
 } from './filters.spec.utils';
+import { IntlProvider } from 'react-intl';
 
 const mockRenderSearchComponent = (
   <input id="search-text" type="text" placeholder="Search Placeholder" />
@@ -306,6 +307,51 @@ describe('Filters', () => {
     //Expect chips to display selected filter values on initial render
     const chips = getDisplayedChipsForFilter('primaryColors');
     expect(chips).toEqual(['lavender', 'cobalt']);
+  });
+
+  it('should render a filter when props.appliedFilters is updated', async () => {
+    const { rerender } = render(
+      <FilterTestComponent
+        {...createTestProps()}
+        initialPrimaryColorValue={['lavender', 'cobalt']}
+      />
+    );
+    // Toggle the filter list to ensure applied filters are shown
+    await toggleFilterList();
+
+    //Expect chips to display selected filter values on initial render
+    const primaryChips = getDisplayedChipsForFilter('primaryColors');
+    expect(primaryChips).toEqual(['lavender', 'cobalt']);
+    expect(screen.queryByText(/rojo/i)).toBeFalsy();
+    rerender(
+      <IntlProvider locale="en">
+        <FilterTestComponent
+          {...createTestProps({
+            appliedFilters: [
+              {
+                filterKey: 'colorName',
+                values: [
+                  {
+                    value: 'rojo',
+                    label: 'rojo',
+                  },
+                ],
+              },
+            ],
+          })}
+          initialPrimaryColorValue={['lavender', 'azure']}
+        />
+      </IntlProvider>
+    );
+    // await toggleFilterList();
+
+    await toggleFilterList();
+    const colorChips2 = getDisplayedChipsForFilter('colorName');
+    expect(colorChips2).toEqual(['rojo']);
+
+    //Expect chips to display selected filter values on initial render
+    const primaryChips2 = getDisplayedChipsForFilter('primaryColors');
+    expect(primaryChips2).toEqual(['lavender', 'azure']);
   });
 
   it('should render a badge on initial page load when >=2 appliedFilters are passed', async () => {
