@@ -9,6 +9,7 @@ const meta: Meta<typeof RadioField> = {
   // @ts-expect-error, fix component and/or types
   component: RadioField,
   subcomponents: {
+    // @ts-expect-error
     'RadioInput.Option': RadioInput.Option,
   },
   argTypes: {
