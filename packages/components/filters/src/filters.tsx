@@ -1,7 +1,8 @@
 import {
-  type ReactNode,
-  type MouseEvent,
   type KeyboardEvent,
+  type MouseEvent,
+  type ReactNode,
+  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -22,8 +23,8 @@ import SelectInput, {
 import Spacings from '@commercetools-uikit/spacings';
 import { useIntl } from 'react-intl';
 import FilterMenu, {
-  menuStyles,
   menuBodyStyle,
+  menuStyles,
   type TAppliedFilterValue,
 } from './filter-menu';
 import messages from './messages';
@@ -248,9 +249,7 @@ function Filters({
   // applied filters must have corresponding filter in `props.filters`,
   const visibleFiltersFromProps = filters
     .filter(({ key, isPersistent }) => {
-      const isVisible =
-        Boolean(isPersistent) || appliedFilterKeys.includes(key);
-      return isVisible;
+      return Boolean(isPersistent) || appliedFilterKeys.includes(key);
     })
     // persistent filters should be first in filter list
     .sort(({ isPersistent }) => (isPersistent ? -1 : 1));
@@ -259,6 +258,39 @@ function Filters({
   const [localVisibleFilters, setLocalVisibleFilters] = useState<string[]>(
     visibleFiltersFromProps.map(({ key }) => key)
   );
+
+  // Update localVisibleFilters if appliedFilters or filters prop changes
+  useEffect(() => {
+    const allFilterKeys = filters.map((f) => f.key);
+    const persistedFilterKeys = filters
+      .filter((filter) => filter.isPersistent)
+      .map((filter) => filter.key);
+
+    const appliedFilterKeysWithValues = appliedFilters.map(
+      (af) => af.filterKey
+    );
+
+    // Calculate keys that *must* be visible based on props
+    const requiredVisibleKeys = new Set([
+      ...persistedFilterKeys,
+      ...appliedFilterKeysWithValues,
+    ]);
+
+    // Update state: keep existing keys, add required keys, remove keys no longer in props.filters
+    setLocalVisibleFilters((currentVisibleFilters) => {
+      const combinedKeys = new Set([
+        ...currentVisibleFilters,
+        ...requiredVisibleKeys,
+      ]);
+      // Ensure all keys in the final state actually exist in the filters prop
+      return Array.from(combinedKeys).filter((key) =>
+        allFilterKeys.includes(key)
+      );
+    });
+
+    // Update the ref for persisted keys (used elsewhere)
+    persistedFiltersRef.current = persistedFilterKeys;
+  }, [appliedFilters, filters]); // Keep dependencies correct
 
   //update localVisibleFilters if persisted filter count changes
   if (persistedFiltersRef.current.length !== persistedFilterKeys.length) {
