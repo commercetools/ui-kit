@@ -106,7 +106,11 @@ const serializeNode = (node: TNode): Html => {
         // Sanitize href to prevent javascript: URLs during serialization as well
         const sanitizedUrl = (() => {
           const url = String(element.url).trim().toLowerCase();
-          if (url.startsWith('javascript:') || url.startsWith('data:') || url.startsWith('vbscript:')) {
+          if (
+            url.startsWith('javascript:') ||
+            url.startsWith('data:') ||
+            url.startsWith('vbscript:')
+          ) {
             return '#';
           }
           return String(element.url);
@@ -181,7 +185,12 @@ const ELEMENT_TAGS: Record<
       if (attrName === 'href') {
         // Sanitize href to prevent javascript: URLs
         const sanitizedValue = decodeURI(attrValue).trim().toLowerCase();
-        if (sanitizedValue.startsWith('javascript:') || sanitizedValue.startsWith('data:') || sanitizedValue.startsWith('vbscript:')) {
+        if (
+          // eslint-disable-next-line no-script-url
+          sanitizedValue.startsWith('javascript:') ||
+          sanitizedValue.startsWith('data:') ||
+          sanitizedValue.startsWith('vbscript:')
+        ) {
           props.url = '#'; // Replace with a safe value
         } else {
           props.url = attrValue;
