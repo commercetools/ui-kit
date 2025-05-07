@@ -23,8 +23,8 @@ export type CustomElement = {
   type: Format;
   children: CustomText[];
   align?: string;
-  url?: string; // Added for links
-  htmlAttributes?: Record<string, string>; // Added for storing HTML attributes
+  url?: string;
+  htmlAttributes?: Record<string, string>;
 };
 type CustomText = BaseText & {
   bold?: boolean;
@@ -44,7 +44,7 @@ export type Format = (typeof BLOCK_TAGS)[keyof typeof BLOCK_TAGS] &
 declare module 'slate' {
   interface CustomTypes {
     Editor: BaseEditor & TReactEditor & HistoryEditor;
-    Element: CustomElement; // Ensure CustomElement is used here
+    Element: CustomElement;
     Text: CustomText;
   }
 }
