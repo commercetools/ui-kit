@@ -104,12 +104,13 @@ const serializeNode = (node: TNode): Html => {
       let hrefAttr = '';
       if (element.url) {
         // Sanitize href to prevent javascript: URLs during serialization as well
-        const sanitizedUrl = String(element.url)
-          .trim()
-          .toLowerCase()
-          .startsWith('javascript:')
-          ? '#'
-          : String(element.url);
+        const sanitizedUrl = (() => {
+          const url = String(element.url).trim().toLowerCase();
+          if (url.startsWith('javascript:') || url.startsWith('data:') || url.startsWith('vbscript:')) {
+            return '#';
+          }
+          return String(element.url);
+        })();
         hrefAttr = ` href="${escapeHtml(sanitizedUrl)}"`;
       }
       // eslint-disable-next-line no-case-declarations
