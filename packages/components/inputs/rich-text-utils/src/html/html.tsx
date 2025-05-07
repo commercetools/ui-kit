@@ -180,7 +180,8 @@ const ELEMENT_TAGS: Record<
 
       if (attrName === 'href') {
         // Sanitize href to prevent javascript: URLs
-        if (attrValue.trim().toLowerCase().startsWith('javascript:')) {
+        const sanitizedValue = decodeURI(attrValue).trim().toLowerCase();
+        if (sanitizedValue.startsWith('javascript:') || sanitizedValue.startsWith('data:') || sanitizedValue.startsWith('vbscript:')) {
           props.url = '#'; // Replace with a safe value
         } else {
           props.url = attrValue;
