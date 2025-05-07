@@ -103,7 +103,14 @@ const serializeNode = (node: TNode): Html => {
       // eslint-disable-next-line no-case-declarations
       let hrefAttr = '';
       if (element.url) {
-        hrefAttr = ` href="${escapeHtml(String(element.url))}"`;
+        // Sanitize href to prevent javascript: URLs during serialization as well
+        const sanitizedUrl = String(element.url)
+          .trim()
+          .toLowerCase()
+          .startsWith('javascript:')
+          ? '#'
+          : String(element.url);
+        hrefAttr = ` href="${escapeHtml(sanitizedUrl)}"`;
       }
       // eslint-disable-next-line no-case-declarations
       let otherAttrsString = '';
@@ -112,9 +119,12 @@ const serializeNode = (node: TNode): Html => {
         typeof element.htmlAttributes === 'object'
       ) {
         for (const [key, value] of Object.entries(element.htmlAttributes)) {
-          otherAttrsString += ` ${escapeHtml(key)}="${escapeHtml(
-            String(value)
-          )}"`;
+          // Strip event handlers during serialization too
+          if (!key.toLowerCase().startsWith('on')) {
+            otherAttrsString += ` ${escapeHtml(key)}="${escapeHtml(
+              String(value)
+            )}"`;
+          }
         }
       }
       return `<a${hrefAttr}${otherAttrsString}>${children}</a>`;
@@ -164,10 +174,19 @@ const ELEMENT_TAGS: Record<
     const htmlAttributes: Record<string, string> = {};
 
     for (const attr of Array.from(el.attributes)) {
-      if (attr.name === 'href') {
-        props.url = attr.value; // Special handling for href
-      } else {
-        htmlAttributes[attr.name] = attr.value;
+      const attrName = attr.name.toLowerCase();
+      const attrValue = attr.value;
+
+      if (attrName === 'href') {
+        // Sanitize href to prevent javascript: URLs
+        if (attrValue.trim().toLowerCase().startsWith('javascript:')) {
+          props.url = '#'; // Replace with a safe value
+        } else {
+          props.url = attrValue;
+        }
+      } else if (!attrName.startsWith('on')) {
+        // Strip event handlers
+        htmlAttributes[attrName] = attrValue;
       }
     }
 
