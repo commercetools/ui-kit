@@ -15,4 +15,5 @@ export {
   validSlateStateAdapter,
   resetEditor,
   focusEditor,
+  withLinks,
 } from './slate-helpers';

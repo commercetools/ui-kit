@@ -28,6 +28,7 @@ import {
   toggleMark,
   resetEditor,
   focusEditor,
+  withLinks,
 } from '@commercetools-uikit/rich-text-utils';
 import {
   Editable,
@@ -163,7 +164,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                 isReadOnly={props.isReadOnly}
               >
                 <Slate
-                  editor={editor}
+                  editor={withLinks(editor)}
                   value={props.value}
                   onChange={props.onChange}
                 >
