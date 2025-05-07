@@ -116,7 +116,7 @@ export const PlaygroundExample: Story = () => {
 /** This story specifically tests the preservation of links in the rich text editor, will be taken off once finished */
 export const LinkPreservationTest: Story = () => {
   const initialHtmlWithLink =
-    '<p>This is a paragraph with a <a href="example.com">link to example</a> that should be preserved.</p>';
+    '<p>This is a paragraph with a <a href="example.com" data-link-test="link-test" aria-label="link">link to example</a> that should be preserved.</p>';
   const [value, setValue] = useState(initialHtmlWithLink);
   const ref = useRef(null);
 

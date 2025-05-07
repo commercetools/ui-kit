@@ -23,6 +23,8 @@ export type CustomElement = {
   type: Format;
   children: CustomText[];
   align?: string;
+  url?: string; // Added for links
+  htmlAttributes?: Record<string, string>; // Added for storing HTML attributes
 };
 type CustomText = BaseText & {
   bold?: boolean;
@@ -42,7 +44,7 @@ export type Format = (typeof BLOCK_TAGS)[keyof typeof BLOCK_TAGS] &
 declare module 'slate' {
   interface CustomTypes {
     Editor: BaseEditor & TReactEditor & HistoryEditor;
-    Element: CustomElement;
+    Element: CustomElement; // Ensure CustomElement is used here
     Text: CustomText;
   }
 }
@@ -79,26 +81,43 @@ const serializeNode = (node: TNode): Html => {
   }
 
   const children = node.children.map(serializeNode).join('');
+  const element = node as CustomElement; // Use updated CustomElement
 
-  switch ((node as TElement).type) {
+  switch (element.type) {
     case 'block-quote':
       return `<blockquote>${children}</blockquote>`;
     case 'paragraph':
       return `<p>${children}</p>`;
     case 'code':
       return `<pre>
-            <code>${children}</code>
-          </pre>`;
+            <code>${children}</code>`;
     case 'span':
       return `<span>${children}</span>`;
-    case 'link':
-      return `<a>${children}</a>`;
     case 'bulleted-list':
       return `<ul>${children}</ul>`;
     case 'numbered-list':
       return `<ol>${children}</ol>`;
     case 'list-item':
       return `<li>${children}</li>`;
+    case BLOCK_TAGS.a: // Handle link serialization
+      // eslint-disable-next-line no-case-declarations
+      let hrefAttr = '';
+      if (element.url) {
+        hrefAttr = ` href="${escapeHtml(String(element.url))}"`;
+      }
+      // eslint-disable-next-line no-case-declarations
+      let otherAttrsString = '';
+      if (
+        element.htmlAttributes &&
+        typeof element.htmlAttributes === 'object'
+      ) {
+        for (const [key, value] of Object.entries(element.htmlAttributes)) {
+          otherAttrsString += ` ${escapeHtml(key)}="${escapeHtml(
+            String(value)
+          )}"`;
+        }
+      }
+      return `<a${hrefAttr}${otherAttrsString}>${children}</a>`;
     case 'heading-one':
       return `<h1>${children}</h1>`;
     case 'heading-two':
@@ -106,7 +125,7 @@ const serializeNode = (node: TNode): Html => {
     case 'heading-three':
       return `<h3>${children}</h3>`;
     case 'heading-four':
-      return `<h4}>${children}</h4>`;
+      return `<h4>${children}</h4>`;
     case 'heading-five':
       return `<h5>${children}</h5>`;
     default:
@@ -135,7 +154,28 @@ const serialize = (value: Deserialized | Deserialized[]): Html => {
   return outputHtml;
 };
 
-const ELEMENT_TAGS = {
+const ELEMENT_TAGS: Record<
+  string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (el: HTMLElement) => Record<string, any>
+> = {
+  A: (el: HTMLElement) => {
+    const props: Record<string, unknown> = { type: BLOCK_TAGS.a };
+    const htmlAttributes: Record<string, string> = {};
+
+    for (const attr of Array.from(el.attributes)) {
+      if (attr.name === 'href') {
+        props.url = attr.value; // Special handling for href
+      } else {
+        htmlAttributes[attr.name] = attr.value;
+      }
+    }
+
+    if (Object.keys(htmlAttributes).length > 0) {
+      props.htmlAttributes = htmlAttributes;
+    }
+    return props;
+  },
   BLOCKQUOTE: () => ({ type: 'quote' }),
   H1: () => ({ type: 'heading-one' }),
   H2: () => ({ type: 'heading-two' }),
@@ -148,7 +188,6 @@ const ELEMENT_TAGS = {
   P: () => ({ type: 'paragraph' }),
   PRE: () => ({ type: 'code' }),
   UL: () => ({ type: 'bulleted-list' }),
-  A: () => ({ type: 'link' }),
 };
 
 const TEXT_TAGS = {
@@ -283,8 +322,11 @@ const deserializeElement = (
     }
   }
 
+  // Modified to use the updated ELEMENT_TAGS for 'A'
   if (ELEMENT_TAGS[nodeName as keyof typeof ELEMENT_TAGS]) {
-    const attrs = ELEMENT_TAGS[nodeName as keyof typeof ELEMENT_TAGS]();
+    const attrs = ELEMENT_TAGS[nodeName as keyof typeof ELEMENT_TAGS](
+      el as HTMLElement // Pass element to access its attributes
+    );
     return jsx('element', attrs, children);
   }
 
