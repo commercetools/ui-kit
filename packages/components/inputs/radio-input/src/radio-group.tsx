@@ -14,7 +14,7 @@ import Stack from '@commercetools-uikit/spacings-stack';
 import Inline, {
   type TInlineProps,
 } from '@commercetools-uikit/spacings-inline';
-import Option from './radio-option';
+import Option, { type TOptionProps } from './radio-option';
 
 export type TGroupProps = {
   id?: string;
@@ -62,7 +62,7 @@ export type TGroupProps = {
 
 type TReactChild = {
   type?: { displayName: string };
-} & ReactElement;
+} & ReactElement<TOptionProps>;
 
 const Group = ({
   horizontalConstraint = 'scale',
@@ -86,30 +86,33 @@ const Group = ({
     );
   }, [props.children]);
 
-  const optionElements = Children.map(props.children, (child, index) => {
-    // NOTE: Allowing to intersperse other elements than `Option`.
-    if (
-      child &&
-      isValidElement(child) &&
-      (child as TReactChild).type.displayName === Option.displayName
-    ) {
-      const clonedChild = cloneElement(child as TReactChild, {
-        id: props.id && `${props.id}-${index}`,
-        name: props.name,
-        isChecked: props.value === child.props.value,
-        isDisabled: child.props.isDisabled || props.isDisabled,
-        isReadOnly: props.isReadOnly,
-        hasError: props.hasError,
-        hasWarning: props.hasWarning,
-        onChange: props.onChange,
-        onFocus: props.onFocus,
-        onBlur: props.onBlur,
-      });
-      const { wrapper } = child.props.components || {};
-      return wrapper ? wrapper(clonedChild) : clonedChild;
+  const optionElements = Children.map(
+    props.children as TReactChild[],
+    (child, index) => {
+      // NOTE: Allowing to intersperse other elements than `Option`.
+      if (
+        child &&
+        isValidElement(child) &&
+        child.type.displayName === Option.displayName
+      ) {
+        const clonedChild = cloneElement(child, {
+          id: props.id && `${props.id}-${index}`,
+          name: props.name,
+          isChecked: props.value === child.props.value,
+          isDisabled: child.props.isDisabled || props.isDisabled,
+          isReadOnly: props.isReadOnly,
+          hasError: props.hasError,
+          hasWarning: props.hasWarning,
+          onChange: props.onChange,
+          onFocus: props.onFocus,
+          onBlur: props.onBlur,
+        });
+        const { wrapper } = child.props.components || {};
+        return wrapper ? wrapper(clonedChild) : clonedChild;
+      }
+      return child;
     }
-    return child;
-  });
+  );
   if (direction === 'inline') {
     return (
       <div

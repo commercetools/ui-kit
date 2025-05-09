@@ -10,9 +10,9 @@ import {
   type ForwardRefExoticComponent,
   type RefAttributes,
   type FocusEventHandler,
-  type MutableRefObject,
+  type RefObject,
 } from 'react';
-import { type MessageDescriptor } from 'react-intl';
+
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -28,12 +28,13 @@ import {
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import { localized } from '@commercetools-uikit/rich-text-utils';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
+import { type TAdditionalInfoProps } from '@commercetools-uikit/messages';
 import RichTextInput from './rich-text-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 
 type TErrors = Record<string, string>;
 type TWarnings = Record<string, ReactNode>;
-type TCustomEvent = {
+export type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -138,14 +139,7 @@ export type TLocalizedRichTextInputProps = {
       es: 'Algún valor',
     }
    */
-  additionalInfo?: Record<
-    string,
-    | string
-    | ReactNode
-    | (MessageDescriptor & {
-        values: Record<string, ReactNode>;
-      })
-  >;
+  additionalInfo?: Record<string, TAdditionalInfoProps['message']>;
   /**
    * Shows an `expand` icon in the toolbar
    */
@@ -172,7 +166,7 @@ type TReducerAction =
   | { type: 'toggle'; payload: string }
   | { type: 'toggleAll'; payload: string };
 
-type RefWithImperativeResetHandler = MutableRefObject<unknown> & {
+type RefWithImperativeResetHandler = RefObject<unknown> & {
   resetValue: (newValue: string | Record<string, string>) => void;
 };
 
@@ -249,9 +243,7 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
     );
 
     const [expandedTranslationsState, expandedTranslationsDispatch] =
-      useReducer<
-        (state: TReducerState, action: TReducerAction) => TReducerState
-      >(expandedTranslationsReducer, initialExpandedTranslationsState);
+      useReducer(expandedTranslationsReducer, initialExpandedTranslationsState);
 
     const defaultExpansionState = Boolean(
       props.hideLanguageExpansionControls || props.defaultExpandLanguages
@@ -262,7 +254,7 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
     );
 
     const toggleLanguage = useCallback(
-      (language) => {
+      (language: string) => {
         expandedTranslationsDispatch({ type: 'toggle', payload: language });
       },
       [expandedTranslationsDispatch]
@@ -374,9 +366,9 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
                   defaultExpandMultilineText={Boolean(
                     props.defaultExpandMultilineText
                   )}
-                  ref={(el: RefWithImperativeResetHandler) =>
-                    langRefs.current.set(language, el)
-                  }
+                  ref={(el: RefWithImperativeResetHandler) => {
+                    langRefs.current.set(language, el);
+                  }}
                   {...createLocalizedDataAttributes(props, language)}
                 />
               );

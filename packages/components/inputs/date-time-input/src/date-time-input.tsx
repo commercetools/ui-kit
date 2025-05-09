@@ -2,6 +2,7 @@ import {
   createRef,
   Component,
   type FocusEventHandler,
+  type MouseEventHandler,
   type KeyboardEvent,
   type RefObject,
   type FocusEvent,
@@ -53,15 +54,22 @@ const activationTypes = [
 
 type TActivationTypes = (typeof activationTypes)[number];
 
-type TPreventDownshiftDefaultEvent = {
-  relatedTarget?: unknown;
-  nativeEvent?: {
+type TKeyboardEventWithPreventDefault<T extends HTMLElement> =
+  KeyboardEvent<T> & {
+    nativeEvent: KeyboardEvent['nativeEvent'] & {
+      preventDownshiftDefault?: boolean;
+    };
+  };
+
+type TFocusEventWithPreventDefault<T extends HTMLElement> = FocusEvent<T> & {
+  nativeEvent: KeyboardEvent['nativeEvent'] & {
     preventDownshiftDefault?: boolean;
   };
-} & KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
+};
 
-type TCreateBlurHandlerEvent = TPreventDownshiftDefaultEvent &
-  FocusEvent<HTMLButtonElement>;
+type TPreventDownshiftDefaultEvent =
+  | TKeyboardEventWithPreventDefault<HTMLInputElement | HTMLButtonElement>
+  | TFocusEventWithPreventDefault<HTMLInputElement | HTMLButtonElement>;
 
 const preventDownshiftDefault = (event: TPreventDownshiftDefaultEvent) => {
   event.nativeEvent.preventDownshiftDefault = true;
@@ -71,7 +79,9 @@ const preventDownshiftDefault = (event: TPreventDownshiftDefaultEvent) => {
 // blurring the regular input/toggle button)
 const createBlurHandler =
   (timeInputRef: RefObject<HTMLInputElement>, cb: () => void = () => {}) =>
-  (event: TCreateBlurHandlerEvent) => {
+  (
+    event: TFocusEventWithPreventDefault<HTMLInputElement | HTMLButtonElement>
+  ) => {
     event.persist();
 
     if (event.relatedTarget === timeInputRef.current) {
@@ -427,7 +437,11 @@ class DateTimeInput extends Component<
                       // arrow keys to move the cursor when hovering
                       if (isOpen) setHighlightedIndex(-1);
                     },
-                    onKeyDown: (event: TPreventDownshiftDefaultEvent) => {
+                    onKeyDown: (
+                      event: TKeyboardEventWithPreventDefault<
+                        HTMLInputElement | HTMLButtonElement
+                      >
+                    ) => {
                       if (this.props.isReadOnly) {
                         preventDownshiftDefault(event);
                         return;
@@ -483,19 +497,28 @@ class DateTimeInput extends Component<
                         }
                       }
                     },
-                    onClick: this.props.isReadOnly ? undefined : openMenu,
+                    onClick: this.props.isReadOnly
+                      ? undefined
+                      : (openMenu as unknown as MouseEventHandler<HTMLInputElement>),
                     // validate the input on blur, and emit the value if it's valid
-                    onBlur: createBlurHandler(this.timeInputRef, () => {
-                      const inputValue = this.inputRef.current?.value || '';
-                      const parsedDate = parseInputText(
-                        inputValue,
-                        this.props.intl.locale,
-                        this.props.timeZone
-                      );
+                    onBlur: (
+                      event: TFocusEventWithPreventDefault<HTMLInputElement>
+                    ) => {
+                      createBlurHandler(
+                        this.timeInputRef as RefObject<HTMLInputElement>,
+                        () => {
+                          const inputValue = this.inputRef.current?.value || '';
+                          const parsedDate = parseInputText(
+                            inputValue,
+                            this.props.intl.locale,
+                            this.props.timeZone
+                          );
 
-                      if (inputValue.length > 0 && !parsedDate) return;
-                      this.emit(parsedDate);
-                    }),
+                          if (inputValue.length > 0 && !parsedDate) return;
+                          this.emit(parsedDate);
+                        }
+                      )(event);
+                    },
                     onChange: (event: TCustomEvent) => {
                       // keep timeInput and regular input in sync when user
                       // types into regular input
@@ -534,7 +557,12 @@ class DateTimeInput extends Component<
                   isDisabled={this.props.isDisabled}
                   isReadOnly={this.props.isReadOnly}
                   toggleButtonProps={getToggleButtonProps({
-                    onBlur: createBlurHandler(this.timeInputRef),
+                    onBlur: (
+                      event: TFocusEventWithPreventDefault<HTMLButtonElement>
+                    ) =>
+                      createBlurHandler(
+                        this.timeInputRef as RefObject<HTMLInputElement>
+                      )(event),
                   })}
                   hasError={this.props.hasError}
                   hasWarning={this.props.hasWarning}

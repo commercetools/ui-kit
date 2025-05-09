@@ -48,10 +48,9 @@ const PropValue = styled.span`
   box-sizing: border-box;
 `;
 
+// prettier-ignore
 const Box = styled.div`
-  background-color: ${(props) =>
-    props.backgroundColor ?? designTokens.colorSurface};
-  }};
+  background-color: ${(props) => props.backgroundColor ?? designTokens.colorSurface};
 `;
 
 const Pill = (props) => {

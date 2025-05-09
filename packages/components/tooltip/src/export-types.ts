@@ -1,1 +1,1 @@
-export type { TTooltipProps, TComponents } from './tooltip';
+export type { TTooltipProps, TComponents, TTooltipChildProps } from './tooltip';

@@ -43,7 +43,7 @@ type TDropdownBaseMenuProps = {
   isOpen: boolean;
   menuPosition: 'left' | 'right';
   menuMaxHeight?: number;
-  triggerElementRef: RefObject<HTMLElement>;
+  triggerElementRef: RefObject<HTMLElement | null>;
 };
 function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
@@ -198,7 +198,7 @@ export type TDropdownContentMenuProps = {
   menuPosition: 'left' | 'right';
   menuMaxHeight?: number;
   isOpen: boolean;
-  triggerElementRef: RefObject<HTMLElement>;
+  triggerElementRef: RefObject<HTMLElement | null>;
 };
 export const DropdownContentMenu = (props: TDropdownContentMenuProps) => {
   return (
@@ -224,7 +224,7 @@ export type TDropdownListMenuProps = {
   menuPosition: 'left' | 'right';
   menuMaxHeight?: number;
   isOpen: boolean;
-  triggerElementRef: RefObject<HTMLElement>;
+  triggerElementRef: RefObject<HTMLElement | null>;
 };
 export const DropdownListMenu = (props: TDropdownListMenuProps) => {
   return (

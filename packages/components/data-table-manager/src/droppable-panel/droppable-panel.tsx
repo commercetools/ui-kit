@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
-import { Droppable } from 'react-beautiful-dnd';
+import { type ReactNode } from 'react';
+import { Droppable } from '@hello-pangea/dnd';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import DraggableTag from '../draggable-tag';
