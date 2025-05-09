@@ -317,7 +317,7 @@ function Filters({
             icon={<FilterIcon />}
             onClick={handleFiltersClick}
           />
-          {appliedFilters.length > 1 && !showFilterControls && (
+          {appliedFilters.length > 0 && !showFilterControls && (
             <Badge
               id={'uikit-filters-selected-filter-count'}
               label={`${appliedFilters.length}`}
