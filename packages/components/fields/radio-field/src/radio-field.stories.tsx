@@ -53,7 +53,6 @@ export const BasicExample: Story = (args) => {
   const [value, onChange] = useState('apple');
 
   return (
-    // @ts-expect-error
     <RadioField
       {...args}
       value={value}
