@@ -23,6 +23,8 @@ export type CustomElement = {
   type: Format;
   children: CustomText[];
   align?: string;
+  url?: string;
+  htmlAttributes?: Record<string, string>;
 };
 type CustomText = BaseText & {
   bold?: boolean;
@@ -79,16 +81,16 @@ const serializeNode = (node: TNode): Html => {
   }
 
   const children = node.children.map(serializeNode).join('');
+  const element = node as CustomElement; // Use updated CustomElement
 
-  switch ((node as TElement).type) {
+  switch (element.type) {
     case 'block-quote':
       return `<blockquote>${children}</blockquote>`;
     case 'paragraph':
       return `<p>${children}</p>`;
     case 'code':
       return `<pre>
-            <code>${children}</code>
-          </pre>`;
+            <code>${children}</code>`;
     case 'span':
       return `<span>${children}</span>`;
     case 'bulleted-list':
@@ -97,6 +99,40 @@ const serializeNode = (node: TNode): Html => {
       return `<ol>${children}</ol>`;
     case 'list-item':
       return `<li>${children}</li>`;
+    case BLOCK_TAGS.a: // Handle link serialization
+      // eslint-disable-next-line no-case-declarations
+      let hrefAttr = '';
+      if (element.url) {
+        // Sanitize href to prevent javascript: URLs during serialization as well
+        const sanitizedUrl = (() => {
+          const url = String(element.url).trim().toLowerCase();
+          if (
+            url.startsWith('javascript:') ||
+            url.startsWith('data:') ||
+            url.startsWith('vbscript:')
+          ) {
+            return '#';
+          }
+          return String(element.url);
+        })();
+        hrefAttr = ` href="${escapeHtml(sanitizedUrl)}"`;
+      }
+      // eslint-disable-next-line no-case-declarations
+      let otherAttrsString = '';
+      if (
+        element.htmlAttributes &&
+        typeof element.htmlAttributes === 'object'
+      ) {
+        for (const [key, value] of Object.entries(element.htmlAttributes)) {
+          // Strip event handlers during serialization too
+          if (!key.toLowerCase().startsWith('on')) {
+            otherAttrsString += ` ${escapeHtml(key)}="${escapeHtml(
+              String(value)
+            )}"`;
+          }
+        }
+      }
+      return `<a${hrefAttr}${otherAttrsString}>${children}</a>`;
     case 'heading-one':
       return `<h1>${children}</h1>`;
     case 'heading-two':
@@ -104,7 +140,7 @@ const serializeNode = (node: TNode): Html => {
     case 'heading-three':
       return `<h3>${children}</h3>`;
     case 'heading-four':
-      return `<h4}>${children}</h4>`;
+      return `<h4>${children}</h4>`;
     case 'heading-five':
       return `<h5>${children}</h5>`;
     default:
@@ -133,7 +169,43 @@ const serialize = (value: Deserialized | Deserialized[]): Html => {
   return outputHtml;
 };
 
-const ELEMENT_TAGS = {
+const ELEMENT_TAGS: Record<
+  string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (el: HTMLElement) => Record<string, any>
+> = {
+  A: (el: HTMLElement) => {
+    const props: Record<string, unknown> = { type: BLOCK_TAGS.a };
+    const htmlAttributes: Record<string, string> = {};
+
+    for (const attr of Array.from(el.attributes)) {
+      const attrName = attr.name.toLowerCase();
+      const attrValue = attr.value;
+
+      if (attrName === 'href') {
+        // Sanitize href to prevent javascript: URLs
+        const sanitizedValue = decodeURI(attrValue).trim().toLowerCase();
+        if (
+          // eslint-disable-next-line no-script-url
+          sanitizedValue.startsWith('javascript:') ||
+          sanitizedValue.startsWith('data:') ||
+          sanitizedValue.startsWith('vbscript:')
+        ) {
+          props.url = '#'; // Replace with a safe value
+        } else {
+          props.url = attrValue;
+        }
+      } else if (!attrName.startsWith('on')) {
+        // Strip event handlers
+        htmlAttributes[attrName] = attrValue;
+      }
+    }
+
+    if (Object.keys(htmlAttributes).length > 0) {
+      props.htmlAttributes = htmlAttributes;
+    }
+    return props;
+  },
   BLOCKQUOTE: () => ({ type: 'quote' }),
   H1: () => ({ type: 'heading-one' }),
   H2: () => ({ type: 'heading-two' }),
@@ -280,8 +352,11 @@ const deserializeElement = (
     }
   }
 
+  // Modified to use the updated ELEMENT_TAGS for 'A'
   if (ELEMENT_TAGS[nodeName as keyof typeof ELEMENT_TAGS]) {
-    const attrs = ELEMENT_TAGS[nodeName as keyof typeof ELEMENT_TAGS]();
+    const attrs = ELEMENT_TAGS[nodeName as keyof typeof ELEMENT_TAGS](
+      el as HTMLElement // Pass element to access its attributes
+    );
     return jsx('element', attrs, children);
   }
 

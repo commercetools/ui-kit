@@ -1,5 +1,36 @@
 # @commercetools-uikit/rich-text-input
 
+## 19.25.0
+
+### Minor Changes
+
+- [#3088](https://github.com/commercetools/ui-kit/pull/3088) [`d8d828a`](https://github.com/commercetools/ui-kit/commit/d8d828a23fe311b29539be4569b807bd7f79fdd0) Thanks [@ddouglasz](https://github.com/ddouglasz)! - fix(rich-text-input): Ensure proper link preservation and enhance security
+
+  - Addresses an issue where links in the rich text editor were not correctly preserved during editing, sometimes leading to their removal or malformation.
+  - Updated HTML serialization and deserialization logic within `rich-text-utils/src/html/html.tsx` to correctly process anchor (`<a>`) tags, corresponding to Slate's `link` element type.
+  - All HTML attributes on anchor tags are now preserved during processing.
+  - For security and best practice, `rel="noopener noreferrer"` is now automatically added to all rendered `<a>` tags.
+  - Implemented XSS mitigation for links:
+    - Event handler attributes (e.g., `onclick`, `onmouseover`) are stripped from anchor tags.
+    - `href` attributes containing `javascript:` URLs are sanitized by replacing them with `#`.
+  - Updated the `CustomElement` type and Slate module declarations in `rich-text-utils/src/html/html.tsx` to support these changes.
+
+### Patch Changes
+
+- Updated dependencies [[`d8d828a`](https://github.com/commercetools/ui-kit/commit/d8d828a23fe311b29539be4569b807bd7f79fdd0), [`bb8256b`](https://github.com/commercetools/ui-kit/commit/bb8256b4284f9efc0898908d0bc5ae782ee06035)]:
+  - @commercetools-uikit/rich-text-utils@19.25.0
+  - @commercetools-uikit/icons@19.25.0
+  - @commercetools-uikit/input-utils@19.25.0
+  - @commercetools-uikit/design-system@19.25.0
+  - @commercetools-uikit/flat-button@19.25.0
+  - @commercetools-uikit/collapsible-motion@19.25.0
+  - @commercetools-uikit/constraints@19.25.0
+  - @commercetools-uikit/spacings-inline@19.25.0
+  - @commercetools-uikit/spacings-stack@19.25.0
+  - @commercetools-uikit/tooltip@19.25.0
+  - @commercetools-uikit/hooks@19.25.0
+  - @commercetools-uikit/utils@19.25.0
+
 ## 19.24.0
 
 ### Patch Changes

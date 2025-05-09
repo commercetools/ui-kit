@@ -10,6 +10,7 @@ export const BLOCK_TAGS = {
   li: 'list-item',
   ol: 'numbered-list',
   ul: 'bulleted-list',
+  a: 'link',
 };
 
 // Add a dictionary of mark tags.

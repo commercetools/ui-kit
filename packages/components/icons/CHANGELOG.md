@@ -1,5 +1,15 @@
 # @commercetools-uikit/icons
 
+## 19.25.0
+
+### Patch Changes
+
+- [#3092](https://github.com/commercetools/ui-kit/pull/3092) [`bb8256b`](https://github.com/commercetools/ui-kit/commit/bb8256b4284f9efc0898908d0bc5ae782ee06035) Thanks [@LucasGrahn](https://github.com/LucasGrahn)! - fixL use correct fill values inside sparkles svg
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.25.0
+  - @commercetools-uikit/utils@19.25.0
+
 ## 19.24.0
 
 ### Minor Changes

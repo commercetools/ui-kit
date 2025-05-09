@@ -1,5 +1,26 @@
 # @commercetools-uikit/filters
 
+## 19.25.0
+
+### Minor Changes
+
+- [#3093](https://github.com/commercetools/ui-kit/pull/3093) [`12958ab`](https://github.com/commercetools/ui-kit/commit/12958abc19a1e95ba871b53e728b255a954e03a1) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Update Filter component to show number badge when applied filters length is greater than 0
+
+- [#3090](https://github.com/commercetools/ui-kit/pull/3090) [`1695222`](https://github.com/commercetools/ui-kit/commit/16952222cbc23fe09a698639cd65c2844894aae6) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Support filter tag appearing if filter is set outside Filter component
+
+### Patch Changes
+
+- Updated dependencies [[`bb8256b`](https://github.com/commercetools/ui-kit/commit/bb8256b4284f9efc0898908d0bc5ae782ee06035)]:
+  - @commercetools-uikit/icons@19.25.0
+  - @commercetools-uikit/select-input@19.25.0
+  - @commercetools-uikit/design-system@19.25.0
+  - @commercetools-uikit/flat-button@19.25.0
+  - @commercetools-uikit/icon-button@19.25.0
+  - @commercetools-uikit/secondary-icon-button@19.25.0
+  - @commercetools-uikit/collapsible-motion@19.25.0
+  - @commercetools-uikit/utils@19.25.0
+  - @commercetools-uikit/spacings@19.25.0
+
 ## 19.24.0
 
 ### Patch Changes

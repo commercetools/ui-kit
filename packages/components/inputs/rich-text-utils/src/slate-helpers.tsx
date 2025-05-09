@@ -1,9 +1,10 @@
-import type { CSSProperties } from 'react';
+import { type CSSProperties } from 'react';
 import {
   Editor,
   Transforms,
   Element as SlateElement,
   Text,
+  Range,
   type Editor as TEditor,
   type Descendant,
 } from 'slate';
@@ -19,6 +20,7 @@ import html, {
   type Format,
   type CustomElement,
 } from './html';
+import isUrl from 'is-url';
 
 const LIST_TYPES = [BLOCK_TAGS.ol, BLOCK_TAGS.ul];
 
@@ -82,6 +84,12 @@ const Element = ({ attributes, children, element }: RenderElementProps) => {
         <ol style={style} {...attributes}>
           {children}
         </ol>
+      );
+    case BLOCK_TAGS.a:
+      return (
+        <a style={style} {...attributes} rel="noopener noreferrer">
+          {children}
+        </a>
       );
     default:
       return (
@@ -274,6 +282,76 @@ const Softbreaker = {
   },
 };
 
+export const isLinkActive = (editor: Editor) => {
+  const [link] = Editor.nodes(editor, {
+    match: (n) =>
+      !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link',
+  });
+  return !!link;
+};
+
+export const unwrapLink = (editor: Editor) => {
+  Transforms.unwrapNodes(editor, {
+    match: (n) =>
+      !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link',
+  });
+};
+
+export const wrapLink = (editor: Editor, url: string) => {
+  if (isLinkActive(editor)) {
+    unwrapLink(editor);
+  }
+
+  const { selection } = editor;
+  const isCollapsed = selection && Range.isCollapsed(selection);
+  const linkNode: SlateElement & { type: 'link'; url: string } = {
+    type: 'link',
+    url,
+    children: isCollapsed ? [{ text: url }] : [],
+  };
+
+  if (isCollapsed) {
+    Transforms.insertNodes(editor, linkNode);
+  } else {
+    Transforms.wrapNodes(editor, linkNode, { split: true });
+    Transforms.collapse(editor, { edge: 'end' });
+  }
+};
+
+// Keep your existing insertLink if it's different or preferred
+export const insertLink = (editor: Editor, url: string) => {
+  if (!editor.selection) return;
+  wrapLink(editor, url); // Simplified to use wrapLink directly
+};
+
+const withLinks = (editor: Editor): Editor => {
+  const { insertText, insertData, isInline } = editor;
+
+  // Mark link elements as inline (from example)
+  editor.isInline = (element) => {
+    return element.type === 'link' || isInline(element);
+  };
+
+  // Handle URL pasting/typing to automatically create links (from example)
+  editor.insertText = (text) => {
+    if (text && isUrl(text)) {
+      wrapLink(editor, text);
+    } else {
+      insertText(text);
+    }
+  };
+
+  editor.insertData = (data) => {
+    const text = data.getData('text/plain');
+    if (text && isUrl(text)) {
+      wrapLink(editor, text);
+    } else {
+      insertData(data);
+    }
+  };
+  return editor;
+};
+
 export {
   Element,
   Leaf,
@@ -285,4 +363,5 @@ export {
   validSlateStateAdapter,
   resetEditor,
   focusEditor,
+  withLinks,
 };

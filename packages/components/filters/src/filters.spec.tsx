@@ -191,10 +191,15 @@ describe('Filters', () => {
     const chips = getDisplayedChipsForFilter('primaryColors');
     expect(chips).toEqual(['blue', 'green', 'pink', 'lavender', 'azure']);
 
-    //Collapse filter list & expect no badge to display
+    //Collapse filter list & expect badge to display
     await toggleFilterList();
-    const filterTotalBadge = getBadgeElement();
-    expect(filterTotalBadge).toBeNull();
+
+    //Recapture the badge el
+    let filterTotalBadge = getBadgeElement();
+
+    //Expect badge to display count of applied filters visible
+    expect(filterTotalBadge).toHaveTextContent('1');
+    expect(filterTotalBadge).toBeVisible();
   });
 
   it('should render search component', () => {
