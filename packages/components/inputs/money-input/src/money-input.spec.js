@@ -343,19 +343,6 @@ describe('MoneyInput.parseMoneyValue', () => {
         )
       ).toEqual({ amount: '1’234.567', currencyCode: 'EUR' });
     });
-    it('should parse the value according to the passed locale when separator is single quote', () => {
-      expect(
-        MoneyInput.parseMoneyValue(
-          {
-            type: 'highPrecision',
-            currencyCode: 'EUR',
-            fractionDigits: 3,
-            preciseAmount: 1234567,
-          },
-          'de-CH'
-        )
-      ).toEqual({ amount: "1'234.567", currencyCode: 'EUR' });
-    });
   });
 
   describe('when called with a minimal, valid centPrecision price', () => {
