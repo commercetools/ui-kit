@@ -328,6 +328,35 @@ describe('MoneyInput.parseMoneyValue', () => {
       ).toEqual({ amount: '1234,567', currencyCode: 'EUR' });
     });
   });
+  describe('when called with a locale that uses right quote (0x2019) or single quote as fraction separator for 🇨🇭', () => {
+    // The Swiss do things different https://en.wikipedia.org/wiki/Decimal_separator#Examples_of_use
+    it('should parse the value according to the passed locale when separator is right quote', () => {
+      expect(
+        MoneyInput.parseMoneyValue(
+          {
+            type: 'highPrecision',
+            currencyCode: 'EUR',
+            fractionDigits: 3,
+            preciseAmount: 1234567,
+          },
+          'de-CH'
+        )
+      ).toEqual({ amount: '1’234.567', currencyCode: 'EUR' });
+    });
+    it('should parse the value according to the passed locale when separator is single quote', () => {
+      expect(
+        MoneyInput.parseMoneyValue(
+          {
+            type: 'highPrecision',
+            currencyCode: 'EUR',
+            fractionDigits: 3,
+            preciseAmount: 1234567,
+          },
+          'de-CH'
+        )
+      ).toEqual({ amount: "1'234.567", currencyCode: 'EUR' });
+    });
+  });
 
   describe('when called with a minimal, valid centPrecision price', () => {
     it('should turn it into a value', () => {

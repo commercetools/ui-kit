@@ -274,7 +274,6 @@ export const parseRawAmountToNumber = (rawAmount: string, locale: string) => {
     const lastComma = String(rawAmount).lastIndexOf(',');
     fractionsSeparator = lastComma > lastDot ? ',' : '.';
   }
-
   fractionsSeparator = fractionsSeparator === '.' ? '\\.' : fractionsSeparator; // here we escape the '.' to use it as regex
   // The raw amount with only one sparator
   const normalizedAmount = String(rawAmount)
@@ -305,7 +304,7 @@ export const createMoneyValue = (
 
   const currency = allCurrencies[currencyCode];
   if (!currency) return null;
-
+  // The user may enter a value with a comma, dot, or apostrophe as the decimal separator.
   if (rawAmount.length === 0 || !isNumberish(rawAmount)) return null;
 
   warning(
