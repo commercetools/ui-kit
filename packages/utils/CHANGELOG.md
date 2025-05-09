@@ -1,5 +1,11 @@
 # @commercetools-uikit/utils
 
+## 19.25.1
+
+### Patch Changes
+
+- [#3094](https://github.com/commercetools/ui-kit/pull/3094) [`1b8ae16`](https://github.com/commercetools/ui-kit/commit/1b8ae1616089f44b50b55fe9def3daa62bbbc65f) Thanks [@ByronDWall](https://github.com/ByronDWall)! - fix bug in money input where amounts above 999 were not being parsed correctly when locale is de-CH
+
 ## 19.25.0
 
 ## 19.24.0

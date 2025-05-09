@@ -1,5 +1,24 @@
 # @commercetools-uikit/date-input
 
+## 19.25.1
+
+### Patch Changes
+
+- Updated dependencies [[`1b8ae16`](https://github.com/commercetools/ui-kit/commit/1b8ae1616089f44b50b55fe9def3daa62bbbc65f)]:
+  - @commercetools-uikit/utils@19.25.1
+  - @commercetools-uikit/calendar-time-utils@19.25.1
+  - @commercetools-uikit/calendar-utils@19.25.1
+  - @commercetools-uikit/accessible-button@19.25.1
+  - @commercetools-uikit/secondary-icon-button@19.25.1
+  - @commercetools-uikit/constraints@19.25.1
+  - @commercetools-uikit/icons@19.25.1
+  - @commercetools-uikit/select-utils@19.25.1
+  - @commercetools-uikit/spacings-inline@19.25.1
+  - @commercetools-uikit/text@19.25.1
+  - @commercetools-uikit/tooltip@19.25.1
+  - @commercetools-uikit/hooks@19.25.1
+  - @commercetools-uikit/design-system@19.25.1
+
 ## 19.25.0
 
 ### Patch Changes
