@@ -1,5 +1,16 @@
 # @commercetools-uikit/secondary-button
 
+## 19.25.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.25.0
+  - @commercetools-uikit/accessible-button@19.25.0
+  - @commercetools-uikit/spacings-inline@19.25.0
+  - @commercetools-uikit/text@19.25.0
+  - @commercetools-uikit/utils@19.25.0
+
 ## 19.24.0
 
 ### Patch Changes
