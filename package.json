@@ -82,7 +82,8 @@
     "glob-parent": "^6.0.0",
     "minimatch": "^10.0.0",
     "json5": "^2.0.0",
-    "react-from-dom": "0.6.2"
+    "react-from-dom": "0.6.2",
+    "path-to-regexp": "^8.0.0"
   },
   "engines": {
     "node": ">=22",
