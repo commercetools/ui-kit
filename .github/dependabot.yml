@@ -1,0 +1,18 @@
+version: 2
+updates:
+  # Enables security PR generation for all packages, based on yarn.lock alerts.
+  - package-ecosystem: "npm"
+    directory: "/"
+    package-manager: "yarn"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "🤖 Type: Dependencies"
+      - "🔒 Security Update"
+    commit-message:
+      prefix: "fix"
+      include: "scope"
+    pull-request-title-format: "fix(deps): [%{severity}] update %{dependency_name} to fix %{advisory_id}"
+    allow:
+      - dependency-type: "all"
