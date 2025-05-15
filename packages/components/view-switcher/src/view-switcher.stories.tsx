@@ -6,7 +6,6 @@ const meta: Meta<typeof ViewSwitcher.Group> = {
   title: 'components/ViewSwitcher',
   component: ViewSwitcher.Group,
   subcomponents: {
-    // @ts-expect-error
     'ViewSwitcher.Button': ViewSwitcher.Button,
   },
   argTypes: {
