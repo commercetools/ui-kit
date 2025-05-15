@@ -37,7 +37,6 @@
     "visual-testing-app:start": "yarn workspace visual-testing-app start",
     "visual-testing-app:build": "yarn workspace visual-testing-app build",
     "visual-testing-app:preview": "yarn workspace visual-testing-app preview",
-    "labels:sync": "github-labels sync",
     "typecheck": "tsc --noEmit --skipLibCheck",
     "omlet:scan": "yarn omlet analyze --hook-script ./scripts/omlet-hook-script.js"
   },
@@ -83,8 +82,8 @@
     "minimatch": "^10.0.0",
     "json5": "^2.0.0",
     "react-from-dom": "0.6.2",
-    "path-to-regexp@^1.0.0": "^3.3.0",
-    "path-to-regexp@^2.0.0": "^3.3.0"
+    "path-to-regexp@^1.7.0": "^3.3.0",
+    "path-to-regexp@2.2.1": "^3.3.0"
   },
   "engines": {
     "node": ">=22",
@@ -100,7 +99,6 @@
     "@commercetools-frontend/eslint-config-mc-app": "22.42.1",
     "@commercetools-local/generator-package-json": "*",
     "@commercetools-local/generator-readme": "*",
-    "@commercetools/github-labels": "1.1.0",
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
     "@formatjs/cli": "6.7.1",
