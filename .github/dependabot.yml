@@ -8,6 +8,8 @@ updates:
       # Change the default separator (/) to a hyphen (-)
       separator: "-"
     open-pull-requests-limit: 5
+    schedule:
+      interval: "weekly"
     commit-message:
       prefix: "fix"
       scope: "deps"
