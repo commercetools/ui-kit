@@ -63,7 +63,7 @@ export const getForegroundColor = (avatarColor: TAvatarProps['color']) => {
     case 'brown':
       return designTokens.colorBrown35;
     case 'purple':
-      return designTokens.colorPurple35;
+      return designTokens.colorPurple50;
     case 'turquoise':
       return designTokens.colorTurquoise35;
     default:
