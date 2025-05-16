@@ -4,11 +4,6 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     security-updates-only: true
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "06:00"
-      timezone: "Europe/Berlin"
     pull-request-branch-name:
       # Change the default separator (/) to a hyphen (-)
       separator: "-"
