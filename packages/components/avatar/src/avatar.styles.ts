@@ -1,6 +1,5 @@
 import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
-import startCase from 'lodash/startCase';
 import { TAvatarProps } from './avatar';
 
 const fontSizeMap = {
@@ -61,14 +60,14 @@ export const getBackgroundColor = (
 
 export const getForegroundColor = (avatarColor: TAvatarProps['color']) => {
   switch (avatarColor) {
-    case 'accent':
-      return designTokens.colorAccent40;
+    case 'brown':
+      return designTokens.colorBrown35;
+    case 'purple':
+      return designTokens.colorPurple35;
     case 'turquoise':
       return designTokens.colorTurquoise35;
     default:
-      return designTokens[
-        `color${startCase(avatarColor)}50` as keyof typeof designTokens
-      ];
+      return designTokens.colorAccent30;
   }
 };
 
