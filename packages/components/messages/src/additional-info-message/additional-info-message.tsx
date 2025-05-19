@@ -1,12 +1,8 @@
 import { ReactNode } from 'react';
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 import Text from '@commercetools-uikit/text';
 
-export type TIntlMessageDescriptor = {
-  id: string;
-  description?: string | object;
-  defaultMessage: string;
-  values?: Record<string, ReactNode>;
-};
+export type TIntlMessageDescriptor = IntlMessage;
 
 export type TAdditionalInfoMessageProps = {
   id?: string;
@@ -27,7 +23,7 @@ const AdditionalInfoMessage = (props: TAdditionalInfoMessageProps) => {
 
   return (
     <Text.Detail id={props.id} tone="tertiary">
-      {props.message}
+      {props.message as ReactNode}
     </Text.Detail>
   );
 };

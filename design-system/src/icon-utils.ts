@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import designTokens from './design-tokens';
 
-export type TIconProps = {
+export type TIconProps = Record<string, unknown> & {
   color?:
     | 'solid'
     | 'neutral60'

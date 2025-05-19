@@ -16,6 +16,12 @@ export type TDropdownLabel = {
   children: ReactNode;
 };
 
+export type TDropdownItem = {
+  value: string;
+  isSelected: boolean;
+  children: ReactNode;
+};
+
 export type TDropdownProps = {
   label: string;
   isMulti?: boolean;
@@ -23,7 +29,7 @@ export type TDropdownProps = {
   isReadOnly?: boolean;
   onChange?: ({ value }: TItem) => void;
   components?: {
-    Item: FunctionComponent<unknown>;
+    Item: FunctionComponent<TDropdownItem>;
     Label: FunctionComponent<TDropdownLabel>;
   };
   options: Array<TItem>;
@@ -49,10 +55,7 @@ const Dropdown = ({
   isMulti = false,
   ...props
 }: TDropdownProps) => {
-  const DropdownItem: FunctionComponent<{
-    value: string;
-    isSelected: boolean;
-  }> = components.Item;
+  const DropdownItem = components.Item;
   const DropdownLabel = components.Label;
 
   const isIndeterminate =

@@ -28,14 +28,13 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
-    "prop-types": "15.8.1",
-    "react-is": "17.0.2",
+    "react-is": "19.0.0",
     "use-popper": "1.1.6"
   },
   "devDependencies": {
-    "react": "17.0.2"
+    "react": "19.0.0"
   },
   "peerDependencies": {
-    "react": "17.x"
+    "react": "19.x"
   }
 }

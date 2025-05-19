@@ -1,7 +1,7 @@
 import { createSequentialId } from '@commercetools-uikit/utils';
 import useToggleState from '../use-toggle-state';
 import useFieldId from './use-field-id';
-import { screen, render } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 
 const sequentialId = createSequentialId('test-id-');
 
@@ -25,9 +25,9 @@ describe('when id not provided', () => {
   it('should use sequential-id and not increment on rerender', () => {
     const { container } = render(<TestComponent />);
     expect(container.querySelector('#test-id-1')).toBeInTheDocument();
-    screen.getByTestId('toggle-btn').click();
+    fireEvent.click(screen.getByTestId('toggle-btn'));
     expect(container.querySelector('#test-id-1')).toBeInTheDocument();
-    screen.getByTestId('toggle-btn').click();
+    fireEvent.click(screen.getByTestId('toggle-btn'));
     expect(container.querySelector('#test-id-1')).toBeInTheDocument();
   });
 });
@@ -36,7 +36,7 @@ describe('when id is provided', () => {
   it('should use provided id and not change on rerender', () => {
     const { container } = render(<TestComponent id="foo-bar" />);
     expect(container.querySelector('#foo-bar')).toBeInTheDocument();
-    screen.getByTestId('toggle-btn').click();
+    fireEvent.click(screen.getByTestId('toggle-btn'));
     expect(container.querySelector('#foo-bar')).toBeInTheDocument();
   });
 });

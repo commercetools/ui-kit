@@ -3,6 +3,7 @@ import {
   isValidElement,
   useMemo,
   type ReactElement,
+  type HTMLAttributes,
 } from 'react';
 import DOMPurify from 'dompurify';
 import convert from 'react-from-dom';
@@ -16,6 +17,8 @@ import {
 export type InlineSvgProps = TIconProps & {
   data: string;
 };
+
+type TSvgReactElement = ReactElement<HTMLAttributes<SVGElement>, 'svg'>;
 
 const InlineSvg = (props: InlineSvgProps) => {
   const sanitized = useMemo(() => {
@@ -50,8 +53,8 @@ const InlineSvg = (props: InlineSvgProps) => {
 export default InlineSvg;
 
 // Inspired by https://github.com/gilbarbara/react-inlinesvg
-function useStringToReactElement(data: string): ReactElement | null {
-  return useMemo(() => {
+function useStringToReactElement(data: string): TSvgReactElement | null {
+  return useMemo<TSvgReactElement | null>(() => {
     if (!canUseDOM) {
       return null;
     }
@@ -63,9 +66,9 @@ function useStringToReactElement(data: string): ReactElement | null {
         throw new Error('Could not convert the string to a DOM node');
       }
 
-      const element = convert(node);
+      const element = convert(node) as TSvgReactElement;
 
-      if (!element || !isValidElement(element)) {
+      if (!element || !isValidElement<HTMLAttributes<SVGElement>>(element)) {
         throw new Error('Could not convert the DOM node to a React element');
       }
       return element;
