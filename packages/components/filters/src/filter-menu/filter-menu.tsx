@@ -111,7 +111,7 @@ export const menuStyles = css`
   will-change: 'transform, opacity';
   margin-top: ${designTokens.spacing10};
   position: relative;
-  z-index: 5;
+  z-index: 10010;
 `;
 
 export const menuBodyStyle = css`
