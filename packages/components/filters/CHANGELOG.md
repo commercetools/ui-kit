@@ -1,5 +1,22 @@
 # @commercetools-uikit/filters
 
+## 19.26.0
+
+### Patch Changes
+
+- [#3119](https://github.com/commercetools/ui-kit/pull/3119) [`dc9887b`](https://github.com/commercetools/ui-kit/commit/dc9887b3d02979df05230baf72cd1d100d2146d6) Thanks [@kterry1](https://github.com/kterry1)! - fix(filter-menu): update z-index for filter menu dropdown
+
+- Updated dependencies [[`e8ab174`](https://github.com/commercetools/ui-kit/commit/e8ab174902d4df4e5cc52453444cabd2a2e923d1)]:
+  - @commercetools-uikit/design-system@19.26.0
+  - @commercetools-uikit/flat-button@19.26.0
+  - @commercetools-uikit/icon-button@19.26.0
+  - @commercetools-uikit/secondary-icon-button@19.26.0
+  - @commercetools-uikit/icons@19.26.0
+  - @commercetools-uikit/select-input@19.26.0
+  - @commercetools-uikit/spacings@19.26.0
+  - @commercetools-uikit/collapsible-motion@19.26.0
+  - @commercetools-uikit/utils@19.26.0
+
 ## 19.25.1
 
 ### Patch Changes

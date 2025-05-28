@@ -1,5 +1,16 @@
 # @commercetools-uikit/design-system
 
+## 19.26.0
+
+### Minor Changes
+
+- [#3123](https://github.com/commercetools/ui-kit/pull/3123) [`e8ab174`](https://github.com/commercetools/ui-kit/commit/e8ab174902d4df4e5cc52453444cabd2a2e923d1) Thanks [@misama-ct](https://github.com/misama-ct)! - Added an @layer reset directive to the reset-stylesheet for compatibility with nimbus
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@19.26.0
+
 ## 19.25.1
 
 ### Patch Changes

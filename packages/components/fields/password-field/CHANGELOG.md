@@ -1,5 +1,23 @@
 # @commercetools-uikit/password-field
 
+## 19.26.0
+
+### Patch Changes
+
+- Updated dependencies [[`e8ab174`](https://github.com/commercetools/ui-kit/commit/e8ab174902d4df4e5cc52453444cabd2a2e923d1)]:
+  - @commercetools-uikit/design-system@19.26.0
+  - @commercetools-uikit/flat-button@19.26.0
+  - @commercetools-uikit/constraints@19.26.0
+  - @commercetools-uikit/field-label@19.26.0
+  - @commercetools-uikit/icons@19.26.0
+  - @commercetools-uikit/password-input@19.26.0
+  - @commercetools-uikit/spacings-inline@19.26.0
+  - @commercetools-uikit/spacings-stack@19.26.0
+  - @commercetools-uikit/field-errors@19.26.0
+  - @commercetools-uikit/field-warnings@19.26.0
+  - @commercetools-uikit/hooks@19.26.0
+  - @commercetools-uikit/utils@19.26.0
+
 ## 19.25.1
 
 ### Patch Changes

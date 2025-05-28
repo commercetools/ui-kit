@@ -1,5 +1,50 @@
 # @commercetools-frontend/ui-kit
 
+## 19.26.0
+
+### Patch Changes
+
+- Updated dependencies [[`dc9887b`](https://github.com/commercetools/ui-kit/commit/dc9887b3d02979df05230baf72cd1d100d2146d6), [`e8ab174`](https://github.com/commercetools/ui-kit/commit/e8ab174902d4df4e5cc52453444cabd2a2e923d1)]:
+  - @commercetools-uikit/filters@19.26.0
+  - @commercetools-uikit/design-system@19.26.0
+  - @commercetools-uikit/avatar@19.26.0
+  - @commercetools-uikit/card@19.26.0
+  - @commercetools-uikit/collapsible-panel@19.26.0
+  - @commercetools-uikit/constraints@19.26.0
+  - @commercetools-uikit/data-table@19.26.0
+  - @commercetools-uikit/data-table-manager@19.26.0
+  - @commercetools-uikit/dropdown-menu@19.26.0
+  - @commercetools-uikit/field-label@19.26.0
+  - @commercetools-uikit/icons@19.26.0
+  - @commercetools-uikit/select-utils@19.26.0
+  - @commercetools-uikit/selectable-search-input@19.26.0
+  - @commercetools-uikit/label@19.26.0
+  - @commercetools-uikit/link@19.26.0
+  - @commercetools-uikit/loading-spinner@19.26.0
+  - @commercetools-uikit/notifications@19.26.0
+  - @commercetools-uikit/pagination@19.26.0
+  - @commercetools-uikit/primary-action-dropdown@19.26.0
+  - @commercetools-uikit/progress-bar@19.26.0
+  - @commercetools-uikit/quick-filters@19.26.0
+  - @commercetools-uikit/stamp@19.26.0
+  - @commercetools-uikit/tag@19.26.0
+  - @commercetools-uikit/text@19.26.0
+  - @commercetools-uikit/tooltip@19.26.0
+  - @commercetools-uikit/view-switcher@19.26.0
+  - @commercetools-uikit/buttons@19.26.0
+  - @commercetools-uikit/fields@19.26.0
+  - @commercetools-uikit/inputs@19.26.0
+  - @commercetools-uikit/spacings@19.26.0
+  - @commercetools-uikit/messages@19.26.0
+  - @commercetools-uikit/field-errors@19.26.0
+  - @commercetools-uikit/accessible-hidden@19.26.0
+  - @commercetools-uikit/collapsible@19.26.0
+  - @commercetools-uikit/collapsible-motion@19.26.0
+  - @commercetools-uikit/grid@19.26.0
+  - @commercetools-uikit/hooks@19.26.0
+  - @commercetools-uikit/i18n@19.26.0
+  - @commercetools-uikit/utils@19.26.0
+
 ## 19.25.1
 
 ### Patch Changes

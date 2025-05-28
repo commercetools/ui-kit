@@ -1,5 +1,7 @@
 # @commercetools-uikit/grid
 
+## 19.26.0
+
 ## 19.25.1
 
 ## 19.25.0

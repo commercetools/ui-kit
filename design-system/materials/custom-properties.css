@@ -29,7 +29,7 @@
   --color-accent-98: hsl(195, 100%, 98%);
   --color-brown-10: hsl(41, 100%, 10%);
   --color-brown-20: hsl(41, 100%, 20%);
-  --color-brown-35: hsl(41, 96%, 35%);
+  --color-brown-35: hsl(41, 96%, 30%);
   --color-brown-50: hsl(41, 95%, 44%);
   --color-brown-70: hsl(47, 95%, 70%);
   --color-brown-85: hsl(47, 100%, 85%);
@@ -47,7 +47,7 @@
   --color-purple-98: hsl(246, 100%, 98%);
   --color-turquoise-10: hsl(180, 88%, 10%);
   --color-turquoise-20: hsl(180, 90%, 20%);
-  --color-turquoise-35: hsl(178, 88%, 35%);
+  --color-turquoise-35: hsl(178, 88%, 25%);
   --color-turquoise-50: hsl(178, 67%, 50%);
   --color-turquoise-70: hsl(180, 75%, 70%);
   --color-turquoise-85: hsl(180, 90%, 85%);
@@ -65,7 +65,7 @@
   --color-neutral-95: hsl(232, 18%, 95%);
   --color-neutral-98: hsl(232, 18%, 98%);
   --color-info: #078cdf;
-  --color-info-40: hsl(203.05555555555554, 93.9130434783%, 40%);
+  --color-info-40: hsl(203, 94%, 35%);
   --color-info-50: hsl(203.05555555555554, 93.9130434783%, 50%);
   --color-info-60: hsl(203.05555555555554, 93.9130434783%, 60%);
   --color-info-85: hsl(203.05555555555554, 93.9130434783%, 85%);
