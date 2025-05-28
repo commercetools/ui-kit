@@ -97,4 +97,6 @@
 '@commercetools-local/storybook': major
 ---
 
-Upgrade UI Kit to React 19
+Upgrade UI Kit to React 19.
+
+From this version onwards, this is the minimum version an application using this library should be using.
