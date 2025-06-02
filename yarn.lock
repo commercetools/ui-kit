@@ -1783,7 +1783,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-frontend/babel-preset-mc-app@npm:22.42.1, @commercetools-frontend/babel-preset-mc-app@npm:^22.42.1":
+"@commercetools-frontend/babel-preset-mc-app@npm:22.42.1":
   version: 22.42.1
   resolution: "@commercetools-frontend/babel-preset-mc-app@npm:22.42.1"
   dependencies:
@@ -1817,13 +1817,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-frontend/eslint-config-mc-app@npm:22.42.1":
-  version: 22.42.1
-  resolution: "@commercetools-frontend/eslint-config-mc-app@npm:22.42.1"
+"@commercetools-frontend/babel-preset-mc-app@npm:^23.4.0":
+  version: 23.4.0
+  resolution: "@commercetools-frontend/babel-preset-mc-app@npm:23.4.0"
+  dependencies:
+    "@babel/core": ^7.22.17
+    "@babel/plugin-proposal-do-expressions": ^7.22.5
+    "@babel/plugin-proposal-export-default-from": ^7.22.17
+    "@babel/plugin-transform-class-properties": ^7.22.5
+    "@babel/plugin-transform-destructuring": ^7.22.15
+    "@babel/plugin-transform-export-namespace-from": ^7.22.11
+    "@babel/plugin-transform-logical-assignment-operators": ^7.22.11
+    "@babel/plugin-transform-object-rest-spread": ^7.22.15
+    "@babel/plugin-transform-private-methods": ^7.22.5
+    "@babel/plugin-transform-private-property-in-object": ^7.22.11
+    "@babel/plugin-transform-regenerator": ^7.22.10
+    "@babel/plugin-transform-runtime": ^7.22.15
+    "@babel/preset-env": ^7.22.15
+    "@babel/preset-react": ^7.22.15
+    "@babel/preset-typescript": ^7.22.15
+    "@babel/runtime": ^7.22.15
+    "@babel/runtime-corejs3": ^7.22.15
+    "@emotion/babel-plugin": ^11.13.5
+    "@emotion/babel-preset-css-prop": ^11.12.0
+    babel-plugin-dev-expression: ^0.2.3
+    babel-plugin-formatjs: ^10.5.25
+    babel-plugin-lodash: ^3.3.4
+    babel-plugin-macros: ^3.1.0
+    babel-plugin-preval: ^5.1.0
+    babel-plugin-transform-react-remove-prop-types: ^0.4.24
+    core-js: ^3.32.2
+  checksum: 887d8e05d74cbfa189d5f0b8ab0d28290e8244009bcb3479904b8d5966c1ee95065da1f553259621832895f4873ecd00739ae6f80a8b31c6899ae82d71f3eaac
+  languageName: node
+  linkType: hard
+
+"@commercetools-frontend/eslint-config-mc-app@npm:23.4.0":
+  version: 23.4.0
+  resolution: "@commercetools-frontend/eslint-config-mc-app@npm:23.4.0"
   dependencies:
     "@babel/core": ^7.22.17
     "@babel/eslint-parser": ^7.22.15
-    "@commercetools-frontend/babel-preset-mc-app": ^22.42.1
+    "@commercetools-frontend/babel-preset-mc-app": ^23.4.0
     "@rushstack/eslint-patch": ^1.3.3
     "@typescript-eslint/eslint-plugin": ^5.62.0
     "@typescript-eslint/parser": ^5.62.0
@@ -1843,7 +1877,7 @@ __metadata:
     typescript: ^5.2.2
   peerDependencies:
     eslint: 8.x
-  checksum: 279e11b46e5c4199228d457b5020abbf05df1272815d7ab1bd99bc8de77d8ad77676c3e7ba411c5461258b9c2a18a68bfd1df24dfad37358db381b8975b92daa
+  checksum: 91b66b745c87218aedb2a19cbf38052e328088fd6a3f92075923436a6d83b1b541197710159ac35786bf27a0224ce9f4ef183373d2a7c8cfb908be5ce47a6317
   languageName: node
   linkType: hard
 
@@ -22437,7 +22471,7 @@ __metadata:
     "@changesets/changelog-github": 0.5.1
     "@changesets/cli": 2.29.3
     "@commercetools-frontend/babel-preset-mc-app": 22.42.1
-    "@commercetools-frontend/eslint-config-mc-app": 22.42.1
+    "@commercetools-frontend/eslint-config-mc-app": 23.4.0
     "@commercetools-local/generator-package-json": "*"
     "@commercetools-local/generator-readme": "*"
     "@commitlint/cli": 19.8.1
