@@ -1,5 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
-import { FormattedMessage, type MessageDescriptor } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 import { filterAriaAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -21,11 +22,7 @@ export type TProgressBarProps = {
   /**
    * The text to display alongside the bar.
    */
-  label?:
-    | string
-    | ReactElement
-    | (MessageDescriptor & { values?: Record<string, ReactNode> })
-    | null;
+  label?: string | ReactElement | IntlMessage | null;
   /**
    * Location of the text in relation to the bar.
    */
@@ -80,9 +77,9 @@ const ProgressBarLabel = (
     as: props.height !== '10' ? 'span' : undefined,
     fontWegith: props.height !== '10' ? 'medium' : undefined,
     children: props.label.hasOwnProperty('defaultMessage') ? (
-      <FormattedMessage {...(props.label as MessageDescriptor)} />
+      <FormattedMessage {...(props.label as IntlMessage)} />
     ) : (
-      props.label
+      (props.label as ReactNode)
     ),
   } as const;
 

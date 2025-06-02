@@ -313,7 +313,7 @@ describe('when input value is not empty', () => {
   describe('when the `show` button is clicked', () => {
     it('should change the label of the button to `hide`', () => {
       const { getByLabelText } = renderPasswordField({ value: 'foo' });
-      getByLabelText('show').click();
+      fireEvent.click(getByLabelText('show'));
       expect(getByLabelText('hide')).toBeInTheDocument();
     });
   });

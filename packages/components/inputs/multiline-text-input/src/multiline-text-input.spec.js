@@ -139,22 +139,22 @@ describe('MultilineTextInput', () => {
     expect(screen.getByLabelText('Description')).toBeDisabled();
   });
 
-  it('should call onFocus when the input is focused', () => {
+  it('should call onFocus when the input is focused', async () => {
     const onFocus = jest.fn();
     render(<TestComponent onFocus={onFocus} />);
     const textArea = screen.getByLabelText('Description');
-    textArea.focus();
+    await fireEvent.asyncFocus(textArea);
     expect(textArea).toHaveFocus();
     expect(onFocus).toHaveBeenCalled();
   });
 
-  it('should call onBlur when the input is loses focus', () => {
+  it('should call onBlur when the input is loses focus', async () => {
     const onBlur = jest.fn();
     render(<TestComponent onBlur={onBlur} />);
     const textArea = screen.getByLabelText('Description');
-    textArea.focus();
+    await fireEvent.asyncFocus(textArea);
     expect(textArea).toHaveFocus();
-    textArea.blur();
+    await fireEvent.asyncBlur(textArea);
     expect(onBlur).toHaveBeenCalled();
   });
 

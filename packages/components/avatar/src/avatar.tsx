@@ -1,12 +1,8 @@
 import { ReactElement, cloneElement } from 'react';
 import { css } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import {
-  getAvatarStyles,
-  getFontSize,
-  getForegroundColor,
-  getWidthSize,
-} from './avatar.styles';
+import { type TIconProps } from '@commercetools-uikit/design-system';
+import { getAvatarStyles, getFontSize, getWidthSize } from './avatar.styles';
 
 export type TAvatarProps = {
   /**
@@ -35,7 +31,7 @@ export type TAvatarProps = {
   color?: 'accent' | 'purple' | 'turquoise' | 'brown';
   /** an <Icon /> component
    */
-  icon?: ReactElement;
+  icon?: ReactElement<TIconProps>;
 };
 
 export type TGravatarImgProps = Pick<
@@ -125,7 +121,6 @@ const Avatar = ({
   ...props
 }: TAvatarProps) => {
   const avatarSize = getWidthSize(size);
-  const foregroundColor = getForegroundColor(color);
   return (
     <div
       css={getAvatarStyles({
@@ -154,8 +149,6 @@ const Avatar = ({
         >
           {cloneElement(props?.icon, {
             size: 'scale',
-            color: foregroundColor,
-            backgroundcolor: foregroundColor,
           })}
         </div>
       ) : (

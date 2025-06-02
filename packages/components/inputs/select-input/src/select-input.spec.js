@@ -94,22 +94,22 @@ it('should not have an open menu if menuIsOpen is true and isReadOnly is true', 
   expect(queryByText('Mango')).not.toBeInTheDocument();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
-  const { getByLabelText } = renderInput({ onFocus });
-  const input = getByLabelText('Fruit');
-  input.focus();
+  const { findByLabelText } = renderInput({ onFocus });
+  const input = await findByLabelText('Fruit');
+  await fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
-  const { getByLabelText } = renderInput({ onBlur });
-  const input = getByLabelText('Fruit');
-  input.focus();
+  const { findByLabelText } = renderInput({ onBlur });
+  const input = await findByLabelText('Fruit');
+  await fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
-  input.blur();
+  await fireEvent.asyncBlur(input);
   expect(input).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -204,26 +204,29 @@ describe('in single mode', () => {
       expect(getByText('Lichi')).toBeInTheDocument();
       expect(getByText('Raspberry')).toBeInTheDocument();
     });
-    it('should be able to select an option', () => {
-      const { getByLabelText, getByText, queryByText } = renderInput();
+    it('should be able to select an option', async () => {
+      const { getByLabelText, getByText, queryByText, findByText } =
+        renderInput();
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      getByText('Mango').click();
+      const mangoOption = await findByText('Mango');
+      fireEvent.click(mangoOption);
       // new selected value should be Mango
       expect(getByText('Mango')).toBeInTheDocument();
       // list should closed and not visible
       expect(queryByText('Banana')).not.toBeInTheDocument();
     });
-    it('should call onChange when value selected', () => {
+    it('should call onChange when value selected', async () => {
       const onChange = jest.fn();
-      const { getByLabelText, getByText } = renderInput({
+      const { getByLabelText, findByText } = renderInput({
         onChange,
       });
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      getByText('Mango').click();
+      const mangoOption = await findByText('Mango');
+      fireEvent.click(mangoOption);
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
@@ -312,15 +315,17 @@ describe('in multi mode', () => {
       expect(getByText('Lichi')).toBeInTheDocument();
       expect(getByText('Raspberry')).toBeInTheDocument();
     });
-    it('should be able to select two option', () => {
-      const { getByLabelText, getByText, queryByText } = renderInput({
-        isMulti: true,
-        value: [],
-      });
+    it('should be able to select two option', async () => {
+      const { getByLabelText, getByText, queryByText, findByText } =
+        renderInput({
+          isMulti: true,
+          value: [],
+        });
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      getByText('Mango').click();
+      const mangoOption = await findByText('Mango');
+      fireEvent.click(mangoOption);
       // new selected value should be Mango
       expect(getByText('Mango')).toBeInTheDocument();
       // list should closed and not visible
@@ -328,16 +333,17 @@ describe('in multi mode', () => {
       // open list again
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      getByText('Banana').click();
+      const bananaOption = await findByText('Banana');
+      fireEvent.click(bananaOption);
       // new values should be Banana and Mango
       expect(getByText('Banana')).toBeInTheDocument();
       expect(getByText('Mango')).toBeInTheDocument();
       // list should closed and not visible
       expect(queryByText('Raspberry')).not.toBeInTheDocument();
     });
-    it('should call onChange when two values selected', () => {
+    it('should call onChange when two values selected', async () => {
       const onChange = jest.fn();
-      const { getByLabelText, getByText } = renderInput({
+      const { getByLabelText, findByText } = renderInput({
         onChange,
         isMulti: true,
         value: [],
@@ -345,7 +351,8 @@ describe('in multi mode', () => {
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      getByText('Mango').click();
+      const mangoOption = await findByText('Mango');
+      fireEvent.click(mangoOption);
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
@@ -357,7 +364,8 @@ describe('in multi mode', () => {
       // open list again
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      getByText('Raspberry').click();
+      const raspberryOption = await findByText('Raspberry');
+      fireEvent.click(raspberryOption);
 
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),

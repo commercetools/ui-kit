@@ -25,15 +25,14 @@
     "@commercetools-uikit/utils": "19.26.0",
     "@emotion/react": "^11.10.5",
     "lodash": "4.17.21",
-    "prop-types": "15.8.1",
     "warning": "4.0.3"
   },
   "devDependencies": {
-    "react": "17.0.2",
-    "react-intl": "^6.3.2"
+    "react": "19.0.0",
+    "react-intl": "^7.1.4"
   },
   "peerDependencies": {
-    "react": "17.x",
-    "react-intl": "6.x"
+    "react": "19.x",
+    "react-intl": "7.x"
   }
 }

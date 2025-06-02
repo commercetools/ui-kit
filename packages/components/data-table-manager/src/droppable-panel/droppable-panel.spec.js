@@ -1,4 +1,4 @@
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext } from '@hello-pangea/dnd';
 import { screen, render } from '../../../../../test/test-utils';
 import DroppablePanel from './droppable-panel';
 

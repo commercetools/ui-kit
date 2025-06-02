@@ -1,6 +1,6 @@
+import { act } from 'react';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
-
-import { act, screen, render } from '../../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import DropdownMenu from './dropdown-menu';
 
 describe('DropdownMenu', () => {
@@ -34,18 +34,18 @@ describe('DropdownMenu', () => {
     expect(screen.queryByText('Option 1')).not.toBeVisible();
 
     // Open the dropdown
-    screen.getByLabelText('Trigger').click();
-    await jest.runAllTimersAsync();
+    fireEvent.click(screen.getByLabelText('Trigger'));
+    await act(async () => await jest.runAllTimersAsync());
     expect(await screen.findByText('Option 1')).toBeVisible();
     expect(screen.getByText('Option 2')).toBeVisible();
 
     // Clicking in the disabled options should do nothing
-    screen.getByText('Option 2').click();
+    fireEvent.click(screen.getByText('Option 2'));
     expect(secondOptionOnClick).toHaveBeenCalledTimes(0);
     expect(await screen.findByText('Option 1')).toBeVisible();
 
     // Clicking in the enabled option should close the dropdown
-    screen.getByText('Option 1').click();
+    fireEvent.click(screen.getByText('Option 1'));
     expect(firstOptionOnClick).toHaveBeenCalledTimes(1);
     expect(await screen.findByText('Option 1')).not.toBeVisible();
   });
@@ -64,14 +64,14 @@ describe('DropdownMenu', () => {
     expect(screen.queryByText('Content')).not.toBeVisible();
 
     // Open the dropdown
-    screen.getByLabelText('Trigger').click();
+    fireEvent.click(screen.getByLabelText('Trigger'));
     await jest.runAllTimersAsync();
     expect(await screen.findByText('Content')).toBeVisible();
 
     // Clicking outside the dropdown should close it
-    act(() => {
-      screen.getByText('Header').click();
-    });
+
+    fireEvent.click(screen.getByText('Header'));
+
     expect(await screen.findByText('Content')).not.toBeVisible();
   });
 

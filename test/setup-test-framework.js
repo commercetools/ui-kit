@@ -5,6 +5,6 @@
 // of the preset is on NPM.
 
 // react-testing-library setup
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import 'intl-pluralrules';
 import '@formatjs/intl-relativetimeformat/polyfill';

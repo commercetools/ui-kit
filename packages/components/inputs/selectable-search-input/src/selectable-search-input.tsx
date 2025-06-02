@@ -3,6 +3,7 @@ import {
   type KeyboardEvent,
   type ChangeEvent,
   type ReactNode,
+  type FocusEvent,
   useState,
   useCallback,
   useRef,
@@ -265,12 +266,13 @@ const SelectableSearchInput = ({
   menuHorizontalConstraint = 3,
   showSubmitButton = true,
   menuPortalZIndex = 1,
+  onChange,
   ...props
 }: TSelectableSearchInputProps) => {
   const [dropdownHasFocus, toggleDropdownHasFocus] = useToggleState(false);
   const [searchValue, setSearchValue] = useState(props.value.text || '');
   const [searchOption, setSearchOption] = useState(props.value.option || '');
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
 
   const allProps = {
@@ -279,6 +281,7 @@ const SelectableSearchInput = ({
     menuHorizontalConstraint,
     showSubmitButton,
     menuPortalZIndex,
+    onChange,
     ...props,
   };
   const legacyDataProps = filterDataAttributes(props);
@@ -311,7 +314,7 @@ const SelectableSearchInput = ({
 
   if (!props.isReadOnly) {
     warning(
-      typeof props.onChange === 'function',
+      typeof onChange === 'function',
       'SelectableSearchInput: `onChange` is required when is not read only.'
     );
   }
@@ -354,8 +357,8 @@ const SelectableSearchInput = ({
 
   const handleTextInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    if (props.onChange) {
-      props.onChange({
+    if (onChange) {
+      onChange({
         target: {
           id: SelectableSearchInput.getTextInputId(selectablSearchInputId),
           name: getTextInputName(props.name),
@@ -410,7 +413,7 @@ const SelectableSearchInput = ({
   }, [toggleDropdownHasFocus, onBlur, dropdownName, dropdownId]);
 
   const handleContainerBlur = useCallback(
-    (event) => {
+    (event: FocusEvent) => {
       // ensures that both fields are marked as touched when one of them
       // is blurred
       if (
@@ -435,10 +438,10 @@ const SelectableSearchInput = ({
   );
 
   const handleDropdownChange = useCallback(
-    (nextSelectedOptions) => {
+    (nextSelectedOptions: { value: string } & Record<string, unknown>) => {
       setSearchOption(nextSelectedOptions.value);
-      if (props.onChange) {
-        props.onChange({
+      if (onChange) {
+        onChange({
           target: {
             id: SelectableSearchInput.getDropdownId(selectablSearchInputId),
             name: getDropdownName(name),
@@ -448,7 +451,7 @@ const SelectableSearchInput = ({
       }
       textInputRef.current?.focus();
     },
-    [props.onChange, selectablSearchInputId, name]
+    [onChange, selectablSearchInputId, name]
   );
 
   return (
@@ -467,7 +470,9 @@ const SelectableSearchInput = ({
             isCondensed={props.isCondensed ?? false}
             handleDropdownFocus={handleDropdownFocus}
             handleDropdownBlur={handleDropdownBlur}
-            handleDropdownChange={handleDropdownChange}
+            handleDropdownChange={
+              handleDropdownChange as ReactSelectProps['onChange']
+            }
             textInputRef={textInputRef}
             selectedOption={selectedOption}
             dataProps={transformedSelectDataProps}

@@ -1,7 +1,7 @@
 import type { TToggleInputProps } from './toggle-input';
 
 import { useState } from 'react';
-import { screen, render } from '../../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import ToggleInput from './toggle-input';
 
 const TestComponent = (props: TToggleInputProps) => {
@@ -44,7 +44,7 @@ it('should call onChange when clicked', () => {
 
   render(<TestComponent id="toggle" isChecked={false} onChange={onChange} />);
 
-  screen.getByLabelText('Toggle').click();
+  fireEvent.click(screen.getByLabelText('Toggle'));
 
   expect(onChange).toHaveBeenCalledTimes(1);
   expect(screen.getByLabelText('Toggle')).toBeChecked();
@@ -64,7 +64,7 @@ it('should not call onChange when clicked while disabled', () => {
     </div>
   );
 
-  screen.getByLabelText('Toggle').click();
+  fireEvent.click(screen.getByLabelText('Toggle'));
 
   expect(onChange).not.toHaveBeenCalled();
 });

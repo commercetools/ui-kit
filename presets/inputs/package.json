@@ -47,13 +47,13 @@
     "@commercetools-uikit/toggle-input": "19.26.0"
   },
   "devDependencies": {
-    "react": "17.0.2",
-    "react-intl": "^6.3.2",
+    "react": "19.0.0",
+    "react-intl": "^7.1.4",
     "react-router-dom": "5.3.4"
   },
   "peerDependencies": {
-    "react": "17.x",
-    "react-intl": "6.x",
+    "react": "19.x",
+    "react-intl": "7.x",
     "react-router-dom": "5.x"
   }
 }

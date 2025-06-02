@@ -96,20 +96,20 @@ it('should have an HTML name for every input when all inputs are visible', () =>
   expect(container.querySelector('[name="foo.de"]')).toBeInTheDocument();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderLocalizedMultilineTextField({ onFocus });
-  getByLabelText('EN').focus();
+  await fireEvent.asyncFocus(getByLabelText('EN'));
   expect(getByLabelText('EN')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderLocalizedMultilineTextField({ onBlur });
-  getByLabelText('EN').focus();
+  await fireEvent.asyncFocus(getByLabelText('EN'));
   expect(getByLabelText('EN')).toHaveFocus();
-  getByLabelText('EN').blur();
+  await fireEvent.asyncBlur(getByLabelText('EN'));
   expect(getByLabelText('EN')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -228,7 +228,7 @@ describe('when showing an info button', () => {
     const { getByLabelText } = renderLocalizedMultilineTextField({
       onInfoButtonClick,
     });
-    getByLabelText('More Info').click();
+    fireEvent.click(getByLabelText('More Info'));
     expect(onInfoButtonClick).toHaveBeenCalled();
   });
 });

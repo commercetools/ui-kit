@@ -18,7 +18,7 @@ export type TViewSwitcherButtonProps = {
   /** The text content to be displayed inside the button */
   children?: string;
   /** An icon element to be displayed inside the button */
-  icon?: ReactElement;
+  icon?: ReactElement<{ size?: string }>;
   /** Indicates if the button is in active state */
   isActive?: boolean;
   /** Indicates if the button is disabled */
@@ -78,7 +78,7 @@ const ViewSwitcherButton: TViewSwitcherButtonElement = (props) => {
           `}
         >
           {cloneElement(props.icon, {
-            size: props.isCondensed ? 'medium' : 'big',
+            size: props.isCondensed ? '20' : '40',
           })}
         </span>
       )}

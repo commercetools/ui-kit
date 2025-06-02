@@ -7,7 +7,6 @@ import {
   useImperativeHandle,
   forwardRef,
   type ReactNode,
-  type LegacyRef,
   type RefObject,
   type Ref,
   type FocusEventHandler,
@@ -91,11 +90,11 @@ export type TEditorProps = {
 
 type TNodeRefObject = {
   clientHeight: number;
-} & LegacyRef<HTMLDivElement>;
+} & Ref<HTMLDivElement>;
 
 type TRichtTextEditorBodyRef = {
   registerContentNode: TNodeRefObject;
-  containerRef: RefObject<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement | null>;
 };
 
 const renderElement = (props: RenderElementProps) => <Element {...props} />;

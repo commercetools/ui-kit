@@ -1,4 +1,4 @@
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { screen, render } from '../../../../../test/test-utils';
 import DraggableTag from './draggable-tag';
 

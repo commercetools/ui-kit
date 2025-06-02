@@ -26,15 +26,14 @@
     "@commercetools-uikit/utils": "19.26.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@types/react-router-dom": "^5.3.3",
-    "prop-types": "15.8.1"
+    "@types/react-router-dom": "^5.3.3"
   },
   "devDependencies": {
-    "react": "17.0.2",
+    "react": "19.0.0",
     "react-router-dom": "5.3.4"
   },
   "peerDependencies": {
-    "react": "17.x",
+    "react": "19.x",
     "react-router-dom": "5.x"
   }
 }

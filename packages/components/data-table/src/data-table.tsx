@@ -3,7 +3,7 @@ import {
   useLayoutEffect,
   ReactNode,
   MouseEventHandler,
-  LegacyRef,
+  Ref,
   // useState,
 } from 'react';
 import isEqual from 'lodash/isEqual';
@@ -270,7 +270,7 @@ const DataTable = <Row extends TRow = TRow>({
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
   );
 
-  const tableRef = useRef<HTMLTableElement>();
+  const tableRef = useRef<HTMLTableElement>(null);
   const columnResizingReducer = useManualColumnResizing(tableRef);
 
   // if the table columns have been measured
@@ -308,7 +308,7 @@ const DataTable = <Row extends TRow = TRow>({
       disableSelfContainment={!!disableSelfContainment}
     >
       <TableGrid
-        ref={tableRef as LegacyRef<HTMLTableElement>}
+        ref={tableRef as Ref<HTMLTableElement>}
         {...filterDataAttributes({
           isCondensed,
           wrapHeaderLabels,

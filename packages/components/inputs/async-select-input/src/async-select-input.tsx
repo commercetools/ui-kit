@@ -1,4 +1,4 @@
-import type { ReactNode, FocusEvent, ComponentType } from 'react';
+import type { ReactNode, FocusEvent, ComponentType, JSX } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import {

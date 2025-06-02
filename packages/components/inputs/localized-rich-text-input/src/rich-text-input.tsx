@@ -10,7 +10,7 @@ import {
   validSlateStateAdapter,
 } from '@commercetools-uikit/rich-text-utils';
 import Editor, { type TEditorProps } from './editor';
-import { type MessageDescriptor } from 'react-intl';
+import { type TAdditionalInfoProps } from '@commercetools-uikit/messages';
 
 type TRichTextInputProps = {
   defaultExpandMultilineText: TEditorProps['defaultExpandMultilineText'];
@@ -36,12 +36,7 @@ type TRichTextInputProps = {
   toggleLanguage: (language: string) => void;
   warning?: ReactNode;
   error?: string;
-  additionalInfo?:
-    | string
-    | ReactNode
-    | (MessageDescriptor & {
-        values: Record<string, ReactNode>;
-      });
+  additionalInfo?: TAdditionalInfoProps['message'];
 };
 
 class RichTextInput extends PureComponent<TRichTextInputProps> {

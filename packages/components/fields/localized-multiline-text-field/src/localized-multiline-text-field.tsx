@@ -12,11 +12,12 @@ import {
   createSequentialId,
   warning,
 } from '@commercetools-uikit/utils';
-import { type MessageDescriptor } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
-import FieldLabel from '@commercetools-uikit/field-label';
-import LocalizedMultilineTextInput from '@commercetools-uikit/localized-multiline-text-input';
+import FieldLabel, { type TIconProps } from '@commercetools-uikit/field-label';
+import LocalizedMultilineTextInput, {
+  type TLocalizedMultilineTextInputProps,
+} from '@commercetools-uikit/localized-multiline-text-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import FieldWarnings from '@commercetools-uikit/field-warnings';
 
@@ -84,14 +85,7 @@ export type TLocalizedMultilineTextFieldProps = {
       es: 'Algún valor',
     }
    */
-  additionalInfo?: Record<
-    string,
-    | string
-    | ReactNode
-    | (MessageDescriptor & {
-        values: Record<string, ReactNode>;
-      })
-  >;
+  additionalInfo?: TLocalizedMultilineTextInputProps['additionalInfo'];
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -204,7 +198,7 @@ export type TLocalizedMultilineTextFieldProps = {
   /**
    * Icon to be displayed beside the hint text. Will only get rendered when hint is passed as well.
    */
-  hintIcon?: ReactElement;
+  hintIcon?: ReactElement<TIconProps>;
   /**
    * Badge to be displayed beside the label. Might be used to display additional information about the content of the field (E.g verified email)
    */

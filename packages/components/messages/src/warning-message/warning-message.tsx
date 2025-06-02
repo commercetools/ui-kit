@@ -1,12 +1,8 @@
 import { ReactNode } from 'react';
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 import Text from '@commercetools-uikit/text';
 
-export type TIntlMessageDescriptor = {
-  id: string;
-  description?: string | object;
-  defaultMessage: string;
-  values?: Record<string, ReactNode>;
-};
+export type TIntlMessageDescriptor = IntlMessage;
 
 export type TWarningMessageProps = {
   id?: string;

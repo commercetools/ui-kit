@@ -65,20 +65,20 @@ it('should have an HTML name', () => {
   expect(container.querySelector('[name="foo"]')).toBeTruthy();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { container } = renderDateTimeInput({ onFocus });
-  container.querySelector('input').focus();
+  await fireEvent.asyncFocus(container.querySelector('input'));
   expect(container.querySelector('input')).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { container } = renderDateTimeInput({ onBlur });
-  container.querySelector('input').focus();
+  await fireEvent.asyncFocus(container.querySelector('input'));
   expect(container.querySelector('input')).toHaveFocus();
-  container.querySelector('input').blur();
+  await fireEvent.asyncBlur(container.querySelector('input'));
   expect(container.querySelector('input')).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -167,7 +167,7 @@ describe('date picker keyboard navigation', () => {
     expect(screen.queryByText('September')).not.toBeInTheDocument();
     expect(screen.getByText('October')).toBeInTheDocument();
   });
-  it('should move to previous month when pressing ArrowUp with first day of month highlighted', () => {
+  it('should move to previous month when pressing ArrowUp with first day of month highlighted', async () => {
     renderDateTimeInput({ value: '2020-09-01' });
 
     const dateInput = screen.getByLabelText('Date');
@@ -176,12 +176,13 @@ describe('date picker keyboard navigation', () => {
 
     expect(screen.getByText('September')).toBeInTheDocument();
 
+    await fireEvent.asyncFocus(dateInput);
+
     // ArrowUp
     fireEvent.keyDown(dateInput, { keyCode: 38 });
-
-    expect(screen.queryByText('September')).not.toBeInTheDocument();
     // TODO: investigate why months are off by 1
-    // expect(screen.getByText('August')).toBeInTheDocument();
+    // await screen.findByText('August');
+    expect(screen.queryByText('September')).not.toBeInTheDocument();
   });
 });
 

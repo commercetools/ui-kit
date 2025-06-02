@@ -45,12 +45,12 @@ describe('when all options are disabled', () => {
     expect(screen.getByLabelText('Primary Action')).toBeDisabled();
 
     // it should not invoke callback when primary action is clicked
-    screen.getByLabelText('Primary Action').click();
+    fireEvent.click(screen.getByLabelText('Primary Action'));
     expect(primaryAction).not.toHaveBeenCalled();
 
     // it should not allow opening remaining actions
     expect(screen.getByLabelText('Open Dropdown')).toBeDisabled();
-    screen.getByLabelText('Open Dropdown').click();
+    fireEvent.click(screen.getByLabelText('Open Dropdown'));
     expect(screen.queryByLabelText('Secondary Action')).not.toBeInTheDocument();
   });
 });
@@ -76,16 +76,16 @@ describe('when only primary option is disabled', () => {
 
     // it should invoke callback when secondary action is clicked,
     // as secondary option gets hoisted to the top
-    screen.getByLabelText('Secondary Action').click();
+    fireEvent.click(screen.getByLabelText('Secondary Action'));
     expect(secondaryAction).toHaveBeenCalled();
 
     // it should allow opening remaining actions
-    screen.getByLabelText('Open Dropdown').click();
+    fireEvent.click(screen.getByLabelText('Open Dropdown'));
     expect(screen.getByLabelText('Primary Action')).toBeInTheDocument();
 
     // it should not invoke callback when disabled primary action is clicked
     expect(screen.getByLabelText('Primary Action')).toBeDisabled();
-    screen.getByLabelText('Primary Action').click();
+    fireEvent.click(screen.getByLabelText('Primary Action'));
     expect(primaryAction).not.toHaveBeenCalled();
   });
 });
@@ -110,16 +110,16 @@ describe('when only secondary option is disabled', () => {
     );
 
     // it should invoke callback when primary action is clicked
-    screen.getByLabelText('Primary Action').click();
+    fireEvent.click(screen.getByLabelText('Primary Action'));
     expect(primaryAction).toHaveBeenCalled();
 
     // it should allow opening remaining actions
-    screen.getByLabelText('Open Dropdown').click();
+    fireEvent.click(screen.getByLabelText('Open Dropdown'));
     expect(screen.getByLabelText('Secondary Action')).toBeInTheDocument();
 
     // it should not invoke callback when disabled secondary action is clicked
     expect(screen.getByLabelText('Secondary Action')).toBeDisabled();
-    screen.getByLabelText('Secondary Action').click();
+    fireEvent.click(screen.getByLabelText('Secondary Action'));
     expect(secondaryAction).not.toHaveBeenCalled();
   });
 });
@@ -138,7 +138,7 @@ describe('when dropdown is open and body is clicked', () => {
     );
 
     // it should allow opening remaining actions
-    screen.getByLabelText('Open Dropdown').click();
+    fireEvent.click(screen.getByLabelText('Open Dropdown'));
     expect(screen.getByLabelText('Secondary Action')).toBeInTheDocument();
 
     // click on document body

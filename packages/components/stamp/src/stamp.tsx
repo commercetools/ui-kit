@@ -30,7 +30,7 @@ export type TStampProps = {
   /**
    * Icon to render beside (left) the stamp text.
    */
-  icon?: ReactElement;
+  icon?: ReactElement<{ size?: string; color?: string }>;
   /**
    * Text to render within the stamp.
    */
@@ -164,7 +164,7 @@ const Stamp = ({
   const Icon =
     props.icon &&
     cloneElement(props.icon, {
-      size: 'medium',
+      size: '20',
       color: getIconColor(allProps, true),
     });
 

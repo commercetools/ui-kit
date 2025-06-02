@@ -1,6 +1,6 @@
 import type { TCollapsibleProps } from './collapsible';
 import Collapsible from './collapsible';
-import { screen, render } from '../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../test/test-utils';
 
 const TestComponent = (props: Omit<TCollapsibleProps, 'children'>) => (
   <Collapsible {...props}>
@@ -31,7 +31,7 @@ describe('when component is uncontrolled', () => {
   it('should be possible to toggle the open state', () => {
     render(<TestComponent />);
     expect(screen.getByTestId('openState')).toHaveTextContent('open');
-    screen.getByTestId('toggle').click();
+    fireEvent.click(screen.getByTestId('toggle'));
     expect(screen.getByTestId('openState')).toHaveTextContent('closed');
   });
 
@@ -54,7 +54,7 @@ describe('when component is controlled', () => {
       <TestComponent isClosed={false} onToggle={onToggle} />
     );
     expect(screen.getByTestId('openState')).toHaveTextContent('open');
-    screen.getByTestId('toggle').click();
+    fireEvent.click(screen.getByTestId('toggle'));
     expect(onToggle).toHaveBeenCalledTimes(1);
     // simulate the parent react to onToggle by changing the isClosed state
     // to true

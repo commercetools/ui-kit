@@ -32,13 +32,12 @@
     "@commercetools-uikit/utils": "19.26.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "prop-types": "15.8.1",
-    "react-intl": "^6.3.2"
+    "react-intl": "^7.1.4"
   },
   "devDependencies": {
-    "react": "17.0.2"
+    "react": "19.0.0"
   },
   "peerDependencies": {
-    "react": "17.x"
+    "react": "19.x"
   }
 }

@@ -82,22 +82,22 @@ it('should have focus automatically when isAutofocussed is passed', () => {
   expect(getByLabelText('EN')).toHaveFocus();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderLocalizedTextInput({ onFocus });
   const input = getByLabelText('EN');
-  input.focus();
+  await fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
   const { getByLabelText } = renderLocalizedTextInput({ onBlur });
   const input = getByLabelText('EN');
-  input.focus();
+  await fireEvent.asyncFocus(input);
   expect(input).toHaveFocus();
-  input.blur();
+  await fireEvent.asyncBlur(input);
   expect(input).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
@@ -118,7 +118,7 @@ describe('when input is not expanded', () => {
 describe('when input is expanded', () => {
   it('should expand and show all language inputs when `Show all languages` is clicked', () => {
     const { getByLabelText } = renderLocalizedTextInput();
-    getByLabelText(/show all languages/i).click();
+    fireEvent.click(getByLabelText(/show all languages/i));
     expect(getByLabelText('FR')).toBeInTheDocument();
   });
   describe('should display all additional field data', () => {
@@ -129,7 +129,7 @@ describe('when input is expanded', () => {
           fr: 'une description',
         },
       });
-      getByLabelText(/show all languages/i).click();
+      fireEvent.click(getByLabelText(/show all languages/i));
       expect(getByText('cool description')).toBeInTheDocument();
       expect(getByText('une description')).toBeInTheDocument();
     });
@@ -140,7 +140,7 @@ describe('when input is expanded', () => {
           fr: { id: 'i18fr', defaultMessage: 'french i18n message' },
         },
       });
-      getByLabelText(/show all languages/i).click();
+      fireEvent.click(getByLabelText(/show all languages/i));
       expect(getByText('english i18n message')).toBeInTheDocument();
       expect(getByText('french i18n message')).toBeInTheDocument();
     });
@@ -151,14 +151,14 @@ describe('when input is expanded', () => {
           fr: <span>french span element</span>,
         },
       });
-      getByLabelText(/show all languages/i).click();
+      fireEvent.click(getByLabelText(/show all languages/i));
       expect(getByText('english span element')).toBeInTheDocument();
       expect(getByText('french span element')).toBeInTheDocument();
     });
   });
   it('should allow changing the french input', () => {
     const { getByLabelText } = renderLocalizedTextInput();
-    getByLabelText(/show all languages/i).click();
+    fireEvent.click(getByLabelText(/show all languages/i));
     const event = { target: { value: 'Je veux manger du poulet' } };
     const frenchInput = getByLabelText('FR');
     fireEvent.focus(frenchInput);
@@ -205,7 +205,7 @@ describe('when disabled', () => {
       const { getByLabelText } = renderLocalizedTextInput({
         isDisabled: true,
       });
-      getByLabelText(/show all languages/i).click();
+      fireEvent.click(getByLabelText(/show all languages/i));
       expect(getByLabelText('EN')).toBeDisabled();
       expect(getByLabelText('FR')).toBeDisabled();
     });
@@ -227,7 +227,7 @@ describe('when read-only', () => {
       const { getByLabelText } = renderLocalizedTextInput({
         isReadOnly: true,
       });
-      getByLabelText(/show all languages/i).click();
+      fireEvent.click(getByLabelText(/show all languages/i));
       expect(getByLabelText('EN')).toHaveAttribute('readonly');
       expect(getByLabelText('FR')).toHaveAttribute('readonly');
     });

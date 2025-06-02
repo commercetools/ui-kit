@@ -24,11 +24,11 @@ npm --save install @commercetools-uikit/filters
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+yarn add react react-dom
 ```
 
 ```
-npm --save install react
+npm --save install react react-dom
 ```
 
 ## Usage

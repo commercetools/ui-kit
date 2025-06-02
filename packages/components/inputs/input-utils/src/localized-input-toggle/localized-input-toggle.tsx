@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import type { MessageDescriptor } from 'react-intl';
+import type { Props as IntlMessage } from 'react-intl/src/components/message';
 import { MouseEvent, KeyboardEvent, ReactElement } from 'react';
 import { useIntl } from 'react-intl';
 import FlatButton from '@commercetools-uikit/flat-button';
@@ -16,8 +16,8 @@ export type TLocalizedInputToggleProps = {
       | boolean
   ) => void;
   isDisabled?: boolean;
-  showMessage?: string | MessageDescriptor;
-  hideMessage?: string | MessageDescriptor;
+  showMessage?: string | IntlMessage;
+  hideMessage?: string | IntlMessage;
   remainingLocalizations?: number;
 };
 

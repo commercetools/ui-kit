@@ -29,7 +29,7 @@ type TComponents = {
 export type TOptionProps = {
   // Direct props
   value: string | boolean;
-  children: string | ReactElement | (() => ReactElement);
+  children: ReactNode;
   components?: TComponents;
   additionalContent?: ReactNode;
   // Injected props from the parent Group component

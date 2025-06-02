@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { warning } from '@commercetools-uikit/utils';
-import { useIntl, type MessageDescriptor } from 'react-intl';
+import { useIntl, type IntlFormatters } from 'react-intl';
 import styled from '@emotion/styled';
 import { ColumnsIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
@@ -56,7 +56,7 @@ export const getDropdownOptions = ({
   customSettings?: TCustomSettingsProps[];
   columnManagerLabel?: string;
   displaySettingsLabel?: string;
-  formatMessage: (message: MessageDescriptor) => string;
+  formatMessage: IntlFormatters<ReactNode>['formatMessage'];
 }) => {
   return [
     ...(areColumnSettingsEnabled !== undefined

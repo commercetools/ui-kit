@@ -250,7 +250,7 @@ BasicExample.args = {
       renderItem: ({ phone }) => {
         return <a href={`tel: ${phone}`}>{phone}</a>;
       },
-      headerIcon: () => (
+      headerIcon: (
         <IconButton
           icon={<InformationIcon />}
           label="Custom Column Information"

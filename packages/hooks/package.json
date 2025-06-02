@@ -30,12 +30,13 @@
     "raf-schd": "^4.0.3"
   },
   "devDependencies": {
-    "@testing-library/react": "12.1.5",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "peerDependencies": {
-    "react": "17.x",
-    "react-dom": "17.x"
+    "react": "19.x",
+    "react-dom": "19.x"
   }
 }

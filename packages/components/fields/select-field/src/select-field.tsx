@@ -14,7 +14,7 @@ import {
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
-import FieldLabel from '@commercetools-uikit/field-label';
+import FieldLabel, { type TIconProps } from '@commercetools-uikit/field-label';
 import SelectInput from '@commercetools-uikit/select-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import type { Props as ReactSelectProps } from 'react-select';
@@ -282,7 +282,7 @@ export type TSelectFieldProps = {
   /**
    * Icon to be displayed beside the hint text. Will only get rendered when hint is passed as well.
    */
-  hintIcon?: ReactElement;
+  hintIcon?: ReactElement<TIconProps>;
   /**
    * Badge to be displayed beside the label. Might be used to display additional information about the content of the field (E.g verified email)
    */
