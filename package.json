@@ -100,7 +100,7 @@
     "@babel/core": "7.27.1",
     "@changesets/changelog-github": "0.5.1",
     "@changesets/cli": "2.29.3",
-    "@commercetools-frontend/babel-preset-mc-app": "22.42.1",
+    "@commercetools-frontend/babel-preset-mc-app": "23.4.0",
     "@commercetools-frontend/eslint-config-mc-app": "22.42.1",
     "@commercetools-local/generator-package-json": "*",
     "@commercetools-local/generator-readme": "*",
