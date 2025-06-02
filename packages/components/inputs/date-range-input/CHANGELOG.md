@@ -1,5 +1,30 @@
 # @commercetools-uikit/date-range-input
 
+## 20.0.0
+
+### Major Changes
+
+- [#3034](https://github.com/commercetools/ui-kit/pull/3034) [`131fa5f`](https://github.com/commercetools/ui-kit/commit/131fa5fee2792bc817fcf043b6e5c3f5ff4f1221) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Upgrade UI Kit to React 19.
+
+  From this version onwards, this is the minimum version an application using this library should be using.
+
+### Patch Changes
+
+- Updated dependencies [[`131fa5f`](https://github.com/commercetools/ui-kit/commit/131fa5fee2792bc817fcf043b6e5c3f5ff4f1221)]:
+  - @commercetools-uikit/secondary-icon-button@20.0.0
+  - @commercetools-uikit/accessible-button@20.0.0
+  - @commercetools-uikit/spacings-inline@20.0.0
+  - @commercetools-uikit/select-utils@20.0.0
+  - @commercetools-uikit/constraints@20.0.0
+  - @commercetools-uikit/tooltip@20.0.0
+  - @commercetools-uikit/icons@20.0.0
+  - @commercetools-uikit/text@20.0.0
+  - @commercetools-uikit/calendar-utils@20.0.0
+  - @commercetools-uikit/hooks@20.0.0
+  - @commercetools-uikit/utils@20.0.0
+  - @commercetools-uikit/design-system@20.0.0
+  - @commercetools-uikit/calendar-time-utils@20.0.0
+
 ## 19.26.0
 
 ### Patch Changes

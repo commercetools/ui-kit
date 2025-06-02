@@ -1,5 +1,41 @@
 # @commercetools-uikit/inputs
 
+## 20.0.0
+
+### Major Changes
+
+- [#3034](https://github.com/commercetools/ui-kit/pull/3034) [`131fa5f`](https://github.com/commercetools/ui-kit/commit/131fa5fee2792bc817fcf043b6e5c3f5ff4f1221) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Upgrade UI Kit to React 19.
+
+  From this version onwards, this is the minimum version an application using this library should be using.
+
+### Patch Changes
+
+- Updated dependencies [[`131fa5f`](https://github.com/commercetools/ui-kit/commit/131fa5fee2792bc817fcf043b6e5c3f5ff4f1221)]:
+  - @commercetools-uikit/localized-multiline-text-input@20.0.0
+  - @commercetools-uikit/async-creatable-select-input@20.0.0
+  - @commercetools-uikit/localized-rich-text-input@20.0.0
+  - @commercetools-uikit/selectable-search-input@20.0.0
+  - @commercetools-uikit/creatable-select-input@20.0.0
+  - @commercetools-uikit/localized-money-input@20.0.0
+  - @commercetools-uikit/localized-text-input@20.0.0
+  - @commercetools-uikit/multiline-text-input@20.0.0
+  - @commercetools-uikit/search-select-input@20.0.0
+  - @commercetools-uikit/async-select-input@20.0.0
+  - @commercetools-uikit/search-text-input@20.0.0
+  - @commercetools-uikit/date-range-input@20.0.0
+  - @commercetools-uikit/date-time-input@20.0.0
+  - @commercetools-uikit/rich-text-input@20.0.0
+  - @commercetools-uikit/checkbox-input@20.0.0
+  - @commercetools-uikit/password-input@20.0.0
+  - @commercetools-uikit/number-input@20.0.0
+  - @commercetools-uikit/select-input@20.0.0
+  - @commercetools-uikit/toggle-input@20.0.0
+  - @commercetools-uikit/money-input@20.0.0
+  - @commercetools-uikit/radio-input@20.0.0
+  - @commercetools-uikit/date-input@20.0.0
+  - @commercetools-uikit/text-input@20.0.0
+  - @commercetools-uikit/time-input@20.0.0
+
 ## 19.26.0
 
 ### Patch Changes

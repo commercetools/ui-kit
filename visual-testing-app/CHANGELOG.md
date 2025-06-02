@@ -1,5 +1,18 @@
 # visual-testing-app
 
+## 13.0.0
+
+### Major Changes
+
+- [#3034](https://github.com/commercetools/ui-kit/pull/3034) [`131fa5f`](https://github.com/commercetools/ui-kit/commit/131fa5fee2792bc817fcf043b6e5c3f5ff4f1221) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Upgrade UI Kit to React 19.
+
+  From this version onwards, this is the minimum version an application using this library should be using.
+
+### Patch Changes
+
+- Updated dependencies [[`131fa5f`](https://github.com/commercetools/ui-kit/commit/131fa5fee2792bc817fcf043b6e5c3f5ff4f1221)]:
+  - @commercetools-uikit/design-system@20.0.0
+
 ## 12.4.36
 
 ### Patch Changes
