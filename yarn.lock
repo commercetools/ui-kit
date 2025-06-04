@@ -191,7 +191,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-imports@npm:^7.0.0-beta.49, @babel/helper-module-imports@npm:^7.10.4, @babel/helper-module-imports@npm:^7.12.5, @babel/helper-module-imports@npm:^7.16.7, @babel/helper-module-imports@npm:^7.27.1":
+"@babel/helper-module-imports@npm:^7.0.0-beta.49, @babel/helper-module-imports@npm:^7.10.4, @babel/helper-module-imports@npm:^7.15.4, @babel/helper-module-imports@npm:^7.16.7, @babel/helper-module-imports@npm:^7.27.1":
   version: 7.27.1
   resolution: "@babel/helper-module-imports@npm:7.27.1"
   dependencies:
@@ -627,7 +627,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-typescript@npm:^7.12.1, @babel/plugin-syntax-typescript@npm:^7.27.1, @babel/plugin-syntax-typescript@npm:^7.7.2":
+"@babel/plugin-syntax-typescript@npm:^7.14.5, @babel/plugin-syntax-typescript@npm:^7.27.1, @babel/plugin-syntax-typescript@npm:^7.7.2":
   version: 7.27.1
   resolution: "@babel/plugin-syntax-typescript@npm:7.27.1"
   dependencies:
@@ -1504,13 +1504,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.0.0, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.12.6, @babel/types@npm:^7.12.7, @babel/types@npm:^7.18.9, @babel/types@npm:^7.2.0, @babel/types@npm:^7.20.7, @babel/types@npm:^7.21.3, @babel/types@npm:^7.26.10, @babel/types@npm:^7.27.1, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.4":
+"@babel/types@npm:^7.0.0, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.12.7, @babel/types@npm:^7.18.9, @babel/types@npm:^7.2.0, @babel/types@npm:^7.20.7, @babel/types@npm:^7.21.3, @babel/types@npm:^7.26.10, @babel/types@npm:^7.27.1, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.4":
   version: 7.27.1
   resolution: "@babel/types@npm:7.27.1"
   dependencies:
     "@babel/helper-string-parser": ^7.27.1
     "@babel/helper-validator-identifier": ^7.27.1
   checksum: 357c13f37aaa2f2e2cfcdb63f986d5f7abc9f38df20182b620ace34387d2460620415770fe5856eb54d70c9f0ba2f71230d29465e789188635a948476b830ae4
+  languageName: node
+  linkType: hard
+
+"@babel/types@npm:^7.15.6":
+  version: 7.27.3
+  resolution: "@babel/types@npm:7.27.3"
+  dependencies:
+    "@babel/helper-string-parser": ^7.27.1
+    "@babel/helper-validator-identifier": ^7.27.1
+  checksum: f0d43c0231f3ebc118480e149292dcd92ea128e2650285ced99ff2e5610db2171305f59aa07406ba0cb36af8e4331a53a69576d6b0c3f3176144dd3ad514b9ae
   languageName: node
   linkType: hard
 
@@ -9555,18 +9565,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-typescript-to-proptypes@npm:1.4.2":
-  version: 1.4.2
-  resolution: "babel-plugin-typescript-to-proptypes@npm:1.4.2"
+"babel-plugin-typescript-to-proptypes@npm:2.1.0":
+  version: 2.1.0
+  resolution: "babel-plugin-typescript-to-proptypes@npm:2.1.0"
   dependencies:
-    "@babel/helper-module-imports": ^7.12.5
-    "@babel/helper-plugin-utils": ^7.10.4
-    "@babel/plugin-syntax-typescript": ^7.12.1
-    "@babel/types": ^7.12.6
+    "@babel/helper-module-imports": ^7.15.4
+    "@babel/plugin-syntax-typescript": ^7.14.5
+    "@babel/types": ^7.15.6
   peerDependencies:
     "@babel/core": ^7.0.0
-    typescript: ^3.0.0 || ^4.0.0
-  checksum: 00a9e3f44c98a9f22b8201d7a24d82928ae6e39aec208f8101d8f3d9d5ea8b5ec420b7ae45558d8c1b6f554031305731973b1731d6a61e2a769a2d39827ae23a
+    typescript: ^4.0.0 || ^5.0.0
+  checksum: a616db818d2015c25e10e6d299eade4dffff019770ee62935e03c154507388afe87749c45f4ed55c93beacc8ca961d75cd3cd866df4fa7b003690da18cd15a4f
   languageName: node
   linkType: hard
 
@@ -22395,7 +22404,7 @@ __metadata:
     "@typescript-eslint/parser": 8.32.0
     babel-jest: 29.7.0
     babel-loader: 10.0.0
-    babel-plugin-typescript-to-proptypes: 1.4.2
+    babel-plugin-typescript-to-proptypes: 2.1.0
     browserslist: 4.24.5
     bundlesize: 0.18.2
     colors: 1.4.0
