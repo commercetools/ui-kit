@@ -35,7 +35,7 @@
     "@commercetools-uikit/utils": "20.0.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "downshift": "9.0.8",
+    "downshift": "9.0.9",
     "immutable": "4.3.7",
     "is-hotkey": "0.2.0",
     "lodash": "4.17.21",
@@ -44,8 +44,8 @@
     "slate-react": "0.75.0"
   },
   "devDependencies": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-intl": "^7.1.4"
   },
   "peerDependencies": {

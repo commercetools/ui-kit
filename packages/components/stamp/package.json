@@ -28,7 +28,7 @@
     "@emotion/react": "^11.10.5"
   },
   "devDependencies": {
-    "react": "19.0.0"
+    "react": "19.1.0"
   },
   "peerDependencies": {
     "react": "19.x"
