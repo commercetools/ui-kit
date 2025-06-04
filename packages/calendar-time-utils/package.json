@@ -24,9 +24,9 @@
     "@commercetools-uikit/utils": "20.0.0"
   },
   "devDependencies": {
-    "moment-timezone": "0.5.48"
+    "moment-timezone": "0.6.0"
   },
   "peerDependencies": {
-    "moment-timezone": "0.5.x"
+    "moment-timezone": "0.6.x"
   }
 }

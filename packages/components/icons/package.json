@@ -44,11 +44,11 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@types/dompurify": "^2.4.0",
-    "dompurify": "3.2.5",
+    "dompurify": "3.2.6",
     "react-from-dom": "0.7.3"
   },
   "devDependencies": {
-    "react": "19.0.0"
+    "react": "19.1.0"
   },
   "peerDependencies": {
     "react": "19.x"

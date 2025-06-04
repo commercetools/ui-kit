@@ -28,7 +28,7 @@
     "warning": "4.0.3"
   },
   "devDependencies": {
-    "react": "19.0.0",
+    "react": "19.1.0",
     "react-intl": "^7.1.4"
   },
   "peerDependencies": {

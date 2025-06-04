@@ -33,7 +33,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@types/escape-html": "1.0.4",
-    "downshift": "9.0.8",
+    "downshift": "9.0.9",
     "escape-html": "1.0.3",
     "is-hotkey": "0.2.0",
     "is-url": "^1.2.4",
@@ -45,8 +45,8 @@
     "style-to-object": "0.4.4"
   },
   "devDependencies": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-intl": "^7.1.4"
   },
   "peerDependencies": {
