@@ -11,6 +11,9 @@ on:
   merge_group:
     types: [checks_requested]
 
+permissions:
+  contents: read
+
 jobs:
   check_labels:
     if: github.event_name == 'pull_request'
