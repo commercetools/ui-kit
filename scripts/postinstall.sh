@@ -7,7 +7,7 @@ if [ -n "$SKIP_POSTINSTALL_DEV_SETUP" ]; then
 
 else
   echo "Preparing development setup."
-  yarn husky install
+  yarn husky
   yarn manypkg check
   yarn preconstruct dev
 

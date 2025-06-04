@@ -38,7 +38,8 @@
     "visual-testing-app:build": "yarn workspace visual-testing-app build",
     "visual-testing-app:preview": "yarn workspace visual-testing-app preview",
     "typecheck": "tsc --noEmit --skipLibCheck",
-    "omlet:scan": "yarn omlet analyze --hook-script ./scripts/omlet-hook-script.js"
+    "omlet:scan": "yarn omlet analyze --hook-script ./scripts/omlet-hook-script.js",
+    "prepare": "husky"
   },
   "workspaces": [
     "design-system",
