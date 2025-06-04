@@ -1,4 +1,1 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 yarn generate-package-json --all-workspace-packages && yarn lint-staged
