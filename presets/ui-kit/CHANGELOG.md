@@ -1,5 +1,52 @@
 # @commercetools-frontend/ui-kit
 
+## 20.0.1
+
+### Patch Changes
+
+- [#3096](https://github.com/commercetools/ui-kit/pull/3096) [`9b381db`](https://github.com/commercetools/ui-kit/commit/9b381dbbd59cd20afa2330ef4013ccddf1bb27a3) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies to most recent minor versions, see https://github.com/commercetools/ui-kit/pull/3096
+
+- Updated dependencies [[`9b381db`](https://github.com/commercetools/ui-kit/commit/9b381dbbd59cd20afa2330ef4013ccddf1bb27a3)]:
+  - @commercetools-uikit/selectable-search-input@20.0.1
+  - @commercetools-uikit/dropdown-menu@20.0.1
+  - @commercetools-uikit/primary-action-dropdown@20.0.1
+  - @commercetools-uikit/select-utils@20.0.1
+  - @commercetools-uikit/collapsible-motion@20.0.1
+  - @commercetools-uikit/data-table-manager@20.0.1
+  - @commercetools-uikit/accessible-hidden@20.0.1
+  - @commercetools-uikit/collapsible-panel@20.0.1
+  - @commercetools-uikit/loading-spinner@20.0.1
+  - @commercetools-uikit/notifications@20.0.1
+  - @commercetools-uikit/quick-filters@20.0.1
+  - @commercetools-uikit/view-switcher@20.0.1
+  - @commercetools-uikit/field-errors@20.0.1
+  - @commercetools-uikit/progress-bar@20.0.1
+  - @commercetools-uikit/collapsible@20.0.1
+  - @commercetools-uikit/constraints@20.0.1
+  - @commercetools-uikit/field-label@20.0.1
+  - @commercetools-uikit/data-table@20.0.1
+  - @commercetools-uikit/pagination@20.0.1
+  - @commercetools-uikit/messages@20.0.1
+  - @commercetools-uikit/filters@20.0.1
+  - @commercetools-uikit/tooltip@20.0.1
+  - @commercetools-uikit/avatar@20.0.1
+  - @commercetools-uikit/icons@20.0.1
+  - @commercetools-uikit/label@20.0.1
+  - @commercetools-uikit/stamp@20.0.1
+  - @commercetools-uikit/card@20.0.1
+  - @commercetools-uikit/grid@20.0.1
+  - @commercetools-uikit/link@20.0.1
+  - @commercetools-uikit/text@20.0.1
+  - @commercetools-uikit/tag@20.0.1
+  - @commercetools-uikit/spacings@20.0.1
+  - @commercetools-uikit/buttons@20.0.1
+  - @commercetools-uikit/hooks@20.0.1
+  - @commercetools-uikit/utils@20.0.1
+  - @commercetools-uikit/fields@20.0.1
+  - @commercetools-uikit/inputs@20.0.1
+  - @commercetools-uikit/design-system@20.0.1
+  - @commercetools-uikit/i18n@20.0.1
+
 ## 20.0.0
 
 ### Major Changes
