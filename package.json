@@ -146,7 +146,7 @@
     "formik": "^2.4.6",
     "glob": "11.0.2",
     "global": "4.4.0",
-    "husky": "8.0.3",
+    "husky": "9.1.7",
     "identity-obj-proxy": "3.0.0",
     "intl-pluralrules": "2.0.1",
     "is-url": "^1.2.4",
