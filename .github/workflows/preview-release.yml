@@ -58,12 +58,15 @@ jobs:
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
+      # NOTE: The following 'if' condition may trigger a linter warning about invalid context access, but it is safe at runtime.
+      # It ensures only trusted PRs (not forks) can write to the cache, and safely checks context existence to avoid errors.
       - uses: actions/cache@v4
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ github.ref }}-${{ hashFiles('**/yarn.lock', 'patches/*.patch') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+        if: github.event_name != 'pull_request' || (github.event.pull_request && github.event.pull_request.head && github.event.pull_request.head.repo.full_name == github.repository)
 
       - name: Install dependencies
         run: yarn install --immutable
