@@ -101,9 +101,6 @@ const getCalendarIconContainerStyles = (
 };
 
 const getInputBorderColor = (props: TCalendarBody, state: TState) => {
-  if (props.appearance === 'filter') {
-    return designTokens.colorTransparent;
-  }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
