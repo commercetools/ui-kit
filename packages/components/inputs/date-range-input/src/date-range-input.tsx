@@ -192,6 +192,11 @@ export type TDateRangeInputProps = {
    * Indicates the input field has warning
    */
   hasWarning?: boolean;
+  /**
+   * Indicates the appearance of the input.
+   * Filter appearance removes borders and box shadows, and calendar is always open.
+   */
+  appearance?: 'default' | 'filter';
 } & WrappedComponentProps;
 
 type TDateRangeInputState = {
@@ -285,6 +290,8 @@ class DateRangeInput extends Component<
     });
   };
   render() {
+    const appearance = this.props.appearance || 'default';
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Downshift
@@ -445,6 +452,7 @@ class DateRangeInput extends Component<
               <div onFocus={this.props.onFocus} onBlur={this.handleBlur}>
                 <CalendarBody
                   inputRef={this.inputRef}
+                  appearance={appearance}
                   inputProps={getInputProps({
                     /* ARIA */
                     'aria-invalid': this.props['aria-invalid'],
@@ -543,11 +551,15 @@ class DateRangeInput extends Component<
                   hasError={this.props.hasError}
                   hasWarning={this.props.hasWarning}
                 />
-                {isOpen && !this.props.isDisabled && (
+                {((isOpen && !this.props.isDisabled) ||
+                  (appearance === 'filter' &&
+                    !this.props.isDisabled &&
+                    !this.props.isReadOnly)) && (
                   <CalendarMenu
                     {...getMenuProps()}
                     hasError={this.props.hasError}
                     hasWarning={this.props.hasWarning}
+                    appearance={appearance}
                   >
                     <CalendarHeader
                       monthLabel={getMonthCalendarLabel(

@@ -77,6 +77,11 @@ export type TCalendarBody = {
   placeholder?: string;
   /** @deprecated */
   theme?: Theme;
+  /**
+   * Indicates the appearance of the input.
+   * Filter appearance removes borders and box shadows for use in filter components.
+   */
+  appearance?: 'default' | 'filter';
 };
 
 export const CalendarBody = ({

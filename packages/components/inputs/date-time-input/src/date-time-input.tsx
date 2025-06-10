@@ -180,9 +180,14 @@ export type TDateTimeInputProps = {
   hasWarning?: boolean;
   /**
    * The time that will be used by default when a user selects a calendar day.
-   * It must follow the “HH:mm” pattern (eg: 04:30, 13:25, 23:59)
+   * It must follow the "HH:mm" pattern (eg: 04:30, 13:25, 23:59)
    */
   defaultDaySelectionTime?: string;
+  /**
+   * Indicates the appearance of the input.
+   * Filter appearance removes borders and box shadows, and calendar is always open.
+   */
+  appearance?: 'default' | 'filter';
 } & WrappedComponentProps;
 
 type TDateTimeInputState = {
@@ -280,6 +285,8 @@ class DateTimeInput extends Component<
         'DateTimeInput: `onChange` is required when input is not read only.'
       );
     }
+
+    const appearance = this.props.appearance || 'default';
 
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
@@ -417,6 +424,7 @@ class DateTimeInput extends Component<
               <div onFocus={this.props.onFocus} onBlur={this.handleBlur}>
                 <CalendarBody
                   inputRef={this.inputRef}
+                  appearance={appearance}
                   inputProps={getInputProps({
                     /* ARIA */
                     'aria-invalid': this.props['aria-invalid'],
@@ -567,12 +575,14 @@ class DateTimeInput extends Component<
                   hasError={this.props.hasError}
                   hasWarning={this.props.hasWarning}
                 />
-                {isOpen && !this.props.isDisabled && (
+                {((isOpen && !this.props.isDisabled) ||
+                  (appearance === 'filter' && !this.props.isDisabled)) && (
                   <CalendarMenu
                     {...getMenuProps()}
                     hasFooter={true}
                     hasError={this.props.hasError}
                     hasWarning={this.props.hasWarning}
+                    appearance={appearance}
                   >
                     <CalendarHeader
                       monthLabel={getMonthCalendarLabel(

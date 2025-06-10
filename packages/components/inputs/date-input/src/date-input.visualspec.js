@@ -33,4 +33,9 @@ describe('DateInput', () => {
     await input.type('2017');
     await queries.findByText(doc, '2017');
   });
+  it('Filter Appearance', async () => {
+    await page.goto(`${globalThis.HOST}/date-input--filter-appearance`);
+    await page.waitForSelector('text/November');
+    await percySnapshot(page, 'DateInput - Filter Appearance');
+  });
 });

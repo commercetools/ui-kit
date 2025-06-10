@@ -17,6 +17,10 @@ const meta: Meta<typeof DateTimeInputWrapper> = {
         'Europe/Amsterdam',
       ],
     },
+    appearance: {
+      control: { type: 'select' },
+      options: ['default', 'filter'],
+    },
   },
 };
 export default meta;
@@ -40,4 +44,25 @@ export const BasicExample: Story = (args: TDateTimeInputProps) => {
 BasicExample.args = {
   timeZone: 'UTC',
   horizontalConstraint: 8,
+  appearance: 'default',
+};
+
+export const FilterAppearance: Story = (args: TDateTimeInputProps) => {
+  const [value, setValue] = useState<string>('');
+
+  return (
+    <div style={{ height: 400 }}>
+      <DateTimeInputWrapper
+        {...args}
+        onChange={(e) => setValue(e.target.value || '')}
+        value={value}
+      />
+    </div>
+  );
+};
+
+FilterAppearance.args = {
+  timeZone: 'UTC',
+  horizontalConstraint: 8,
+  appearance: 'filter',
 };
