@@ -13,9 +13,4 @@ describe('DateTimeInput', () => {
     // TODO: uncomment when issue with Percy is resolved
     // await percySnapshot(page, 'DateTimeInput - open');
   });
-  it('Filter Appearance', async () => {
-    await page.goto(`${globalThis.HOST}/date-time-input--filter-appearance`);
-    await page.waitForSelector('text/November');
-    await percySnapshot(page, 'DateTimeInput - Filter Appearance');
-  });
 });

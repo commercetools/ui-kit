@@ -122,5 +122,15 @@ export const component = () => (
         placeholder="Select something"
       />
     </Spec>
+    <Spec label="with filter appearance">
+      <DateInput
+        value=""
+        onChange={() => {}}
+        isCondensed={true}
+        horizontalConstraint={7}
+        placeholder="Select something"
+        appearance="filter"
+      />
+    </Spec>
   </Suite>
 );

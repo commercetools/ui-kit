@@ -140,5 +140,15 @@ export const component = () => (
         horizontalConstraint={7}
       />
     </Spec>
+    <Spec label="with filter appearance">
+      <DateTimeInput
+        value={value}
+        timeZone="UTC"
+        isCondensed={true}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        appearance="filter"
+      />
+    </Spec>
   </Suite>
 );
