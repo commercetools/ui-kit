@@ -168,6 +168,7 @@ export const wrapStyles = () => css`
   ${getBaseStyles()}
   font-size: 1rem;
   white-space: pre-wrap;
+  overflow-wrap: break-word;
 `;
 
 export const detailStyles = (props: TDetailProps) => css`
