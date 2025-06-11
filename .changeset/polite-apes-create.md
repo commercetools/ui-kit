@@ -26,4 +26,3 @@ This follows the same design pattern established in select input components and 
 <DateTimeInput appearance="filter" value="2024-01-15T10:30:00Z" />
 <DateRangeInput appearance="filter" value={['2024-01-15', '2024-01-20']} />
 ```
-```

@@ -634,15 +634,13 @@ export const DateFiltersExample: Story = () => {
         Advanced Date Filters with Operators
       </h3>
       <p style={{ marginBottom: '16px', color: '#666' }}>
-        This example demonstrates advanced date filter functionality including:
+        This example demonstrates date filter functionality including:
         <br />
         • Configurable operators (is, is not, is between, is before, is after)
         <br />
         • Dynamic component switching (DateInput ↔ DateRangeInput based on
         operator)
         <br />
-        • Apply button requirement for date filters
-        <br />• Clean filter appearance without calendar icons and clear buttons
       </p>
       <Filters
         renderSearchComponent={<SearchInputComponent />}
