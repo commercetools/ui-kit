@@ -1,6 +1,7 @@
 export const FILTER_GROUP_KEYS = {
   primaryColors: 'primaryColors',
   secondaryColors: 'secondaryColors',
+  dateFilters: 'dateFilters',
 };
 
 export const FILTER_GROUPS = [
@@ -8,6 +9,10 @@ export const FILTER_GROUPS = [
   {
     key: FILTER_GROUP_KEYS.secondaryColors,
     label: <div>Secondary Colors</div>,
+  },
+  {
+    key: FILTER_GROUP_KEYS.dateFilters,
+    label: <div>Date Filters</div>,
   },
 ];
 
@@ -46,4 +51,12 @@ export const FRUIT_OPTIONS = [
 export const OPERATOR_OPTIONS = [
   { value: 'is', label: 'is' },
   { value: 'is not', label: 'is not' },
+];
+
+export const DATE_OPERATOR_OPTIONS = [
+  { value: 'is', label: 'is' },
+  { value: 'is not', label: 'is not' },
+  { value: 'is between', label: 'is between' },
+  { value: 'is before', label: 'is before' },
+  { value: 'is after', label: 'is after' },
 ];
