@@ -28,11 +28,17 @@ body:
       description: Please provide the operating system (e.g., Windows 10, macOS Ventura, Ubuntu 22.04) and browser version (e.g., Chrome 116.0, Firefox 117.0) where the issue can be reproduced.
     validations:
       required: true
-  - type: input
+  - type: dropdown
     id: priority
     attributes:
       label: Priority
-      description: How important is this to you?
+      description: How important is this bug?
+      multiple: true
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
     validations:
       required: true
   - type: textarea
