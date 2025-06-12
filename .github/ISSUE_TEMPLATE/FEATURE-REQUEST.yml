@@ -44,7 +44,7 @@ body:
   attributes:
     label: Champion
     description: Who will be the primary contact for this request?
-    placeholder: ex. email@example.com
+    placeholder: ex. name/team
   validations:
     required: false
 - type: textarea
