@@ -633,7 +633,13 @@ export const DateFiltersExample: Story = () => {
       <h3 style={{ marginBottom: '16px' }}>
         Advanced Date Filters with Operators
       </h3>
-      <p style={{ marginBottom: '16px', color: '#666' }}>
+      <p
+        style={{
+          marginBottom: '32px',
+          color: '#808080',
+          lineHeight: '1.5',
+        }}
+      >
         This example demonstrates date filter functionality including:
         <br />
         • Configurable operators (is, is not, is between, is before, is after)

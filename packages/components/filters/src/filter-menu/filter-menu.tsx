@@ -100,7 +100,7 @@ export const menuStyles = css`
   flex-direction: column;
   align-items: flex-start;
   gap: ${designTokens.spacing30};
-  width: ${designTokens.constraint6};
+  width: ${designTokens.constraint7};
   max-height: ${designTokens.constraint10};
   padding: ${designTokens.spacing20} ${designTokens.spacing30};
   background-color: ${designTokens.colorSurface};
