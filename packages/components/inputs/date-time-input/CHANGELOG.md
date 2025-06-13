@@ -1,5 +1,52 @@
 # @commercetools-uikit/date-time-input
 
+## 20.1.0
+
+### Minor Changes
+
+- [#3137](https://github.com/commercetools/ui-kit/pull/3137) [`825ffdc`](https://github.com/commercetools/ui-kit/commit/825ffdcac2b157d9dfc63b77706ee0fb53961ba9) Thanks [@ddouglasz](https://github.com/ddouglasz)! - feat: add `appearance` prop with 'filter' option to date input components
+
+  To use the date filters, there are some visual modifications that need to happen in the different date inputs to support the designs and ux of the filters pattern. Most of these changes are dependent on new props to set these options when the component is used in a filter component.
+
+  Add support for `appearance: 'filter'` to DateInput, DateTimeInput, and DateRangeInput components. When set to 'filter', the components:
+
+  - Remove borders and box shadows for a clean, inline appearance
+  - Keep the calendar always open (when not disabled or read-only)
+  - Maintain transparent backgrounds to blend seamlessly with filter UIs
+
+  This follows the same design pattern established in select input components and enables date inputs to be used effectively within filter components and search interfaces.
+
+  **New Props:**
+
+  - `appearance?: 'default' | 'filter'` - Controls the visual styling of the date input
+
+  **Examples:**
+
+  ```jsx
+  <DateInput appearance="filter" value="2024-01-15" />
+  <DateTimeInput appearance="filter" value="2024-01-15T10:30:00Z" />
+  <DateRangeInput appearance="filter" value={['2024-01-15', '2024-01-20']} />
+  ```
+
+### Patch Changes
+
+- [#3096](https://github.com/commercetools/ui-kit/pull/3096) [`9b381db`](https://github.com/commercetools/ui-kit/commit/9b381dbbd59cd20afa2330ef4013ccddf1bb27a3) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies to most recent minor versions, see https://github.com/commercetools/ui-kit/pull/3096
+
+- Updated dependencies [[`9b381db`](https://github.com/commercetools/ui-kit/commit/9b381dbbd59cd20afa2330ef4013ccddf1bb27a3), [`825ffdc`](https://github.com/commercetools/ui-kit/commit/825ffdcac2b157d9dfc63b77706ee0fb53961ba9)]:
+  - @commercetools-uikit/secondary-icon-button@20.1.0
+  - @commercetools-uikit/accessible-button@20.1.0
+  - @commercetools-uikit/spacings-inline@20.1.0
+  - @commercetools-uikit/select-utils@20.1.0
+  - @commercetools-uikit/constraints@20.1.0
+  - @commercetools-uikit/calendar-time-utils@20.1.0
+  - @commercetools-uikit/tooltip@20.1.0
+  - @commercetools-uikit/icons@20.1.0
+  - @commercetools-uikit/text@20.1.0
+  - @commercetools-uikit/calendar-utils@20.1.0
+  - @commercetools-uikit/hooks@20.1.0
+  - @commercetools-uikit/utils@20.1.0
+  - @commercetools-uikit/design-system@20.1.0
+
 ## 20.0.0
 
 ### Major Changes
