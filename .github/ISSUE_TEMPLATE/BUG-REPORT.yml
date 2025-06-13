@@ -1,0 +1,70 @@
+name: Bug Report
+description: File a bug report.
+title: "[Bug]: <title>"
+labels: ["Type: Bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you submit, please search open/closed github issues and discussions since someone might have asked something similar before.
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: UI Kit Version Number
+      description: Please provide the version number you are using.
+    validations:
+      required: true
+  - type: input
+    id: browser-os
+    attributes:
+      label: Browser + OS
+      description: Please provide the operating system (e.g., Windows 10, macOS Ventura, Ubuntu 22.04) and browser version (e.g., Chrome 116.0, Firefox 117.0) where the issue can be reproduced.
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this bug?
+      multiple: true
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: To Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+
+        You can also fork https://codesandbox.io/s/commercetools-ui-kit-codesandbox-1vz7c to reproduce the bug.
+        Then provide the link of your fork so that we can understand the bug easily.
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.

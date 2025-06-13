@@ -1,0 +1,67 @@
+name: 🚀 Feature Request
+description: Request a new feature or enhancement for the project.
+title: "[FEATURE] <title>"
+labels: ["Type: New Feature", "Needs Triage"]
+body:
+- type: checkboxes
+  attributes:
+    label: Is there an existing issue for this?
+    description: Please search to see if an issue already exists for the feature you are requsting.
+    options:
+    - label: I have searched the existing issues.
+      required: true
+- type: textarea
+  attributes:
+    label: Is your feature request related to a problem? Please describe the problem.
+    description: A clear and concise description of what the problem is, with steps to reproduce if applicable.
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Briefly describe the solution you'd like.
+    description: A clear and concise description of what you want to happen.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Describe alternatives you've considered.
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Additional context
+    description: |
+      Add any other context or screenshots about the feature request here.
+
+      Tip: You can attach images or log files by clicking this area to highlight it and then dragging files in.
+  validations:
+    required: false
+- type: markdown
+  attributes:
+    value: |
+      For internal requests, please provide us with the following information:
+- type: input
+  attributes:
+    label: Champion
+    description: Who will be the primary contact for this request?
+    placeholder: ex. name/team
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Stakeholders
+    description: List individuals or teams who will be impacted or should be involved in the contribution process.
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Required components
+    description: Describe any dependencies this component or change has on other UI-Kit components. Include a description of how these components interact with one another (in code and/or design).
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Best practices
+    description: Provide a description of what best practices for this component or change would look like, in terms of UX guidelines and design.
+  validations:
+    required: false
