@@ -135,6 +135,11 @@ export type TDateInput = {
    * A maximum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
    */
   maxValue?: string;
+  /**
+   * Indicates the appearance of the input.
+   * Filter appearance removes borders and box shadows, and calendar is always open.
+   */
+  appearance?: 'default' | 'filter';
 };
 
 const DateInput = (props: TDateInput) => {
@@ -145,6 +150,7 @@ const DateInput = (props: TDateInput) => {
     number | null | undefined
   >(props.value === '' ? null : getDateInMonth(props.value) - 1);
   const inputRef = useRef<HTMLInputElement>(null);
+  const appearance = props.appearance || 'default';
 
   if (!props.isReadOnly) {
     warning(
@@ -277,6 +283,7 @@ const DateInput = (props: TDateInput) => {
             <div onFocus={props.onFocus} onBlur={handleBlur}>
               <CalendarBody
                 inputRef={inputRef}
+                appearance={appearance}
                 inputProps={getInputProps({
                   /* ARIA */
                   'aria-invalid': props['aria-invalid'],
@@ -376,11 +383,15 @@ const DateInput = (props: TDateInput) => {
                 hasError={props.hasError}
                 hasWarning={props.hasWarning}
               />
-              {isOpen && !props.isDisabled && !props.isReadOnly && (
+              {((isOpen && !props.isDisabled && !props.isReadOnly) ||
+                (appearance === 'filter' &&
+                  !props.isDisabled &&
+                  !props.isReadOnly)) && (
                 <CalendarMenu
                   {...getMenuProps()}
                   hasError={props.hasError}
                   hasWarning={props.hasWarning}
+                  appearance={appearance}
                 >
                   <CalendarHeader
                     monthLabel={getMonthCalendarLabel(

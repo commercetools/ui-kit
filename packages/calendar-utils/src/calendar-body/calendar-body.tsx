@@ -77,6 +77,11 @@ export type TCalendarBody = {
   placeholder?: string;
   /** @deprecated */
   theme?: Theme;
+  /**
+   * Indicates the appearance of the input.
+   * Filter appearance removes borders and box shadows for use in filter components.
+   */
+  appearance?: 'default' | 'filter';
 };
 
 export const CalendarBody = ({
@@ -151,42 +156,47 @@ export const CalendarBody = ({
           onBlur={handleInputBlur}
           aria-readonly={props.isReadOnly}
         />
-        {!disabledOrReadOnly && props.hasSelection && isClearable && (
-          <ClearSection
-            isCondensed={props.isCondensed}
-            hasError={props.hasError}
-            hasWarning={props.hasWarning}
-            isFocused={isFocused}
-            isOpen={props.isOpen}
-            onClear={props.onClear}
-          />
-        )}
-        <button
-          type="button"
-          css={getCalendarIconContainerStyles(
-            {
-              isClearable,
-              ...props,
-            },
-            { isFocused }
-          )}
-          {...props.toggleButtonProps}
-          onFocus={handleToggleFocus}
-          onBlur={handleToggleBlur}
-          disabled={disabledOrReadOnly}
-          onKeyDown={props.inputProps?.onKeyDown}
-          /* keyboard users don't need this button */
-          tabIndex={-1}
-        >
-          {props.icon === 'clock' ? (
-            <ClockIcon color="neutral60" />
-          ) : (
-            <CalendarIcon
-              color="neutral60"
-              size={props.isCondensed ? 'medium' : 'big'}
+        {!disabledOrReadOnly &&
+          props.hasSelection &&
+          isClearable &&
+          props.appearance !== 'filter' && (
+            <ClearSection
+              isCondensed={props.isCondensed}
+              hasError={props.hasError}
+              hasWarning={props.hasWarning}
+              isFocused={isFocused}
+              isOpen={props.isOpen}
+              onClear={props.onClear}
             />
           )}
-        </button>
+        {props.appearance !== 'filter' && (
+          <button
+            type="button"
+            css={getCalendarIconContainerStyles(
+              {
+                isClearable,
+                ...props,
+              },
+              { isFocused }
+            )}
+            {...props.toggleButtonProps}
+            onFocus={handleToggleFocus}
+            onBlur={handleToggleBlur}
+            disabled={disabledOrReadOnly}
+            onKeyDown={props.inputProps?.onKeyDown}
+            /* keyboard users don't need this button */
+            tabIndex={-1}
+          >
+            {props.icon === 'clock' ? (
+              <ClockIcon color="neutral60" />
+            ) : (
+              <CalendarIcon
+                color="neutral60"
+                size={props.isCondensed ? 'medium' : 'big'}
+              />
+            )}
+          </button>
+        )}
       </div>
     </Inline>
   );

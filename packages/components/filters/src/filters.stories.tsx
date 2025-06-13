@@ -11,6 +11,10 @@ import {
   PrimaryColorsRadioInput,
   PrimaryColorsTextInput,
   OperatorsInput,
+  DateRangeFilterInput,
+  DateFilterWithOperator,
+  DateTimeFilterWithOperator,
+  DateOperatorsInput,
 } from './fixtures/inputs';
 import {
   FILTER_GROUP_KEYS,
@@ -345,5 +349,313 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
       onClearAllRequest={clearAllFilters}
       defaultOpen={props.defaultOpen}
     />
+  );
+};
+
+export const DateFiltersExample: Story = () => {
+  // simulate state from parent application for each date filter
+  // Pending values (before apply)
+  const [pendingDateValue, setPendingDateValue] = useState<string | string[]>(
+    ''
+  );
+  const [pendingDateTimeValue, setPendingDateTimeValue] = useState<
+    string | string[]
+  >('');
+  const [pendingDateRangeValue, setPendingDateRangeValue] = useState<string[]>(
+    []
+  );
+
+  // Applied values (after clicking apply)
+  const [appliedDateValue, setAppliedDateValue] = useState<
+    TFiltersProps['appliedFilters']
+  >([]);
+  const [appliedDateTimeValue, setAppliedDateTimeValue] = useState<
+    TFiltersProps['appliedFilters']
+  >([]);
+  const [appliedDateRangeValue, setAppliedDateRangeValue] = useState<
+    TFiltersProps['appliedFilters']
+  >([]);
+
+  // Operators for each date filter
+  const [dateOperator, setDateOperator] = useState<string>('is');
+  const [dateTimeOperator, setDateTimeOperator] = useState<string>('is');
+  const [dateRangeOperator, setDateRangeOperator] =
+    useState<string>('is between');
+
+  // Helper function to get applied values for a filter
+  const getDateAppliedValue = (): TFiltersProps['appliedFilters'] => {
+    if (
+      dateOperator === 'is between' &&
+      Array.isArray(pendingDateValue) &&
+      pendingDateValue.length === 2
+    ) {
+      return [
+        {
+          filterKey: 'date',
+          values: [
+            {
+              value: pendingDateValue.join(' - '),
+              label: `${pendingDateValue[0]} - ${pendingDateValue[1]}`,
+            },
+          ],
+        },
+      ];
+    } else if (pendingDateValue && !Array.isArray(pendingDateValue)) {
+      return [
+        {
+          filterKey: 'date',
+          values: [
+            {
+              value: pendingDateValue,
+              label: pendingDateValue,
+            },
+          ],
+        },
+      ];
+    }
+    return [];
+  };
+
+  const getDateTimeAppliedValue = (): TFiltersProps['appliedFilters'] => {
+    if (
+      dateTimeOperator === 'is between' &&
+      Array.isArray(pendingDateTimeValue) &&
+      pendingDateTimeValue.length === 2
+    ) {
+      return [
+        {
+          filterKey: 'dateTime',
+          values: [
+            {
+              value: pendingDateTimeValue.join(' - '),
+              label: `${pendingDateTimeValue[0]} - ${pendingDateTimeValue[1]}`,
+            },
+          ],
+        },
+      ];
+    } else if (pendingDateTimeValue && !Array.isArray(pendingDateTimeValue)) {
+      return [
+        {
+          filterKey: 'dateTime',
+          values: [
+            {
+              value: pendingDateTimeValue,
+              label: new Date(pendingDateTimeValue).toLocaleString(),
+            },
+          ],
+        },
+      ];
+    }
+    return [];
+  };
+
+  const getDateRangeAppliedValue = (): TFiltersProps['appliedFilters'] => {
+    if (pendingDateRangeValue.length === 2) {
+      return [
+        {
+          filterKey: 'dateRange',
+          values: [
+            {
+              value: pendingDateRangeValue.join(' - '),
+              label: `${pendingDateRangeValue[0]} - ${pendingDateRangeValue[1]}`,
+            },
+          ],
+        },
+      ];
+    }
+    return [];
+  };
+
+  // Clear functions for pending values
+  const clearDateFilter = () => {
+    setPendingDateValue(dateOperator === 'is between' ? [] : '');
+    setAppliedDateValue([]);
+  };
+
+  const clearDateTimeFilter = () => {
+    setPendingDateTimeValue(dateTimeOperator === 'is between' ? [] : '');
+    setAppliedDateTimeValue([]);
+  };
+
+  const clearDateRangeFilter = () => {
+    setPendingDateRangeValue([]);
+    setAppliedDateRangeValue([]);
+  };
+
+  // Clear all filters
+  const clearAllFilters = () => {
+    clearDateFilter();
+    clearDateTimeFilter();
+    clearDateRangeFilter();
+  };
+
+  // Handle operator changes and reset values
+  const handleDateOperatorChange = (newOperator: string) => {
+    setDateOperator(newOperator);
+    setPendingDateValue(newOperator === 'is between' ? [] : '');
+    setAppliedDateValue([]);
+  };
+
+  const handleDateTimeOperatorChange = (newOperator: string) => {
+    setDateTimeOperator(newOperator);
+    setPendingDateTimeValue(newOperator === 'is between' ? [] : '');
+    setAppliedDateTimeValue([]);
+  };
+
+  // Check if apply button should be enabled
+  const isDateApplyEnabled = () => {
+    if (dateOperator === 'is between') {
+      return Array.isArray(pendingDateValue) && pendingDateValue.length === 2;
+    }
+    return pendingDateValue && !Array.isArray(pendingDateValue);
+  };
+
+  const isDateTimeApplyEnabled = () => {
+    if (dateTimeOperator === 'is between') {
+      return (
+        Array.isArray(pendingDateTimeValue) && pendingDateTimeValue.length === 2
+      );
+    }
+    return pendingDateTimeValue && !Array.isArray(pendingDateTimeValue);
+  };
+
+  const isDateRangeApplyEnabled = () => {
+    return pendingDateRangeValue.length === 2;
+  };
+
+  // generate 'appliedFilters' state based on applied values
+  const appliedFilters: TFiltersProps['appliedFilters'] = [
+    ...appliedDateValue,
+    ...appliedDateTimeValue,
+    ...appliedDateRangeValue,
+  ];
+
+  const filters = [
+    {
+      key: 'date',
+      label: 'Date',
+      operatorLabel: dateOperator,
+      groupKey: FILTER_GROUP_KEYS.dateFilters,
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <DateFilterWithOperator
+            value={pendingDateValue}
+            onChange={setPendingDateValue}
+            operator={dateOperator}
+          />
+        ),
+        renderOperatorsInput: () => (
+          <DateOperatorsInput
+            value={dateOperator}
+            onChange={handleDateOperatorChange}
+          />
+        ),
+        renderApplyButton: () => (
+          <PrimaryButton
+            onClick={() => {
+              setAppliedDateValue(getDateAppliedValue());
+            }}
+            isDisabled={!isDateApplyEnabled()}
+            label="Apply"
+            size="10"
+          />
+        ),
+        onClearRequest: clearDateFilter,
+      },
+    },
+    {
+      key: 'dateTime',
+      label: 'Date & Time',
+      operatorLabel: dateTimeOperator,
+      groupKey: FILTER_GROUP_KEYS.dateFilters,
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <DateTimeFilterWithOperator
+            value={pendingDateTimeValue}
+            onChange={setPendingDateTimeValue}
+            operator={dateTimeOperator}
+          />
+        ),
+        renderOperatorsInput: () => (
+          <DateOperatorsInput
+            value={dateTimeOperator}
+            onChange={handleDateTimeOperatorChange}
+          />
+        ),
+        renderApplyButton: () => (
+          <PrimaryButton
+            onClick={() => {
+              setAppliedDateTimeValue(getDateTimeAppliedValue());
+            }}
+            isDisabled={!isDateTimeApplyEnabled()}
+            label="Apply"
+            size="10"
+          />
+        ),
+        onClearRequest: clearDateTimeFilter,
+      },
+    },
+    {
+      key: 'dateRange',
+      label: 'Date Range',
+      operatorLabel: dateRangeOperator,
+      groupKey: FILTER_GROUP_KEYS.dateFilters,
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <DateRangeFilterInput
+            value={pendingDateRangeValue}
+            onChange={setPendingDateRangeValue}
+          />
+        ),
+        renderOperatorsInput: () => (
+          <DateOperatorsInput
+            value={dateRangeOperator}
+            onChange={setDateRangeOperator}
+          />
+        ),
+        renderApplyButton: () => (
+          <PrimaryButton
+            onClick={() => {
+              setAppliedDateRangeValue(getDateRangeAppliedValue());
+            }}
+            isDisabled={!isDateRangeApplyEnabled()}
+            label="Apply"
+            size="10"
+          />
+        ),
+        onClearRequest: clearDateRangeFilter,
+      },
+    },
+  ];
+
+  return (
+    <div style={{ minHeight: 400 }}>
+      <h3 style={{ marginBottom: '16px' }}>
+        Advanced Date Filters with Operators
+      </h3>
+      <p
+        style={{
+          marginBottom: '32px',
+          color: '#808080',
+          lineHeight: '1.5',
+        }}
+      >
+        This example demonstrates date filter functionality including:
+        <br />
+        • Configurable operators (is, is not, is between, is before, is after)
+        <br />
+        • Dynamic component switching (DateInput ↔ DateRangeInput based on
+        operator)
+        <br />
+      </p>
+      <Filters
+        renderSearchComponent={<SearchInputComponent />}
+        filters={filters}
+        filterGroups={FILTER_GROUPS}
+        appliedFilters={appliedFilters}
+        onClearAllRequest={clearAllFilters}
+        defaultOpen={true}
+      />
+    </div>
   );
 };

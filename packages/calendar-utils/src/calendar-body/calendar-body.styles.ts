@@ -27,10 +27,13 @@ const getClearSectionStyles = () => {
 };
 
 type TState = {
-  isFocused: boolean;
+  isFocused?: boolean;
 };
 
 const getIconBorderColor = (props: TCalendarBody, state: TState) => {
+  if (props.appearance === 'filter') {
+    return designTokens.colorTransparent;
+  }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
@@ -89,7 +92,9 @@ const getCalendarIconContainerStyles = (
       &:active,
       &:hover:not(:disabled)&:not(:read-only),
       &:focus {
-        border-color: ${designTokens.borderColorForInputWhenFocused};
+        border-color: ${props.appearance === 'filter'
+          ? designTokens.colorTransparent
+          : designTokens.borderColorForInputWhenFocused};
       }
     `,
   ];
@@ -108,7 +113,7 @@ const getInputBorderColor = (props: TCalendarBody, state: TState) => {
   if (props.isReadOnly) {
     return designTokens.borderColorForInputWhenReadonly;
   }
-  if ((props.isOpen || state.isFocused) && !props.isReadOnly) {
+  if (props.isOpen || state.isFocused) {
     return designTokens.borderColorForInputWhenFocused;
   }
   return designTokens.borderColorForInput;
@@ -131,6 +136,9 @@ const getInputFontColor = (props: TCalendarBody) => {
 };
 
 const getInputContainerBackgroundColor = (props: TCalendarBody) => {
+  if (props.appearance === 'filter') {
+    return designTokens.colorTransparent;
+  }
   if (props.isDisabled) {
     return designTokens.backgroundColorForInputWhenDisabled;
   }
@@ -164,7 +172,9 @@ const getInputContainerStyles = (props: TCalendarBody, state: TState) => {
 
       &:hover:not(:focus) {
         background-color: ${!props.isDisabled && !props.isReadOnly
-          ? designTokens.backgroundColorForInputWhenHovered
+          ? props.appearance === 'filter'
+            ? designTokens.colorTransparent
+            : designTokens.backgroundColorForInputWhenHovered
           : null};
       }
       &:focus {
@@ -174,10 +184,13 @@ const getInputContainerStyles = (props: TCalendarBody, state: TState) => {
         props.isReadOnly ||
         ((props.isOpen || state.isFocused) && !props.isReadOnly)
           ? ''
+          : props.appearance === 'filter'
+          ? designTokens.colorTransparent
           : designTokens.borderColorForInputWhenFocused};
       }
     `,
     !props.isReadOnly &&
+      props.appearance !== 'filter' &&
       css`
         &:focus-within {
           border-color: ${designTokens.borderColorForInputWhenFocused};
@@ -189,6 +202,7 @@ const getInputContainerStyles = (props: TCalendarBody, state: TState) => {
         }
       `,
     (props.hasError || props.hasWarning) &&
+      props.appearance !== 'filter' &&
       css`
         box-shadow: inset 0 0 0 1px;
       `,

@@ -6,6 +6,12 @@ import { useState } from 'react';
 const meta: Meta<typeof DateRangeInputProxy> = {
   title: 'Form/Inputs/DateRangeInput',
   component: DateRangeInputProxy,
+  argTypes: {
+    appearance: {
+      control: { type: 'select' },
+      options: ['default', 'filter'],
+    },
+  },
 };
 export default meta;
 
@@ -32,4 +38,27 @@ export const BasicExample: Story = (args: TDateRangeInputProps) => {
 BasicExample.args = {
   horizontalConstraint: 10,
   isClearable: true,
+  appearance: 'default',
+};
+
+export const FilterAppearance: Story = (args: TDateRangeInputProps) => {
+  const [value, setValue] = useState<DateRangeArray>([
+    '2024-11-13',
+    '2024-11-16',
+  ]);
+  return (
+    <div style={{ height: 400 }}>
+      <DateRangeInput
+        {...args}
+        onChange={(e) => setValue(e.target.value as DateRangeArray)}
+        value={value}
+      />
+    </div>
+  );
+};
+
+FilterAppearance.args = {
+  horizontalConstraint: 10,
+  isClearable: true,
+  appearance: 'filter',
 };
