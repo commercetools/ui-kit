@@ -1,5 +1,11 @@
 # @commercetools-local/generator-readme
 
+## 3.4.2
+
+### Patch Changes
+
+- [#3096](https://github.com/commercetools/ui-kit/pull/3096) [`9b381db`](https://github.com/commercetools/ui-kit/commit/9b381dbbd59cd20afa2330ef4013ccddf1bb27a3) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies to most recent minor versions, see https://github.com/commercetools/ui-kit/pull/3096
+
 ## 3.4.1
 
 ### Patch Changes
