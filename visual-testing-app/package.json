@@ -12,7 +12,7 @@
     "@commercetools-uikit/design-system": "20.1.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@fontsource/inter": "5.2.5",
+    "@fontsource/inter": "5.2.6",
     "@types/react": "^19.0.7",
     "moment": "2.30.1",
     "moment-timezone": "0.6.0",
@@ -23,7 +23,7 @@
     "react-router-dom": "5.3.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "4.5.1",
+    "@vitejs/plugin-react": "4.5.2",
     "vite": "6.3.5"
   }
 }
