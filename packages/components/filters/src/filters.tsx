@@ -105,6 +105,10 @@ export type TFilterConfiguration = {
    * indicates whether the filter is disabled
    */
   isDisabled?: boolean;
+  /**
+   * controls whether menu is expanded
+   */
+  allowAutoMenuWidth?: boolean;
 };
 
 export type TFilterGroupConfiguration = {
@@ -349,6 +353,7 @@ function Filters({
                     operatorLabel={activeFilterConfig.operatorLabel}
                     isPersistent={activeFilterConfig.isPersistent}
                     isDisabled={activeFilterConfig.isDisabled}
+                    allowAutoMenuWidth={activeFilterConfig.allowAutoMenuWidth}
                     renderMenuBody={
                       activeFilterConfig.filterMenuConfiguration.renderMenuBody
                     }
@@ -407,7 +412,10 @@ function Filters({
                   <Popover.Content
                     side="bottom"
                     align="start"
-                    css={[menuStyles, menuBodyStyle]}
+                    css={[
+                      () => menuStyles({ allowAutoMenuWidth: false }),
+                      menuBodyStyle,
+                    ]}
                   >
                     <SelectInput
                       id="ui-kit-add-filters-select"
