@@ -105,6 +105,10 @@ export type TFilterConfiguration = {
    * indicates whether the filter is disabled
    */
   isDisabled?: boolean;
+  /**
+   * controls whether menu is wider than the default width. Set to true to allow the menu to be wider than the default width.
+   */
+  hasWideMenu?: boolean;
 };
 
 export type TFilterGroupConfiguration = {
@@ -349,6 +353,7 @@ function Filters({
                     operatorLabel={activeFilterConfig.operatorLabel}
                     isPersistent={activeFilterConfig.isPersistent}
                     isDisabled={activeFilterConfig.isDisabled}
+                    hasWideMenu={activeFilterConfig.hasWideMenu}
                     renderMenuBody={
                       activeFilterConfig.filterMenuConfiguration.renderMenuBody
                     }
@@ -407,7 +412,10 @@ function Filters({
                   <Popover.Content
                     side="bottom"
                     align="start"
-                    css={[menuStyles, menuBodyStyle]}
+                    css={[
+                      () => menuStyles({ hasWideMenu: false }),
+                      menuBodyStyle,
+                    ]}
                   >
                     <SelectInput
                       id="ui-kit-add-filters-select"

@@ -93,14 +93,20 @@ export type TFilterMenuProps = {
    * controls whether menu is open on initial render
    */
   defaultOpen?: boolean;
+  /**
+   * controls whether menu is expanded
+   */
+  hasWideMenu?: boolean;
 };
 
-export const menuStyles = css`
+export const menuStyles = (props: Partial<TFilterMenuProps> = {}) => css`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: ${designTokens.spacing30};
-  width: ${designTokens.constraint7};
+  width: ${props.hasWideMenu
+    ? designTokens.constraint14
+    : designTokens.constraint7};
   max-height: ${designTokens.constraint10};
   padding: ${designTokens.spacing20} ${designTokens.spacing30};
   background-color: ${designTokens.colorSurface};
@@ -168,7 +174,7 @@ function FilterMenu(props: TFilterMenuProps) {
         <Popover.Content
           side="bottom"
           align="start"
-          css={menuStyles}
+          css={() => menuStyles(props)}
           onOpenAutoFocus={focusMenuBody}
         >
           <Header

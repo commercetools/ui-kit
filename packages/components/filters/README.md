@@ -197,6 +197,10 @@ export default FiltersExample;
    * indicates whether the filter is disabled
    */
   isDisabled?: boolean;
+  /**
+   * controls whether menu is wider than the default width. Set to true to allow the menu to be wider than the default width.
+   */
+  hasWideMenu?: boolean;
 }
 ```
 
