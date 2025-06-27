@@ -96,7 +96,7 @@ export type TFilterMenuProps = {
   /**
    * controls whether menu is expanded
    */
-  allowAutoMenuWidth?: boolean;
+  hasWideMenu?: boolean;
 };
 
 export const menuStyles = (props: Partial<TFilterMenuProps> = {}) => css`
@@ -104,7 +104,9 @@ export const menuStyles = (props: Partial<TFilterMenuProps> = {}) => css`
   flex-direction: column;
   align-items: flex-start;
   gap: ${designTokens.spacing30};
-  width: ${props.allowAutoMenuWidth ? 'auto' : designTokens.constraint7};
+  width: ${props.hasWideMenu
+    ? designTokens.constraint14
+    : designTokens.constraint7};
   max-height: ${designTokens.constraint10};
   padding: ${designTokens.spacing20} ${designTokens.spacing30};
   background-color: ${designTokens.colorSurface};

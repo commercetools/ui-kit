@@ -106,9 +106,9 @@ export type TFilterConfiguration = {
    */
   isDisabled?: boolean;
   /**
-   * controls whether menu is expanded
+   * controls whether menu is wider than the default width. Set to true to allow the menu to be wider than the default width.
    */
-  allowAutoMenuWidth?: boolean;
+  hasWideMenu?: boolean;
 };
 
 export type TFilterGroupConfiguration = {
@@ -353,7 +353,7 @@ function Filters({
                     operatorLabel={activeFilterConfig.operatorLabel}
                     isPersistent={activeFilterConfig.isPersistent}
                     isDisabled={activeFilterConfig.isDisabled}
-                    allowAutoMenuWidth={activeFilterConfig.allowAutoMenuWidth}
+                    hasWideMenu={activeFilterConfig.hasWideMenu}
                     renderMenuBody={
                       activeFilterConfig.filterMenuConfiguration.renderMenuBody
                     }
@@ -413,7 +413,7 @@ function Filters({
                     side="bottom"
                     align="start"
                     css={[
-                      () => menuStyles({ allowAutoMenuWidth: false }),
+                      () => menuStyles({ hasWideMenu: false }),
                       menuBodyStyle,
                     ]}
                   >

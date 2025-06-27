@@ -22,6 +22,7 @@ import {
   FRUIT_OPTIONS,
   OPERATOR_OPTIONS,
 } from './fixtures/constants';
+import Spacings from '@commercetools-uikit/spacings';
 
 type TFiltersPropsWithCustomArgs = TFiltersProps & {
   label?: string;
@@ -245,12 +246,19 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
       key: 'secondaryColors',
       label: 'Secondary Colors',
       groupKey: FILTER_GROUP_KEYS.secondaryColors,
+      hasWideMenu: true,
       filterMenuConfiguration: {
         renderMenuBody: () => (
-          <SecondaryColorsInput
-            value={secondaryColorValue}
-            onChange={setSecondaryColorValue}
-          />
+          <Spacings.Inline>
+            <SecondaryColorsInput
+              value={secondaryColorValue}
+              onChange={setSecondaryColorValue}
+            />
+            <SecondaryColorsInput
+              value={secondaryColorValue}
+              onChange={setSecondaryColorValue}
+            />
+          </Spacings.Inline>
         ),
         onClearRequest: clearSecondaryColorFilter,
       },
@@ -647,6 +655,112 @@ export const DateFiltersExample: Story = () => {
         • Dynamic component switching (DateInput ↔ DateRangeInput based on
         operator)
         <br />
+      </p>
+      <Filters
+        renderSearchComponent={<SearchInputComponent />}
+        filters={filters}
+        filterGroups={FILTER_GROUPS}
+        appliedFilters={appliedFilters}
+        onClearAllRequest={clearAllFilters}
+        defaultOpen={true}
+      />
+    </div>
+  );
+};
+
+export const WithMultipleMenuInputs: Story = () => {
+  const [pendingDateValue, setPendingDateValue] = useState<string | string[]>(
+    ''
+  );
+  // Applied values (after clicking apply)
+  const [appliedDateValue, setAppliedDateValue] = useState<
+    TFiltersProps['appliedFilters']
+  >([]);
+
+  const getDateAppliedValue = (): TFiltersProps['appliedFilters'] => {
+    if (pendingDateValue && !Array.isArray(pendingDateValue)) {
+      return [
+        {
+          filterKey: 'date',
+          values: [
+            {
+              value: pendingDateValue,
+              label: pendingDateValue,
+            },
+          ],
+        },
+      ];
+    }
+    return [];
+  };
+
+  // Clear functions for pending values
+  const clearDateFilter = () => {
+    setAppliedDateValue([]);
+  };
+
+  // Clear all filters
+  const clearAllFilters = () => {
+    clearDateFilter();
+  };
+
+  // Check if apply button should be enabled
+  const isDateApplyEnabled = () => {
+    return pendingDateValue && !Array.isArray(pendingDateValue);
+  };
+
+  // generate 'appliedFilters' state based on applied values
+  const appliedFilters: TFiltersProps['appliedFilters'] = [...appliedDateValue];
+
+  const filters = [
+    {
+      key: 'date',
+      label: 'Date',
+      hasWideMenu: true,
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <Spacings.Inline>
+            <DateFilterWithOperator
+              value={pendingDateValue}
+              onChange={setPendingDateValue}
+              operator="is"
+            />
+            <DateFilterWithOperator
+              value={pendingDateValue}
+              onChange={setPendingDateValue}
+              operator="is not"
+            />
+          </Spacings.Inline>
+        ),
+        renderApplyButton: () => (
+          <PrimaryButton
+            onClick={() => {
+              setAppliedDateValue(getDateAppliedValue());
+            }}
+            isDisabled={!isDateApplyEnabled()}
+            label="Apply"
+            size="10"
+          />
+        ),
+        onClearRequest: clearDateFilter,
+      },
+    },
+  ];
+
+  return (
+    <div style={{ minHeight: 400 }}>
+      <h3 style={{ marginBottom: '16px' }}>
+        Filters with multiple menu inputs
+      </h3>
+      <p
+        style={{
+          marginBottom: '32px',
+          color: '#808080',
+          lineHeight: '1.5',
+        }}
+      >
+        This example demonstrates the use of multiple menu inputs in a single
+        filter to showcase a wider menu width when `hasWideMenu` is `true`.
       </p>
       <Filters
         renderSearchComponent={<SearchInputComponent />}
