@@ -31,6 +31,7 @@ type TFiltersPropsWithCustomArgs = TFiltersProps & {
   renderApplyButton?: boolean;
   isDisabled?: boolean;
   isPersistent?: boolean;
+  hasWideMenu?: boolean;
 };
 
 const CustomSearchExample = () => <div>im an example</div>;
@@ -46,6 +47,7 @@ const meta: Meta<TFiltersPropsWithCustomArgs> = {
     renderApplyButton: false,
     isDisabled: false,
     isPersistent: true,
+    hasWideMenu: false,
     defaultOpen: true,
   },
   argTypes: {
@@ -115,6 +117,16 @@ const meta: Meta<TFiltersPropsWithCustomArgs> = {
         type: {
           summary:
             "controls whether or not the 'Primary Colors' filter is persistently displayed when the filters list is open",
+        },
+      },
+    },
+    hasWideMenu: {
+      type: 'boolean',
+      table: {
+        category: 'primary colors filter',
+        type: {
+          summary:
+            'controls whether the filter menu is wider than the default width. Set to true to allow the menu to be wider than the default width.',
         },
       },
     },
@@ -295,6 +307,7 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
       groupKey: FILTER_GROUP_KEYS.primaryColors,
       isDisabled: props.isDisabled,
       isPersistent: props.isPersistent,
+      hasWideMenu: props.hasWideMenu,
       filterMenuConfiguration: {
         renderMenuBody: () => {
           switch (props.renderMenuBody) {
