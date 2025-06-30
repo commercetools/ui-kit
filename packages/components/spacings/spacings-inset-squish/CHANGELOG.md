@@ -1,5 +1,13 @@
 # @commercetools-uikit/spacings-inset-squish
 
+## 20.2.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.2.0
+  - @commercetools-uikit/utils@20.2.0
+
 ## 20.1.0
 
 ### Patch Changes

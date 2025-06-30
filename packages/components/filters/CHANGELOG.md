@@ -1,5 +1,24 @@
 # @commercetools-uikit/filters
 
+## 20.2.0
+
+### Minor Changes
+
+- [#3143](https://github.com/commercetools/ui-kit/pull/3143) [`196fe3c`](https://github.com/commercetools/ui-kit/commit/196fe3c3abbb8fc5c24d2987abb8fa537963cd9b) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Filter menus can now expand beyond the default constraint width when needed, allowing the menu to grow horizontally with respect to its content
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.2.0
+  - @commercetools-uikit/flat-button@20.2.0
+  - @commercetools-uikit/icon-button@20.2.0
+  - @commercetools-uikit/secondary-icon-button@20.2.0
+  - @commercetools-uikit/collapsible-motion@20.2.0
+  - @commercetools-uikit/icons@20.2.0
+  - @commercetools-uikit/select-input@20.2.0
+  - @commercetools-uikit/utils@20.2.0
+  - @commercetools-uikit/spacings@20.2.0
+
 ## 20.1.0
 
 ### Patch Changes

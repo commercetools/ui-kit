@@ -1,5 +1,18 @@
 # @commercetools-uikit/data-table
 
+## 20.2.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.2.0
+  - @commercetools-uikit/accessible-button@20.2.0
+  - @commercetools-uikit/secondary-icon-button@20.2.0
+  - @commercetools-uikit/data-table-manager@20.2.0
+  - @commercetools-uikit/icons@20.2.0
+  - @commercetools-uikit/hooks@20.2.0
+  - @commercetools-uikit/utils@20.2.0
+
 ## 20.1.0
 
 ### Patch Changes
