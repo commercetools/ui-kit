@@ -388,6 +388,8 @@ const DataTable = <Row extends TRow = TRow>({
                 {...props}
                 itemRenderer={itemRenderer}
                 isCondensed={condensedValue}
+                verticalCellAlignment={verticalCellAlignment}
+                horizontalCellAlignment={horizontalCellAlignment}
                 columns={columnsData}
                 row={row}
                 key={row.id}
