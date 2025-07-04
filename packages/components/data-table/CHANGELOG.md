@@ -1,5 +1,20 @@
 # @commercetools-uikit/data-table
 
+## 20.2.1
+
+### Patch Changes
+
+- [#3150](https://github.com/commercetools/ui-kit/pull/3150) [`51c39fb`](https://github.com/commercetools/ui-kit/commit/51c39fbee8883495c925e344ae047ec3f9ec57b1) Thanks [@nima-ct](https://github.com/nima-ct)! - Fix DataTable cell alignment props not working.
+  verticalCellAlignment and horizontalCellAlignment were not passed from DataRow to DataCell, causing default alignment to apply instead.
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.2.1
+  - @commercetools-uikit/accessible-button@20.2.1
+  - @commercetools-uikit/secondary-icon-button@20.2.1
+  - @commercetools-uikit/data-table-manager@20.2.1
+  - @commercetools-uikit/icons@20.2.1
+  - @commercetools-uikit/hooks@20.2.1
+  - @commercetools-uikit/utils@20.2.1
+
 ## 20.2.0
 
 ### Patch Changes
