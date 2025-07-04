@@ -258,19 +258,12 @@ export const BasicExample: Story = (props: TFiltersPropsWithCustomArgs) => {
       key: 'secondaryColors',
       label: 'Secondary Colors',
       groupKey: FILTER_GROUP_KEYS.secondaryColors,
-      hasWideMenu: true,
       filterMenuConfiguration: {
         renderMenuBody: () => (
-          <Spacings.Inline>
-            <SecondaryColorsInput
-              value={secondaryColorValue}
-              onChange={setSecondaryColorValue}
-            />
-            <SecondaryColorsInput
-              value={secondaryColorValue}
-              onChange={setSecondaryColorValue}
-            />
-          </Spacings.Inline>
+          <SecondaryColorsInput
+            value={secondaryColorValue}
+            onChange={setSecondaryColorValue}
+          />
         ),
         onClearRequest: clearSecondaryColorFilter,
       },
@@ -682,80 +675,39 @@ export const DateFiltersExample: Story = () => {
 };
 
 export const WithMultipleMenuInputs: Story = () => {
-  const [pendingDateValue, setPendingDateValue] = useState<string | string[]>(
-    ''
-  );
-  // Applied values (after clicking apply)
-  const [appliedDateValue, setAppliedDateValue] = useState<
-    TFiltersProps['appliedFilters']
-  >([]);
-
-  const getDateAppliedValue = (): TFiltersProps['appliedFilters'] => {
-    if (pendingDateValue && !Array.isArray(pendingDateValue)) {
-      return [
-        {
-          filterKey: 'date',
-          values: [
-            {
-              value: pendingDateValue,
-              label: pendingDateValue,
-            },
-          ],
-        },
-      ];
-    }
-    return [];
-  };
-
-  // Clear functions for pending values
-  const clearDateFilter = () => {
-    setAppliedDateValue([]);
-  };
-
-  // Clear all filters
-  const clearAllFilters = () => {
-    clearDateFilter();
-  };
-
-  // Check if apply button should be enabled
-  const isDateApplyEnabled = () => {
-    return pendingDateValue && !Array.isArray(pendingDateValue);
-  };
-
   // generate 'appliedFilters' state based on applied values
-  const appliedFilters: TFiltersProps['appliedFilters'] = [...appliedDateValue];
+  const [secondaryColorValue, setSecondaryColorValue] = useState<string[]>([]);
+  const [secondaryColorValue2, setSecondaryColorValue2] = useState<string[]>(
+    []
+  );
+  const clearSecondaryColorFilter = () => setSecondaryColorValue([]);
+  const clearSecondaryColorFilter2 = () => setSecondaryColorValue2([]);
+
+  const clearAllFilters = () => {
+    clearSecondaryColorFilter();
+    clearSecondaryColorFilter2();
+  };
 
   const filters = [
     {
-      key: 'date',
-      label: 'Date',
+      key: 'secondaryColors',
+      label: 'Secondary Colors',
+      groupKey: FILTER_GROUP_KEYS.secondaryColors,
       hasWideMenu: true,
       filterMenuConfiguration: {
         renderMenuBody: () => (
           <Spacings.Inline>
-            <DateFilterWithOperator
-              value={pendingDateValue}
-              onChange={setPendingDateValue}
-              operator="is"
+            <SecondaryColorsInput
+              value={secondaryColorValue}
+              onChange={setSecondaryColorValue}
             />
-            <DateFilterWithOperator
-              value={pendingDateValue}
-              onChange={setPendingDateValue}
-              operator="is not"
+            <SecondaryColorsInput
+              value={secondaryColorValue2}
+              onChange={setSecondaryColorValue2}
             />
           </Spacings.Inline>
         ),
-        renderApplyButton: () => (
-          <PrimaryButton
-            onClick={() => {
-              setAppliedDateValue(getDateAppliedValue());
-            }}
-            isDisabled={!isDateApplyEnabled()}
-            label="Apply"
-            size="10"
-          />
-        ),
-        onClearRequest: clearDateFilter,
+        onClearRequest: clearAllFilters,
       },
     },
   ];
@@ -779,8 +731,8 @@ export const WithMultipleMenuInputs: Story = () => {
         renderSearchComponent={<SearchInputComponent />}
         filters={filters}
         filterGroups={FILTER_GROUPS}
-        appliedFilters={appliedFilters}
-        onClearAllRequest={clearAllFilters}
+        appliedFilters={[]}
+        onClearAllRequest={clearSecondaryColorFilter}
         defaultOpen={true}
       />
     </div>
