@@ -1,5 +1,22 @@
 # @commercetools-uikit/filters
 
+## 20.2.1
+
+### Patch Changes
+
+- [#3147](https://github.com/commercetools/ui-kit/pull/3147) [`8a384eb`](https://github.com/commercetools/ui-kit/commit/8a384eb328705801e6aa3c1bf94002d4e03563a7) Thanks [@ddouglasz](https://github.com/ddouglasz)! - add missing prop in filter prop list storybook documentation
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.2.1
+  - @commercetools-uikit/flat-button@20.2.1
+  - @commercetools-uikit/icon-button@20.2.1
+  - @commercetools-uikit/secondary-icon-button@20.2.1
+  - @commercetools-uikit/collapsible-motion@20.2.1
+  - @commercetools-uikit/icons@20.2.1
+  - @commercetools-uikit/select-input@20.2.1
+  - @commercetools-uikit/utils@20.2.1
+  - @commercetools-uikit/spacings@20.2.1
+
 ## 20.2.0
 
 ### Minor Changes

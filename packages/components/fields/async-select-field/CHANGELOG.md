@@ -1,5 +1,19 @@
 # @commercetools-uikit/async-select-field
 
+## 20.2.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.2.1
+  - @commercetools-uikit/constraints@20.2.1
+  - @commercetools-uikit/field-errors@20.2.1
+  - @commercetools-uikit/field-label@20.2.1
+  - @commercetools-uikit/field-warnings@20.2.1
+  - @commercetools-uikit/async-select-input@20.2.1
+  - @commercetools-uikit/utils@20.2.1
+  - @commercetools-uikit/spacings@20.2.1
+
 ## 20.2.0
 
 ### Patch Changes

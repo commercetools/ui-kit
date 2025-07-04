@@ -1,5 +1,15 @@
 # @commercetools-uikit/spacings
 
+## 20.2.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings-inline@20.2.1
+  - @commercetools-uikit/spacings-inset@20.2.1
+  - @commercetools-uikit/spacings-inset-squish@20.2.1
+  - @commercetools-uikit/spacings-stack@20.2.1
+
 ## 20.2.0
 
 ### Patch Changes
