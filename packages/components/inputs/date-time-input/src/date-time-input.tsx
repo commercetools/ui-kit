@@ -587,11 +587,13 @@ class DateTimeInput extends Component<
                     <CalendarHeader
                       monthLabel={getMonthCalendarLabel(
                         this.state.calendarDate,
-                        this.props.intl.locale
+                        this.props.intl.locale,
+                        this.props.timeZone
                       )}
                       yearLabel={getYearCalendarLabel(
                         this.state.calendarDate,
-                        this.props.intl.locale
+                        this.props.intl.locale,
+                        this.props.timeZone
                       )}
                       onPrevMonthClick={() => this.jumpMonths(-1)}
                       onTodayClick={this.showToday}

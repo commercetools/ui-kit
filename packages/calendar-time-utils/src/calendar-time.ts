@@ -119,10 +119,22 @@ export const getWeekdayNames = (locale: string) => {
 export const getStartOf = (day: MomentInput, timeZone: string) =>
   moment.tz(day, timeZone).startOf('day').toISOString();
 
-export const getMonthCalendarLabel = (day: MomentInput, locale: string) =>
-  moment(day, moment.ISO_8601, locale).format('MMMM');
-export const getYearCalendarLabel = (day: MomentInput, locale: string) =>
-  moment(day, moment.ISO_8601, locale).format('YYYY');
+export const getMonthCalendarLabel = (
+  day: MomentInput,
+  locale: string,
+  timeZone?: string
+) =>
+  timeZone
+    ? moment.tz(day, timeZone).locale(locale).format('MMMM')
+    : moment(day, moment.ISO_8601, locale).format('MMMM');
+export const getYearCalendarLabel = (
+  day: MomentInput,
+  locale: string,
+  timeZone?: string
+) =>
+  timeZone
+    ? moment.tz(day, timeZone).locale(locale).format('YYYY')
+    : moment(day, moment.ISO_8601, locale).format('YYYY');
 export const isSameDay = (a: MomentInput, b: MomentInput) =>
   moment(a).isSame(b, 'day');
 export const getCalendarDayLabel = (day: MomentInput, timeZone: string) =>
