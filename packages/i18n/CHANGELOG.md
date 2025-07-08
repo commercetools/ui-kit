@@ -1,5 +1,7 @@
 # @commercetools-uikit/i18n
 
+## 20.2.2
+
 ## 20.2.1
 
 ## 20.2.0
