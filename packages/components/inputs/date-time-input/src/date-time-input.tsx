@@ -363,7 +363,7 @@ class DateTimeInput extends Component<
                     calendarDate:
                       this.props.value === ''
                         ? getToday(this.props.timeZone)
-                        : this.props.value,
+                        : getStartOf(this.props.value, this.props.timeZone),
                   };
                 }
 

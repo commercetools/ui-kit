@@ -249,6 +249,28 @@ describe('timezone edge cases', () => {
     expect(screen.getByText('January')).toBeInTheDocument();
     expect(screen.getByText('2025')).toBeInTheDocument();
   });
+
+  it('should display the correct month when value is set and timezone conversion changes the month', () => {
+    // This represents July 1st, 2025 in Pacific/Kiritimati (UTC+14)
+    // When converted to UTC, this becomes June 30th, 2025
+    const valueInKiritimati = '2025-06-30T10:00:00.000Z'; // This is July 1st in Pacific/Kiritimati
+
+    const { getByLabelText } = renderDateTimeInput({
+      timeZone: 'Pacific/Kiritimati',
+      value: valueInKiritimati,
+    });
+
+    const dateInput = getByLabelText('Date');
+    fireEvent.click(dateInput);
+
+    // The calendar should show July (correct month in the timezone)
+    // not June (which would be wrong - the UTC month)
+    expect(screen.getByText('July')).toBeInTheDocument();
+    expect(screen.queryByText('June')).not.toBeInTheDocument();
+
+    // The year should also be correct (2025)
+    expect(screen.getByText('2025')).toBeInTheDocument();
+  });
 });
 
 it('should only emit valid datetimes from manually entered datestrings', async () => {
