@@ -1,5 +1,14 @@
 # @commercetools-uikit/card
 
+## 20.2.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.2.3
+  - @commercetools-uikit/spacings-inset@20.2.3
+  - @commercetools-uikit/utils@20.2.3
+
 ## 20.2.2
 
 ### Patch Changes

@@ -1,5 +1,22 @@
 # @commercetools-uikit/filters
 
+## 20.2.3
+
+### Patch Changes
+
+- [#3154](https://github.com/commercetools/ui-kit/pull/3154) [`d7429ef`](https://github.com/commercetools/ui-kit/commit/d7429ef651034e8cf9273640612e7fea6b49cc9b) Thanks [@mario-priceless](https://github.com/mario-priceless)! - Removed unnecessary `<div>` wrapper around `FlatButton` to fix ARIA validation error in Filter component
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.2.3
+  - @commercetools-uikit/flat-button@20.2.3
+  - @commercetools-uikit/icon-button@20.2.3
+  - @commercetools-uikit/secondary-icon-button@20.2.3
+  - @commercetools-uikit/collapsible-motion@20.2.3
+  - @commercetools-uikit/icons@20.2.3
+  - @commercetools-uikit/select-input@20.2.3
+  - @commercetools-uikit/utils@20.2.3
+  - @commercetools-uikit/spacings@20.2.3
+
 ## 20.2.2
 
 ### Patch Changes
