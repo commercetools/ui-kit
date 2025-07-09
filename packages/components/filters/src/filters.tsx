@@ -395,18 +395,16 @@ function Filters({
               })}
               <Popover.Root>
                 <Popover.Trigger asChild>
-                  <div css={{ display: 'inline-flex' }}>
-                    <FlatButton
-                      label={intl.formatMessage(messages.addFilterButtonLabel)}
-                      icon={<PlusBoldIcon />}
-                      onClick={(e) => {
-                        if (onAddFilterRequest) {
-                          onAddFilterRequest(e);
-                        }
-                        setShowFilterControls(true);
-                      }}
-                    />
-                  </div>
+                  <FlatButton
+                    label={intl.formatMessage(messages.addFilterButtonLabel)}
+                    icon={<PlusBoldIcon />}
+                    onClick={(e) => {
+                      if (onAddFilterRequest) {
+                        onAddFilterRequest(e);
+                      }
+                      setShowFilterControls(true);
+                    }}
+                  />
                 </Popover.Trigger>
                 <Popover.Portal>
                   <Popover.Content
