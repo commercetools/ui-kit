@@ -197,6 +197,82 @@ describe('date picker defaultDaySelectionTime prop', () => {
   });
 });
 
+describe('timezone edge cases', () => {
+  beforeEach(() => {
+    // Mock the current date to January 1st in a timezone ahead of UTC
+    // such that "today" in that timezone is "yesterday" in UTC
+    jest.useFakeTimers();
+    // Set system time to January 1st, 2025 02:00 in Pacific/Kiritimati (UTC+14)
+    // This represents 2024-12-31 12:00:00.000Z in UTC
+    jest.setSystemTime(new Date('2024-12-31T12:00:00.000Z'));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('should display the correct month when timezone is ahead of UTC and would show wrong month', () => {
+    // Render DateTimeInput with Pacific/Kiritimati timezone (UTC+14)
+    // On January 1st in this timezone, UTC shows December 31st
+    const { getByLabelText } = renderDateTimeInput({
+      timeZone: 'Pacific/Kiritimati',
+      value: '', // No initial value, so calendar will show "today"
+    });
+
+    const dateInput = getByLabelText('Date');
+    fireEvent.click(dateInput);
+
+    // The calendar should show January (correct month in the timezone)
+    // not December (which would be wrong - the UTC month)
+    expect(screen.getByText('January')).toBeInTheDocument();
+    expect(screen.queryByText('December')).not.toBeInTheDocument();
+
+    // The year should also be correct (2025, not 2024)
+    expect(screen.getByText('2025')).toBeInTheDocument();
+  });
+
+  it('should highlight the correct day as today when timezone causes date shift', () => {
+    const { getByLabelText } = renderDateTimeInput({
+      timeZone: 'Pacific/Kiritimati',
+      value: '',
+    });
+
+    const dateInput = getByLabelText('Date');
+    fireEvent.click(dateInput);
+
+    // In Pacific/Kiritimati timezone, it should be January 1st
+    // We should find a calendar day with "1" that is marked as today
+    const todayElement = screen.getByText('1');
+    expect(todayElement).toBeInTheDocument();
+
+    // Verify the calendar is showing January 2025 (not December 2024)
+    expect(screen.getByText('January')).toBeInTheDocument();
+    expect(screen.getByText('2025')).toBeInTheDocument();
+  });
+
+  it('should display the correct month when value is set and timezone conversion changes the month', () => {
+    // This represents July 1st, 2025 in Pacific/Kiritimati (UTC+14)
+    // When converted to UTC, this becomes June 30th, 2025
+    const valueInKiritimati = '2025-06-30T10:00:00.000Z'; // This is July 1st in Pacific/Kiritimati
+
+    const { getByLabelText } = renderDateTimeInput({
+      timeZone: 'Pacific/Kiritimati',
+      value: valueInKiritimati,
+    });
+
+    const dateInput = getByLabelText('Date');
+    fireEvent.click(dateInput);
+
+    // The calendar should show July (correct month in the timezone)
+    // not June (which would be wrong - the UTC month)
+    expect(screen.getByText('July')).toBeInTheDocument();
+    expect(screen.queryByText('June')).not.toBeInTheDocument();
+
+    // The year should also be correct (2025)
+    expect(screen.getByText('2025')).toBeInTheDocument();
+  });
+});
+
 it('should only emit valid datetimes from manually entered datestrings', async () => {
   // Render the input with an initial value
   renderDateTimeInput({

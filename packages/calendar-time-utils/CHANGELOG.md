@@ -1,5 +1,14 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 20.2.2
+
+### Patch Changes
+
+- [#3153](https://github.com/commercetools/ui-kit/pull/3153) [`741d501`](https://github.com/commercetools/ui-kit/commit/741d501fe74f864ae6c75829137f4397c616d84b) Thanks [@misama-ct](https://github.com/misama-ct)! - Enhanced `getMonthCalendarLabel` and `getYearCalendarLabel` functions to accept optional timezone parameter. When provided, these functions now interpret dates in the specified timezone context rather than UTC, fixing display issues for timezones that are significantly ahead of or behind UTC.
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@20.2.2
+
 ## 20.2.1
 
 ### Patch Changes

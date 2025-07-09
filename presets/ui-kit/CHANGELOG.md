@@ -1,5 +1,50 @@
 # @commercetools-frontend/ui-kit
 
+## 20.2.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/inputs@20.2.2
+  - @commercetools-uikit/fields@20.2.2
+  - @commercetools-uikit/design-system@20.2.2
+  - @commercetools-uikit/accessible-hidden@20.2.2
+  - @commercetools-uikit/avatar@20.2.2
+  - @commercetools-uikit/card@20.2.2
+  - @commercetools-uikit/collapsible@20.2.2
+  - @commercetools-uikit/collapsible-motion@20.2.2
+  - @commercetools-uikit/collapsible-panel@20.2.2
+  - @commercetools-uikit/constraints@20.2.2
+  - @commercetools-uikit/data-table@20.2.2
+  - @commercetools-uikit/data-table-manager@20.2.2
+  - @commercetools-uikit/dropdown-menu@20.2.2
+  - @commercetools-uikit/field-errors@20.2.2
+  - @commercetools-uikit/field-label@20.2.2
+  - @commercetools-uikit/filters@20.2.2
+  - @commercetools-uikit/grid@20.2.2
+  - @commercetools-uikit/icons@20.2.2
+  - @commercetools-uikit/select-utils@20.2.2
+  - @commercetools-uikit/selectable-search-input@20.2.2
+  - @commercetools-uikit/label@20.2.2
+  - @commercetools-uikit/link@20.2.2
+  - @commercetools-uikit/loading-spinner@20.2.2
+  - @commercetools-uikit/messages@20.2.2
+  - @commercetools-uikit/notifications@20.2.2
+  - @commercetools-uikit/pagination@20.2.2
+  - @commercetools-uikit/primary-action-dropdown@20.2.2
+  - @commercetools-uikit/progress-bar@20.2.2
+  - @commercetools-uikit/quick-filters@20.2.2
+  - @commercetools-uikit/stamp@20.2.2
+  - @commercetools-uikit/tag@20.2.2
+  - @commercetools-uikit/text@20.2.2
+  - @commercetools-uikit/tooltip@20.2.2
+  - @commercetools-uikit/view-switcher@20.2.2
+  - @commercetools-uikit/hooks@20.2.2
+  - @commercetools-uikit/i18n@20.2.2
+  - @commercetools-uikit/utils@20.2.2
+  - @commercetools-uikit/buttons@20.2.2
+  - @commercetools-uikit/spacings@20.2.2
+
 ## 20.2.1
 
 ### Patch Changes
