@@ -10,6 +10,7 @@ import {
   createSequentialId,
   filterDataAttributes,
   getFieldId,
+  hasFieldLabel,
   warning,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -227,16 +228,18 @@ class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
-          <FieldLabel
-            title={this.props.title}
-            hint={this.props.hint}
-            description={this.props.description}
-            onInfoButtonClick={this.props.onInfoButtonClick}
-            hintIcon={this.props.hintIcon}
-            badge={this.props.badge}
-            hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
-          />
+          {hasFieldLabel(this.props) && (
+            <FieldLabel
+              title={this.props.title}
+              hint={this.props.hint}
+              description={this.props.description}
+              onInfoButtonClick={this.props.onInfoButtonClick}
+              hintIcon={this.props.hintIcon}
+              badge={this.props.badge}
+              hasRequiredIndicator={this.props.isRequired}
+              htmlFor={this.state.id}
+            />
+          )}
           <MultilineTextInput
             id={this.state.id}
             name={this.props.name}
