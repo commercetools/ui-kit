@@ -34,7 +34,7 @@
     "@commercetools-uikit/utils": "20.2.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "downshift": "9.0.9",
+    "downshift": "9.0.10",
     "react-textarea-autosize": "8.4.0"
   },
   "devDependencies": {

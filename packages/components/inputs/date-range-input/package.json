@@ -36,7 +36,7 @@
     "@commercetools-uikit/utils": "20.2.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "downshift": "9.0.9",
+    "downshift": "9.0.10",
     "react-is": "19.1.0",
     "warning": "4.0.3"
   },

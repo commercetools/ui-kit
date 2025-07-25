@@ -36,7 +36,7 @@
     "@commercetools-uikit/utils": "20.2.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "react-select": "5.10.1"
+    "react-select": "5.10.2"
   },
   "devDependencies": {
     "react": "19.1.0",
