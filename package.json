@@ -154,7 +154,7 @@
     "jest-environment-jsdom": "29.7.0",
     "jest-localstorage-mock": "2.4.26",
     "jest-puppeteer": "8.0.6",
-    "jest-runner-eslint": "1.2.0",
+    "jest-runner-eslint": "2.3.0",
     "jest-runner-stylelint": "2.3.7",
     "jest-silent-reporter": "0.6.0",
     "jest-validate": "29.7.0",
