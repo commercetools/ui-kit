@@ -1,5 +1,16 @@
 # @commercetools-uikit/label
 
+## 20.2.3
+
+### Patch Changes
+
+- [#3160](https://github.com/commercetools/ui-kit/pull/3160) [`c0f066a`](https://github.com/commercetools/ui-kit/commit/c0f066a5fafdb608c7a0d032f05bd949b8836d9c) Thanks [@jaikamat](https://github.com/jaikamat)! - Change required label indicator color
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.2.3
+  - @commercetools-uikit/text@20.2.3
+  - @commercetools-uikit/utils@20.2.3
+
 ## 20.2.2
 
 ### Patch Changes

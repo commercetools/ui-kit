@@ -1,5 +1,19 @@
 # @commercetools-uikit/radio-field
 
+## 20.2.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@20.2.3
+  - @commercetools-uikit/design-system@20.2.3
+  - @commercetools-uikit/constraints@20.2.3
+  - @commercetools-uikit/field-errors@20.2.3
+  - @commercetools-uikit/field-warnings@20.2.3
+  - @commercetools-uikit/radio-input@20.2.3
+  - @commercetools-uikit/spacings-stack@20.2.3
+  - @commercetools-uikit/utils@20.2.3
+
 ## 20.2.2
 
 ### Patch Changes
