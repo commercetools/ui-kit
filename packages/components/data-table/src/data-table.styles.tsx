@@ -55,7 +55,7 @@ const TableContainer = styled.div<TTableContainer>`
 
   ${(props) =>
     // this is needed in order to have a sticky header
-    props.maxHeight ? `overflow-x: auto;` : ''}
+    props.maxHeight ? `overflow-x: auto;` : 'overflow-x: scroll;'}
 
   ${(props) =>
     props.maxWidth && !props.disableSelfContainment
