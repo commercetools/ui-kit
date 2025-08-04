@@ -12,6 +12,7 @@ import {
   createSequentialId,
   filterDataAttributes,
   getFieldId,
+  hasFieldLabel,
   warning,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -135,7 +136,7 @@ export type TRadioFieldProps = {
   /**
    * Title of the label
    */
-  title: string | ReactNode;
+  title?: string | ReactNode;
   /**
    * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas description can describe it in more depth.
    * <br />
@@ -225,16 +226,18 @@ class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Stack scale="xs">
-          <FieldLabel
-            title={this.props.title}
-            hint={this.props.hint}
-            description={this.props.description}
-            onInfoButtonClick={this.props.onInfoButtonClick}
-            hintIcon={this.props.hintIcon}
-            badge={this.props.badge}
-            hasRequiredIndicator={this.props.isRequired}
-            id={this.state.id}
-          />
+          {hasFieldLabel(this.props) && (
+            <FieldLabel
+              title={this.props.title}
+              hint={this.props.hint}
+              description={this.props.description}
+              onInfoButtonClick={this.props.onInfoButtonClick}
+              hintIcon={this.props.hintIcon}
+              badge={this.props.badge}
+              hasRequiredIndicator={this.props.isRequired}
+              id={this.state.id}
+            />
+          )}
           <RadioInput.Group
             id={this.state.id}
             name={this.props.name}
