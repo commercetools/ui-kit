@@ -1,5 +1,7 @@
 # @commercetools-uikit/accessible-hidden
 
+## 20.2.3
+
 ## 20.2.2
 
 ## 20.2.1

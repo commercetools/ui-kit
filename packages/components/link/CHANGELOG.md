@@ -1,5 +1,15 @@
 # @commercetools-uikit/link
 
+## 20.2.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.2.3
+  - @commercetools-uikit/icons@20.2.3
+  - @commercetools-uikit/spacings-inline@20.2.3
+  - @commercetools-uikit/utils@20.2.3
+
 ## 20.2.2
 
 ### Patch Changes
