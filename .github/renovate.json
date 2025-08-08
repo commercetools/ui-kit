@@ -1,6 +1,7 @@
 {
   "extends": ["config:base", ":preserveSemverRanges", "schedule:weekly"],
   "separateMajorMinor": true,
+  "prTitle": "Renovate: {{depName}} is updating from {{currentVersion}} to {{newVersion}} [skip percy]",
   "packageRules": [
     {
       "sourceUrlPrefixes": ["https://github.com/gregberge/svgr"],

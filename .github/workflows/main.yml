@@ -58,6 +58,7 @@ jobs:
         run: yarn visual-testing-app:build
 
       - name: Running Visual Regression Tests for UI components
+  if: ${{ github.event_name != 'pull_request' || !contains(github.event.pull_request.title, '[skip percy]') }}
       # aa-exec:
       # ubuntu-24.04, the image used for `ubuntu-latest` as of Oct 14 2024(https://github.com/actions/runner-images/issues/10636),
       # introduced security measures in its app-armor security  (https://github.com/puppeteer/puppeteer/issues/12818#issuecomment-2247844464)
