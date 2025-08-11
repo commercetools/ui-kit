@@ -55,8 +55,6 @@ jobs:
           CI: true
 
       - name: Building Visual Regression Tests application for UI components
-      # This step is skipped if the event is a pull request, and the title contains "[skip percy]"
-        if: ${{ github.event_name != 'pull_request' || !contains(github.event.pull_request.title, '[skip percy]') }}
         run: yarn visual-testing-app:build
 
       - name: Running Visual Regression Tests for UI components
