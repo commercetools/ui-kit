@@ -158,7 +158,7 @@
     "jest-runner-stylelint": "2.3.7",
     "jest-silent-reporter": "0.6.0",
     "jest-validate": "30.0.5",
-    "jest-watch-typeahead": "3.0.1",
+    "jest-watch-typeahead": "2.2.2",
     "lint-staged": "16.1.4",
     "moment": "2.30.1",
     "moment-timezone": "0.6.0",
