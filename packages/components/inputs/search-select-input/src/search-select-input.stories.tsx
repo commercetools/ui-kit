@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import SearchSelectInput from './search-select-input';
 import { iconArgType } from '@/storybook-helpers';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 
 const meta: Meta<typeof SearchSelectInput> = {
@@ -32,57 +32,68 @@ export default meta;
 
 type Story = StoryFn<typeof SearchSelectInput>;
 
-const colourOptions = [
+const defaultOptions = [
   {
     label:
-      'This is label is very long and the reason that it is very long is to test how it is displayed in the dropdown or when it is select.',
+      'This Ocean label is very long and the reason that it is very long is to test how it is displayed in the dropdown or when it is selected',
     value: 'ocean',
-    id: '1',
+    key: 'ocean',
+    id: 1,
   },
-  { label: 'Blue', value: 'blue', key: 'blue', id: '2' },
-  { label: 'Purple', value: 'purple', key: 'purple', id: '3' },
-  { label: 'Red', value: 'red', key: 'red', id: '4' },
-  { label: 'Orange', value: 'orange', key: 'orange', id: '5' },
-  { label: 'Yellow', value: 'yellow', key: 'yellow', id: '6' },
-  { label: 'Green', value: 'green', key: 'green', id: '7' },
-  { label: 'Forest', value: 'forest', key: 'forest', id: '8' },
-  { label: 'Slate', value: 'slate', key: 'slate', id: '9' },
-  { label: 'Silver', value: 'silver', key: 'silver', id: '10' },
+  { label: 'Blue', value: 'blue', key: 'blue', id: 2 },
+  { label: 'Purple', value: 'purple', key: 'purple', id: 3 },
+  { label: 'Red', value: 'red', key: 'red', id: 4 },
+  { label: 'Orange', value: 'orange', key: 'orange', id: 5 },
+  { label: 'Yellow', value: 'yellow', key: 'yellow', id: 6 },
+  { label: 'Green', value: 'green', key: 'green', id: 7 },
+  { label: 'Forest', value: 'forest', key: 'forest', id: 8 },
+  { label: 'Slate', value: 'slate', key: 'slate', id: 9 },
+  { label: 'Silver', value: 'silver', key: 'silver', id: 10 },
 ];
 
-const filterColors = (inputValue: string) =>
-  colourOptions.filter(
-    (colourOption) =>
-      colourOption.label === inputValue || colourOption.id === inputValue
+const filterColors = (inputValue: string) => {
+  return defaultOptions.filter((option) =>
+    option.label?.toLowerCase().includes(inputValue.toLowerCase())
   );
+};
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const loadOptions = (inputValue: string) =>
   delay(500).then(() => filterColors(inputValue));
 
+type Option = {
+  label: string;
+  value: string;
+  id: number;
+};
+
 export const BasicExample: Story = ({ isMulti, ...args }) => {
-  const [value, onChange] = useState<string | string[] | undefined>(
-    isMulti ? [] : undefined
-  );
+  const [value, setValue] = useState<Option | Option[] | null>(null);
+
+  useEffect(() => {
+    setValue(isMulti ? [] : null);
+  }, [isMulti]);
 
   return (
     <div style={{ height: 400 }}>
       <Spacings.Stack scale="m">
         <SearchSelectInput
-          onChange={(event) => {
-            onChange(event.target.value as string | string[] | undefined);
-          }}
-          value={value}
           {...args}
+          isMulti={isMulti}
+          defaultOptions={defaultOptions}
           loadOptions={loadOptions}
+          value={value}
+          onChange={(e) => {
+            console.log(e);
+            setValue(e.target.value as Option | Option[]);
+          }}
         />
-
         <div>
           <p>
             In this example, the `loadOptions` function uses the data (given
-            below) to perform an exact match. It is case sensitive and it
-            performs a search based on{' '}
+            below) to match the search term. The term filters items based on
+            their{' '}
             <b>
               <i>id</i>
             </b>{' '}
@@ -94,7 +105,7 @@ export const BasicExample: Story = ({ isMulti, ...args }) => {
           </p>
           <b>Data used:</b>
           <pre style={{ textWrap: 'wrap' }}>
-            {JSON.stringify(colourOptions, undefined, 2)}
+            {JSON.stringify(defaultOptions, undefined, 2)}
           </pre>
         </div>
       </Spacings.Stack>
@@ -122,34 +133,43 @@ BasicExample.args = {
   maxMenuHeight: 220,
   closeMenuOnSelect: true,
   name: 'form-field-name',
-  placeholder: 'Search by...',
+  placeholder: 'Search items...',
   tabSelectsValue: true,
   cacheOptions: true,
   optionType: 'single-property',
 };
 
 export const CheckboxOptionStyle: Story = ({ isMulti, ...args }) => {
-  const [value, onChange] = useState<string | string[] | undefined>(
-    isMulti ? [] : undefined
-  );
+  const [value, setValue] = useState<Option | Option[] | null>(null);
+
+  useEffect(() => {
+    setValue(isMulti ? [] : null);
+  }, [isMulti]);
 
   return (
     <div style={{ height: 400 }}>
       <Spacings.Stack scale="m">
         <SearchSelectInput
+          {...args}
+          defaultOptions={[
+            ...(Array.isArray(value)
+              ? value
+              : value
+              ? [value]
+              : defaultOptions.slice(0, 2)),
+          ]}
           onChange={(event) => {
-            onChange(event.target.value as string | string[] | undefined);
+            setValue(event.target.value as Option | Option[]);
           }}
           value={value}
-          {...args}
           loadOptions={loadOptions}
         />
 
         <div>
           <p>
             In this example, the `loadOptions` function uses the data (given
-            below) to perform an exact match. It is case sensitive and it
-            performs a search based on{' '}
+            below) to match the search term. The term filters items based on
+            their{' '}
             <b>
               <i>id</i>
             </b>{' '}
@@ -161,7 +181,7 @@ export const CheckboxOptionStyle: Story = ({ isMulti, ...args }) => {
           </p>
           <b>Data used:</b>
           <pre style={{ textWrap: 'wrap' }}>
-            {JSON.stringify(colourOptions, undefined, 2)}
+            {JSON.stringify(defaultOptions, undefined, 2)}
           </pre>
         </div>
       </Spacings.Stack>
