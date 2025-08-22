@@ -17,7 +17,6 @@ export const BasicExample: Story = (args) => {
 
   return (
     <div style={{ height: 350 }}>
-      {/** @ts-expect-error  */}
       <DateRangeField
         {...args}
         value={(value || []).map(String)}

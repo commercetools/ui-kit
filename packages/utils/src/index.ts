@@ -12,6 +12,7 @@ export {
 } from './warn-deprecated-prop';
 export { default as createSequentialId } from './create-sequential-id';
 export { default as getFieldId } from './get-field-id';
+export { hasFieldLabel } from './has-field-label';
 export { default as parseTime } from './parse-time';
 export { canUseDOM } from './helpers/exenv';
 export { default as SafeHTMLElement } from './helpers/safeHTMLElement';

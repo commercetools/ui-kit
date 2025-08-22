@@ -8,7 +8,6 @@ const meta: Meta<typeof CreatableSelectField> = {
   // @ts-expect-error, @todo component needs refactoring
   component: CreatableSelectField,
   argTypes: {
-    // @ts-expect-error, @todo component needs refactoring
     isMulti: { control: 'boolean' },
     hint: { control: 'text' },
     name: { control: 'text' },
@@ -99,14 +98,11 @@ export const BasicExample: Story = (args) => {
   const [value, onChange] = useState<unknown>(undefined);
 
   useEffect(() => {
-    // @ts-expect-error, @todo component needs refactoring
     onChange(args.isMulti ? [] : undefined);
-    // @ts-expect-error, @todo component needs refactoring
   }, [args.isMulti]);
 
   return (
     <div style={{ height: 350 }}>
-      {/* @ts-expect-error, @todo component needs refactoring */}
       <CreatableSelectField
         {...args}
         value={value}
@@ -121,7 +117,6 @@ export const BasicExample: Story = (args) => {
 };
 
 BasicExample.args = {
-  // @ts-expect-error, @todo component needs refactoring
   isMulti: false,
   hint: 'Bonus points if it is a mammal',
   name: 'favAnimal-name',
@@ -164,7 +159,7 @@ BasicExample.args = {
   isSearchable: true,
   isClearable: true,
   options,
-  tabIndex: '0',
+  tabIndex: 0,
   tabSelectsValue: true,
   allowCreateWhileLoading: false,
   createOptionPosition: 'last',
