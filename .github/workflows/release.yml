@@ -22,7 +22,7 @@ jobs:
           private_key: ${{ secrets.CT_CHANGESETS_APP_PEM }}
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # Pass a personal access token (using our `ct-release-bot` account) to be able to trigger
           # other workflows
