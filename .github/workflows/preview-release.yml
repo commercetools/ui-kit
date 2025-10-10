@@ -40,7 +40,7 @@ jobs:
           BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # Pass a personal access token (using our `ct-release-bot` account) to be able to trigger
           # other workflows
