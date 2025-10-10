@@ -5127,19 +5127,49 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hapi/hoek@npm:^9.0.0, @hapi/hoek@npm:^9.3.0":
-  version: 9.3.0
-  resolution: "@hapi/hoek@npm:9.3.0"
-  checksum: 4771c7a776242c3c022b168046af4e324d116a9d2e1d60631ee64f474c6e38d1bb07092d898bf95c7bc5d334c5582798a1456321b2e53ca817d4e7c88bc25b43
+"@hapi/address@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "@hapi/address@npm:5.1.1"
+  dependencies:
+    "@hapi/hoek": ^11.0.2
+  checksum: 678790d86d120e36ff5ea7db061763447cd2589e99fd82bcb5d86c8e6ec290f1c0370d3e2050bf483413757e798f5a9495af0af13ba7e0d8a747c5bcd5682b33
   languageName: node
   linkType: hard
 
-"@hapi/topo@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@hapi/topo@npm:5.1.0"
+"@hapi/formula@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@hapi/formula@npm:3.0.2"
+  checksum: a774d8133e4cfc7059a1196f1233ba4ed204ac9a6835db476eb94b301555038ba2511664b5e941df3b6e973759e8c0ddf76124e1c04716a48b7ffeedb070d288
+  languageName: node
+  linkType: hard
+
+"@hapi/hoek@npm:^11.0.2, @hapi/hoek@npm:^11.0.7":
+  version: 11.0.7
+  resolution: "@hapi/hoek@npm:11.0.7"
+  checksum: 3da5546649c0fa2bb264ce4b2aea8dc13d6fbdd9179bba553c90ab8fb7bd56413d2237d60c0b97c1e747216597eeb13694a947325bfff62ae3725209ec8bb8c6
+  languageName: node
+  linkType: hard
+
+"@hapi/pinpoint@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@hapi/pinpoint@npm:2.0.1"
+  checksum: 8a1bb399f7cf48948669fdc80dff83892ed56eb62eee2cca128fc8b0683733b16e274b395eddfae6154a698aa57c66a3905ceaa3119c59de29751d4601831057
+  languageName: node
+  linkType: hard
+
+"@hapi/tlds@npm:^1.1.1":
+  version: 1.1.3
+  resolution: "@hapi/tlds@npm:1.1.3"
+  checksum: aa8019c5c432f4c552b50b97f2b26168aeae9da3ab96941bd002d5c058c0139291ae912925acdbb2308956df89aa1f2c0a31c6ebbdba33804bd9117d28ae9be3
+  languageName: node
+  linkType: hard
+
+"@hapi/topo@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "@hapi/topo@npm:6.0.2"
   dependencies:
-    "@hapi/hoek": ^9.0.0
-  checksum: 604dfd5dde76d5c334bd03f9001fce69c7ce529883acf92da96f4fe7e51221bf5e5110e964caca287a6a616ba027c071748ab636ff178ad750547fba611d6014
+    "@hapi/hoek": ^11.0.2
+  checksum: c11da8a995ac66d94dcc8ffe37cc094ace15ab8aec30ba2b556e8318394454cc93967a5bcc6519b846586fea4d347f95d924cb6ce5d51236c199c5e677b9575c
   languageName: node
   linkType: hard
 
@@ -6983,29 +7013,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sideway/address@npm:^4.1.5":
-  version: 4.1.5
-  resolution: "@sideway/address@npm:4.1.5"
-  dependencies:
-    "@hapi/hoek": ^9.0.0
-  checksum: 3e3ea0f00b4765d86509282290368a4a5fd39a7995fdc6de42116ca19a96120858e56c2c995081def06e1c53e1f8bccc7d013f6326602bec9d56b72ee2772b9d
-  languageName: node
-  linkType: hard
-
-"@sideway/formula@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "@sideway/formula@npm:3.0.1"
-  checksum: e4beeebc9dbe2ff4ef0def15cec0165e00d1612e3d7cea0bc9ce5175c3263fc2c818b679bd558957f49400ee7be9d4e5ac90487e1625b4932e15c4aa7919c57a
-  languageName: node
-  linkType: hard
-
-"@sideway/pinpoint@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@sideway/pinpoint@npm:2.0.0"
-  checksum: 0f4491e5897fcf5bf02c46f5c359c56a314e90ba243f42f0c100437935daa2488f20482f0f77186bd6bf43345095a95d8143ecf8b1f4d876a7bc0806aba9c3d2
-  languageName: node
-  linkType: hard
-
 "@simple-libs/child-process-utils@npm:^1.0.0":
   version: 1.0.1
   resolution: "@simple-libs/child-process-utils@npm:1.0.1"
@@ -7061,6 +7068,13 @@ __metadata:
   dependencies:
     "@sinonjs/commons": ^3.0.0
   checksum: 614d30cb4d5201550c940945d44c9e0b6d64a888ff2cd5b357f95ad6721070d6b8839cd10e15b76bf5e14af0bcc1d8f9ec00d49a46318f1f669a4bec1d7f3148
+  languageName: node
+  linkType: hard
+
+"@standard-schema/spec@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@standard-schema/spec@npm:1.0.0"
+  checksum: 2d7d73a1c9706622750ab06fc40ef7c1d320b52d5e795f8a1c7a77d0d6a9f978705092bc4149327b3cff4c9a14e5b3800d3b00dc945489175a2d3031ded8332a
   languageName: node
   linkType: hard
 
@@ -11034,7 +11048,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:^8.0.0, cosmiconfig@npm:^8.1.0, cosmiconfig@npm:^8.1.3, cosmiconfig@npm:^8.2.0":
+"cosmiconfig@npm:^8.0.0, cosmiconfig@npm:^8.1.3, cosmiconfig@npm:^8.2.0, cosmiconfig@npm:^8.3.6":
   version: 8.3.6
   resolution: "cosmiconfig@npm:8.3.6"
   dependencies:
@@ -11509,7 +11523,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deepmerge@npm:^4.2.2, deepmerge@npm:^4.3.0, deepmerge@npm:^4.3.1":
+"deepmerge@npm:^4.2.2, deepmerge@npm:^4.3.1":
   version: 4.3.1
   resolution: "deepmerge@npm:4.3.1"
   checksum: 2024c6a980a1b7128084170c4cf56b0fd58a63f2da1660dcfe977415f27b17dbe5888668b59d0b063753f3220719d5e400b7f113609489c90160bb9a5518d052
@@ -12789,10 +12803,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect-puppeteer@npm:^8.0.5":
-  version: 8.0.5
-  resolution: "expect-puppeteer@npm:8.0.5"
-  checksum: 2f4f798304b613478accdfb7055bbe1b2a98997b2e41765f9ae0475020ecbe40d14193751cb63040a9d493c1eb6eec5600c801913fb392678e95ff9862c122a4
+"expect-puppeteer@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "expect-puppeteer@npm:11.0.0"
+  checksum: 3c31ef393d75644d0488eaa43cd030909697eb41db77bf3f3f0fe08f8ae1203ffd4a8652eef15bc1db981560f887d3bed55be8d7ecaf24c9bb2c5cb136d42db9
   languageName: node
   linkType: hard
 
@@ -15145,18 +15159,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-dev-server@npm:^8.0.5":
-  version: 8.0.5
-  resolution: "jest-dev-server@npm:8.0.5"
+"jest-dev-server@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "jest-dev-server@npm:11.0.0"
   dependencies:
     chalk: ^4.1.2
     cwd: ^0.10.0
     find-process: ^1.4.7
     prompts: ^2.4.2
-    spawnd: ^8.0.5
+    spawnd: ^11.0.0
     tree-kill: ^1.2.2
-    wait-on: ^7.0.1
-  checksum: 8e55784c03b8d9e315828b2d6d6701754d3afac013ae8257fdb5085e2ea87face6d93739dab0d8555b9a584860c337163450947939931075949f11e4f3e25033
+    wait-on: ^8.0.1
+  checksum: f0eb04cabca62de0927e0ba15a884aa82e396441dbbe2f2c8df4e338fea9d354f7da58a5d53942069cc2d00627fcbbe12ac2b8ba1b5a005fbeb8ca8ddb4c2e51
   languageName: node
   linkType: hard
 
@@ -15215,7 +15229,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-environment-node@npm:^29.5.0, jest-environment-node@npm:^29.7.0":
+"jest-environment-node@npm:^29.7.0":
   version: 29.7.0
   resolution: "jest-environment-node@npm:29.7.0"
   dependencies:
@@ -15229,16 +15243,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-environment-puppeteer@npm:^8.0.6":
-  version: 8.0.6
-  resolution: "jest-environment-puppeteer@npm:8.0.6"
+"jest-environment-puppeteer@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "jest-environment-puppeteer@npm:11.0.0"
   dependencies:
     chalk: ^4.1.2
-    cosmiconfig: ^8.1.0
-    deepmerge: ^4.3.0
-    jest-dev-server: ^8.0.5
-    jest-environment-node: ^29.5.0
-  checksum: 2109a7a00e1398c3039c591a64b3064676397aa33d9b653d355c8e2261e00bc2975ec6e212014d249aabdc1534b0ee3f8967d1d689967f97a6852922e3129b0b
+    cosmiconfig: ^8.3.6
+    deepmerge: ^4.3.1
+    jest-dev-server: ^11.0.0
+    jest-environment-node: ^29.7.0
+  checksum: 10c8e8c03cd3854cb373692a46377b5fcd4de1ea34f4ee54a2311a53d4c045710aa0d7816da5f95cd957a633cd6574683309e7f969f8088de4b340f007f598c1
   languageName: node
   linkType: hard
 
@@ -15358,15 +15372,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-puppeteer@npm:8.0.6":
-  version: 8.0.6
-  resolution: "jest-puppeteer@npm:8.0.6"
+"jest-puppeteer@npm:11.0.0":
+  version: 11.0.0
+  resolution: "jest-puppeteer@npm:11.0.0"
   dependencies:
-    expect-puppeteer: ^8.0.5
-    jest-environment-puppeteer: ^8.0.6
+    expect-puppeteer: ^11.0.0
+    jest-environment-puppeteer: ^11.0.0
   peerDependencies:
     puppeteer: ">=19"
-  checksum: 0ca2184335b628e3fc6d132579c63b65dfa39077bc6c4b01fd16c2701dddef0887bef3bdd4d67598c32e136f437c2f01cc2750d0d4234c7288cf2b50ed1bec4d
+  checksum: 911eb9225f67d22dde07dc266ee8d6d9c72262be7dc3c3fc572dcab11af42b586eec67d51056b5193474ea3f7e1325091a6ff5b8dae7b629666e55af4eb5b75e
   languageName: node
   linkType: hard
 
@@ -15709,16 +15723,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joi@npm:^17.11.0":
-  version: 17.13.3
-  resolution: "joi@npm:17.13.3"
+"joi@npm:^18.0.1":
+  version: 18.0.1
+  resolution: "joi@npm:18.0.1"
   dependencies:
-    "@hapi/hoek": ^9.3.0
-    "@hapi/topo": ^5.1.0
-    "@sideway/address": ^4.1.5
-    "@sideway/formula": ^3.0.1
-    "@sideway/pinpoint": ^2.0.0
-  checksum: 66ed454fee3d8e8da1ce21657fd2c7d565d98f3e539d2c5c028767e5f38cbd6297ce54df8312d1d094e62eb38f9452ebb43da4ce87321df66cf5e3f128cbc400
+    "@hapi/address": ^5.1.1
+    "@hapi/formula": ^3.0.2
+    "@hapi/hoek": ^11.0.7
+    "@hapi/pinpoint": ^2.0.1
+    "@hapi/tlds": ^1.1.1
+    "@hapi/topo": ^6.0.2
+    "@standard-schema/spec": ^1.0.0
+  checksum: dbf511036b4ad89e962e51e2fb393ec20a863b023b5a4fe32d0c7a8c28456f4ad05ea4a3b30f8ea37560cb4444a0d3e20ede8ee170e2edf7841ac247d3faf91e
   languageName: node
   linkType: hard
 
@@ -19978,7 +19994,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^7.5.5, rxjs@npm:^7.8.1":
+"rxjs@npm:^7.5.5, rxjs@npm:^7.8.2":
   version: 7.8.2
   resolution: "rxjs@npm:7.8.2"
   dependencies:
@@ -20498,13 +20514,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"spawnd@npm:^8.0.5":
-  version: 8.0.5
-  resolution: "spawnd@npm:8.0.5"
+"spawnd@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "spawnd@npm:11.0.0"
   dependencies:
-    signal-exit: ^3.0.7
+    signal-exit: ^4.1.0
     tree-kill: ^1.2.2
-  checksum: 73679292b6c6cc16ce1bfb3bcb6dffd6d5d01e61b980a03a151ae858160b82101595cc07e944554de64b02881c4513b6066599d7f2746744496a0df54891f2a1
+  checksum: dfc72cb26fb8a7a54e2f2a920f1e77def07b9bf81422f047dc69a4a206657ceeaeadde7d58ea6272c3fb043f892d93712d539f2e11bf181964a55c3a94b6c8fd
   languageName: node
   linkType: hard
 
@@ -21862,7 +21878,7 @@ __metadata:
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
     jest-localstorage-mock: 2.4.26
-    jest-puppeteer: 8.0.6
+    jest-puppeteer: 11.0.0
     jest-runner-eslint: 2.3.0
     jest-runner-stylelint: 2.3.7
     jest-silent-reporter: 0.6.0
@@ -22659,18 +22675,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wait-on@npm:^7.0.1":
-  version: 7.2.0
-  resolution: "wait-on@npm:7.2.0"
+"wait-on@npm:^8.0.1":
+  version: 8.0.5
+  resolution: "wait-on@npm:8.0.5"
   dependencies:
-    axios: ^1.6.1
-    joi: ^17.11.0
+    axios: ^1.12.1
+    joi: ^18.0.1
     lodash: ^4.17.21
     minimist: ^1.2.8
-    rxjs: ^7.8.1
+    rxjs: ^7.8.2
   bin:
     wait-on: bin/wait-on
-  checksum: 69ec1432bb4479363fdd71f2f3f501a98aa356a562781108a4a89ef8fdf1e3d5fd0c2fd56c4cc5902abbb662065f1f22d4e436a1e6fc9331ce8b575eb023325e
+  checksum: 98b3b3da0d59c1abda92a5b37b5b5855afd778b6e684c312067ad0fbc20fe68b8aa6e62352318159365f76128188ad30a04ce67be170381472f1870560d99180
   languageName: node
   linkType: hard
 
