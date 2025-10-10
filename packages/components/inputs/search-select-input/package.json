@@ -31,8 +31,8 @@
     "@emotion/styled": "^11.10.5"
   },
   "devDependencies": {
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "react-intl": "^7.1.4"
   },
   "peerDependencies": {
