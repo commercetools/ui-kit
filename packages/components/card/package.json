@@ -29,7 +29,7 @@
     "@types/react-router-dom": "^5.3.3"
   },
   "devDependencies": {
-    "react": "19.1.0",
+    "react": "19.2.0",
     "react-router-dom": "5.3.4"
   },
   "peerDependencies": {

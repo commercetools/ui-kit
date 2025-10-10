@@ -187,7 +187,7 @@ const expandedTranslationsReducer = (
           [locale]: true,
           ...translations,
         };
-      }, {});
+      }, {} as TReducerState);
       return newState;
     }
     default:

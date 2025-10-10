@@ -189,7 +189,7 @@ const expandedTranslationsReducer = (
           [locale]: true,
           ...translations,
         };
-      }, {});
+      }, {} as TExpandedTranslationsReducerState);
       return newState;
     }
     default:
