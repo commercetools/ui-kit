@@ -50,7 +50,7 @@ function selectionReducer(state: TSelectionState, action: TSelectionAction) {
           ...allItems,
           [currentItem]: true,
         }),
-        {}
+        {} as TSelectionState
       );
     }
     case 'deselectAll': {
@@ -59,7 +59,7 @@ function selectionReducer(state: TSelectionState, action: TSelectionAction) {
           ...allItems,
           [currentItem]: false,
         }),
-        {}
+        {} as TSelectionState
       );
     }
     default:
