@@ -48,8 +48,8 @@
     "slate-react": "0.75.0"
   },
   "devDependencies": {
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "react-intl": "^7.1.4"
   },
   "peerDependencies": {

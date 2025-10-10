@@ -27,7 +27,7 @@
     "@commercetools-uikit/spacings-stack": "20.2.3"
   },
   "devDependencies": {
-    "react": "19.1.0"
+    "react": "19.2.0"
   },
   "peerDependencies": {
     "react": "19.x"
