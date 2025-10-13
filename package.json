@@ -159,7 +159,7 @@
     "jest-silent-reporter": "0.6.0",
     "jest-validate": "29.7.0",
     "jest-watch-typeahead": "2.2.2",
-    "lint-staged": "16.2.3",
+    "lint-staged": "16.2.4",
     "moment": "2.30.1",
     "moment-timezone": "0.6.0",
     "omit-empty-es": "1.2.0",
