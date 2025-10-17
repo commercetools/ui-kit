@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/radio-input",
   "description": "A RadioInput represents a group of options where only one option can be selected at a time.",
-  "version": "20.2.3",
+  "version": "20.3.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,14 +21,14 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/constraints": "20.2.3",
-    "@commercetools-uikit/design-system": "20.2.3",
-    "@commercetools-uikit/icons": "20.2.3",
-    "@commercetools-uikit/input-utils": "20.2.3",
-    "@commercetools-uikit/spacings-inline": "20.2.3",
-    "@commercetools-uikit/spacings-inset": "20.2.3",
-    "@commercetools-uikit/spacings-stack": "20.2.3",
-    "@commercetools-uikit/utils": "20.2.3",
+    "@commercetools-uikit/constraints": "20.3.0",
+    "@commercetools-uikit/design-system": "20.3.0",
+    "@commercetools-uikit/icons": "20.3.0",
+    "@commercetools-uikit/input-utils": "20.3.0",
+    "@commercetools-uikit/spacings-inline": "20.3.0",
+    "@commercetools-uikit/spacings-inset": "20.3.0",
+    "@commercetools-uikit/spacings-stack": "20.3.0",
+    "@commercetools-uikit/utils": "20.3.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "react-is": "19.2.0"
