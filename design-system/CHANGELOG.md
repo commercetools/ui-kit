@@ -1,5 +1,18 @@
 # @commercetools-uikit/design-system
 
+## 20.3.0
+
+### Minor Changes
+
+- [#3185](https://github.com/commercetools/ui-kit/pull/3185) [`7de2dde`](https://github.com/commercetools/ui-kit/commit/7de2dde24174097814b0b1cbebef90297f6b4171) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Update design-system package to specify react@19.x as a peer dependency instead of a dependency"
+
+### Patch Changes
+
+- [#3157](https://github.com/commercetools/ui-kit/pull/3157) [`681eff5`](https://github.com/commercetools/ui-kit/commit/681eff5141dd535b9523eebde86b82fd16c51e18) Thanks [@renovate](https://github.com/apps/renovate)! - Update all minor version dependency updates, see https://github.com/commercetools/ui-kit/pull/3157"
+
+- Updated dependencies [[`681eff5`](https://github.com/commercetools/ui-kit/commit/681eff5141dd535b9523eebde86b82fd16c51e18)]:
+  - @commercetools-uikit/hooks@20.3.0
+
 ## 20.2.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @commercetools-local/storybook
 
+## 1.0.2
+
+### Patch Changes
+
+- [#3157](https://github.com/commercetools/ui-kit/pull/3157) [`681eff5`](https://github.com/commercetools/ui-kit/commit/681eff5141dd535b9523eebde86b82fd16c51e18) Thanks [@renovate](https://github.com/apps/renovate)! - Update all minor version dependency updates, see https://github.com/commercetools/ui-kit/pull/3157"
+
 ## 1.0.1
 
 ### Patch Changes
