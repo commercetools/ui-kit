@@ -124,7 +124,7 @@ export const component = () => (
     </Spec>
     <Spec label="with filter appearance">
       <DateInput
-        value=""
+        value={value}
         onChange={() => {}}
         isCondensed={true}
         horizontalConstraint={7}
