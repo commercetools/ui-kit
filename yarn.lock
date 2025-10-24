@@ -6592,17 +6592,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rolldown/pluginutils@npm:1.0.0-beta.38":
-  version: 1.0.0-beta.38
-  resolution: "@rolldown/pluginutils@npm:1.0.0-beta.38"
-  checksum: 607fbe9733530961ae8cada278f2e3710ed957dc27f41af0cd0538af54cbdd4711db490b1da07f3000f5ac3c5946b514ddd96d6e83dec0331dbc1a21f70f59e9
-  languageName: node
-  linkType: hard
-
 "@rolldown/pluginutils@npm:1.0.0-beta.35":
   version: 1.0.0-beta.35
   resolution: "@rolldown/pluginutils@npm:1.0.0-beta.35"
   checksum: 49bb15c2d4e0e37c9082fba6b4270c0b90eda9c84b48529cd5bfcfb232e342d2bd99c2ce3f82108d65347e37799a05f10fb6aa585d688bd5bfa93ad2a4c91ac3
+  languageName: node
+  linkType: hard
+
+"@rolldown/pluginutils@npm:1.0.0-beta.38":
+  version: 1.0.0-beta.38
+  resolution: "@rolldown/pluginutils@npm:1.0.0-beta.38"
+  checksum: 607fbe9733530961ae8cada278f2e3710ed957dc27f41af0cd0538af54cbdd4711db490b1da07f3000f5ac3c5946b514ddd96d6e83dec0331dbc1a21f70f59e9
   languageName: node
   linkType: hard
 
