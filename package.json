@@ -145,7 +145,7 @@
     "eslint-formatter-pretty": "4.1.0",
     "execa": "9.6.0",
     "formik": "^2.4.6",
-    "glob": "11.0.3",
+    "glob": "11.1.0",
     "global": "4.4.0",
     "husky": "9.1.7",
     "identity-obj-proxy": "3.0.0",
