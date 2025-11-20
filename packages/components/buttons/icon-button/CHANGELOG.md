@@ -1,5 +1,16 @@
 # @commercetools-uikit/icon-button
 
+## 20.3.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.3.1
+  - @commercetools-uikit/accessible-button@20.3.1
+  - @commercetools-uikit/text@20.3.1
+  - @commercetools-uikit/utils@20.3.1
+  - @commercetools-uikit/spacings@20.3.1
+
 ## 20.3.0
 
 ### Patch Changes

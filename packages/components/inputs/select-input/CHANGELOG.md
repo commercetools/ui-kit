@@ -1,5 +1,18 @@
 # @commercetools-uikit/select-input
 
+## 20.3.1
+
+### Patch Changes
+
+- [#3196](https://github.com/commercetools/ui-kit/pull/3196) [`1159f56`](https://github.com/commercetools/ui-kit/commit/1159f56e412cfd972188741ddfbad85d379d35a4) Thanks [@ragafus](https://github.com/ragafus)! - Allow generic options in `SelectInput` component. `TSelectInputProps` props become `TSelectInputProps<T extends TOption = TOption>`
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.3.1
+  - @commercetools-uikit/constraints@20.3.1
+  - @commercetools-uikit/icons@20.3.1
+  - @commercetools-uikit/select-utils@20.3.1
+  - @commercetools-uikit/utils@20.3.1
+
 ## 20.3.0
 
 ### Patch Changes
