@@ -72,7 +72,6 @@ jobs:
 
 
       - name: Checking bundle size
-        uses: andresz1/size-limit-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          skip_step: build  # Skip build step since we already built in previous step
+        run: yarn bundlesize
+        # Using size-limit directly (configured in package.json) instead of action
+        # to avoid dependency installation issues with Node 24

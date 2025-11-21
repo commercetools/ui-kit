@@ -30,6 +30,7 @@
     "test:bundle": "jest --config jest.bundle.config.js",
     "test:visual": "jest --config jest.visual.config.js --runInBand",
     "vrt:components": "percy exec -- yarn test:visual",
+    "bundlesize": "size-limit",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "changeset": "changeset",
     "changeset:version-and-format": "changeset version && yarn prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install",
@@ -100,11 +101,12 @@
   "packageManager": "yarn@3.8.7",
   "size-limit": [
     {
-      "path": "packages/**/icons/dist/*.cjs.prod.js",
+      "path": "packages/components/icons/dist/*.cjs.prod.js",
       "limit": "60 KB"
     },
     {
-      "path": "packages/**/!(icons)/dist/*.cjs.prod.js",
+      "path": "packages/**/dist/*.cjs.prod.js",
+      "ignore": ["packages/components/icons/**"],
       "limit": "50 KB"
     }
   ],
@@ -126,6 +128,7 @@
     "@percy/cli": "1.31.3",
     "@percy/puppeteer": "2.0.2",
     "@preconstruct/cli": "2.8.12",
+    "@size-limit/preset-big-lib": "^11.2.0",
     "@svgr/babel-plugin-svg-dynamic-title": "^8.0.0",
     "@svgr/cli": "8.1.0",
     "@svgr/core": "8.1.0",
