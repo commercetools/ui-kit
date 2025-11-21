@@ -30,7 +30,7 @@
     "test:bundle": "jest --config jest.bundle.config.js",
     "test:visual": "jest --config jest.visual.config.js --runInBand",
     "vrt:components": "percy exec -- yarn test:visual",
-    "bundlesize": "bundlesize",
+    "bundlesize": "bundlewatch --config bundlesize.config.json",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "changeset": "changeset",
     "changeset:version-and-format": "changeset version && yarn prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install",
@@ -94,7 +94,7 @@
     "got": "14.5.0"
   },
   "engines": {
-    "node": ">=22",
+    "node": ">=24",
     "npm": ">=6",
     "yarn": ">=3"
   },
@@ -136,7 +136,7 @@
     "@typescript-eslint/parser": "8.46.0",
     "babel-jest": "29.7.0",
     "browserslist": "4.26.3",
-    "bundlesize": "0.18.2",
+    "bundlewatch": "^0.4.1",
     "colors": "1.4.0",
     "commander": "^13.1.0",
     "conventional-changelog-cli": "5.0.0",
