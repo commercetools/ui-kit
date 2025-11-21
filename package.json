@@ -30,7 +30,6 @@
     "test:bundle": "jest --config jest.bundle.config.js",
     "test:visual": "jest --config jest.visual.config.js --runInBand",
     "vrt:components": "percy exec -- yarn test:visual",
-    "bundlesize": "bundlesize",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "changeset": "changeset",
     "changeset:version-and-format": "changeset version && yarn prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install",
@@ -99,6 +98,16 @@
     "yarn": ">=3"
   },
   "packageManager": "yarn@3.8.7",
+  "size-limit": [
+    {
+      "path": "packages/**/icons/dist/*.cjs.prod.js",
+      "limit": "60 KB"
+    },
+    {
+      "path": "packages/**/!(icons)/dist/*.cjs.prod.js",
+      "limit": "50 KB"
+    }
+  ],
   "devDependencies": {
     "@babel/core": "7.28.4",
     "@changesets/changelog-github": "0.5.1",
@@ -136,7 +145,6 @@
     "@typescript-eslint/parser": "8.46.0",
     "babel-jest": "29.7.0",
     "browserslist": "4.26.3",
-    "bundlesize": "0.18.2",
     "colors": "1.4.0",
     "commander": "^13.1.0",
     "conventional-changelog-cli": "5.0.0",
@@ -182,6 +190,7 @@
     "replace": "1.2.2",
     "rimraf": "3.0.2",
     "shelljs": "0.10.0",
+    "size-limit": "^11.1.2",
     "stylelint": "16.25.0",
     "stylelint-config-standard": "36.0.1",
     "stylelint-order": "5.0.0",

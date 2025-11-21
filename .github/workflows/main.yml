@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write  # Required for size-limit-action to comment on PRs
 
 jobs:
   build_lint_and_test:
@@ -70,14 +71,8 @@ jobs:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
 
-      - name: Checking bundle size of visual testing app
-        run: yarn bundlesize
-        # env:
-        # NOTE: it seems that currently bundlesize server is having problems
-        # resulting in status code 500. Because of that, the bundlesize script
-        # is not able to handle the response, resulting in the exit code command
-        # to be 0, which makes the test pass.
-        # To keep the bundlesize check, we avoid passing the token to the command.
-        # This results in the script to run and fail in case of error, but no status
-        # code is reported to the github PR.
-        #   BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
+      - name: Checking bundle size
+        uses: andresz1/size-limit-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          skip_step: build  # Skip build step since we already built in previous step
