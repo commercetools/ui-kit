@@ -30,7 +30,7 @@
     "test:bundle": "jest --config jest.bundle.config.js",
     "test:visual": "jest --config jest.visual.config.js --runInBand",
     "vrt:components": "percy exec -- yarn test:visual",
-    "bundlesize": "bundlewatch",
+    "bundlesize": "bundlewatch --config bundlesize.config.json",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "changeset": "changeset",
     "changeset:version-and-format": "changeset version && yarn prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install",
@@ -99,17 +99,6 @@
     "yarn": ">=3"
   },
   "packageManager": "yarn@3.8.7",
-  "size-limit": [
-    {
-      "path": "packages/components/icons/dist/*.cjs.prod.js",
-      "limit": "60 KB"
-    },
-    {
-      "path": "packages/**/dist/*.cjs.prod.js",
-      "ignore": ["packages/components/icons/**"],
-      "limit": "50 KB"
-    }
-  ],
   "devDependencies": {
     "@babel/core": "7.28.4",
     "@changesets/changelog-github": "0.5.1",
