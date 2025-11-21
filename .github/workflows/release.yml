@@ -7,6 +7,7 @@ on:
 
 permissions:
   id-token: write
+  contents: read
 
 jobs:
   release:
@@ -39,6 +40,12 @@ jobs:
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
+
+      - name: Verify npm version
+        run: |
+          npm --version
+          # Ensure latest npm is installed for trusted publishing (OIDC)
+
       - uses: actions/cache@v4
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
@@ -48,16 +55,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-
-      - name: Creating .npmrc
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            provenance=true
-            email=npmjs@commercetools.com
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Building packages
         run: yarn build
