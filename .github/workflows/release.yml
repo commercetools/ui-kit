@@ -7,6 +7,7 @@ on:
 
 permissions:
   id-token: write
+  contents: read
 
 jobs:
   release:
@@ -31,13 +32,19 @@ jobs:
           token: ${{ steps.generate_github_token.outputs.token }}
 
       - name: Setup Node (uses version in .nvmrc)
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
 
       - name: Get yarn cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+
+      - name: Verify npm version
+        run: |
+          npm --version
+          # Ensure latest npm is installed for trusted publishing (OIDC)
 
       - uses: actions/cache@v4
         with:
@@ -48,16 +55,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-
-      - name: Creating .npmrc
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            provenance=true
-            email=npmjs@commercetools.com
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Building packages
         run: yarn build

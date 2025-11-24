@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write  # Required for size-limit-action to comment on PRs
 
 jobs:
   build_lint_and_test:
@@ -70,14 +71,18 @@ jobs:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
 
-      - name: Checking bundle size of visual testing app
+      - name: Set bundlewatch environment variables
+        id: bundlewatch
+        run: |
+          echo "repo_name=$(echo '${{ github.repository }}' | cut -d'/' -f2)" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Checking bundle size
         run: yarn bundlesize
-        # env:
-        # NOTE: it seems that currently bundlesize server is having problems
-        # resulting in status code 500. Because of that, the bundlesize script
-        # is not able to handle the response, resulting in the exit code command
-        # to be 0, which makes the test pass.
-        # To keep the bundlesize check, we avoid passing the token to the command.
-        # This results in the script to run and fail in case of error, but no status
-        # code is reported to the github PR.
-        #   BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
+        env:
+          BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+          CI_REPO_OWNER: ${{ github.repository_owner }}
+          CI_REPO_NAME: ${{ steps.bundlewatch.outputs.repo_name }}
+          CI_COMMIT_SHA: ${{ github.sha }}
+          CI_BRANCH: ${{ github.ref_name }}
+          CI_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
