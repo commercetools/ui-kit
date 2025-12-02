@@ -14,7 +14,15 @@ module.exports = {
   server: {
     command: 'yarn visual-testing-app:preview',
     port: 3000,
-    launchTimeout: 10000,
+    launchTimeout: 30000,
     protocol: 'http',
+    // Auto-kill any process already using port 3000
+    usedPortAction: 'kill',
+    debug: true,
+    // Customize wait behavior for more reliable server detection
+    waitOnScheme: {
+      delay: 1000,
+      interval: 500,
+    },
   },
 };
