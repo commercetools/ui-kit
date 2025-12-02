@@ -1,6 +1,6 @@
 module.exports = {
   cliOptions: {
-    format: 'stylish', // Built-in ESLint formatter
+    format: 'stylish',
     rules: {
       'import/no-unresolved': 2,
       'prettier/prettier': [
