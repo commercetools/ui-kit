@@ -40,7 +40,7 @@
     "@commercetools-uikit/time-field": "20.3.0"
   },
   "devDependencies": {
-    "react": "19.2.0",
+    "react": "19.2.1",
     "react-intl": "^7.1.4",
     "react-router-dom": "5.3.4"
   },
