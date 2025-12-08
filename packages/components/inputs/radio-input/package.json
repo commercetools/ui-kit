@@ -31,10 +31,10 @@
     "@commercetools-uikit/utils": "20.3.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "react-is": "19.2.0"
+    "react-is": "19.2.1"
   },
   "devDependencies": {
-    "react": "19.2.0"
+    "react": "19.2.1"
   },
   "peerDependencies": {
     "react": "19.x"

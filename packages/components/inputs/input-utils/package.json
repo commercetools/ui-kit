@@ -29,7 +29,7 @@
     "react-textarea-autosize": "8.4.0"
   },
   "devDependencies": {
-    "react": "19.2.0",
+    "react": "19.2.1",
     "react-intl": "^7.1.4"
   },
   "peerDependencies": {
