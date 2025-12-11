@@ -1,5 +1,11 @@
 # @commercetools-local/storybook
 
+## 1.0.3
+
+### Patch Changes
+
+- [#3198](https://github.com/commercetools/ui-kit/pull/3198) [`4e4736f`](https://github.com/commercetools/ui-kit/commit/4e4736f7a14b629374e8ae6c3c08a15430ee7967) Thanks [@jaikumar-tj](https://github.com/jaikumar-tj)! - Adopt trusted publishing on NPM
+
 ## 1.0.2
 
 ### Patch Changes
