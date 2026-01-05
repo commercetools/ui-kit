@@ -38,7 +38,6 @@
     "visual-testing-app:build": "yarn workspace visual-testing-app build",
     "visual-testing-app:preview": "yarn workspace visual-testing-app preview",
     "typecheck": "tsc --noEmit --skipLibCheck",
-    "omlet:scan": "yarn omlet analyze --hook-script ./scripts/omlet-hook-script.js",
     "prepare": "husky"
   },
   "workspaces": [
@@ -113,7 +112,6 @@
     "@formatjs/intl-relativetimeformat": "11.4.13",
     "@manypkg/cli": "0.25.1",
     "@manypkg/get-packages": "1.1.3",
-    "@omlet/cli": "^2.0.0",
     "@percy/cli": "1.31.3",
     "@percy/puppeteer": "2.0.2",
     "@preconstruct/cli": "2.8.12",
