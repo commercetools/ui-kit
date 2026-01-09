@@ -19,7 +19,7 @@
     "@storybook/react-vite": "^8.6.12",
     "@storybook/test": "^8.6.12",
     "@swc/plugin-emotion": "^8.0.3",
-    "@vitejs/plugin-react-swc": "^3.7.2",
+    "@vitejs/plugin-react-swc": "^4.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-intl": "^7.1.4",
