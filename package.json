@@ -162,7 +162,7 @@
     "moment": "2.30.1",
     "moment-timezone": "0.6.0",
     "omit-empty-es": "1.2.0",
-    "patch-package": "^8.0.0",
+    "patch-package": "^8.0.1",
     "postcss": "8.5.6",
     "postcss-styled-syntax": "^0.7.0",
     "postcss-syntax": "^0.36.2",
