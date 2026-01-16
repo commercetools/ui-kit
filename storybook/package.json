@@ -24,7 +24,7 @@
     "react-dom": "19.2.0",
     "react-intl": "^7.1.4",
     "remark-gfm": "^4.0.0",
-    "serve": "^14.2.3",
+    "serve": "^14.2.5",
     "storybook": "^8.6.15",
     "vite": "6.4.1"
   },
