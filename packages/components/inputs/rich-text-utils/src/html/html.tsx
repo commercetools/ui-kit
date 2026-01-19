@@ -1,4 +1,5 @@
 import escapeHtml from 'escape-html';
+import DOMPurify from 'dompurify';
 import {
   Text,
   Element as SlateElement,
@@ -16,8 +17,30 @@ import isEmpty from 'lodash/isEmpty';
 import type { HistoryEditor } from 'slate-history';
 import { BLOCK_TAGS, MARK_TAGS } from '../tags';
 import { Softbreaker } from '../slate-helpers';
+import { canUseDOM } from '@commercetools-uikit/utils';
 
 type Html = string;
+const ALLOWED_HTML_TAGS = [
+  'p',
+  'strong',
+  'em',
+  'u',
+  'a',
+  'ul',
+  'ol',
+  'li',
+  'br',
+];
+const ALLOWED_HTML_ATTRS = ['href', 'title', 'target', 'rel'];
+
+const sanitizeHtml = (html: string): string => {
+  if (!canUseDOM) return html;
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: ALLOWED_HTML_TAGS,
+    ALLOWED_ATTR: ALLOWED_HTML_ATTRS,
+    ALLOW_UNKNOWN_PROTOCOLS: false,
+  });
+};
 
 export type CustomElement = {
   type: Format;
@@ -166,7 +189,7 @@ const serialize = (value: Deserialized | Deserialized[]): Html => {
   } else {
     outputHtml = value.map((node) => serializeSingle(node)).join('');
   }
-  return outputHtml;
+  return sanitizeHtml(outputHtml);
 };
 
 const ELEMENT_TAGS: Record<
