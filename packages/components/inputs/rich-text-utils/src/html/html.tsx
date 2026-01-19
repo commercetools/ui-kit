@@ -51,7 +51,7 @@ declare module 'slate' {
 
 const serializeNode = (node: TNode): Html => {
   if (Text.isText(node)) {
-    let string = escapeHtml(node.text);
+    let string = node.text;
     if (node.bold) {
       string = `<strong>${string}</strong>`;
     }
