@@ -40,7 +40,7 @@ jobs:
           BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # Pass a personal access token (using our `ct-release-bot` account) to be able to trigger
           # other workflows
@@ -50,7 +50,7 @@ jobs:
           token: ${{ steps.generate_github_token.outputs.token }}
 
       - name: Setup Node (uses version in .nvmrc)
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
 
@@ -58,7 +58,7 @@ jobs:
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock', 'patches/*.patch') }}

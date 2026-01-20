@@ -1,6 +1,6 @@
 {
   "name": "visual-testing-app",
-  "version": "13.0.5",
+  "version": "13.0.6",
   "description": "An app to facilitate visual testing",
   "private": true,
   "scripts": {
@@ -9,21 +9,21 @@
     "preview": "vite preview --port 3000"
   },
   "dependencies": {
-    "@commercetools-uikit/design-system": "20.2.3",
+    "@commercetools-uikit/design-system": "20.3.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@fontsource/inter": "5.2.6",
+    "@fontsource/inter": "5.2.8",
     "@types/react": "^19.0.7",
     "moment": "2.30.1",
     "moment-timezone": "0.6.0",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "react-intl": "^7.1.4",
     "react-router": "5.3.4",
     "react-router-dom": "5.3.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "4.7.0",
-    "vite": "6.3.5"
+    "@vitejs/plugin-react": "5.0.4",
+    "vite": "6.4.1"
   }
 }

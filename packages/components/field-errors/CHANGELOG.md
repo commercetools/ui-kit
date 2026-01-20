@@ -1,5 +1,14 @@
 # @commercetools-uikit/field-errors
 
+## 20.3.0
+
+### Patch Changes
+
+- [#3157](https://github.com/commercetools/ui-kit/pull/3157) [`681eff5`](https://github.com/commercetools/ui-kit/commit/681eff5141dd535b9523eebde86b82fd16c51e18) Thanks [@renovate](https://github.com/apps/renovate)! - Update all minor version dependency updates, see https://github.com/commercetools/ui-kit/pull/3157"
+
+- Updated dependencies [[`681eff5`](https://github.com/commercetools/ui-kit/commit/681eff5141dd535b9523eebde86b82fd16c51e18)]:
+  - @commercetools-uikit/messages@20.3.0
+
 ## 20.2.3
 
 ### Patch Changes

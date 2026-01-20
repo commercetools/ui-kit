@@ -7,6 +7,7 @@ on:
 
 permissions:
   id-token: write
+  contents: read
 
 jobs:
   release:
@@ -22,7 +23,7 @@ jobs:
           private_key: ${{ secrets.CT_CHANGESETS_APP_PEM }}
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # Pass a personal access token (using our `ct-release-bot` account) to be able to trigger
           # other workflows
@@ -31,7 +32,7 @@ jobs:
           token: ${{ steps.generate_github_token.outputs.token }}
 
       - name: Setup Node (uses version in .nvmrc)
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
 
@@ -39,7 +40,13 @@ jobs:
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
-      - uses: actions/cache@v4
+
+      - name: Verify npm version
+        run: |
+          npm --version
+          # Ensure latest npm is installed for trusted publishing (OIDC)
+
+      - uses: actions/cache@v5
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock', 'patches/*.patch') }}
@@ -48,16 +55,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-
-      - name: Creating .npmrc
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            provenance=true
-            email=npmjs@commercetools.com
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Building packages
         run: yarn build

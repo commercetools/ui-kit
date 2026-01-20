@@ -1,5 +1,23 @@
 # @commercetools-uikit/calendar-utils
 
+## 20.3.0
+
+### Patch Changes
+
+- [#3157](https://github.com/commercetools/ui-kit/pull/3157) [`681eff5`](https://github.com/commercetools/ui-kit/commit/681eff5141dd535b9523eebde86b82fd16c51e18) Thanks [@renovate](https://github.com/apps/renovate)! - Update all minor version dependency updates, see https://github.com/commercetools/ui-kit/pull/3157"
+
+- Updated dependencies [[`7de2dde`](https://github.com/commercetools/ui-kit/commit/7de2dde24174097814b0b1cbebef90297f6b4171), [`681eff5`](https://github.com/commercetools/ui-kit/commit/681eff5141dd535b9523eebde86b82fd16c51e18)]:
+  - @commercetools-uikit/design-system@20.3.0
+  - @commercetools-uikit/secondary-icon-button@20.3.0
+  - @commercetools-uikit/accessible-button@20.3.0
+  - @commercetools-uikit/spacings-inline@20.3.0
+  - @commercetools-uikit/input-utils@20.3.0
+  - @commercetools-uikit/tooltip@20.3.0
+  - @commercetools-uikit/icons@20.3.0
+  - @commercetools-uikit/text@20.3.0
+  - @commercetools-uikit/hooks@20.3.0
+  - @commercetools-uikit/utils@20.3.0
+
 ## 20.2.3
 
 ### Patch Changes
