@@ -22,7 +22,6 @@ import { canUseDOM } from '@commercetools-uikit/utils';
 type Html = string;
 const ALLOWED_HTML_TAGS = [
   'p',
-  'strong',
   'em',
   'u',
   'a',
@@ -30,16 +29,43 @@ const ALLOWED_HTML_TAGS = [
   'ol',
   'li',
   'br',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'pre',
+  'ul',
+  'ol',
+  'li',
+  'a',
+  'del',
+  'sup',
+  'sub',
+  'code',
+  'span',
+  'tbody',
+  'table',
+  'strong',
+  'blockquote',
 ];
 const ALLOWED_HTML_ATTRS = ['href', 'title', 'target', 'rel'];
 
+const normalizeHtmlOutput = (html: string): string =>
+  html
+    .replace(/<br\s*>/gi, '<br/>')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+
 const sanitizeHtml = (html: string): string => {
   if (!canUseDOM) return html;
-  return DOMPurify.sanitize(html, {
+  const sanitized = DOMPurify.sanitize(html, {
     ALLOWED_TAGS: ALLOWED_HTML_TAGS,
     ALLOWED_ATTR: ALLOWED_HTML_ATTRS,
     ALLOW_UNKNOWN_PROTOCOLS: false,
   });
+  return normalizeHtmlOutput(sanitized);
 };
 
 export type CustomElement = {
