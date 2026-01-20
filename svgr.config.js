@@ -63,7 +63,7 @@ export default ${reactComponentName};
   `;
   const codeWithoutUnnecessaryAnnotations = annotationsToRemove.reduce(
     (finalStringTemplate, annotationToRemove) =>
-      finalStringTemplate.replace(new RegExp(annotationToRemove, 'g'), ''),
+      finalStringTemplate.replace(annotationToRemove, ''),
     code
   );
   return template.smart(
