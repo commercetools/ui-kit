@@ -53,10 +53,7 @@ const ALLOWED_HTML_TAGS = [
 const ALLOWED_HTML_ATTRS = ['href', 'title', 'target', 'rel'];
 
 const normalizeHtmlOutput = (html: string): string =>
-  html
-    .replace(/<br\s*>/gi, '<br/>')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>');
+  html.replace(/<br\s*>/gi, '<br/>');
 
 const sanitizeHtml = (html: string): string => {
   if (!canUseDOM) return html;
