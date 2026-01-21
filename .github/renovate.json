@@ -1,24 +1,21 @@
 {
-  "extends": ["config:base", ":preserveSemverRanges", "schedule:weekly"],
-  "separateMajorMinor": true,
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>commercetools/renovate-config:composite/component-library"
+  ],
   "rebaseWhen": "never",
   "packageRules": [
     {
-      "sourceUrlPrefixes": ["https://github.com/gregberge/svgr"],
+      "matchSourceUrls": ["https://github.com/gregberge/svgr{/,}**"],
       "groupName": "all svgr packages"
     },
     {
-      "sourceUrlPrefixes": [
-        "https://github.com/stylelint/stylelint-config-standard",
-        "https://github.com/stylelint/stylelint"
+      "matchPackageNames": [
+        "stylelint",
+        "stylelint-config-standard",
+        "/^stylelint-/"
       ],
       "groupName": "all stylelint packages"
-    },
-    {
-      "packagePatterns": ["*"],
-      "updateTypes": ["minor", "patch"],
-      "groupName": "all dependencies",
-      "groupSlug": "all"
     },
     {
       "matchPackageNames": ["html-loader"],
@@ -45,9 +42,5 @@
       "allowedVersions": "<3.0.0"
     }
   ],
-  "lockFileMaintenance": {
-    "enabled": true
-  },
-  "labels": ["🤖 Type: Dependencies"],
   "ignoreDeps": ["slate", "slate-html-serializer", "slate-react"]
 }
