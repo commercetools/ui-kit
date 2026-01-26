@@ -27,7 +27,7 @@
     "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/hooks": "20.3.0",
     "@emotion/react": "^11.10.5",
-    "lodash": "4.17.21"
+    "lodash": "4.17.23"
   },
   "devDependencies": {
     "nodemon": "^3.0.0",

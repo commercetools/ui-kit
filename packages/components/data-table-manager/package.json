@@ -55,7 +55,7 @@
     "@hello-pangea/dnd": "^18.0.0",
     "@types/debounce-promise": "^3.1.6",
     "debounce-promise": "^3.1.2",
-    "lodash": "4.17.21"
+    "lodash": "4.17.23"
   },
   "devDependencies": {
     "formik": "^2.4.6",

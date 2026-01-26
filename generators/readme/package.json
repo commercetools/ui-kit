@@ -23,7 +23,7 @@
     "commander": "^13.1.0",
     "listr": "0.14.3",
     "listr-verbose-renderer": "0.6.0",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "rcfile": "1.0.3",
     "react-docgen": "5.4.3",
     "remark-gfm-v1": "npm:remark-gfm@1.0.0",
