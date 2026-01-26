@@ -1,4 +1,5 @@
 import escapeHtml from 'escape-html';
+import DOMPurify from 'dompurify';
 import {
   Text,
   Element as SlateElement,
@@ -16,8 +17,53 @@ import isEmpty from 'lodash/isEmpty';
 import type { HistoryEditor } from 'slate-history';
 import { BLOCK_TAGS, MARK_TAGS } from '../tags';
 import { Softbreaker } from '../slate-helpers';
+import { canUseDOM } from '@commercetools-uikit/utils';
 
 type Html = string;
+const ALLOWED_HTML_TAGS = [
+  'p',
+  'em',
+  'u',
+  'a',
+  'ul',
+  'ol',
+  'li',
+  'br',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'pre',
+  'ul',
+  'ol',
+  'li',
+  'a',
+  'del',
+  'sup',
+  'sub',
+  'code',
+  'span',
+  'tbody',
+  'table',
+  'strong',
+  'blockquote',
+];
+const ALLOWED_HTML_ATTRS = ['href', 'title', 'target', 'rel'];
+
+const normalizeHtmlOutput = (html: string): string =>
+  html.replace(/<br\s*>/gi, '<br/>');
+
+const sanitizeHtml = (html: string): string => {
+  if (!canUseDOM) return html;
+  const sanitized = DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: ALLOWED_HTML_TAGS,
+    ALLOWED_ATTR: ALLOWED_HTML_ATTRS,
+    ALLOW_UNKNOWN_PROTOCOLS: false,
+  });
+  return normalizeHtmlOutput(sanitized);
+};
 
 export type CustomElement = {
   type: Format;
@@ -51,7 +97,7 @@ declare module 'slate' {
 
 const serializeNode = (node: TNode): Html => {
   if (Text.isText(node)) {
-    let string = escapeHtml(node.text);
+    let string = node.text;
     if (node.bold) {
       string = `<strong>${string}</strong>`;
     }
@@ -166,7 +212,7 @@ const serialize = (value: Deserialized | Deserialized[]): Html => {
   } else {
     outputHtml = value.map((node) => serializeSingle(node)).join('');
   }
-  return outputHtml;
+  return sanitizeHtml(outputHtml);
 };
 
 const ELEMENT_TAGS: Record<
