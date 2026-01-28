@@ -18,6 +18,8 @@ describe('getLocalizedDateTimeFormatPattern', () => {
     en: 'MM/DD/YYYY',
     'en-GB': 'DD/MM/YYYY',
     'en-AU': 'DD/MM/YYYY',
+    'en-IE': 'DD/MM/YYYY', // Irish English should use European format
+    'en-BE': 'DD/MM/YYYY', // Belgian English should use European format
     es: 'DD/MM/AAAA',
     'fr-FR': 'JJ/MM/AAAA',
     'pt-BR': 'DD/MM/AAAA',
@@ -29,6 +31,8 @@ describe('getLocalizedDateTimeFormatPattern', () => {
     en: 'HH:mm AM/PM',
     'en-GB': 'HH:mm',
     'en-AU': 'HH:mm AM/PM',
+    'en-IE': 'HH:mm', // Irish English should use 24-hour format
+    'en-BE': 'HH:mm', // Belgian English should use 24-hour format
     es: 'HH:mm',
     'fr-FR': 'HH:mm',
     'pt-BR': 'HH:mm',
@@ -40,6 +44,8 @@ describe('getLocalizedDateTimeFormatPattern', () => {
     en: 'MM/DD/YYYY - HH:mm AM/PM',
     'en-GB': 'DD/MM/YYYY - HH:mm',
     'en-AU': 'DD/MM/YYYY - HH:mm AM/PM',
+    'en-IE': 'DD/MM/YYYY - HH:mm', // Irish English should use European format with 24-hour time
+    'en-BE': 'DD/MM/YYYY - HH:mm', // Belgian English should use European format with 24-hour time
     es: 'DD/MM/AAAA - HH:mm',
     'fr-FR': 'JJ/MM/AAAA - HH:mm',
     'pt-BR': 'DD/MM/AAAA - HH:mm',
