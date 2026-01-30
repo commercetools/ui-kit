@@ -60,7 +60,7 @@ async function existPath(filePath: string) {
   try {
     await fs.promises.access(filePath);
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 }
@@ -82,6 +82,10 @@ const heading = (depth: Heading['depth'], value: string): Heading => ({
   depth,
   children: [text(value)],
 });
+const inlineCode = (value: string): InlineCode => ({
+  type: 'inlineCode',
+  value,
+});
 const headingSignature = (
   depth: Heading['depth'],
   value: string,
@@ -99,10 +103,6 @@ const link = (url: Link['url'], value: string): Link => ({
 const code = (lang: string, value: string): Code => ({
   type: 'code',
   lang,
-  value,
-});
-const inlineCode = (value: string): InlineCode => ({
-  type: 'inlineCode',
   value,
 });
 const table = (
