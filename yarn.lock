@@ -2027,9 +2027,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-frontend/eslint-config-mc-app-flat@file:../merchant-center-application-kit/packages/eslint-config-mc-app-flat::locator=ui-kit%40workspace%3A.":
+"@commercetools-frontend/eslint-config-mc-app-flat@file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0.tgz::locator=ui-kit%40workspace%3A.":
   version: 25.1.0
-  resolution: "@commercetools-frontend/eslint-config-mc-app-flat@file:../merchant-center-application-kit/packages/eslint-config-mc-app-flat#../merchant-center-application-kit/packages/eslint-config-mc-app-flat::hash=4a72ef&locator=ui-kit%40workspace%3A."
+  resolution: "@commercetools-frontend/eslint-config-mc-app-flat@file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0.tgz::locator=ui-kit%40workspace%3A."
   dependencies:
     "@babel/core": ^7.22.17
     "@babel/eslint-parser": ^7.22.15
@@ -2053,7 +2053,7 @@ __metadata:
     typescript: ^5.2.2
   peerDependencies:
     eslint: ^9.0.0
-  checksum: ee3032128f04a21675f11e7526877b0fb675c49cb84c0962ee81b35a0fe9035c9226becdc1f2c92ebf22794594a9ed95138e472036421635c9383a82aff13ec8
+  checksum: 10f1eb5715c2db0f1c0a96d90e30a1b6f60a45efca5bf48628b4849ff14edf80790ac7cd4ee21bd8501895654087f67e2f9d382c651ab26e569e24c865e9d7de
   languageName: node
   linkType: hard
 
@@ -21416,7 +21416,7 @@ __metadata:
     "@changesets/changelog-github": 0.5.1
     "@changesets/cli": 2.29.7
     "@commercetools-frontend/babel-preset-mc-app": 24.8.0
-    "@commercetools-frontend/eslint-config-mc-app-flat": "file:../merchant-center-application-kit/packages/eslint-config-mc-app-flat"
+    "@commercetools-frontend/eslint-config-mc-app-flat": "file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0.tgz"
     "@commercetools-local/generator-package-json": "*"
     "@commercetools-local/generator-readme": "*"
     "@commitlint/cli": 20.1.0
