@@ -104,7 +104,7 @@
     "@changesets/changelog-github": "0.5.1",
     "@changesets/cli": "2.29.7",
     "@commercetools-frontend/babel-preset-mc-app": "24.8.0",
-    "@commercetools-frontend/eslint-config-mc-app-flat": "file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0.tgz",
+    "@commercetools-frontend/eslint-config-mc-app-flat": "file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0-f06f48581.tgz",
     "@commercetools-local/generator-package-json": "*",
     "@commercetools-local/generator-readme": "*",
     "@commitlint/cli": "20.1.0",

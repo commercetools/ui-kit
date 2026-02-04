@@ -2027,9 +2027,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-frontend/eslint-config-mc-app-flat@file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0.tgz::locator=ui-kit%40workspace%3A.":
+"@commercetools-frontend/eslint-config-mc-app-flat@file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0-f06f48581.tgz::locator=ui-kit%40workspace%3A.":
   version: 25.1.0
-  resolution: "@commercetools-frontend/eslint-config-mc-app-flat@file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0.tgz::locator=ui-kit%40workspace%3A."
+  resolution: "@commercetools-frontend/eslint-config-mc-app-flat@file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0-f06f48581.tgz::locator=ui-kit%40workspace%3A."
   dependencies:
     "@babel/core": ^7.22.17
     "@babel/eslint-parser": ^7.22.15
@@ -2046,14 +2046,14 @@ __metadata:
     eslint-plugin-jsx-a11y: ^6.7.1
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-react: ^7.33.2
-    eslint-plugin-react-hooks: ^4.6.0
+    eslint-plugin-react-hooks: ^5.0.0
     eslint-plugin-testing-library: ^6.0.0
     globals: ^15.15.0
     prettier: ^2.8.4
     typescript: ^5.2.2
   peerDependencies:
     eslint: ^9.0.0
-  checksum: 10f1eb5715c2db0f1c0a96d90e30a1b6f60a45efca5bf48628b4849ff14edf80790ac7cd4ee21bd8501895654087f67e2f9d382c651ab26e569e24c865e9d7de
+  checksum: df9b2ddd66662aa14aad02f27359fae00b5e7f47635a398505de2cedaf8ae2654e97af14a472fb7bb12478b3b71b14858cc19813090c1d78079451e6b67b8850
   languageName: node
   linkType: hard
 
@@ -21416,7 +21416,7 @@ __metadata:
     "@changesets/changelog-github": 0.5.1
     "@changesets/cli": 2.29.7
     "@commercetools-frontend/babel-preset-mc-app": 24.8.0
-    "@commercetools-frontend/eslint-config-mc-app-flat": "file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0.tgz"
+    "@commercetools-frontend/eslint-config-mc-app-flat": "file:./vendor/commercetools-frontend-eslint-config-mc-app-flat-25.1.0-f06f48581.tgz"
     "@commercetools-local/generator-package-json": "*"
     "@commercetools-local/generator-readme": "*"
     "@commitlint/cli": 20.1.0
