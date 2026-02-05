@@ -22,6 +22,6 @@
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/utils": "20.3.0",
-    "lodash": "4.17.21"
+    "lodash": "4.17.23"
   }
 }

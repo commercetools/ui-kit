@@ -26,7 +26,7 @@
     "@commercetools-uikit/utils": "20.3.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "lodash": "4.17.21"
+    "lodash": "4.17.23"
   },
   "devDependencies": {
     "react": "19.2.0"
