@@ -1,5 +1,4 @@
 import escapeHtml from 'escape-html';
-import DOMPurify from 'dompurify';
 import {
   Text,
   Element as SlateElement,
@@ -17,53 +16,8 @@ import isEmpty from 'lodash/isEmpty';
 import type { HistoryEditor } from 'slate-history';
 import { BLOCK_TAGS, MARK_TAGS } from '../tags';
 import { Softbreaker } from '../slate-helpers';
-import { canUseDOM } from '@commercetools-uikit/utils';
 
 type Html = string;
-const ALLOWED_HTML_TAGS = [
-  'p',
-  'em',
-  'u',
-  'a',
-  'ul',
-  'ol',
-  'li',
-  'br',
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-  'pre',
-  'ul',
-  'ol',
-  'li',
-  'a',
-  'del',
-  'sup',
-  'sub',
-  'code',
-  'span',
-  'tbody',
-  'table',
-  'strong',
-  'blockquote',
-];
-const ALLOWED_HTML_ATTRS = ['href', 'title', 'target', 'rel'];
-
-const normalizeHtmlOutput = (html: string): string =>
-  html.replace(/<br\s*>/gi, '<br/>');
-
-const sanitizeHtml = (html: string): string => {
-  if (!canUseDOM) return html;
-  const sanitized = DOMPurify.sanitize(html, {
-    ALLOWED_TAGS: ALLOWED_HTML_TAGS,
-    ALLOWED_ATTR: ALLOWED_HTML_ATTRS,
-    ALLOW_UNKNOWN_PROTOCOLS: false,
-  });
-  return normalizeHtmlOutput(sanitized);
-};
 
 export type CustomElement = {
   type: Format;
@@ -95,9 +49,60 @@ declare module 'slate' {
   }
 }
 
+/**
+ * Escapes HTML but preserves anchor tags with sanitized attributes.
+ * This allows <a> tags to remain as clickable links while preventing XSS from other tags.
+ */
+const escapeHtmlExceptAnchors = (text: string): string => {
+  // First, escape all HTML
+  let result = escapeHtml(text);
+
+  // Then selectively unescape anchor tags with sanitization
+  // Match escaped anchor opening tags: &lt;a ...&gt;
+  result = result.replace(
+    /&lt;a\s+([^&]*(?:&(?!gt;)[^&]*)*)&gt;/gi,
+    (_, attrs) => {
+      // Unescape the attributes
+      const unescapedAttrs = attrs
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&#x27;/g, "'")
+        .replace(/&amp;/g, '&');
+
+      // Sanitize the href attribute to prevent dangerous URLs
+      const hrefMatch = unescapedAttrs.match(/href\s*=\s*["']([^"']*)["']/i);
+      if (hrefMatch) {
+        const url = hrefMatch[1].trim().toLowerCase();
+        if (
+          // eslint-disable-next-line no-script-url
+          url.startsWith('javascript:') ||
+          url.startsWith('data:') ||
+          url.startsWith('vbscript:')
+        ) {
+          // Replace with safe placeholder
+          return '<a href="#">';
+        }
+      }
+
+      // Strip event handlers (onclick, onmouseover, etc.)
+      const safeAttrs = unescapedAttrs.replace(
+        /\s*on\w+\s*=\s*["'][^"']*["']/gi,
+        ''
+      );
+
+      return `<a ${safeAttrs}>`;
+    }
+  );
+
+  // Unescape anchor closing tags: &lt;/a&gt;
+  result = result.replace(/&lt;\/a&gt;/gi, '</a>');
+
+  return result;
+};
+
 const serializeNode = (node: TNode): Html => {
   if (Text.isText(node)) {
-    let string = node.text;
+    let string = escapeHtmlExceptAnchors(node.text);
     if (node.bold) {
       string = `<strong>${string}</strong>`;
     }
@@ -212,7 +217,7 @@ const serialize = (value: Deserialized | Deserialized[]): Html => {
   } else {
     outputHtml = value.map((node) => serializeSingle(node)).join('');
   }
-  return sanitizeHtml(outputHtml);
+  return outputHtml;
 };
 
 const ELEMENT_TAGS: Record<
@@ -415,6 +420,7 @@ const deserializeElement = (
 
   return children;
 };
+
 const deserialize = (html: Html) => {
   const document = new DOMParser().parseFromString(
     Softbreaker.cleanHtml(html) || '<p></p>',
