@@ -198,6 +198,64 @@ export const parseInputText = (
   return '';
 };
 
+const getIntlDatePattern = (locale: string): string => {
+  const formatter = new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+  const parts = formatter.formatToParts(new Date(2020, 0, 15));
+  return parts
+    .map((part) => {
+      switch (part.type) {
+        case 'day':
+          return 'DD';
+        case 'month':
+          return 'MM';
+        case 'year':
+          return 'YYYY';
+        case 'literal':
+          return part.value;
+        default:
+          return '';
+      }
+    })
+    .join('');
+};
+
+const getIntlTimePattern = (locale: string): string => {
+  const formatter = new Intl.DateTimeFormat(locale, {
+    timeStyle: 'short',
+  });
+  // Use 2:30 AM so the hour is single-digit, allowing us to detect padding
+  const parts = formatter.formatToParts(new Date(2020, 0, 15, 2, 30));
+  const hasDayPeriod = parts.some((p) => p.type === 'dayPeriod');
+
+  return parts
+    .map((part) => {
+      switch (part.type) {
+        case 'hour': {
+          const padded = part.value.length === 2;
+          if (hasDayPeriod) {
+            return padded ? 'hh' : 'h';
+          }
+          return padded ? 'HH' : 'H';
+        }
+        case 'minute':
+          return 'mm';
+        case 'dayPeriod':
+          return 'A';
+        case 'literal':
+          // Normalize unicode whitespace (e.g. U+202F narrow no-break space)
+          // to regular spaces for consistent placeholder text
+          return part.value.replace(/\s/g, ' ');
+        default:
+          return '';
+      }
+    })
+    .join('');
+};
+
 const localizedDateFormatPatternCache = new Map<string, string>();
 export const getLocalizedDateTimeFormatPattern = (
   locale: string,
@@ -208,22 +266,18 @@ export const getLocalizedDateTimeFormatPattern = (
     return localizedDateFormatPatternCache.get(key)!;
   }
 
-  // References:
-  //  https://momentjs.com/docs/#/i18n/locale-data/
-  //  https://momentjs.com/docs/#/displaying/ ("Localized formats" section)
-  const localeData = moment().locale(locale).localeData();
   let localizedFormat = '';
   switch (formatType) {
     case 'date':
-      localizedFormat = localeData.longDateFormat('L');
+      localizedFormat = getIntlDatePattern(locale);
       break;
     case 'time':
-      localizedFormat = localeData.longDateFormat('LT');
+      localizedFormat = getIntlTimePattern(locale);
       break;
     case 'full':
-      localizedFormat = `${localeData.longDateFormat(
-        'L'
-      )} - ${localeData.longDateFormat('LT')}`;
+      localizedFormat = `${getIntlDatePattern(locale)} - ${getIntlTimePattern(
+        locale
+      )}`;
       break;
     default:
       throw new Error(
@@ -241,7 +295,7 @@ export const getLocalizedDateTimeFormatPattern = (
   );
 
   // In case we don't have a translation for the locale, we fallback to the
-  // pattern from the moment locale data.
+  // Intl-derived pattern.
   let pattern = localizedFormat;
   if (localeMappings && localeMappings.length > 0) {
     pattern = localeMappings.reduce(
