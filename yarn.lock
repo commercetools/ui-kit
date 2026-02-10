@@ -5032,6 +5032,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@formatjs/icu-messageformat-parser@npm:2.11.4":
+  version: 2.11.4
+  resolution: "@formatjs/icu-messageformat-parser@npm:2.11.4"
+  dependencies:
+    "@formatjs/ecma402-abstract": 2.3.6
+    "@formatjs/icu-skeleton-parser": 1.8.16
+    tslib: ^2.8.0
+  checksum: 5213e61e729d0dca2e89f7774d8ef6a84916a50b8bb6cf42acddd8d8174a22b1a3e8ecec0b7a262921b05d1bf55842dea743c4390de3419168e85e7d250c3baa
+  languageName: node
+  linkType: hard
+
 "@formatjs/icu-skeleton-parser@npm:1.8.14":
   version: 1.8.14
   resolution: "@formatjs/icu-skeleton-parser@npm:1.8.14"
@@ -5039,6 +5050,16 @@ __metadata:
     "@formatjs/ecma402-abstract": 2.3.4
     tslib: ^2.8.0
   checksum: dcce6bdb7952201804bae17270d6a99a6baa780c4657d4bb02d15de08d1c3fd8c904e13bb1ef6ccd6fde68d5a56f22a7ba99be4e92903d4fe050f61bebaa0e8e
+  languageName: node
+  linkType: hard
+
+"@formatjs/icu-skeleton-parser@npm:1.8.16":
+  version: 1.8.16
+  resolution: "@formatjs/icu-skeleton-parser@npm:1.8.16"
+  dependencies:
+    "@formatjs/ecma402-abstract": 2.3.6
+    tslib: ^2.8.0
+  checksum: 05dc404c425c1bf09a03a8ca0f69ec95e4ba3cf8ef15555f8ae39f3a775cfb2904f9c60a3e0b8f1b27b8fc17c7b09ca380964e55b32b89bec8d69f83ddfcbd73
   languageName: node
   linkType: hard
 
@@ -5106,6 +5127,25 @@ __metadata:
     ts-jest:
       optional: true
   checksum: af6c68ef146cacf48d2e07a16ea008f7c26c34e672b15d4adc05bc3f8bd68af500fdb72858367cada89ec75afe48ef14b01e3d2f8da12a1d4d2d337a959081e4
+  languageName: node
+  linkType: hard
+
+"@formatjs/ts-transformer@npm:3.14.2":
+  version: 3.14.2
+  resolution: "@formatjs/ts-transformer@npm:3.14.2"
+  dependencies:
+    "@formatjs/icu-messageformat-parser": 2.11.4
+    "@types/node": ^22.0.0
+    chalk: ^4.1.2
+    json-stable-stringify: ^1.3.0
+    tslib: ^2.8.0
+    typescript: ^5.6.0
+  peerDependencies:
+    ts-jest: ^29
+  peerDependenciesMeta:
+    ts-jest:
+      optional: true
+  checksum: b6af20b8f2e2fcdbaffbc9e3f454f08f8f651215aca3b12516acf2a6eaee1cd7ecdcbf3118f0dc12e3db7b0c9fae844283a6ac3e67489d88e5658462e0323129
   languageName: node
   linkType: hard
 
@@ -9312,6 +9352,25 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0
   checksum: 35ba65e03229f33dc3b0aa08302cc201d7d759b4dc9a00d501fe7f60961659d354cdf8c8aef3d6a6a8ffdbe87bb6aae572ed9331dc91601ab57acdf6b3086a30
+  languageName: node
+  linkType: hard
+
+"babel-plugin-formatjs@npm:^10.0.0":
+  version: 10.5.41
+  resolution: "babel-plugin-formatjs@npm:10.5.41"
+  dependencies:
+    "@babel/core": ^7.26.10
+    "@babel/helper-plugin-utils": ^7.26.5
+    "@babel/plugin-syntax-jsx": ^7.25.9
+    "@babel/traverse": ^7.26.10
+    "@babel/types": ^7.26.10
+    "@formatjs/icu-messageformat-parser": 2.11.4
+    "@formatjs/ts-transformer": 3.14.2
+    "@types/babel__core": ^7.20.5
+    "@types/babel__helper-plugin-utils": ^7.10.3
+    "@types/babel__traverse": ^7.20.6
+    tslib: ^2.8.0
+  checksum: 0debb8b6b32229cb0fbb82438ac1913fb5452c0eca17cb77acb07619d825967774dd048cd361680e0feabf87a9a4331342a55d2d1dec22ac113c8b5cebffb053
   languageName: node
   linkType: hard
 
@@ -15311,7 +15370,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json-stable-stringify@npm:^1.0.2, json-stable-stringify@npm:^1.1.1":
+"json-stable-stringify@npm:^1.0.2, json-stable-stringify@npm:^1.1.1, json-stable-stringify@npm:^1.3.0":
   version: 1.3.0
   resolution: "json-stable-stringify@npm:1.3.0"
   dependencies:
@@ -21035,6 +21094,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 8.46.0
     "@typescript-eslint/parser": 8.46.0
     babel-jest: 29.7.0
+    babel-plugin-formatjs: ^10.0.0
     browserslist: 4.26.3
     bundlewatch: ^0.4.1
     colors: 1.4.0
