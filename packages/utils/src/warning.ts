@@ -29,6 +29,5 @@ export const warning: TWarningFunction = (
 export const useWarning = (condition: boolean, message: string) => {
   useEffect(() => {
     warning(condition, message);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
