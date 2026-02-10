@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-local/generator-package-json",
   "description": "CLI to generate the necessary information for each package.json",
-  "version": "3.3.4",
+  "version": "3.3.5",
   "private": true,
   "bin": {
     "generate-package-json": "./bin/cli.mjs"
