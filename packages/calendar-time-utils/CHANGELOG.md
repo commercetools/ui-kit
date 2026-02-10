@@ -1,5 +1,16 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 20.3.1
+
+### Patch Changes
+
+- [#3198](https://github.com/commercetools/ui-kit/pull/3198) [`4e4736f`](https://github.com/commercetools/ui-kit/commit/4e4736f7a14b629374e8ae6c3c08a15430ee7967) Thanks [@jaikumar-tj](https://github.com/jaikumar-tj)! - Adopt trusted publishing on NPM
+
+- [#3218](https://github.com/commercetools/ui-kit/pull/3218) [`0adb176`](https://github.com/commercetools/ui-kit/commit/0adb176d6d9284738792aca49b8f679283b9ffec) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Update getLocalizedDateTimeFormatPattern method to use Intl.DateTimeFormat.formatToParts to generate localized date and time format description strings instead of relying on moment.js locale description methods
+
+- Updated dependencies [[`4e4736f`](https://github.com/commercetools/ui-kit/commit/4e4736f7a14b629374e8ae6c3c08a15430ee7967)]:
+  - @commercetools-uikit/utils@20.3.1
+
 ## 20.3.0
 
 ### Patch Changes

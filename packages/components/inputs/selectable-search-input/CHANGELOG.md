@@ -1,5 +1,22 @@
 # @commercetools-uikit/selectable-search-input
 
+## 20.3.1
+
+### Patch Changes
+
+- [#3198](https://github.com/commercetools/ui-kit/pull/3198) [`4e4736f`](https://github.com/commercetools/ui-kit/commit/4e4736f7a14b629374e8ae6c3c08a15430ee7967) Thanks [@jaikumar-tj](https://github.com/jaikumar-tj)! - Adopt trusted publishing on NPM
+
+- Updated dependencies [[`4e4736f`](https://github.com/commercetools/ui-kit/commit/4e4736f7a14b629374e8ae6c3c08a15430ee7967)]:
+  - @commercetools-uikit/design-system@20.3.1
+  - @commercetools-uikit/icon-button@20.3.1
+  - @commercetools-uikit/secondary-icon-button@20.3.1
+  - @commercetools-uikit/constraints@20.3.1
+  - @commercetools-uikit/icons@20.3.1
+  - @commercetools-uikit/input-utils@20.3.1
+  - @commercetools-uikit/select-utils@20.3.1
+  - @commercetools-uikit/hooks@20.3.1
+  - @commercetools-uikit/utils@20.3.1
+
 ## 20.3.0
 
 ### Patch Changes
