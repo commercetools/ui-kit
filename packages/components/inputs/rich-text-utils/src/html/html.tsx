@@ -49,9 +49,60 @@ declare module 'slate' {
   }
 }
 
+/**
+ * Escapes HTML but preserves anchor tags with sanitized attributes.
+ * This allows <a> tags to remain as clickable links while preventing XSS from other tags.
+ */
+const escapeHtmlExceptAnchors = (text: string): string => {
+  // First, escape all HTML
+  let result = escapeHtml(text);
+
+  // Then selectively unescape anchor tags with sanitization
+  // Match escaped anchor opening tags: &lt;a ...&gt;
+  result = result.replace(
+    /&lt;a\s+([^&]*(?:&(?!gt;)[^&]*)*)&gt;/gi,
+    (_, attrs) => {
+      // Unescape the attributes
+      const unescapedAttrs = attrs
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&#x27;/g, "'")
+        .replace(/&amp;/g, '&');
+
+      // Sanitize the href attribute to prevent dangerous URLs
+      const hrefMatch = unescapedAttrs.match(/href\s*=\s*["']([^"']*)["']/i);
+      if (hrefMatch) {
+        const url = hrefMatch[1].trim().toLowerCase();
+        if (
+          // eslint-disable-next-line no-script-url
+          url.startsWith('javascript:') ||
+          url.startsWith('data:') ||
+          url.startsWith('vbscript:')
+        ) {
+          // Replace with safe placeholder
+          return '<a href="#">';
+        }
+      }
+
+      // Strip event handlers (onclick, onmouseover, etc.)
+      const safeAttrs = unescapedAttrs.replace(
+        /\s*on\w+\s*=\s*["'][^"']*["']/gi,
+        ''
+      );
+
+      return `<a ${safeAttrs}>`;
+    }
+  );
+
+  // Unescape anchor closing tags: &lt;/a&gt;
+  result = result.replace(/&lt;\/a&gt;/gi, '</a>');
+
+  return result;
+};
+
 const serializeNode = (node: TNode): Html => {
   if (Text.isText(node)) {
-    let string = escapeHtml(node.text);
+    let string = escapeHtmlExceptAnchors(node.text);
     if (node.bold) {
       string = `<strong>${string}</strong>`;
     }
@@ -369,6 +420,7 @@ const deserializeElement = (
 
   return children;
 };
+
 const deserialize = (html: Html) => {
   const document = new DOMParser().parseFromString(
     Softbreaker.cleanHtml(html) || '<p></p>',
