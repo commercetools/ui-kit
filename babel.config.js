@@ -10,5 +10,13 @@ module.exports = {
       },
     ],
   ],
-  plugins: [require('./babel-plugin-package-version')],
+  plugins: [
+    require('./babel-plugin-package-version'),
+    [
+      require('babel-plugin-formatjs').default,
+      {
+        ast: true,
+      },
+    ],
+  ],
 };
