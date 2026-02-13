@@ -1,19 +1,28 @@
 name: Preview Release on Comment
 
-permissions:
-  id-token: write
-  contents: read
-  pull-requests: write
-  issues: write
-
 on:
-  issue_comment:
-    types: [created]
+  workflow_call:
+    inputs:
+      head_ref:
+        required: true
+        type: string
+      issue_number:
+        required: true
+        type: string
+    secrets:
+      CT_CHANGESETS_APP_ID:
+        required: true
+      CT_CHANGESETS_APP_PEM:
+        required: true
 
 jobs:
   release-preview-on-comment:
-    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '[preview_deployment]')
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+      issues: write
 
     timeout-minutes: 15
 
@@ -26,19 +35,6 @@ jobs:
           app_id: ${{ secrets.CT_CHANGESETS_APP_ID }}
           private_key: ${{ secrets.CT_CHANGESETS_APP_PEM }}
 
-      - name: Get branch of PR
-        uses: xt0rted/pull-request-comment-branch@v1
-        id: comment-branch
-
-      - name: Validate branch name
-        run: |
-          if [[ ! "$BRANCH_NAME" =~ ^preview/[a-zA-Z0-9_-]+$ ]]; then
-            echo "Ignoring PR because of the branch name. Exiting workflow."
-            exit 1
-          fi
-        env:
-          BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
-
       - name: Checkout code
         uses: actions/checkout@v6
         with:
@@ -46,7 +42,7 @@ jobs:
           # other workflows
           # https://help.github.com/en/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token
           # https://github.community/t/action-does-not-trigger-another-on-push-tag-action/17148/8
-          ref: ${{ steps.comment-branch.outputs.head_ref }}
+          ref: ${{ inputs.head_ref }}
           token: ${{ steps.generate_github_token.outputs.token }}
 
       - name: Setup Node (uses version in .nvmrc)
@@ -85,12 +81,12 @@ jobs:
           yarn changeset publish --tag ${PREVIEW_TAG} --provenance
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
-          BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
+          BRANCH_NAME: ${{ inputs.head_ref }}
 
       - name: Post workflow result on PR as a comment
         if: always()
         run: |
-          gh issue comment ${{ github.event.issue.number }} \
+          gh issue comment ${{ inputs.issue_number }} \
            --body "Release workflow ${{ job.status == 'success' && 'succeeded ✅' || 'failed ❌' }}\nSee details: [Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}

@@ -4,14 +4,19 @@ on:
   push:
     branches:
       - main
-
-permissions:
-  id-token: write
-  contents: read
+  workflow_call:
+    secrets:
+      CT_CHANGESETS_APP_ID:
+        required: true
+      CT_CHANGESETS_APP_PEM:
+        required: true
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       # Get GitHub token via the CT Changesets App
