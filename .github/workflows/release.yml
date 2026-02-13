@@ -21,7 +21,7 @@ jobs:
 
   publish-preview:
     if: github.event_name == 'issue_comment' && github.event.issue.pull_request && startsWith(github.event.comment.body, '[preview_deployment]')
-    uses: ./.github/workflows/preview-release.yml
+    uses: ./.github/workflows/preview-release-on-comment.yml
     permissions:
       id-token: write
       contents: read
