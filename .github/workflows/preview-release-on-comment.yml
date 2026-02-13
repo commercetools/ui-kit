@@ -68,7 +68,7 @@ jobs:
         run: |
           PREVIEW_TAG=$(echo "$BRANCH_NAME" | sed -e 's/[^a-zA-Z0-9-]/-/g')
           yarn changeset version --snapshot ${PREVIEW_TAG}
-          yarn changeset publish --tag ${PREVIEW_TAG} --provenance
+          yarn changeset publish --tag ${PREVIEW_TAG}
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
           BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
