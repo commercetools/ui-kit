@@ -35,6 +35,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Get yarn cache
         id: yarn-cache
@@ -73,10 +74,10 @@ jobs:
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: dotansimha/changesets-action@v1.5.2
+        uses: changesets/action@v1.7.0
         with:
           commit: 'ci(changesets): version packages'
-          publish: yarn changeset publish
+          publish: yarn changeset publish --provenance
           version: yarn changeset:version-and-format
           createGithubReleases: aggregate
           githubReleaseName: v${{ steps.release_version.outputs.VALUE }}
@@ -91,6 +92,6 @@ jobs:
         run: |
           git checkout main
           yarn changeset version --snapshot canary
-          yarn changeset publish --tag canary
+          yarn changeset publish --tag canary --provenance
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}

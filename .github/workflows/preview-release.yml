@@ -53,6 +53,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Get yarn cache
         id: yarn-cache
@@ -68,16 +69,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Creating .npmrc
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            provenance=true
-            email=npmjs@commercetools.com
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Building packages
         run: yarn build
 
@@ -91,7 +82,7 @@ jobs:
         run: |
           PREVIEW_TAG=$(echo "$BRANCH_NAME" | sed -e 's/^preview\///')
           yarn changeset version --snapshot ${PREVIEW_TAG}
-          yarn changeset publish --tag ${PREVIEW_TAG}
+          yarn changeset publish --tag ${PREVIEW_TAG} --provenance
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
           BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
@@ -103,4 +94,3 @@ jobs:
            --body "Release workflow ${{ job.status == 'success' && 'succeeded ✅' || 'failed ❌' }}\nSee details: [Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
-
