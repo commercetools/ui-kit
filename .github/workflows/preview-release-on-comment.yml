@@ -1,18 +1,14 @@
 name: Preview Release on Comment
-
-permissions:
-  id-token: write
-  contents: read
-  pull-requests: write
-  issues: write
+# Reusable workflow that publishes preview releases from PR branches:
+# - Checks out the PR branch
+# - Publishes snapshot packages to npm with a preview tag
+# - Posts workflow status as a comment on the PR
 
 on:
-  issue_comment:
-    types: [created]
+  workflow_call:
 
 jobs:
   release-preview-on-comment:
-    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '[preview_deployment]')
     runs-on: ubuntu-latest
 
     timeout-minutes: 15
@@ -30,15 +26,6 @@ jobs:
         uses: xt0rted/pull-request-comment-branch@v1
         id: comment-branch
 
-      - name: Validate branch name
-        run: |
-          if [[ ! "$BRANCH_NAME" =~ ^preview/[a-zA-Z0-9_-]+$ ]]; then
-            echo "Ignoring PR because of the branch name. Exiting workflow."
-            exit 1
-          fi
-        env:
-          BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
-
       - name: Checkout code
         uses: actions/checkout@v6
         with:
@@ -53,6 +40,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Get yarn cache
         id: yarn-cache
@@ -68,16 +56,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Creating .npmrc
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            provenance=true
-            email=npmjs@commercetools.com
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Building packages
         run: yarn build
 
@@ -86,10 +64,9 @@ jobs:
         env:
           CI: true
 
-      # Publish preview releases only if the branch starts with "preview/" and the pr comment contains "[preview_deployment]"
       - name: Publishing preview releases to npm registry
         run: |
-          PREVIEW_TAG=$(echo "$BRANCH_NAME" | sed -e 's/^preview\///')
+          PREVIEW_TAG=$(echo "$BRANCH_NAME" | sed -e 's/[^a-zA-Z0-9-]/-/g')
           yarn changeset version --snapshot ${PREVIEW_TAG}
           yarn changeset publish --tag ${PREVIEW_TAG}
         env:
@@ -103,4 +80,3 @@ jobs:
            --body "Release workflow ${{ job.status == 'success' && 'succeeded ✅' || 'failed ❌' }}\nSee details: [Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
-
