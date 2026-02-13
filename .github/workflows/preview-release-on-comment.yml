@@ -1,6 +1,5 @@
 name: Preview Release on Comment
 # Reusable workflow that publishes preview releases from PR branches:
-# - Validates the branch name starts with "preview/"
 # - Checks out the PR branch
 # - Publishes snapshot packages to npm with a preview tag
 # - Posts workflow status as a comment on the PR
@@ -26,15 +25,6 @@ jobs:
       - name: Get branch of PR
         uses: xt0rted/pull-request-comment-branch@v1
         id: comment-branch
-
-      - name: Validate branch name
-        run: |
-          if [[ ! "$BRANCH_NAME" =~ ^preview/[a-zA-Z0-9_-]+$ ]]; then
-            echo "Ignoring PR because of the branch name. Exiting workflow."
-            exit 1
-          fi
-        env:
-          BRANCH_NAME: ${{ steps.comment-branch.outputs.head_ref }}
 
       - name: Checkout code
         uses: actions/checkout@v6
@@ -74,10 +64,9 @@ jobs:
         env:
           CI: true
 
-      # Publish preview releases only if the branch starts with "preview/" and the pr comment contains "[preview_deployment]"
       - name: Publishing preview releases to npm registry
         run: |
-          PREVIEW_TAG=$(echo "$BRANCH_NAME" | sed -e 's/^preview\///')
+          PREVIEW_TAG=$(echo "$BRANCH_NAME" | sed -e 's/[^a-zA-Z0-9-]/-/g')
           yarn changeset version --snapshot ${PREVIEW_TAG}
           yarn changeset publish --tag ${PREVIEW_TAG} --provenance
         env:
