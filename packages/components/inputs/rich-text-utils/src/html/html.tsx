@@ -1,4 +1,5 @@
 import escapeHtml from 'escape-html';
+import DOMPurify from 'dompurify';
 import {
   Text,
   Element as SlateElement,
@@ -49,9 +50,35 @@ declare module 'slate' {
   }
 }
 
+/**
+ * Escapes HTML but preserves anchor tags with sanitized attributes.
+ * This allows <a> tags to remain as clickable links while preventing XSS from other tags.
+ * Uses DOMPurify for robust sanitization against XSS attacks.
+ */
+const escapeHtmlExceptAnchors = (text: string): string => {
+  // Use DOMPurify to sanitize the text, allowing only anchor tags
+  // This is much more secure than regex-based parsing
+  const sanitized = DOMPurify.sanitize(text, {
+    ALLOWED_TAGS: ['a'],
+    ALLOWED_ATTR: ['href', 'title', 'target', 'rel'],
+    // Block dangerous URL schemes
+    ALLOWED_URI_REGEXP:
+      /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i,
+    // Prevent DOM clobbering
+    SANITIZE_DOM: true,
+    // Keep relative URLs
+    ALLOW_DATA_ATTR: false,
+    // Return a string, not a DOM node
+    RETURN_DOM: false,
+    RETURN_DOM_FRAGMENT: false,
+  });
+
+  return sanitized;
+};
+
 const serializeNode = (node: TNode): Html => {
   if (Text.isText(node)) {
-    let string = escapeHtml(node.text);
+    let string = escapeHtmlExceptAnchors(node.text);
     if (node.bold) {
       string = `<strong>${string}</strong>`;
     }
@@ -369,6 +396,7 @@ const deserializeElement = (
 
   return children;
 };
+
 const deserialize = (html: Html) => {
   const document = new DOMParser().parseFromString(
     Softbreaker.cleanHtml(html) || '<p></p>',
