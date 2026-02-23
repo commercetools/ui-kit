@@ -1,5 +1,7 @@
 # @commercetools-uikit/grid
 
+## 20.4.0
+
 ## 20.3.1
 
 ### Patch Changes
