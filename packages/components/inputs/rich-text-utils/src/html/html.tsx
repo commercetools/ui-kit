@@ -1,4 +1,5 @@
 import escapeHtml from 'escape-html';
+import DOMPurify from 'dompurify';
 import {
   Text,
   Element as SlateElement,
@@ -52,52 +53,27 @@ declare module 'slate' {
 /**
  * Escapes HTML but preserves anchor tags with sanitized attributes.
  * This allows <a> tags to remain as clickable links while preventing XSS from other tags.
+ * Uses DOMPurify for robust sanitization against XSS attacks.
  */
 const escapeHtmlExceptAnchors = (text: string): string => {
-  // First, escape all HTML
-  let result = escapeHtml(text);
+  // Use DOMPurify to sanitize the text, allowing only anchor tags
+  // This is much more secure than regex-based parsing
+  const sanitized = DOMPurify.sanitize(text, {
+    ALLOWED_TAGS: ['a'],
+    ALLOWED_ATTR: ['href', 'title', 'target', 'rel'],
+    // Block dangerous URL schemes
+    ALLOWED_URI_REGEXP:
+      /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i,
+    // Prevent DOM clobbering
+    SANITIZE_DOM: true,
+    // Keep relative URLs
+    ALLOW_DATA_ATTR: false,
+    // Return a string, not a DOM node
+    RETURN_DOM: false,
+    RETURN_DOM_FRAGMENT: false,
+  });
 
-  // Then selectively unescape anchor tags with sanitization
-  // Match escaped anchor opening tags: &lt;a ...&gt;
-  result = result.replace(
-    /&lt;a\s+([^&]*(?:&(?!gt;)[^&]*)*)&gt;/gi,
-    (_, attrs) => {
-      // Unescape the attributes
-      const unescapedAttrs = attrs
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'")
-        .replace(/&#x27;/g, "'")
-        .replace(/&amp;/g, '&');
-
-      // Sanitize the href attribute to prevent dangerous URLs
-      const hrefMatch = unescapedAttrs.match(/href\s*=\s*["']([^"']*)["']/i);
-      if (hrefMatch) {
-        const url = hrefMatch[1].trim().toLowerCase();
-        if (
-          // eslint-disable-next-line no-script-url
-          url.startsWith('javascript:') ||
-          url.startsWith('data:') ||
-          url.startsWith('vbscript:')
-        ) {
-          // Replace with safe placeholder
-          return '<a href="#">';
-        }
-      }
-
-      // Strip event handlers (onclick, onmouseover, etc.)
-      const safeAttrs = unescapedAttrs.replace(
-        /\s*on\w+\s*=\s*["'][^"']*["']/gi,
-        ''
-      );
-
-      return `<a ${safeAttrs}>`;
-    }
-  );
-
-  // Unescape anchor closing tags: &lt;/a&gt;
-  result = result.replace(/&lt;\/a&gt;/gi, '</a>');
-
-  return result;
+  return sanitized;
 };
 
 const serializeNode = (node: TNode): Html => {
