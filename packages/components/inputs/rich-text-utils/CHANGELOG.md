@@ -1,5 +1,21 @@
 # @commercetools-uikit/rich-text-utils
 
+## 20.4.0
+
+### Minor Changes
+
+- [#3211](https://github.com/commercetools/ui-kit/pull/3211) [`3904605`](https://github.com/commercetools/ui-kit/commit/3904605bccef6dc5476a034709b7b3f4d12dd5dd) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Updated the Slate HTML serializer to stop escaping text nodes so `</>` stay as-is when the editor value is serialized, which allows tags to pass through.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.4.0
+  - @commercetools-uikit/icons@20.4.0
+  - @commercetools-uikit/input-utils@20.4.0
+  - @commercetools-uikit/spacings-inline@20.4.0
+  - @commercetools-uikit/tooltip@20.4.0
+  - @commercetools-uikit/utils@20.4.0
+
 ## 20.3.1
 
 ### Patch Changes
