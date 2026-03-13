@@ -395,6 +395,20 @@ describe('MoneyInput.parseMoneyValue', () => {
       ).toEqual({ amount: '12.34', currencyCode: 'EUR' });
     });
   });
+  describe('when called with a zero-fraction variant currency (HUF0)', () => {
+    it('should format amount with 0 fraction digits for display', () => {
+      expect(
+        MoneyInput.parseMoneyValue(
+          {
+            currencyCode: 'HUF0',
+            centAmount: 500,
+            fractionDigits: 0,
+          },
+          'en'
+        )
+      ).toEqual({ amount: '500', currencyCode: 'HUF0' });
+    });
+  });
   describe('when called with a minimal highPrecision price', () => {
     it('should turn it into a value', () => {
       expect(
