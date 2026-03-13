@@ -9,9 +9,7 @@ global.window.app = {
 
 if (global.document) {
   document.createRange = () => ({
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     setStart: () => {},
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     setEnd: () => {},
     commonAncestorContainer: {
       nodeName: 'BODY',
