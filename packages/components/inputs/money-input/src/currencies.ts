@@ -220,6 +220,13 @@ const currencies = {
   ZWL: { fractionDigits: 2 },
   ZWN: { fractionDigits: 2 },
   ZWR: { fractionDigits: 2 },
+  // Zero-fraction variants (non-ISO): base currency with 0 decimal places.
+  CZK0: { fractionDigits: 0 },
+  HUF0: { fractionDigits: 0 },
+  ILS0: { fractionDigits: 0 },
+  KZT0: { fractionDigits: 0 },
+  TRY0: { fractionDigits: 0 },
+  TWD0: { fractionDigits: 0 },
 } as const;
 
 export default currencies;

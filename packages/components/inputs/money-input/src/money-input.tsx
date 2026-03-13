@@ -379,7 +379,7 @@ const createEmptyMoneyValue = (currencyCode: TCurrencyCode): TMoneyValue => ({
   type: 'centPrecision',
   currencyCode,
   centAmount: NaN,
-  fractionDigits: 2,
+  fractionDigits: allCurrencies[currencyCode].fractionDigits ?? 2,
 });
 
 const getAmountAsNumberFromMoneyValue = (moneyValue: TMoneyValue) =>

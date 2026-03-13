@@ -109,6 +109,28 @@ describe('MoneyInput.convertToMoneyValue', () => {
     });
   });
 
+  describe('when a zero-fraction variant currency (CZK0) is used', () => {
+    it('should return centPrecision with 0 fraction digits and whole-number centAmount', () => {
+      expect(
+        MoneyInput.convertToMoneyValue(
+          { currencyCode: 'CZK0', amount: '100' },
+          'en'
+        )
+      ).toEqual({
+        type: 'centPrecision',
+        currencyCode: 'CZK0',
+        centAmount: 100,
+        fractionDigits: 0,
+      });
+    });
+    it('should warn that locale is required when locale is not passed', () => {
+      MoneyInput.convertToMoneyValue({ currencyCode: 'CZK0', amount: '50' });
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput: A locale must be provided when currency has no fraction digits (CZK0)'
+      );
+    });
+  });
+
   describe('when no amount is present', () => {
     it('should return an invalid object', () => {
       expect(
@@ -371,6 +393,20 @@ describe('MoneyInput.parseMoneyValue', () => {
           'en'
         )
       ).toEqual({ amount: '12.34', currencyCode: 'EUR' });
+    });
+  });
+  describe('when called with a zero-fraction variant currency (HUF0)', () => {
+    it('should format amount with 0 fraction digits for display', () => {
+      expect(
+        MoneyInput.parseMoneyValue(
+          {
+            currencyCode: 'HUF0',
+            centAmount: 500,
+            fractionDigits: 0,
+          },
+          'en'
+        )
+      ).toEqual({ amount: '500', currencyCode: 'HUF0' });
     });
   });
   describe('when called with a minimal highPrecision price', () => {

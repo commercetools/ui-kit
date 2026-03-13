@@ -479,6 +479,29 @@ describe('LocalizedMoneyInput.convertToMoneyValues', () => {
       ]);
     });
   });
+
+  describe('when called with a zero-fraction variant currency (CZK0)', () => {
+    it('should return centPrecision with 0 fraction digits when locale is provided', () => {
+      expect(
+        LocalizedMoneyInput.convertToMoneyValues(
+          {
+            CZK0: {
+              currencyCode: 'CZK0',
+              amount: '100',
+            },
+          },
+          'en'
+        )
+      ).toEqual([
+        {
+          type: 'centPrecision',
+          currencyCode: 'CZK0',
+          centAmount: 100,
+          fractionDigits: 0,
+        },
+      ]);
+    });
+  });
 });
 
 describe('LocalizedMoneyInput.parseMoneyValues', () => {
