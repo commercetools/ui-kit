@@ -4,7 +4,6 @@ const globals = require('globals');
 const mcAppConfig = require('@commercetools-frontend/eslint-config-mc-app');
 
 module.exports = [
-  // Ignores replace .eslintignore (directory patterns end with /)
   {
     ignores: [
       'dist/',
