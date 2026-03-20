@@ -1,5 +1,19 @@
 # @commercetools-uikit/money-field
 
+## 20.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`4640ec0`](https://github.com/commercetools/ui-kit/commit/4640ec05ba094b0f1ed5d1decc7824f7b66f8cde)]:
+  - @commercetools-uikit/money-input@20.5.0
+  - @commercetools-uikit/design-system@20.5.0
+  - @commercetools-uikit/constraints@20.5.0
+  - @commercetools-uikit/field-errors@20.5.0
+  - @commercetools-uikit/field-label@20.5.0
+  - @commercetools-uikit/field-warnings@20.5.0
+  - @commercetools-uikit/utils@20.5.0
+  - @commercetools-uikit/spacings@20.5.0
+
 ## 20.4.0
 
 ### Patch Changes

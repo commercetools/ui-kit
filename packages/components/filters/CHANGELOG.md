@@ -1,5 +1,20 @@
 # @commercetools-uikit/filters
 
+## 20.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.5.0
+  - @commercetools-uikit/flat-button@20.5.0
+  - @commercetools-uikit/icon-button@20.5.0
+  - @commercetools-uikit/secondary-icon-button@20.5.0
+  - @commercetools-uikit/collapsible-motion@20.5.0
+  - @commercetools-uikit/icons@20.5.0
+  - @commercetools-uikit/select-input@20.5.0
+  - @commercetools-uikit/utils@20.5.0
+  - @commercetools-uikit/spacings@20.5.0
+
 ## 20.4.0
 
 ### Patch Changes

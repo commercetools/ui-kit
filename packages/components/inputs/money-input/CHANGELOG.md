@@ -1,5 +1,23 @@
 # @commercetools-uikit/money-input
 
+## 20.5.0
+
+### Minor Changes
+
+- [#3223](https://github.com/commercetools/ui-kit/pull/3223) [`4640ec0`](https://github.com/commercetools/ui-kit/commit/4640ec05ba094b0f1ed5d1decc7824f7b66f8cde) Thanks [@nima-ct](https://github.com/nima-ct)! - Support zero-fraction currency variants (CZK0, HUF0, ILS0, KZT0, TRY0, TWD0) and fix empty-value fraction digits in MoneyInput
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.5.0
+  - @commercetools-uikit/constraints@20.5.0
+  - @commercetools-uikit/icons@20.5.0
+  - @commercetools-uikit/input-utils@20.5.0
+  - @commercetools-uikit/select-utils@20.5.0
+  - @commercetools-uikit/tooltip@20.5.0
+  - @commercetools-uikit/hooks@20.5.0
+  - @commercetools-uikit/utils@20.5.0
+
 ## 20.4.0
 
 ### Patch Changes
