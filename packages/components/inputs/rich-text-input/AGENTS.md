@@ -7,8 +7,9 @@ HTML serialization for form integration in Merchant Center applications.
 
 ## Key Context
 
-- Built on **Slate.js 0.75** (`slate`, `slate-react`, `slate-history`) — a
-  significantly different API from Slate 0.4x. Do not reference older Slate docs.
+- Built on **Slate.js** (`slate` 0.75, `slate-react` 0.75, `slate-history`
+  0.113) — a significantly different API from Slate 0.4x. Do not reference
+  older Slate docs.
 - Uses `@commercetools-uikit/rich-text-utils` for HTML serialization, toolbar UI,
   and Slate helper functions.
 - Two-layer architecture: `rich-text-input.tsx` is a class-based PureComponent
@@ -16,7 +17,7 @@ HTML serialization for form integration in Merchant Center applications.
   functional component handling the Slate editor instance and UI.
 - Keyboard shortcuts via `is-hotkey`: Mod+B (bold), Mod+I (italic),
   Mod+U (underline), Mod+\` (code). Shift+Enter for soft breaks.
-- Uses `downshift` for accessible dropdown patterns in the toolbar.
+- Toolbar dropdown patterns use `downshift` (via `rich-text-utils`).
 - Uses `CollapsibleMotion` for expand/collapse behavior.
 
 ## How To Work Here
