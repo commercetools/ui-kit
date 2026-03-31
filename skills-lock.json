@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "skills": {
+    "pr-review-navigator": {
+      "source": "commercetools/agent-skills",
+      "sourceType": "github",
+      "computedHash": "7e07bd27b2019b6f8b40458f0e9d68f33f5aa35501c42aef7d05147b7b6722ae"
+    },
+    "remember": {
+      "source": "commercetools/agent-skills",
+      "sourceType": "github",
+      "computedHash": "6c90f38c7dc90853cde33e54c78ace5486f66862b139bd2d9c6082b88a70a3e3"
+    },
+    "renovate-migrate": {
+      "source": "commercetools/agent-skills",
+      "sourceType": "github",
+      "computedHash": "9abfafafee247f87f3528fc197f36c49c42e0c625c0bd3ff2a7d20f5f40ca284"
+    },
+    "renovate-review": {
+      "source": "commercetools/agent-skills",
+      "sourceType": "github",
+      "computedHash": "fcbfd6b908e152a680d4a1404d072e0788a83e97251688e719b8569b39cf0a14"
+    },
+    "repo-healthcheck-node": {
+      "source": "commercetools/agent-skills",
+      "sourceType": "github",
+      "computedHash": "88439b482c743721e7e3c546125257973987cbd43e5b784169bf7f689aecdfce"
+    },
+    "repo-maintenance-node": {
+      "source": "commercetools/agent-skills",
+      "sourceType": "github",
+      "computedHash": "9c4dd7478e45279f51380e471132debcf0f6d2e687b7293d54e58f0908cb61dd"
+    },
+    "security-auditor": {
+      "source": "commercetools/agent-skills",
+      "sourceType": "github",
+      "computedHash": "8243178ee8b26923ef5b125ff12f7d7c5bbb7e5f5eefdfff1237554b7cd18951"
+    }
+  }
+}

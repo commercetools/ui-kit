@@ -1,0 +1,16 @@
+{
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file_path=$(jq -r '.tool_input.file_path'); if echo \"$file_path\" | grep -qE '\\.(ts|tsx|js|jsx|md|mdx|json)$'; then npx prettier --write \"$file_path\"; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

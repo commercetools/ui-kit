@@ -1,0 +1,5 @@
+# Local settings
+*.local.*
+
+# Plan artifacts from jira-implement-task skill
+skills/jira-implement-task/
