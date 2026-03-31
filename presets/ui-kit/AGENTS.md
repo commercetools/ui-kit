@@ -2,8 +2,10 @@
 
 ## Purpose
 
-All-in-one preset that re-exports every UI Kit component, design token, and
-utility. This is the primary entry point for consumers who want the full library.
+All-in-one preset that re-exports the primary UI Kit components, design tokens,
+and selected utilities. This is the main entry point for consumers who want the
+full library. Some specialized packages (e.g. `calendar-utils`,
+`calendar-time-utils`, `localized-utils`) must be imported directly.
 
 ## Key Context
 

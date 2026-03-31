@@ -22,4 +22,4 @@ can load locale data for internationalized component strings.
 - `compiled-data/` is generated output. Run `yarn compile-intl` after changing
   any `data/*.json` file.
 - The `presets/ui-kit` package copies `data/` into its own `i18n/` directory
-  during build via `copy-assets` — changes here propagate there at build time.
+  via its `copy-assets` script — run it explicitly to propagate changes.

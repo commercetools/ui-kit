@@ -7,7 +7,7 @@ repository's architecture, commands, constraints, and conventions.
 
 See `.mcp.json` for configured servers:
 
-- **commercetools-developer** — commercetools API docs, GraphQL schemas, OpenAPI
+- **commercetools-docs** — commercetools API docs, GraphQL schemas, OpenAPI
   specs
 - **context7** — third-party library documentation
 - **playwright** — visual UI verification
@@ -17,7 +17,7 @@ See `.mcp.json` for configured servers:
 
 See `.claude/settings.json` for configured hooks:
 
-- Post-write: auto-format with Prettier
+- PostToolUse (Edit/MultiEdit/Write): auto-format with Prettier
 
 ## Skills
 

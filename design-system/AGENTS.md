@@ -35,5 +35,5 @@ this monorepo and by external consumers via CSS custom properties or JS imports.
 - The YAML enforces allowed states, component groups, and variants. Adding a new
   state or component group requires updating the top-level `states`,
   `componentGroups`, or `variants` keys first.
-- `materials/internals/deprecated-tokens.js` maps old token names to new ones
-  for backward compatibility — check it before renaming tokens.
+- `materials/internals/deprecated-tokens.js` is a placeholder for mapping old
+  token names to new ones — currently empty, but update it when renaming tokens.
