@@ -29,15 +29,18 @@ jobs:
           # https://github.community/t/action-does-not-trigger-another-on-push-tag-action/17148/8
           token: ${{ steps.generate_github_token.outputs.token }}
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node (uses version in .nvmrc)
         uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+      - name: Get pnpm store
+        id: pnpm-store
+        run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Verify npm version
         run: |
@@ -46,19 +49,19 @@ jobs:
 
       - uses: actions/cache@v5
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock', 'patches/*.patch') }}
+          path: ${{ steps.pnpm-store.outputs.dir }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml', 'patches/*.patch') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-pnpm-
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
 
       - name: Building packages
-        run: yarn build
+        run: pnpm build
 
       - name: Building package READMEs
-        run: yarn generate-readmes
+        run: pnpm generate-readmes
         env:
           CI: true
 
@@ -74,8 +77,8 @@ jobs:
         uses: dotansimha/changesets-action@v1.5.2
         with:
           commit: 'ci(changesets): version packages'
-          publish: yarn changeset publish
-          version: yarn changeset:version-and-format
+          publish: pnpm changeset publish
+          version: pnpm changeset:version-and-format
           createGithubReleases: aggregate
           githubReleaseName: v${{ steps.release_version.outputs.VALUE }}
           githubTagName: v${{ steps.release_version.outputs.VALUE }}
@@ -88,7 +91,7 @@ jobs:
         if: steps.changesets.outputs.published != 'true'
         run: |
           git checkout main
-          yarn changeset version --snapshot canary
-          yarn changeset publish --tag canary
+          pnpm changeset version --snapshot canary
+          pnpm changeset publish --tag canary
         env:
           GITHUB_TOKEN: ${{ steps.generate_github_token.outputs.token }}
