@@ -10,7 +10,7 @@ A render-prop component to manage a toggle state. The component can be controlle
 ## Installation
 
 ```
-yarn add @commercetools-uikit/collapsible
+pnpm add @commercetools-uikit/collapsible
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/collapsible
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

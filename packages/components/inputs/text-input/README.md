@@ -10,7 +10,7 @@ A controlled text input component for single-line strings with validation states
 ## Installation
 
 ```
-yarn add @commercetools-uikit/text-input
+pnpm add @commercetools-uikit/text-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/text-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

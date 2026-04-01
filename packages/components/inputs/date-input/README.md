@@ -10,7 +10,7 @@ The \`DateInput\` component allows the user to select a date. It formats the sel
 ## Installation
 
 ```
-yarn add @commercetools-uikit/date-input
+pnpm add @commercetools-uikit/date-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/date-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add moment react react-intl
+pnpm add moment react react-intl
 ```
 
 ```

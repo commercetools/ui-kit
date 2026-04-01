@@ -10,7 +10,7 @@ Links are used either to link to other UI routes, or to link to external pages. 
 ## Installation
 
 ```
-yarn add @commercetools-uikit/link
+pnpm add @commercetools-uikit/link
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/link
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl react-router-dom
+pnpm add react react-intl react-router-dom
 ```
 
 ```

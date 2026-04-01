@@ -17,7 +17,7 @@ Main Functions and use cases are:
 ## Installation
 
 ```
-yarn add @commercetools-uikit/tag
+pnpm add @commercetools-uikit/tag
 ```
 
 ```
@@ -27,7 +27,7 @@ npm --save install @commercetools-uikit/tag
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-router-dom
+pnpm add react react-router-dom
 ```
 
 ```

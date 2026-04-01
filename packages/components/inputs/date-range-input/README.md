@@ -10,7 +10,7 @@ The `DateRangeInput` component allows the user to select a date range.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/date-range-input
+pnpm add @commercetools-uikit/date-range-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/date-range-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add moment react react-intl
+pnpm add moment react react-intl
 ```
 
 ```

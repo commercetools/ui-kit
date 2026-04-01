@@ -10,7 +10,7 @@ Components for navigating through pages of items
 ## Installation
 
 ```
-yarn add @commercetools-uikit/pagination
+pnpm add @commercetools-uikit/pagination
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/pagination
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl
+pnpm add react react-intl
 ```
 
 ```

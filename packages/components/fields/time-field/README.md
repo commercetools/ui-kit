@@ -10,7 +10,7 @@ A controlled date input component for single date.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/time-field
+pnpm add @commercetools-uikit/time-field
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/time-field
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

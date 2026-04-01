@@ -12,7 +12,7 @@ It formats the selected date depending on the current locale.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/date-time-input
+pnpm add @commercetools-uikit/date-time-input
 ```
 
 ```
@@ -22,7 +22,7 @@ npm --save install @commercetools-uikit/date-time-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add moment react react-intl
+pnpm add moment react react-intl
 ```
 
 ```

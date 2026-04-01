@@ -22,7 +22,7 @@ The amount can have an arbitrary precision. When the precision of the amount exc
 ## Installation
 
 ```
-yarn add @commercetools-uikit/money-field
+pnpm add @commercetools-uikit/money-field
 ```
 
 ```
@@ -32,7 +32,7 @@ npm --save install @commercetools-uikit/money-field
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

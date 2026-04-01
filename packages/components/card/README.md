@@ -10,7 +10,7 @@ Cards are used to display content and actions on a single topic.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/card
+pnpm add @commercetools-uikit/card
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/card
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-router-dom
+pnpm add react react-router-dom
 ```
 
 ```

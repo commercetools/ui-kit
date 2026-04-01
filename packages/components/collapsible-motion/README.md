@@ -21,7 +21,7 @@ Technically, we need to dynamically create the keyframes for this animation.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/collapsible-motion
+pnpm add @commercetools-uikit/collapsible-motion
 ```
 
 ```
@@ -31,7 +31,7 @@ npm --save install @commercetools-uikit/collapsible-motion
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

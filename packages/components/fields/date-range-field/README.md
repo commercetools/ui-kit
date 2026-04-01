@@ -10,7 +10,7 @@ A controlled date input component for a date range, with validation states and a
 ## Installation
 
 ```
-yarn add @commercetools-uikit/date-range-field
+pnpm add @commercetools-uikit/date-range-field
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/date-range-field
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

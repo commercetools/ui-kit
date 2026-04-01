@@ -10,7 +10,7 @@ A controlled search text input component for single-line strings with validation
 ## Installation
 
 ```
-yarn add @commercetools-uikit/search-text-input
+pnpm add @commercetools-uikit/search-text-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/search-text-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

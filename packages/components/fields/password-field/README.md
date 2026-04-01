@@ -10,7 +10,7 @@ A controlled text input component for passwords with validation states.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/password-field
+pnpm add @commercetools-uikit/password-field
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/password-field
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl
+pnpm add react react-intl
 ```
 
 ```

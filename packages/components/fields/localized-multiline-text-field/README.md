@@ -10,7 +10,7 @@ A controlled text input component for localized multi-line strings with validati
 ## Installation
 
 ```
-yarn add @commercetools-uikit/localized-multiline-text-field
+pnpm add @commercetools-uikit/localized-multiline-text-field
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/localized-multiline-text-field
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

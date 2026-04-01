@@ -10,7 +10,7 @@ A controlled selectable search input component for single-line strings with vali
 ## Installation
 
 ```
-yarn add @commercetools-uikit/selectable-search-input
+pnpm add @commercetools-uikit/selectable-search-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/selectable-search-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-dom react-intl
+pnpm add react react-dom react-intl
 ```
 
 ```

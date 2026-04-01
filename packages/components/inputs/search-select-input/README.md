@@ -10,7 +10,7 @@ A search select input component built on top of \`@commercetools-uikit/async-sel
 ## Installation
 
 ```
-yarn add @commercetools-uikit/search-select-input
+pnpm add @commercetools-uikit/search-select-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/search-select-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-dom react-intl
+pnpm add react react-dom react-intl
 ```
 
 ```

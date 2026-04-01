@@ -10,7 +10,7 @@ A spinner animation to indicate loading state (e.g pending requests) for the use
 ## Installation
 
 ```
-yarn add @commercetools-uikit/loading-spinner
+pnpm add @commercetools-uikit/loading-spinner
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/loading-spinner
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

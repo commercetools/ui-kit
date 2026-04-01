@@ -14,7 +14,7 @@ dropdown will be disabled.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/primary-action-dropdown
+pnpm add @commercetools-uikit/primary-action-dropdown
 ```
 
 ```
@@ -24,7 +24,7 @@ npm --save install @commercetools-uikit/primary-action-dropdown
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

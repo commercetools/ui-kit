@@ -10,7 +10,7 @@ A progress bar component used to visualize the progression of an extended operat
 ## Installation
 
 ```
-yarn add @commercetools-uikit/progress-bar
+pnpm add @commercetools-uikit/progress-bar
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/progress-bar
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

@@ -10,7 +10,7 @@ An input component getting a selection from the user, and where options can also
 ## Installation
 
 ```
-yarn add @commercetools-uikit/creatable-select-input
+pnpm add @commercetools-uikit/creatable-select-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/creatable-select-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-dom react-intl
+pnpm add react react-dom react-intl
 ```
 
 ```

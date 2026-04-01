@@ -10,7 +10,7 @@ Primary buttons are used for a primary action on a page. You must also pass a la
 ## Installation
 
 ```
-yarn add @commercetools-uikit/primary-button
+pnpm add @commercetools-uikit/primary-button
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/primary-button
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

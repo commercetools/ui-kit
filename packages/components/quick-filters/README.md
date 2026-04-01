@@ -10,7 +10,7 @@ The `QuickFilters` component displays a selection of `Tag` components that repre
 ## Installation
 
 ```
-yarn add @commercetools-uikit/quick-filters
+pnpm add @commercetools-uikit/quick-filters
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/quick-filters
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

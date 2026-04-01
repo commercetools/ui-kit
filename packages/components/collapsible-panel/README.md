@@ -14,7 +14,7 @@ The component can be used in a controlled or uncontrolled manner. Please refer t
 ## Installation
 
 ```
-yarn add @commercetools-uikit/collapsible-panel
+pnpm add @commercetools-uikit/collapsible-panel
 ```
 
 ```
@@ -24,7 +24,7 @@ npm --save install @commercetools-uikit/collapsible-panel
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

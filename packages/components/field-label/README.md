@@ -10,7 +10,7 @@ The FieldLabel component represents the label for a field in a form. This compon
 ## Installation
 
 ```
-yarn add @commercetools-uikit/field-label
+pnpm add @commercetools-uikit/field-label
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/field-label
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

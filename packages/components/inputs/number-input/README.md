@@ -10,7 +10,7 @@ A controlled input component for numbers with validation states.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/number-input
+pnpm add @commercetools-uikit/number-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/number-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

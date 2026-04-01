@@ -16,7 +16,7 @@ Something to bear in mind is that, when the panel is open, the document scroll i
 ## Installation
 
 ```
-yarn add @commercetools-uikit/dropdown-menu
+pnpm add @commercetools-uikit/dropdown-menu
 ```
 
 ```
@@ -26,7 +26,7 @@ npm --save install @commercetools-uikit/dropdown-menu
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

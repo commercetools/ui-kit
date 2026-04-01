@@ -10,7 +10,7 @@ An input component that works as checkbox input.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/checkbox-input
+pnpm add @commercetools-uikit/checkbox-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/checkbox-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

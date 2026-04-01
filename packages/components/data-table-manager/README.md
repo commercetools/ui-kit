@@ -17,7 +17,7 @@ This component will render a triggering element (icon button) above the `<DataTa
 ## Installation
 
 ```
-yarn add @commercetools-uikit/data-table-manager
+pnpm add @commercetools-uikit/data-table-manager
 ```
 
 ```
@@ -27,7 +27,7 @@ npm --save install @commercetools-uikit/data-table-manager
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-dom react-intl
+pnpm add react react-dom react-intl
 ```
 
 ```

@@ -10,7 +10,7 @@ A search select field built on top of search select input, allowing users to asy
 ## Installation
 
 ```
-yarn add @commercetools-uikit/search-select-field
+pnpm add @commercetools-uikit/search-select-field
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/search-select-field
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

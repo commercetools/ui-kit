@@ -11,7 +11,7 @@ states.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/localized-rich-text-input
+pnpm add @commercetools-uikit/localized-rich-text-input
 ```
 
 ```
@@ -21,7 +21,7 @@ npm --save install @commercetools-uikit/localized-rich-text-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-dom react-intl
+pnpm add react react-dom react-intl
 ```
 
 ```

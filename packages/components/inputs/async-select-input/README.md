@@ -10,7 +10,7 @@ An input component getting a selection from an asynchronously loaded list from t
 ## Installation
 
 ```
-yarn add @commercetools-uikit/async-select-input
+pnpm add @commercetools-uikit/async-select-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/async-select-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-dom react-intl
+pnpm add react react-dom react-intl
 ```
 
 ```

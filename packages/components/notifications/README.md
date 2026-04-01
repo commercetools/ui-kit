@@ -10,7 +10,7 @@ Notification components.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/notifications
+pnpm add @commercetools-uikit/notifications
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/notifications
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl
+pnpm add react react-intl
 ```
 
 ```

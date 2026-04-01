@@ -10,7 +10,7 @@ A component for rendering profile images
 ## Installation
 
 ```
-yarn add @commercetools-uikit/avatar
+pnpm add @commercetools-uikit/avatar
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/avatar
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

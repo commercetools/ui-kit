@@ -10,7 +10,7 @@ A controlled input component with validation states and a label getting a select
 ## Installation
 
 ```
-yarn add @commercetools-uikit/creatable-select-field
+pnpm add @commercetools-uikit/creatable-select-field
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/creatable-select-field
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

@@ -10,7 +10,7 @@ A controlled radio input component with validation states and a label.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/radio-field
+pnpm add @commercetools-uikit/radio-field
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/radio-field
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

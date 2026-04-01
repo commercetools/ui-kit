@@ -10,7 +10,7 @@ An input component getting a selection from the user.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/select-input
+pnpm add @commercetools-uikit/select-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/select-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-dom react-intl
+pnpm add react react-dom react-intl
 ```
 
 ```

@@ -10,7 +10,7 @@ A controlled text input component for multi-line strings with validation states.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/multiline-text-input
+pnpm add @commercetools-uikit/multiline-text-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/multiline-text-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl
+pnpm add react react-intl
 ```
 
 ```

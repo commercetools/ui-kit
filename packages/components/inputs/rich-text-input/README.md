@@ -10,7 +10,7 @@ A controlled rich text input component for rich text with validation states.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/rich-text-input
+pnpm add @commercetools-uikit/rich-text-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/rich-text-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-dom react-intl
+pnpm add react react-dom react-intl
 ```
 
 ```

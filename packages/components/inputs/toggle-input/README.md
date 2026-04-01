@@ -10,7 +10,7 @@ The \`ToggleInput\` component allows a single settings option to be turned on or
 ## Installation
 
 ```
-yarn add @commercetools-uikit/toggle-input
+pnpm add @commercetools-uikit/toggle-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/toggle-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

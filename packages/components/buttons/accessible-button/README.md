@@ -10,7 +10,7 @@ A React component that you can use to wrap your buttons in an accessible \<butto
 ## Installation
 
 ```
-yarn add @commercetools-uikit/accessible-button
+pnpm add @commercetools-uikit/accessible-button
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/accessible-button
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

@@ -7,7 +7,7 @@ import { spawnSync } from 'child_process';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const result = spawnSync('yarn', [
+const result = spawnSync('pnpm', [
   'ts-node',
   '--compiler-options',
   '{"module": "commonjs"}',

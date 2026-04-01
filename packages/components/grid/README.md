@@ -14,7 +14,7 @@ The component accepts all the supported properties of CSS Grid, both for the par
 ## Installation
 
 ```
-yarn add @commercetools-uikit/grid
+pnpm add @commercetools-uikit/grid
 ```
 
 ```
@@ -24,7 +24,7 @@ npm --save install @commercetools-uikit/grid
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

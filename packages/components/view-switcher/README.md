@@ -28,7 +28,7 @@ Toggles are used for "yes/no" or "on/off" binary decisions.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/view-switcher
+pnpm add @commercetools-uikit/view-switcher
 ```
 
 ```
@@ -38,7 +38,7 @@ npm --save install @commercetools-uikit/view-switcher
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

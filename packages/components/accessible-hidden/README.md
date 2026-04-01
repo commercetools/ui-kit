@@ -13,7 +13,7 @@ It's the logical opposite of [the `aria-hidden` attribute](https://developer.moz
 ## Installation
 
 ```
-yarn add @commercetools-uikit/accessible-hidden
+pnpm add @commercetools-uikit/accessible-hidden
 ```
 
 ```
@@ -23,7 +23,7 @@ npm --save install @commercetools-uikit/accessible-hidden
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

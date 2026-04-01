@@ -10,7 +10,7 @@ The `FieldWarnings` component allows the user to display field warnings.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/field-warnings
+pnpm add @commercetools-uikit/field-warnings
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/field-warnings
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl
+pnpm add react react-intl
 ```
 
 ```

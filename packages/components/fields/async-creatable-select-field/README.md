@@ -10,7 +10,7 @@ An input component with validation states and a label getting a selection from a
 ## Installation
 
 ```
-yarn add @commercetools-uikit/async-creatable-select-field
+pnpm add @commercetools-uikit/async-creatable-select-field
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/async-creatable-select-field
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

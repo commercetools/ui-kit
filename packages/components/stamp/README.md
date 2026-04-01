@@ -10,7 +10,7 @@ Stamps are visual labels which hold small amounts of information regarding an it
 ## Installation
 
 ```
-yarn add @commercetools-uikit/stamp
+pnpm add @commercetools-uikit/stamp
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/stamp
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

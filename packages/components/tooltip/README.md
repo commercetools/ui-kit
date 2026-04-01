@@ -10,7 +10,7 @@ Tooltips display informative text when users hover over or focus on an element.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/tooltip
+pnpm add @commercetools-uikit/tooltip
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/tooltip
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

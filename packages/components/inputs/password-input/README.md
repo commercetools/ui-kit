@@ -10,7 +10,7 @@ A controlled password input component.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/password-input
+pnpm add @commercetools-uikit/password-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/password-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

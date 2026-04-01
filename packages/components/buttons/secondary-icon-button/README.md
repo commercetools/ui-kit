@@ -10,7 +10,7 @@ Secondary Icon Buttons are "icon-only" buttons and a restricted version of the \
 ## Installation
 
 ```
-yarn add @commercetools-uikit/secondary-icon-button
+pnpm add @commercetools-uikit/secondary-icon-button
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/secondary-icon-button
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

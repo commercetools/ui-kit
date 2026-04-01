@@ -10,7 +10,7 @@ Renders errors based on configuration.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/field-errors
+pnpm add @commercetools-uikit/field-errors
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/field-errors
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl
+pnpm add react react-intl
 ```
 
 ```

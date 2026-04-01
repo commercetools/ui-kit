@@ -10,7 +10,7 @@ A controlled input component for localized money values with validation states.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/localized-money-input
+pnpm add @commercetools-uikit/localized-money-input
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/localized-money-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-dom react-intl
+pnpm add react react-dom react-intl
 ```
 
 ```

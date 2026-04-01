@@ -10,7 +10,7 @@ Icon buttons are icon-only buttons. They trigger an action when clicked (\`onCli
 ## Installation
 
 ```
-yarn add @commercetools-uikit/icon-button
+pnpm add @commercetools-uikit/icon-button
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/icon-button
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

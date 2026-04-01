@@ -10,7 +10,7 @@ Constraints are container elements with a configurable constraint size, like wid
 ## Installation
 
 ```
-yarn add @commercetools-uikit/constraints
+pnpm add @commercetools-uikit/constraints
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/constraints
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```

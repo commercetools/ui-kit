@@ -11,7 +11,7 @@ It formats the selected date depending on the locale.
 ## Installation
 
 ```
-yarn add @commercetools-uikit/time-input
+pnpm add @commercetools-uikit/time-input
 ```
 
 ```
@@ -21,7 +21,7 @@ npm --save install @commercetools-uikit/time-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl
+pnpm add react react-intl
 ```
 
 ```

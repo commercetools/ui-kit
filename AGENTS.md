@@ -9,7 +9,7 @@ commercetools frontend products. Published to npm under `@commercetools-uikit/*`
 
 ## Architecture
 
-This is a Yarn workspaces monorepo. Packages fall into these categories:
+This is a pnpm workspaces monorepo. Packages fall into these categories:
 
 - **`design-system/`** — Design tokens and shared styling utilities. Tokens are
   defined in `design-system/materials/internals/definition.yaml` and code-genned
@@ -55,10 +55,10 @@ packages are in a fixed version group (they share the same version number).
 
 | Task               | Command                                                   | Notes                                        |
 | ------------------ | --------------------------------------------------------- | -------------------------------------------- |
-| Test a single file | `yarn test --testPathPattern=packages/components/buttons` | Jest pattern matches against file paths      |
-| Typecheck          | `yarn typecheck`                                          | Runs `tsc --noEmit --skipLibCheck`           |
-| Lint               | `yarn lint`                                               | Uses Jest runner for ESLint                  |
-| Visual test suite  | `yarn test:visual`                                        | Runs `--runInBand`; needs visual-testing-app |
+| Test a single file | `pnpm test --testPathPattern=packages/components/buttons` | Jest pattern matches against file paths      |
+| Typecheck          | `pnpm typecheck`                                          | Runs `tsc --noEmit --skipLibCheck`           |
+| Lint               | `pnpm lint`                                               | Uses Jest runner for ESLint                  |
+| Visual test suite  | `pnpm test:visual`                                        | Runs `--runInBand`; needs visual-testing-app |
 
 ### Common workflows
 
@@ -66,35 +66,35 @@ packages are in a fixed version group (they share the same version number).
 
 1. Add the raw SVG to `packages/components/icons/src/svg/` — file must end with
    `.react.svg`
-2. Run `yarn generate-icons` to generate the React component in
+2. Run `pnpm generate-icons` to generate the React component in
    `packages/components/icons/src/generated/`
-3. Run `yarn preconstruct dev` to create entrypoint stubs
+3. Run `pnpm preconstruct dev` to create entrypoint stubs
 
 **Update design tokens:**
 
 1. Edit `design-system/materials/internals/definition.yaml`
-2. Run `yarn design-tokens:build` to regenerate TypeScript + CSS outputs
-3. Run `yarn typecheck` — token changes can break components
+2. Run `pnpm design-tokens:build` to regenerate TypeScript + CSS outputs
+3. Run `pnpm typecheck` — token changes can break components
 
 **Add or update translations:**
 
 1. Define messages in the component's `messages.ts`
-2. Run `yarn extract-intl` to update `packages/i18n/data/core.json`
+2. Run `pnpm extract-intl` to update `packages/i18n/data/core.json`
 3. Add translations to the locale JSON files in `packages/i18n/data/`
-4. Run `yarn compile-intl` to produce compiled output
+4. Run `pnpm compile-intl` to produce compiled output
 
 **Add a changeset for a PR:**
 
-1. Run `yarn changeset`
+1. Run `pnpm changeset`
 2. Select affected packages, semver bump type, and describe the change
 3. Commit the generated `.changeset/*.md` file with the PR
 
 **Full build (rarely needed locally):**
 
-1. `yarn generate-icons`
-2. `yarn design-tokens:build`
-3. `yarn compile-intl`
-4. `yarn preconstruct build`
+1. `pnpm generate-icons`
+2. `pnpm design-tokens:build`
+3. `pnpm compile-intl`
+4. `pnpm preconstruct build`
 
 ## Boundaries
 
@@ -121,13 +121,13 @@ packages are in a fixed version group (they share the same version number).
   config groups `@commercetools-frontend/*` and `@commercetools-uikit/*`
   together — a bump to one bumps all.
 - **Lint runs through Jest runners**, not directly via `eslint` CLI. Use
-  `yarn lint:js` or `yarn lint`, not `npx eslint`.
+  `pnpm lint:js` or `pnpm lint`, not `npx eslint`.
 - **Pre-commit hooks** run Prettier, lint (via Jest), and `tsc-files` on staged
   `.ts`/`.tsx` files. Expect these to block if types are broken.
 - **Visual specs** (`.visualspec.js` / `.visualroute.jsx`) are consumed by Percy
   for visual regression testing. If you change component appearance, the visual
   spec may need updating and Percy snapshots must be approved.
-- **Yarn constraints** (`constraints.pro`) enforce metadata consistency (license,
+- **Workspace constraints** enforce metadata consistency (license,
   repository fields, publishConfig) across all public packages.
 
 ## Conventions

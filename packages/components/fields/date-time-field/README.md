@@ -10,7 +10,7 @@ A controlled date time input component for single date, with validation states a
 ## Installation
 
 ```
-yarn add @commercetools-uikit/date-time-field
+pnpm add @commercetools-uikit/date-time-field
 ```
 
 ```
@@ -20,7 +20,7 @@ npm --save install @commercetools-uikit/date-time-field
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+pnpm add react
 ```
 
 ```
