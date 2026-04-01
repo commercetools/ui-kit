@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "agent-restore-context": {
+      "source": "commercetools/agent-skills",
+      "sourceType": "github",
+      "computedHash": "955add57553422e5c35504927a4d19948956df33e5203f6676044d41db23a89a"
+    },
     "pr-review-navigator": {
       "source": "commercetools/agent-skills",
       "sourceType": "github",
