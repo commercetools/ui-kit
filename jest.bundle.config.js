@@ -19,7 +19,7 @@ if (!info) {
   // eslint-disable-next-line no-console
   console.info(
     '\x1b[33m%s\x1b[0m', // log in yellow
-    '⚠️  You need to run "yarn build" or "yarn build:watch" before starting the bundle tests!'
+    '⚠️  You need to run "pnpm build" or "pnpm build:watch" before starting the bundle tests!'
   );
   process.exit(1);
 } else if (info.mtime < twoMinutesAgo) {
