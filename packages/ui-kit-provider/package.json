@@ -1,0 +1,33 @@
+{
+  "name": "@commercetools-uikit/ui-kit-provider",
+  "description": "Top-level provider for ui-kit. Composes all required context providers.",
+  "version": "20.5.0",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/ui-kit-provider"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "main": "dist/commercetools-uikit-ui-kit-provider.cjs.js",
+  "module": "dist/commercetools-uikit-ui-kit-provider.esm.js",
+  "files": ["dist"],
+  "dependencies": {
+    "@babel/runtime": "^7.20.13",
+    "@babel/runtime-corejs3": "^7.20.13",
+    "@commercetools-uikit/router-provider": "20.5.0",
+    "@emotion/react": "^11.10.5"
+  },
+  "devDependencies": {
+    "react": "19.2.0"
+  },
+  "peerDependencies": {
+    "react": "19.x"
+  }
+}
