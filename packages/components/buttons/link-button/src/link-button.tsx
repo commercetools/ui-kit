@@ -4,6 +4,7 @@ import { cloneElement, ReactElement } from 'react';
 import {
   useNavigate,
   locationDescriptorToString,
+  shouldNavigate,
 } from '@commercetools-uikit/router-provider';
 import {
   designTokens,
@@ -142,8 +143,10 @@ const LinkButton = ({
           ? (event) => event.preventDefault()
           : navigate
           ? (event) => {
-              event.preventDefault();
-              navigate(props.to);
+              if (shouldNavigate(event)) {
+                event.preventDefault();
+                navigate(props.to);
+              }
             }
           : undefined
       }

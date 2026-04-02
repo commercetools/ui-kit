@@ -4,6 +4,7 @@ import { ElementType, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
+import { shouldNavigate } from '@commercetools-uikit/router-provider';
 import Text from '@commercetools-uikit/text';
 import { DragIcon } from '@commercetools-uikit/icons';
 
@@ -75,8 +76,10 @@ const TagBody = ({
     ? undefined
     : props.onNavigate
     ? (event: React.MouseEvent<HTMLElement>) => {
-        event.preventDefault();
-        props.onNavigate!();
+        if (shouldNavigate(event)) {
+          event.preventDefault();
+          props.onNavigate!();
+        }
         if (props.onClick) props.onClick(event);
       }
     : props.onClick;

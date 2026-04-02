@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 import {
   useNavigate,
   locationDescriptorToString,
+  shouldNavigate,
 } from '@commercetools-uikit/router-provider';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
@@ -174,7 +175,7 @@ const Link = ({
       css={getLinkStyles(allProps)}
       href={locationDescriptorToString(props.to)}
       onClick={(event) => {
-        if (navigate) {
+        if (navigate && shouldNavigate(event)) {
           event.preventDefault();
           navigate(props.to);
         }

@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import {
   useNavigate,
   locationDescriptorToString,
+  shouldNavigate,
   type TLocationDescriptor,
 } from '@commercetools-uikit/router-provider';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -141,8 +142,10 @@ const Card = ({
             onClick={
               navigate
                 ? (event) => {
-                    event.preventDefault();
-                    navigate(props.to!);
+                    if (shouldNavigate(event)) {
+                      event.preventDefault();
+                      navigate(props.to!);
+                    }
                   }
                 : undefined
             }

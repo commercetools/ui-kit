@@ -1,6 +1,32 @@
 import type { TLocationDescriptor, TLocationDescriptorObject } from './types';
 
 /**
+ * Returns true if the click event should be handled by navigate()
+ * rather than the browser's default <a> behavior.
+ * Mirrors the guard react-router's <Link> uses internally.
+ */
+export function shouldNavigate(
+  event: Pick<
+    MouseEvent,
+    | 'button'
+    | 'metaKey'
+    | 'altKey'
+    | 'ctrlKey'
+    | 'shiftKey'
+    | 'defaultPrevented'
+  >
+): boolean {
+  return (
+    event.button === 0 &&
+    !event.metaKey &&
+    !event.altKey &&
+    !event.ctrlKey &&
+    !event.shiftKey &&
+    !event.defaultPrevented
+  );
+}
+
+/**
  * Converts a TLocationDescriptor (string or object) to a URL string.
  * Used to set the `href` attribute on `<a>` tags.
  */

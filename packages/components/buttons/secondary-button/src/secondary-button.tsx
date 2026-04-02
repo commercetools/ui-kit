@@ -11,6 +11,7 @@ import { css } from '@emotion/react';
 import {
   useNavigate,
   locationDescriptorToString,
+  shouldNavigate,
 } from '@commercetools-uikit/router-provider';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Inline from '@commercetools-uikit/spacings-inline';
@@ -180,7 +181,9 @@ export const SecondaryButton = <
       ...props,
     }),
     ...(shouldUseLinkTag
-      ? { href: locationDescriptorToString(props.to as string) }
+      ? props.as
+        ? { to: props.to }
+        : { href: locationDescriptorToString(props.to as string) }
       : {}),
   };
 
@@ -221,15 +224,17 @@ export const SecondaryButton = <
 
   return (
     <AccessibleButton
-      as={(shouldUseLinkTag ? 'a' : props.as) as ComponentType}
+      as={(shouldUseLinkTag ? props.as ?? 'a' : props.as) as ComponentType}
       type={type}
       buttonAttributes={buttonAttributes}
       label={props.label}
       onClick={
-        shouldUseLinkTag && navigate
+        shouldUseLinkTag && !props.as && navigate
           ? (((event: MouseEvent<HTMLElement>) => {
-              event.preventDefault();
-              navigate(props.to);
+              if (shouldNavigate(event)) {
+                event.preventDefault();
+                navigate(props.to);
+              }
             }) as TSecondaryButtonProps['onClick'])
           : props.onClick
       }
