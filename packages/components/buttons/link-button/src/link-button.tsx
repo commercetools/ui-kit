@@ -1,13 +1,16 @@
-import type { LocationDescriptor } from 'history';
+import type { TLocationDescriptor } from '@commercetools-uikit/router-provider';
 
 import { cloneElement, ReactElement } from 'react';
-import { Link as ReactRouterLink } from 'react-router-dom';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import {
+  useNavigate,
+  locationDescriptorToString,
+} from '@commercetools-uikit/router-provider';
 import {
   designTokens,
   type TIconProps,
 } from '@commercetools-uikit/design-system';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import {
   useWarnDeprecatedComponent,
   filterInvalidAttributes,
@@ -24,7 +27,7 @@ export type TLinkButtonProps = {
   /**
    * A string or an object representing the link location.
    */
-  to: string | LocationDescriptor;
+  to: string | TLocationDescriptor;
 
   /**
    * The icon of the button.
@@ -58,9 +61,7 @@ const hoverStyles = css`
   }
 `;
 
-const StyledExternalLink = styled.a<
-  Pick<TLinkButtonProps, 'to'> & { disabled?: boolean }
->`
+const StyledExternalLink = styled.a<{ disabled?: boolean }>`
   display: inline-flex;
   align-items: center;
   font-size: 1rem;
@@ -102,6 +103,7 @@ const LinkButton = ({
   ...props
 }: TLinkButtonProps) => {
   useWarnDeprecatedComponent('LinkButton');
+  const navigate = useNavigate();
   const remainingProps = filterInvalidAttributes({
     isDisabled,
     isExternal,
@@ -114,8 +116,6 @@ const LinkButton = ({
     }
 
     return (
-      // @ts-ignore: the `to` prop in this case is not required
-      // to be provided, instead the `href` is.
       <StyledExternalLink
         href={props.to}
         onClick={isDisabled ? (event) => event.preventDefault() : undefined}
@@ -135,10 +135,18 @@ const LinkButton = ({
 
   return (
     <StyledExternalLink
-      as={ReactRouterLink}
-      to={props.to}
+      href={locationDescriptorToString(props.to)}
       disabled={isDisabled}
-      onClick={isDisabled ? (event) => event.preventDefault() : undefined}
+      onClick={
+        isDisabled
+          ? (event) => event.preventDefault()
+          : navigate
+          ? (event) => {
+              event.preventDefault();
+              navigate(props.to);
+            }
+          : undefined
+      }
       data-track-component="LinkButton"
       aria-label={props.label}
       {...remainingProps}

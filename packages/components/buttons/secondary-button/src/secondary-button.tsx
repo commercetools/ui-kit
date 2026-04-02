@@ -7,8 +7,11 @@ import {
   ComponentPropsWithRef,
   cloneElement,
 } from 'react';
-import { Link } from 'react-router-dom';
 import { css } from '@emotion/react';
+import {
+  useNavigate,
+  locationDescriptorToString,
+} from '@commercetools-uikit/router-provider';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Inline from '@commercetools-uikit/spacings-inline';
 import {
@@ -163,6 +166,7 @@ export const SecondaryButton = <
   isToggleButton = false,
   ...props
 }: TSecondaryButtonProps<TStringOrComponent>) => {
+  const navigate = useNavigate();
   const isActive = Boolean(isToggleButton && props.isToggled);
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.to);
   const buttonAttributes = {
@@ -175,7 +179,9 @@ export const SecondaryButton = <
       isToggleButton,
       ...props,
     }),
-    ...(shouldUseLinkTag ? { to: props.to } : {}),
+    ...(shouldUseLinkTag
+      ? { href: locationDescriptorToString(props.to as string) }
+      : {}),
   };
 
   warning(
@@ -215,11 +221,18 @@ export const SecondaryButton = <
 
   return (
     <AccessibleButton
-      as={(shouldUseLinkTag ? Link : props.as) as ComponentType}
+      as={(shouldUseLinkTag ? 'a' : props.as) as ComponentType}
       type={type}
       buttonAttributes={buttonAttributes}
       label={props.label}
-      onClick={props.onClick}
+      onClick={
+        shouldUseLinkTag && navigate
+          ? (((event: MouseEvent<HTMLElement>) => {
+              event.preventDefault();
+              navigate(props.to);
+            }) as TSecondaryButtonProps['onClick'])
+          : props.onClick
+      }
       isToggleButton={isToggleButton}
       isToggled={props.isToggled}
       isDisabled={props.isDisabled}

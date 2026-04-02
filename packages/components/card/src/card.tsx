@@ -1,10 +1,13 @@
 import { KeyboardEvent, ReactNode } from 'react';
 import { css } from '@emotion/react';
+import {
+  useNavigate,
+  locationDescriptorToString,
+  type TLocationDescriptor,
+} from '@commercetools-uikit/router-provider';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Inset from '@commercetools-uikit/spacings-inset';
-import { Link } from 'react-router-dom';
-import type { LocationDescriptor } from 'history';
 
 export type TCardProps = {
   /**
@@ -34,7 +37,7 @@ export type TCardProps = {
   /**
    * The URL that the Card should point to. If provided, the Card will be rendered as an anchor element.
    */
-  to?: string | LocationDescriptor;
+  to?: string | TLocationDescriptor;
   /**
    * A flag to indicate if the Card points to an external source.
    */
@@ -51,6 +54,7 @@ const Card = ({
   insetScale = 'm',
   ...props
 }: TCardProps) => {
+  const navigate = useNavigate();
   const isClickable = Boolean(!props.isDisabled && (props.onClick || props.to));
   // Only disable styling if the card is not clickable
   const shouldBeDisabled = props.isDisabled && (props.onClick || props.to);
@@ -131,9 +135,20 @@ const Card = ({
         );
       } else {
         return (
-          <Link {...commonProps} to={props.to}>
+          <a
+            {...commonProps}
+            href={locationDescriptorToString(props.to)}
+            onClick={
+              navigate
+                ? (event) => {
+                    event.preventDefault();
+                    navigate(props.to!);
+                  }
+                : undefined
+            }
+          >
             {content}
-          </Link>
+          </a>
         );
       }
     }

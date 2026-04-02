@@ -1,6 +1,5 @@
 import type { TTagProps } from './tag';
 
-import { Link } from 'react-router-dom';
 import { ElementType, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -9,9 +8,10 @@ import Text from '@commercetools-uikit/text';
 import { DragIcon } from '@commercetools-uikit/icons';
 
 export type TTagBodyProps = {
-  to?: TTagProps['to'];
-  as?: ElementType | Link;
+  href?: string;
+  as?: ElementType;
   onClick?: TTagProps['onClick'];
+  onNavigate?: () => void;
   onRemove?: TTagProps['onRemove'];
   isDisabled?: boolean;
   isDraggable?: boolean;
@@ -19,7 +19,7 @@ export type TTagBodyProps = {
   styles?: TTagProps['styles'];
 };
 
-type TBody = Pick<TTagBodyProps, 'to' | 'as'>;
+type TBody = Pick<TTagBodyProps, 'href' | 'as'>;
 const Body = styled.div<TBody>``;
 
 const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
@@ -71,9 +71,19 @@ const TagBody = ({
 }: TTagBodyProps) => {
   const textTone = isDisabled ? 'secondary' : 'inherit';
 
+  const handleClick = isDisabled
+    ? undefined
+    : props.onNavigate
+    ? (event: React.MouseEvent<HTMLElement>) => {
+        event.preventDefault();
+        props.onNavigate!();
+        if (props.onClick) props.onClick(event);
+      }
+    : props.onClick;
+
   return (
     <Body
-      to={props.to}
+      href={props.href}
       as={props.as}
       css={[
         getContentWrapperStyles({
@@ -90,7 +100,7 @@ const TagBody = ({
           `,
         props.styles?.body,
       ]}
-      onClick={isDisabled ? undefined : props.onClick}
+      onClick={handleClick}
     >
       {isDraggable && !isDisabled ? (
         <DragIcon data-testid="drag-icon" size="medium" />

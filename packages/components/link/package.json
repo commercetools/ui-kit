@@ -23,22 +23,18 @@
     "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/design-system": "20.5.0",
     "@commercetools-uikit/icons": "20.5.0",
+    "@commercetools-uikit/router-provider": "20.5.0",
     "@commercetools-uikit/spacings-inline": "20.5.0",
     "@commercetools-uikit/utils": "20.5.0",
     "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@types/history": "^4.7.11",
-    "@types/react-router-dom": "^5.3.3",
-    "history": "4.10.1"
+    "@emotion/styled": "^11.10.5"
   },
   "devDependencies": {
     "react": "19.2.0",
-    "react-intl": "^7.1.4",
-    "react-router-dom": "5.3.4"
+    "react-intl": "^7.1.4"
   },
   "peerDependencies": {
     "react": "19.x",
-    "react-intl": "7.x",
-    "react-router-dom": "5.x"
+    "react-intl": "7.x"
   }
 }

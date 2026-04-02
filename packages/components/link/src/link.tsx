@@ -1,4 +1,4 @@
-import type { LocationDescriptor } from 'history';
+import type { TLocationDescriptor } from '@commercetools-uikit/router-provider';
 import type { Props as IntlMessage } from 'react-intl/src/components/message';
 import {
   Children,
@@ -7,10 +7,13 @@ import {
   type KeyboardEvent,
 } from 'react';
 import styled from '@emotion/styled';
-import { Link as ReactRouterLink } from 'react-router-dom';
+import {
+  useNavigate,
+  locationDescriptorToString,
+} from '@commercetools-uikit/router-provider';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
-import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import { ExternalLinkIcon } from '@commercetools-uikit/icons';
 
@@ -30,13 +33,13 @@ export type TLinkProps = {
   /**
    * A flag to indicate if the Link points to an external source.
    * <bt />
-   * If `true`, a regular `<a>` is rendered instead of the default `react-router`s `<Link />`
+   * If `true`, a regular `<a>` is rendered instead of using client-side navigation.
    */
   isExternal?: boolean;
   /**
    * The URL that the Link should point to.
    */
-  to: string | LocationDescriptor;
+  to: string | TLocationDescriptor;
   /**
    * Color of the link
    */
@@ -123,6 +126,7 @@ const Link = ({
 }: TLinkProps) => {
   const allProps = { tone, isExternal, ...props };
   const remainingProps = filterInvalidAttributes(allProps);
+  const navigate = useNavigate();
 
   const color = getTextColorValue(tone);
   const hoverColor = getActiveColorValue(tone);
@@ -130,6 +134,12 @@ const Link = ({
   // `filterInvalidAttributes` strips off `intlMessage` and `children`
   // so we pass in the "raw" props instead.
   warnIfMissingContent(allProps);
+
+  const content = props.intlMessage ? (
+    <FormattedMessage {...props.intlMessage} />
+  ) : (
+    props.children
+  );
 
   if (isExternal) {
     if (typeof props.to !== 'string') {
@@ -152,11 +162,7 @@ const Link = ({
           rel="noopener noreferrer"
           {...remainingProps}
         >
-          {props.intlMessage ? (
-            <FormattedMessage {...props.intlMessage} />
-          ) : (
-            props.children
-          )}
+          {content}
         </a>
         {isExternal && <ExternalLinkIcon size="medium" />}
       </Wrapper>
@@ -164,17 +170,19 @@ const Link = ({
   }
 
   return (
-    <ReactRouterLink
+    <a
       css={getLinkStyles(allProps)}
-      to={props.to}
+      href={locationDescriptorToString(props.to)}
+      onClick={(event) => {
+        if (navigate) {
+          event.preventDefault();
+          navigate(props.to);
+        }
+      }}
       {...remainingProps}
     >
-      {props.intlMessage ? (
-        <FormattedMessage {...props.intlMessage} />
-      ) : (
-        props.children
-      )}
-    </ReactRouterLink>
+      {content}
+    </a>
   );
 };
 

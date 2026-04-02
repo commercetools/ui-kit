@@ -1,7 +1,10 @@
-import type { LocationDescriptor } from 'history';
+import type { TLocationDescriptor } from '@commercetools-uikit/router-provider';
 import { ReactNode, MouseEvent, KeyboardEvent, ElementType } from 'react';
 import { css, type SerializedStyles } from '@emotion/react';
-import { Link } from 'react-router-dom';
+import {
+  useNavigate,
+  locationDescriptorToString,
+} from '@commercetools-uikit/router-provider';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
@@ -22,7 +25,7 @@ export type TTagProps = {
   /**
    * Link of the tag when not disabled
    */
-  to?: string | LocationDescriptor;
+  to?: string | TLocationDescriptor;
   /**
    * Disable the tag element along with the option to remove it.
    */
@@ -80,6 +83,7 @@ const Tag = ({
   horizontalConstraint = 'scale',
   ...props
 }: TTagProps) => {
+  const navigate = useNavigate();
   let tagBodyProps;
 
   switch (true) {
@@ -87,7 +91,11 @@ const Tag = ({
       tagBodyProps = {};
       break;
     case Boolean(props.to):
-      tagBodyProps = { as: Link, to: props.to };
+      tagBodyProps = {
+        as: 'a' as ElementType,
+        href: locationDescriptorToString(props.to!),
+        onNavigate: navigate ? () => navigate(props.to!) : undefined,
+      };
       break;
     case Boolean(props.onClick):
       tagBodyProps = { as: 'button' as ElementType };
