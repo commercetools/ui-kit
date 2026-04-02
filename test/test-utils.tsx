@@ -3,8 +3,8 @@
 import { act, type ReactNode } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { UIKitProvider } from '@commercetools-uikit/ui-kit-provider';
+import type { TLocationDescriptor } from '@commercetools-uikit/router-provider';
 
 const getMessagesForLocale = (locale: string) => {
   switch (locale) {
@@ -21,26 +21,51 @@ const getMessagesForLocale = (locale: string) => {
   }
 };
 
+type TTestHistory = {
+  location: { pathname: string; search: string; hash: string };
+  push: (to: TLocationDescriptor) => void;
+};
+
+const createTestHistory = (route: string): TTestHistory => ({
+  location: { pathname: route, search: '', hash: '' },
+  push(to: TLocationDescriptor) {
+    if (typeof to === 'string') {
+      this.location = { pathname: to, search: '', hash: '' };
+    } else {
+      this.location = {
+        pathname: to.pathname || '',
+        search: to.search || '',
+        hash: to.hash || '',
+      };
+    }
+  },
+});
+
 const customRender = (
   node: ReactNode,
   {
     locale = 'en',
     route = '/',
-    history = createMemoryHistory({ initialEntries: [route] }),
     ...rtlOptions
-  } = {}
-) => ({
-  ...render(
-    <IntlProvider locale={locale} messages={getMessagesForLocale(locale)}>
-      <Router history={history}>{node}</Router>
-    </IntlProvider>,
-    rtlOptions
-  ),
-  // adding `history` to the returned utilities to allow us
-  // to reference it in our tests (just try to avoid using
-  // this to test implementation details).
-  history,
-});
+  }: { locale?: string; route?: string; [key: string]: unknown } = {}
+) => {
+  const history = createTestHistory(route);
+
+  return {
+    ...render(
+      <IntlProvider locale={locale} messages={getMessagesForLocale(locale)}>
+        <UIKitProvider router={{ navigate: (to) => history.push(to) }}>
+          {node}
+        </UIKitProvider>
+      </IntlProvider>,
+      rtlOptions
+    ),
+    // adding `history` to the returned utilities to allow us
+    // to reference it in our tests (just try to avoid using
+    // this to test implementation details).
+    history,
+  };
+};
 
 // re-export everything
 export {

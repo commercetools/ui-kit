@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
 import {
   screen,
@@ -93,10 +92,10 @@ describe('rendering', () => {
       expect(screen.getByLabelText('Add')).toHaveAttribute('type', 'reset');
     });
   });
-  describe('when using as', () => {
+  describe('when using to', () => {
     it('should navigate to link when clicked', async () => {
       const { history } = render(
-        <SecondaryButton {...props} onClick={null} as={Link} to="/foo/bar" />
+        <SecondaryButton {...props} onClick={null} to="/foo/bar" />
       );
       fireEvent.click(screen.getByLabelText('Add'));
       await waitFor(() => {

@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { UIKitProvider } from '@commercetools-uikit/ui-kit-provider';
 import Link from './link';
+
+// no-op navigate for storybook
+const storyRouter = { navigate: () => {} };
 
 const meta: Meta<typeof Link> = {
   title: 'components/Link',
@@ -13,9 +16,9 @@ type Story = StoryObj<typeof Link>;
 export const BasicExample: Story = {
   decorators: [
     (Story) => (
-      <Router>
+      <UIKitProvider router={storyRouter}>
         <Story />
-      </Router>
+      </UIKitProvider>
     ),
   ],
   args: {
@@ -33,9 +36,9 @@ export const ExternalLink: Story = {
 
   decorators: [
     (Story) => (
-      <Router>
+      <UIKitProvider router={storyRouter}>
         <Story />
-      </Router>
+      </UIKitProvider>
     ),
   ],
 };

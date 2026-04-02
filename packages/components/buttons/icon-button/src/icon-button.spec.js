@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
 import { screen, render } from '../../../../../test/test-utils';
 import IconButton from './icon-button';
+
+// A simple test link component to test the polymorphic `as` prop
+const TestLink = ({ to, children, ...rest }) => (
+  <a href={to} {...rest}>
+    {children}
+  </a>
+);
 
 const createTestProps = (custom) => ({
   type: 'button',
@@ -63,7 +69,7 @@ describe('rendering', () => {
     describe('when as is a React component', () => {
       it('should render as that component', () => {
         render(
-          <IconButton {...props} as={Link} to="foo/bar" target="_BLANK" />
+          <IconButton {...props} as={TestLink} to="/foo/bar" target="_BLANK" />
         );
 
         const linkButton = screen.getByLabelText('test-button');

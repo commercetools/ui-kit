@@ -1,6 +1,9 @@
-import { BrowserRouter as Router } from 'react-router-dom';
 import type { Meta, StoryObj } from '@storybook/react';
+import { UIKitProvider } from '@commercetools-uikit/ui-kit-provider';
 import Tag from './tag';
+
+// no-op navigate for storybook
+const storyRouter = { navigate: () => {} };
 
 const meta: Meta<typeof Tag> = {
   title: 'components/Tags/Tag',
@@ -14,9 +17,9 @@ type Story = StoryObj<typeof Tag>;
 export const BasicExample: Story = {
   render: (args) => {
     return (
-      <Router>
+      <UIKitProvider router={storyRouter}>
         <Tag {...args} />
-      </Router>
+      </UIKitProvider>
     );
   },
   args: {
@@ -27,7 +30,7 @@ export const BasicExample: Story = {
   },
 };
 
-/** displays the tag as a react-router link, (no hover effects) */
+/** displays the tag as a link (no hover effects) */
 export const LinkedTag: Story = {
   ...BasicExample,
   args: {

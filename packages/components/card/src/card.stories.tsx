@@ -2,7 +2,10 @@ import type { ComponentProps } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import Card from './card';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { UIKitProvider } from '@commercetools-uikit/ui-kit-provider';
+
+// no-op navigate for storybook
+const storyRouter = { navigate: () => {} };
 
 type CardProps = ComponentProps<typeof Card>;
 
@@ -20,9 +23,9 @@ export default meta;
 
 export const BasicExample: StoryFn<CardProps> = (args) => {
   return (
-    <Router>
+    <UIKitProvider router={storyRouter}>
       <Card {...args} />
-    </Router>
+    </UIKitProvider>
   );
 };
 

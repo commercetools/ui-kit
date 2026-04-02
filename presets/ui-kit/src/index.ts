@@ -185,4 +185,17 @@ export {
   designTokens,
 } from '@commercetools-uikit/design-system';
 
+export {
+  UIKitProvider,
+  type TUIKitProviderProps,
+} from '@commercetools-uikit/ui-kit-provider';
+
+export {
+  useNavigate,
+  locationDescriptorToString,
+  type TLocationDescriptor,
+  type TLocationDescriptorObject,
+  type TRouterConfig,
+} from '@commercetools-uikit/router-provider';
+
 export { default as version } from './version';
