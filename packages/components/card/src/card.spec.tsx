@@ -1,6 +1,5 @@
 import { screen, render, fireEvent } from '../../../../test/test-utils';
 import Card from './card';
-import { BrowserRouter } from 'react-router-dom'; // Required for testing <Link>
 
 it('should render children', () => {
   render(<Card>Bread</Card>);
@@ -32,13 +31,9 @@ it('should not call `onClick` when the card is disabled', () => {
   expect(handleClick).not.toHaveBeenCalled();
 });
 
-it('should render as a react-router `Link` when `to` prop is provided', () => {
+it('should render as a link when `to` prop is provided', () => {
   const content = 'Internal Link';
-  render(
-    <BrowserRouter>
-      <Card to="/internal-link">{content}</Card>
-    </BrowserRouter>
-  );
+  render(<Card to="/internal-link">{content}</Card>);
 
   const link = screen.getByText(content).closest('a');
   expect(link).toHaveAttribute('href', '/internal-link');
