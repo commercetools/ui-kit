@@ -1967,7 +1967,7 @@ __metadata:
     commander: ^13.1.0
     listr: 0.14.3
     listr-verbose-renderer: 0.6.0
-    lodash: 4.17.23
+    lodash: 4.18.1
     prettier: 2.8.8
     rcfile: 1.0.3
     react-docgen: 5.4.3
@@ -2033,7 +2033,7 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@types/react-is": ^19.0.0
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-is: 19.2.0
   peerDependencies:
@@ -2094,7 +2094,7 @@ __metadata:
     "@emotion/is-prop-valid": 1.4.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -2145,7 +2145,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -2167,7 +2167,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
   peerDependencies:
     react: 19.x
@@ -2229,7 +2229,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     moment: 2.30.1
     react: 19.2.0
     react-dom: 19.2.0
@@ -2293,7 +2293,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
   peerDependencies:
     react: 19.x
@@ -2317,7 +2317,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
   peerDependencies:
@@ -2335,7 +2335,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
   peerDependencies:
     react: 19.x
@@ -2396,7 +2396,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -2442,7 +2442,7 @@ __metadata:
     "@types/debounce-promise": ^3.1.6
     debounce-promise: ^3.1.2
     formik: ^2.4.6
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -2469,7 +2469,7 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     formik: ^2.4.6
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
   peerDependencies:
@@ -2656,7 +2656,7 @@ __metadata:
     "@babel/runtime-corejs3": ^7.20.13
     "@commercetools-uikit/hooks": 20.5.0
     "@emotion/react": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     nodemon: ^3.0.0
     react: 19.2.0
   peerDependencies:
@@ -2823,7 +2823,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
   peerDependencies:
@@ -2855,7 +2855,7 @@ __metadata:
     "@testing-library/dom": ^10.4.0
     "@testing-library/react": ^16.2.0
     "@types/raf-schd": ^4.0.1
-    lodash: 4.17.23
+    lodash: 4.18.1
     raf-schd: ^4.0.3
     react: 19.2.0
     react-dom: 19.2.0
@@ -2887,7 +2887,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
   peerDependencies:
@@ -2906,7 +2906,7 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@types/dompurify": ^2.4.0
-    dompurify: 3.2.7
+    dompurify: 3.3.2
     react: 19.2.0
     react-from-dom: 0.7.3
   peerDependencies:
@@ -3006,7 +3006,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
     react-router-dom: 5.3.4
@@ -3170,9 +3170,9 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     downshift: 9.0.10
-    immutable: 4.3.7
+    immutable: 4.3.8
     is-hotkey: 0.2.0
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -3245,7 +3245,7 @@ __metadata:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
     "@commercetools-uikit/utils": 20.5.0
-    lodash: 4.17.23
+    lodash: 4.18.1
   languageName: unknown
   linkType: soft
 
@@ -3282,7 +3282,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
   peerDependencies:
@@ -3306,7 +3306,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -3449,7 +3449,7 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     formik: ^2.4.6
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
   peerDependencies:
@@ -3519,7 +3519,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
   peerDependencies:
@@ -3540,7 +3540,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
   peerDependencies:
@@ -3561,7 +3561,7 @@ __metadata:
     "@commercetools-uikit/text": 20.5.0
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
   peerDependencies:
@@ -3653,9 +3653,9 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     downshift: 9.0.10
-    immutable: 4.3.7
+    immutable: 4.3.8
     is-hotkey: 0.2.0
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -3685,12 +3685,12 @@ __metadata:
     "@emotion/styled": ^11.10.5
     "@types/dompurify": ^2.4.0
     "@types/escape-html": 1.0.4
-    dompurify: 3.2.7
+    dompurify: 3.3.2
     downshift: 9.0.10
     escape-html: 1.0.3
     is-hotkey: 0.2.0
     is-url: ^1.2.4
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -3787,7 +3787,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
     react-router-dom: 5.3.4
@@ -3811,7 +3811,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
   peerDependencies:
@@ -3856,7 +3856,7 @@ __metadata:
     "@emotion/is-prop-valid": 1.4.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -3883,7 +3883,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -3912,7 +3912,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-dom: 19.2.0
     react-intl: ^7.1.4
@@ -4092,7 +4092,7 @@ __metadata:
     "@commercetools-uikit/design-system": 20.5.0
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-intl: ^7.1.4
     warning: 4.0.3
@@ -4180,7 +4180,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
     react-is: 19.2.0
     use-popper: 1.1.6
@@ -4213,7 +4213,7 @@ __metadata:
     "@commercetools-uikit/utils": 20.5.0
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    lodash: 4.17.23
+    lodash: 4.18.1
     react: 19.2.0
   peerDependencies:
     react: 19.x
@@ -11449,15 +11449,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:3.2.7":
-  version: 3.2.7
-  resolution: "dompurify@npm:3.2.7"
+"dompurify@npm:3.3.2":
+  version: 3.3.2
+  resolution: "dompurify@npm:3.3.2"
   dependencies:
     "@types/trusted-types": ^2.0.7
   dependenciesMeta:
     "@types/trusted-types":
       optional: true
-  checksum: 15958b76e0266f463303b81bc190ab78808c20640e5211dcf7e5071e4fe4396b904c04a8cb68e149e02ab44360defa13a00147e3f23721d41a81ca4bf6d7c983
+  checksum: 27856958c4088de2e2279b9514fcf3427c925e3cedf9d176957d9469a5199c39b572931a441cbb2025d1910c2890644280d0db8d5180b1366164cac309da08e5
   languageName: node
   linkType: hard
 
@@ -13759,10 +13759,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immutable@npm:4.3.7":
-  version: 4.3.7
-  resolution: "immutable@npm:4.3.7"
-  checksum: 1c50eb053bb300796551604afff554066f041aa8e15926cf98f6d11d9736b62ad12531c06515dd96375258653878b4736f8051cd20b640f5f976d09fa640e3ec
+"immutable@npm:4.3.8":
+  version: 4.3.8
+  resolution: "immutable@npm:4.3.8"
+  checksum: cd527802c8c72636495f46fed60a0e930d210fb5ae9d5c8f66d8156eb532c673b7d9a151c71a4bdca9fb7e999a7d17eddec0dc177f3140a93298178356ddd79c
   languageName: node
   linkType: hard
 
@@ -15807,10 +15807,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.23, lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
-  version: 4.17.23
-  resolution: "lodash@npm:4.17.23"
-  checksum: 7daad39758a72872e94651630fbb54ba76868f904211089721a64516ce865506a759d9ad3d8ff22a2a49a50a09db5d27c36f22762d21766e47e3ba918d6d7bab
+"lodash@npm:^4.18.1":
+  version: 4.18.1
+  resolution: "lodash@npm:4.18.1"
+  checksum: bb5f5b49aad29614e709af02b64c56b0f8b78c6a81434a3c1ae527d2f0f78ca08f9d9fb22aa825a053876c9d2166e9c01f31c356014b5e2bdc0556c057433102
   languageName: node
   linkType: hard
 

@@ -26,7 +26,7 @@
     "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/utils": "20.5.0",
     "@types/raf-schd": "^4.0.1",
-    "lodash": "4.17.23",
+    "lodash": "4.18.1",
     "raf-schd": "^4.0.3"
   },
   "devDependencies": {
