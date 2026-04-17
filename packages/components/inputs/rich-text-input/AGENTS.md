@@ -7,9 +7,9 @@ HTML serialization for form integration in Merchant Center applications.
 
 ## Key Context
 
-- Built on **Slate.js** (`slate` 0.75, `slate-react` 0.75, `slate-history`
-  0.113) — a significantly different API from Slate 0.4x. Do not reference
-  older Slate docs.
+- Built on **Slate.js** (check `package.json` for exact `slate` / `slate-react` /
+  `slate-history` versions) — API is significantly different from Slate 0.4x.
+  Do not reference older Slate docs.
 - Uses `@commercetools-uikit/rich-text-utils` for HTML serialization, toolbar UI,
   and Slate helper functions.
 - Two-layer architecture: `rich-text-input.tsx` is a class-based PureComponent

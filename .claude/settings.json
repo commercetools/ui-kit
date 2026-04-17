@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "file_path=$(jq -r '.tool_input.file_path'); if echo \"$file_path\" | grep -qE '\\.(ts|tsx|js|jsx|md|mdx|json)$'; then npx prettier --write \"$file_path\"; fi"
+            "command": "file_path=$(jq -r '.tool_input.file_path'); if echo \"$file_path\" | grep -qE '\\.(md|mdx)$'; then npx prettier --write --parser markdown \"$file_path\"; elif echo \"$file_path\" | grep -qE '\\.(ts|tsx|js|jsx|json)$'; then npx prettier --write \"$file_path\"; fi"
           }
         ]
       }

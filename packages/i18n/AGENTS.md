@@ -14,7 +14,6 @@ can load locale data for internationalized component strings.
   by message ID. Add translations manually to these files.
 - Run `yarn compile-intl` to produce the `compiled-data/` output that consumers
   load at runtime.
-- Uses Transifex format for both extraction and compilation.
 
 ## Gotchas
 

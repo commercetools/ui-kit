@@ -7,9 +7,17 @@ components are consumed by Merchant Center custom applications and other
 commercetools frontend products. Published to npm under `@commercetools-uikit/*`
 (individual packages) and `@commercetools-frontend/ui-kit` (all-in-one preset).
 
+## Start Here
+
+- **Toolchain:** Node 24 (`.nvmrc`), Yarn 3 (Berry), React 19 peer dependency —
+  verify these before installing. Do not assume React 18 patterns.
+- **Dev loop:** `yarn start` launches Storybook (the canonical visual playground).
+- **Fast test feedback:** `yarn workspace @commercetools-uikit/<pkg> test` runs
+  a single package's tests without walking the whole repo.
+
 ## Architecture
 
-This is a Yarn workspaces monorepo. Packages fall into these categories:
+This is a Yarn 3 (Berry) workspaces monorepo. Packages fall into these categories:
 
 - **`design-system/`** — Design tokens and shared styling utilities. Tokens are
   defined in `design-system/materials/internals/definition.yaml` and code-genned
@@ -53,12 +61,13 @@ packages are in a fixed version group (they share the same version number).
 
 ### Verify your work
 
-| Task               | Command                                                   | Notes                                        |
-| ------------------ | --------------------------------------------------------- | -------------------------------------------- |
-| Test a single file | `yarn test --testPathPattern=packages/components/buttons` | Jest pattern matches against file paths      |
-| Typecheck          | `yarn typecheck`                                          | Runs `tsc --noEmit --skipLibCheck`           |
-| Lint               | `yarn lint`                                               | Uses Jest runner for ESLint                  |
-| Visual test suite  | `yarn test:visual`                                        | Runs `--runInBand`; needs visual-testing-app |
+| Task              | Command                                          | Notes                                        |
+| ----------------- | ------------------------------------------------ | -------------------------------------------- |
+| Test one package  | `yarn workspace @commercetools-uikit/<pkg> test` | Fastest feedback for a single package        |
+| Test by path      | `yarn test packages/components/buttons`          | Positional path; matches any tests under it  |
+| Typecheck         | `yarn typecheck`                                 | Runs `tsc --noEmit --skipLibCheck`           |
+| Lint              | `yarn lint`                                      | Uses Jest runner for ESLint                  |
+| Visual test suite | `yarn test:visual`                               | Runs `--runInBand`; needs visual-testing-app |
 
 ### Common workflows
 
@@ -91,10 +100,7 @@ packages are in a fixed version group (they share the same version number).
 
 **Full build (rarely needed locally):**
 
-1. `yarn generate-icons`
-2. `yarn design-tokens:build`
-3. `yarn compile-intl`
-4. `yarn preconstruct build`
+Run `yarn build` — wraps codegen and `preconstruct build` into one step.
 
 ## Boundaries
 
@@ -146,7 +152,5 @@ packages are in a fixed version group (they share the same version number).
 
 ## Further Reading
 
-- [Storybook (interactive docs)](https://uikit.commercetools.com/)
-- [commercetools Custom Applications docs](https://docs.commercetools.com/custom-applications)
 - `design-system/materials/internals/TOKENS.md` — design token structure reference
 - `.changeset/README.md` — changesets workflow
