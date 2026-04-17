@@ -1,5 +1,15 @@
 # @commercetools-uikit/collapsible-motion
 
+## 20.5.1
+
+### Patch Changes
+
+- [#3230](https://github.com/commercetools/ui-kit/pull/3230) [`31b0b6d`](https://github.com/commercetools/ui-kit/commit/31b0b6dab702f026478071101b273e0f637e037d) Thanks [@misama-ct](https://github.com/misama-ct)! - Security: bump lodash 4.17.23 → 4.18.1, immutable 4.3.7 → 4.3.8, dompurify 3.2.7 → 3.3.2
+
+- Updated dependencies [[`31b0b6d`](https://github.com/commercetools/ui-kit/commit/31b0b6dab702f026478071101b273e0f637e037d)]:
+  - @commercetools-uikit/hooks@20.5.1
+  - @commercetools-uikit/utils@20.5.1
+
 ## 20.5.0
 
 ### Patch Changes

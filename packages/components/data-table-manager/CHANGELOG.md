@@ -1,5 +1,35 @@
 # @commercetools-uikit/data-table-manager
 
+## 20.5.1
+
+### Patch Changes
+
+- [#3230](https://github.com/commercetools/ui-kit/pull/3230) [`31b0b6d`](https://github.com/commercetools/ui-kit/commit/31b0b6dab702f026478071101b273e0f637e037d) Thanks [@misama-ct](https://github.com/misama-ct)! - Security: bump lodash 4.17.23 → 4.18.1, immutable 4.3.7 → 4.3.8, dompurify 3.2.7 → 3.3.2
+
+- Updated dependencies [[`31b0b6d`](https://github.com/commercetools/ui-kit/commit/31b0b6dab702f026478071101b273e0f637e037d)]:
+  - @commercetools-uikit/hooks@20.5.1
+  - @commercetools-uikit/accessible-button@20.5.1
+  - @commercetools-uikit/icon-button@20.5.1
+  - @commercetools-uikit/primary-button@20.5.1
+  - @commercetools-uikit/secondary-button@20.5.1
+  - @commercetools-uikit/secondary-icon-button@20.5.1
+  - @commercetools-uikit/collapsible-motion@20.5.1
+  - @commercetools-uikit/icons@20.5.1
+  - @commercetools-uikit/async-select-input@20.5.1
+  - @commercetools-uikit/select-input@20.5.1
+  - @commercetools-uikit/text@20.5.1
+  - @commercetools-uikit/tooltip@20.5.1
+  - @commercetools-uikit/design-system@20.5.1
+  - @commercetools-uikit/dropdown-menu@20.5.1
+  - @commercetools-uikit/tag@20.5.1
+  - @commercetools-uikit/field-label@20.5.1
+  - @commercetools-uikit/radio-input@20.5.1
+  - @commercetools-uikit/card@20.5.1
+  - @commercetools-uikit/spacings@20.5.1
+  - @commercetools-uikit/accessible-hidden@20.5.1
+  - @commercetools-uikit/grid@20.5.1
+  - @commercetools-uikit/utils@20.5.1
+
 ## 20.5.0
 
 ### Patch Changes
