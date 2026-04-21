@@ -4,6 +4,9 @@ description: Perform migrations for Renovate dependency upgrades based on breaki
 disable-model-invocation: false
 argument-hint: '[pr-number] [--comment] [--push]'
 allowed-tools: Bash, Grep, Glob, Read, Edit, Write, WebFetch
+scope:
+  - dependencies
+  - migration
 ---
 
 # Renovate Dependency Migration

@@ -105,3 +105,6 @@ fail-tests-because-there-was-an-unhandled-rejection.lock
 
 # Metals
 .metals
+
+# Restore context files (used by skills to resume workflows after /clear and /compact)
+.agent-restore-context-*

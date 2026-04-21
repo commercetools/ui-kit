@@ -2,8 +2,10 @@
 name: remember
 description: Persist guidelines, conventions, and architectural decisions into the repository's knowledge base. Use when told to remember something for future sessions.
 disable-model-invocation: false
-argument-hint: <guideline, convention, or architectural decision to persist>
+argument-hint: '<guideline, convention, or architectural decision to persist>'
 allowed-tools: Bash, Grep, Glob, Read, Edit, Write
+scope:
+  - knowledge
 ---
 
 # Remember

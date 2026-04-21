@@ -4,42 +4,52 @@
     "agent-restore-context": {
       "source": "commercetools/agent-skills",
       "sourceType": "github",
-      "computedHash": "955add57553422e5c35504927a4d19948956df33e5203f6676044d41db23a89a"
+      "computedHash": "1f4e26744547f31912552bbce5c99f28958e2a4f2dcb057864afc500bc1a30a3"
+    },
+    "agent-restore-context-setup": {
+      "source": "commercetools/agent-skills",
+      "sourceType": "github",
+      "computedHash": "3a5050bd8f95d2939de716b131135c86ef905cdc939fd0390574970cb817ea95"
+    },
+    "jira-implement-task": {
+      "source": "commercetools/agent-skills",
+      "sourceType": "github",
+      "computedHash": "be9e804c16446497340e6097a547362f93377e784cd060a463b95ce2ef3f52cc"
     },
     "pr-review-navigator": {
       "source": "commercetools/agent-skills",
       "sourceType": "github",
-      "computedHash": "7e07bd27b2019b6f8b40458f0e9d68f33f5aa35501c42aef7d05147b7b6722ae"
+      "computedHash": "ada61f525d251ccc27f31432e36e1f765d5282511a421d9ed6abaf03f5e071a0"
     },
     "remember": {
       "source": "commercetools/agent-skills",
       "sourceType": "github",
-      "computedHash": "6c90f38c7dc90853cde33e54c78ace5486f66862b139bd2d9c6082b88a70a3e3"
+      "computedHash": "3498ae3be3e77bc67fd008f0fae2ca376325b7ef362d5f2bbf8e9b5c8a9e6a79"
     },
     "renovate-migrate": {
       "source": "commercetools/agent-skills",
       "sourceType": "github",
-      "computedHash": "9abfafafee247f87f3528fc197f36c49c42e0c625c0bd3ff2a7d20f5f40ca284"
+      "computedHash": "32778832b30d488b335e41252046dad52668b9386970a6682785dcbf455068f9"
     },
     "renovate-review": {
       "source": "commercetools/agent-skills",
       "sourceType": "github",
-      "computedHash": "fcbfd6b908e152a680d4a1404d072e0788a83e97251688e719b8569b39cf0a14"
+      "computedHash": "5f460b17ca823c3ce2d509ae7b2e8de41e99258c35270a2c8cc48593983a2999"
     },
     "repo-healthcheck-node": {
       "source": "commercetools/agent-skills",
       "sourceType": "github",
-      "computedHash": "88439b482c743721e7e3c546125257973987cbd43e5b784169bf7f689aecdfce"
+      "computedHash": "5caa1ca2f1e165610af8499d78a9a61edafbb8908f9086da0bbaba96cd81490a"
     },
     "repo-maintenance-node": {
       "source": "commercetools/agent-skills",
       "sourceType": "github",
-      "computedHash": "9c4dd7478e45279f51380e471132debcf0f6d2e687b7293d54e58f0908cb61dd"
+      "computedHash": "f293326074b7094a03d9c3ca9d99a5a2121b1f4afe5c8342aad8f20b2b4b246c"
     },
     "security-auditor": {
       "source": "commercetools/agent-skills",
       "sourceType": "github",
-      "computedHash": "8243178ee8b26923ef5b125ff12f7d7c5bbb7e5f5eefdfff1237554b7cd18951"
+      "computedHash": "fb7f81f96ee3d358e51254879a03d6cd095b829fba0d4b93bae8bcb2859e2e7e"
     }
   }
 }

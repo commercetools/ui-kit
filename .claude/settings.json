@@ -1,6 +1,17 @@
 {
   "enableAllProjectMcpServers": true,
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .agents/skills/agent-restore-context-setup/resources/agent-restore-context.sh"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit|MultiEdit|Write",

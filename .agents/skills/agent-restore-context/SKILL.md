@@ -2,8 +2,10 @@
 name: agent-restore-context
 description: Manage restore context files so skills can survive /clear and /compact. Use to write, delete, check, or list .agent-restore-context-* files.
 disable-model-invocation: false
-argument-hint: <action> [<skill-name>] [-- <content>]
+argument-hint: '<action> [<skill-name>] [-- <content>]'
 allowed-tools: Bash, Grep, Glob, Read, Edit, Write
+scope:
+  - knowledge
 ---
 
 # Agent Restore Context

@@ -1,9 +1,12 @@
 ---
 name: repo-maintenance-node
-description: Perform a broad Node/TypeScript repository health sweep — formatting, linting, type errors, dead code, dependency hygiene, and open Renovate PRs.
+description: Perform a broad Node/TypeScript repository health sweep — formatting, linting, type errors, dead code, dependency hygiene, and open Renovate PRs. Use when cleaning up a repo or preparing for a release.
 disable-model-invocation: false
 argument-hint: '[--dry-run] [--section formatting|dead-code|deps|renovate]'
 allowed-tools: Bash, Grep, Glob, Read, Agent
+scope:
+  - node
+  - maintenance
 ---
 
 # Node/TypeScript Repository Maintenance

@@ -4,6 +4,9 @@ description: Review Renovate dependency upgrade PRs to assess safety and effort.
 disable-model-invocation: false
 argument-hint: '[pr-number] [--comment]'
 allowed-tools: Bash, Grep, Glob, Read, WebFetch
+scope:
+  - dependencies
+  - review
 ---
 
 # Renovate Dependency Upgrade Review

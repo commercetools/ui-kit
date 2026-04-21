@@ -2,8 +2,10 @@
 name: jira-implement-task
 description: Fetch Jira ticket, create branch, implement changes, commit, push, open PR.
 disable-model-invocation: false
-argument-hint: <ticket-key>
+argument-hint: '<ticket-key>'
 allowed-tools: Bash, Grep, Glob, Read, Edit, Write, Agent
+scope:
+  - jira
 ---
 
 # Implement Jira Task

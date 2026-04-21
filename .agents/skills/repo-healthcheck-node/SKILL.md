@@ -4,6 +4,9 @@ description: Verify a Node.js/TypeScript repo's development environment is corre
 disable-model-invocation: false
 argument-hint: '[--fix]'
 allowed-tools: Bash, Grep, Glob, Read
+scope:
+  - node
+  - maintenance
 ---
 
 # Repo Healthcheck — Node.js

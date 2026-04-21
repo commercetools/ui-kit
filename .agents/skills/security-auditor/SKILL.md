@@ -1,9 +1,11 @@
 ---
 name: security-auditor
-description: Perform comprehensive security audit of a repository with detailed findings and step-by-step PoCs. Reports all web and API security vulnerabilities.
+description: Perform comprehensive security audit of a repository with detailed findings and step-by-step PoCs. Use when assessing a repo's security posture or investigating potential vulnerabilities.
 disable-model-invocation: false
 argument-hint: '[--path <directory>] [--focus <category>]'
 allowed-tools: Task, Bash, Grep, Glob, Read, Write
+scope:
+  - security
 ---
 
 # Security Audit
