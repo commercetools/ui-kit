@@ -4,7 +4,6 @@ process.env.ENABLE_NEW_JSX_TRANSFORM = 'true';
  * @type {import('jest').Config}
  */
 module.exports = {
-  preset: 'ts-jest',
   displayName: 'test-node',
   testEnvironment: 'node',
   transform: {
