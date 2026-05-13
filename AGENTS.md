@@ -9,15 +9,16 @@ commercetools frontend products. Published to npm under `@commercetools-uikit/*`
 
 ## Start Here
 
-- **Toolchain:** Node 24 (`.nvmrc`), Yarn 3 (Berry), React 19 peer dependency —
-  verify these before installing. Do not assume React 18 patterns.
-- **Dev loop:** `yarn start` launches Storybook (the canonical visual playground).
-- **Fast test feedback:** `yarn workspace @commercetools-uikit/<pkg> test` runs
+- **Toolchain:** Node 24 (`.nvmrc`), pnpm 10 (via Corepack — `packageManager`
+  field pins the version), React 19 peer dependency — verify these before
+  installing. Do not assume React 18 patterns.
+- **Dev loop:** `pnpm start` launches Storybook (the canonical visual playground).
+- **Fast test feedback:** `pnpm --filter @commercetools-uikit/<pkg> test` runs
   a single package's tests without walking the whole repo.
 
 ## Architecture
 
-This is a Yarn 3 (Berry) workspaces monorepo. Packages fall into these categories:
+This is a pnpm workspaces monorepo. Packages fall into these categories:
 
 - **`design-system/`** — Design tokens and shared styling utilities. Tokens are
   defined in `design-system/materials/internals/definition.yaml` and code-genned
@@ -61,13 +62,13 @@ packages are in a fixed version group (they share the same version number).
 
 ### Verify your work
 
-| Task              | Command                                          | Notes                                        |
-| ----------------- | ------------------------------------------------ | -------------------------------------------- |
-| Test one package  | `yarn workspace @commercetools-uikit/<pkg> test` | Fastest feedback for a single package        |
-| Test by path      | `yarn test packages/components/buttons`          | Positional path; matches any tests under it  |
-| Typecheck         | `yarn typecheck`                                 | Runs `tsc --noEmit --skipLibCheck`           |
-| Lint              | `yarn lint`                                      | Uses Jest runner for ESLint                  |
-| Visual test suite | `yarn test:visual`                               | Runs `--runInBand`; needs visual-testing-app |
+| Task              | Command                                             | Notes                                        |
+| ----------------- | --------------------------------------------------- | -------------------------------------------- |
+| Test one package  | `pnpm --filter @commercetools-uikit/<pkg> run test` | Fastest feedback for a single package        |
+| Test by path      | `pnpm test packages/components/buttons`             | Positional path; matches any tests under it  |
+| Typecheck         | `pnpm typecheck`                                    | Runs `tsc --noEmit --skipLibCheck`           |
+| Lint              | `pnpm lint`                                         | Uses Jest runner for ESLint                  |
+| Visual test suite | `pnpm test:visual`                                  | Runs `--runInBand`; needs visual-testing-app |
 
 ### Common workflows
 
@@ -75,32 +76,32 @@ packages are in a fixed version group (they share the same version number).
 
 1. Add the raw SVG to `packages/components/icons/src/svg/` — file must end with
    `.react.svg`
-2. Run `yarn generate-icons` to generate the React component in
+2. Run `pnpm generate-icons` to generate the React component in
    `packages/components/icons/src/generated/`
-3. Run `yarn preconstruct dev` to create entrypoint stubs
+3. Run `pnpm preconstruct dev` to create entrypoint stubs
 
 **Update design tokens:**
 
 1. Edit `design-system/materials/internals/definition.yaml`
-2. Run `yarn design-tokens:build` to regenerate TypeScript + CSS outputs
-3. Run `yarn typecheck` — token changes can break components
+2. Run `pnpm design-tokens:build` to regenerate TypeScript + CSS outputs
+3. Run `pnpm typecheck` — token changes can break components
 
 **Add or update translations:**
 
 1. Define messages in the component's `messages.ts`
-2. Run `yarn extract-intl` to update `packages/i18n/data/core.json`
+2. Run `pnpm extract-intl` to update `packages/i18n/data/core.json`
 3. Add translations to the locale JSON files in `packages/i18n/data/`
-4. Run `yarn compile-intl` to produce compiled output
+4. Run `pnpm compile-intl` to produce compiled output
 
 **Add a changeset for a PR:**
 
-1. Run `yarn changeset`
+1. Run `pnpm changeset`
 2. Select affected packages, semver bump type, and describe the change
 3. Commit the generated `.changeset/*.md` file with the PR
 
 **Full build (rarely needed locally):**
 
-Run `yarn build` — wraps codegen and `preconstruct build` into one step.
+Run `pnpm build` — wraps codegen and `preconstruct build` into one step.
 
 ## Boundaries
 
@@ -127,13 +128,13 @@ Run `yarn build` — wraps codegen and `preconstruct build` into one step.
   config groups `@commercetools-frontend/*` and `@commercetools-uikit/*`
   together — a bump to one bumps all.
 - **Lint runs through Jest runners**, not directly via `eslint` CLI. Use
-  `yarn lint:js` or `yarn lint`, not `npx eslint`.
+  `pnpm lint:js` or `pnpm lint`, not `npx eslint`.
 - **Pre-commit hooks** run Prettier, lint (via Jest), and `tsc-files` on staged
   `.ts`/`.tsx` files. Expect these to block if types are broken.
 - **Visual specs** (`.visualspec.js` / `.visualroute.jsx`) are consumed by Percy
   for visual regression testing. If you change component appearance, the visual
   spec may need updating and Percy snapshots must be approved.
-- **Yarn constraints** (`constraints.pro`) enforce metadata consistency (license,
+- **Workspace constraints** enforce metadata consistency (license,
   repository fields, publishConfig) across all public packages.
 
 ## Conventions

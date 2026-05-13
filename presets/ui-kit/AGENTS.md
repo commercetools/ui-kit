@@ -24,7 +24,7 @@ full library. Some specialized packages (e.g. `calendar-utils`,
 
 - After adding a new component package, add its export to `src/index.ts` and
   add the dependency to `package.json`.
-- Run `yarn workspace @commercetools-frontend/ui-kit copy-assets` to refresh
+- Run `pnpm --filter @commercetools-frontend/ui-kit run copy-assets` to refresh
   bundled materials and i18n data.
 
 ## Gotchas

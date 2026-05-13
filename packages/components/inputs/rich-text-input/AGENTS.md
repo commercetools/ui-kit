@@ -23,7 +23,7 @@ HTML serialization for form integration in Merchant Center applications.
 ## How To Work Here
 
 Same as root instructions for testing and typechecking. Scoped test:
-`yarn test --testPathPattern=packages/components/inputs/rich-text-input`.
+`pnpm test --testPathPattern=packages/components/inputs/rich-text-input`.
 
 ## Gotchas
 

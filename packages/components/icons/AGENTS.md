@@ -17,9 +17,9 @@ and by external applications.
 ## How To Work Here
 
 - Add new SVGs to `src/svg/` with a `.react.svg` extension.
-- Run `yarn generate-icons` to regenerate `src/generated/` components and the
+- Run `pnpm generate-icons` to regenerate `src/generated/` components and the
   index file.
-- Run `yarn preconstruct dev` to create entrypoint stubs for new icons.
+- Run `pnpm preconstruct dev` to create entrypoint stubs for new icons.
 - The `generate-icons` command also runs for `checkbox-input` and
   `rich-text-utils` packages (see root `package.json` script).
 

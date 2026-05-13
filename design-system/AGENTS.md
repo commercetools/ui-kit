@@ -24,9 +24,9 @@ this monorepo and by external consumers via CSS custom properties or JS imports.
 ## How To Work Here
 
 - Edit `materials/internals/definition.yaml` to add/modify tokens.
-- Run `yarn design-tokens:build` to regenerate all output files.
-- Run `yarn typecheck` after token changes — downstream components may break.
-- Use `yarn design-tokens:build:watch` during iterative development.
+- Run `pnpm design-tokens:build` to regenerate all output files.
+- Run `pnpm typecheck` after token changes — downstream components may break.
+- Use `pnpm design-tokens:build:watch` during iterative development.
 
 ## Gotchas
 

@@ -12,7 +12,7 @@ module.exports = {
     headless: 'new',
   },
   server: {
-    command: 'yarn visual-testing-app:preview',
+    command: 'pnpm visual-testing-app:preview',
     host: 'localhost',
     port: 3000,
     launchTimeout: 20000,

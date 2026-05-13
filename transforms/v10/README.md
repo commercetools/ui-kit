@@ -3,8 +3,8 @@
 Make sure to have `jscodeshift` installed globally.
 
 ```bash
-$ yarn global add jscodeshift
 $ npm -g install jscodeshift
+$ pnpm add -g jscodeshift
 ```
 
 #### Example usage
