@@ -53,6 +53,12 @@ jobs:
       - name: Running static type checking
         run: pnpm typecheck
 
+      # Gates phantom-dep regressions introduced by pnpm's shamefully-hoist
+      # posture (see FEC-924 risk #4). Runs publint per published package
+      # against the packed tarball; fails on any publint error.
+      - name: Running publint check
+        run: pnpm lint:publint
+
       - name: Running linters and tests
         run: pnpm jest --projects jest.{eslint,test,ts-test,bundle}.config.js --reporters github-actions
         env:
