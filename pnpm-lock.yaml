@@ -44,6 +44,11 @@ overrides:
   tar-fs@^3.0.6: ^3.1.1
   trim@0.0.1: ^0.0.3
 
+patchedDependencies:
+  typescript-react-function-component-props-handler@1.1.1:
+    hash: cf2f34cd7a3e8873fabc4493ad63ab0cf4206b71d06ff1653726a2d6b4adb3f5
+    path: patches/typescript-react-function-component-props-handler@1.1.1.patch
+
 importers:
   .:
     devDependencies:
@@ -239,9 +244,6 @@ importers:
       omit-empty-es:
         specifier: 1.2.0
         version: 1.2.0
-      patch-package:
-        specifier: ^8.0.1
-        version: 8.0.1
       postcss:
         specifier: 8.5.6
         version: 8.5.6
@@ -444,7 +446,7 @@ importers:
         version: 6.1.0
       typescript-react-function-component-props-handler:
         specifier: 1.1.1
-        version: 1.1.1
+        version: 1.1.1(patch_hash=cf2f34cd7a3e8873fabc4493ad63ab0cf4206b71d06ff1653726a2d6b4adb3f5)
       unified:
         specifier: 9.2.2
         version: 9.2.2
@@ -10509,12 +10511,6 @@ packages:
         integrity: sha512-v0psaMSkNJ3A2NMrUEHFRzJtDPFn+/VWZ5WxImB21T9fjucJRmS7xCS3ppEnARb9y11OAzaD+P2Ps+b+BGX5iQ==,
       }
 
-  '@yarnpkg/lockfile@1.1.0':
-    resolution:
-      {
-        integrity: sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==,
-      }
-
   '@zeit/schemas@2.36.0':
     resolution:
       {
@@ -13269,12 +13265,6 @@ packages:
       }
     engines: { node: '>=10' }
 
-  find-yarn-workspace-root@2.0.0:
-    resolution:
-      {
-        integrity: sha512-1IMnbjt4KzsQfnhnzNd8wUEgXZ44IzZaZmnLYx7D5FZlaHt2gW20Cri8Q+E/t5tIj4+epTBub+2Zxu/vNILzqQ==,
-      }
-
   flat-cache@4.0.1:
     resolution:
       {
@@ -13348,13 +13338,6 @@ packages:
         integrity: sha512-cR/vflFyPZtrN6b38ZyWxpWdhlXrzZEBawlpBQMq7033xVY7/kg0GDMBK5jg8lDYQckdJ5x/YC88lM3C7VMsLg==,
       }
     engines: { node: '>=0.10.0' }
-
-  fs-extra@10.1.0:
-    resolution:
-      {
-        integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==,
-      }
-    engines: { node: '>=12' }
 
   fs-extra@7.0.1:
     resolution:
@@ -15134,12 +15117,6 @@ packages:
       }
     engines: { node: '>=0.10.0' }
 
-  klaw-sync@6.0.0:
-    resolution:
-      {
-        integrity: sha512-nIeuVSzdCCs6TDPTqI8w1Yre34sSq7AkZ4B3sfOBbI2CgVSB4Du4aLQijFU2+lhAFCwt9+42Hel6lQNIv6AntQ==,
-      }
-
   kleur@3.0.3:
     resolution:
       {
@@ -16295,13 +16272,6 @@ packages:
       }
     engines: { node: '>=18' }
 
-  open@7.4.2:
-    resolution:
-      {
-        integrity: sha512-MVHddDVweXZF3awtlAS+6pgKLlm/JgxZ90+/NBurBoQctVOOB/zDdVjcyPzQ+0laDGbsWgrRkflI65sQeOgT9Q==,
-      }
-    engines: { node: '>=8' }
-
   open@8.4.2:
     resolution:
       {
@@ -16498,14 +16468,6 @@ packages:
       {
         integrity: sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw==,
       }
-
-  patch-package@8.0.1:
-    resolution:
-      {
-        integrity: sha512-VsKRIA8f5uqHQ7NGhwIna6Bx6D9s/1iXlA1hthBVBEbkq+t4kXD0HHt+rJhf/Z+Ci0F/HCB2hvn0qLdLG+Qxlw==,
-      }
-    engines: { node: '>=14', npm: '>5' }
-    hasBin: true
 
   path-exists@2.1.0:
     resolution:
@@ -17809,13 +17771,6 @@ packages:
         integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==,
       }
 
-  slash@2.0.0:
-    resolution:
-      {
-        integrity: sha512-ZYKh3Wh2z1PpEXWr0MpSBZ0V6mZHAQfYevttO11c51CaWjGTaadiKZ+wVt1PbMlDV5qhMFslpZCemhwOK7C89A==,
-      }
-    engines: { node: '>=6' }
-
   slash@3.0.0:
     resolution:
       {
@@ -18527,13 +18482,6 @@ packages:
         integrity: sha512-WMi/OQ2axVTf/ykqCQgXiIct+mSQDFdH2fkwhPwgEwvJ1kSzZRiinb0zF2Xb8u4+OqPChmyI6MEu4EezNJz+FQ==,
       }
     hasBin: true
-
-  tmp@0.2.5:
-    resolution:
-      {
-        integrity: sha512-voyz6MApa1rQGUxT3E+BK7/ROe8itEx7vD8/HEvt4xwXucvQ5G5oeEiHkmHZJuBO21RpOf+YYm9MOivj709jow==,
-      }
-    engines: { node: '>=14.14' }
 
   tmpl@1.0.5:
     resolution:
@@ -25286,8 +25234,6 @@ snapshots:
       loupe: 3.2.1
       tinyrainbow: 1.2.0
 
-  '@yarnpkg/lockfile@1.1.0': {}
-
   '@zeit/schemas@2.36.0': {}
 
   acorn-jsx@5.3.2(acorn@8.16.0):
@@ -27101,10 +27047,6 @@ snapshots:
       locate-path: 6.0.0
       path-exists: 4.0.0
 
-  find-yarn-workspace-root@2.0.0:
-    dependencies:
-      micromatch: 4.0.8
-
   flat-cache@4.0.1:
     dependencies:
       flatted: 3.4.2
@@ -27157,12 +27099,6 @@ snapshots:
       - '@types/react'
 
   fs-exists-sync@0.1.0: {}
-
-  fs-extra@10.1.0:
-    dependencies:
-      graceful-fs: 4.2.11
-      jsonfile: 6.2.0
-      universalify: 2.0.1
 
   fs-extra@7.0.1:
     dependencies:
@@ -28453,10 +28389,6 @@ snapshots:
 
   kind-of@6.0.3: {}
 
-  klaw-sync@6.0.0:
-    dependencies:
-      graceful-fs: 4.2.11
-
   kleur@3.0.3: {}
 
   known-css-properties@0.37.0: {}
@@ -29292,11 +29224,6 @@ snapshots:
     dependencies:
       mimic-function: 5.0.1
 
-  open@7.4.2:
-    dependencies:
-      is-docker: 2.2.1
-      is-wsl: 2.2.0
-
   open@8.4.2:
     dependencies:
       define-lazy-prop: 2.0.0
@@ -29427,23 +29354,6 @@ snapshots:
   parse5@7.3.0:
     dependencies:
       entities: 6.0.1
-
-  patch-package@8.0.1:
-    dependencies:
-      '@yarnpkg/lockfile': 1.1.0
-      chalk: 4.1.2
-      ci-info: 3.9.0
-      cross-spawn: 7.0.6
-      find-yarn-workspace-root: 2.0.0
-      fs-extra: 10.1.0
-      json-stable-stringify: 1.3.0
-      klaw-sync: 6.0.0
-      minimist: 1.2.8
-      open: 7.4.2
-      semver: 7.7.4
-      slash: 2.0.0
-      tmp: 0.2.5
-      yaml: 2.8.3
 
   path-exists@2.1.0:
     dependencies:
@@ -30352,8 +30262,6 @@ snapshots:
 
   sisteransi@1.0.5: {}
 
-  slash@2.0.0: {}
-
   slash@3.0.0: {}
 
   slash@5.1.0: {}
@@ -30844,8 +30752,6 @@ snapshots:
     dependencies:
       tldts-core: 6.1.86
 
-  tmp@0.2.5: {}
-
   tmpl@1.0.5: {}
 
   to-regex-range@5.0.1:
@@ -31001,7 +30907,8 @@ snapshots:
       possible-typed-array-names: 1.1.0
       reflect.getprototypeof: 1.0.10
 
-  typescript-react-function-component-props-handler@1.1.1: {}
+  typescript-react-function-component-props-handler@1.1.1(patch_hash=cf2f34cd7a3e8873fabc4493ad63ab0cf4206b71d06ff1653726a2d6b4adb3f5):
+    {}
 
   typescript@5.9.3: {}
 
