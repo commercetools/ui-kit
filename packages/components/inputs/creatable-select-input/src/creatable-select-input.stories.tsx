@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import CreatableSelectInput from './creatable-select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import { iconArgType } from '@/storybook-helpers';

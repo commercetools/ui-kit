@@ -23,12 +23,9 @@ function getAbsolutePath(value: string) {
 const config: StorybookConfig = {
   stories: [
     '../src/docs/**/**.mdx',
-    // Anchored to a literal `src/` segment so the glob cannot descend into
-    // pnpm's nested <pkg>/node_modules/@commercetools-uikit/* workspace
-    // symlinks and re-discover the same stories under a different path.
-    // Without this, storybook 8 follows the symlinks and either chokes on
-    // duplicate story ids or hangs traversing the cyclic graph. Structural
-    // fix lives in the Storybook 9 upgrade tracked separately (FEC-935).
+    // Anchored to `src/` literal segment so the glob can't traverse into
+    // strict-pnpm's nested <pkg>/node_modules/@commercetools-uikit/* symlinks
+    // and re-discover the same stories under a different path.
     '../../packages/components/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../../packages/components/*/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../../packages/components/*/src/**/*.mdx',
@@ -43,11 +40,8 @@ const config: StorybookConfig = {
     //getAbsolutePath('@storybook/addon-webpack5-compiler-swc'),
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-interactions'),
-    getAbsolutePath('@storybook/addon-storysource'),
     {
-      name: '@storybook/addon-docs',
+      name: getAbsolutePath('@storybook/addon-docs'),
       options: {
         mdxPluginOptions: {
           mdxCompileOptions: {
@@ -59,11 +53,10 @@ const config: StorybookConfig = {
   ],
 
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
   docs: {
-    autodocs: 'tag',
     defaultName: 'Props',
   },
 

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ContentNotification from './content-notification';
 
 const meta: Meta<typeof ContentNotification> = {

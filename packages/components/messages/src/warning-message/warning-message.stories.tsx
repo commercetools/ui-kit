@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import WarningMessage from './warning-message';
 
 const meta: Meta<typeof WarningMessage> = {

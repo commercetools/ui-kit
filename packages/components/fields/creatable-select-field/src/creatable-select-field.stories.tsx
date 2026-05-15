@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { iconArgType } from '@/storybook-helpers';
 import CreatableSelectField from './creatable-select-field';
 import { useEffect, useState } from 'react';

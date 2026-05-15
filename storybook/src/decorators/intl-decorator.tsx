@@ -1,4 +1,4 @@
-import type { Decorator } from '@storybook/react';
+import type { Decorator } from '@storybook/react-vite';
 // @ts-ignore
 import React, { useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';

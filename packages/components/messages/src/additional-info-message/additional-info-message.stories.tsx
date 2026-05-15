@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import AdditionalInfoMessage from './additional-info-message';
 
 const meta: Meta<typeof AdditionalInfoMessage> = {

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ViewSwitcher from './index';
 import { WorldIcon } from '@commercetools-uikit/icons';
 

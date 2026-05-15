@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import ProgressBar, { TProgressBarProps } from './progress-bar';
 
 const meta: Meta<typeof ProgressBar> = {

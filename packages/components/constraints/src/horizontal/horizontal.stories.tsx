@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import Constraints from './../index';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';

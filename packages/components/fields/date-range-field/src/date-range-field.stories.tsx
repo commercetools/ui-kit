@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import DateRangeField from './date-range-field';
 import { useState } from 'react';
 import { type MomentInput } from 'moment';

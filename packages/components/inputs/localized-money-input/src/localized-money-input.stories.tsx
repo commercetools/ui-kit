@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import LocalizedMoneyInput from './localized-money-input';
 import { useState } from 'react';
 

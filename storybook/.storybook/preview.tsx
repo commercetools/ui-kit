@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 
 import intlGlobalType from './../src/global-types/intl-global';
 
@@ -13,6 +13,7 @@ const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: { expanded: true },
+
     options: {
       storySort: {
         method: 'alphabetical',
@@ -45,6 +46,10 @@ const preview: Preview = {
           ],
         ],
       },
+    },
+
+    docs: {
+      codePanel: true,
     },
   },
   decorators: [withThemeDecorator, WithIntlDecorator],

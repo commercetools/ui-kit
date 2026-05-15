@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import SecondaryIconButton from './secondary-icon-button';
 import { iconArgType } from '@/storybook-helpers';
 

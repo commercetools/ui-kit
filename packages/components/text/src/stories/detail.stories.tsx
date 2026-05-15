@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { WrapProxy } from './../text.proxies';
 
 const meta: Meta<typeof WrapProxy> = {

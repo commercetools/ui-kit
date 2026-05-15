@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { iconArgType } from '@/storybook-helpers';
 import RadioField from './radio-field';
 import { useState } from 'react';

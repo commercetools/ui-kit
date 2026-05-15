@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Tag from './tag';
 
 const meta: Meta<typeof Tag> = {
