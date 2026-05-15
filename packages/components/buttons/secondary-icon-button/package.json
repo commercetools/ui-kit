@@ -32,6 +32,7 @@
     "react-intl": "^7.1.4"
   },
   "devDependencies": {
+    "@commercetools-uikit/icons": "20.5.0",
     "react": "19.2.0"
   },
   "peerDependencies": {

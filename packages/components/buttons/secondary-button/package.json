@@ -31,6 +31,7 @@
     "lodash": "4.18.1"
   },
   "devDependencies": {
+    "@commercetools-uikit/icons": "20.5.0",
     "react": "19.2.0",
     "react-intl": "^7.1.4",
     "react-router-dom": "5.3.4"

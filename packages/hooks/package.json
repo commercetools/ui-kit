@@ -30,6 +30,7 @@
     "raf-schd": "^4.0.3"
   },
   "devDependencies": {
+    "@commercetools-frontend/ui-kit": "20.5.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
     "react": "19.2.0",
