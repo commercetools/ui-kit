@@ -639,7 +639,7 @@ importers:
         specifier: ^11.10.5
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@types/react-is':
-        specifier: ^19.0.0
+        specifier: 19.2.0
         version: 19.2.0
       lodash:
         specifier: ^4.18.1
@@ -4575,6 +4575,9 @@ importers:
       '@commercetools-uikit/primary-button':
         specifier: 20.5.0
         version: 20.5.0(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+      '@types/react-is':
+        specifier: 19.2.0
+        version: 19.2.0
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1

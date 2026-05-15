@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@commercetools-uikit/primary-button": "20.5.0",
+    "@types/react-is": "19.2.0",
     "prop-types": "^15.8.1",
     "react": "19.2.0"
   },
