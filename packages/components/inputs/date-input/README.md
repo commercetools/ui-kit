@@ -64,6 +64,7 @@ export default Example;
 | `hasWarning`           | `boolean`                                                                                    |          |         | Indicates the input field has a warning                                                                                                   |
 | `minValue`             | `string`                                                                                     |          |         | A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".                                            |
 | `maxValue`             | `string`                                                                                     |          |         | A maximum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".                                            |
+| `appearance`           | `union`<br/>Possible values:<br/>`'default' , 'filter'`                                      |          |         | Indicates the appearance of the input.&#xA;Filter appearance removes borders and box shadows, and calendar is always open.                |
 
 ## Signatures
 

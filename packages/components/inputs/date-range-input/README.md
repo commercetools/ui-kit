@@ -63,6 +63,7 @@ export default Example;
 | `isReadOnly`           | `boolean`                                                                                    |          |         | Disables the date picker menu and makes input field read-only                                                                                                     |
 | `hasError`             | `boolean`                                                                                    |          |         | Indicates the input field has an error                                                                                                                            |
 | `hasWarning`           | `boolean`                                                                                    |          |         | Indicates the input field has warning                                                                                                                             |
+| `appearance`           | `union`<br/>Possible values:<br/>`'default' , 'filter'`                                      |          |         | Indicates the appearance of the input.&#xA;Filter appearance removes borders and box shadows, and calendar is always open.                                        |
 
 ## Signatures
 
