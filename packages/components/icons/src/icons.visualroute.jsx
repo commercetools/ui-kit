@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
 import { designTokens } from '@commercetools-uikit/design-system';
-import * as icons from '@commercetools-uikit/icons';
-import CustomIcon from '@commercetools-uikit/icons/custom-icon';
-import InlineSvg from '@commercetools-uikit/icons/inline-svg';
-import LeadingIcon from '@commercetools-uikit/icons/leading-icon';
+import * as icons from '..';
+import CustomIcon from '../custom-icon';
+import InlineSvg from '../inline-svg';
+import LeadingIcon from '../leading-icon';
 import Text from '@commercetools-uikit/text';
 import Spacings from '@commercetools-uikit/spacings';
 import CustomReactSvg from './fixtures/CustomIconReact';

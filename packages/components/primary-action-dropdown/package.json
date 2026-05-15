@@ -34,7 +34,8 @@
     "react-intl": "^7.1.4"
   },
   "devDependencies": {
-    "react": "19.2.0"
+    "react": "19.2.0",
+    "react-router-dom": "5.3.4"
   },
   "peerDependencies": {
     "react": "19.x"

@@ -76,6 +76,18 @@ importers:
       '@commercetools-local/generator-readme':
         specifier: workspace:*
         version: link:generators/readme
+      '@commercetools-uikit/design-system':
+        specifier: 20.5.0
+        version: 20.5.0(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@commercetools-uikit/hooks':
+        specifier: 20.5.0
+        version: 20.5.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@commercetools-uikit/i18n':
+        specifier: 20.5.0
+        version: 20.5.0
+      '@commercetools-uikit/utils':
+        specifier: 20.5.0
+        version: 20.5.0(react@19.2.0)
       '@commitlint/cli':
         specifier: 20.1.0
         version: 20.1.0(@types/node@22.19.15)(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)(typescript@5.9.3)
@@ -85,6 +97,9 @@ importers:
       '@emotion/react':
         specifier: ^11.10.5
         version: 11.14.0(@types/react@19.2.14)(react@19.2.0)
+      '@emotion/styled':
+        specifier: ^11.10.5
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@formatjs/cli':
         specifier: 6.7.4
         version: 6.7.4
@@ -256,6 +271,9 @@ importers:
       lint-staged:
         specifier: 16.2.4
         version: 16.2.4
+      lodash:
+        specifier: ^4.18.1
+        version: 4.18.1
       moment:
         specifier: 2.30.1
         version: 2.30.1
@@ -283,6 +301,9 @@ importers:
       prettier:
         specifier: 2.8.8
         version: 2.8.8
+      prop-types:
+        specifier: ^15.8.1
+        version: 15.8.1
       publint:
         specifier: ^0.3.21
         version: 0.3.21
@@ -362,12 +383,18 @@ importers:
       prettier:
         specifier: 2.8.8
         version: 2.8.8
+      prop-types:
+        specifier: ^15.8.1
+        version: 15.8.1
       rcfile:
         specifier: 1.0.3
         version: 1.0.3
       react:
         specifier: 19.2.0
         version: 19.2.0
+      react-router:
+        specifier: 5.3.4
+        version: 5.3.4(react@19.2.0)
       yaml:
         specifier: ^2.8.3
         version: 2.8.3
@@ -949,6 +976,9 @@ importers:
         specifier: 4.10.1
         version: 4.10.1
     devDependencies:
+      '@commercetools-uikit/text':
+        specifier: 20.5.0
+        version: 20.5.0(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react-intl@7.1.14(react@19.2.0)(typescript@5.9.3))(react@19.2.0)
       react:
         specifier: 19.2.0
         version: 19.2.0
@@ -1485,6 +1515,9 @@ importers:
       react:
         specifier: 19.2.0
         version: 19.2.0
+      react-router-dom:
+        specifier: 5.3.4
+        version: 5.3.4(react@19.2.0)
 
   packages/components/fields/async-select-field:
     dependencies:
@@ -1537,6 +1570,9 @@ importers:
       react:
         specifier: 19.2.0
         version: 19.2.0
+      react-router-dom:
+        specifier: 5.3.4
+        version: 5.3.4(react@19.2.0)
 
   packages/components/fields/creatable-select-field:
     dependencies:
@@ -2403,6 +2439,9 @@ importers:
         specifier: ^11.10.5
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
+      '@commercetools-uikit/design-system':
+        specifier: 20.5.0
+        version: 20.5.0(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react:
         specifier: 19.2.0
         version: 19.2.0
@@ -2437,9 +2476,18 @@ importers:
         specifier: 0.6.2
         version: 0.6.2(react@19.2.0)
     devDependencies:
+      '@commercetools-uikit/spacings':
+        specifier: 20.5.0
+        version: 20.5.0(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@commercetools-uikit/text':
+        specifier: 20.5.0
+        version: 20.5.0(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react-intl@7.1.14(react@19.2.0)(typescript@5.9.3))(react@19.2.0)
       react:
         specifier: 19.2.0
         version: 19.2.0
+      react-router-dom:
+        specifier: 5.3.4
+        version: 5.3.4(react@19.2.0)
 
   packages/components/inputs/async-creatable-select-input:
     dependencies:
@@ -3153,6 +3201,9 @@ importers:
       react-intl:
         specifier: ^7.1.4
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
+      react-router-dom:
+        specifier: 5.3.4
+        version: 5.3.4(react@19.2.0)
 
   packages/components/inputs/localized-text-input:
     dependencies:
@@ -3538,6 +3589,9 @@ importers:
       react-intl:
         specifier: ^7.1.4
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
+      react-router:
+        specifier: 5.3.4
+        version: 5.3.4(react@19.2.0)
 
   packages/components/inputs/rich-text-utils:
     dependencies:
@@ -3761,6 +3815,9 @@ importers:
       react-intl:
         specifier: ^7.1.4
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
+      react-router-dom:
+        specifier: 5.3.4
+        version: 5.3.4(react@19.2.0)
 
   packages/components/inputs/select-utils:
     dependencies:
@@ -4256,6 +4313,9 @@ importers:
       react:
         specifier: 19.2.0
         version: 19.2.0
+      react-router-dom:
+        specifier: 5.3.4
+        version: 5.3.4(react@19.2.0)
 
   packages/components/progress-bar:
     dependencies:
@@ -4293,6 +4353,9 @@ importers:
         specifier: ^7.1.4
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
+      '@emotion/styled':
+        specifier: ^11.10.5
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react:
         specifier: 19.2.0
         version: 19.2.0
@@ -4449,6 +4512,9 @@ importers:
         specifier: ^11.10.5
         version: 11.14.0(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
+      '@commercetools-uikit/icons':
+        specifier: 20.5.0
+        version: 20.5.0(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react:
         specifier: 19.2.0
         version: 19.2.0
@@ -4526,6 +4592,9 @@ importers:
         specifier: 4.0.3
         version: 4.0.3
     devDependencies:
+      '@emotion/styled':
+        specifier: ^11.10.5
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react:
         specifier: 19.2.0
         version: 19.2.0

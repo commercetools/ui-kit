@@ -36,7 +36,8 @@
     "prop-types": "^15.8.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-intl": "^7.1.4"
+    "react-intl": "^7.1.4",
+    "react-router-dom": "5.3.4"
   },
   "peerDependencies": {
     "react": "19.x",

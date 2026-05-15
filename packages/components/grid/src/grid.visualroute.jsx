@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Grid from '@commercetools-uikit/grid';
+import Grid from '..';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../../../test/percy';
 

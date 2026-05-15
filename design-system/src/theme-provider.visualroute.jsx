@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTheme, designTokens } from '@commercetools-uikit/design-system';
+import { useTheme, designTokens } from '..';
 import { Switch, Route } from 'react-router';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
