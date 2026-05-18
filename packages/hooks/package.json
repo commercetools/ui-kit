@@ -37,6 +37,7 @@
     "react-dom": "catalog:react"
   },
   "peerDependencies": {
+    "react": "catalog:peer",
     "react-dom": "catalog:peer"
   }
 }
