@@ -2,8 +2,8 @@
 
 set -e
 
-yarn generate-icons
-yarn design-tokens:build
-yarn compile-intl
+pnpm generate-icons
+pnpm design-tokens:build
+pnpm compile-intl
 
-yarn preconstruct watch
+pnpm preconstruct watch

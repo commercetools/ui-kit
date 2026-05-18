@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import DropdownMenu from './dropdown-menu';
 import { SecondaryButton, IconButton } from '@commercetools-uikit/buttons';
 import { ColumnsIcon, FilterIcon } from '@commercetools-uikit/icons';
-import Constraints from '@commercetools-uikit/constraints/src';
+import Constraints from '@commercetools-uikit/constraints';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SelectInput from '@commercetools-uikit/select-input';

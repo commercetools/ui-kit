@@ -4,18 +4,18 @@ This repository contains all storybook related configuration.
 
 ## Development
 
-Install all dependencies by running the following command in your terminal after entering the directory:
+Install all dependencies by running the following command in your terminal at the repository root:
 
 ```
-yarn
+pnpm install
 ```
 
-> You need to have `Node 18` and `yarn` installed on your system.
+> You need to have the Node version pinned in `.nvmrc` and `pnpm` (managed via Corepack) installed on your system.
 
 After all dependencies are installed you can start the development environment by running the following command:
 
 ```
-yarn start
+pnpm start
 ```
 
 This will open storybook in your browser. You can now start adding new components or modifying existing ones.
@@ -49,7 +49,7 @@ When the component is ready to be released, remove the `local-dev` tag for the s
 To create a storybook production-build, run the following command:
 
 ```
-yarn run build
+pnpm --filter @commercetools-local/storybook run build
 ```
 
 The build-files will end up in `./storybook-static` and can be served _as-is_.
@@ -59,5 +59,5 @@ The build-files will end up in `./storybook-static` and can be served _as-is_.
 To serve a local production build you can run the following command, it will create the production build and serve it:
 
 ```
-yarn run storybook-static
+pnpm --filter @commercetools-local/storybook run storybook-static
 ```

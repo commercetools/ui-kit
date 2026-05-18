@@ -24,7 +24,7 @@ components used by `rich-text-input` and `localized-rich-text-input`.
 ## How To Work Here
 
 Same as root instructions. Scoped test:
-`yarn test --testPathPattern=packages/components/inputs/rich-text-utils`.
+`pnpm test --testPathPattern=packages/components/inputs/rich-text-utils`.
 
 If you modify HTML serialization, test the round-trip: HTML → Slate → HTML in
 both `rich-text-input` and `localized-rich-text-input`.
@@ -34,6 +34,6 @@ both `rich-text-input` and `localized-rich-text-input`.
 - Changes to `tags.ts` or `html/` serialization affect all rich text consumers.
   Test thoroughly — data corruption is possible if serialization is wrong.
 - This package has its own SVG icons in `src/rich-text-body/icons/svg/` that are code-genned
-  separately from the main icons package. Run `yarn generate-icons` to
+  separately from the main icons package. Run `pnpm generate-icons` to
   regenerate after SVG changes.
 - Extends Slate's TypeScript types via module augmentation (custom `CustomTypes`).

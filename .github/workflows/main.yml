@@ -22,41 +22,59 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node (uses version in .nvmrc)
         uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
 
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+      - name: Get pnpm store
+        id: pnpm-store
+        run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v5
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock', 'patches/*.patch') }}
+          path: ${{ steps.pnpm-store.outputs.dir }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml', 'patches/*.patch') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-pnpm-
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
 
-      - name: Check for unmet constraints (fix w/ "yarn constraints --fix")
-        run: yarn constraints
+      - name: Check for unmet constraints
+        run: node scripts/check-workspace-constraints.js
 
       - name: Building packages
-        run: yarn build
+        run: pnpm build
 
       - name: Running static type checking
-        run: yarn typecheck
+        run: pnpm typecheck
+
+      # Gates phantom-dep regressions introduced by pnpm's shamefully-hoist
+      # posture (see FEC-924 risk #4). Runs publint per published package
+      # against the packed tarball; fails on any publint error.
+      - name: Running publint check
+        run: pnpm lint:publint
 
       - name: Running linters and tests
-        run: yarn run jest --projects jest.{eslint,test,ts-test,bundle}.config.js --reporters github-actions
+        run: pnpm jest --projects jest.{eslint,test,ts-test,bundle}.config.js --reporters github-actions
         env:
           CI: true
 
       - name: Building Visual Regression Tests application for UI components
-        run: yarn visual-testing-app:build
+        run: pnpm visual-testing-app:build
+
+      # Puppeteer's postinstall hook downloads Chrome to ~/.cache/puppeteer.
+      # Under pnpm, the postinstall script's side-effects are cached in the pnpm
+      # store (which is restored from the GitHub Actions cache), so pnpm skips
+      # re-running it. But Chrome lives outside node_modules / the pnpm store,
+      # so the binary is missing on the runner. Install it explicitly here so
+      # the visual regression tests can find it.
+      - name: Install Puppeteer's Chrome
+        run: pnpm exec puppeteer browsers install chrome
 
       - name: Running Visual Regression Tests for UI components
       # aa-exec:
@@ -65,7 +83,7 @@ jobs:
       # that made it so that puppeteers chromium installation is not whitelisted,
       # which made it so that the chromium sandbox is not available and puppeteer errors out,
       # so we need to specify that we are using app armor's chrome profile when running puppeteer (https://github.com/mermaid-js/mermaid-cli/issues/730#issuecomment-2408615110)
-        run: aa-exec --profile=chrome -- yarn vrt:components
+        run: aa-exec --profile=chrome -- pnpm vrt:components
         timeout-minutes: 20
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
@@ -78,7 +96,7 @@ jobs:
         shell: bash
 
       - name: Checking bundle size
-        run: yarn bundlesize
+        run: pnpm bundlesize
         env:
           BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
           CI_REPO_OWNER: ${{ github.repository_owner }}

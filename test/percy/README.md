@@ -9,10 +9,10 @@ This works by taking screenshots of our components in different states. When cha
   - [Running tests locally to debug components](#running-tests-locally-to-debug-components)
   - [Running tests locally to debug snapshots](#running-tests-locally-to-debug-snapshots)
   - [In detail](#in-detail)
-    - [yarn build](#yarn-build)
-    - [yarn visual-testing-app:build](#yarn-visual-testing-appbuild)
-    - [yarn visual-testing-app:serve](#yarn-visual-testing-appserve)
-    - [yarn percy](#yarn-percy)
+    - [pnpm build](#pnpm-build)
+    - [pnpm visual-testing-app:build](#pnpm-visual-testing-appbuild)
+    - [pnpm visual-testing-app:serve](#pnpm-visual-testing-appserve)
+    - [pnpm percy](#pnpm-percy)
 - [Constraints](#constraints)
   - [How to write visual regressions tests](#how-to-write-visual-regressions-tests)
     - [Create files ending in `.visualroute.js`](#create-files-ending-in-visualroutejs)
@@ -30,39 +30,39 @@ This works by taking screenshots of our components in different states. When cha
 
 ```bash
 # build ui-kit first
-yarn build
+pnpm build
 
 # now build the visual-testing-app
-yarn visual-testing-app:build
+pnpm visual-testing-app:build
 
 # run percy tests
-yarn percy --reporters jest-silent-reporter
+pnpm percy --reporters jest-silent-reporter
 ```
 
 ### Debugging components locally
 
 ```bash
 # build ui-kit in watch mode
-yarn build:watch
+pnpm build:watch
 
 # now build the visual-testing-app
-yarn visual-testing-app:build
+pnpm visual-testing-app:build
 
 # serve the visual-testing-app (this starts a static file server)
 # you can make changes to the visual-testing-app or ui-kit and reload the page
 # to see changes.
 # you can now visit http://localhost:3000 to see what the components look like
-yarn visual-testing-app:preview
+pnpm visual-testing-app:preview
 ```
 
 ### Running tests locally to debug snapshots
 
 ```bash
 # build ui-kit in watch mode
-yarn build:watch
+pnpm build:watch
 
 # now build the visual-testing-app
-yarn visual-testing-app:build
+pnpm visual-testing-app:build
 
 # export percy token (you can get it from https://percy.io/commercetools-GmbH/ui-kit/settings)
 # percy will use this to upload your local snapshots
@@ -74,41 +74,41 @@ export PERCY_BRANCH=local
 
 # run percy tests
 # Once its done it will print a URL which lets you review the visual diffs
-yarn percy
+pnpm percy
 ```
 
 You'll notice that we're not serving `visual-testing-app` here. Puppeteer does that for us, see `just-puppeteer.config.js`.
 
 ### In detail
 
-#### `yarn build`
+#### `pnpm build`
 
 Builds the ui-kit. Since visual-regression-testing uses the final ui-kit bundle,
-you need to run this or `yarn build:watch` before starting the tests.
+you need to run this or `pnpm build:watch` before starting the tests.
 
-#### `yarn visual-testing-app:start`
+#### `pnpm visual-testing-app:start`
 
 This starts the visual-testing-application in development mode. It needs to be run before starting
 the visual regression tests.
 
-#### `yarn visual-testing-app:build`
+#### `pnpm visual-testing-app:build`
 
 This builds the visual-testing-application. It needs to be run before starting
 the visual regression tests.
 
-#### `yarn visual-testing-app:preview`
+#### `pnpm visual-testing-app:preview`
 
-This command is useful for debugging tests locally. This serves the visual-testing-application, but you need to build it first using `yarn visual-testing-app:build`!
+This command is useful for debugging tests locally. This serves the visual-testing-application, but you need to build it first using `pnpm visual-testing-app:build`!
 
 It starts a local web server which you can visit to see what the routes look like in your browser.
 
-#### `yarn percy`
+#### `pnpm percy`
 
 This runs the puppeteer tests and captures results using percy.
 
 If you're running this locally, make sure you have `PERCY_TOKEN` and `PERCY_BRANCH` exported (see below). Otherwise you'll be warned with `Warning: Skipping visual tests. PERCY_TOKEN was not provided.` and no snapshots will be taken.
 
-Locally, you can run `yarn percy` without having `PERCY_TOKEN` and `PERCY_BRANCH` exported in case you only want to verify the puppeteer setup.
+Locally, you can run `pnpm percy` without having `PERCY_TOKEN` and `PERCY_BRANCH` exported in case you only want to verify the puppeteer setup.
 
 ## Constraints
 
@@ -156,7 +156,7 @@ export const component = () => (
 );
 ```
 
-You can see your route by running `yarn visual-testing-app:build` and `yarn visual-testing-app:serve` and then navigating to your defined routePath.
+You can see your route by running `pnpm visual-testing-app:build` and `pnpm visual-testing-app:serve` and then navigating to your defined routePath.
 
 ## Adding Visual Regression Tests
 
@@ -179,7 +179,7 @@ describe('PrimaryButton', () => {
 });
 ```
 
-You can run your test by running `yarn percy`. Notice how before we call `percySnapshot`, we add an expect assertion on some text on the page. This is to ensure that the tests will fail if your route cannot be found. Otherwise, we could end up uploading a lot of `route not founds` to Percy.
+You can run your test by running `pnpm percy`. Notice how before we call `percySnapshot`, we add an expect assertion on some text on the page. This is to ensure that the tests will fail if your route cannot be found. Otherwise, we could end up uploading a lot of `route not founds` to Percy.
 
 ### `Suite`
 
