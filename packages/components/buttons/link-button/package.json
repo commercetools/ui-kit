@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/link-button",
   "description": "Link buttons are similar to Flat buttons but work as link elements.",
-  "version": "20.5.0",
+  "version": "20.6.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

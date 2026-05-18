@@ -1,5 +1,25 @@
 # @commercetools-uikit/money-input
 
+## 20.6.0
+
+### Minor Changes
+
+- [#3239](https://github.com/commercetools/ui-kit/pull/3239) [`e20a65a`](https://github.com/commercetools/ui-kit/commit/e20a65a33890d72d949ab8643cc6d9f0e318370d) Thanks [@misama-ct](https://github.com/misama-ct)! - internal: package manager migrated from Yarn 3 to pnpm; no consumer-facing changes.
+
+### Patch Changes
+
+- [#3230](https://github.com/commercetools/ui-kit/pull/3230) [`31b0b6d`](https://github.com/commercetools/ui-kit/commit/31b0b6dab702f026478071101b273e0f637e037d) Thanks [@misama-ct](https://github.com/misama-ct)! - Security: bump lodash 4.17.23 → 4.18.1, immutable 4.3.7 → 4.3.8, dompurify 3.2.7 → 3.3.2
+
+- Updated dependencies [[`e20a65a`](https://github.com/commercetools/ui-kit/commit/e20a65a33890d72d949ab8643cc6d9f0e318370d), [`31b0b6d`](https://github.com/commercetools/ui-kit/commit/31b0b6dab702f026478071101b273e0f637e037d)]:
+  - @commercetools-uikit/constraints@20.6.0
+  - @commercetools-uikit/design-system@20.6.0
+  - @commercetools-uikit/hooks@20.6.0
+  - @commercetools-uikit/icons@20.6.0
+  - @commercetools-uikit/input-utils@20.6.0
+  - @commercetools-uikit/select-utils@20.6.0
+  - @commercetools-uikit/tooltip@20.6.0
+  - @commercetools-uikit/utils@20.6.0
+
 ## 20.5.0
 
 ### Minor Changes

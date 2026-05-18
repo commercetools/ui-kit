@@ -1,5 +1,23 @@
 # @commercetools-uikit/multiline-text-field
 
+## 20.6.0
+
+### Minor Changes
+
+- [#3239](https://github.com/commercetools/ui-kit/pull/3239) [`e20a65a`](https://github.com/commercetools/ui-kit/commit/e20a65a33890d72d949ab8643cc6d9f0e318370d) Thanks [@misama-ct](https://github.com/misama-ct)! - internal: package manager migrated from Yarn 3 to pnpm; no consumer-facing changes.
+
+### Patch Changes
+
+- Updated dependencies [[`e20a65a`](https://github.com/commercetools/ui-kit/commit/e20a65a33890d72d949ab8643cc6d9f0e318370d), [`31b0b6d`](https://github.com/commercetools/ui-kit/commit/31b0b6dab702f026478071101b273e0f637e037d)]:
+  - @commercetools-uikit/constraints@20.6.0
+  - @commercetools-uikit/design-system@20.6.0
+  - @commercetools-uikit/field-errors@20.6.0
+  - @commercetools-uikit/field-label@20.6.0
+  - @commercetools-uikit/field-warnings@20.6.0
+  - @commercetools-uikit/multiline-text-input@20.6.0
+  - @commercetools-uikit/spacings@20.6.0
+  - @commercetools-uikit/utils@20.6.0
+
 ## 20.5.0
 
 ### Patch Changes

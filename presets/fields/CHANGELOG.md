@@ -1,5 +1,32 @@
 # @commercetools-uikit/fields
 
+## 20.6.0
+
+### Minor Changes
+
+- [#3239](https://github.com/commercetools/ui-kit/pull/3239) [`e20a65a`](https://github.com/commercetools/ui-kit/commit/e20a65a33890d72d949ab8643cc6d9f0e318370d) Thanks [@misama-ct](https://github.com/misama-ct)! - internal: package manager migrated from Yarn 3 to pnpm; no consumer-facing changes.
+
+### Patch Changes
+
+- Updated dependencies [[`5b447b1`](https://github.com/commercetools/ui-kit/commit/5b447b13ddd306925807404dc208cf36406ca998), [`e20a65a`](https://github.com/commercetools/ui-kit/commit/e20a65a33890d72d949ab8643cc6d9f0e318370d), [`31b0b6d`](https://github.com/commercetools/ui-kit/commit/31b0b6dab702f026478071101b273e0f637e037d)]:
+  - @commercetools-uikit/localized-multiline-text-field@20.6.0
+  - @commercetools-uikit/localized-text-field@20.6.0
+  - @commercetools-uikit/select-field@20.6.0
+  - @commercetools-uikit/async-creatable-select-field@20.6.0
+  - @commercetools-uikit/async-select-field@20.6.0
+  - @commercetools-uikit/creatable-select-field@20.6.0
+  - @commercetools-uikit/date-field@20.6.0
+  - @commercetools-uikit/date-range-field@20.6.0
+  - @commercetools-uikit/date-time-field@20.6.0
+  - @commercetools-uikit/money-field@20.6.0
+  - @commercetools-uikit/multiline-text-field@20.6.0
+  - @commercetools-uikit/number-field@20.6.0
+  - @commercetools-uikit/password-field@20.6.0
+  - @commercetools-uikit/radio-field@20.6.0
+  - @commercetools-uikit/search-select-field@20.6.0
+  - @commercetools-uikit/text-field@20.6.0
+  - @commercetools-uikit/time-field@20.6.0
+
 ## 20.5.0
 
 ### Patch Changes

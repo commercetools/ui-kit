@@ -1,5 +1,16 @@
 # @commercetools-uikit/field-warnings
 
+## 20.6.0
+
+### Minor Changes
+
+- [#3239](https://github.com/commercetools/ui-kit/pull/3239) [`e20a65a`](https://github.com/commercetools/ui-kit/commit/e20a65a33890d72d949ab8643cc6d9f0e318370d) Thanks [@misama-ct](https://github.com/misama-ct)! - internal: package manager migrated from Yarn 3 to pnpm; no consumer-facing changes.
+
+### Patch Changes
+
+- Updated dependencies [[`e20a65a`](https://github.com/commercetools/ui-kit/commit/e20a65a33890d72d949ab8643cc6d9f0e318370d)]:
+  - @commercetools-uikit/messages@20.6.0
+
 ## 20.5.0
 
 ### Patch Changes
