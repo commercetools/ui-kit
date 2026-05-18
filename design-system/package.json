@@ -23,19 +23,19 @@
     "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'pnpm build:tokens'"
   },
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/hooks": "workspace:^",
-    "@emotion/react": "catalog:",
+    "@emotion/react": "catalog:build",
     "lodash": "catalog:"
   },
   "devDependencies": {
     "nodemon": "catalog:",
-    "prettier": "catalog:",
-    "prop-types": "catalog:",
+    "prettier": "catalog:lint",
+    "prop-types": "catalog:react",
     "rcfile": "catalog:",
-    "react": "catalog:",
-    "react-router": "catalog:",
+    "react": "catalog:react",
+    "react-router": "catalog:react",
     "yaml": "catalog:"
   },
   "peerDependencies": {

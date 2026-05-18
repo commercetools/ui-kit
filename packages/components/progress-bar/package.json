@@ -19,21 +19,21 @@
   "module": "dist/commercetools-uikit-progress-bar.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/spacings-inline": "workspace:^",
     "@commercetools-uikit/spacings-stack": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
+    "@emotion/react": "catalog:build",
     "lodash": "catalog:",
-    "react-intl": "catalog:"
+    "react-intl": "catalog:react"
   },
   "devDependencies": {
-    "@emotion/styled": "catalog:",
-    "react": "catalog:"
+    "@emotion/styled": "catalog:build",
+    "react": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

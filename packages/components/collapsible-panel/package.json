@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-collapsible-panel.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/collapsible-motion": "workspace:^",
     "@commercetools-uikit/constraints": "workspace:^",
@@ -30,14 +30,14 @@
     "@commercetools-uikit/spacings": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
     "lodash": "catalog:",
-    "react-intl": "catalog:"
+    "react-intl": "catalog:react"
   },
   "devDependencies": {
-    "prop-types": "catalog:",
-    "react": "catalog:"
+    "prop-types": "catalog:react",
+    "react": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

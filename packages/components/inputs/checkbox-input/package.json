@@ -22,19 +22,19 @@
     "generate-icons": "svgr -d src/icons/generated --typescript -- src/icons/svg"
   },
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/input-utils": "workspace:^",
     "@commercetools-uikit/select-utils": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
-    "react-intl": "catalog:"
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "react-intl": "catalog:react"
   },
   "devDependencies": {
-    "react": "catalog:"
+    "react": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

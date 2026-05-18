@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-inputs.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/async-creatable-select-input": "workspace:^",
     "@commercetools-uikit/async-select-input": "workspace:^",
     "@commercetools-uikit/checkbox-input": "workspace:^",
@@ -47,9 +47,9 @@
     "@commercetools-uikit/toggle-input": "workspace:^"
   },
   "devDependencies": {
-    "react": "catalog:",
-    "react-intl": "catalog:",
-    "react-router-dom": "catalog:"
+    "react": "catalog:react",
+    "react-intl": "catalog:react",
+    "react-router-dom": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",

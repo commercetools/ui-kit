@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-date-field.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/date-input": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
@@ -29,14 +29,14 @@
     "@commercetools-uikit/field-warnings": "workspace:^",
     "@commercetools-uikit/spacings": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
-    "react-intl": "catalog:"
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "react-intl": "catalog:react"
   },
   "devDependencies": {
     "@commercetools-uikit/calendar-utils": "workspace:^",
-    "prop-types": "catalog:",
-    "react": "catalog:"
+    "prop-types": "catalog:react",
+    "react": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

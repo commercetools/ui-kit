@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-filters.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/collapsible-motion": "workspace:^",
     "@commercetools-uikit/date-input": "workspace:^",
     "@commercetools-uikit/date-range-input": "workspace:^",
@@ -33,10 +33,10 @@
     "@commercetools-uikit/select-input": "workspace:^",
     "@commercetools-uikit/spacings": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
-    "@radix-ui/react-popover": "catalog:",
-    "react-intl": "catalog:"
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "@radix-ui/react-popover": "catalog:react",
+    "react-intl": "catalog:react"
   },
   "devDependencies": {
     "@commercetools-uikit/buttons": "workspace:^",
@@ -44,8 +44,8 @@
     "@commercetools-uikit/radio-input": "workspace:^",
     "@commercetools-uikit/search-text-input": "workspace:^",
     "@commercetools-uikit/text-input": "workspace:^",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "react": "catalog:react",
+    "react-dom": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",

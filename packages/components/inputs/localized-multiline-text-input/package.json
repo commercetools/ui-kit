@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-localized-multiline-text-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/flat-button": "workspace:^",
@@ -32,16 +32,16 @@
     "@commercetools-uikit/spacings-stack": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
-    "react-select": "catalog:",
-    "react-textarea-autosize": "catalog:"
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "react-select": "catalog:react",
+    "react-textarea-autosize": "catalog:react"
   },
   "devDependencies": {
-    "prop-types": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "react-intl": "catalog:"
+    "prop-types": "catalog:react",
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-intl": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",

@@ -10,11 +10,14 @@
  * 4. A dependency must not appear in both "dependencies" and "devDependencies".
  *
  * Cross-workspace rules (Pass 2):
- * 5. Every dep listed under `catalog:` in pnpm-workspace.yaml must be
- *    consumed via `catalog:` in workspace `dependencies` / `devDependencies`.
- * 6. Every dep listed under `catalogs.peer:` in pnpm-workspace.yaml must be
- *    consumed via `catalog:peer` in workspace `peerDependencies`.
- *    Literal versions on a cataloged dep are an error in either case.
+ * 5. Every dep listed under `catalog:` (default) in pnpm-workspace.yaml must
+ *    be consumed via `catalog:` in workspace `dependencies` / `devDependencies`.
+ * 6. Every dep listed under a named catalog `catalogs.<name>:` must be
+ *    consumed via `catalog:<name>` in workspace `dependencies` /
+ *    `devDependencies`.
+ * 7. Every dep listed under `catalogs.peer:` must be consumed via
+ *    `catalog:peer` in workspace `peerDependencies`.
+ *    Literal versions on a cataloged dep are an error in all three cases.
  */
 const { execSync } = require('child_process');
 const fs = require('fs');
@@ -25,8 +28,8 @@ const REPO_URL = 'https://github.com/commercetools/ui-kit.git';
 
 // Parse the `catalog:` (default) and `catalogs.<name>:` (named) blocks from
 // pnpm-workspace.yaml. Minimal parser scoped to the shape we use — key:value
-// entries with optional single-quoted keys. Avoids pulling a YAML lib into a
-// root-only script.
+// entries with optional single-quoted keys, with blank lines separating
+// named catalogs. Avoids pulling a YAML lib into a root-only script.
 function readCatalogs() {
   const yaml = fs.readFileSync(path.join(ROOT, 'pnpm-workspace.yaml'), 'utf-8');
   const lines = yaml.split('\n');
@@ -38,34 +41,41 @@ function readCatalogs() {
     return m ? m[1] : null;
   };
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    if (/^catalog:\s*$/.test(line)) {
-      for (let j = i + 1; j < lines.length; j++) {
-        const inner = lines[j];
-        if (inner.trim() === '' || /^\S/.test(inner)) break;
-        const k = entryKey(inner);
-        if (k) out.default.add(k);
+  let mode = null; // 'default' | 'catalogs' | null
+  let currentNamed = null;
+  for (const line of lines) {
+    if (line.length > 0 && /^\S/.test(line)) {
+      if (/^catalog:\s*$/.test(line)) {
+        mode = 'default';
+        currentNamed = null;
+      } else if (/^catalogs:\s*$/.test(line)) {
+        mode = 'catalogs';
+        currentNamed = null;
+      } else {
+        mode = null;
+        currentNamed = null;
       }
-    } else if (/^catalogs:\s*$/.test(line)) {
-      // Each child at the next indent level (2 spaces) is a named catalog.
-      for (let j = i + 1; j < lines.length; j++) {
-        const inner = lines[j];
-        if (inner.trim() === '' || /^\S/.test(inner)) break;
-        const ind = indentOf(inner);
-        if (ind === 2) {
-          const nm = inner.trim().replace(/:$/, '');
-          if (!out.named.has(nm)) out.named.set(nm, new Set());
-          // collect deeper-indented entries until indent drops back
-          for (let k = j + 1; k < lines.length; k++) {
-            const e = lines[k];
-            if (e.trim() === '') break;
-            const eInd = indentOf(e);
-            if (eInd <= 2) break;
-            const ek = entryKey(e);
-            if (ek) out.named.get(nm).add(ek);
-          }
+      continue;
+    }
+    if (line.trim() === '') {
+      // Blank line resets which named catalog we're inside, but stays in
+      // `catalogs` mode until we see a new top-level key.
+      if (mode === 'catalogs') currentNamed = null;
+      continue;
+    }
+    const ind = indentOf(line);
+    if (mode === 'default' && ind === 2) {
+      const k = entryKey(line);
+      if (k) out.default.add(k);
+    } else if (mode === 'catalogs') {
+      if (ind === 2) {
+        currentNamed = line.trim().replace(/:$/, '');
+        if (!out.named.has(currentNamed)) {
+          out.named.set(currentNamed, new Set());
         }
+      } else if (ind >= 4 && currentNamed) {
+        const k = entryKey(line);
+        if (k) out.named.get(currentNamed).add(k);
       }
     }
   }
@@ -219,6 +229,10 @@ function enforceCatalog(catalogKeys, usage, expectedSpec, ruleName) {
 }
 
 enforceCatalog(defaultCatalogKeys, installUsage, 'catalog:', 'default catalog');
+for (const [name, keys] of catalogs.named) {
+  if (name === 'peer') continue; // peer applies to peerDeps, handled below
+  enforceCatalog(keys, installUsage, `catalog:${name}`, `${name} catalog`);
+}
 enforceCatalog(peerCatalogKeys, peerUsage, 'catalog:peer', 'peer catalog');
 
 if (errors.length > 0) {

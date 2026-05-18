@@ -19,20 +19,20 @@
   "module": "dist/commercetools-uikit-card.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/spacings-inset": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
-    "@types/react-router-dom": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "@types/react-router-dom": "catalog:react",
     "history": "catalog:"
   },
   "devDependencies": {
     "@commercetools-uikit/text": "workspace:^",
-    "react": "catalog:",
-    "react-router-dom": "catalog:"
+    "react": "catalog:react",
+    "react-router-dom": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",

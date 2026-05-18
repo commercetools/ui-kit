@@ -12,18 +12,18 @@
     "test": "jest --config jest.test.config.js"
   },
   "dependencies": {
-    "@manypkg/find-root": "catalog:",
-    "@manypkg/get-packages": "catalog:",
+    "@manypkg/find-root": "catalog:repo",
+    "@manypkg/get-packages": "catalog:repo",
     "@types/node": "catalog:",
     "commander": "catalog:",
     "omit-empty-es": "catalog:",
     "rcfile": "catalog:"
   },
   "devDependencies": {
-    "prettier": "catalog:",
+    "prettier": "catalog:lint",
     "shelljs": "catalog:",
-    "ts-node": "catalog:",
-    "typescript": "catalog:"
+    "ts-node": "catalog:build",
+    "typescript": "catalog:build"
   },
   "peerDependencies": {
     "prettier": "catalog:peer",

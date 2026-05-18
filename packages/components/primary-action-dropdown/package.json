@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-primary-action-dropdown.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/buttons": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
@@ -28,14 +28,14 @@
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
     "lodash": "catalog:",
-    "react-intl": "catalog:"
+    "react-intl": "catalog:react"
   },
   "devDependencies": {
-    "react": "catalog:",
-    "react-router-dom": "catalog:"
+    "react": "catalog:react",
+    "react-router-dom": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

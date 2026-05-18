@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-calendar-time-utils.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/utils": "workspace:^"
   },
   "devDependencies": {

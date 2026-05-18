@@ -19,12 +19,12 @@
   "module": "dist/commercetools-uikit-accessible-hidden.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
-    "@emotion/react": "catalog:"
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
+    "@emotion/react": "catalog:build"
   },
   "devDependencies": {
-    "react": "catalog:"
+    "react": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

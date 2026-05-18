@@ -19,15 +19,15 @@
   "module": "dist/commercetools-uikit-constraints.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:"
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build"
   },
   "devDependencies": {
-    "react": "catalog:"
+    "react": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

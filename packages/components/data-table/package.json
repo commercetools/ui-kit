@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-data-table.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/data-table-manager": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
@@ -28,15 +28,15 @@
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/secondary-icon-button": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
     "lodash": "catalog:",
-    "react-intl": "catalog:"
+    "react-intl": "catalog:react"
   },
   "devDependencies": {
     "@commercetools-uikit/spacings": "workspace:^",
-    "formik": "catalog:",
-    "react": "catalog:"
+    "formik": "catalog:react",
+    "react": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

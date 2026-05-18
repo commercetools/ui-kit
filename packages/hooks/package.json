@@ -22,8 +22,8 @@
   },
   "files": ["dist", "polyfills"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/utils": "workspace:^",
     "@types/raf-schd": "catalog:",
     "lodash": "catalog:",
@@ -31,10 +31,10 @@
   },
   "devDependencies": {
     "@commercetools-frontend/ui-kit": "workspace:^",
-    "@testing-library/dom": "catalog:",
-    "@testing-library/react": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "@testing-library/dom": "catalog:test",
+    "@testing-library/react": "catalog:test",
+    "react": "catalog:react",
+    "react-dom": "catalog:react"
   },
   "peerDependencies": {
     "react-dom": "catalog:peer"

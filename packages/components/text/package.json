@@ -19,18 +19,18 @@
   "module": "dist/commercetools-uikit-text.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
+    "@emotion/react": "catalog:build",
     "lodash": "catalog:",
     "warning": "catalog:"
   },
   "devDependencies": {
-    "@emotion/styled": "catalog:",
-    "react": "catalog:",
-    "react-intl": "catalog:"
+    "@emotion/styled": "catalog:build",
+    "react": "catalog:react",
+    "react-intl": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",

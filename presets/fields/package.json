@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-fields.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/async-creatable-select-field": "workspace:^",
     "@commercetools-uikit/async-select-field": "workspace:^",
     "@commercetools-uikit/creatable-select-field": "workspace:^",
@@ -40,9 +40,9 @@
     "@commercetools-uikit/time-field": "workspace:^"
   },
   "devDependencies": {
-    "react": "catalog:",
-    "react-intl": "catalog:",
-    "react-router-dom": "catalog:"
+    "react": "catalog:react",
+    "react-intl": "catalog:react",
+    "react-router-dom": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",

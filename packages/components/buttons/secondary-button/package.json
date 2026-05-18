@@ -19,22 +19,22 @@
   "module": "dist/commercetools-uikit-secondary-button.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/spacings-inline": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
     "lodash": "catalog:"
   },
   "devDependencies": {
     "@commercetools-uikit/icons": "workspace:^",
-    "react": "catalog:",
-    "react-intl": "catalog:",
-    "react-router-dom": "catalog:"
+    "react": "catalog:react",
+    "react-intl": "catalog:react",
+    "react-router-dom": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",

@@ -26,8 +26,8 @@
   },
   "files": ["dist", "data-table-manager-provider", "column-settings-manager"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/accessible-hidden": "workspace:^",
     "@commercetools-uikit/async-select-input": "workspace:^",
@@ -51,9 +51,9 @@
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/tooltip": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
-    "@hello-pangea/dnd": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "@hello-pangea/dnd": "catalog:react",
     "@types/debounce-promise": "catalog:",
     "debounce-promise": "catalog:",
     "lodash": "catalog:"
@@ -63,10 +63,10 @@
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/search-text-input": "workspace:^",
     "@commercetools-uikit/toggle-input": "workspace:^",
-    "formik": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "react-intl": "catalog:"
+    "formik": "catalog:react",
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-intl": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",

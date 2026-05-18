@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-date-range-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/calendar-time-utils": "workspace:^",
     "@commercetools-uikit/calendar-utils": "workspace:^",
@@ -34,17 +34,17 @@
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/tooltip": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
-    "downshift": "catalog:",
-    "react-is": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "downshift": "catalog:react",
+    "react-is": "catalog:react",
     "warning": "catalog:"
   },
   "devDependencies": {
     "moment": "catalog:",
-    "prop-types": "catalog:",
-    "react": "catalog:",
-    "react-intl": "catalog:"
+    "prop-types": "catalog:react",
+    "react": "catalog:react",
+    "react-intl": "catalog:react"
   },
   "peerDependencies": {
     "moment": "catalog:peer",

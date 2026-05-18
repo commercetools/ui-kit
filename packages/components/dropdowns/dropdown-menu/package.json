@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-dropdown-menu.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
@@ -29,9 +29,9 @@
     "@commercetools-uikit/spacings-inline": "workspace:^",
     "@commercetools-uikit/spacings-stack": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
-    "react-intl": "catalog:"
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "react-intl": "catalog:react"
   },
   "devDependencies": {
     "@commercetools-uikit/buttons": "workspace:^",
@@ -39,7 +39,7 @@
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/select-input": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
-    "react": "catalog:"
+    "react": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

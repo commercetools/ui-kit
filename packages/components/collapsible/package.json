@@ -19,16 +19,16 @@
   "module": "dist/commercetools-uikit-collapsible.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/hooks": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
     "lodash": "catalog:"
   },
   "devDependencies": {
-    "react": "catalog:"
+    "react": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

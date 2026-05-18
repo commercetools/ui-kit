@@ -10,20 +10,20 @@
   },
   "dependencies": {
     "@commercetools-uikit/design-system": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
     "@fontsource/inter": "catalog:",
-    "@types/react": "catalog:",
+    "@types/react": "catalog:react",
     "moment": "catalog:",
     "moment-timezone": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "react-intl": "catalog:",
-    "react-router": "catalog:",
-    "react-router-dom": "catalog:"
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-intl": "catalog:react",
+    "react-router": "catalog:react",
+    "react-router-dom": "catalog:react"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "catalog:",
-    "vite": "catalog:"
+    "@vitejs/plugin-react": "catalog:build",
+    "vite": "catalog:build"
   }
 }

@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-localized-rich-text-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/collapsible-motion": "workspace:^",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
@@ -36,25 +36,25 @@
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/tooltip": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
-    "downshift": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "downshift": "catalog:react",
     "immutable": "catalog:",
     "is-hotkey": "catalog:",
     "lodash": "catalog:",
-    "react-textarea-autosize": "catalog:",
-    "slate": "catalog:",
-    "slate-history": "catalog:",
-    "slate-react": "catalog:"
+    "react-textarea-autosize": "catalog:react",
+    "slate": "catalog:rich-text",
+    "slate-history": "catalog:rich-text",
+    "slate-react": "catalog:rich-text"
   },
   "devDependencies": {
     "@commercetools-uikit/collapsible-panel": "workspace:^",
     "@commercetools-uikit/primary-button": "workspace:^",
     "@commercetools-uikit/spacings": "workspace:^",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "react-intl": "catalog:",
-    "react-router-dom": "catalog:"
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-intl": "catalog:react",
+    "react-router-dom": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",

@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-money-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/hooks": "workspace:^",
@@ -29,16 +29,16 @@
     "@commercetools-uikit/select-utils": "workspace:^",
     "@commercetools-uikit/tooltip": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
     "lodash": "catalog:",
-    "react-select": "catalog:"
+    "react-select": "catalog:react"
   },
   "devDependencies": {
-    "prop-types": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "react-intl": "catalog:"
+    "prop-types": "catalog:react",
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-intl": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",

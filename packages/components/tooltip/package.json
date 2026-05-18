@@ -19,24 +19,24 @@
   "module": "dist/commercetools-uikit-tooltip.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/hooks": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
     "lodash": "catalog:",
     "popper.js": "catalog:",
-    "react-is": "catalog:",
+    "react-is": "catalog:react",
     "use-popper": "catalog:"
   },
   "devDependencies": {
     "@commercetools-uikit/primary-button": "workspace:^",
-    "@types/react-is": "catalog:",
-    "prop-types": "catalog:",
-    "react": "catalog:"
+    "@types/react-is": "catalog:react",
+    "prop-types": "catalog:react",
+    "react": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer"

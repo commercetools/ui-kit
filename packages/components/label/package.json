@@ -19,17 +19,17 @@
   "module": "dist/commercetools-uikit-label.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "catalog:",
-    "@babel/runtime-corejs3": "catalog:",
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "catalog:",
-    "@emotion/styled": "catalog:"
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build"
   },
   "devDependencies": {
-    "react": "catalog:",
-    "react-intl": "catalog:"
+    "react": "catalog:react",
+    "react-intl": "catalog:react"
   },
   "peerDependencies": {
     "react": "catalog:peer",
