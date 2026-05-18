@@ -34,7 +34,7 @@
     "@emotion/styled": "^11.10.5",
     "@types/dompurify": "^2.4.0",
     "@types/escape-html": "1.0.4",
-    "dompurify": "3.3.2",
+    "dompurify": "3.4.0",
     "downshift": "9.0.10",
     "escape-html": "1.0.3",
     "is-hotkey": "0.2.0",
