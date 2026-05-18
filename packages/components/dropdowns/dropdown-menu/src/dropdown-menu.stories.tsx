@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import DropdownMenu from './dropdown-menu';
 import { SecondaryButton, IconButton } from '@commercetools-uikit/buttons';
 import { ColumnsIcon, FilterIcon } from '@commercetools-uikit/icons';

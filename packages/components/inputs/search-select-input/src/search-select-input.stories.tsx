@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import SearchSelectInput from './search-select-input';
 import { iconArgType } from '@/storybook-helpers';
 import { useState, useEffect } from 'react';

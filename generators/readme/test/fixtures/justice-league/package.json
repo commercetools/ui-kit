@@ -4,5 +4,8 @@
   "version": "1.0.0",
   "peerDependencies": {
     "react": "16.8.x"
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.10.5"
   }
 }

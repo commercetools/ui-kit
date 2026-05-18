@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import InlineSvg from './inline-svg';
 
 const meta: Meta<typeof InlineSvg> = {

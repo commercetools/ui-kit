@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import DataTable from '../../../data-table';
 import DataTableManager from '../index';
 import { ReactNode, useCallback, useState } from 'react';

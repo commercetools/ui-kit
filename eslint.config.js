@@ -51,6 +51,16 @@ module.exports = [
     },
   },
 
+  // Docs snippets show imports from a consumer's perspective,
+  // not the documenting workspace's own declared deps.
+  {
+    files: ['**/docs/**', '**/_docs/**'],
+    rules: {
+      'import/no-unresolved': 'off',
+      'import/no-extraneous-dependencies': 'off',
+    },
+  },
+
   // Globals for visual spec files
   {
     files: ['**/*.visualspec.js'],

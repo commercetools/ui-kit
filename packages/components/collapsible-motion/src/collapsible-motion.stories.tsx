@@ -1,5 +1,5 @@
 import { useState, type ComponentProps } from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import CollapsibleMotion from './collapsible-motion';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 

@@ -93,6 +93,8 @@ If possible, please try to provide a [related issue first](#opening-an-issue), w
 
 At this point you can start working on the UI components in the `packages` folder.
 
+> **Note on `git worktree`:** if you place a worktree _inside_ an installed copy of this repo (e.g. under `ui-kit/.worktrees/…`), Node's module resolution can walk up into the parent's `node_modules` and resolve a second physical copy of `@emotion/react` / React, producing "two copies of React" hook errors at test time. CI is unaffected. Place worktrees outside the installed repo, or remove the parent's `node_modules` before testing inside the worktree.
+
 Some useful commands to work with the repository:
 
 - `pnpm test` and `pnpm test:watch`

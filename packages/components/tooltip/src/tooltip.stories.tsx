@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import { forwardRef, type FC, type ReactNode } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Tooltip, { TTooltipProps } from './tooltip';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import styled from '@emotion/styled';

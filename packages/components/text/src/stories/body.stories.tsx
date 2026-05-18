@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BodyProxy } from './../text.proxies';
 
 const meta: Meta<typeof BodyProxy> = {

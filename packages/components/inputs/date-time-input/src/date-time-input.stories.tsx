@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { TDateTimeInputProps } from './date-time-input';
 import { useState } from 'react';
 import { DateTimeInputWrapper } from './date-time-input-wrapper';

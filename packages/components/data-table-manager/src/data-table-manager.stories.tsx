@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import DataTableManager from './index';
 import BasicExample from './stories/basic-example.stories';
 import { WithCustomLayout } from './stories/custom-layout.stories';

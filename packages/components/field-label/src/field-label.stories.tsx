@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { iconArgType } from '@/storybook-helpers';
 import FieldLabel from './field-label';
 import FlatButton from '@commercetools-uikit/flat-button';

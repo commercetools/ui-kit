@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import DateRangeInput, { TDateRangeInputProps } from './date-range-input';
 import { DateRangeInputProxy } from './date-range-input-proxy';
 import { useState } from 'react';

@@ -48,9 +48,13 @@
     "slate-react": "0.75.0"
   },
   "devDependencies": {
+    "@commercetools-uikit/collapsible-panel": "20.5.0",
+    "@commercetools-uikit/primary-button": "20.5.0",
+    "@commercetools-uikit/spacings": "20.5.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-intl": "^7.1.4"
+    "react-intl": "^7.1.4",
+    "react-router-dom": "5.3.4"
   },
   "peerDependencies": {
     "react": "19.x",

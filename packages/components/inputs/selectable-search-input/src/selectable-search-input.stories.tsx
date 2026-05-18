@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import SelectableSearchInput from './selectable-search-input';
 import { iconArgType } from '@/storybook-helpers';
 

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import SearchTextInput from './search-text-input';
 
 const meta: Meta<typeof SearchTextInput> = {

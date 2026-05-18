@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { css } from '@emotion/react';
-import Card from '@commercetools-uikit/card';
+import Card from '..';
 import Text from '@commercetools-uikit/text';
 import { Suite, Spec } from '../../../../test/percy';
 

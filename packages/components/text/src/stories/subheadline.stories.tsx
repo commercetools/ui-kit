@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SubheadlineProxy } from './../text.proxies';
 
 const meta: Meta<typeof SubheadlineProxy> = {

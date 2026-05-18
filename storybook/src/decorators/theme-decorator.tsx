@@ -1,5 +1,5 @@
 import { ThemeProvider } from '../../../design-system/';
-import type { Decorator } from '@storybook/react';
+import type { Decorator } from '@storybook/react-vite';
 
 export const withThemeDecorator: Decorator = (Story) => (
   <div>

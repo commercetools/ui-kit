@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import DateField from './date-field';
 import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
 import { useState } from 'react';

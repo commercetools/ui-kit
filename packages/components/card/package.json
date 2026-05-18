@@ -26,9 +26,11 @@
     "@commercetools-uikit/utils": "20.5.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "history": "4.10.1"
   },
   "devDependencies": {
+    "@commercetools-uikit/text": "20.5.0",
     "react": "19.2.0",
     "react-router-dom": "5.3.4"
   },

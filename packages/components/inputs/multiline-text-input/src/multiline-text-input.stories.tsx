@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import MultilineTextInput from './multiline-text-input';
 import { iconArgType } from '@/storybook-helpers';
 

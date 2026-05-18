@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import PrimaryButton from './primary-button';
 import { iconArgType } from '@/storybook-helpers';
 

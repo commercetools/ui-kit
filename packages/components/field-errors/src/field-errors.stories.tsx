@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import FieldErrors from './field-errors';
 
 const meta: Meta<typeof FieldErrors> = {

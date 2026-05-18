@@ -30,6 +30,7 @@
     "@commercetools-uikit/utils": "20.5.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "history": "4.10.1",
     "react-intl": "^7.1.4"
   },
   "devDependencies": {

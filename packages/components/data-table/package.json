@@ -34,6 +34,7 @@
     "react-intl": "^7.1.4"
   },
   "devDependencies": {
+    "@commercetools-uikit/spacings": "20.5.0",
     "formik": "^2.4.6",
     "react": "19.2.0"
   },
