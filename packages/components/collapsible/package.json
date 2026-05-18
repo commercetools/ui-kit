@@ -28,9 +28,9 @@
     "lodash": "catalog:"
   },
   "devDependencies": {
-    "react": "19.2.0"
+    "react": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

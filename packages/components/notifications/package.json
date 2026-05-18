@@ -28,12 +28,12 @@
     "@emotion/react": "catalog:"
   },
   "devDependencies": {
-    "react": "19.2.0",
-    "react-intl": "^7.1.4"
+    "react": "catalog:",
+    "react-intl": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-intl": "7.x"
+    "react": "catalog:peer",
+    "react-intl": "catalog:peer"
   },
   "readme": {
     "componentPaths": ["./src/content-notification/content-notification.tsx"]

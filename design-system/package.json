@@ -30,15 +30,15 @@
     "lodash": "catalog:"
   },
   "devDependencies": {
-    "nodemon": "^3.0.0",
-    "prettier": "2.8.8",
+    "nodemon": "catalog:",
+    "prettier": "catalog:",
     "prop-types": "catalog:",
-    "rcfile": "1.0.3",
-    "react": "19.2.0",
-    "react-router": "5.3.4",
-    "yaml": "^2.8.3"
+    "rcfile": "catalog:",
+    "react": "catalog:",
+    "react-router": "catalog:",
+    "yaml": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

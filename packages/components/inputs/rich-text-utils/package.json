@@ -32,29 +32,29 @@
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
-    "@types/dompurify": "^2.4.0",
-    "@types/escape-html": "1.0.4",
-    "dompurify": "3.3.2",
+    "@types/dompurify": "catalog:",
+    "@types/escape-html": "catalog:",
+    "dompurify": "catalog:",
     "downshift": "catalog:",
-    "escape-html": "1.0.3",
-    "is-hotkey": "0.2.0",
-    "is-url": "^1.2.4",
+    "escape-html": "catalog:",
+    "is-hotkey": "catalog:",
+    "is-url": "catalog:",
     "lodash": "catalog:",
-    "slate": "0.75.0",
-    "slate-history": "0.113.1",
-    "slate-hyperscript": "0.100.0",
-    "slate-react": "0.75.0",
-    "style-to-object": "0.4.4"
+    "slate": "catalog:",
+    "slate-history": "catalog:",
+    "slate-hyperscript": "catalog:",
+    "slate-react": "catalog:",
+    "style-to-object": "catalog:"
   },
   "devDependencies": {
-    "jsdom": "^26.1.0",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-intl": "^7.1.4"
+    "jsdom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-intl": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-dom": "19.x",
-    "react-intl": "7.x"
+    "react": "catalog:peer",
+    "react-dom": "catalog:peer",
+    "react-intl": "catalog:peer"
   }
 }

@@ -35,8 +35,8 @@
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
-    "@radix-ui/react-popover": "^1.1.4",
-    "react-intl": "^7.1.4"
+    "@radix-ui/react-popover": "catalog:",
+    "react-intl": "catalog:"
   },
   "devDependencies": {
     "@commercetools-uikit/buttons": "workspace:^",
@@ -44,11 +44,11 @@
     "@commercetools-uikit/radio-input": "workspace:^",
     "@commercetools-uikit/search-text-input": "workspace:^",
     "@commercetools-uikit/text-input": "workspace:^",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-dom": "19.x"
+    "react": "catalog:peer",
+    "react-dom": "catalog:peer"
   }
 }

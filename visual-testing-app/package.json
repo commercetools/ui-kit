@@ -12,18 +12,18 @@
     "@commercetools-uikit/design-system": "workspace:^",
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
-    "@fontsource/inter": "5.2.8",
-    "@types/react": "^19.0.7",
-    "moment": "2.30.1",
-    "moment-timezone": "0.6.0",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-intl": "^7.1.4",
-    "react-router": "5.3.4",
-    "react-router-dom": "5.3.4"
+    "@fontsource/inter": "catalog:",
+    "@types/react": "catalog:",
+    "moment": "catalog:",
+    "moment-timezone": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-intl": "catalog:",
+    "react-router": "catalog:",
+    "react-router-dom": "catalog:"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "5.0.4",
-    "vite": "6.4.2"
+    "@vitejs/plugin-react": "catalog:",
+    "vite": "catalog:"
   }
 }

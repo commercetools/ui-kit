@@ -31,15 +31,15 @@
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
-    "react-intl": "^7.1.4",
+    "react-intl": "catalog:",
     "react-select": "catalog:"
   },
   "devDependencies": {
     "prop-types": "catalog:",
-    "react": "19.2.0",
-    "react-router-dom": "5.3.4"
+    "react": "catalog:",
+    "react-router-dom": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

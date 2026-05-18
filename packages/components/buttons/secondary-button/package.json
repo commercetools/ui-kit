@@ -32,13 +32,13 @@
   },
   "devDependencies": {
     "@commercetools-uikit/icons": "workspace:^",
-    "react": "19.2.0",
-    "react-intl": "^7.1.4",
-    "react-router-dom": "5.3.4"
+    "react": "catalog:",
+    "react-intl": "catalog:",
+    "react-router-dom": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-intl": "7.x",
-    "react-router-dom": "5.x"
+    "react": "catalog:peer",
+    "react-intl": "catalog:peer",
+    "react-router-dom": "catalog:peer"
   }
 }

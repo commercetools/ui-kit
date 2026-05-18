@@ -36,26 +36,26 @@
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
     "downshift": "catalog:",
-    "immutable": "4.3.8",
-    "is-hotkey": "0.2.0",
+    "immutable": "catalog:",
+    "is-hotkey": "catalog:",
     "lodash": "catalog:",
-    "slate": "0.75.0",
-    "slate-history": "0.113.1",
-    "slate-react": "0.75.0"
+    "slate": "catalog:",
+    "slate-history": "catalog:",
+    "slate-react": "catalog:"
   },
   "devDependencies": {
     "@commercetools-uikit/collapsible-panel": "workspace:^",
     "@commercetools-uikit/primary-button": "workspace:^",
     "@commercetools-uikit/spacings": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-intl": "^7.1.4",
-    "react-router": "5.3.4"
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-intl": "catalog:",
+    "react-router": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-dom": "19.x",
-    "react-intl": "7.x"
+    "react": "catalog:peer",
+    "react-dom": "catalog:peer",
+    "react-intl": "catalog:peer"
   }
 }

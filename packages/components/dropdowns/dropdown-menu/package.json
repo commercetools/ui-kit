@@ -31,7 +31,7 @@
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
-    "react-intl": "^7.1.4"
+    "react-intl": "catalog:"
   },
   "devDependencies": {
     "@commercetools-uikit/buttons": "workspace:^",
@@ -39,9 +39,9 @@
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/select-input": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
-    "react": "19.2.0"
+    "react": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

@@ -38,17 +38,17 @@
     "@emotion/styled": "catalog:",
     "downshift": "catalog:",
     "react-is": "catalog:",
-    "warning": "4.0.3"
+    "warning": "catalog:"
   },
   "devDependencies": {
-    "moment": "2.30.1",
+    "moment": "catalog:",
     "prop-types": "catalog:",
-    "react": "19.2.0",
-    "react-intl": "^7.1.4"
+    "react": "catalog:",
+    "react-intl": "catalog:"
   },
   "peerDependencies": {
-    "moment": "2.x",
-    "react": "19.x",
-    "react-intl": "7.x"
+    "moment": "catalog:peer",
+    "react": "catalog:peer",
+    "react-intl": "catalog:peer"
   }
 }

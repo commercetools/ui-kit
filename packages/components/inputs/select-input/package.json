@@ -26,7 +26,7 @@
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/select-utils": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/is-prop-valid": "1.4.0",
+    "@emotion/is-prop-valid": "catalog:",
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
     "lodash": "catalog:",
@@ -34,14 +34,14 @@
   },
   "devDependencies": {
     "prop-types": "catalog:",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-intl": "^7.1.4",
-    "react-router-dom": "5.3.4"
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-intl": "catalog:",
+    "react-router-dom": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-dom": "19.x",
-    "react-intl": "7.x"
+    "react": "catalog:peer",
+    "react-dom": "catalog:peer",
+    "react-intl": "catalog:peer"
   }
 }

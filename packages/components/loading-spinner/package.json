@@ -26,12 +26,12 @@
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "catalog:",
-    "react-intl": "^7.1.4"
+    "react-intl": "catalog:"
   },
   "devDependencies": {
-    "react": "19.2.0"
+    "react": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

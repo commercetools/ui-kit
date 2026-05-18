@@ -28,17 +28,17 @@
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
     "lodash": "catalog:",
-    "popper.js": "^1.15.0",
+    "popper.js": "catalog:",
     "react-is": "catalog:",
-    "use-popper": "1.1.6"
+    "use-popper": "catalog:"
   },
   "devDependencies": {
     "@commercetools-uikit/primary-button": "workspace:^",
-    "@types/react-is": "19.2.0",
+    "@types/react-is": "catalog:",
     "prop-types": "catalog:",
-    "react": "19.2.0"
+    "react": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

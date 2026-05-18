@@ -53,9 +53,9 @@
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
-    "@hello-pangea/dnd": "^18.0.0",
-    "@types/debounce-promise": "^3.1.6",
-    "debounce-promise": "^3.1.2",
+    "@hello-pangea/dnd": "catalog:",
+    "@types/debounce-promise": "catalog:",
+    "debounce-promise": "catalog:",
     "lodash": "catalog:"
   },
   "devDependencies": {
@@ -63,14 +63,14 @@
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/search-text-input": "workspace:^",
     "@commercetools-uikit/toggle-input": "workspace:^",
-    "formik": "^2.4.6",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-intl": "^7.1.4"
+    "formik": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-intl": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-dom": "19.x",
-    "react-intl": "7.x"
+    "react": "catalog:peer",
+    "react-dom": "catalog:peer",
+    "react-intl": "catalog:peer"
   }
 }

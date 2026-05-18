@@ -12,20 +12,184 @@ packages:
   - presets/*
   - visual-testing-app
 
-# Shared dependency versions consumed via `catalog:` in workspace package.json
-# files. Versions are the exact specs the workspaces used before adoption, so
-# adopting catalog references is a no-op for resolution.
+# Single source of truth for external dep versions across the workspace.
+# Workspace package.json files reference these via the catalog protocol:
+#   "lodash": "catalog:"      -> default catalog (install-time pin)
+#   "react":  "catalog:peer"  -> named "peer" catalog (consumer compatibility range)
 #
-# `check-workspace-constraints.js` enforces that workspaces using a cataloged
-# dep reference it as `catalog:` — literal versions are an error.
+# scripts/check-workspace-constraints.js enforces that every external dep
+# named here is consumed only via its catalog reference; literal versions
+# in workspace package.json files are an error.
+
 catalog:
+  '@babel/core': 7.28.4
   '@babel/runtime': ^7.20.13
   '@babel/runtime-corejs3': ^7.20.13
+  '@changesets/changelog-github': 0.5.1
+  '@changesets/cli': 2.29.7
+  '@commercetools-frontend/babel-preset-mc-app': 27.0.0
+  '@commercetools-frontend/eslint-config-mc-app': 27.0.0
+  '@commitlint/cli': 20.1.0
+  '@commitlint/config-conventional': 20.0.0
+  '@emotion/css': ^11.10.5
+  '@emotion/is-prop-valid': 1.4.0
   '@emotion/react': ^11.10.5
   '@emotion/styled': ^11.10.5
+  '@fontsource/inter': 5.2.8
+  '@formatjs/cli': 6.7.4
+  '@formatjs/intl-relativetimeformat': 11.4.13
+  '@hello-pangea/dnd': ^18.0.0
+  '@manypkg/cli': 0.25.1
+  '@manypkg/find-root': 1.1.0
+  '@manypkg/get-packages': 1.1.3
+  '@modyfi/vite-plugin-yaml': ^1.1.0
+  '@percy/cli': 1.31.3
+  '@percy/puppeteer': 2.0.2
+  '@preconstruct/cli': 2.8.12
+  '@radix-ui/react-popover': ^1.1.4
+  '@storybook/addon-a11y': 9.1.20
+  '@storybook/addon-docs': 9.1.20
+  '@storybook/addon-links': 9.1.20
+  '@storybook/react-vite': 9.1.20
+  '@svgr/babel-plugin-svg-dynamic-title': ^8.0.0
+  '@svgr/cli': 8.1.0
+  '@svgr/core': 8.1.0
+  '@svgr/plugin-jsx': 8.1.0
+  '@svgr/plugin-svgo': 8.1.0
+  '@swc/plugin-emotion': ^14.3.0
+  '@testing-library/dom': ^10.4.0
+  '@testing-library/jest-dom': 6.9.1
+  '@testing-library/react': ^16.2.0
+  '@types/debounce-promise': ^3.1.6
+  '@types/dompurify': ^2.4.0
+  '@types/escape-html': 1.0.4
+  '@types/history': ^4.7.11
+  '@types/is-hotkey': ^0.1.7
+  '@types/is-url': ^1.2.32
+  '@types/jest': ^30.0.0
+  '@types/listr': 0.14.9
+  '@types/lodash': ^4.17.24
+  '@types/mdast': 4.0.4
+  '@types/node': ^22.13.1
+  '@types/prettier': ^2.7.3
+  '@types/raf-schd': ^4.0.1
+  '@types/react': ^19.0.7
+  '@types/react-dom': ^19.0.3
+  '@types/react-is': 19.2.0
+  '@types/react-router-dom': ^5.3.3
+  '@types/shelljs': 0.8.17
+  '@types/unist': 3.0.3
+  '@types/vfile': 4.0.0
+  '@typescript-eslint/eslint-plugin': 8.46.0
+  '@typescript-eslint/parser': 8.46.0
+  '@vitejs/plugin-react': 5.0.4
+  '@vitejs/plugin-react-swc': ^4.2.2
+  babel-jest: 30.3.0
+  babel-plugin-formatjs: ^10.0.0
+  browserslist: 4.26.3
+  bundlewatch: ^0.4.1
+  colors: 1.4.0
+  commander: ^13.1.0
+  conventional-changelog-cli: 5.0.0
+  cross-env: 10.1.0
+  debounce-promise: ^3.1.2
+  dompurify: 3.3.2
   downshift: 9.0.10
+  escape-html: 1.0.3
+  eslint: ^9.0.0
+  eslint-formatter-pretty: 7.0.0
+  eslint-plugin-storybook: 9.1.20
+  execa: 9.6.0
+  formik: ^2.4.6
+  glob: 13.0.0
+  global: 4.4.0
   history: 4.10.1
+  husky: 9.1.7
+  identity-obj-proxy: 3.0.0
+  immutable: 4.3.8
+  intl-pluralrules: 2.0.1
+  is-hotkey: 0.2.0
+  is-url: ^1.2.4
+  jest: 30.3.0
+  jest-environment-jsdom: 30.3.0
+  jest-localstorage-mock: 2.4.26
+  jest-puppeteer: 11.0.0
+  jest-runner-eslint: 2.3.0
+  jest-runner-stylelint: 2.3.7
+  jest-silent-reporter: 0.6.0
+  jest-validate: 30.3.0
+  jest-watch-typeahead: 3.0.1
+  jsdom: ^26.1.0
+  lint-staged: 16.2.4
+  listr: 0.14.3
+  listr-verbose-renderer: 0.6.0
   lodash: 4.18.1
+  moment: 2.30.1
+  moment-timezone: 0.6.0
+  nodemon: ^3.0.0
+  omit-empty-es: 1.2.0
+  'popper.js': ^1.15.0
+  postcss: 8.5.6
+  postcss-styled-syntax: ^0.7.0
+  postcss-syntax: ^0.36.2
+  postcss-value-parser: 4.2.0
+  pptr-testing-library: 0.8.0
+  prettier: 2.8.8
   prop-types: ^15.8.1
+  publint: ^0.3.21
+  puppeteer: 22.15.0
+  qs: 6.14.1
+  raf-schd: ^4.0.3
+  rcfile: 1.0.3
+  react: 19.2.0
+  react-docgen: 5.4.3
+  react-dom: 19.2.0
+  react-from-dom: 0.7.3
+  react-intl: ^7.1.4
   react-is: 19.2.0
+  react-router: 5.3.4
+  react-router-dom: 5.3.4
   react-select: 5.10.2
+  react-textarea-autosize: 8.4.0
+  react-value: 0.2.0
+  remark-gfm: ^4.0.0
+  remark-gfm-v1: 'npm:remark-gfm@1.0.0'
+  remark-mdx: 1.6.22
+  remark-parse: 9.0.0
+  remark-stringify: 9.0.1
+  replace: 1.2.2
+  rimraf: 3.0.2
+  serve: ^14.2.5
+  shelljs: 0.10.0
+  slate: 0.75.0
+  slate-history: 0.113.1
+  slate-hyperscript: 0.100.0
+  slate-react: 0.75.0
+  storybook: 9.1.20
+  style-to-object: 0.4.4
+  stylelint: 16.25.0
+  stylelint-config-standard: 36.0.1
+  stylelint-order: 5.0.0
+  to-vfile: 6.1.0
+  ts-node: 10.9.2
+  tsc-files: 1.1.4
+  typescript: 5.9.3
+  typescript-react-function-component-props-handler: 1.1.1
+  unified: 9.2.2
+  use-popper: 1.1.6
+  vfile: 4.2.1
+  vfile-reporter: 6.0.2
+  vite: 6.4.2
+  warning: 4.0.3
+  yaml: ^2.8.3
+
+catalogs:
+  peer:
+    moment: '2.x'
+    moment-timezone: '0.6.x'
+    prettier: '2.x'
+    react: '19.x'
+    react-dom: '19.x'
+    react-intl: '7.x'
+    react-router-dom: '5.x'
+    typescript: '5.x'

@@ -21,12 +21,12 @@
   "dependencies": {
     "@babel/runtime": "catalog:",
     "@babel/runtime-corejs3": "catalog:",
-    "@emotion/is-prop-valid": "1.4.0"
+    "@emotion/is-prop-valid": "catalog:"
   },
   "devDependencies": {
-    "react": "19.2.0"
+    "react": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

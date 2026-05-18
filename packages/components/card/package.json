@@ -26,16 +26,16 @@
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
-    "@types/react-router-dom": "^5.3.3",
+    "@types/react-router-dom": "catalog:",
     "history": "catalog:"
   },
   "devDependencies": {
     "@commercetools-uikit/text": "workspace:^",
-    "react": "19.2.0",
-    "react-router-dom": "5.3.4"
+    "react": "catalog:",
+    "react-router-dom": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-router-dom": "5.x"
+    "react": "catalog:peer",
+    "react-router-dom": "catalog:peer"
   }
 }

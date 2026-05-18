@@ -11,8 +11,10 @@
  *
  * Cross-workspace rules (Pass 2):
  * 5. Every dep listed under `catalog:` in pnpm-workspace.yaml must be
- *    consumed via the `catalog:` reference in every workspace using it.
- *    Literal versions on a cataloged dep are an error.
+ *    consumed via `catalog:` in workspace `dependencies` / `devDependencies`.
+ * 6. Every dep listed under `catalogs.peer:` in pnpm-workspace.yaml must be
+ *    consumed via `catalog:peer` in workspace `peerDependencies`.
+ *    Literal versions on a cataloged dep are an error in either case.
  */
 const { execSync } = require('child_process');
 const fs = require('fs');
@@ -21,25 +23,58 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const REPO_URL = 'https://github.com/commercetools/ui-kit.git';
 
-// Parse the `catalog:` block from pnpm-workspace.yaml. Minimal parser scoped
-// to the shape we use (default catalog only, key:value entries, optionally
-// single-quoted keys). Avoids pulling a YAML lib into a root-only script.
-function readCatalogKeys() {
+// Parse the `catalog:` (default) and `catalogs.<name>:` (named) blocks from
+// pnpm-workspace.yaml. Minimal parser scoped to the shape we use — key:value
+// entries with optional single-quoted keys. Avoids pulling a YAML lib into a
+// root-only script.
+function readCatalogs() {
   const yaml = fs.readFileSync(path.join(ROOT, 'pnpm-workspace.yaml'), 'utf-8');
   const lines = yaml.split('\n');
-  const start = lines.findIndex((l) => /^catalog:\s*$/.test(l));
-  if (start === -1) return new Set();
-  const keys = new Set();
-  for (let i = start + 1; i < lines.length; i++) {
+  const out = { default: new Set(), named: new Map() };
+
+  const indentOf = (l) => l.match(/^( *)/)[1].length;
+  const entryKey = (l) => {
+    const m = l.match(/^\s+'?([^'":\s]+)'?\s*:/);
+    return m ? m[1] : null;
+  };
+
+  for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    if (line.trim() === '' || /^\S/.test(line)) break; // end of block
-    const m = line.match(/^\s+'?([^'":\s]+)'?\s*:/);
-    if (m) keys.add(m[1]);
+    if (/^catalog:\s*$/.test(line)) {
+      for (let j = i + 1; j < lines.length; j++) {
+        const inner = lines[j];
+        if (inner.trim() === '' || /^\S/.test(inner)) break;
+        const k = entryKey(inner);
+        if (k) out.default.add(k);
+      }
+    } else if (/^catalogs:\s*$/.test(line)) {
+      // Each child at the next indent level (2 spaces) is a named catalog.
+      for (let j = i + 1; j < lines.length; j++) {
+        const inner = lines[j];
+        if (inner.trim() === '' || /^\S/.test(inner)) break;
+        const ind = indentOf(inner);
+        if (ind === 2) {
+          const nm = inner.trim().replace(/:$/, '');
+          if (!out.named.has(nm)) out.named.set(nm, new Set());
+          // collect deeper-indented entries until indent drops back
+          for (let k = j + 1; k < lines.length; k++) {
+            const e = lines[k];
+            if (e.trim() === '') break;
+            const eInd = indentOf(e);
+            if (eInd <= 2) break;
+            const ek = entryKey(e);
+            if (ek) out.named.get(nm).add(ek);
+          }
+        }
+      }
+    }
   }
-  return keys;
+  return out;
 }
 
-const catalogKeys = readCatalogKeys();
+const catalogs = readCatalogs();
+const defaultCatalogKeys = catalogs.default;
+const peerCatalogKeys = catalogs.named.get('peer') || new Set();
 
 // Get all workspace packages via pnpm
 const workspaces = JSON.parse(
@@ -48,8 +83,12 @@ const workspaces = JSON.parse(
 
 const errors = [];
 
-// Pass 2 accumulator: depName -> Map<spec, Set<workspaceLabel>>
-const usage = new Map();
+// Pass 2 accumulators: depName -> Map<spec, Set<workspaceLabel>>.
+// Split by section group because the default catalog applies to install
+// specifiers (dependencies + devDependencies) and the named `peer` catalog
+// applies to peerDependencies — semantically distinct.
+const installUsage = new Map();
+const peerUsage = new Map();
 
 for (const ws of workspaces) {
   const pkgPath = path.join(ws.path, 'package.json');
@@ -71,20 +110,24 @@ for (const ws of workspaces) {
   }
 
   // Accumulate cross-workspace dep usage for Pass 2. Skip workspace: refs
-  // (internal links) and consider only the three dep sections.
-  for (const section of [
-    'dependencies',
-    'devDependencies',
-    'peerDependencies',
-  ]) {
+  // (internal links). Split install (deps + devDeps) from peer.
+  const addUsage = (map, name, spec) => {
+    if (!map.has(name)) map.set(name, new Map());
+    const bySpec = map.get(name);
+    if (!bySpec.has(spec)) bySpec.set(spec, new Set());
+    bySpec.get(spec).add(label);
+  };
+  for (const section of ['dependencies', 'devDependencies']) {
     const sectionDeps = pkg[section] || {};
     for (const [name, spec] of Object.entries(sectionDeps)) {
       if (typeof spec !== 'string' || spec.startsWith('workspace:')) continue;
-      if (!usage.has(name)) usage.set(name, new Map());
-      const bySpec = usage.get(name);
-      if (!bySpec.has(spec)) bySpec.set(spec, new Set());
-      bySpec.get(spec).add(label);
+      addUsage(installUsage, name, spec);
     }
+  }
+  const peerDeps = pkg.peerDependencies || {};
+  for (const [name, spec] of Object.entries(peerDeps)) {
+    if (typeof spec !== 'string' || spec.startsWith('workspace:')) continue;
+    addUsage(peerUsage, name, spec);
   }
 
   if (isPrivate) {
@@ -154,25 +197,29 @@ for (const ws of workspaces) {
   }
 }
 
-// Pass 2: every dep listed under `catalog:` in pnpm-workspace.yaml must be
-// consumed via "catalog:" in every workspace that declares it. Literal
+// Pass 2: cataloged deps must be referenced via their catalog. Literal
 // versions on a cataloged dep are an error — the catalog is the single
-// source of truth for the version, and skipping the reference re-introduces
-// the version-drift this rule exists to prevent.
-for (const name of catalogKeys) {
-  const bySpec = usage.get(name);
-  if (!bySpec) continue;
-  for (const [spec, workspaceLabels] of bySpec) {
-    if (spec === 'catalog:') continue;
-    for (const label of workspaceLabels) {
-      errors.push(
-        `${label}: "${name}" must use "catalog:" (got ${JSON.stringify(
-          spec
-        )}); the version is declared in pnpm-workspace.yaml`
-      );
+// source of truth, and skipping the reference re-introduces the version
+// drift this rule exists to prevent.
+function enforceCatalog(catalogKeys, usage, expectedSpec, ruleName) {
+  for (const name of catalogKeys) {
+    const bySpec = usage.get(name);
+    if (!bySpec) continue;
+    for (const [spec, workspaceLabels] of bySpec) {
+      if (spec === expectedSpec) continue;
+      for (const label of workspaceLabels) {
+        errors.push(
+          `${label}: "${name}" must use "${expectedSpec}" (got ${JSON.stringify(
+            spec
+          )}); ${ruleName} version is declared in pnpm-workspace.yaml`
+        );
+      }
     }
   }
 }
+
+enforceCatalog(defaultCatalogKeys, installUsage, 'catalog:', 'default catalog');
+enforceCatalog(peerCatalogKeys, peerUsage, 'catalog:peer', 'peer catalog');
 
 if (errors.length > 0) {
   console.error(`Found ${errors.length} workspace constraint violation(s):\n`);

@@ -29,13 +29,13 @@
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
     "lodash": "catalog:",
-    "react-intl": "^7.1.4"
+    "react-intl": "catalog:"
   },
   "devDependencies": {
     "@commercetools-uikit/icons": "workspace:^",
-    "react": "19.2.0"
+    "react": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

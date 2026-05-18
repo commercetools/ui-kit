@@ -43,17 +43,17 @@
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
-    "@types/dompurify": "^2.4.0",
-    "dompurify": "3.3.2",
-    "react-from-dom": "0.7.3"
+    "@types/dompurify": "catalog:",
+    "dompurify": "catalog:",
+    "react-from-dom": "catalog:"
   },
   "devDependencies": {
     "@commercetools-uikit/spacings": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
-    "react": "19.2.0",
-    "react-router-dom": "5.3.4"
+    "react": "catalog:",
+    "react-router-dom": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

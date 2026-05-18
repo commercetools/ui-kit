@@ -25,19 +25,18 @@
     "@babel/runtime": "catalog:",
     "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/utils": "workspace:^",
-    "@types/raf-schd": "^4.0.1",
+    "@types/raf-schd": "catalog:",
     "lodash": "catalog:",
-    "raf-schd": "^4.0.3"
+    "raf-schd": "catalog:"
   },
   "devDependencies": {
     "@commercetools-frontend/ui-kit": "workspace:^",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/react": "^16.2.0",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "@testing-library/dom": "catalog:",
+    "@testing-library/react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-dom": "19.x"
+    "react-dom": "catalog:peer"
   }
 }

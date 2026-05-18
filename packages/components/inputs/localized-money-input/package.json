@@ -40,13 +40,13 @@
   },
   "devDependencies": {
     "prop-types": "catalog:",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-intl": "^7.1.4"
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-intl": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-dom": "19.x",
-    "react-intl": "7.x"
+    "react": "catalog:peer",
+    "react-dom": "catalog:peer",
+    "react-intl": "catalog:peer"
   }
 }

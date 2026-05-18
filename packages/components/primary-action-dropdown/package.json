@@ -31,14 +31,14 @@
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
     "lodash": "catalog:",
-    "react-intl": "^7.1.4"
+    "react-intl": "catalog:"
   },
   "devDependencies": {
-    "react": "19.2.0",
-    "react-router-dom": "5.3.4"
+    "react": "catalog:",
+    "react-router-dom": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   },
   "readme": {
     "componentPaths": ["./src/primary-action-dropdown.tsx", "./src/option.tsx"]

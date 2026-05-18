@@ -6,33 +6,462 @@ settings:
 
 catalogs:
   default:
+    '@babel/core':
+      specifier: 7.28.4
+      version: 7.28.4
     '@babel/runtime':
       specifier: ^7.20.13
       version: 7.29.2
     '@babel/runtime-corejs3':
       specifier: ^7.20.13
       version: 7.29.2
+    '@changesets/changelog-github':
+      specifier: 0.5.1
+      version: 0.5.1
+    '@changesets/cli':
+      specifier: 2.29.7
+      version: 2.29.7
+    '@commercetools-frontend/babel-preset-mc-app':
+      specifier: 27.0.0
+      version: 27.0.0
+    '@commercetools-frontend/eslint-config-mc-app':
+      specifier: 27.0.0
+      version: 27.0.0
+    '@commitlint/cli':
+      specifier: 20.1.0
+      version: 20.1.0
+    '@commitlint/config-conventional':
+      specifier: 20.0.0
+      version: 20.0.0
+    '@emotion/css':
+      specifier: ^11.10.5
+      version: 11.13.5
+    '@emotion/is-prop-valid':
+      specifier: 1.4.0
+      version: 1.4.0
     '@emotion/react':
       specifier: ^11.10.5
       version: 11.14.0
     '@emotion/styled':
       specifier: ^11.10.5
       version: 11.14.1
+    '@fontsource/inter':
+      specifier: 5.2.8
+      version: 5.2.8
+    '@formatjs/cli':
+      specifier: 6.7.4
+      version: 6.7.4
+    '@formatjs/intl-relativetimeformat':
+      specifier: 11.4.13
+      version: 11.4.13
+    '@hello-pangea/dnd':
+      specifier: ^18.0.0
+      version: 18.0.1
+    '@manypkg/cli':
+      specifier: 0.25.1
+      version: 0.25.1
+    '@manypkg/find-root':
+      specifier: 1.1.0
+      version: 1.1.0
+    '@manypkg/get-packages':
+      specifier: 1.1.3
+      version: 1.1.3
+    '@modyfi/vite-plugin-yaml':
+      specifier: ^1.1.0
+      version: 1.1.1
+    '@percy/cli':
+      specifier: 1.31.3
+      version: 1.31.3
+    '@percy/puppeteer':
+      specifier: 2.0.2
+      version: 2.0.2
+    '@preconstruct/cli':
+      specifier: 2.8.12
+      version: 2.8.12
+    '@radix-ui/react-popover':
+      specifier: ^1.1.4
+      version: 1.1.15
+    '@storybook/addon-a11y':
+      specifier: 9.1.20
+      version: 9.1.20
+    '@storybook/addon-docs':
+      specifier: 9.1.20
+      version: 9.1.20
+    '@storybook/addon-links':
+      specifier: 9.1.20
+      version: 9.1.20
+    '@storybook/react-vite':
+      specifier: 9.1.20
+      version: 9.1.20
+    '@svgr/babel-plugin-svg-dynamic-title':
+      specifier: ^8.0.0
+      version: 8.0.0
+    '@svgr/cli':
+      specifier: 8.1.0
+      version: 8.1.0
+    '@svgr/core':
+      specifier: 8.1.0
+      version: 8.1.0
+    '@svgr/plugin-jsx':
+      specifier: 8.1.0
+      version: 8.1.0
+    '@svgr/plugin-svgo':
+      specifier: 8.1.0
+      version: 8.1.0
+    '@swc/plugin-emotion':
+      specifier: ^14.3.0
+      version: 14.7.0
+    '@testing-library/dom':
+      specifier: ^10.4.0
+      version: 10.4.1
+    '@testing-library/jest-dom':
+      specifier: 6.9.1
+      version: 6.9.1
+    '@testing-library/react':
+      specifier: ^16.2.0
+      version: 16.3.2
+    '@types/debounce-promise':
+      specifier: ^3.1.6
+      version: 3.1.9
+    '@types/dompurify':
+      specifier: ^2.4.0
+      version: 2.4.0
+    '@types/escape-html':
+      specifier: 1.0.4
+      version: 1.0.4
+    '@types/history':
+      specifier: ^4.7.11
+      version: 4.7.11
+    '@types/is-hotkey':
+      specifier: ^0.1.7
+      version: 0.1.10
+    '@types/is-url':
+      specifier: ^1.2.32
+      version: 1.2.32
+    '@types/jest':
+      specifier: ^30.0.0
+      version: 30.0.0
+    '@types/listr':
+      specifier: 0.14.9
+      version: 0.14.9
+    '@types/lodash':
+      specifier: ^4.17.24
+      version: 4.17.24
+    '@types/mdast':
+      specifier: 4.0.4
+      version: 4.0.4
+    '@types/node':
+      specifier: ^22.13.1
+      version: 22.19.15
+    '@types/prettier':
+      specifier: ^2.7.3
+      version: 2.7.3
+    '@types/raf-schd':
+      specifier: ^4.0.1
+      version: 4.0.3
+    '@types/react-is':
+      specifier: 19.2.0
+      version: 19.2.0
+    '@types/react-router-dom':
+      specifier: ^5.3.3
+      version: 5.3.3
+    '@types/shelljs':
+      specifier: 0.8.17
+      version: 0.8.17
+    '@types/vfile':
+      specifier: 4.0.0
+      version: 4.0.0
+    '@vitejs/plugin-react':
+      specifier: 5.0.4
+      version: 5.0.4
+    '@vitejs/plugin-react-swc':
+      specifier: ^4.2.2
+      version: 4.3.0
+    babel-jest:
+      specifier: 30.3.0
+      version: 30.3.0
+    babel-plugin-formatjs:
+      specifier: ^10.0.0
+      version: 10.5.41
+    browserslist:
+      specifier: 4.26.3
+      version: 4.26.3
+    bundlewatch:
+      specifier: ^0.4.1
+      version: 0.4.1
+    colors:
+      specifier: 1.4.0
+      version: 1.4.0
+    commander:
+      specifier: ^13.1.0
+      version: 13.1.0
+    conventional-changelog-cli:
+      specifier: 5.0.0
+      version: 5.0.0
+    cross-env:
+      specifier: 10.1.0
+      version: 10.1.0
+    debounce-promise:
+      specifier: ^3.1.2
+      version: 3.1.2
+    dompurify:
+      specifier: 3.3.2
+      version: 3.3.2
     downshift:
       specifier: 9.0.10
       version: 9.0.10
+    escape-html:
+      specifier: 1.0.3
+      version: 1.0.3
+    eslint:
+      specifier: ^9.0.0
+      version: 9.39.4
+    eslint-formatter-pretty:
+      specifier: 7.0.0
+      version: 7.0.0
+    eslint-plugin-storybook:
+      specifier: 9.1.20
+      version: 9.1.20
+    execa:
+      specifier: 9.6.0
+      version: 9.6.0
+    formik:
+      specifier: ^2.4.6
+      version: 2.4.9
+    glob:
+      specifier: 13.0.0
+      version: 13.0.0
+    global:
+      specifier: 4.4.0
+      version: 4.4.0
     history:
       specifier: 4.10.1
       version: 4.10.1
+    husky:
+      specifier: 9.1.7
+      version: 9.1.7
+    identity-obj-proxy:
+      specifier: 3.0.0
+      version: 3.0.0
+    intl-pluralrules:
+      specifier: 2.0.1
+      version: 2.0.1
+    is-hotkey:
+      specifier: 0.2.0
+      version: 0.2.0
+    is-url:
+      specifier: ^1.2.4
+      version: 1.2.4
+    jest:
+      specifier: 30.3.0
+      version: 30.3.0
+    jest-environment-jsdom:
+      specifier: 30.3.0
+      version: 30.3.0
+    jest-localstorage-mock:
+      specifier: 2.4.26
+      version: 2.4.26
+    jest-puppeteer:
+      specifier: 11.0.0
+      version: 11.0.0
+    jest-runner-eslint:
+      specifier: 2.3.0
+      version: 2.3.0
+    jest-runner-stylelint:
+      specifier: 2.3.7
+      version: 2.3.7
+    jest-silent-reporter:
+      specifier: 0.6.0
+      version: 0.6.0
+    jest-validate:
+      specifier: 30.3.0
+      version: 30.3.0
+    jest-watch-typeahead:
+      specifier: 3.0.1
+      version: 3.0.1
+    jsdom:
+      specifier: ^26.1.0
+      version: 26.1.0
+    lint-staged:
+      specifier: 16.2.4
+      version: 16.2.4
+    listr:
+      specifier: 0.14.3
+      version: 0.14.3
+    listr-verbose-renderer:
+      specifier: 0.6.0
+      version: 0.6.0
+    moment:
+      specifier: 2.30.1
+      version: 2.30.1
+    moment-timezone:
+      specifier: 0.6.0
+      version: 0.6.0
+    nodemon:
+      specifier: ^3.0.0
+      version: 3.1.14
+    omit-empty-es:
+      specifier: 1.2.0
+      version: 1.2.0
+    popper.js:
+      specifier: ^1.15.0
+      version: 1.15.0
+    postcss:
+      specifier: 8.5.6
+      version: 8.5.6
+    postcss-styled-syntax:
+      specifier: ^0.7.0
+      version: 0.7.1
+    postcss-syntax:
+      specifier: ^0.36.2
+      version: 0.36.2
+    postcss-value-parser:
+      specifier: 4.2.0
+      version: 4.2.0
+    pptr-testing-library:
+      specifier: 0.8.0
+      version: 0.8.0
+    prettier:
+      specifier: 2.8.8
+      version: 2.8.8
     prop-types:
       specifier: ^15.8.1
       version: 15.8.1
+    publint:
+      specifier: ^0.3.21
+      version: 0.3.21
+    puppeteer:
+      specifier: 22.15.0
+      version: 22.15.0
+    qs:
+      specifier: 6.14.1
+      version: 6.14.1
+    raf-schd:
+      specifier: ^4.0.3
+      version: 4.0.3
+    rcfile:
+      specifier: 1.0.3
+      version: 1.0.3
+    react:
+      specifier: 19.2.0
+      version: 19.2.0
+    react-docgen:
+      specifier: 5.4.3
+      version: 5.4.3
+    react-dom:
+      specifier: 19.2.0
+      version: 19.2.0
+    react-intl:
+      specifier: ^7.1.4
+      version: 7.1.14
     react-is:
       specifier: 19.2.0
       version: 19.2.0
+    react-router:
+      specifier: 5.3.4
+      version: 5.3.4
+    react-router-dom:
+      specifier: 5.3.4
+      version: 5.3.4
     react-select:
       specifier: 5.10.2
       version: 5.10.2
+    react-textarea-autosize:
+      specifier: 8.4.0
+      version: 8.4.0
+    react-value:
+      specifier: 0.2.0
+      version: 0.2.0
+    remark-gfm:
+      specifier: ^4.0.0
+      version: 4.0.1
+    remark-gfm-v1:
+      specifier: npm:remark-gfm@1.0.0
+      version: 1.0.0
+    remark-mdx:
+      specifier: 1.6.22
+      version: 1.6.22
+    remark-parse:
+      specifier: 9.0.0
+      version: 9.0.0
+    remark-stringify:
+      specifier: 9.0.1
+      version: 9.0.1
+    replace:
+      specifier: 1.2.2
+      version: 1.2.2
+    rimraf:
+      specifier: 3.0.2
+      version: 3.0.2
+    serve:
+      specifier: ^14.2.5
+      version: 14.2.6
+    shelljs:
+      specifier: 0.10.0
+      version: 0.10.0
+    slate:
+      specifier: 0.75.0
+      version: 0.75.0
+    slate-history:
+      specifier: 0.113.1
+      version: 0.113.1
+    slate-hyperscript:
+      specifier: 0.100.0
+      version: 0.100.0
+    slate-react:
+      specifier: 0.75.0
+      version: 0.75.0
+    storybook:
+      specifier: 9.1.20
+      version: 9.1.20
+    style-to-object:
+      specifier: 0.4.4
+      version: 0.4.4
+    stylelint:
+      specifier: 16.25.0
+      version: 16.25.0
+    stylelint-config-standard:
+      specifier: 36.0.1
+      version: 36.0.1
+    stylelint-order:
+      specifier: 5.0.0
+      version: 5.0.0
+    to-vfile:
+      specifier: 6.1.0
+      version: 6.1.0
+    ts-node:
+      specifier: 10.9.2
+      version: 10.9.2
+    tsc-files:
+      specifier: 1.1.4
+      version: 1.1.4
+    typescript:
+      specifier: 5.9.3
+      version: 5.9.3
+    typescript-react-function-component-props-handler:
+      specifier: 1.1.1
+      version: 1.1.1
+    unified:
+      specifier: 9.2.2
+      version: 9.2.2
+    use-popper:
+      specifier: 1.1.6
+      version: 1.1.6
+    vfile:
+      specifier: 4.2.1
+      version: 4.2.1
+    vfile-reporter:
+      specifier: 6.0.2
+      version: 6.0.2
+    vite:
+      specifier: 6.4.2
+      version: 6.4.2
+    warning:
+      specifier: 4.0.3
+      version: 4.0.3
+    yaml:
+      specifier: ^2.8.3
+      version: 2.8.3
 
 overrides:
   '@babel/preset-env': ^7.18.6
@@ -83,19 +512,19 @@ importers:
   .:
     devDependencies:
       '@babel/core':
-        specifier: 7.28.4
+        specifier: 'catalog:'
         version: 7.28.4
       '@changesets/changelog-github':
-        specifier: 0.5.1
+        specifier: 'catalog:'
         version: 0.5.1
       '@changesets/cli':
-        specifier: 2.29.7
+        specifier: 'catalog:'
         version: 2.29.7(@types/node@22.19.15)
       '@commercetools-frontend/babel-preset-mc-app':
-        specifier: 27.0.0
+        specifier: 'catalog:'
         version: 27.0.0(babel-plugin-istanbul@7.0.1)(ts-jest@29.4.5(@babel/core@7.28.4)(@jest/transform@30.3.0)(@jest/types@30.4.1)(babel-jest@30.3.0(@babel/core@7.28.4))(esbuild@0.25.12)(jest-util@30.4.1)(jest@30.3.0(@types/node@22.19.15)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.25.12))(ts-node@10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3)))(typescript@5.9.3))
       '@commercetools-frontend/eslint-config-mc-app':
-        specifier: 27.0.0
+        specifier: 'catalog:'
         version: 27.0.0(babel-plugin-istanbul@7.0.1)(eslint@9.39.4(jiti@2.6.1))(jest@30.3.0(@types/node@22.19.15)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.25.12))(ts-node@10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3)))(ts-jest@29.4.5(@babel/core@7.28.4)(@jest/transform@30.3.0)(@jest/types@30.4.1)(babel-jest@30.3.0(@babel/core@7.28.4))(esbuild@0.25.12)(jest-util@30.4.1)(jest@30.3.0(@types/node@22.19.15)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.25.12))(ts-node@10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3)))(typescript@5.9.3))
       '@commercetools-frontend/ui-kit':
         specifier: workspace:^
@@ -119,10 +548,10 @@ importers:
         specifier: workspace:^
         version: link:packages/utils
       '@commitlint/cli':
-        specifier: 20.1.0
+        specifier: 'catalog:'
         version: 20.1.0(@types/node@22.19.15)(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)(typescript@5.9.3)
       '@commitlint/config-conventional':
-        specifier: 20.0.0
+        specifier: 'catalog:'
         version: 20.0.0
       '@emotion/react':
         specifier: 'catalog:'
@@ -131,70 +560,70 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@formatjs/cli':
-        specifier: 6.7.4
+        specifier: 'catalog:'
         version: 6.7.4
       '@formatjs/intl-relativetimeformat':
-        specifier: 11.4.13
+        specifier: 'catalog:'
         version: 11.4.13
       '@manypkg/cli':
-        specifier: 0.25.1
+        specifier: 'catalog:'
         version: 0.25.1
       '@manypkg/get-packages':
-        specifier: 1.1.3
+        specifier: 'catalog:'
         version: 1.1.3
       '@percy/cli':
-        specifier: 1.31.3
+        specifier: 'catalog:'
         version: 1.31.3(typescript@5.9.3)
       '@percy/puppeteer':
-        specifier: 2.0.2
+        specifier: 'catalog:'
         version: 2.0.2(puppeteer@22.15.0(typescript@5.9.3))
       '@preconstruct/cli':
-        specifier: 2.8.12
+        specifier: 'catalog:'
         version: 2.8.12
       '@svgr/babel-plugin-svg-dynamic-title':
-        specifier: ^8.0.0
+        specifier: 'catalog:'
         version: 8.0.0(@babel/core@7.28.4)
       '@svgr/cli':
-        specifier: 8.1.0
+        specifier: 'catalog:'
         version: 8.1.0(typescript@5.9.3)
       '@svgr/core':
-        specifier: 8.1.0
+        specifier: 'catalog:'
         version: 8.1.0(typescript@5.9.3)
       '@svgr/plugin-jsx':
-        specifier: 8.1.0
+        specifier: 'catalog:'
         version: 8.1.0(@svgr/core@8.1.0(typescript@5.9.3))
       '@svgr/plugin-svgo':
-        specifier: 8.1.0
+        specifier: 'catalog:'
         version: 8.1.0(@svgr/core@8.1.0(typescript@5.9.3))(typescript@5.9.3)
       '@testing-library/dom':
-        specifier: ^10.4.0
+        specifier: 'catalog:'
         version: 10.4.1
       '@testing-library/jest-dom':
-        specifier: 6.9.1
+        specifier: 'catalog:'
         version: 6.9.1
       '@testing-library/react':
-        specifier: ^16.2.0
+        specifier: 'catalog:'
         version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@types/history':
-        specifier: ^4.7.11
+        specifier: 'catalog:'
         version: 4.7.11
       '@types/is-hotkey':
-        specifier: ^0.1.7
+        specifier: 'catalog:'
         version: 0.1.10
       '@types/is-url':
-        specifier: ^1.2.32
+        specifier: 'catalog:'
         version: 1.2.32
       '@types/jest':
-        specifier: ^30.0.0
+        specifier: 'catalog:'
         version: 30.0.0
       '@types/lodash':
-        specifier: ^4.17.24
+        specifier: 'catalog:'
         version: 4.17.24
       '@types/node':
-        specifier: ^22.13.1
+        specifier: 'catalog:'
         version: 22.19.15
       '@types/prettier':
-        specifier: ^2.7.3
+        specifier: 'catalog:'
         version: 2.7.3
       '@types/react':
         specifier: ^19.0.3
@@ -203,10 +632,10 @@ importers:
         specifier: 19.2.1
         version: 19.2.1(@types/react@19.2.14)
       '@types/react-router-dom':
-        specifier: ^5.3.3
+        specifier: 'catalog:'
         version: 5.3.3
       '@types/shelljs':
-        specifier: 0.8.17
+        specifier: 'catalog:'
         version: 0.8.17
       '@typescript-eslint/eslint-plugin':
         specifier: 8.46.0
@@ -215,178 +644,178 @@ importers:
         specifier: 8.46.0
         version: 8.46.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       babel-jest:
-        specifier: 30.3.0
+        specifier: 'catalog:'
         version: 30.3.0(@babel/core@7.28.4)
       babel-plugin-formatjs:
-        specifier: ^10.0.0
+        specifier: 'catalog:'
         version: 10.5.41(ts-jest@29.4.5(@babel/core@7.28.4)(@jest/transform@30.3.0)(@jest/types@30.4.1)(babel-jest@30.3.0(@babel/core@7.28.4))(esbuild@0.25.12)(jest-util@30.4.1)(jest@30.3.0(@types/node@22.19.15)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.25.12))(ts-node@10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3)))(typescript@5.9.3))
       browserslist:
-        specifier: 4.26.3
+        specifier: 'catalog:'
         version: 4.26.3
       bundlewatch:
-        specifier: ^0.4.1
+        specifier: 'catalog:'
         version: 0.4.1
       colors:
-        specifier: 1.4.0
+        specifier: 'catalog:'
         version: 1.4.0
       commander:
-        specifier: ^13.1.0
+        specifier: 'catalog:'
         version: 13.1.0
       conventional-changelog-cli:
-        specifier: 5.0.0
+        specifier: 'catalog:'
         version: 5.0.0(conventional-commits-filter@5.0.0)
       cross-env:
-        specifier: 10.1.0
+        specifier: 'catalog:'
         version: 10.1.0
       eslint:
-        specifier: ^9.0.0
+        specifier: 'catalog:'
         version: 9.39.4(jiti@2.6.1)
       eslint-formatter-pretty:
-        specifier: 7.0.0
+        specifier: 'catalog:'
         version: 7.0.0
       execa:
-        specifier: 9.6.0
+        specifier: 'catalog:'
         version: 9.6.0
       formik:
-        specifier: ^2.4.6
+        specifier: 'catalog:'
         version: 2.4.9(@types/react@19.2.14)(react@19.2.0)
       glob:
-        specifier: 13.0.0
+        specifier: 'catalog:'
         version: 13.0.0
       global:
-        specifier: 4.4.0
+        specifier: 'catalog:'
         version: 4.4.0
       history:
         specifier: 'catalog:'
         version: 4.10.1
       husky:
-        specifier: 9.1.7
+        specifier: 'catalog:'
         version: 9.1.7
       identity-obj-proxy:
-        specifier: 3.0.0
+        specifier: 'catalog:'
         version: 3.0.0
       intl-pluralrules:
-        specifier: 2.0.1
+        specifier: 'catalog:'
         version: 2.0.1
       is-url:
-        specifier: ^1.2.4
+        specifier: 'catalog:'
         version: 1.2.4
       jest:
-        specifier: 30.3.0
+        specifier: 'catalog:'
         version: 30.3.0(@types/node@22.19.15)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.25.12))(ts-node@10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3))
       jest-environment-jsdom:
-        specifier: 30.3.0
+        specifier: 'catalog:'
         version: 30.3.0
       jest-localstorage-mock:
-        specifier: 2.4.26
+        specifier: 'catalog:'
         version: 2.4.26
       jest-puppeteer:
-        specifier: 11.0.0
+        specifier: 'catalog:'
         version: 11.0.0(puppeteer@22.15.0(typescript@5.9.3))(typescript@5.9.3)
       jest-runner-eslint:
-        specifier: 2.3.0
+        specifier: 'catalog:'
         version: 2.3.0(eslint@9.39.4(jiti@2.6.1))(jest@30.3.0(@types/node@22.19.15)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.25.12))(ts-node@10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3)))
       jest-runner-stylelint:
-        specifier: 2.3.7
+        specifier: 'catalog:'
         version: 2.3.7(stylelint@16.25.0(typescript@5.9.3))
       jest-silent-reporter:
-        specifier: 0.6.0
+        specifier: 'catalog:'
         version: 0.6.0
       jest-validate:
-        specifier: 30.3.0
+        specifier: 'catalog:'
         version: 30.3.0
       jest-watch-typeahead:
-        specifier: 3.0.1
+        specifier: 'catalog:'
         version: 3.0.1(jest@30.3.0(@types/node@22.19.15)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.25.12))(ts-node@10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3)))
       lint-staged:
-        specifier: 16.2.4
+        specifier: 'catalog:'
         version: 16.2.4
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       moment:
-        specifier: 2.30.1
+        specifier: 'catalog:'
         version: 2.30.1
       moment-timezone:
-        specifier: 0.6.0
+        specifier: 'catalog:'
         version: 0.6.0
       omit-empty-es:
-        specifier: 1.2.0
+        specifier: 'catalog:'
         version: 1.2.0
       postcss:
-        specifier: 8.5.6
+        specifier: 'catalog:'
         version: 8.5.6
       postcss-styled-syntax:
-        specifier: ^0.7.0
+        specifier: 'catalog:'
         version: 0.7.1(postcss@8.5.6)
       postcss-syntax:
-        specifier: ^0.36.2
+        specifier: 'catalog:'
         version: 0.36.2(postcss@8.5.6)
       postcss-value-parser:
-        specifier: 4.2.0
+        specifier: 'catalog:'
         version: 4.2.0
       pptr-testing-library:
-        specifier: 0.8.0
+        specifier: 'catalog:'
         version: 0.8.0(puppeteer@22.15.0(typescript@5.9.3))
       prettier:
-        specifier: 2.8.8
+        specifier: 'catalog:'
         version: 2.8.8
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       publint:
-        specifier: ^0.3.21
+        specifier: 'catalog:'
         version: 0.3.21
       puppeteer:
-        specifier: 22.15.0
+        specifier: 'catalog:'
         version: 22.15.0(typescript@5.9.3)
       qs:
-        specifier: 6.14.1
+        specifier: 'catalog:'
         version: 6.14.1
       rcfile:
-        specifier: 1.0.3
+        specifier: 'catalog:'
         version: 1.0.3
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
       react-value:
-        specifier: 0.2.0
+        specifier: 'catalog:'
         version: 0.2.0(react@19.2.0)
       replace:
-        specifier: 1.2.2
+        specifier: 'catalog:'
         version: 1.2.2
       rimraf:
-        specifier: 3.0.2
+        specifier: 'catalog:'
         version: 3.0.2
       shelljs:
-        specifier: 0.10.0
+        specifier: 'catalog:'
         version: 0.10.0
       stylelint:
-        specifier: 16.25.0
+        specifier: 'catalog:'
         version: 16.25.0(typescript@5.9.3)
       stylelint-config-standard:
-        specifier: 36.0.1
+        specifier: 'catalog:'
         version: 36.0.1(stylelint@16.25.0(typescript@5.9.3))
       stylelint-order:
-        specifier: 5.0.0
+        specifier: 'catalog:'
         version: 5.0.0(stylelint@16.25.0(typescript@5.9.3))
       ts-node:
-        specifier: 10.9.2
+        specifier: 'catalog:'
         version: 10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3)
       tsc-files:
-        specifier: 1.1.4
+        specifier: 'catalog:'
         version: 1.1.4(typescript@5.9.3)
       typescript:
-        specifier: 5.9.3
+        specifier: 'catalog:'
         version: 5.9.3
 
   design-system:
@@ -408,144 +837,144 @@ importers:
         version: 4.18.1
     devDependencies:
       nodemon:
-        specifier: ^3.0.0
+        specifier: 'catalog:'
         version: 3.1.14
       prettier:
-        specifier: 2.8.8
+        specifier: 'catalog:'
         version: 2.8.8
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       rcfile:
-        specifier: 1.0.3
+        specifier: 'catalog:'
         version: 1.0.3
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-router:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
       yaml:
-        specifier: ^2.8.3
+        specifier: 'catalog:'
         version: 2.8.3
 
   generators/package-json:
     dependencies:
       '@manypkg/find-root':
-        specifier: 1.1.0
+        specifier: 'catalog:'
         version: 1.1.0
       '@manypkg/get-packages':
-        specifier: 1.1.3
+        specifier: 'catalog:'
         version: 1.1.3
       '@types/node':
-        specifier: ^22.13.1
+        specifier: 'catalog:'
         version: 22.19.15
       commander:
-        specifier: ^13.1.0
+        specifier: 'catalog:'
         version: 13.1.0
       omit-empty-es:
-        specifier: 1.2.0
+        specifier: 'catalog:'
         version: 1.2.0
       rcfile:
-        specifier: 1.0.3
+        specifier: 'catalog:'
         version: 1.0.3
     devDependencies:
       prettier:
-        specifier: 2.8.8
+        specifier: 'catalog:'
         version: 2.8.8
       shelljs:
-        specifier: 0.10.0
+        specifier: 'catalog:'
         version: 0.10.0
       ts-node:
-        specifier: 10.9.2
+        specifier: 'catalog:'
         version: 10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3)
       typescript:
-        specifier: 5.9.3
+        specifier: 'catalog:'
         version: 5.9.3
 
   generators/readme:
     dependencies:
       '@manypkg/get-packages':
-        specifier: 1.1.3
+        specifier: 'catalog:'
         version: 1.1.3
       '@types/listr':
-        specifier: 0.14.9
+        specifier: 'catalog:'
         version: 0.14.9
       '@types/lodash':
-        specifier: ^4.17.24
+        specifier: 'catalog:'
         version: 4.17.24
       '@types/mdast':
-        specifier: 4.0.4
+        specifier: 'catalog:'
         version: 4.0.4
       '@types/node':
-        specifier: ^22.13.1
+        specifier: 'catalog:'
         version: 22.19.15
       '@types/shelljs':
-        specifier: 0.8.17
+        specifier: 'catalog:'
         version: 0.8.17
       '@types/unist':
         specifier: 3.0.3
         version: 3.0.3
       '@types/vfile':
-        specifier: 4.0.0
+        specifier: 'catalog:'
         version: 4.0.0
       commander:
-        specifier: ^13.1.0
+        specifier: 'catalog:'
         version: 13.1.0
       listr:
-        specifier: 0.14.3
+        specifier: 'catalog:'
         version: 0.14.3
       listr-verbose-renderer:
-        specifier: 0.6.0
+        specifier: 'catalog:'
         version: 0.6.0
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       rcfile:
-        specifier: 1.0.3
+        specifier: 'catalog:'
         version: 1.0.3
       react-docgen:
-        specifier: 5.4.3
+        specifier: 'catalog:'
         version: 5.4.3
       remark-gfm-v1:
-        specifier: npm:remark-gfm@1.0.0
+        specifier: 'catalog:'
         version: remark-gfm@1.0.0
       remark-mdx:
-        specifier: 1.6.22
+        specifier: 'catalog:'
         version: 1.6.22
       remark-parse:
-        specifier: 9.0.0
+        specifier: 'catalog:'
         version: 9.0.0
       remark-stringify:
-        specifier: 9.0.1
+        specifier: 'catalog:'
         version: 9.0.1
       shelljs:
-        specifier: 0.10.0
+        specifier: 'catalog:'
         version: 0.10.0
       to-vfile:
-        specifier: 6.1.0
+        specifier: 'catalog:'
         version: 6.1.0
       typescript-react-function-component-props-handler:
-        specifier: 1.1.1
+        specifier: 'catalog:'
         version: 1.1.1(patch_hash=cf2f34cd7a3e8873fabc4493ad63ab0cf4206b71d06ff1653726a2d6b4adb3f5)
       unified:
-        specifier: 9.2.2
+        specifier: 'catalog:'
         version: 9.2.2
       vfile:
-        specifier: 4.2.1
+        specifier: 'catalog:'
         version: 4.2.1
       vfile-reporter:
-        specifier: 6.0.2
+        specifier: 'catalog:'
         version: 6.0.2
     devDependencies:
       prettier:
-        specifier: 2.8.8
+        specifier: 'catalog:'
         version: 2.8.8
       ts-node:
-        specifier: 10.9.2
+        specifier: 'catalog:'
         version: 10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3)
       typescript:
-        specifier: 5.9.3
+        specifier: 'catalog:'
         version: 5.9.3
 
   packages/calendar-time-utils:
@@ -561,7 +990,7 @@ importers:
         version: link:../utils
     devDependencies:
       moment-timezone:
-        specifier: 0.6.0
+        specifier: 'catalog:'
         version: 0.6.0
 
   packages/calendar-utils:
@@ -616,16 +1045,16 @@ importers:
         version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
     devDependencies:
       moment:
-        specifier: 2.30.1
+        specifier: 'catalog:'
         version: 2.30.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/accessible-hidden:
@@ -641,7 +1070,7 @@ importers:
         version: 11.14.0(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/avatar:
@@ -672,7 +1101,7 @@ importers:
         specifier: workspace:^
         version: link:../icons
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/buttons/accessible-button:
@@ -696,7 +1125,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@types/react-is':
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       lodash:
         specifier: ^4.18.1
@@ -706,7 +1135,7 @@ importers:
         version: 19.2.0
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/buttons/flat-button:
@@ -742,14 +1171,14 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
         version: link:../../icons
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/buttons/icon-button:
@@ -785,14 +1214,14 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
         version: link:../../icons
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/buttons/link-button:
@@ -835,13 +1264,13 @@ importers:
         specifier: workspace:^
         version: link:../../icons
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/buttons/primary-button:
@@ -877,14 +1306,14 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
         version: link:../../icons
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/buttons/secondary-button:
@@ -924,13 +1353,13 @@ importers:
         specifier: workspace:^
         version: link:../../icons
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/buttons/secondary-icon-button:
@@ -966,14 +1395,14 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
         version: link:../../icons
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/card:
@@ -1000,7 +1429,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@types/react-router-dom':
-        specifier: ^5.3.3
+        specifier: 'catalog:'
         version: 5.3.3
       history:
         specifier: 'catalog:'
@@ -1010,10 +1439,10 @@ importers:
         specifier: workspace:^
         version: link:../text
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/collapsible:
@@ -1041,7 +1470,7 @@ importers:
         version: 4.18.1
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/collapsible-motion:
@@ -1072,7 +1501,7 @@ importers:
         specifier: workspace:^
         version: link:../buttons/primary-button
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/collapsible-panel:
@@ -1120,14 +1549,14 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/constraints:
@@ -1152,7 +1581,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/data-table:
@@ -1194,17 +1623,17 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/spacings':
         specifier: workspace:^
         version: link:../../../presets/spacings
       formik:
-        specifier: ^2.4.6
+        specifier: 'catalog:'
         version: 2.4.9(@types/react@19.2.14)(react@19.2.0)
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/data-table-manager:
@@ -1291,13 +1720,13 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@hello-pangea/dnd':
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.1(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@types/debounce-promise':
-        specifier: ^3.1.6
+        specifier: 'catalog:'
         version: 3.1.9
       debounce-promise:
-        specifier: ^3.1.2
+        specifier: 'catalog:'
         version: 3.1.2
       lodash:
         specifier: ^4.18.1
@@ -1316,16 +1745,16 @@ importers:
         specifier: workspace:^
         version: link:../inputs/toggle-input
       formik:
-        specifier: ^2.4.6
+        specifier: 'catalog:'
         version: 2.4.9(@types/react@19.2.14)(react@19.2.0)
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/dropdowns/dropdown-menu:
@@ -1367,7 +1796,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/buttons':
@@ -1386,7 +1815,7 @@ importers:
         specifier: workspace:^
         version: link:../../text
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/field-errors:
@@ -1408,10 +1837,10 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/field-label:
@@ -1459,14 +1888,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/flat-button':
         specifier: workspace:^
         version: link:../buttons/flat-button
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/field-warnings:
@@ -1488,10 +1917,10 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/fields/async-creatable-select-field:
@@ -1533,7 +1962,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-select:
         specifier: 'catalog:'
@@ -1543,10 +1972,10 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/fields/async-select-field:
@@ -1588,7 +2017,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-select:
         specifier: 'catalog:'
@@ -1598,10 +2027,10 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/fields/creatable-select-field:
@@ -1643,7 +2072,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-select:
         specifier: 'catalog:'
@@ -1653,7 +2082,7 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/date-field:
@@ -1695,7 +2124,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/calendar-utils':
@@ -1705,7 +2134,7 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/date-range-field:
@@ -1747,14 +2176,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/date-time-field:
@@ -1796,14 +2225,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/localized-multiline-text-field:
@@ -1845,14 +2274,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/localized-text-field:
@@ -1894,14 +2323,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/money-field:
@@ -1946,7 +2375,7 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-select:
         specifier: 'catalog:'
@@ -1956,7 +2385,7 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/multiline-text-field:
@@ -1998,14 +2427,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/number-field:
@@ -2047,14 +2476,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/password-field:
@@ -2112,10 +2541,10 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/fields/radio-field:
@@ -2157,14 +2586,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/search-select-field:
@@ -2209,7 +2638,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-select:
         specifier: 'catalog:'
@@ -2219,7 +2648,7 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/select-field:
@@ -2261,7 +2690,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-select:
         specifier: 'catalog:'
@@ -2271,7 +2700,7 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/text-field:
@@ -2316,14 +2745,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/fields/time-field:
@@ -2365,14 +2794,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/filters:
@@ -2426,10 +2855,10 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@radix-ui/react-popover':
-        specifier: ^1.1.4
+        specifier: 'catalog:'
         version: 1.1.15(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/buttons':
@@ -2448,10 +2877,10 @@ importers:
         specifier: workspace:^
         version: link:../inputs/text-input
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
 
   packages/components/grid:
@@ -2473,7 +2902,7 @@ importers:
         specifier: workspace:^
         version: link:../../../design-system
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/icons:
@@ -2497,10 +2926,10 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@types/dompurify':
-        specifier: ^2.4.0
+        specifier: 'catalog:'
         version: 2.4.0
       dompurify:
-        specifier: 3.3.2
+        specifier: 'catalog:'
         version: 3.3.2
       react-from-dom:
         specifier: 0.6.2
@@ -2513,10 +2942,10 @@ importers:
         specifier: workspace:^
         version: link:../text
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/inputs/async-creatable-select-input:
@@ -2552,7 +2981,7 @@ importers:
         specifier: workspace:^
         version: link:../../../utils
       '@emotion/is-prop-valid':
-        specifier: 1.4.0
+        specifier: 'catalog:'
         version: 1.4.0
       '@emotion/react':
         specifier: 'catalog:'
@@ -2571,13 +3000,13 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/async-select-input:
@@ -2629,13 +3058,13 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/checkbox-input:
@@ -2668,11 +3097,11 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/inputs/creatable-select-input:
@@ -2721,13 +3150,13 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/date-input:
@@ -2790,20 +3219,20 @@ importers:
         specifier: 'catalog:'
         version: 19.2.0
       warning:
-        specifier: 4.0.3
+        specifier: 'catalog:'
         version: 4.0.3
     devDependencies:
       moment:
-        specifier: 2.30.1
+        specifier: 'catalog:'
         version: 2.30.1
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/date-range-input:
@@ -2866,20 +3295,20 @@ importers:
         specifier: 'catalog:'
         version: 19.2.0
       warning:
-        specifier: 4.0.3
+        specifier: 'catalog:'
         version: 4.0.3
     devDependencies:
       moment:
-        specifier: 2.30.1
+        specifier: 'catalog:'
         version: 2.30.1
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/date-time-input:
@@ -2942,20 +3371,20 @@ importers:
         specifier: 'catalog:'
         version: 19.2.0
       warning:
-        specifier: 4.0.3
+        specifier: 'catalog:'
         version: 4.0.3
     devDependencies:
       moment:
-        specifier: 2.30.1
+        specifier: 'catalog:'
         version: 2.30.1
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/input-utils:
@@ -2982,14 +3411,14 @@ importers:
         specifier: 'catalog:'
         version: 11.14.0(@types/react@19.2.14)(react@19.2.0)
       react-textarea-autosize:
-        specifier: 8.4.0
+        specifier: 'catalog:'
         version: 8.4.0(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/localized-money-input:
@@ -3053,13 +3482,13 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/localized-multiline-text-input:
@@ -3113,20 +3542,20 @@ importers:
         specifier: 'catalog:'
         version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react-textarea-autosize:
-        specifier: 8.4.0
+        specifier: 'catalog:'
         version: 8.4.0(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/localized-rich-text-input:
@@ -3195,22 +3624,22 @@ importers:
         specifier: ^4.3.8
         version: 4.3.8
       is-hotkey:
-        specifier: 0.2.0
+        specifier: 'catalog:'
         version: 0.2.0
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-textarea-autosize:
-        specifier: 8.4.0
+        specifier: 'catalog:'
         version: 8.4.0(@types/react@19.2.14)(react@19.2.0)
       slate:
-        specifier: 0.75.0
+        specifier: 'catalog:'
         version: 0.75.0
       slate-history:
-        specifier: 0.113.1
+        specifier: 'catalog:'
         version: 0.113.1(slate@0.75.0)
       slate-react:
-        specifier: 0.75.0
+        specifier: 'catalog:'
         version: 0.75.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(slate@0.75.0)
     devDependencies:
       '@commercetools-uikit/collapsible-panel':
@@ -3223,16 +3652,16 @@ importers:
         specifier: workspace:^
         version: link:../../../../presets/spacings
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/inputs/localized-text-input:
@@ -3290,10 +3719,10 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/money-input:
@@ -3345,13 +3774,13 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/multiline-text-input:
@@ -3405,17 +3834,17 @@ importers:
         specifier: 'catalog:'
         version: 9.0.10(react@19.2.0)
       react-textarea-autosize:
-        specifier: 8.4.0
+        specifier: 'catalog:'
         version: 8.4.0(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/number-input:
@@ -3446,7 +3875,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/inputs/password-input:
@@ -3477,7 +3906,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/inputs/radio-input:
@@ -3523,7 +3952,7 @@ importers:
         version: 19.2.0
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/inputs/rich-text-input:
@@ -3583,19 +4012,19 @@ importers:
         specifier: ^4.3.8
         version: 4.3.8
       is-hotkey:
-        specifier: 0.2.0
+        specifier: 'catalog:'
         version: 0.2.0
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       slate:
-        specifier: 0.75.0
+        specifier: 'catalog:'
         version: 0.75.0
       slate-history:
-        specifier: 0.113.1
+        specifier: 'catalog:'
         version: 0.113.1(slate@0.75.0)
       slate-react:
-        specifier: 0.75.0
+        specifier: 'catalog:'
         version: 0.75.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(slate@0.75.0)
     devDependencies:
       '@commercetools-uikit/collapsible-panel':
@@ -3611,16 +4040,16 @@ importers:
         specifier: workspace:^
         version: link:../../text
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/inputs/rich-text-utils:
@@ -3656,56 +4085,56 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@types/dompurify':
-        specifier: ^2.4.0
+        specifier: 'catalog:'
         version: 2.4.0
       '@types/escape-html':
-        specifier: 1.0.4
+        specifier: 'catalog:'
         version: 1.0.4
       dompurify:
-        specifier: 3.3.2
+        specifier: 'catalog:'
         version: 3.3.2
       downshift:
         specifier: 'catalog:'
         version: 9.0.10(react@19.2.0)
       escape-html:
-        specifier: 1.0.3
+        specifier: 'catalog:'
         version: 1.0.3
       is-hotkey:
-        specifier: 0.2.0
+        specifier: 'catalog:'
         version: 0.2.0
       is-url:
-        specifier: ^1.2.4
+        specifier: 'catalog:'
         version: 1.2.4
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       slate:
-        specifier: 0.75.0
+        specifier: 'catalog:'
         version: 0.75.0
       slate-history:
-        specifier: 0.113.1
+        specifier: 'catalog:'
         version: 0.113.1(slate@0.75.0)
       slate-hyperscript:
-        specifier: 0.100.0
+        specifier: 'catalog:'
         version: 0.100.0(slate@0.75.0)
       slate-react:
-        specifier: 0.75.0
+        specifier: 'catalog:'
         version: 0.75.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(slate@0.75.0)
       style-to-object:
-        specifier: 0.4.4
+        specifier: 'catalog:'
         version: 0.4.4
     devDependencies:
       jsdom:
-        specifier: ^26.1.0
+        specifier: 'catalog:'
         version: 26.1.0
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/search-select-input:
@@ -3748,13 +4177,13 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/search-text-input:
@@ -3791,7 +4220,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/inputs/select-input:
@@ -3818,7 +4247,7 @@ importers:
         specifier: workspace:^
         version: link:../../../utils
       '@emotion/is-prop-valid':
-        specifier: 1.4.0
+        specifier: 'catalog:'
         version: 1.4.0
       '@emotion/react':
         specifier: 'catalog:'
@@ -3837,16 +4266,16 @@ importers:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/inputs/select-utils:
@@ -3895,13 +4324,13 @@ importers:
         version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/selectable-search-input:
@@ -3953,13 +4382,13 @@ importers:
         version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/text-input:
@@ -3990,7 +4419,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/inputs/time-input:
@@ -4026,7 +4455,7 @@ importers:
         specifier: workspace:^
         version: link:../../../utils
       '@emotion/is-prop-valid':
-        specifier: 1.4.0
+        specifier: 'catalog:'
         version: 1.4.0
       '@emotion/react':
         specifier: 'catalog:'
@@ -4036,10 +4465,10 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/inputs/toggle-input:
@@ -4070,7 +4499,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/label:
@@ -4098,10 +4527,10 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/link:
@@ -4131,23 +4560,23 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@types/history':
-        specifier: ^4.7.11
+        specifier: 'catalog:'
         version: 4.7.11
       '@types/react-router-dom':
-        specifier: ^5.3.3
+        specifier: 'catalog:'
         version: 5.3.3
       history:
         specifier: 'catalog:'
         version: 4.10.1
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/loading-spinner:
@@ -4174,11 +4603,11 @@ importers:
         specifier: 'catalog:'
         version: 11.14.0(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/messages:
@@ -4202,11 +4631,11 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/notifications:
@@ -4234,10 +4663,10 @@ importers:
         version: 11.14.0(@types/react@19.2.14)(react@19.2.0)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/pagination:
@@ -4285,17 +4714,17 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       formik:
-        specifier: ^2.4.6
+        specifier: 'catalog:'
         version: 2.4.9(@types/react@19.2.14)(react@19.2.0)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/primary-action-dropdown:
@@ -4337,14 +4766,14 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/progress-bar:
@@ -4380,14 +4809,14 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       '@emotion/styled':
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/quick-filters:
@@ -4411,11 +4840,11 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/spacings/spacings-inline:
@@ -4440,7 +4869,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/spacings/spacings-inset:
@@ -4465,7 +4894,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/spacings/spacings-inset-squish:
@@ -4490,7 +4919,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/spacings/spacings-stack:
@@ -4515,7 +4944,7 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/stamp:
@@ -4546,7 +4975,7 @@ importers:
         specifier: workspace:^
         version: link:../icons
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/tag:
@@ -4588,14 +5017,14 @@ importers:
         specifier: 'catalog:'
         version: 4.10.1
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   packages/components/text:
@@ -4619,17 +5048,17 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       warning:
-        specifier: 4.0.3
+        specifier: 'catalog:'
         version: 4.0.3
     devDependencies:
       '@emotion/styled':
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
 
   packages/components/tooltip:
@@ -4662,26 +5091,26 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       popper.js:
-        specifier: ^1.15.0
+        specifier: 'catalog:'
         version: 1.15.0
       react-is:
         specifier: 'catalog:'
         version: 19.2.0
       use-popper:
-        specifier: 1.1.6
+        specifier: 'catalog:'
         version: 1.1.6(react@19.2.0)
     devDependencies:
       '@commercetools-uikit/primary-button':
         specifier: workspace:^
         version: link:../buttons/primary-button
       '@types/react-is':
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       prop-types:
         specifier: 'catalog:'
         version: 15.8.1
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/components/view-switcher:
@@ -4715,7 +5144,7 @@ importers:
         specifier: workspace:^
         version: link:../icons
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   packages/hooks:
@@ -4730,29 +5159,29 @@ importers:
         specifier: workspace:^
         version: link:../utils
       '@types/raf-schd':
-        specifier: ^4.0.1
+        specifier: 'catalog:'
         version: 4.0.3
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       raf-schd:
-        specifier: ^4.0.3
+        specifier: 'catalog:'
         version: 4.0.3
     devDependencies:
       '@commercetools-frontend/ui-kit':
         specifier: workspace:^
         version: link:../../presets/ui-kit
       '@testing-library/dom':
-        specifier: ^10.4.0
+        specifier: 'catalog:'
         version: 10.4.1
       '@testing-library/react':
-        specifier: ^16.2.0
+        specifier: 'catalog:'
         version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
 
   packages/i18n:
@@ -4788,11 +5217,11 @@ importers:
         specifier: 'catalog:'
         version: 7.29.2
       '@emotion/is-prop-valid':
-        specifier: 1.4.0
+        specifier: 'catalog:'
         version: 1.4.0
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   presets/buttons:
@@ -4829,13 +5258,13 @@ importers:
         version: link:../../packages/components/buttons/secondary-icon-button
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   presets/fields:
@@ -4899,13 +5328,13 @@ importers:
         version: link:../../packages/components/fields/time-field
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   presets/inputs:
@@ -4990,13 +5419,13 @@ importers:
         version: link:../../packages/components/inputs/toggle-input
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   presets/spacings:
@@ -5021,7 +5450,7 @@ importers:
         version: link:../../packages/components/spacings/spacings-stack
     devDependencies:
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
 
   presets/ui-kit:
@@ -5151,19 +5580,19 @@ importers:
         version: link:../../packages/components/view-switcher
     devDependencies:
       moment:
-        specifier: 2.30.1
+        specifier: 'catalog:'
         version: 2.30.1
       moment-timezone:
-        specifier: 0.6.0
+        specifier: 'catalog:'
         version: 0.6.0
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
 
   storybook:
@@ -5184,7 +5613,7 @@ importers:
         specifier: workspace:^
         version: link:../packages/components/inputs/text-input
       '@emotion/css':
-        specifier: ^11.10.5
+        specifier: 'catalog:'
         version: 11.13.5
       '@emotion/react':
         specifier: 'catalog:'
@@ -5193,49 +5622,49 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@modyfi/vite-plugin-yaml':
-        specifier: ^1.1.0
+        specifier: 'catalog:'
         version: 1.1.1(rollup@2.80.0)(vite@6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       '@storybook/addon-a11y':
-        specifier: 9.1.20
+        specifier: 'catalog:'
         version: 9.1.20(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
       '@storybook/addon-docs':
-        specifier: 9.1.20
+        specifier: 'catalog:'
         version: 9.1.20(@types/react@19.2.14)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
       '@storybook/addon-links':
-        specifier: 9.1.20
+        specifier: 'catalog:'
         version: 9.1.20(react@19.2.0)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
       '@storybook/react-vite':
-        specifier: 9.1.20
+        specifier: 'catalog:'
         version: 9.1.20(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@2.80.0)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(typescript@5.9.3)(vite@6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       '@swc/plugin-emotion':
-        specifier: ^14.3.0
+        specifier: 'catalog:'
         version: 14.7.0
       '@vitejs/plugin-react-swc':
-        specifier: ^4.2.2
+        specifier: 'catalog:'
         version: 4.3.0(vite@6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       eslint-plugin-storybook:
-        specifier: 9.1.20
+        specifier: 'catalog:'
         version: 9.1.20(eslint@9.39.4(jiti@2.6.1))(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(typescript@5.9.3)
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       remark-gfm:
-        specifier: ^4.0.0
+        specifier: 'catalog:'
         version: 4.0.1
       serve:
-        specifier: ^14.2.5
+        specifier: 'catalog:'
         version: 14.2.6
       storybook:
-        specifier: 9.1.20
+        specifier: 'catalog:'
         version: 9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       vite:
-        specifier: 6.4.2
+        specifier: 'catalog:'
         version: 6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)
 
   visual-testing-app:
@@ -5250,38 +5679,38 @@ importers:
         specifier: 'catalog:'
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.0))(@types/react@19.2.14)(react@19.2.0)
       '@fontsource/inter':
-        specifier: 5.2.8
+        specifier: 'catalog:'
         version: 5.2.8
       '@types/react':
         specifier: ^19.0.3
         version: 19.2.14
       moment:
-        specifier: 2.30.1
+        specifier: 'catalog:'
         version: 2.30.1
       moment-timezone:
-        specifier: 0.6.0
+        specifier: 'catalog:'
         version: 0.6.0
       react:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: 19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-intl:
-        specifier: ^7.1.4
+        specifier: 'catalog:'
         version: 7.1.14(react@19.2.0)(typescript@5.9.3)
       react-router:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
       react-router-dom:
-        specifier: 5.3.4
+        specifier: 'catalog:'
         version: 5.3.4(react@19.2.0)
     devDependencies:
       '@vitejs/plugin-react':
-        specifier: 5.0.4
+        specifier: 'catalog:'
         version: 5.0.4(vite@6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       vite:
-        specifier: 6.4.2
+        specifier: 'catalog:'
         version: 6.4.2(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)
 
 packages:
@@ -10473,6 +10902,7 @@ packages:
         integrity: sha512-VoMINM2rqJwJgfdHq6RiUudKt2BV+FY5ZFezP/ypmwayk68+NzzAQy4XXLlqsGD4MCzq3DrmNFD/uUmBJuGoXw==,
       }
     engines: { node: '>=10.0.0' }
+    deprecated: Security vulnerability fixed in 5.2.1, please upgrade
 
   better-opn@3.0.2:
     resolution:
@@ -18983,7 +19413,7 @@ snapshots:
     dependencies:
       '@babel/compat-data': 7.29.0
       '@babel/helper-validator-option': 7.27.1
-      browserslist: 4.26.3
+      browserslist: 4.28.2
       lru-cache: 5.1.1
       semver: 6.3.1
 
@@ -19156,7 +19586,7 @@ snapshots:
   '@babel/plugin-proposal-object-rest-spread@7.12.1(@babel/core@7.12.9)':
     dependencies:
       '@babel/core': 7.12.9
-      '@babel/helper-plugin-utils': 7.10.4
+      '@babel/helper-plugin-utils': 7.28.6
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.12.9)
       '@babel/plugin-transform-parameters': 7.27.7(@babel/core@7.12.9)
 
@@ -19207,7 +19637,7 @@ snapshots:
   '@babel/plugin-syntax-jsx@7.12.1(@babel/core@7.12.9)':
     dependencies:
       '@babel/core': 7.12.9
-      '@babel/helper-plugin-utils': 7.10.4
+      '@babel/helper-plugin-utils': 7.28.6
 
   '@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.28.4)':
     dependencies:
@@ -19232,12 +19662,12 @@ snapshots:
   '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.12.9)':
     dependencies:
       '@babel/core': 7.12.9
-      '@babel/helper-plugin-utils': 7.10.4
+      '@babel/helper-plugin-utils': 7.28.6
 
   '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.28.4)':
     dependencies:
       '@babel/core': 7.28.4
-      '@babel/helper-plugin-utils': 7.10.4
+      '@babel/helper-plugin-utils': 7.28.6
 
   '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.28.4)':
     dependencies:
@@ -22005,7 +22435,7 @@ snapshots:
   '@types/jest@30.0.0':
     dependencies:
       expect: 30.4.1
-      pretty-format: 30.3.0
+      pretty-format: 30.4.1
 
   '@types/jsdom@21.1.7':
     dependencies:
@@ -22100,7 +22530,7 @@ snapshots:
 
   '@types/vfile@4.0.0':
     dependencies:
-      vfile: 4.2.1
+      vfile: 6.0.3
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -22775,7 +23205,7 @@ snapshots:
     dependencies:
       ansi-align: 3.0.1
       camelcase: 7.0.1
-      chalk: 5.0.1
+      chalk: 5.6.2
       cli-boxes: 3.0.0
       string-width: 5.1.2
       type-fest: 2.19.0
@@ -25368,7 +25798,7 @@ snapshots:
       ansi-escapes: 7.3.0
       chalk: 5.6.2
       jest: 30.3.0(@types/node@22.19.15)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.25.12))(ts-node@10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3))
-      jest-regex-util: 30.0.1
+      jest-regex-util: 30.4.0
       jest-watcher: 30.3.0
       slash: 5.1.0
       string-length: 6.0.0

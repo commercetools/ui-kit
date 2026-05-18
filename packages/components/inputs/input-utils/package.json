@@ -26,14 +26,14 @@
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "catalog:",
-    "react-textarea-autosize": "8.4.0"
+    "react-textarea-autosize": "catalog:"
   },
   "devDependencies": {
-    "react": "19.2.0",
-    "react-intl": "^7.1.4"
+    "react": "catalog:",
+    "react-intl": "catalog:"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-intl": "7.x"
+    "react": "catalog:peer",
+    "react-intl": "catalog:peer"
   }
 }
