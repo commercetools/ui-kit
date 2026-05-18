@@ -44,7 +44,12 @@ function readCatalogs() {
   let mode = null; // 'default' | 'catalogs' | null
   let currentNamed = null;
   for (const line of lines) {
-    if (line.length > 0 && /^\S/.test(line)) {
+    const trimmed = line.trim();
+    // Blank lines and comment-only lines are visual separators; preserve
+    // current mode and currentNamed so sub-cohort grouping inside a named
+    // catalog is allowed (with `# comment` headers and blank-line gaps).
+    if (trimmed === '' || trimmed.startsWith('#')) continue;
+    if (/^\S/.test(line)) {
       if (/^catalog:\s*$/.test(line)) {
         mode = 'default';
         currentNamed = null;
@@ -55,12 +60,6 @@ function readCatalogs() {
         mode = null;
         currentNamed = null;
       }
-      continue;
-    }
-    if (line.trim() === '') {
-      // Blank line resets which named catalog we're inside, but stays in
-      // `catalogs` mode until we see a new top-level key.
-      if (mode === 'catalogs') currentNamed = null;
       continue;
     }
     const ind = indentOf(line);

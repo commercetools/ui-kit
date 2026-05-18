@@ -28,9 +28,15 @@ packages:
 #   storybook  — storybook dev environment (must move in lockstep)
 #   test       — jest, testing library, percy, puppeteer, jsdom
 #
+# Entries inside each named catalog are grouped by sub-cohort (separator
+# comments + blank lines) rather than alphabetized. Keep new entries in
+# their group instead of dropping them at the bottom. The default catalog
+# stays alphabetical (its members are singletons by definition).
+#
 # scripts/check-workspace-constraints.js enforces that every dep named in
 # a catalog is consumed only via its catalog reference; literal versions
-# in workspace package.json files are an error.
+# in workspace package.json files are an error. It tolerates blank lines
+# and `#` comments anywhere inside a catalog block.
 
 catalog:
   '@fontsource/inter': 5.2.8
@@ -83,138 +89,200 @@ catalog:
 
 catalogs:
   build:
+    # Babel
     '@babel/core': 7.28.4
     '@babel/runtime': ^7.20.13
     '@babel/runtime-corejs3': ^7.20.13
+
+    # Emotion (CSS-in-JS)
     '@emotion/css': ^11.10.5
     '@emotion/is-prop-valid': 1.4.0
     '@emotion/react': ^11.10.5
     '@emotion/styled': ^11.10.5
-    '@modyfi/vite-plugin-yaml': ^1.1.0
-    '@preconstruct/cli': 2.8.12
+    '@swc/plugin-emotion': ^14.3.0
+
+    # SVGR (icon pipeline)
     '@svgr/babel-plugin-svg-dynamic-title': ^8.0.0
     '@svgr/cli': 8.1.0
     '@svgr/core': 8.1.0
     '@svgr/plugin-jsx': 8.1.0
     '@svgr/plugin-svgo': 8.1.0
-    '@swc/plugin-emotion': ^14.3.0
+
+    # Vite
+    '@modyfi/vite-plugin-yaml': ^1.1.0
     '@vitejs/plugin-react': 5.0.4
     '@vitejs/plugin-react-swc': ^4.2.2
-    browserslist: 4.26.3
-    bundlewatch: ^0.4.1
+    vite: 6.4.2
+
+    # PostCSS
     postcss: 8.5.6
     postcss-styled-syntax: ^0.7.0
     postcss-syntax: ^0.36.2
     postcss-value-parser: 4.2.0
+
+    # TypeScript
     ts-node: 10.9.2
     tsc-files: 1.1.4
     typescript: 5.9.3
-    vite: 6.4.2
+
+    # Output / bundling
+    '@preconstruct/cli': 2.8.12
+    browserslist: 4.26.3
+    bundlewatch: ^0.4.1
 
   lint:
-    '@typescript-eslint/eslint-plugin': 8.46.0
-    '@typescript-eslint/parser': 8.46.0
+    # ESLint
     eslint: ^9.0.0
     eslint-formatter-pretty: 7.0.0
-    prettier: 2.8.8
+
+    # typescript-eslint
+    '@typescript-eslint/eslint-plugin': 8.46.0
+    '@typescript-eslint/parser': 8.46.0
+
+    # Stylelint
     stylelint: 16.25.0
     stylelint-config-standard: 36.0.1
     stylelint-order: 5.0.0
 
+    # Formatter
+    prettier: 2.8.8
+
   peer:
-    moment: '2.x'
-    moment-timezone: '0.6.x'
-    prettier: '2.x'
+    # React stack
     react: '19.x'
     react-dom: '19.x'
     react-intl: '7.x'
     react-router-dom: '5.x'
+
+    # Toolchain
+    prettier: '2.x'
     typescript: '5.x'
 
+    # Domain libraries
+    moment: '2.x'
+    moment-timezone: '0.6.x'
+
   react:
-    '@formatjs/cli': 6.7.4
-    '@formatjs/intl-relativetimeformat': 11.4.13
-    '@hello-pangea/dnd': ^18.0.0
-    '@radix-ui/react-popover': ^1.1.4
+    # React core
+    react: 19.2.0
+    react-dom: 19.2.0
+    react-is: 19.2.0
+
+    # @types (must match runtime major)
     '@types/react': ^19.0.7
     '@types/react-dom': ^19.0.3
     '@types/react-is': 19.2.0
-    '@types/react-router-dom': ^5.3.3
-    babel-plugin-formatjs: ^10.0.0
-    downshift: 9.0.10
-    formik: ^2.4.6
-    intl-pluralrules: 2.0.1
-    prop-types: ^15.8.1
-    react: 19.2.0
-    react-docgen: 5.4.3
-    react-dom: 19.2.0
-    react-from-dom: 0.7.3
-    react-intl: ^7.1.4
-    react-is: 19.2.0
+
+    # React Router (5.x)
     react-router: 5.3.4
     react-router-dom: 5.3.4
+    '@types/react-router-dom': ^5.3.3
+
+    # i18n (formatjs)
+    '@formatjs/cli': 6.7.4
+    '@formatjs/intl-relativetimeformat': 11.4.13
+    babel-plugin-formatjs: ^10.0.0
+    intl-pluralrules: 2.0.1
+    react-intl: ^7.1.4
+
+    # React-bound utilities
+    '@hello-pangea/dnd': ^18.0.0
+    '@radix-ui/react-popover': ^1.1.4
+    downshift: 9.0.10
+    formik: ^2.4.6
+    prop-types: ^15.8.1
+    react-docgen: 5.4.3
+    react-from-dom: 0.7.3
     react-select: 5.10.2
     react-textarea-autosize: 8.4.0
     react-value: 0.2.0
 
   repo:
-    '@changesets/changelog-github': 0.5.1
+    # Versioning / release
     '@changesets/cli': 2.29.7
-    '@commercetools-frontend/babel-preset-mc-app': 27.0.0
-    '@commercetools-frontend/eslint-config-mc-app': 27.0.0
-    '@commitlint/cli': 20.1.0
-    '@commitlint/config-conventional': 20.0.0
+    '@changesets/changelog-github': 0.5.1
+    conventional-changelog-cli: 5.0.0
+
+    # Monorepo tooling
     '@manypkg/cli': 0.25.1
     '@manypkg/find-root': 1.1.0
     '@manypkg/get-packages': 1.1.3
-    conventional-changelog-cli: 5.0.0
+
+    # Git hooks / commit lint
     husky: 9.1.7
     lint-staged: 16.2.4
+    '@commitlint/cli': 20.1.0
+    '@commitlint/config-conventional': 20.0.0
+
+    # Shared commercetools configs
+    '@commercetools-frontend/babel-preset-mc-app': 27.0.0
+    '@commercetools-frontend/eslint-config-mc-app': 27.0.0
 
   rich-text:
-    '@types/mdast': 4.0.4
-    '@types/unist': 3.0.3
-    '@types/vfile': 4.0.0
+    # Slate (editor core)
+    slate: 0.75.0
+    slate-history: 0.113.1
+    slate-hyperscript: 0.100.0
+    slate-react: 0.75.0
+
+    # remark / mdx (markdown parsing)
     remark-gfm: ^4.0.0
     remark-gfm-v1: 'npm:remark-gfm@1.0.0'
     remark-mdx: 1.6.22
     remark-parse: 9.0.0
     remark-stringify: 9.0.1
-    slate: 0.75.0
-    slate-history: 0.113.1
-    slate-hyperscript: 0.100.0
-    slate-react: 0.75.0
-    to-vfile: 6.1.0
+
+    # unified / vfile (processor pipeline)
     unified: 9.2.2
+    to-vfile: 6.1.0
     vfile: 4.2.1
     vfile-reporter: 6.0.2
 
+    # @types
+    '@types/mdast': 4.0.4
+    '@types/unist': 3.0.3
+    '@types/vfile': 4.0.0
+
   storybook:
+    # Core
+    storybook: 9.1.20
+    '@storybook/react-vite': 9.1.20
+
+    # Addons
     '@storybook/addon-a11y': 9.1.20
     '@storybook/addon-docs': 9.1.20
     '@storybook/addon-links': 9.1.20
-    '@storybook/react-vite': 9.1.20
+
+    # Lint integration
     eslint-plugin-storybook: 9.1.20
-    storybook: 9.1.20
 
   test:
-    '@percy/cli': 1.31.3
-    '@percy/puppeteer': 2.0.2
-    '@testing-library/dom': ^10.4.0
-    '@testing-library/jest-dom': 6.9.1
-    '@testing-library/react': ^16.2.0
-    '@types/jest': ^30.0.0
-    babel-jest: 30.3.0
-    identity-obj-proxy: 3.0.0
+    # Jest core
     jest: 30.3.0
     jest-environment-jsdom: 30.3.0
+    jest-validate: 30.3.0
+    babel-jest: 30.3.0
+    '@types/jest': ^30.0.0
+
+    # Jest plugins / runners
     jest-localstorage-mock: 2.4.26
     jest-puppeteer: 11.0.0
     jest-runner-eslint: 2.3.0
     jest-runner-stylelint: 2.3.7
     jest-silent-reporter: 0.6.0
-    jest-validate: 30.3.0
     jest-watch-typeahead: 3.0.1
+
+    # Jest support
+    identity-obj-proxy: 3.0.0
     jsdom: ^26.1.0
-    pptr-testing-library: 0.8.0
+
+    # Testing Library
+    '@testing-library/dom': ^10.4.0
+    '@testing-library/jest-dom': 6.9.1
+    '@testing-library/react': ^16.2.0
+
+    # Visual regression / Puppeteer
+    '@percy/cli': 1.31.3
+    '@percy/puppeteer': 2.0.2
     puppeteer: 22.15.0
+    pptr-testing-library: 0.8.0
