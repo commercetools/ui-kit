@@ -35,8 +35,10 @@ packages:
 #
 # scripts/check-workspace-constraints.js enforces that every dep named in
 # a catalog is consumed only via its catalog reference; literal versions
-# in workspace package.json files are an error. It tolerates blank lines
-# and `#` comments anywhere inside a catalog block.
+# in workspace package.json files are an error. It also flags uncataloged
+# deps used at multiple specifiers across workspaces (drift) — the fix is
+# to add the dep to a catalog. The parser tolerates blank lines and `#`
+# comments anywhere inside a catalog block.
 
 catalog:
   '@fontsource/inter': 5.2.8

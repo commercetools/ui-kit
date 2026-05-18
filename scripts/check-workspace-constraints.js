@@ -18,6 +18,10 @@
  * 7. Every dep listed under `catalogs.peer:` must be consumed via
  *    `catalog:peer` in workspace `peerDependencies`.
  *    Literal versions on a cataloged dep are an error in all three cases.
+ * 8. Drift: an uncataloged external dep used at two or more distinct
+ *    specifiers across workspaces is an error — add it to a catalog so
+ *    the version is centrally controlled. Install (deps + devDeps) and
+ *    peer drift are checked separately.
  */
 const { execSync } = require('child_process');
 const fs = require('fs');
@@ -233,6 +237,41 @@ for (const [name, keys] of catalogs.named) {
   enforceCatalog(keys, installUsage, `catalog:${name}`, `${name} catalog`);
 }
 enforceCatalog(peerCatalogKeys, peerUsage, 'catalog:peer', 'peer catalog');
+
+// Drift detection: an uncataloged dep used at multiple distinct specs across
+// workspaces is drift. Cataloged deps are skipped — their consistency is
+// already enforced by enforceCatalog above. Install and peer are scanned
+// separately because their cataloged keysets differ (install pins vs peer
+// compatibility ranges).
+const installCatalogedKeys = new Set([
+  ...defaultCatalogKeys,
+  ...[...catalogs.named.entries()]
+    .filter(([n]) => n !== 'peer')
+    .flatMap(([, s]) => [...s]),
+]);
+
+function detectDrift(usage, catalogedKeys, scope) {
+  for (const [name, bySpec] of usage) {
+    if (catalogedKeys.has(name)) continue;
+    if (bySpec.size <= 1) continue;
+    const lines = [];
+    for (const [spec, labels] of bySpec) {
+      for (const label of labels) {
+        lines.push(`    ${JSON.stringify(spec)} — ${label}`);
+      }
+    }
+    errors.push(
+      `[${scope} drift] "${name}" is used at ${
+        bySpec.size
+      } different versions across workspaces; add it to a catalog in pnpm-workspace.yaml\n${lines.join(
+        '\n'
+      )}`
+    );
+  }
+}
+
+detectDrift(installUsage, installCatalogedKeys, 'install');
+detectDrift(peerUsage, peerCatalogKeys, 'peer');
 
 if (errors.length > 0) {
   console.error(`Found ${errors.length} workspace constraint violation(s):\n`);
