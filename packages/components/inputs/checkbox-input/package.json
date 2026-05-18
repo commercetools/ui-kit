@@ -27,7 +27,6 @@
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/input-utils": "workspace:^",
-    "@commercetools-uikit/select-utils": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
     "@emotion/react": "catalog:build",
     "@emotion/styled": "catalog:build",

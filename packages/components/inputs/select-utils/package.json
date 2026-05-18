@@ -25,7 +25,6 @@
     "@commercetools-uikit/checkbox-input": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/icons": "workspace:^",
-    "@commercetools-uikit/select-input": "workspace:^",
     "@commercetools-uikit/spacings": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",

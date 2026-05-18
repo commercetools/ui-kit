@@ -3091,9 +3091,6 @@ importers:
       '@commercetools-uikit/input-utils':
         specifier: workspace:^
         version: link:../input-utils
-      '@commercetools-uikit/select-utils':
-        specifier: workspace:^
-        version: link:../select-utils
       '@commercetools-uikit/utils':
         specifier: workspace:^
         version: link:../../../utils
@@ -4305,9 +4302,6 @@ importers:
       '@commercetools-uikit/icons':
         specifier: workspace:^
         version: link:../../icons
-      '@commercetools-uikit/select-input':
-        specifier: workspace:^
-        version: link:../select-input
       '@commercetools-uikit/spacings':
         specifier: workspace:^
         version: link:../../../../presets/spacings
@@ -5175,9 +5169,6 @@ importers:
         specifier: 'catalog:'
         version: 4.0.3
     devDependencies:
-      '@commercetools-frontend/ui-kit':
-        specifier: workspace:^
-        version: link:../../presets/ui-kit
       '@testing-library/dom':
         specifier: catalog:test
         version: 10.4.1

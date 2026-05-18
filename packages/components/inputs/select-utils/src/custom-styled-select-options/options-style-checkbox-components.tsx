@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { type Props as ReactSelectProps, OptionProps } from 'react-select';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
-import type { TSelectInputProps } from '@commercetools-uikit/select-input';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 
@@ -15,7 +14,7 @@ type OptionType = {
 };
 
 export const optionStyleCheckboxComponents = (
-  appearance: TSelectInputProps['appearance']
+  appearance: 'default' | 'quiet' | 'filter'
 ) => {
   return {
     Option: (props: OptionProps<OptionType>) => {

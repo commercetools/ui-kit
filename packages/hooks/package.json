@@ -30,7 +30,6 @@
     "raf-schd": "catalog:"
   },
   "devDependencies": {
-    "@commercetools-frontend/ui-kit": "workspace:^",
     "@testing-library/dom": "catalog:test",
     "@testing-library/react": "catalog:test",
     "react": "catalog:react",
