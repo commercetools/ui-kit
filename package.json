@@ -31,7 +31,7 @@
     "test:bundle": "jest --config jest.bundle.config.js",
     "test:visual": "jest --config jest.visual.config.js --runInBand",
     "vrt:components": "percy exec -- pnpm test:visual",
-    "bundlesize": "bundlewatch --config bundlesize.config.json",
+    "bundlewatch": "bundlewatch --config bundlewatch.config.json",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "changeset": "changeset",
     "changeset:version-and-format": "changeset version && pnpm prettier --write --parser json '**/package.json' && pnpm install --no-frozen-lockfile",
