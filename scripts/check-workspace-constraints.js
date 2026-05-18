@@ -7,6 +7,7 @@
  * 1. Public packages must have "license": "MIT"; private packages must not.
  * 2. Public packages must have correct repository fields; private packages must not.
  * 3. Public packages must have publishConfig.access = "public"; private packages must not.
+ * 4. A dependency must not appear in both "dependencies" and "devDependencies".
  */
 const { execSync } = require('child_process');
 const fs = require('fs');
@@ -28,6 +29,18 @@ for (const ws of workspaces) {
   const rel = path.relative(ROOT, ws.path);
   const label = `${pkg.name} (${rel}/package.json)`;
   const isPrivate = pkg.private === true;
+
+  // Applies to both public and private packages: a dependency must not
+  // appear in both "dependencies" and "devDependencies".
+  const deps = Object.keys(pkg.dependencies || {});
+  const devDeps = new Set(Object.keys(pkg.devDependencies || {}));
+  for (const dep of deps) {
+    if (devDeps.has(dep)) {
+      errors.push(
+        `${label}: "${dep}" appears in both "dependencies" and "devDependencies" (remove from "devDependencies")`
+      );
+    }
+  }
 
   if (isPrivate) {
     // Private packages must NOT have license, repository, or publishConfig
