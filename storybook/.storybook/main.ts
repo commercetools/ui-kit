@@ -23,8 +23,16 @@ function getAbsolutePath(value: string) {
 const config: StorybookConfig = {
   stories: [
     '../src/docs/**/**.mdx',
-    '../../packages/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-    '../../packages/components/**/*.mdx',
+    // Anchored to a literal `src/` segment so the glob cannot descend into
+    // pnpm's nested <pkg>/node_modules/@commercetools-uikit/* workspace
+    // symlinks and re-discover the same stories under a different path.
+    // Without this, storybook 8 follows the symlinks and either chokes on
+    // duplicate story ids or hangs traversing the cyclic graph. Structural
+    // fix lives in the Storybook 9 upgrade tracked separately (FEC-935).
+    '../../packages/components/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../../packages/components/*/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../../packages/components/*/src/**/*.mdx',
+    '../../packages/components/*/*/src/**/*.mdx',
   ],
   // head = the manager-header.html file contents
   managerHead: (head) => `
