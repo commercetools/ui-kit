@@ -37,23 +37,23 @@
     "generate-icons": "svgr -d src/generated -- src/svg"
   },
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/design-system": "20.5.0",
-    "@commercetools-uikit/utils": "20.5.0",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@types/dompurify": "^2.4.0",
-    "dompurify": "3.3.2",
-    "react-from-dom": "0.7.3"
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
+    "@commercetools-uikit/design-system": "workspace:^",
+    "@commercetools-uikit/utils": "workspace:^",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "@types/dompurify": "catalog:",
+    "dompurify": "catalog:",
+    "react-from-dom": "catalog:react"
   },
   "devDependencies": {
-    "@commercetools-uikit/spacings": "20.5.0",
-    "@commercetools-uikit/text": "20.5.0",
-    "react": "19.2.0",
-    "react-router-dom": "5.3.4"
+    "@commercetools-uikit/spacings": "workspace:^",
+    "@commercetools-uikit/text": "workspace:^",
+    "react": "catalog:react",
+    "react-router-dom": "catalog:react"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

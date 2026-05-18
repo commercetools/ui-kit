@@ -19,19 +19,19 @@
   "module": "dist/commercetools-uikit-password-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/constraints": "20.5.0",
-    "@commercetools-uikit/design-system": "20.5.0",
-    "@commercetools-uikit/input-utils": "20.5.0",
-    "@commercetools-uikit/utils": "20.5.0",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5"
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
+    "@commercetools-uikit/constraints": "workspace:^",
+    "@commercetools-uikit/design-system": "workspace:^",
+    "@commercetools-uikit/input-utils": "workspace:^",
+    "@commercetools-uikit/utils": "workspace:^",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build"
   },
   "devDependencies": {
-    "react": "19.2.0"
+    "react": "catalog:react"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

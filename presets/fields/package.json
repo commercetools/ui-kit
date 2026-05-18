@@ -19,34 +19,34 @@
   "module": "dist/commercetools-uikit-fields.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/async-creatable-select-field": "20.5.0",
-    "@commercetools-uikit/async-select-field": "20.5.0",
-    "@commercetools-uikit/creatable-select-field": "20.5.0",
-    "@commercetools-uikit/date-field": "20.5.0",
-    "@commercetools-uikit/date-range-field": "20.5.0",
-    "@commercetools-uikit/date-time-field": "20.5.0",
-    "@commercetools-uikit/localized-multiline-text-field": "20.5.0",
-    "@commercetools-uikit/localized-text-field": "20.5.0",
-    "@commercetools-uikit/money-field": "20.5.0",
-    "@commercetools-uikit/multiline-text-field": "20.5.0",
-    "@commercetools-uikit/number-field": "20.5.0",
-    "@commercetools-uikit/password-field": "20.5.0",
-    "@commercetools-uikit/radio-field": "20.5.0",
-    "@commercetools-uikit/search-select-field": "20.5.0",
-    "@commercetools-uikit/select-field": "20.5.0",
-    "@commercetools-uikit/text-field": "20.5.0",
-    "@commercetools-uikit/time-field": "20.5.0"
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
+    "@commercetools-uikit/async-creatable-select-field": "workspace:^",
+    "@commercetools-uikit/async-select-field": "workspace:^",
+    "@commercetools-uikit/creatable-select-field": "workspace:^",
+    "@commercetools-uikit/date-field": "workspace:^",
+    "@commercetools-uikit/date-range-field": "workspace:^",
+    "@commercetools-uikit/date-time-field": "workspace:^",
+    "@commercetools-uikit/localized-multiline-text-field": "workspace:^",
+    "@commercetools-uikit/localized-text-field": "workspace:^",
+    "@commercetools-uikit/money-field": "workspace:^",
+    "@commercetools-uikit/multiline-text-field": "workspace:^",
+    "@commercetools-uikit/number-field": "workspace:^",
+    "@commercetools-uikit/password-field": "workspace:^",
+    "@commercetools-uikit/radio-field": "workspace:^",
+    "@commercetools-uikit/search-select-field": "workspace:^",
+    "@commercetools-uikit/select-field": "workspace:^",
+    "@commercetools-uikit/text-field": "workspace:^",
+    "@commercetools-uikit/time-field": "workspace:^"
   },
   "devDependencies": {
-    "react": "19.2.0",
-    "react-intl": "^7.1.4",
-    "react-router-dom": "5.3.4"
+    "react": "catalog:react",
+    "react-intl": "catalog:react",
+    "react-router-dom": "catalog:react"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-intl": "7.x",
-    "react-router-dom": "5.x"
+    "react": "catalog:peer",
+    "react-intl": "catalog:peer",
+    "react-router-dom": "catalog:peer"
   }
 }

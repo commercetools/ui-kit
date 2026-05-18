@@ -9,21 +9,21 @@
     "preview": "vite preview --port 3000"
   },
   "dependencies": {
-    "@commercetools-uikit/design-system": "20.5.0",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@fontsource/inter": "5.2.8",
-    "@types/react": "^19.0.7",
-    "moment": "2.30.1",
-    "moment-timezone": "0.6.0",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-intl": "^7.1.4",
-    "react-router": "5.3.4",
-    "react-router-dom": "5.3.4"
+    "@commercetools-uikit/design-system": "workspace:^",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "@fontsource/inter": "catalog:",
+    "@types/react": "catalog:react",
+    "moment": "catalog:",
+    "moment-timezone": "catalog:",
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-intl": "catalog:react",
+    "react-router": "catalog:react",
+    "react-router-dom": "catalog:react"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "5.0.4",
-    "vite": "6.4.2"
+    "@vitejs/plugin-react": "catalog:build",
+    "vite": "catalog:build"
   }
 }

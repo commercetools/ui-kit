@@ -1,5 +1,4 @@
 import { render, fireEvent, screen } from '@testing-library/react';
-import { Spacings, PrimaryButton } from '@commercetools-frontend/ui-kit';
 import usePaginationState from './use-pagination-state';
 
 const TestComponent = () => {
@@ -11,16 +10,20 @@ const TestComponent = () => {
         <li>Per page: {perPage.value}</li>
         <li>Page: {page.value}</li>
       </ul>
-      <Spacings.Stack>
-        <PrimaryButton
-          onClick={() => perPage.onChange(50)}
-          label="Change per page"
-        />
-        <PrimaryButton
-          onClick={() => page.onChange(page.value + 1)}
-          label="Change page"
-        />
-      </Spacings.Stack>
+      <button
+        type="button"
+        onClick={() => perPage.onChange(50)}
+        aria-label="Change per page"
+      >
+        Change per page
+      </button>
+      <button
+        type="button"
+        onClick={() => page.onChange(page.value + 1)}
+        aria-label="Change page"
+      >
+        Change page
+      </button>
     </>
   );
 };

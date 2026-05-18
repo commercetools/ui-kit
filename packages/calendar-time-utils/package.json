@@ -19,14 +19,14 @@
   "module": "dist/commercetools-uikit-calendar-time-utils.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/utils": "20.5.0"
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
+    "@commercetools-uikit/utils": "workspace:^"
   },
   "devDependencies": {
-    "moment-timezone": "0.6.0"
+    "moment-timezone": "catalog:"
   },
   "peerDependencies": {
-    "moment-timezone": "0.6.x"
+    "moment-timezone": "catalog:peer"
   }
 }

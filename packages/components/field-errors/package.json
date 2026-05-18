@@ -19,18 +19,18 @@
   "module": "dist/commercetools-uikit-field-errors.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/messages": "20.5.0",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5"
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
+    "@commercetools-uikit/messages": "workspace:^",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build"
   },
   "devDependencies": {
-    "react": "19.2.0",
-    "react-intl": "^7.1.4"
+    "react": "catalog:react",
+    "react-intl": "catalog:react"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-intl": "7.x"
+    "react": "catalog:peer",
+    "react-intl": "catalog:peer"
   }
 }

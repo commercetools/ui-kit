@@ -19,9 +19,9 @@
   "module": "dist/commercetools-uikit-localized-utils.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/utils": "20.5.0",
-    "lodash": "4.18.1"
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
+    "@commercetools-uikit/utils": "workspace:^",
+    "lodash": "catalog:"
   }
 }

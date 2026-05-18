@@ -19,14 +19,14 @@
   "module": "dist/commercetools-uikit-utils.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
-    "@emotion/is-prop-valid": "1.4.0"
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
+    "@emotion/is-prop-valid": "catalog:build"
   },
   "devDependencies": {
-    "react": "19.2.0"
+    "react": "catalog:react"
   },
   "peerDependencies": {
-    "react": "19.x"
+    "react": "catalog:peer"
   }
 }

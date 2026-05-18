@@ -19,30 +19,30 @@
   "module": "dist/commercetools-uikit-async-select-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/constraints": "20.5.0",
-    "@commercetools-uikit/design-system": "20.5.0",
-    "@commercetools-uikit/icons": "20.5.0",
-    "@commercetools-uikit/loading-spinner": "20.5.0",
-    "@commercetools-uikit/select-utils": "20.5.0",
-    "@commercetools-uikit/spacings": "20.5.0",
-    "@commercetools-uikit/text": "20.5.0",
-    "@commercetools-uikit/utils": "20.5.0",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "lodash": "4.18.1",
-    "react-select": "5.10.2"
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
+    "@commercetools-uikit/constraints": "workspace:^",
+    "@commercetools-uikit/design-system": "workspace:^",
+    "@commercetools-uikit/icons": "workspace:^",
+    "@commercetools-uikit/loading-spinner": "workspace:^",
+    "@commercetools-uikit/select-utils": "workspace:^",
+    "@commercetools-uikit/spacings": "workspace:^",
+    "@commercetools-uikit/text": "workspace:^",
+    "@commercetools-uikit/utils": "workspace:^",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "lodash": "catalog:",
+    "react-select": "catalog:react"
   },
   "devDependencies": {
-    "prop-types": "^15.8.1",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-intl": "^7.1.4"
+    "prop-types": "catalog:react",
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-intl": "catalog:react"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-dom": "19.x",
-    "react-intl": "7.x"
+    "react": "catalog:peer",
+    "react-dom": "catalog:peer",
+    "react-intl": "catalog:peer"
   }
 }

@@ -19,36 +19,36 @@
   "module": "dist/commercetools-uikit-filters.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/collapsible-motion": "20.5.0",
-    "@commercetools-uikit/date-input": "20.5.0",
-    "@commercetools-uikit/date-range-input": "20.5.0",
-    "@commercetools-uikit/date-time-input": "20.5.0",
-    "@commercetools-uikit/design-system": "20.5.0",
-    "@commercetools-uikit/flat-button": "20.5.0",
-    "@commercetools-uikit/icon-button": "20.5.0",
-    "@commercetools-uikit/icons": "20.5.0",
-    "@commercetools-uikit/secondary-icon-button": "20.5.0",
-    "@commercetools-uikit/select-input": "20.5.0",
-    "@commercetools-uikit/spacings": "20.5.0",
-    "@commercetools-uikit/utils": "20.5.0",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@radix-ui/react-popover": "^1.1.4",
-    "react-intl": "^7.1.4"
+    "@babel/runtime": "catalog:build",
+    "@babel/runtime-corejs3": "catalog:build",
+    "@commercetools-uikit/collapsible-motion": "workspace:^",
+    "@commercetools-uikit/date-input": "workspace:^",
+    "@commercetools-uikit/date-range-input": "workspace:^",
+    "@commercetools-uikit/date-time-input": "workspace:^",
+    "@commercetools-uikit/design-system": "workspace:^",
+    "@commercetools-uikit/flat-button": "workspace:^",
+    "@commercetools-uikit/icon-button": "workspace:^",
+    "@commercetools-uikit/icons": "workspace:^",
+    "@commercetools-uikit/secondary-icon-button": "workspace:^",
+    "@commercetools-uikit/select-input": "workspace:^",
+    "@commercetools-uikit/spacings": "workspace:^",
+    "@commercetools-uikit/utils": "workspace:^",
+    "@emotion/react": "catalog:build",
+    "@emotion/styled": "catalog:build",
+    "@radix-ui/react-popover": "catalog:react",
+    "react-intl": "catalog:react"
   },
   "devDependencies": {
-    "@commercetools-uikit/buttons": "20.5.0",
+    "@commercetools-uikit/buttons": "workspace:^",
     "@commercetools-uikit/primary-button": "workspace:^",
     "@commercetools-uikit/radio-input": "workspace:^",
     "@commercetools-uikit/search-text-input": "workspace:^",
     "@commercetools-uikit/text-input": "workspace:^",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react": "catalog:react",
+    "react-dom": "catalog:react"
   },
   "peerDependencies": {
-    "react": "19.x",
-    "react-dom": "19.x"
+    "react": "catalog:peer",
+    "react-dom": "catalog:peer"
   }
 }
