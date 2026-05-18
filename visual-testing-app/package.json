@@ -9,7 +9,7 @@
     "preview": "vite preview --port 3000"
   },
   "dependencies": {
-    "@commercetools-uikit/design-system": "20.5.0",
+    "@commercetools-uikit/design-system": "workspace:^",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fontsource/inter": "5.2.8",
