@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-date-range-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/calendar-time-utils": "workspace:^",
     "@commercetools-uikit/calendar-utils": "workspace:^",
@@ -34,15 +34,15 @@
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/tooltip": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "downshift": "9.0.10",
-    "react-is": "19.2.0",
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
+    "downshift": "catalog:",
+    "react-is": "catalog:",
     "warning": "4.0.3"
   },
   "devDependencies": {
     "moment": "2.30.1",
-    "prop-types": "^15.8.1",
+    "prop-types": "catalog:",
     "react": "19.2.0",
     "react-intl": "^7.1.4"
   },

@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-async-creatable-select-field.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/async-creatable-select-input": "workspace:^",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
@@ -29,13 +29,13 @@
     "@commercetools-uikit/field-warnings": "workspace:^",
     "@commercetools-uikit/spacings": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
     "react-intl": "^7.1.4",
-    "react-select": "5.10.2"
+    "react-select": "catalog:"
   },
   "devDependencies": {
-    "prop-types": "^15.8.1",
+    "prop-types": "catalog:",
     "react": "19.2.0",
     "react-router-dom": "5.3.4"
   },

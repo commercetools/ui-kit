@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-buttons.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/flat-button": "workspace:^",

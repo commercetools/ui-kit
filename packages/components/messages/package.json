@@ -19,12 +19,12 @@
   "module": "dist/commercetools-uikit-messages.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
     "react-intl": "^7.1.4"
   },
   "devDependencies": {

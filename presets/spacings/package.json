@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-spacings.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/spacings-inline": "workspace:^",
     "@commercetools-uikit/spacings-inset": "workspace:^",
     "@commercetools-uikit/spacings-inset-squish": "workspace:^",

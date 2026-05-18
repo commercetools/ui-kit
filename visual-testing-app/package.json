@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@commercetools-uikit/design-system": "workspace:^",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
     "@fontsource/inter": "5.2.8",
     "@types/react": "^19.0.7",
     "moment": "2.30.1",

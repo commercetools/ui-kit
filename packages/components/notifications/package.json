@@ -19,13 +19,13 @@
   "module": "dist/commercetools-uikit-notifications.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/icons": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "^11.10.5"
+    "@emotion/react": "catalog:"
   },
   "devDependencies": {
     "react": "19.2.0",

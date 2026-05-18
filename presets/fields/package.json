@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-fields.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/async-creatable-select-field": "workspace:^",
     "@commercetools-uikit/async-select-field": "workspace:^",
     "@commercetools-uikit/creatable-select-field": "workspace:^",

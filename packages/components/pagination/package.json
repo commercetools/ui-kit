@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-pagination.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/icons": "workspace:^",
@@ -31,10 +31,10 @@
     "@commercetools-uikit/spacings": "workspace:^",
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
     "formik": "^2.4.6",
-    "lodash": "4.18.1"
+    "lodash": "catalog:"
   },
   "devDependencies": {
     "react": "19.2.0",

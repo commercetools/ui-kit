@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-calendar-utils.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/accessible-button": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/hooks": "workspace:^",
@@ -31,10 +31,10 @@
     "@commercetools-uikit/text": "workspace:^",
     "@commercetools-uikit/tooltip": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "lodash": "4.18.1",
-    "react-select": "5.10.2"
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
+    "lodash": "catalog:",
+    "react-select": "catalog:"
   },
   "devDependencies": {
     "moment": "2.30.1",

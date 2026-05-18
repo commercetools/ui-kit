@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-inputs.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/async-creatable-select-input": "workspace:^",
     "@commercetools-uikit/async-select-input": "workspace:^",
     "@commercetools-uikit/checkbox-input": "workspace:^",

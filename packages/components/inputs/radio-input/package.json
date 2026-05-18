@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-radio-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/icons": "workspace:^",
@@ -29,9 +29,9 @@
     "@commercetools-uikit/spacings-inset": "workspace:^",
     "@commercetools-uikit/spacings-stack": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "react-is": "19.2.0"
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
+    "react-is": "catalog:"
   },
   "devDependencies": {
     "react": "19.2.0"

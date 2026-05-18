@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-money-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@babel/runtime-corejs3": "^7.20.13",
+    "@babel/runtime": "catalog:",
+    "@babel/runtime-corejs3": "catalog:",
     "@commercetools-uikit/constraints": "workspace:^",
     "@commercetools-uikit/design-system": "workspace:^",
     "@commercetools-uikit/hooks": "workspace:^",
@@ -29,13 +29,13 @@
     "@commercetools-uikit/select-utils": "workspace:^",
     "@commercetools-uikit/tooltip": "workspace:^",
     "@commercetools-uikit/utils": "workspace:^",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "lodash": "4.18.1",
-    "react-select": "5.10.2"
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
+    "lodash": "catalog:",
+    "react-select": "catalog:"
   },
   "devDependencies": {
-    "prop-types": "^15.8.1",
+    "prop-types": "catalog:",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-intl": "^7.1.4"
