@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/date-range-input",
   "description": "The `DateRangeInput` component allows the user to select a date range.",
-  "version": "20.5.0",
+  "version": "20.6.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
