@@ -6,3 +6,4 @@ dist
 vendors
 .yarn
 .changeset
+pnpm-lock.yaml
