@@ -44,6 +44,12 @@ overrides:
   got: 14.5.0
   handlebars: ^4.7.9
   immutable: ^4.3.8
+  # jest-environment-puppeteer pulls jest-environment-node@29.7.0 (which
+  # bundles jest-mock@29.7.0, missing `clearMocksOnScope`). pnpm hoists 29.7.0
+  # into .pnpm/node_modules/, which is what Jest's `testEnvironment: 'node'`
+  # resolver finds. Jest 30 then crashes in Runtime.resetModules. Forcing the
+  # whole tree to a jest-mock@30.4.x-compatible version fixes the resolution.
+  jest-environment-node: ^30.4.1
   json5: ^2.0.0
   lodash: ^4.18.1
   lodash-es: ^4.18.0
