@@ -148,7 +148,7 @@ catalog:
 catalogs:
   build:
     # Babel
-    '@babel/core': 7.28.4
+    '@babel/core': 7.29.0
     '@babel/runtime': ^7.20.13
     '@babel/runtime-corejs3': ^7.20.13
 
@@ -168,12 +168,12 @@ catalogs:
 
     # Vite
     '@modyfi/vite-plugin-yaml': ^1.1.0
-    '@vitejs/plugin-react': 5.0.4
+    '@vitejs/plugin-react': 5.2.0
     '@vitejs/plugin-react-swc': ^4.2.2
     vite: 6.4.2
 
     # PostCSS
-    postcss: 8.5.6
+    postcss: 8.5.15
     postcss-styled-syntax: ^0.7.0
     postcss-syntax: ^0.36.2
     postcss-value-parser: 4.2.0
@@ -184,8 +184,8 @@ catalogs:
     typescript: 5.9.3
 
     # Output / bundling
-    '@preconstruct/cli': 2.8.12
-    browserslist: 4.26.3
+    '@preconstruct/cli': 2.8.13
+    browserslist: 4.28.2
     bundlewatch: ^0.4.1
 
   lint:
