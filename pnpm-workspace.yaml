@@ -32,8 +32,8 @@ overrides:
   '@types/react-dom': 19.2.1
   '@types/react-router': 5.1.20
   '@types/unist': 3.0.3
-  '@typescript-eslint/eslint-plugin': 8.46.0
-  '@typescript-eslint/parser': 8.46.0
+  '@typescript-eslint/eslint-plugin': 8.59.4
+  '@typescript-eslint/parser': 8.59.4
   '@conventional-changelog/git-client': ^2.0.0
   '@isaacs/brace-expansion': ^5.0.1
   axios: ^1.13.5
@@ -191,14 +191,14 @@ catalogs:
   lint:
     # ESLint
     eslint: ^9.0.0
-    eslint-formatter-pretty: 7.0.0
+    eslint-formatter-pretty: 7.1.0
 
     # typescript-eslint
     '@typescript-eslint/eslint-plugin': 8.46.0
     '@typescript-eslint/parser': 8.46.0
 
     # Stylelint
-    stylelint: 16.25.0
+    stylelint: 16.26.1
     stylelint-config-standard: 36.0.1
     stylelint-order: 5.0.0
 
