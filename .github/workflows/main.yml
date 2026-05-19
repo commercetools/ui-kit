@@ -60,7 +60,9 @@ jobs:
         run: pnpm lint:publint
 
       - name: Running linters and tests
-        run: pnpm jest --projects jest.{eslint,test,ts-test,bundle}.config.js --reporters github-actions
+        # DEBUG: --detectOpenHandles to surface what's leaking on Linux CI.
+        # Default reporter so the leak stack traces show up in the log.
+        run: pnpm jest --projects jest.{eslint,test,ts-test,bundle}.config.js --detectOpenHandles
         env:
           CI: true
 
