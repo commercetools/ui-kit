@@ -104,7 +104,7 @@ catalog:
   '@types/history': ^4.7.11
   '@types/is-hotkey': ^0.1.7
   '@types/is-url': ^1.2.32
-  '@types/listr': 0.14.9
+  '@types/listr': 0.14.10
   '@types/lodash': ^4.17.24
   '@types/node': ^22.13.1
   '@types/prettier': ^2.7.3
@@ -114,10 +114,10 @@ catalog:
   commander: ^13.1.0
   cross-env: 10.1.0
   debounce-promise: ^3.1.2
-  dompurify: 3.3.2
+  dompurify: 3.4.5
   escape-html: 1.0.3
-  execa: 9.6.0
-  glob: 13.0.0
+  execa: 9.6.1
+  glob: 13.0.6
   global: 4.4.0
   history: 4.10.1
   immutable: 4.3.8
@@ -127,12 +127,12 @@ catalog:
   listr-verbose-renderer: 0.6.0
   lodash: 4.18.1
   moment: 2.30.1
-  moment-timezone: 0.6.0
+  moment-timezone: 0.6.2
   nodemon: ^3.0.0
   omit-empty-es: 1.2.0
   'popper.js': ^1.15.0
   publint: ^0.3.21
-  qs: 6.14.1
+  qs: 6.15.2
   raf-schd: ^4.0.3
   rcfile: 1.0.3
   replace: 1.2.2
