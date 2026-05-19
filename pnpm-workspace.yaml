@@ -257,8 +257,8 @@ catalogs:
 
   repo:
     # Versioning / release
-    '@changesets/cli': 2.29.7
-    '@changesets/changelog-github': 0.5.1
+    '@changesets/cli': 2.31.0
+    '@changesets/changelog-github': 0.5.2
     conventional-changelog-cli: 5.0.0
 
     # Monorepo tooling
@@ -273,8 +273,8 @@ catalogs:
     '@commitlint/config-conventional': 20.0.0
 
     # Shared commercetools configs
-    '@commercetools-frontend/babel-preset-mc-app': 27.0.0
-    '@commercetools-frontend/eslint-config-mc-app': 27.0.0
+    '@commercetools-frontend/babel-preset-mc-app': 27.6.2
+    '@commercetools-frontend/eslint-config-mc-app': 27.6.2
 
   rich-text:
     # Slate (editor core)
