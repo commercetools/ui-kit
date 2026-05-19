@@ -222,9 +222,9 @@ catalogs:
 
   react:
     # React core
-    react: 19.2.0
-    react-dom: 19.2.0
-    react-is: 19.2.0
+    react: 19.2.6
+    react-dom: 19.2.6
+    react-is: 19.2.6
 
     # @types (must match runtime major)
     '@types/react': ^19.0.7
@@ -237,7 +237,7 @@ catalogs:
     '@types/react-router-dom': ^5.3.3
 
     # i18n (formatjs)
-    '@formatjs/cli': 6.7.4
+    '@formatjs/cli': 6.16.0
     '@formatjs/intl-relativetimeformat': 11.4.13
     babel-plugin-formatjs: ^10.0.0
     intl-pluralrules: 2.0.1
@@ -246,13 +246,13 @@ catalogs:
     # React-bound utilities
     '@hello-pangea/dnd': ^18.0.0
     '@radix-ui/react-popover': ^1.1.4
-    downshift: 9.0.10
+    downshift: 9.3.3
     formik: ^2.4.6
     prop-types: ^15.8.1
     react-docgen: 5.4.3
-    react-from-dom: 0.7.3
+    react-from-dom: 0.7.5
     react-select: 5.10.2
-    react-textarea-autosize: 8.4.0
+    react-textarea-autosize: 8.5.9
     react-value: 0.2.0
 
   repo:
