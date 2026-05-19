@@ -32,8 +32,8 @@ overrides:
   '@types/react-dom': 19.2.1
   '@types/react-router': 5.1.20
   '@types/unist': 3.0.3
-  '@typescript-eslint/eslint-plugin': 8.46.0
-  '@typescript-eslint/parser': 8.46.0
+  '@typescript-eslint/eslint-plugin': 8.59.4
+  '@typescript-eslint/parser': 8.59.4
   '@conventional-changelog/git-client': ^2.0.0
   '@isaacs/brace-expansion': ^5.0.1
   axios: ^1.13.5
@@ -44,6 +44,12 @@ overrides:
   got: 14.5.0
   handlebars: ^4.7.9
   immutable: ^4.3.8
+  # jest-environment-puppeteer pulls jest-environment-node@29.7.0 (which
+  # bundles jest-mock@29.7.0, missing `clearMocksOnScope`). pnpm hoists 29.7.0
+  # into .pnpm/node_modules/, which is what Jest's `testEnvironment: 'node'`
+  # resolver finds. Jest 30 then crashes in Runtime.resetModules. Forcing the
+  # whole tree to a jest-mock@30.4.x-compatible version fixes the resolution.
+  jest-environment-node: ^30.4.1
   json5: ^2.0.0
   lodash: ^4.18.1
   lodash-es: ^4.18.0
@@ -104,7 +110,7 @@ catalog:
   '@types/history': ^4.7.11
   '@types/is-hotkey': ^0.1.7
   '@types/is-url': ^1.2.32
-  '@types/listr': 0.14.9
+  '@types/listr': 0.14.10
   '@types/lodash': ^4.17.24
   '@types/node': ^22.13.1
   '@types/prettier': ^2.7.3
@@ -114,10 +120,10 @@ catalog:
   commander: ^13.1.0
   cross-env: 10.1.0
   debounce-promise: ^3.1.2
-  dompurify: 3.3.2
+  dompurify: 3.4.5
   escape-html: 1.0.3
-  execa: 9.6.0
-  glob: 13.0.0
+  execa: 9.6.1
+  glob: 13.0.6
   global: 4.4.0
   history: 4.10.1
   immutable: 4.3.8
@@ -127,12 +133,12 @@ catalog:
   listr-verbose-renderer: 0.6.0
   lodash: 4.18.1
   moment: 2.30.1
-  moment-timezone: 0.6.0
+  moment-timezone: 0.6.2
   nodemon: ^3.0.0
   omit-empty-es: 1.2.0
   'popper.js': ^1.15.0
   publint: ^0.3.21
-  qs: 6.14.1
+  qs: 6.15.2
   raf-schd: ^4.0.3
   rcfile: 1.0.3
   replace: 1.2.2
@@ -148,7 +154,7 @@ catalog:
 catalogs:
   build:
     # Babel
-    '@babel/core': 7.28.4
+    '@babel/core': 7.29.0
     '@babel/runtime': ^7.20.13
     '@babel/runtime-corejs3': ^7.20.13
 
@@ -168,12 +174,12 @@ catalogs:
 
     # Vite
     '@modyfi/vite-plugin-yaml': ^1.1.0
-    '@vitejs/plugin-react': 5.0.4
+    '@vitejs/plugin-react': 5.2.0
     '@vitejs/plugin-react-swc': ^4.2.2
     vite: 6.4.2
 
     # PostCSS
-    postcss: 8.5.6
+    postcss: 8.5.15
     postcss-styled-syntax: ^0.7.0
     postcss-syntax: ^0.36.2
     postcss-value-parser: 4.2.0
@@ -184,21 +190,21 @@ catalogs:
     typescript: 5.9.3
 
     # Output / bundling
-    '@preconstruct/cli': 2.8.12
-    browserslist: 4.26.3
+    '@preconstruct/cli': 2.8.13
+    browserslist: 4.28.2
     bundlewatch: ^0.4.1
 
   lint:
     # ESLint
     eslint: ^9.0.0
-    eslint-formatter-pretty: 7.0.0
+    eslint-formatter-pretty: 7.1.0
 
     # typescript-eslint
     '@typescript-eslint/eslint-plugin': 8.46.0
     '@typescript-eslint/parser': 8.46.0
 
     # Stylelint
-    stylelint: 16.25.0
+    stylelint: 16.26.1
     stylelint-config-standard: 36.0.1
     stylelint-order: 5.0.0
 
@@ -222,9 +228,9 @@ catalogs:
 
   react:
     # React core
-    react: 19.2.0
-    react-dom: 19.2.0
-    react-is: 19.2.0
+    react: 19.2.6
+    react-dom: 19.2.6
+    react-is: 19.2.6
 
     # @types (must match runtime major)
     '@types/react': ^19.0.7
@@ -237,7 +243,7 @@ catalogs:
     '@types/react-router-dom': ^5.3.3
 
     # i18n (formatjs)
-    '@formatjs/cli': 6.7.4
+    '@formatjs/cli': 6.16.0
     '@formatjs/intl-relativetimeformat': 11.4.13
     babel-plugin-formatjs: ^10.0.0
     intl-pluralrules: 2.0.1
@@ -246,19 +252,19 @@ catalogs:
     # React-bound utilities
     '@hello-pangea/dnd': ^18.0.0
     '@radix-ui/react-popover': ^1.1.4
-    downshift: 9.0.10
+    downshift: 9.3.3
     formik: ^2.4.6
     prop-types: ^15.8.1
     react-docgen: 5.4.3
-    react-from-dom: 0.7.3
+    react-from-dom: 0.7.5
     react-select: 5.10.2
-    react-textarea-autosize: 8.4.0
+    react-textarea-autosize: 8.5.9
     react-value: 0.2.0
 
   repo:
     # Versioning / release
-    '@changesets/cli': 2.29.7
-    '@changesets/changelog-github': 0.5.1
+    '@changesets/cli': 2.31.0
+    '@changesets/changelog-github': 0.5.2
     conventional-changelog-cli: 5.0.0
 
     # Monorepo tooling
@@ -273,8 +279,8 @@ catalogs:
     '@commitlint/config-conventional': 20.0.0
 
     # Shared commercetools configs
-    '@commercetools-frontend/babel-preset-mc-app': 27.0.0
-    '@commercetools-frontend/eslint-config-mc-app': 27.0.0
+    '@commercetools-frontend/babel-preset-mc-app': 27.6.2
+    '@commercetools-frontend/eslint-config-mc-app': 27.6.2
 
   rich-text:
     # Slate (editor core)
@@ -316,10 +322,10 @@ catalogs:
 
   test:
     # Jest core
-    jest: 30.3.0
-    jest-environment-jsdom: 30.3.0
-    jest-validate: 30.3.0
-    babel-jest: 30.3.0
+    jest: 30.4.2
+    jest-environment-jsdom: 30.4.1
+    jest-validate: 30.4.1
+    babel-jest: 30.4.1
     '@types/jest': ^30.0.0
 
     # Jest plugins / runners
@@ -340,7 +346,7 @@ catalogs:
     '@testing-library/react': ^16.2.0
 
     # Visual regression / Puppeteer
-    '@percy/cli': 1.31.3
+    '@percy/cli': 1.31.13
     '@percy/puppeteer': 2.0.2
     puppeteer: 22.15.0
     pptr-testing-library: 0.8.0
