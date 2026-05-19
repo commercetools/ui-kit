@@ -316,10 +316,10 @@ catalogs:
 
   test:
     # Jest core
-    jest: 30.3.0
-    jest-environment-jsdom: 30.3.0
-    jest-validate: 30.3.0
-    babel-jest: 30.3.0
+    jest: 30.4.2
+    jest-environment-jsdom: 30.4.1
+    jest-validate: 30.4.1
+    babel-jest: 30.4.1
     '@types/jest': ^30.0.0
 
     # Jest plugins / runners
@@ -340,7 +340,7 @@ catalogs:
     '@testing-library/react': ^16.2.0
 
     # Visual regression / Puppeteer
-    '@percy/cli': 1.31.3
+    '@percy/cli': 1.31.13
     '@percy/puppeteer': 2.0.2
     puppeteer: 22.15.0
     pptr-testing-library: 0.8.0
