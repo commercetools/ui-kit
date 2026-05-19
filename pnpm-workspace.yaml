@@ -27,6 +27,7 @@ onlyBuiltDependencies:
 # entry can target multiple incoming ranges.
 overrides:
   '@babel/preset-env': ^7.18.6
+  '@babel/plugin-transform-modules-systemjs': ^7.29.4
   '@types/eslint': ^9.0.0
   '@types/react': ^19.0.3
   '@types/react-dom': 19.2.1
@@ -35,21 +36,23 @@ overrides:
   '@typescript-eslint/eslint-plugin': 8.59.4
   '@typescript-eslint/parser': 8.59.4
   '@conventional-changelog/git-client': ^2.0.0
-  '@isaacs/brace-expansion': ^5.0.1
-  axios: ^1.13.5
-  basic-ftp: ^5.2.0
+  axios: ^1.15.2
+  basic-ftp: ^5.2.2
   core-js-compat: ^3.23.4
+  fast-uri: ^3.1.2
   flatted: ^3.4.2
+  follow-redirects: ^1.16.0
   glob-parent: ^6.0.0
-  got: 14.5.0
   handlebars: ^4.7.9
   immutable: ^4.3.8
+  ip-address: ^10.1.1
   # jest-environment-puppeteer pulls jest-environment-node@29.7.0 (which
   # bundles jest-mock@29.7.0, missing `clearMocksOnScope`). pnpm hoists 29.7.0
   # into .pnpm/node_modules/, which is what Jest's `testEnvironment: 'node'`
   # resolver finds. Jest 30 then crashes in Runtime.resetModules. Forcing the
   # whole tree to a jest-mock@30.4.x-compatible version fixes the resolution.
   jest-environment-node: ^30.4.1
+  'js-yaml@^4.0.0': ^4.1.1
   json5: ^2.0.0
   lodash: ^4.18.1
   lodash-es: ^4.18.0
@@ -61,12 +64,12 @@ overrides:
   'picomatch@^2.2.2': ^2.3.2
   'picomatch@^2.2.3': ^2.3.2
   'picomatch@^2.3.1': ^2.3.2
+  postcss: ^8.5.10
   react-from-dom: 0.6.2
   'rollup@^2.79.1': ^2.80.0
   'rollup@^4.34.9': ^4.59.0
   svgo: ^3.3.3
-  systeminformation: ^5.31.0
-  tar: ^7.5.11
+  systeminformation: ^5.31.6
   'tar-fs@^2.0.0': ^2.1.4
   'tar-fs@^3.0.6': ^3.1.1
   'trim@0.0.1': ^0.0.3
