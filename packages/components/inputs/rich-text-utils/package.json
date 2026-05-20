@@ -18,6 +18,9 @@
   "main": "dist/commercetools-uikit-rich-text-utils.cjs.js",
   "module": "dist/commercetools-uikit-rich-text-utils.esm.js",
   "files": ["dist"],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "generate-icons": "svgr -d src/rich-text-body/icons/generated --typescript -- src/rich-text-body/icons/svg"
   },

@@ -18,6 +18,9 @@
   "main": "dist/commercetools-uikit-filters.cjs.js",
   "module": "dist/commercetools-uikit-filters.esm.js",
   "files": ["dist"],
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
     "@babel/runtime": "catalog:build",
     "@babel/runtime-corejs3": "catalog:build",

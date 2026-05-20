@@ -18,6 +18,9 @@
   "main": "dist/commercetools-uikit-radio-input.cjs.js",
   "module": "dist/commercetools-uikit-radio-input.esm.js",
   "files": ["dist"],
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
     "@babel/runtime": "catalog:build",
     "@babel/runtime-corejs3": "catalog:build",

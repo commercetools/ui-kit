@@ -18,6 +18,9 @@
   "main": "dist/commercetools-uikit-checkbox-input.cjs.js",
   "module": "dist/commercetools-uikit-checkbox-input.esm.js",
   "files": ["dist"],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "generate-icons": "svgr -d src/icons/generated --typescript -- src/icons/svg"
   },

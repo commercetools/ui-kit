@@ -8,17 +8,18 @@
  * 2. Public packages must have correct repository fields; private packages must not.
  * 3. Public packages must have publishConfig.access = "public"; private packages must not.
  * 4. A dependency must not appear in both "dependencies" and "devDependencies".
+ * 5. Public packages must declare `engines.node` matching PUBLISHED_NODE_FLOOR.
  *
  * Cross-workspace rules (Pass 2):
- * 5. Every dep listed under `catalog:` (default) in pnpm-workspace.yaml must
+ * 6. Every dep listed under `catalog:` (default) in pnpm-workspace.yaml must
  *    be consumed via `catalog:` in workspace `dependencies` / `devDependencies`.
- * 6. Every dep listed under a named catalog `catalogs.<name>:` must be
+ * 7. Every dep listed under a named catalog `catalogs.<name>:` must be
  *    consumed via `catalog:<name>` in workspace `dependencies` /
  *    `devDependencies`.
- * 7. Every dep listed under `catalogs.peer:` must be consumed via
+ * 8. Every dep listed under `catalogs.peer:` must be consumed via
  *    `catalog:peer` in workspace `peerDependencies`.
  *    Literal versions on a cataloged dep are an error in all three cases.
- * 8. Drift: an uncataloged external dep used at two or more distinct
+ * 9. Drift: an uncataloged external dep used at two or more distinct
  *    specifiers across workspaces is an error — add it to a catalog so
  *    the version is centrally controlled. Install (deps + devDeps) and
  *    peer drift are checked separately.
@@ -29,6 +30,10 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const REPO_URL = 'https://github.com/commercetools/ui-kit.git';
+// Runtime Node floor for *published* artifacts — independent of the build
+// env (root engines.node). Decoupled because the build env may be stricter
+// than what consumers need to use the published bundles.
+const PUBLISHED_NODE_FLOOR = '>=22';
 
 // Parse the `catalog:` (default) and `catalogs.<name>:` (named) blocks from
 // pnpm-workspace.yaml. Minimal parser scoped to the shape we use — key:value
@@ -204,6 +209,20 @@ for (const ws of workspaces) {
       errors.push(
         `${label}: publishConfig.access must be "public" (got ${JSON.stringify(
           pc.access
+        )})`
+      );
+    }
+
+    // Public packages must declare an engines.node floor for consumers
+    const eng = pkg.engines;
+    if (!eng || typeof eng !== 'object') {
+      errors.push(
+        `${label}: public package must have "engines": { "node": "${PUBLISHED_NODE_FLOOR}" }`
+      );
+    } else if (eng.node !== PUBLISHED_NODE_FLOOR) {
+      errors.push(
+        `${label}: engines.node must be "${PUBLISHED_NODE_FLOOR}" (got ${JSON.stringify(
+          eng.node
         )})`
       );
     }

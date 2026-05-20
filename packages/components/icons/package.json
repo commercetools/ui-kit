@@ -33,6 +33,9 @@
     "leading-icon",
     "generated/**"
   ],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "generate-icons": "svgr -d src/generated -- src/svg"
   },

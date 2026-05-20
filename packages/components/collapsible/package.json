@@ -18,6 +18,9 @@
   "main": "dist/commercetools-uikit-collapsible.cjs.js",
   "module": "dist/commercetools-uikit-collapsible.esm.js",
   "files": ["dist"],
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
     "@babel/runtime": "catalog:build",
     "@babel/runtime-corejs3": "catalog:build",

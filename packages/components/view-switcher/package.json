@@ -18,6 +18,9 @@
   "main": "dist/commercetools-uikit-view-switcher.cjs.js",
   "module": "dist/commercetools-uikit-view-switcher.esm.js",
   "files": ["dist"],
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
     "@babel/runtime": "catalog:build",
     "@babel/runtime-corejs3": "catalog:build",
