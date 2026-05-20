@@ -43,6 +43,9 @@ describe('when package.json is NOT private', () => {
       {
         "bugs": "https://github.com/commercetools/ui-kit/issues",
         "description": "Render an Avenger",
+        "engines": {
+          "node": ">=22",
+        },
         "homepage": "https://uikit.commercetools.com",
         "keywords": [
           "javascript",

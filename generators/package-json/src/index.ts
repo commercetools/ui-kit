@@ -80,6 +80,9 @@ export const transformDocument = (
     module: originalPackageJson.module,
     preconstruct: originalPackageJson.preconstruct,
     files: originalPackageJson.files,
+    engines: {
+      node: '>=22',
+    },
     scripts: originalPackageJson.scripts,
     dependencies: originalPackageJson.dependencies,
     devDependencies: originalPackageJson.devDependencies,
