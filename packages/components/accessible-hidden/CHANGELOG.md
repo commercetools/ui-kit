@@ -1,5 +1,7 @@
 # @commercetools-uikit/accessible-hidden
 
+## 20.6.1
+
 ## 20.6.0
 
 ### Minor Changes

@@ -1,5 +1,7 @@
 # @commercetools-uikit/utils
 
+## 20.6.1
+
 ## 20.6.0
 
 ### Minor Changes
