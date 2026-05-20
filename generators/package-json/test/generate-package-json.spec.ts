@@ -72,7 +72,7 @@ describe('when package.json is NOT private', () => {
         "repository": {
           "directory": "packages/avenger",
           "type": "git",
-          "url": "https://github.com/commercetools/ui-kit.git",
+          "url": "git+https://github.com/commercetools/ui-kit.git",
         },
         "sideEffects": false,
         "version": "1.0.0",

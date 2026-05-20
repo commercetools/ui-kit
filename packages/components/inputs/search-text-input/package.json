@@ -5,7 +5,7 @@
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/commercetools/ui-kit.git",
+    "url": "git+https://github.com/commercetools/ui-kit.git",
     "directory": "packages/components/inputs/search-text-input"
   },
   "homepage": "https://uikit.commercetools.com",

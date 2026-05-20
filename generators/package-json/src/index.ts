@@ -64,7 +64,7 @@ export const transformDocument = (
     bugs: 'https://github.com/commercetools/ui-kit/issues',
     repository: {
       type: 'git',
-      url: 'https://github.com/commercetools/ui-kit.git',
+      url: 'git+https://github.com/commercetools/ui-kit.git',
       directory: relativePackageFolderPath,
     },
     homepage: 'https://uikit.commercetools.com',

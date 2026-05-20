@@ -29,7 +29,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const REPO_URL = 'https://github.com/commercetools/ui-kit.git';
+const REPO_URL = 'git+https://github.com/commercetools/ui-kit.git';
 // Runtime Node floor for *published* artifacts — independent of the build
 // env (root engines.node). Decoupled because the build env may be stricter
 // than what consumers need to use the published bundles.
