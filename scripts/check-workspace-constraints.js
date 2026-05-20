@@ -9,20 +9,21 @@
  * 3. Public packages must have publishConfig.access = "public"; private packages must not.
  * 4. A dependency must not appear in both "dependencies" and "devDependencies".
  * 5. Public packages must declare `engines.node` matching PUBLISHED_NODE_FLOOR.
+ * 6. Public packages must declare `type: "commonjs"` (matches dist output).
  *
  * Cross-workspace rules (Pass 2):
- * 6. Every dep listed under `catalog:` (default) in pnpm-workspace.yaml must
+ * 7. Every dep listed under `catalog:` (default) in pnpm-workspace.yaml must
  *    be consumed via `catalog:` in workspace `dependencies` / `devDependencies`.
- * 7. Every dep listed under a named catalog `catalogs.<name>:` must be
+ * 8. Every dep listed under a named catalog `catalogs.<name>:` must be
  *    consumed via `catalog:<name>` in workspace `dependencies` /
  *    `devDependencies`.
- * 8. Every dep listed under `catalogs.peer:` must be consumed via
+ * 9. Every dep listed under `catalogs.peer:` must be consumed via
  *    `catalog:peer` in workspace `peerDependencies`.
  *    Literal versions on a cataloged dep are an error in all three cases.
- * 9. Drift: an uncataloged external dep used at two or more distinct
- *    specifiers across workspaces is an error — add it to a catalog so
- *    the version is centrally controlled. Install (deps + devDeps) and
- *    peer drift are checked separately.
+ * 10. Drift: an uncataloged external dep used at two or more distinct
+ *     specifiers across workspaces is an error — add it to a catalog so
+ *     the version is centrally controlled. Install (deps + devDeps) and
+ *     peer drift are checked separately.
  */
 const { execSync } = require('child_process');
 const fs = require('fs');
@@ -223,6 +224,17 @@ for (const ws of workspaces) {
       errors.push(
         `${label}: engines.node must be "${PUBLISHED_NODE_FLOOR}" (got ${JSON.stringify(
           eng.node
+        )})`
+      );
+    }
+
+    // Public packages must declare type = "commonjs" — matches the
+    // .cjs.js / .esm.js layout Preconstruct emits and silences publint's
+    // "missing type field" suggestion.
+    if (pkg.type !== 'commonjs') {
+      errors.push(
+        `${label}: public package must have "type": "commonjs" (got ${JSON.stringify(
+          pkg.type
         )})`
       );
     }

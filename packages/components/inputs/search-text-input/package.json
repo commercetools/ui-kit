@@ -14,6 +14,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "commonjs",
   "sideEffects": false,
   "main": "dist/commercetools-uikit-search-text-input.cjs.js",
   "module": "dist/commercetools-uikit-search-text-input.esm.js",

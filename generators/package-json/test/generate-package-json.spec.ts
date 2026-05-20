@@ -75,6 +75,7 @@ describe('when package.json is NOT private', () => {
           "url": "git+https://github.com/commercetools/ui-kit.git",
         },
         "sideEffects": false,
+        "type": "commonjs",
         "version": "1.0.0",
       }
     `);

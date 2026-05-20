@@ -73,6 +73,11 @@ export const transformDocument = (
     publishConfig: {
       access: 'public',
     },
+    // Matches the de facto behavior of Preconstruct's output: every .js
+    // file under main/module resolution is CJS. Pinning this silences
+    // publint's "missing type field" suggestion without changing how
+    // bundlers or Node interpret the package.
+    type: 'commonjs',
     sideEffects: false,
     // Managed by `preconstruct`
     main: originalPackageJson.main,

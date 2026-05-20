@@ -14,6 +14,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "commonjs",
   "sideEffects": false,
   "main": "dist/commercetools-uikit-collapsible-motion.cjs.js",
   "module": "dist/commercetools-uikit-collapsible-motion.esm.js",

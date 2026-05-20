@@ -14,6 +14,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "commonjs",
   "sideEffects": false,
   "main": "dist/commercetools-uikit-primary-button.cjs.js",
   "module": "dist/commercetools-uikit-primary-button.esm.js",

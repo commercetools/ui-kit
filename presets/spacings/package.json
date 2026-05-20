@@ -14,6 +14,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "commonjs",
   "sideEffects": false,
   "main": "dist/commercetools-uikit-spacings.cjs.js",
   "module": "dist/commercetools-uikit-spacings.esm.js",
