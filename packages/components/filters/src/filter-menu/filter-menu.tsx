@@ -125,6 +125,22 @@ export const menuBodyStyle = css`
 
   /** ensure that body scrolls with overflow now that there is a menu max-height */
   overflow: hidden auto;
+
+  /** force the scrollbar to render persistently — browsers (esp. macOS) hide
+      it by default, which masks the fact that more options exist below the fold */
+  scrollbar-width: thin;
+  scrollbar-color: ${designTokens.colorNeutral60} transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${designTokens.colorNeutral60};
+    border-radius: 4px;
+  }
 `;
 
 function FilterMenu(props: TFilterMenuProps) {

@@ -312,6 +312,18 @@ const menuListStyles = () => (base: TBase) => {
     padding: `${designTokens.spacing10} 0`,
     borderRadius: designTokens.borderRadiusForInput,
     backgroundColor: designTokens.backgroundColorForInput,
+    scrollbarWidth: 'thin',
+    scrollbarColor: `${designTokens.colorNeutral60} transparent`,
+    '&::-webkit-scrollbar': {
+      width: '8px',
+    },
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: 'transparent',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: designTokens.colorNeutral60,
+      borderRadius: '4px',
+    },
   };
 };
 
