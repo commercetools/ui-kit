@@ -71,24 +71,19 @@ jobs:
       - name: Building Visual Regression Tests application for UI components
         run: pnpm visual-testing-app:build
 
-      # Puppeteer's postinstall hook downloads Chrome to ~/.cache/puppeteer.
-      # Under pnpm, the postinstall script's side-effects are cached in the pnpm
-      # store (which is restored from the GitHub Actions cache), so pnpm skips
-      # re-running it. But Chrome lives outside node_modules / the pnpm store,
-      # so the binary is missing on the runner. Install it explicitly here so
-      # the visual regression tests can find it.
-      - name: Install Puppeteer's Chrome
-        run: pnpm exec puppeteer browsers install chrome
-
-      # @percy/core pins a Chromium snapshot revision (1300309) for asset
-      # discovery and auto-downloads it; that revision was pruned from the public
-      # bucket, so the download now hangs and VRT captures 0 snapshots. Point
-      # Percy at the runner's pre-installed Chrome so it skips the download
-      # entirely (it falls back to the broken download if this path is empty).
+      # Both the visual-test browser (jest-puppeteer) and Percy's asset-discovery
+      # browser need a Chrome. Their pinned runtime downloads both fail in CI now
+      # — Puppeteer's Chrome-for-Testing 127.0.6533.88 and Percy's Chromium
+      # snapshot 1300309 (pruned from the public bucket) — which yielded 0
+      # snapshots. Use the runner's pre-installed Chrome for both instead of
+      # downloading. jest-puppeteer.config.js already reads
+      # PUPPETEER_EXECUTABLE_PATH and launches with --no-sandbox.
       - name: Running Visual Regression Tests for UI components
         run: |
-          export PERCY_BROWSER_EXECUTABLE="$(command -v google-chrome google-chrome-stable chromium-browser 2>/dev/null | head -1)"
-          echo "Percy discovery browser: ${PERCY_BROWSER_EXECUTABLE:-<none found; Percy will download>}"
+          CHROME="$(command -v google-chrome google-chrome-stable chromium-browser 2>/dev/null | head -1)"
+          echo "Using Chrome for VRT + Percy: ${CHROME:?no Chrome found on runner}"
+          export PUPPETEER_EXECUTABLE_PATH="$CHROME"
+          export PERCY_BROWSER_EXECUTABLE="$CHROME"
           pnpm vrt:components
         timeout-minutes: 20
         env:
