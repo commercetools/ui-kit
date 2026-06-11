@@ -16,11 +16,7 @@ permissions:
 
 jobs:
   build_lint_and_test:
-    # Pinned to 22.04: the current 24.04 runner image ships a partial
-    # ~/.cache/puppeteer that breaks `puppeteer browsers install`, and needs an
-    # AppArmor `aa-exec` workaround for Chrome's sandbox. 22.04 has neither, so
-    # the job runs without those workarounds.
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout
@@ -71,22 +67,27 @@ jobs:
       - name: Building Visual Regression Tests application for UI components
         run: pnpm visual-testing-app:build
 
-      # Both the visual-test browser (jest-puppeteer) and Percy's asset-discovery
-      # browser need a Chrome. Their pinned runtime downloads both fail in CI now
-      # — Puppeteer's Chrome-for-Testing 127.0.6533.88 and Percy's Chromium
-      # snapshot 1300309 (pruned from the public bucket) — which yielded 0
-      # snapshots. Use the runner's pre-installed Chrome for both instead of
-      # downloading. jest-puppeteer.config.js already reads
+      # The visual-test browser (jest-puppeteer) and Percy's asset-discovery
+      # browser both need a Chrome. Puppeteer's and Percy's own pinned downloads
+      # (Chrome-for-Testing 127.0.6533.88 / Percy Chromium snapshot 1300309) stopped
+      # working in CI and yielded 0 snapshots, so we provision Chrome explicitly
+      # here and point both tools at it. jest-puppeteer.config.js reads
       # PUPPETEER_EXECUTABLE_PATH and launches with --no-sandbox.
+      # TODO: pin `chrome-version` to a specific build for reproducible snapshots.
+      - name: Set up Chrome
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@2e1d749697dd1612b833dba4a722266286fbefcd # v2.1.2
+        with:
+          chrome-version: stable
+
       - name: Running Visual Regression Tests for UI components
         run: |
-          CHROME="$(command -v google-chrome google-chrome-stable chromium-browser 2>/dev/null | head -1)"
-          echo "Using Chrome for VRT + Percy: ${CHROME:?no Chrome found on runner}"
-          export PUPPETEER_EXECUTABLE_PATH="$CHROME"
-          export PERCY_BROWSER_EXECUTABLE="$CHROME"
+          echo "Using Chrome ${{ steps.setup-chrome.outputs.chrome-version }} at $PUPPETEER_EXECUTABLE_PATH"
           pnpm vrt:components
         timeout-minutes: 20
         env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          PERCY_BROWSER_EXECUTABLE: ${{ steps.setup-chrome.outputs.chrome-path }}
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
 
