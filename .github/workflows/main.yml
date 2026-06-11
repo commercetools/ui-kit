@@ -16,7 +16,10 @@ permissions:
 
 jobs:
   build_lint_and_test:
-    runs-on: ubuntu-24.04
+    # Pinned to 22.04: the 24.04 runner image (since ~20260525) tightened
+    # AppArmor unprivileged-userns restrictions that prevent Percy/Chromium from
+    # launching, so VRT produced 0 snapshots. 22.04 has no such restriction.
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout
@@ -40,13 +43,6 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml', 'patches/*.patch') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
-
-      # GitHub's runner image can ship a partial ~/.cache/puppeteer (a browser
-      # folder without the executable). @puppeteer/browsers refuses to repair an
-      # incomplete install and fails the "Install Puppeteer's Chrome" step below.
-      # Clear it so Puppeteer's postinstall downloads a clean Chrome.
-      - name: Clear stale Puppeteer browser cache
-        run: rm -rf ~/.cache/puppeteer
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -84,13 +80,7 @@ jobs:
         run: pnpm exec puppeteer browsers install chrome
 
       - name: Running Visual Regression Tests for UI components
-      # aa-exec:
-      # ubuntu-24.04, the image used for `ubuntu-latest` as of Oct 14 2024(https://github.com/actions/runner-images/issues/10636),
-      # introduced security measures in its app-armor security  (https://github.com/puppeteer/puppeteer/issues/12818#issuecomment-2247844464)
-      # that made it so that puppeteers chromium installation is not whitelisted,
-      # which made it so that the chromium sandbox is not available and puppeteer errors out,
-      # so we need to specify that we are using app armor's chrome profile when running puppeteer (https://github.com/mermaid-js/mermaid-cli/issues/730#issuecomment-2408615110)
-        run: aa-exec --profile=chrome -- pnpm vrt:components
+        run: pnpm vrt:components
         timeout-minutes: 20
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
