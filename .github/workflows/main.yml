@@ -16,9 +16,10 @@ permissions:
 
 jobs:
   build_lint_and_test:
-    # Pinned to 22.04: the 24.04 runner image (since ~20260525) tightened
-    # AppArmor unprivileged-userns restrictions that prevent Percy/Chromium from
-    # launching, so VRT produced 0 snapshots. 22.04 has no such restriction.
+    # Pinned to 22.04: the current 24.04 runner image ships a partial
+    # ~/.cache/puppeteer that breaks `puppeteer browsers install`, and needs an
+    # AppArmor `aa-exec` workaround for Chrome's sandbox. 22.04 has neither, so
+    # the job runs without those workarounds.
     runs-on: ubuntu-22.04
 
     steps:
@@ -79,8 +80,16 @@ jobs:
       - name: Install Puppeteer's Chrome
         run: pnpm exec puppeteer browsers install chrome
 
+      # @percy/core pins a Chromium snapshot revision (1300309) for asset
+      # discovery and auto-downloads it; that revision was pruned from the public
+      # bucket, so the download now hangs and VRT captures 0 snapshots. Point
+      # Percy at the runner's pre-installed Chrome so it skips the download
+      # entirely (it falls back to the broken download if this path is empty).
       - name: Running Visual Regression Tests for UI components
-        run: pnpm vrt:components
+        run: |
+          export PERCY_BROWSER_EXECUTABLE="$(command -v google-chrome google-chrome-stable chromium-browser 2>/dev/null | head -1)"
+          echo "Percy discovery browser: ${PERCY_BROWSER_EXECUTABLE:-<none found; Percy will download>}"
+          pnpm vrt:components
         timeout-minutes: 20
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
