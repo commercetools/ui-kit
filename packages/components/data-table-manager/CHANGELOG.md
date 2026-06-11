@@ -1,5 +1,34 @@
 # @commercetools-uikit/data-table-manager
 
+## 20.6.2
+
+### Patch Changes
+
+- Updated dependencies [[`3a050ee`](https://github.com/commercetools/ui-kit/commit/3a050ee02dd57f4d38fb38cec4d097bab2119830), [`bd4ccb7`](https://github.com/commercetools/ui-kit/commit/bd4ccb7fda5971cde56b5dc9c3bb6684fe0f1d46)]:
+  - @commercetools-uikit/radio-input@20.6.2
+  - @commercetools-uikit/tooltip@20.6.2
+  - @commercetools-uikit/design-system@20.6.2
+  - @commercetools-uikit/accessible-hidden@20.6.2
+  - @commercetools-uikit/accessible-button@20.6.2
+  - @commercetools-uikit/icon-button@20.6.2
+  - @commercetools-uikit/primary-button@20.6.2
+  - @commercetools-uikit/secondary-button@20.6.2
+  - @commercetools-uikit/secondary-icon-button@20.6.2
+  - @commercetools-uikit/card@20.6.2
+  - @commercetools-uikit/collapsible-motion@20.6.2
+  - @commercetools-uikit/data-table-manager@20.6.2
+  - @commercetools-uikit/dropdown-menu@20.6.2
+  - @commercetools-uikit/field-label@20.6.2
+  - @commercetools-uikit/grid@20.6.2
+  - @commercetools-uikit/icons@20.6.2
+  - @commercetools-uikit/async-select-input@20.6.2
+  - @commercetools-uikit/select-input@20.6.2
+  - @commercetools-uikit/tag@20.6.2
+  - @commercetools-uikit/text@20.6.2
+  - @commercetools-uikit/hooks@20.6.2
+  - @commercetools-uikit/utils@20.6.2
+  - @commercetools-uikit/spacings@20.6.2
+
 ## 20.6.1
 
 ### Patch Changes

@@ -1,5 +1,28 @@
 # @commercetools-uikit/radio-input
 
+## 20.6.2
+
+### Patch Changes
+
+- [#3254](https://github.com/commercetools/ui-kit/pull/3254) [`3a050ee`](https://github.com/commercetools/ui-kit/commit/3a050ee02dd57f4d38fb38cec4d097bab2119830) Thanks [@misama-ct](https://github.com/misama-ct)! - fix: correct leaked type references in `Constraints`, `RadioInput`, and `ViewSwitcher` declarations
+
+  Their published `.d.ts` referenced the aggregate `@commercetools-frontend/ui-kit`
+  package, which isn't installed when you depend only on the granular
+  `@commercetools-uikit/*` packages. That unresolved reference collapsed the
+  affected prop types to `any`, surfacing as `TS7006` errors in strict
+  TypeScript setups. The declarations now use in-package relative references, so
+  the prop types resolve correctly. No component API or runtime behavior changed.
+
+- Updated dependencies [[`3a050ee`](https://github.com/commercetools/ui-kit/commit/3a050ee02dd57f4d38fb38cec4d097bab2119830)]:
+  - @commercetools-uikit/constraints@20.6.2
+  - @commercetools-uikit/design-system@20.6.2
+  - @commercetools-uikit/icons@20.6.2
+  - @commercetools-uikit/input-utils@20.6.2
+  - @commercetools-uikit/spacings-inline@20.6.2
+  - @commercetools-uikit/spacings-inset@20.6.2
+  - @commercetools-uikit/spacings-stack@20.6.2
+  - @commercetools-uikit/utils@20.6.2
+
 ## 20.6.1
 
 ### Patch Changes

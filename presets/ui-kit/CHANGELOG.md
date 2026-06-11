@@ -1,5 +1,50 @@
 # @commercetools-frontend/ui-kit
 
+## 20.6.2
+
+### Patch Changes
+
+- Updated dependencies [[`3a050ee`](https://github.com/commercetools/ui-kit/commit/3a050ee02dd57f4d38fb38cec4d097bab2119830), [`bd4ccb7`](https://github.com/commercetools/ui-kit/commit/bd4ccb7fda5971cde56b5dc9c3bb6684fe0f1d46)]:
+  - @commercetools-uikit/constraints@20.6.2
+  - @commercetools-uikit/view-switcher@20.6.2
+  - @commercetools-uikit/tooltip@20.6.2
+  - @commercetools-uikit/design-system@20.6.2
+  - @commercetools-uikit/accessible-hidden@20.6.2
+  - @commercetools-uikit/avatar@20.6.2
+  - @commercetools-uikit/card@20.6.2
+  - @commercetools-uikit/collapsible@20.6.2
+  - @commercetools-uikit/collapsible-motion@20.6.2
+  - @commercetools-uikit/collapsible-panel@20.6.2
+  - @commercetools-uikit/data-table@20.6.2
+  - @commercetools-uikit/data-table-manager@20.6.2
+  - @commercetools-uikit/dropdown-menu@20.6.2
+  - @commercetools-uikit/field-errors@20.6.2
+  - @commercetools-uikit/field-label@20.6.2
+  - @commercetools-uikit/filters@20.6.2
+  - @commercetools-uikit/grid@20.6.2
+  - @commercetools-uikit/icons@20.6.2
+  - @commercetools-uikit/select-utils@20.6.2
+  - @commercetools-uikit/selectable-search-input@20.6.2
+  - @commercetools-uikit/label@20.6.2
+  - @commercetools-uikit/link@20.6.2
+  - @commercetools-uikit/loading-spinner@20.6.2
+  - @commercetools-uikit/messages@20.6.2
+  - @commercetools-uikit/notifications@20.6.2
+  - @commercetools-uikit/pagination@20.6.2
+  - @commercetools-uikit/primary-action-dropdown@20.6.2
+  - @commercetools-uikit/progress-bar@20.6.2
+  - @commercetools-uikit/quick-filters@20.6.2
+  - @commercetools-uikit/stamp@20.6.2
+  - @commercetools-uikit/tag@20.6.2
+  - @commercetools-uikit/text@20.6.2
+  - @commercetools-uikit/hooks@20.6.2
+  - @commercetools-uikit/i18n@20.6.2
+  - @commercetools-uikit/utils@20.6.2
+  - @commercetools-uikit/buttons@20.6.2
+  - @commercetools-uikit/fields@20.6.2
+  - @commercetools-uikit/inputs@20.6.2
+  - @commercetools-uikit/spacings@20.6.2
+
 ## 20.6.1
 
 ### Patch Changes

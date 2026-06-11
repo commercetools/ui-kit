@@ -1,5 +1,19 @@
 # @commercetools-uikit/radio-field
 
+## 20.6.2
+
+### Patch Changes
+
+- Updated dependencies [[`3a050ee`](https://github.com/commercetools/ui-kit/commit/3a050ee02dd57f4d38fb38cec4d097bab2119830)]:
+  - @commercetools-uikit/constraints@20.6.2
+  - @commercetools-uikit/radio-input@20.6.2
+  - @commercetools-uikit/design-system@20.6.2
+  - @commercetools-uikit/field-errors@20.6.2
+  - @commercetools-uikit/field-label@20.6.2
+  - @commercetools-uikit/field-warnings@20.6.2
+  - @commercetools-uikit/spacings-stack@20.6.2
+  - @commercetools-uikit/utils@20.6.2
+
 ## 20.6.1
 
 ### Patch Changes
