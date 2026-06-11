@@ -36,6 +36,19 @@ pnpm preconstruct build
 
 restore_meta_symlink
 trap - EXIT
+
+# Regression guard: assert the leak stays gone. No granular package's emitted
+# declarations should reference the aggregate `@commercetools-frontend/ui-kit`
+# preset by its bare specifier — strict consumers can't resolve it (see above).
+# Catches a future reintroduction (workaround dropped, preconstruct resolution
+# change, a new compound component). Excludes the preset's own dist.
+leaks="$(find packages -type d -name declarations -path '*/dist/*' -prune -exec grep -rl 'import("@commercetools-frontend/ui-kit")' {} + 2>/dev/null || true)"
+if [ -n "$leaks" ]; then
+  echo "ERROR: published declarations leak the @commercetools-frontend/ui-kit aggregate preset:" >&2
+  echo "$leaks" | sed 's/^/  - /' >&2
+  echo "See the FEC-938 declaration-emit workaround above in scripts/build.sh." >&2
+  exit 1
+fi
 # --- end workaround ---
 
 pnpm --filter @commercetools-frontend/ui-kit run copy-assets

@@ -4,16 +4,11 @@
 "@commercetools-uikit/view-switcher": patch
 ---
 
-fix: stop declaration emit from leaking `@commercetools-frontend/ui-kit` into published types
+fix: correct leaked type references in `Constraints`, `RadioInput`, and `ViewSwitcher` declarations
 
-The compound components (`Constraints`, `RadioInput`, `ViewSwitcher`) emitted
-`import("@commercetools-frontend/ui-kit").T...Props` in their published `.d.ts`.
-Strict consumers that install only the granular `@commercetools-uikit/*`
-packages don't have the aggregate preset, so the reference resolved to `any` —
-collapsing event-handler prop types and producing `TS7006` on a minor upgrade.
-
-The leak was triggered by `@commercetools-frontend/ui-kit` becoming a root
-`devDependency` (so the `.visualroute`/`bundlespec` fixtures resolve under
-strict pnpm), which made the bare specifier resolvable during preconstruct's
-declaration emit. The build now hides that symlink for the emit step only, so
-the correct in-package relative specifier is used. No component API changed.
+Their published `.d.ts` referenced the aggregate `@commercetools-frontend/ui-kit`
+package, which isn't installed when you depend only on the granular
+`@commercetools-uikit/*` packages. That unresolved reference collapsed the
+affected prop types to `any`, surfacing as `TS7006` errors in strict
+TypeScript setups. The declarations now use in-package relative references, so
+the prop types resolve correctly. No component API or runtime behavior changed.
