@@ -1,5 +1,17 @@
 # @commercetools-uikit/tooltip
 
+## 20.6.2
+
+### Patch Changes
+
+- [#3256](https://github.com/commercetools/ui-kit/pull/3256) [`bd4ccb7`](https://github.com/commercetools/ui-kit/commit/bd4ccb7fda5971cde56b5dc9c3bb6684fe0f1d46) Thanks [@tylermorrisford](https://github.com/tylermorrisford)! - Allows hover close events to close Tooltip.
+
+- Updated dependencies [[`3a050ee`](https://github.com/commercetools/ui-kit/commit/3a050ee02dd57f4d38fb38cec4d097bab2119830)]:
+  - @commercetools-uikit/constraints@20.6.2
+  - @commercetools-uikit/design-system@20.6.2
+  - @commercetools-uikit/hooks@20.6.2
+  - @commercetools-uikit/utils@20.6.2
+
 ## 20.6.1
 
 ### Patch Changes
