@@ -73,12 +73,16 @@ jobs:
       # working in CI and yielded 0 snapshots, so we provision Chrome explicitly
       # here and point both tools at it. jest-puppeteer.config.js reads
       # PUPPETEER_EXECUTABLE_PATH and launches with --no-sandbox.
-      # TODO: pin `chrome-version` to a specific build for reproducible snapshots.
+      #
+      # Pinned to 127.0.6533.88 — the Chrome build puppeteer 22.15.0 targets and
+      # the one the Percy baseline was captured with. `chrome-version: stable`
+      # pulled Chrome 149 (~22 majors newer), which broke 2 visual test suites
+      # via CDP/runtime drift. Bump this in lockstep with puppeteer.
       - name: Set up Chrome
         id: setup-chrome
         uses: browser-actions/setup-chrome@2e1d749697dd1612b833dba4a722266286fbefcd # v2.1.2
         with:
-          chrome-version: stable
+          chrome-version: 127.0.6533.88
 
       - name: Running Visual Regression Tests for UI components
         run: |
