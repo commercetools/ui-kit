@@ -49,7 +49,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
+      # Skip Puppeteer's postinstall Chrome download. Under the restored pnpm
+      # store it leaves a partial browser folder (directory without the
+      # executable) in PUPPETEER_CACHE_DIR, which @puppeteer/browsers then
+      # refuses to repair ("the browser folder exists but the executable is
+      # missing"). Chrome is installed explicitly, into a cached dir, further down.
       - name: Install dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
         run: pnpm install --frozen-lockfile
 
       - name: Check for unmet constraints
