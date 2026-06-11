@@ -67,25 +67,31 @@ jobs:
       - name: Building Visual Regression Tests application for UI components
         run: pnpm visual-testing-app:build
 
-      # Puppeteer's postinstall hook downloads Chrome to ~/.cache/puppeteer.
-      # Under pnpm, the postinstall script's side-effects are cached in the pnpm
-      # store (which is restored from the GitHub Actions cache), so pnpm skips
-      # re-running it. But Chrome lives outside node_modules / the pnpm store,
-      # so the binary is missing on the runner. Install it explicitly here so
-      # the visual regression tests can find it.
-      - name: Install Puppeteer's Chrome
-        run: pnpm exec puppeteer browsers install chrome
+      # The visual-test browser (jest-puppeteer) and Percy's asset-discovery
+      # browser both need a Chrome. Puppeteer's and Percy's own pinned downloads
+      # (Chrome-for-Testing 127.0.6533.88 / Percy Chromium snapshot 1300309) stopped
+      # working in CI and yielded 0 snapshots, so we provision Chrome explicitly
+      # here and point both tools at it. jest-puppeteer.config.js reads
+      # PUPPETEER_EXECUTABLE_PATH and launches with --no-sandbox.
+      #
+      # Pinned to 127.0.6533.88 — the Chrome build puppeteer 22.15.0 targets and
+      # the one the Percy baseline was captured with. `chrome-version: stable`
+      # pulled Chrome 149 (~22 majors newer), which broke 2 visual test suites
+      # via CDP/runtime drift. Bump this in lockstep with puppeteer.
+      - name: Set up Chrome
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@2e1d749697dd1612b833dba4a722266286fbefcd # v2.1.2
+        with:
+          chrome-version: 127.0.6533.88
 
       - name: Running Visual Regression Tests for UI components
-      # aa-exec:
-      # ubuntu-24.04, the image used for `ubuntu-latest` as of Oct 14 2024(https://github.com/actions/runner-images/issues/10636),
-      # introduced security measures in its app-armor security  (https://github.com/puppeteer/puppeteer/issues/12818#issuecomment-2247844464)
-      # that made it so that puppeteers chromium installation is not whitelisted,
-      # which made it so that the chromium sandbox is not available and puppeteer errors out,
-      # so we need to specify that we are using app armor's chrome profile when running puppeteer (https://github.com/mermaid-js/mermaid-cli/issues/730#issuecomment-2408615110)
-        run: aa-exec --profile=chrome -- pnpm vrt:components
+        run: |
+          echo "Using Chrome ${{ steps.setup-chrome.outputs.chrome-version }} at $PUPPETEER_EXECUTABLE_PATH"
+          pnpm vrt:components
         timeout-minutes: 20
         env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          PERCY_BROWSER_EXECUTABLE: ${{ steps.setup-chrome.outputs.chrome-path }}
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
 

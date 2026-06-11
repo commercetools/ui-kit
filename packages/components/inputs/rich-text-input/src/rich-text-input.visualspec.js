@@ -9,6 +9,11 @@ jest.setTimeout(20000);
 beforeEach(async () => {
   browser = await puppeteer.launch({
     headless: 'new',
+    // This spec launches its own browser (not the jest-puppeteer global one), so
+    // it must opt out of the Chrome sandbox itself. CI runners (Ubuntu 24.04+)
+    // restrict unprivileged user namespaces via AppArmor, so the sandbox can't
+    // start otherwise. Matches jest-puppeteer.config.js used by other specs.
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
     slowMo: 10, // Launching the browser in slow motion is necessary due to race conditions. Otherwise browser closes prematurely and tests fail.
   });
   page = await browser.newPage();
