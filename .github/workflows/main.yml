@@ -18,14 +18,6 @@ jobs:
   build_lint_and_test:
     runs-on: ubuntu-24.04
 
-    # Install Puppeteer's Chrome into a workspace-local, cacheable directory
-    # instead of the default ~/.cache/puppeteer. This keeps the browser binary
-    # out of any stale/partial system cache the runner image may ship (which
-    # made `puppeteer browsers install` fail with "the browser folder exists but
-    # the executable is missing") and lets us cache the binary ourselves.
-    env:
-      PUPPETEER_CACHE_DIR: ${{ github.workspace }}/.cache/puppeteer
-
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -49,14 +41,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
-      # Skip Puppeteer's postinstall Chrome download. Under the restored pnpm
-      # store it leaves a partial browser folder (directory without the
-      # executable) in PUPPETEER_CACHE_DIR, which @puppeteer/browsers then
-      # refuses to repair ("the browser folder exists but the executable is
-      # missing"). Chrome is installed explicitly, into a cached dir, further down.
+      # GitHub's runner image can ship a partial ~/.cache/puppeteer (a browser
+      # folder without the executable). @puppeteer/browsers refuses to repair an
+      # incomplete install and fails the "Install Puppeteer's Chrome" step below.
+      # Clear it so Puppeteer's postinstall downloads a clean Chrome.
+      - name: Clear stale Puppeteer browser cache
+        run: rm -rf ~/.cache/puppeteer
+
       - name: Install dependencies
-        env:
-          PUPPETEER_SKIP_DOWNLOAD: 'true'
         run: pnpm install --frozen-lockfile
 
       - name: Check for unmet constraints
@@ -82,27 +74,12 @@ jobs:
       - name: Building Visual Regression Tests application for UI components
         run: pnpm visual-testing-app:build
 
-      # Puppeteer downloads Chrome outside node_modules / the pnpm store, so the
-      # pnpm-store cache (which records that the postinstall "ran") leaves the
-      # binary missing on a cache hit. Cache the browser directory itself so it's
-      # preserved across runs: the explicit install below is a no-op on a hit,
-      # and a clean download into an empty workspace-local dir on a miss (never a
-      # partially-populated one).
-      #
-      # The Chrome build is pinned transitively by the `puppeteer` dependency, so
-      # key the cache on that version: a Puppeteer bump changes the key and forces
-      # a clean re-download; same-version runs reuse the cached binary. (No
-      # restore-keys — a stale-version fallback is exactly what we want to avoid.)
-      - name: Resolve Puppeteer version (for cache key)
-        id: puppeteer
-        run: echo "version=$(node -p "require('./node_modules/puppeteer/package.json').version")" >> "$GITHUB_OUTPUT"
-
-      - name: Cache Puppeteer browser
-        uses: actions/cache@v5
-        with:
-          path: ${{ github.workspace }}/.cache/puppeteer
-          key: ${{ runner.os }}-puppeteer-${{ steps.puppeteer.outputs.version }}
-
+      # Puppeteer's postinstall hook downloads Chrome to ~/.cache/puppeteer.
+      # Under pnpm, the postinstall script's side-effects are cached in the pnpm
+      # store (which is restored from the GitHub Actions cache), so pnpm skips
+      # re-running it. But Chrome lives outside node_modules / the pnpm store,
+      # so the binary is missing on the runner. Install it explicitly here so
+      # the visual regression tests can find it.
       - name: Install Puppeteer's Chrome
         run: pnpm exec puppeteer browsers install chrome
 
