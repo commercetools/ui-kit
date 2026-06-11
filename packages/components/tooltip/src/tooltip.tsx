@@ -255,25 +255,13 @@ const Tooltip = ({
 
       if (closeAfter && state === 'opened') {
         leaveTimer.current = setTimeout(() => {
-          const tooltipElement = popperInstance?.popper.querySelector(
-            '[data-testid="tooltip-message-wrapper"]'
-          ) as HTMLElement;
-
-          if (tooltipElement) {
-            tooltipElement.addEventListener('animationend', () =>
-              handleClose()
-            );
-          } else {
-            handleClose();
-          }
-
           setState('exiting');
         }, closeAfter);
       } else {
         handleClose(event);
       }
     },
-    [closeAfter, onBlur, onMouseLeave, handleClose, state, popperInstance]
+    [closeAfter, onBlur, onMouseLeave, handleClose, state]
   );
 
   useEffect(() => {
@@ -289,6 +277,60 @@ const Tooltip = ({
       }
     }
   }, [off, closeAfter, handleClose, state]);
+
+  // When entering 'exiting' state, drive the close via animationend on the
+  // wrapper itself (scoped to event.target to ignore bubbled descendant events)
+  // with a hard fallback so a missed/blocked animationend never wedges the tooltip.
+  useEffect(() => {
+    if (state !== 'exiting') return;
+
+    const tooltipElement = popperInstance?.popper.querySelector(
+      '[data-testid="tooltip-message-wrapper"]'
+    ) as HTMLElement | null;
+
+    if (!tooltipElement) {
+      handleClose();
+      return;
+    }
+
+    let closed = false;
+    const close = () => {
+      if (closed) return;
+      closed = true;
+      handleClose();
+    };
+
+    const onAnimEnd = (event: AnimationEvent) => {
+      if (event.target === tooltipElement) close();
+    };
+
+    tooltipElement.addEventListener('animationend', onAnimEnd);
+    // growOut runs for 80 ms; 100 ms gives a small buffer before forcing close
+    const fallback = setTimeout(close, 100);
+
+    return () => {
+      tooltipElement.removeEventListener('animationend', onAnimEnd);
+      clearTimeout(fallback);
+    };
+  }, [state, popperInstance, handleClose]);
+
+  // Native mouseleave fallback: if React's synthetic onMouseLeave is never
+  // delivered (React 19 event-delegation timing), the tooltip would stay in
+  // 'opened' indefinitely. A direct DOM listener on the wrapper catches the
+  // same browser event that React missed and triggers the normal close path.
+  useEffect(() => {
+    if (state !== 'opened' || off || isControlled) return;
+
+    const wrapperEl = reference.ref.current as HTMLElement | null;
+    if (!wrapperEl) return;
+
+    const onNativeLeave = (event: MouseEvent) => {
+      handleLeave(event as unknown as ChangeEvent);
+    };
+
+    wrapperEl.addEventListener('mouseleave', onNativeLeave);
+    return () => wrapperEl.removeEventListener('mouseleave', onNativeLeave);
+  }, [state, off, isControlled, reference.ref, handleLeave]);
 
   const childrenProps = {
     // don't pass event listeners to children

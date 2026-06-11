@@ -70,22 +70,20 @@ const closeAndValidateTooltip = async ({
   // Move away from the trigger element
   fireEvent[options.eventType](options.triggerElement);
 
-  // We need to wait for the tooltip to be removed
-  // after the 'closeAfter' delay
-  await waitForTimeout(options.closeAfter);
-
-  // We need to fake trigger the animation we use to hide the tooltip
-  fireEvent.animationEnd(screen.getByTestId('tooltip-message-wrapper'));
+  // Wait for the tooltip to fully close (closeAfter delay + animation fallback).
+  // In jsdom there is no real popper instance, so the exiting effect calls
+  // handleClose directly without waiting for animationend.
+  await waitFor(() => {
+    expect(
+      screen.queryByText('What kind of bear is best?')
+    ).not.toBeInTheDocument();
+  });
 
   // should call the exit callbacks
   options.exitCallbacks.forEach((callback) => {
     expect(callback).toHaveBeenCalled();
   });
 
-  // should hide tooltip
-  expect(
-    screen.queryByText('What kind of bear is best?')
-  ).not.toBeInTheDocument();
   // should add the title again
   expect(options.triggerElement).toHaveProperty(
     'title',
