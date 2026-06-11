@@ -18,6 +18,14 @@ jobs:
   build_lint_and_test:
     runs-on: ubuntu-24.04
 
+    # Install Puppeteer's Chrome into a workspace-local, cacheable directory
+    # instead of the default ~/.cache/puppeteer. This keeps the browser binary
+    # out of any stale/partial system cache the runner image may ship (which
+    # made `puppeteer browsers install` fail with "the browser folder exists but
+    # the executable is missing") and lets us cache the binary ourselves.
+    env:
+      PUPPETEER_CACHE_DIR: ${{ github.workspace }}/.cache/puppeteer
+
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -67,12 +75,20 @@ jobs:
       - name: Building Visual Regression Tests application for UI components
         run: pnpm visual-testing-app:build
 
-      # Puppeteer's postinstall hook downloads Chrome to ~/.cache/puppeteer.
-      # Under pnpm, the postinstall script's side-effects are cached in the pnpm
-      # store (which is restored from the GitHub Actions cache), so pnpm skips
-      # re-running it. But Chrome lives outside node_modules / the pnpm store,
-      # so the binary is missing on the runner. Install it explicitly here so
-      # the visual regression tests can find it.
+      # Puppeteer downloads Chrome outside node_modules / the pnpm store, so the
+      # pnpm-store cache (which records that the postinstall "ran") leaves the
+      # binary missing on a cache hit. Cache the browser directory itself, keyed
+      # on the lockfile, so it's preserved across runs: the explicit install
+      # below is a no-op on a hit, and a clean download into an empty
+      # workspace-local dir on a miss (never a partially-populated one).
+      - name: Cache Puppeteer browser
+        uses: actions/cache@v5
+        with:
+          path: ${{ github.workspace }}/.cache/puppeteer
+          key: ${{ runner.os }}-puppeteer-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-puppeteer-
+
       - name: Install Puppeteer's Chrome
         run: pnpm exec puppeteer browsers install chrome
 
