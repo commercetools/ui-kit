@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/progress-bar",
   "description": "A progress bar component used to visualize the progression of an extended operation",
-  "version": "20.6.2",
+  "version": "20.6.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

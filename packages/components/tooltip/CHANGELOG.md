@@ -1,5 +1,17 @@
 # @commercetools-uikit/tooltip
 
+## 20.6.3
+
+### Patch Changes
+
+- [#3258](https://github.com/commercetools/ui-kit/pull/3258) [`958d1a0`](https://github.com/commercetools/ui-kit/commit/958d1a0cf9c7600600eaa9358dd3b2b9750ada5d) Thanks [@tylermorrisford](https://github.com/tylermorrisford)! - Fixes broken refs in the Tooltip component.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.3
+  - @commercetools-uikit/constraints@20.6.3
+  - @commercetools-uikit/hooks@20.6.3
+  - @commercetools-uikit/utils@20.6.3
+
 ## 20.6.2
 
 ### Patch Changes
