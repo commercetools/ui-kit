@@ -257,7 +257,11 @@ const Tooltip = ({
         leaveTimer.current = setTimeout(() => {
           setState('exiting');
         }, closeAfter);
-      } else {
+      } else if (state !== 'exiting') {
+        // Don't interrupt growOut if the animation is already in progress.
+        // onPopperLeave and a delayed synthetic mouseleave can both reach here
+        // while exiting; calling handleClose() would abort the animation and
+        // risk a stray mouseover re-opening the tooltip immediately after.
         handleClose(event);
       }
     },
@@ -318,19 +322,56 @@ const Tooltip = ({
   // delivered (React 19 event-delegation timing), the tooltip would stay in
   // 'opened' indefinitely. A direct DOM listener on the wrapper catches the
   // same browser event that React missed and triggers the normal close path.
+  //
+  // When the tooltip body is rendered in a portal (outside the React root),
+  // moving the mouse from the wrapper onto the portal fires mouseleave on the
+  // wrapper. We must not start the close timer in that case — otherwise the
+  // tooltip closes, the portal disappears, the browser re-fires mouseenter on
+  // the wrapper, and the tooltip reopens in a continuous flicker loop.
+  //
+  // use-popper uses callback refs (functions, not {current} objects), so
+  // popper.ref.current / reference.ref.current are always undefined at runtime.
+  // The DOM nodes are accessible via the Popper.js instance instead.
   useEffect(() => {
     if (state !== 'opened' || off || isControlled) return;
 
-    const wrapperEl = reference.ref.current as HTMLElement | null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const inst = popperInstance as any;
+    const wrapperEl = inst?.reference as HTMLElement | null;
     if (!wrapperEl) return;
+    const popperEl = inst?.popper as HTMLElement | null;
 
     const onNativeLeave = (event: MouseEvent) => {
+      // If the mouse moved into the popper/tooltip body, suppress the close so
+      // the tooltip stays open while the user hovers over the preview.
+      if (
+        popperEl &&
+        event.relatedTarget instanceof Node &&
+        popperEl.contains(event.relatedTarget)
+      ) {
+        return;
+      }
+      handleLeave(event as unknown as ChangeEvent);
+    };
+
+    // Mirror: close when the mouse leaves the tooltip body itself.
+    const onPopperLeave = (event: MouseEvent) => {
+      if (
+        wrapperEl.contains(event.relatedTarget as Node | null) ||
+        popperEl?.contains(event.relatedTarget as Node | null)
+      ) {
+        return;
+      }
       handleLeave(event as unknown as ChangeEvent);
     };
 
     wrapperEl.addEventListener('mouseleave', onNativeLeave);
-    return () => wrapperEl.removeEventListener('mouseleave', onNativeLeave);
-  }, [state, off, isControlled, reference.ref, handleLeave]);
+    popperEl?.addEventListener('mouseleave', onPopperLeave);
+    return () => {
+      wrapperEl.removeEventListener('mouseleave', onNativeLeave);
+      popperEl?.removeEventListener('mouseleave', onPopperLeave);
+    };
+  }, [state, off, isControlled, popperInstance, handleLeave]);
 
   const childrenProps = {
     // don't pass event listeners to children
