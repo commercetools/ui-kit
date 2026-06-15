@@ -29,6 +29,11 @@ Object.defineProperty(window, 'TextDecoder', {
   writable: true,
   value: TextDecoder,
 });
+global.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};
 
 const silenceConsoleWarnings = [];
 const notThrowWarnings = [
