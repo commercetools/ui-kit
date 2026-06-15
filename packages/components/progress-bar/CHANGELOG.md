@@ -1,5 +1,17 @@
 # @commercetools-uikit/progress-bar
 
+## 20.6.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.4
+  - @commercetools-uikit/constraints@20.6.4
+  - @commercetools-uikit/spacings-inline@20.6.4
+  - @commercetools-uikit/spacings-stack@20.6.4
+  - @commercetools-uikit/text@20.6.4
+  - @commercetools-uikit/utils@20.6.4
+
 ## 20.6.3
 
 ### Patch Changes

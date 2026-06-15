@@ -1,5 +1,17 @@
 # @commercetools-uikit/tooltip
 
+## 20.6.4
+
+### Patch Changes
+
+- [#3260](https://github.com/commercetools/ui-kit/pull/3260) [`cd1a1b5`](https://github.com/commercetools/ui-kit/commit/cd1a1b548d97198d385e908a3abe07fb81723fee) Thanks [@tylermorrisford](https://github.com/tylermorrisford)! - Prevents image clipping when Tooltip component is hovered.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.4
+  - @commercetools-uikit/constraints@20.6.4
+  - @commercetools-uikit/hooks@20.6.4
+  - @commercetools-uikit/utils@20.6.4
+
 ## 20.6.3
 
 ### Patch Changes

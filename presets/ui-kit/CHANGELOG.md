@@ -1,5 +1,50 @@
 # @commercetools-frontend/ui-kit
 
+## 20.6.4
+
+### Patch Changes
+
+- Updated dependencies [[`cd1a1b5`](https://github.com/commercetools/ui-kit/commit/cd1a1b548d97198d385e908a3abe07fb81723fee)]:
+  - @commercetools-uikit/tooltip@20.6.4
+  - @commercetools-uikit/design-system@20.6.4
+  - @commercetools-uikit/accessible-hidden@20.6.4
+  - @commercetools-uikit/avatar@20.6.4
+  - @commercetools-uikit/card@20.6.4
+  - @commercetools-uikit/collapsible@20.6.4
+  - @commercetools-uikit/collapsible-motion@20.6.4
+  - @commercetools-uikit/collapsible-panel@20.6.4
+  - @commercetools-uikit/constraints@20.6.4
+  - @commercetools-uikit/data-table@20.6.4
+  - @commercetools-uikit/data-table-manager@20.6.4
+  - @commercetools-uikit/dropdown-menu@20.6.4
+  - @commercetools-uikit/field-errors@20.6.4
+  - @commercetools-uikit/field-label@20.6.4
+  - @commercetools-uikit/filters@20.6.4
+  - @commercetools-uikit/grid@20.6.4
+  - @commercetools-uikit/icons@20.6.4
+  - @commercetools-uikit/select-utils@20.6.4
+  - @commercetools-uikit/selectable-search-input@20.6.4
+  - @commercetools-uikit/label@20.6.4
+  - @commercetools-uikit/link@20.6.4
+  - @commercetools-uikit/loading-spinner@20.6.4
+  - @commercetools-uikit/messages@20.6.4
+  - @commercetools-uikit/notifications@20.6.4
+  - @commercetools-uikit/pagination@20.6.4
+  - @commercetools-uikit/primary-action-dropdown@20.6.4
+  - @commercetools-uikit/progress-bar@20.6.4
+  - @commercetools-uikit/quick-filters@20.6.4
+  - @commercetools-uikit/stamp@20.6.4
+  - @commercetools-uikit/tag@20.6.4
+  - @commercetools-uikit/text@20.6.4
+  - @commercetools-uikit/view-switcher@20.6.4
+  - @commercetools-uikit/hooks@20.6.4
+  - @commercetools-uikit/i18n@20.6.4
+  - @commercetools-uikit/utils@20.6.4
+  - @commercetools-uikit/buttons@20.6.4
+  - @commercetools-uikit/fields@20.6.4
+  - @commercetools-uikit/inputs@20.6.4
+  - @commercetools-uikit/spacings@20.6.4
+
 ## 20.6.3
 
 ### Patch Changes

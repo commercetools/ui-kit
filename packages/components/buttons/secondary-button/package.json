@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/secondary-button",
   "description": "Secondary buttons are used in combination with a PrimaryButton and represent the secondary action.",
-  "version": "20.6.3",
+  "version": "20.6.4",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
