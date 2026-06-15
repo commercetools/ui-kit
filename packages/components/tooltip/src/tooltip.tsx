@@ -107,6 +107,12 @@ export type TTooltipProps = {
    */
   modifiers?: Modifiers;
   /**
+   * Use CSS `position: fixed` for the popper element instead of `position: absolute`.
+   * Recommended when the tooltip body is rendered in a portal (e.g. via `TooltipWrapperComponent`)
+   * to prevent clipping caused by scrolled ancestors.
+   */
+  positionFixed?: boolean;
+  /**
    * Customize the appearance of certain elements of the tooltip.
    */
   components?: TComponents;
@@ -185,6 +191,7 @@ const Tooltip = ({
   const { reference, popper, popperInstance } = usePopper({
     placement: placement,
     modifiers: props.modifiers,
+    positionFixed: props.positionFixed,
   });
   const [state, setState] = useState<TTooltipState>('closed');
 
@@ -372,6 +379,21 @@ const Tooltip = ({
       popperEl?.removeEventListener('mouseleave', onPopperLeave);
     };
   }, [state, off, isControlled, popperInstance, handleLeave]);
+
+  // Recompute position when the tooltip body resizes (e.g. an image that loads
+  // after the initial position was calculated from a 0-height container).
+  useEffect(() => {
+    if (!tooltipIsOpen) return;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const inst = popperInstance as any;
+    const popperEl = inst?.popper as HTMLElement | null;
+    if (!popperEl) return;
+    const ro = new ResizeObserver(() => {
+      inst.scheduleUpdate?.();
+    });
+    ro.observe(popperEl);
+    return () => ro.disconnect();
+  }, [tooltipIsOpen, popperInstance]);
 
   const childrenProps = {
     // don't pass event listeners to children
