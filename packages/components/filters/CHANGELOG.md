@@ -1,5 +1,23 @@
 # @commercetools-uikit/filters
 
+## 20.6.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.4
+  - @commercetools-uikit/flat-button@20.6.4
+  - @commercetools-uikit/icon-button@20.6.4
+  - @commercetools-uikit/secondary-icon-button@20.6.4
+  - @commercetools-uikit/collapsible-motion@20.6.4
+  - @commercetools-uikit/icons@20.6.4
+  - @commercetools-uikit/date-input@20.6.4
+  - @commercetools-uikit/date-range-input@20.6.4
+  - @commercetools-uikit/date-time-input@20.6.4
+  - @commercetools-uikit/select-input@20.6.4
+  - @commercetools-uikit/utils@20.6.4
+  - @commercetools-uikit/spacings@20.6.4
+
 ## 20.6.3
 
 ### Patch Changes
