@@ -157,7 +157,7 @@ catalog:
 catalogs:
   build:
     # Babel
-    '@babel/core': 7.29.0
+    '@babel/core': 7.29.6
     '@babel/runtime': ^7.20.13
     '@babel/runtime-corejs3': ^7.20.13
 
@@ -179,7 +179,7 @@ catalogs:
     '@modyfi/vite-plugin-yaml': ^1.1.0
     '@vitejs/plugin-react': 5.2.0
     '@vitejs/plugin-react-swc': ^4.2.2
-    vite: 6.4.2
+    vite: 6.4.3
 
     # PostCSS
     postcss: 8.5.15
