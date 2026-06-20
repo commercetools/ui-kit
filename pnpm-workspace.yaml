@@ -123,7 +123,7 @@ catalog:
   commander: ^13.1.0
   cross-env: 10.1.0
   debounce-promise: ^3.1.2
-  dompurify: 3.4.9
+  dompurify: 3.4.11
   escape-html: 1.0.3
   execa: 9.6.1
   glob: 13.0.6
@@ -157,7 +157,7 @@ catalog:
 catalogs:
   build:
     # Babel
-    '@babel/core': 7.29.7
+    '@babel/core': 8.0.0
     '@babel/runtime': ^7.20.13
     '@babel/runtime-corejs3': ^7.20.13
 
