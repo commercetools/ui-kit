@@ -1,15 +1,15 @@
 import {
-  createRef,
-  Component,
+  useRef,
+  useCallback,
+  useState,
   type FocusEventHandler,
   type MouseEventHandler,
   type KeyboardEvent,
-  type RefObject,
   type FocusEvent,
 } from 'react';
-import type { DurationInputArg1, MomentInput } from 'moment';
-import Downshift from 'downshift';
-import { injectIntl, type WrappedComponentProps } from 'react-intl';
+import type { DurationInputArg1 } from 'moment';
+import { useCombobox } from 'downshift';
+import { useIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
 import {
   filterDataAttributes,
@@ -47,13 +47,6 @@ import {
 } from '@commercetools-uikit/calendar-utils';
 import TimeInput from './time-input';
 
-const activationTypes = [
-  Downshift.stateChangeTypes.keyDownEnter,
-  Downshift.stateChangeTypes.clickItem,
-];
-
-type TActivationTypes = (typeof activationTypes)[number];
-
 type TKeyboardEventWithPreventDefault<T extends HTMLElement> =
   KeyboardEvent<T> & {
     nativeEvent: KeyboardEvent['nativeEvent'] & {
@@ -74,22 +67,6 @@ type TPreventDownshiftDefaultEvent =
 const preventDownshiftDefault = (event: TPreventDownshiftDefaultEvent) => {
   event.nativeEvent.preventDownshiftDefault = true;
 };
-
-// This keeps the menu open when the user focuses the time input (thereby
-// blurring the regular input/toggle button)
-const createBlurHandler =
-  (timeInputRef: RefObject<HTMLInputElement>, cb: () => void = () => {}) =>
-  (
-    event: TFocusEventWithPreventDefault<HTMLInputElement | HTMLButtonElement>
-  ) => {
-    event.persist();
-
-    if (event.relatedTarget === timeInputRef.current) {
-      preventDownshiftDefault(event);
-    }
-
-    cb();
-  };
 
 type TCustomEvent = {
   target: {
@@ -143,15 +120,15 @@ export type TDateTimeInputProps = {
   onBlur?: (event: TCustomEvent) => void;
   /**
    * Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed.
-   * Get list of timezone with `moment.tz.names()` [See moment docs](https://momentjs.com/timezone/docs/#/data-loading/getting-zone-names/)
+   * Get list of timezone with moment.tz.names()
    */
   timeZone: string;
   /**
-   * Used as the HTML `id` attribute.
+   * Used as the HTML id attribute.
    */
   id?: string;
   /**
-   * Used as the HTML `name` attribute.
+   * Used as the HTML name attribute.
    */
   name?: string;
   /**
@@ -188,481 +165,427 @@ export type TDateTimeInputProps = {
    * Filter appearance removes borders and box shadows, and calendar is always open.
    */
   appearance?: 'default' | 'filter';
-} & WrappedComponentProps;
-
-type TDateTimeInputState = {
-  calendarDate?: string;
-  suggestedItems?: string[];
-  highlightedIndex?: number | null;
-  timeString?: string;
-  startDate?: MomentInput;
-  inputValue?: MomentInput;
 };
 
-class DateTimeInput extends Component<
-  TDateTimeInputProps,
-  TDateTimeInputState
-> {
-  static displayName = 'DateTimeInput';
+type TActivationTypes =
+  | typeof useCombobox.stateChangeTypes.InputKeyDownEnter
+  | typeof useCombobox.stateChangeTypes.ItemClick;
 
-  inputRef = createRef<HTMLInputElement>();
-  timeInputRef = createRef<HTMLInputElement>();
-  state = {
-    calendarDate: getToday(this.props.timeZone),
-    suggestedItems: [],
-    highlightedIndex:
-      this.props.value === ''
-        ? null
-        : getDateInMonth(this.props.value, this.props.timeZone) - 1,
-    timeString: this.props.defaultDaySelectionTime
-      ? formatDefaultTime(
-          this.props.defaultDaySelectionTime,
-          this.props.intl.locale
-        )
-      : '',
-  };
+const activationTypes: TActivationTypes[] = [
+  useCombobox.stateChangeTypes.InputKeyDownEnter,
+  useCombobox.stateChangeTypes.ItemClick,
+];
 
-  jumpMonths = (amount: DurationInputArg1, dayToHighlight = 0) => {
-    this.setState((prevState) => {
-      const nextDate = changeMonth(
-        prevState.calendarDate,
-        this.props.timeZone,
-        amount
-      );
-      return { calendarDate: nextDate, highlightedIndex: dayToHighlight };
-    });
-  };
-  showToday = () => {
-    const today = getToday(this.props.timeZone);
-    this.setState(
-      (prevState) => ({
-        calendarDate: today,
-        highlightedIndex:
-          (prevState.suggestedItems || []).length +
-          getDateInMonth(today, this.props.timeZone) -
-          1,
-      }),
-      () => this.inputRef.current?.focus()
-    );
-  };
-  handleBlur = () => {
-    if (this.props.onBlur)
-      this.props.onBlur({
-        target: {
-          id: this.props.id,
-          name: this.props.name,
-        },
-      });
-  };
-  handleTimeChange = (event: TCustomEvent) => {
-    const parsedTime = parseTime(event.target.value);
+const DateTimeInput = (props: TDateTimeInputProps) => {
+  const intl = useIntl();
 
-    this.setState({ timeString: event.target.value });
+  const inputRef = useRef<HTMLInputElement>(null);
+  const timeInputRef = useRef<HTMLInputElement>(null);
 
-    // We can't update the parent when there is no value
-    if (this.props.value === '') return;
+  const itemToString = createItemDateTimeToString(
+    intl.locale,
+    props.timeZone
+  ) as (item: string | null) => string;
 
-    let date = getStartOf(this.props.value, this.props.timeZone);
-    if (parsedTime) {
-      date = changeTime(date, this.props.timeZone, parsedTime);
-    }
-    this.emit(date);
-  };
-  emit = (value: string | null) =>
-    this.props.onChange?.({
-      target: {
-        id: this.props.id,
-        name: this.props.name,
-        // when cleared the value is null, but we always want it to be an
-        // empty string when there is no value.
-        value: value || '',
-      },
-    });
-  render() {
-    if (!this.props.isReadOnly) {
-      warning(
-        typeof this.props.onChange === 'function',
-        'DateTimeInput: `onChange` is required when input is not read only.'
-      );
-    }
+  const [calendarDate, setCalendarDate] = useState<string>(
+    getToday(props.timeZone)
+  );
+  const [suggestedItems, setSuggestedItems] = useState<string[]>([]);
+  const [highlightedIndex, setHighlightedIndex] = useState<number | null>(
+    props.value === '' ? null : getDateInMonth(props.value, props.timeZone) - 1
+  );
+  const [timeString, setTimeString] = useState<string>(
+    props.defaultDaySelectionTime
+      ? formatDefaultTime(props.defaultDaySelectionTime, intl.locale)
+      : ''
+  );
 
-    const appearance = this.props.appearance || 'default';
-
-    return (
-      <Constraints.Horizontal max={this.props.horizontalConstraint}>
-        <Downshift
-          // Setting the key to the timeZone conveniently forces a rerender
-          // when the time-zone changes. Otherwise we'd need to make
-          // inputValue a controlled property so that we can update
-          // the displayed value as downshift seems to ignore an updated
-          // itemToString function.
-          key={`${this.props.timeZone}:${this.props.intl.locale}`}
-          inputId={this.props.id}
-          itemToString={
-            createItemDateTimeToString(
-              this.props.intl.locale,
-              this.props.timeZone
-            ) as (item: string | null) => string
-          }
-          selectedItem={this.props.value === '' ? null : this.props.value}
-          highlightedIndex={this.state.highlightedIndex}
-          onChange={this.emit}
-          stateReducer={(_, changes) => {
-            if (activationTypes.includes(changes.type as TActivationTypes)) {
-              return { ...changes, isOpen: true };
-            }
-
-            return changes;
-          }}
-          onStateChange={(changes) => {
-            this.setState(
-              (prevState) => {
-                if (
-                  activationTypes.includes(changes.type as TActivationTypes)
-                ) {
-                  return {
-                    startDate: changes.isOpen ? prevState.startDate : null,
-                    inputValue: changes.inputValue || prevState.inputValue,
-                    timeString: changes.selectedItem
-                      ? formatTime(
-                          changes.selectedItem,
-                          this.props.intl.locale,
-                          this.props.timeZone
-                        )
-                      : prevState.timeString,
-                  };
-                }
-
-                if (changes.hasOwnProperty('inputValue')) {
-                  const suggestedItems = createSuggestedItems(
-                    changes.inputValue as string,
-                    this.props.timeZone
-                  );
-                  return {
-                    suggestedItems,
-                    highlightedIndex: suggestedItems.length > 0 ? 0 : null,
-                  };
-                }
-
-                if (changes.hasOwnProperty('isOpen')) {
-                  return {
-                    inputValue: changes.inputValue || prevState.inputValue,
-                    startDate: changes.isOpen ? prevState.startDate : null,
-                    // set time input value to time from value when menu is opened
-                    // or to the current timeString which equals to defaultDaySelectionTime prop
-                    timeString:
-                      changes.isOpen && this.props.value !== ''
-                        ? formatTime(
-                            this.props.value,
-                            this.props.intl.locale,
-                            this.props.timeZone
-                          )
-                        : this.state.timeString,
-                    // ensure calendar always opens on selected item, or on
-                    // current month when there is no selected item
-                    calendarDate:
-                      this.props.value === ''
-                        ? getToday(this.props.timeZone)
-                        : getStartOf(this.props.value, this.props.timeZone),
-                  };
-                }
-
-                if (changes.hasOwnProperty('highlightedIndex')) {
-                  return { highlightedIndex: changes.highlightedIndex };
-                }
-                return null;
-              },
-              () => {
-                if (
-                  activationTypes.includes(changes.type as TActivationTypes)
-                ) {
-                  this.timeInputRef.current?.focus();
-                  this.timeInputRef.current?.setSelectionRange(
-                    0,
-                    this.state.timeString.length
-                  );
-                }
-              }
-            );
-          }}
-        >
-          {({
-            getInputProps,
-            getMenuProps,
-            getItemProps,
-            getToggleButtonProps,
-            clearSelection,
-            highlightedIndex,
-            openMenu,
-            closeMenu,
-            setHighlightedIndex,
-            selectedItem,
-            inputValue,
-            isOpen,
-          }) => {
-            const suggestedItems = this.state.suggestedItems;
-            const calendarItems = createCalendarItems(
-              this.state.calendarDate,
-              this.state.timeString,
-              this.props.timeZone
-            );
-
-            const paddingDayCount = getPaddingDayCount(
-              this.state.calendarDate,
-              this.props.intl.locale,
-              this.props.timeZone
-            );
-            const paddingDays = Array(paddingDayCount).fill(undefined);
-
-            const weekdays = getWeekdayNames(this.props.intl.locale);
-            const today = getToday(this.props.timeZone);
-
-            const isTimeInputVisible =
-              Boolean(this.props.value) && this.props.value !== '';
-
-            return (
-              <div onFocus={this.props.onFocus} onBlur={this.handleBlur}>
-                <CalendarBody
-                  inputRef={this.inputRef}
-                  appearance={appearance}
-                  inputProps={getInputProps({
-                    /* ARIA */
-                    'aria-invalid': this.props['aria-invalid'],
-                    'aria-errormessage': this.props['aria-errormessage'],
-                    // Unset the aria-labelledby as it interfers with the link
-                    // between the <label for> and the <input id>.
-                    'aria-labelledby': undefined,
-                    name: this.props.name,
-                    placeholder:
-                      typeof this.props.placeholder === 'string'
-                        ? this.props.placeholder
-                        : getLocalizedDateTimeFormatPattern(
-                            this.props.intl.locale,
-                            'full'
-                          ),
-                    onMouseEnter: () => {
-                      // we remove the highlight so that the user can use the
-                      // arrow keys to move the cursor when hovering
-                      if (isOpen) setHighlightedIndex(-1);
-                    },
-                    onKeyDown: (
-                      event: TKeyboardEventWithPreventDefault<
-                        HTMLInputElement | HTMLButtonElement
-                      >
-                    ) => {
-                      if (this.props.isReadOnly) {
-                        preventDownshiftDefault(event);
-                        return;
-                      }
-                      // parse input when user presses enter on regular input,
-                      // close menu and notify parent
-                      if (event.key === 'Enter' && highlightedIndex === null) {
-                        preventDownshiftDefault(event);
-
-                        const parsedDate = parseInputText(
-                          inputValue as string,
-                          this.props.intl.locale,
-                          this.props.timeZone
-                        );
-
-                        // If there is no parsed date, don't clear and submit. Instead, give
-                        // the user a chance to fix the value.
-                        if (!parsedDate) return;
-
-                        this.emit(parsedDate);
-
-                        closeMenu();
-                      }
-                      // ArrowDown
-                      if (event.key === 'ArrowDown') {
-                        if (
-                          Number(highlightedIndex) + 1 >=
-                          calendarItems.length
-                        ) {
-                          // if it's the end of the month
-                          // then bypass normal arrow navigation
-                          preventDownshiftDefault(event);
-                          // then jump to start of next month
-                          this.jumpMonths(1, 0);
-                        }
-                      }
-                      // ArrowUp
-                      if (event.key === 'ArrowUp') {
-                        const previousDay = getPreviousDay(
-                          calendarItems[Number(highlightedIndex)]
-                        );
-
-                        if (Number(highlightedIndex) <= 0) {
-                          // if it's the start of the month
-                          // then bypass normal arrow navigation
-                          preventDownshiftDefault(event);
-                          const numberOfDaysOfPrevMonth = getDaysInMonth(
-                            previousDay,
-                            this.props.timeZone
-                          );
-                          // then jump to the last day of the previous month
-                          this.jumpMonths(-1, numberOfDaysOfPrevMonth - 1);
-                        }
-                      }
-                    },
-                    onClick: this.props.isReadOnly
-                      ? undefined
-                      : (openMenu as unknown as MouseEventHandler<HTMLInputElement>),
-                    // validate the input on blur, and emit the value if it's valid
-                    onBlur: (
-                      event: TFocusEventWithPreventDefault<HTMLInputElement>
-                    ) => {
-                      createBlurHandler(
-                        this.timeInputRef as RefObject<HTMLInputElement>,
-                        () => {
-                          const inputValue = this.inputRef.current?.value || '';
-                          const parsedDate = parseInputText(
-                            inputValue,
-                            this.props.intl.locale,
-                            this.props.timeZone
-                          );
-
-                          if (inputValue.length > 0 && !parsedDate) return;
-                          this.emit(parsedDate);
-                        }
-                      )(event);
-                    },
-                    onChange: (event: TCustomEvent) => {
-                      // keep timeInput and regular input in sync when user
-                      // types into regular input
-                      if (!isOpen) return;
-
-                      const time = event.target.value?.split(' ')[1];
-                      if (!time) return;
-
-                      const parsedTime = parseTime(time);
-                      this.setState(() => {
-                        if (!parsedTime) return { timeString: '' };
-
-                        let date = getToday(this.props.timeZone);
-                        if (parsedTime) {
-                          date = changeTime(
-                            date,
-                            this.props.timeZone,
-                            parsedTime
-                          );
-                        }
-                        return {
-                          timeString: formatTime(
-                            date,
-                            this.props.intl.locale,
-                            this.props.timeZone
-                          ),
-                        };
-                      });
-                    },
-                    ...filterDataAttributes(this.props),
-                  })}
-                  hasSelection={Boolean(selectedItem)}
-                  onClear={clearSelection}
-                  isOpen={isOpen}
-                  isCondensed={this.props.isCondensed}
-                  isDisabled={this.props.isDisabled}
-                  isReadOnly={this.props.isReadOnly}
-                  toggleButtonProps={getToggleButtonProps({
-                    onBlur: (
-                      event: TFocusEventWithPreventDefault<HTMLButtonElement>
-                    ) =>
-                      createBlurHandler(
-                        this.timeInputRef as RefObject<HTMLInputElement>
-                      )(event),
-                  })}
-                  hasError={this.props.hasError}
-                  hasWarning={this.props.hasWarning}
-                />
-                {((isOpen && !this.props.isDisabled) ||
-                  (appearance === 'filter' && !this.props.isDisabled)) && (
-                  <CalendarMenu
-                    {...getMenuProps()}
-                    hasFooter={true}
-                    hasError={this.props.hasError}
-                    hasWarning={this.props.hasWarning}
-                    appearance={appearance}
-                  >
-                    <CalendarHeader
-                      monthLabel={getMonthCalendarLabel(
-                        this.state.calendarDate,
-                        this.props.intl.locale,
-                        this.props.timeZone
-                      )}
-                      yearLabel={getYearCalendarLabel(
-                        this.state.calendarDate,
-                        this.props.intl.locale,
-                        this.props.timeZone
-                      )}
-                      onPrevMonthClick={() => this.jumpMonths(-1)}
-                      onTodayClick={this.showToday}
-                      onNextMonthClick={() => this.jumpMonths(1)}
-                      onPrevYearClick={() => this.jumpMonths(-12)}
-                      onNextYearClick={() => this.jumpMonths(12)}
-                    />
-                    <CalendarContent>
-                      {weekdays.map((weekday) => (
-                        <CalendarDay key={weekday} type="heading">
-                          {weekday}
-                        </CalendarDay>
-                      ))}
-                      {paddingDays.map((_, index) => (
-                        <CalendarDay key={index} type="spacing" />
-                      ))}
-                      {calendarItems.map((item, index) => (
-                        <CalendarDay
-                          key={item}
-                          isToday={isSameDay(today, item)}
-                          {...getItemProps({
-                            disabled: this.props.isDisabled,
-                            item,
-                            onMouseOut: () => {
-                              setHighlightedIndex(-1);
-                            },
-                          })}
-                          isHighlighted={
-                            suggestedItems.length + index === highlightedIndex
-                          }
-                          isSelected={isSameDay(item, this.props.value)}
-                        >
-                          {getCalendarDayLabel(item, this.props.timeZone)}
-                        </CalendarDay>
-                      ))}
-                    </CalendarContent>
-                    <TimeInput
-                      isDisabled={!isTimeInputVisible}
-                      timeInputRef={this.timeInputRef}
-                      placeholder={getLocalizedDateTimeFormatPattern(
-                        this.props.intl.locale,
-                        'time'
-                      )}
-                      value={this.state.timeString}
-                      onChange={this.handleTimeChange}
-                      onKeyDown={(event) => {
-                        if (event.key === 'ArrowUp') {
-                          setHighlightedIndex(-1);
-                          this.inputRef.current?.focus();
-                          return;
-                        }
-
-                        if (event.key === 'Enter') {
-                          setHighlightedIndex(-1);
-                          this.inputRef.current?.focus();
-                          this.inputRef.current?.setSelectionRange(0, 100);
-                          closeMenu();
-                        }
-                      }}
-                    />
-                  </CalendarMenu>
-                )}
-              </div>
-            );
-          }}
-        </Downshift>
-      </Constraints.Horizontal>
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'DateTimeInput: onChange is required when input is not read only.'
     );
   }
-}
 
-export default injectIntl(DateTimeInput);
+  const appearance = props.appearance || 'default';
+
+  const emit = useCallback(
+    (value: string | null) =>
+      props.onChange?.({
+        target: {
+          id: props.id,
+          name: props.name,
+          value: value || '',
+        },
+      }),
+    [props.onChange, props.id, props.name]
+  );
+
+  const handleBlur = useCallback(() => {
+    if (props.onBlur)
+      props.onBlur({
+        target: {
+          id: props.id,
+          name: props.name,
+        },
+      });
+  }, [props.onBlur, props.id, props.name]);
+
+  const handleTimeChange = useCallback(
+    (event: TCustomEvent) => {
+      const parsedTime = parseTime(event.target.value);
+      setTimeString(event.target.value ?? '');
+      if (props.value === '') return;
+      let date = getStartOf(props.value, props.timeZone);
+      if (parsedTime) {
+        date = changeTime(date, props.timeZone, parsedTime);
+      }
+      emit(date);
+    },
+    [props.value, props.timeZone, emit]
+  );
+
+  const jumpMonths = useCallback(
+    (amount: DurationInputArg1, dayToHighlight = 0) => {
+      setCalendarDate((prevDate) =>
+        changeMonth(prevDate, props.timeZone, amount)
+      );
+      setHighlightedIndex(dayToHighlight);
+    },
+    [props.timeZone]
+  );
+
+  const showToday = useCallback(() => {
+    const today = getToday(props.timeZone);
+    setCalendarDate(today);
+    setHighlightedIndex(
+      suggestedItems.length + getDateInMonth(today, props.timeZone) - 1
+    );
+    inputRef.current?.focus();
+  }, [props.timeZone, suggestedItems.length]);
+
+  const calendarItems = createCalendarItems(
+    calendarDate,
+    timeString,
+    props.timeZone
+  );
+  const allItems = [...suggestedItems, ...calendarItems];
+
+  const {
+    getInputProps,
+    getMenuProps,
+    getItemProps,
+    getToggleButtonProps,
+    selectItem,
+    setInputValue: setDownshiftInputValue,
+    setHighlightedIndex: setDownshiftHighlightedIndex,
+    closeMenu,
+    isOpen,
+    highlightedIndex: downshiftHighlightedIndex,
+    selectedItem,
+  } = useCombobox({
+    inputId: props.id,
+    items: allItems,
+    itemToString,
+    selectedItem: props.value === '' ? null : props.value,
+    highlightedIndex: highlightedIndex ?? -1,
+    stateReducer: (state, { type, changes }) => {
+      if (
+        type === useCombobox.stateChangeTypes.InputBlur &&
+        document.activeElement === timeInputRef.current
+      ) {
+        return { ...changes, isOpen: state.isOpen };
+      }
+      if (activationTypes.includes(type as TActivationTypes)) {
+        return { ...changes, isOpen: true };
+      }
+      return changes;
+    },
+    onSelectedItemChange: ({ selectedItem: newItem }) => {
+      emit(newItem);
+    },
+    onStateChange: (changes) => {
+      if (activationTypes.includes(changes.type as TActivationTypes)) {
+        setTimeString((prev) =>
+          changes.selectedItem
+            ? formatTime(changes.selectedItem, intl.locale, props.timeZone)
+            : prev
+        );
+        setTimeout(() => {
+          timeInputRef.current?.focus();
+          timeInputRef.current?.setSelectionRange(
+            0,
+            timeInputRef.current?.value?.length ?? 0
+          );
+        }, 0);
+        return;
+      }
+
+      if (changes.hasOwnProperty('inputValue')) {
+        const newSuggestedItems = createSuggestedItems(
+          changes.inputValue as string,
+          props.timeZone
+        );
+        setSuggestedItems(newSuggestedItems);
+        setHighlightedIndex(newSuggestedItems.length > 0 ? 0 : null);
+        return;
+      }
+
+      if (changes.hasOwnProperty('isOpen')) {
+        setTimeString(
+          changes.isOpen && props.value !== ''
+            ? formatTime(props.value, intl.locale, props.timeZone)
+            : timeString
+        );
+        setCalendarDate(
+          props.value === ''
+            ? getToday(props.timeZone)
+            : getStartOf(props.value, props.timeZone)
+        );
+        return;
+      }
+
+      if (changes.hasOwnProperty('highlightedIndex')) {
+        setHighlightedIndex(
+          changes.highlightedIndex !== undefined &&
+            changes.highlightedIndex !== -1
+            ? changes.highlightedIndex
+            : null
+        );
+      }
+    },
+  });
+
+  const paddingDayCount = getPaddingDayCount(
+    calendarDate,
+    intl.locale,
+    props.timeZone
+  );
+  const paddingDays = Array(paddingDayCount).fill(undefined);
+  const weekdays = getWeekdayNames(intl.locale);
+  const today = getToday(props.timeZone);
+  const isTimeInputVisible = Boolean(props.value) && props.value !== '';
+  const shouldShowCalendar =
+    (isOpen && !props.isDisabled) ||
+    (appearance === 'filter' && !props.isDisabled);
+
+  return (
+    <Constraints.Horizontal max={props.horizontalConstraint}>
+      <div onFocus={props.onFocus} onBlur={handleBlur}>
+        <CalendarBody
+          inputRef={inputRef}
+          appearance={appearance}
+          inputProps={getInputProps({
+            'aria-invalid': props['aria-invalid'],
+            'aria-errormessage': props['aria-errormessage'],
+            'aria-labelledby': undefined,
+            name: props.name,
+            placeholder:
+              typeof props.placeholder === 'string'
+                ? props.placeholder
+                : getLocalizedDateTimeFormatPattern(intl.locale, 'full'),
+            onMouseEnter: () => {
+              if (isOpen) setDownshiftHighlightedIndex(-1);
+            },
+            onKeyDown: (
+              event: TKeyboardEventWithPreventDefault<
+                HTMLInputElement | HTMLButtonElement
+              >
+            ) => {
+              if (props.isReadOnly) {
+                preventDownshiftDefault(event);
+                return;
+              }
+              if (event.key === 'Enter' && downshiftHighlightedIndex === -1) {
+                preventDownshiftDefault(event);
+                // Use inputRef for keyDown (event.target.value unreliable on keydown)
+                const currentInputValue =
+                  inputRef.current?.value ??
+                  (event.target as HTMLInputElement).value ??
+                  '';
+                const parsedDate = parseInputText(
+                  currentInputValue,
+                  intl.locale,
+                  props.timeZone
+                );
+                if (!parsedDate) return;
+                emit(parsedDate);
+                closeMenu();
+              }
+              if (event.key === 'ArrowDown') {
+                if (
+                  Number(downshiftHighlightedIndex) + 1 >=
+                  calendarItems.length
+                ) {
+                  preventDownshiftDefault(event);
+                  jumpMonths(1, 0);
+                }
+              }
+              if (event.key === 'ArrowUp') {
+                const previousDay = getPreviousDay(
+                  calendarItems[Number(downshiftHighlightedIndex)]
+                );
+                if (Number(downshiftHighlightedIndex) <= 0) {
+                  preventDownshiftDefault(event);
+                  const numberOfDaysOfPrevMonth = getDaysInMonth(
+                    previousDay,
+                    props.timeZone
+                  );
+                  jumpMonths(-1, numberOfDaysOfPrevMonth - 1);
+                }
+              }
+            },
+            onClick: props.isReadOnly
+              ? (preventDownshiftDefault as unknown as MouseEventHandler<HTMLInputElement>)
+              : undefined,
+            onBlur: (
+              event: TFocusEventWithPreventDefault<HTMLInputElement>
+            ) => {
+              if (event.relatedTarget === timeInputRef.current) {
+                preventDownshiftDefault(event);
+                return;
+              }
+              // Use event.target.value — more reliable than inputRef since downshift
+              // may have already reset inputRef's value via controlled rendering.
+              const currentInputValue =
+                (event.target as HTMLInputElement).value || '';
+              const parsedDate = parseInputText(
+                currentInputValue,
+                intl.locale,
+                props.timeZone
+              );
+              if (currentInputValue.length > 0 && !parsedDate) {
+                // Invalid input: reset to last valid formatted value
+                setDownshiftInputValue(
+                  itemToString(props.value === '' ? null : props.value)
+                );
+                return;
+              }
+              emit(parsedDate);
+              if (parsedDate) {
+                // After a valid blur, ensure display shows canonical format
+                setDownshiftInputValue(itemToString(parsedDate));
+              }
+            },
+            onChange: (event: TCustomEvent) => {
+              if (!isOpen) return;
+              const time = event.target.value?.split(' ')[1];
+              if (!time) return;
+              const parsedTime = parseTime(time);
+              if (!parsedTime) {
+                setTimeString('');
+                return;
+              }
+              let date = getToday(props.timeZone);
+              date = changeTime(date, props.timeZone, parsedTime);
+              setTimeString(formatTime(date, intl.locale, props.timeZone));
+            },
+            ...filterDataAttributes(props),
+          })}
+          hasSelection={Boolean(selectedItem)}
+          onClear={() => {
+            selectItem(null);
+            setDownshiftInputValue('');
+          }}
+          isOpen={isOpen}
+          isCondensed={props.isCondensed}
+          isDisabled={props.isDisabled}
+          isReadOnly={props.isReadOnly}
+          toggleButtonProps={getToggleButtonProps({
+            onBlur: (
+              event: TFocusEventWithPreventDefault<HTMLButtonElement>
+            ) => {
+              if (event.relatedTarget === timeInputRef.current) {
+                preventDownshiftDefault(event);
+              }
+            },
+          })}
+          hasError={props.hasError}
+          hasWarning={props.hasWarning}
+        />
+        {shouldShowCalendar && (
+          <CalendarMenu
+            {...getMenuProps({}, { suppressRefError: true })}
+            hasFooter={true}
+            hasError={props.hasError}
+            hasWarning={props.hasWarning}
+            appearance={appearance}
+          >
+            <CalendarHeader
+              monthLabel={getMonthCalendarLabel(
+                calendarDate,
+                intl.locale,
+                props.timeZone
+              )}
+              yearLabel={getYearCalendarLabel(
+                calendarDate,
+                intl.locale,
+                props.timeZone
+              )}
+              onPrevMonthClick={() => jumpMonths(-1)}
+              onTodayClick={showToday}
+              onNextMonthClick={() => jumpMonths(1)}
+              onPrevYearClick={() => jumpMonths(-12)}
+              onNextYearClick={() => jumpMonths(12)}
+            />
+            <CalendarContent>
+              {weekdays.map((weekday) => (
+                <CalendarDay key={weekday} type="heading">
+                  {weekday}
+                </CalendarDay>
+              ))}
+              {paddingDays.map((_, index) => (
+                <CalendarDay key={index} type="spacing" />
+              ))}
+              {calendarItems.map((item, index) => (
+                <CalendarDay
+                  key={item}
+                  isToday={isSameDay(today, item)}
+                  {...getItemProps({
+                    item,
+                    onMouseOut: () => {
+                      setDownshiftHighlightedIndex(-1);
+                    },
+                  })}
+                  isHighlighted={
+                    suggestedItems.length + index === downshiftHighlightedIndex
+                  }
+                  isSelected={isSameDay(item, props.value)}
+                >
+                  {getCalendarDayLabel(item, props.timeZone)}
+                </CalendarDay>
+              ))}
+            </CalendarContent>
+            <TimeInput
+              isDisabled={!isTimeInputVisible}
+              timeInputRef={timeInputRef}
+              placeholder={getLocalizedDateTimeFormatPattern(
+                intl.locale,
+                'time'
+              )}
+              value={timeString}
+              onChange={handleTimeChange}
+              onKeyDown={(event) => {
+                if (event.key === 'ArrowUp') {
+                  setDownshiftHighlightedIndex(-1);
+                  inputRef.current?.focus();
+                  return;
+                }
+                if (event.key === 'Enter') {
+                  setDownshiftHighlightedIndex(-1);
+                  inputRef.current?.focus();
+                  inputRef.current?.setSelectionRange(0, 100);
+                  closeMenu();
+                }
+              }}
+            />
+          </CalendarMenu>
+        )}
+      </div>
+    </Constraints.Horizontal>
+  );
+};
+
+DateTimeInput.displayName = 'DateTimeInput';
+
+export default DateTimeInput;

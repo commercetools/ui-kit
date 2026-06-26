@@ -1,6 +1,6 @@
-import { createRef, Component, type KeyboardEvent } from 'react';
-import Downshift from 'downshift';
-import { injectIntl, type WrappedComponentProps } from 'react-intl';
+import { useRef, useCallback, useState, type KeyboardEvent } from 'react';
+import { useCombobox } from 'downshift';
+import { useIntl } from 'react-intl';
 import type { DurationInputArg1, MomentInput } from 'moment';
 import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
@@ -197,437 +197,407 @@ export type TDateRangeInputProps = {
    * Filter appearance removes borders and box shadows, and calendar is always open.
    */
   appearance?: 'default' | 'filter';
-} & WrappedComponentProps;
-
-type TDateRangeInputState = {
-  calendarDate?: MomentInput;
-  suggestedItems: MomentInput[];
-  startDate?: MomentInput;
-  highlightedIndex?: number | null;
-  isOpen?: boolean;
-  inputValue?: MomentInput;
-  prevValue: MomentInput[];
-  prevLocale?: string;
 };
 
-class DateRangeInput extends Component<
-  TDateRangeInputProps,
-  TDateRangeInputState
-> {
-  static displayName = 'DateRangeInput';
-  static defaultProps: Pick<TDateRangeInputProps, 'isClearable'> = {
-    isClearable: true,
-  };
-  static isEmpty = (range: number[]) => range.length === 0;
-  static getDerivedStateFromProps(
-    props: TDateRangeInputProps,
-    state: TDateRangeInputState
+const DateRangeInput = ({
+  isClearable = true,
+  ...props
+}: TDateRangeInputProps) => {
+  const intl = useIntl();
+
+  const [calendarDate, setCalendarDate] = useState<MomentInput>(
+    props.value.length === 2 ? props.value[0] : getToday()
+  );
+  const [suggestedItems, setSuggestedItems] = useState<string[]>([]);
+  const [startDate, setStartDate] = useState<MomentInput>(null);
+  const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState<string>(
+    formatRange(props.value, intl.locale)
+  );
+
+  // Sync inputValue when props.value or locale changes (replaces getDerivedStateFromProps)
+  const prevValueRef = useRef(props.value);
+  const prevLocaleRef = useRef(intl.locale);
+  if (
+    !isSameRange(props.value, prevValueRef.current) ||
+    intl.locale !== prevLocaleRef.current
   ) {
-    // We need to update the input value string in case so that is is formatted
-    // according to the locale and holds the current value in case the value
-    // changes or when the locale changes
-    const shouldUpdateInputValue =
-      !isSameRange(props.value, state.prevValue) ||
-      props.intl.locale !== state.prevLocale;
-
-    if (!shouldUpdateInputValue) return null;
-
-    return {
-      prevLocale: props.intl.locale,
-      // This is not the input value but the actual value passed to
-      // DateRangeInput
-      prevValue: props.value,
-      inputValue: formatRange(props.value, props.intl.locale),
-    };
+    prevValueRef.current = props.value;
+    prevLocaleRef.current = intl.locale;
+    const newInputValue = formatRange(props.value, intl.locale);
+    if (newInputValue !== inputValue) {
+      setInputValue(newInputValue);
+    }
   }
-  inputRef = createRef<HTMLInputElement>();
 
-  state = {
-    calendarDate:
-      this.props.value.length === 2 ? this.props.value[0] : getToday(),
-    suggestedItems: [],
-    startDate: null,
-    highlightedIndex: null,
-    isOpen: false,
-    inputValue: formatRange(this.props.value, this.props.intl.locale),
-    prevValue: this.props.value,
-    prevLocale: this.props.intl.locale,
-  };
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  jumpMonth = (amount: DurationInputArg1, dayToHighlight = 0) => {
-    this.setState((prevState) => {
-      const nextDate = changeMonth(prevState.calendarDate, amount);
-      return { calendarDate: nextDate, highlightedIndex: dayToHighlight };
-    });
-  };
-  showToday = () => {
-    const today = getToday();
-    this.setState(
-      (prevState) => ({
-        calendarDate: today,
-        highlightedIndex:
-          prevState.suggestedItems.length + getDateInMonth(today) - 1,
-      }),
-      () => this.inputRef.current?.focus()
-    );
-  };
-  handleBlur = () => {
-    if (this.props.onBlur)
-      this.props.onBlur({
+  const appearance = props.appearance || 'default';
+
+  const emit = useCallback(
+    (unsortedRange: MomentInput[]) => {
+      props.onChange?.({
         target: {
-          id: this.props.id,
-          name: this.props.name,
+          id: props.id,
+          name: props.name,
+          value: unsortedRange.sort(),
         },
       });
-  };
-  emit = (unsortedRange: MomentInput[]) => {
-    this.props.onChange?.({
-      target: {
-        id: this.props.id,
-        name: this.props.name,
-        value: unsortedRange.sort(),
-      },
-    });
-  };
-  render() {
-    const appearance = this.props.appearance || 'default';
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [props.onChange, props.id, props.name]
+  );
 
-    return (
-      <Constraints.Horizontal max={this.props.horizontalConstraint}>
-        <Downshift
-          key={this.props.intl.locale}
-          inputId={this.props.id}
-          itemToString={createItemRangeToString(this.props.intl.locale)}
-          inputValue={this.state.inputValue}
-          selectedItem={null}
-          highlightedIndex={this.state.highlightedIndex}
-          onInputValueChange={(inputValue, changes) => {
-            // only attempt to parse input when the user typed into the input
-            // field
-            // @ts-ignore
-            if (changes.type !== Downshift.stateChangeTypes.changeInput) return;
+  const jumpMonth = useCallback(
+    (amount: DurationInputArg1, dayToHighlight = 0) => {
+      setCalendarDate((prevDate) => {
+        return changeMonth(prevDate, amount);
+      });
+      setHighlightedIndex(dayToHighlight);
+    },
+    []
+  );
 
-            this.setState(() => {
-              const parsedRange = parseRangeText(
-                inputValue,
-                this.props.intl.locale
+  const showToday = useCallback(() => {
+    const today = getToday();
+    setCalendarDate(today);
+    setHighlightedIndex(suggestedItems.length + getDateInMonth(today) - 1);
+    inputRef.current?.focus();
+  }, [suggestedItems.length]);
+
+  const handleBlur = useCallback(() => {
+    if (props.onBlur)
+      props.onBlur({
+        target: {
+          id: props.id,
+          name: props.name,
+        },
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.onBlur, props.id, props.name]);
+
+  const calendarItems = createCalendarItems(calendarDate);
+  const allItems = [...suggestedItems, ...calendarItems];
+
+  // Ref to track whether we want to intercept InputKeyDownEnter (for keyboard clear)
+  const shouldInterceptEnterRef = useRef(false);
+
+  const {
+    getInputProps,
+    getMenuProps,
+    getItemProps,
+    getToggleButtonProps,
+    selectItem,
+    setInputValue: setDownshiftInputValue,
+    setHighlightedIndex: setDownshiftHighlightedIndex,
+    openMenu,
+    isOpen: downshiftIsOpen,
+    highlightedIndex: downshiftHighlightedIndex,
+    inputValue: downshiftInputValue,
+  } = useCombobox({
+    inputId: props.id,
+    items: allItems,
+    itemToString: createItemRangeToString(intl.locale),
+    selectedItem: null,
+    isOpen: isOpen,
+    inputValue: inputValue,
+    highlightedIndex: highlightedIndex ?? -1,
+    isItemDisabled: () => Boolean(props.isDisabled),
+    stateReducer: (state, { type, changes }) => {
+      // When we want to intercept Enter (to clear with keyboard), prevent downshift
+      // from processing it (it would otherwise try to select a highlighted item or close).
+      if (
+        type === useCombobox.stateChangeTypes.InputKeyDownEnter &&
+        shouldInterceptEnterRef.current
+      ) {
+        // Reset the intercept flag and return current state unchanged
+        shouldInterceptEnterRef.current = false;
+        return state;
+      }
+      return changes;
+    },
+    onIsOpenChange: ({ isOpen: newIsOpen }) => {
+      setIsOpen(newIsOpen ?? false);
+    },
+    onInputValueChange: ({ inputValue: newInputValue, type }) => {
+      // only attempt to parse input when the user typed into the input field
+      if (type !== useCombobox.stateChangeTypes.InputChange) return;
+      const parsedRange = parseRangeText(newInputValue ?? '', intl.locale);
+      if (parsedRange.length === 0) {
+        setSuggestedItems([]);
+        setHighlightedIndex(null);
+        setInputValue(newInputValue ?? '');
+        setStartDate(null);
+      } else if (parsedRange.length === 1) {
+        const calDate = parsedRange[0] as MomentInput;
+        setSuggestedItems([]);
+        setHighlightedIndex(getDateInMonth(calDate) - 1);
+        setInputValue(newInputValue ?? '');
+        setStartDate(parsedRange[0] as MomentInput);
+        setCalendarDate(calDate);
+      } else if (parsedRange.length === 2) {
+        const calDate = parsedRange[1] as MomentInput;
+        setSuggestedItems([]);
+        setHighlightedIndex(getDateInMonth(calDate) - 1);
+        setInputValue(newInputValue ?? '');
+        setStartDate(parsedRange[0] as MomentInput);
+        setCalendarDate(calDate);
+      }
+    },
+    onSelectedItemChange: ({ selectedItem: newItem }) => {
+      if (startDate && newItem) {
+        emit([startDate, newItem]);
+      } else {
+        emit([]);
+      }
+    },
+    onStateChange: (changes) => {
+      if (
+        changes.type === useCombobox.stateChangeTypes.MenuMouseLeave ||
+        changes.type === useCombobox.stateChangeTypes.InputBlur
+      ) {
+        setHighlightedIndex(null);
+        setIsOpen(false);
+        setInputValue(formatRange(props.value, intl.locale));
+        return;
+      }
+
+      if (changes.hasOwnProperty('selectedItem')) {
+        const hasStartedRangeSelection = Boolean(
+          !startDate && changes.selectedItem
+        );
+        const hasFinishedRangeSelection = Boolean(
+          startDate && changes.selectedItem
+        );
+
+        setHighlightedIndex(highlightedIndex);
+        setStartDate(startDate ? null : (changes.selectedItem as MomentInput));
+        if (changes.selectedItem) {
+          setCalendarDate(changes.selectedItem as MomentInput);
+        }
+        setIsOpen(!hasFinishedRangeSelection);
+        setInputValue(
+          (() => {
+            if (hasFinishedRangeSelection) {
+              return formatRange(
+                [startDate, changes.selectedItem as MomentInput],
+                intl.locale
               );
-              if (parsedRange.length === 0)
-                return {
-                  suggestedItems: [],
-                  highlightedIndex: null,
-                  inputValue,
-                  startDate: null,
-                };
-              if (parsedRange.length === 1) {
-                const calendarDate = parsedRange[0];
-                return {
-                  suggestedItems: [],
-                  highlightedIndex: getDateInMonth(calendarDate) - 1,
-                  inputValue,
-                  startDate: parsedRange[0],
-                  calendarDate,
-                };
-              }
-              if (parsedRange.length === 2) {
-                const calendarDate = parsedRange[1];
-                return {
-                  suggestedItems: [],
-                  highlightedIndex: getDateInMonth(calendarDate) - 1,
-                  inputValue,
-                  startDate: parsedRange[0],
-                  calendarDate,
-                };
-              }
-              return null;
-            });
-          }}
-          onStateChange={(changes) => {
-            this.setState((prevState) => {
-              if (
-                changes.type === Downshift.stateChangeTypes.mouseUp ||
-                changes.type === Downshift.stateChangeTypes.blurInput
-              ) {
-                return {
-                  highlightedIndex: null,
-                  isOpen: false,
-                  inputValue: formatRange(
-                    this.props.value,
-                    this.props.intl.locale
-                  ),
-                };
-              }
-
-              if (changes.hasOwnProperty('selectedItem')) {
-                const hasStartedRangeSelection = Boolean(
-                  !prevState.startDate && changes.selectedItem
-                );
-                const hasFinishedRangeSelection = Boolean(
-                  prevState.startDate && changes.selectedItem
-                );
-
-                return {
-                  highlightedIndex: prevState.highlightedIndex,
-                  startDate: prevState.startDate ? null : changes.selectedItem,
-                  calendarDate: changes.selectedItem,
-                  isOpen: !hasFinishedRangeSelection,
-                  inputValue: (() => {
-                    if (hasFinishedRangeSelection) {
-                      return formatRange(
-                        [prevState.startDate, changes.selectedItem],
-                        this.props.intl.locale
-                      );
-                    }
-                    if (hasStartedRangeSelection) {
-                      return formatRange(
-                        [changes.selectedItem],
-                        this.props.intl.locale
-                      );
-                    }
-                    return '';
-                  })(),
-                };
-              }
-
-              if (changes.hasOwnProperty('isOpen')) {
-                return {
-                  isOpen: changes.isOpen,
-                  highlightedIndex: changes.highlightedIndex || null,
-                  inputValue: changes.inputValue || prevState.inputValue,
-                  // Reset range selection progress when menu opens/closes
-                  startDate: null,
-                  // Ensure calendar opens on selected date.
-                  // Open on the current day as a fallback.
-                  calendarDate:
-                    this.props.value.length === 2
-                      ? this.props.value[0]
-                      : getToday(),
-                };
-              }
-
-              if (changes.hasOwnProperty('highlightedIndex')) {
-                return { highlightedIndex: changes.highlightedIndex };
-              }
-
-              return null;
-            });
-          }}
-          onChange={(selectedItem) => {
-            if (this.state.startDate && selectedItem) {
-              this.emit([this.state.startDate, selectedItem]);
-            } else {
-              this.emit([]);
             }
+            if (hasStartedRangeSelection) {
+              return formatRange(
+                [changes.selectedItem as MomentInput],
+                intl.locale
+              );
+            }
+            return '';
+          })()
+        );
+        return;
+      }
+
+      if (changes.hasOwnProperty('isOpen')) {
+        setIsOpen(changes.isOpen ?? false);
+        setHighlightedIndex(
+          changes.highlightedIndex !== undefined &&
+            changes.highlightedIndex !== -1
+            ? changes.highlightedIndex
+            : null
+        );
+        if (changes.inputValue !== undefined) {
+          setInputValue(changes.inputValue);
+        }
+        setStartDate(null);
+        setCalendarDate(props.value.length === 2 ? props.value[0] : getToday());
+        return;
+      }
+
+      if (changes.hasOwnProperty('highlightedIndex')) {
+        setHighlightedIndex(
+          changes.highlightedIndex !== undefined &&
+            changes.highlightedIndex !== -1
+            ? changes.highlightedIndex
+            : null
+        );
+      }
+    },
+  });
+
+  const paddingDayCount = getPaddingDayCount(calendarDate, intl.locale);
+  const paddingDays = Array(paddingDayCount).fill(undefined);
+  const weekdays = getWeekdayNames(intl.locale);
+  const today = getToday();
+
+  const shouldShowCalendar =
+    (downshiftIsOpen && !props.isDisabled) ||
+    (appearance === 'filter' && !props.isDisabled && !props.isReadOnly);
+
+  return (
+    <Constraints.Horizontal max={props.horizontalConstraint}>
+      <div onFocus={props.onFocus} onBlur={handleBlur}>
+        <CalendarBody
+          inputRef={inputRef}
+          appearance={appearance}
+          inputProps={getInputProps({
+            /* ARIA */
+            'aria-invalid': props['aria-invalid'],
+            'aria-errormessage': props['aria-errormessage'],
+            // Unset the aria-labelledby as it interferes with the link
+            // between the <label for> and the <input id>.
+            'aria-labelledby': undefined,
+            name: props.name,
+            placeholder:
+              typeof props.placeholder === 'string'
+                ? props.placeholder
+                : `${getLocalizedDateTimeFormatPattern(
+                    intl.locale
+                  )} - ${getLocalizedDateTimeFormatPattern(intl.locale)}`,
+            onMouseEnter: () => {
+              // we remove the highlight so that the user can use the
+              // arrow keys to move the cursor when hovering
+              if (downshiftIsOpen) setDownshiftHighlightedIndex(-1);
+            },
+            onKeyDown: (event) => {
+              if (props.isReadOnly) {
+                preventDownshiftDefault(event as TPreventDownshiftDefaultEvent);
+                return;
+              }
+              if (
+                event.key === 'Enter' &&
+                downshiftInputValue?.trim() === '' &&
+                // do not clear value when user presses Enter to
+                // select the end date (so only clear when there is no startDate)
+                !startDate &&
+                isClearable
+              ) {
+                // Signal to stateReducer to intercept/swallow the Enter key in downshift
+                shouldInterceptEnterRef.current = true;
+                // Also use preventDownshiftDefault as a belt-and-suspenders approach
+                preventDownshiftDefault(event as TPreventDownshiftDefaultEvent);
+                // Clear state (keep menu open to match original behavior)
+                setInputValue('');
+                setStartDate(null);
+                setHighlightedIndex(null);
+                emit([]);
+              }
+              // ArrowDown
+              if (event.key === 'ArrowDown') {
+                if (
+                  (downshiftHighlightedIndex as number) + 1 >=
+                  calendarItems.length
+                ) {
+                  // if it's the end of the month
+                  // then bypass normal arrow navigation
+                  preventDownshiftDefault(
+                    event as TPreventDownshiftDefaultEvent
+                  );
+                  // then jump to start of next month
+                  jumpMonth(1, 0);
+                }
+              }
+              // ArrowUp
+              if (event.key === 'ArrowUp') {
+                const previousDay = getPreviousDay(
+                  calendarItems[downshiftHighlightedIndex as number]
+                );
+                if ((downshiftHighlightedIndex as number) <= 0) {
+                  // if it's the start of the month
+                  // then bypass normal arrow navigation
+                  preventDownshiftDefault(
+                    event as TPreventDownshiftDefaultEvent
+                  );
+
+                  const numberOfDaysOfPrevMonth = getDaysInMonth(previousDay);
+                  // then jump to the last day of the previous month
+                  jumpMonth(-1, numberOfDaysOfPrevMonth - 1);
+                }
+              }
+            },
+            // we only do this for readOnly because the input
+            // doesn't ignore these events, unlike when its disabled
+            onClick: props.isReadOnly ? undefined : () => openMenu(),
+            ...filterDataAttributes(props),
+          })}
+          hasSelection={props.value.length === 2}
+          isClearable={isClearable}
+          onClear={() => {
+            setStartDate(null);
+            emit([]);
+            selectItem(null);
+            setDownshiftInputValue('');
           }}
-          isOpen={this.state.isOpen}
-        >
-          {({
-            getInputProps,
-            getMenuProps,
-            getItemProps,
-            getToggleButtonProps,
-
-            clearSelection,
-
-            highlightedIndex,
-            openMenu,
-            setHighlightedIndex,
-            isOpen,
-            inputValue,
-          }) => {
-            const calendarItems = createCalendarItems(this.state.calendarDate);
-            const allItems = [...this.state.suggestedItems, ...calendarItems];
-
-            const paddingDayCount = getPaddingDayCount(
-              this.state.calendarDate,
-              this.props.intl.locale
-            );
-            const paddingDays = Array(paddingDayCount).fill(undefined);
-
-            const weekdays = getWeekdayNames(this.props.intl.locale);
-
-            const today = getToday();
-
-            return (
-              <div onFocus={this.props.onFocus} onBlur={this.handleBlur}>
-                <CalendarBody
-                  inputRef={this.inputRef}
-                  appearance={appearance}
-                  inputProps={getInputProps({
-                    /* ARIA */
-                    'aria-invalid': this.props['aria-invalid'],
-                    'aria-errormessage': this.props['aria-errormessage'],
-                    // Unset the aria-labelledby as it interfers with the link
-                    // between the <label for> and the <input id>.
-                    'aria-labelledby': undefined,
-                    name: this.props.name,
-                    placeholder:
-                      typeof this.props.placeholder === 'string'
-                        ? this.props.placeholder
-                        : `${getLocalizedDateTimeFormatPattern(
-                            this.props.intl.locale
-                          )} - ${getLocalizedDateTimeFormatPattern(
-                            this.props.intl.locale
-                          )}`,
-                    onMouseEnter: () => {
-                      // we remove the highlight so that the user can use the
-                      // arrow keys to move the cursor when hovering
-                      // @ts-ignore
-                      if (isOpen) setHighlightedIndex(null);
-                    },
-                    onKeyDown: (event) => {
-                      if (this.props.isReadOnly) {
-                        preventDownshiftDefault(
-                          event as TPreventDownshiftDefaultEvent
-                        );
-                        return;
-                      }
-                      if (
-                        event.key === 'Enter' &&
-                        inputValue?.trim() === '' &&
-                        // do not clear value when user presses Enter to
-                        // select the end date (so only clear when there is no
-                        // startDate)
-                        !this.state.startDate &&
-                        this.props.isClearable
-                      ) {
-                        clearSelection();
-                        this.emit([]);
-                      }
-                      // ArrowDown
-                      if (event.key === 'ArrowDown') {
-                        if (
-                          (highlightedIndex as number) + 1 >=
-                          calendarItems.length
-                        ) {
-                          // if it's the end of the month
-                          // then bypass normal arrow navigation
-                          preventDownshiftDefault(
-                            event as TPreventDownshiftDefaultEvent
-                          );
-                          // then jump to start of next month
-                          this.jumpMonth(1, 0);
-                        }
-                      }
-                      // ArrowUp
-                      if (event.key === 'ArrowUp') {
-                        const previousDay = getPreviousDay(
-                          calendarItems[highlightedIndex as number]
-                        );
-
-                        if ((highlightedIndex as number) <= 0) {
-                          // if it's the start of the month
-                          // then bypass normal arrow navigation
-                          preventDownshiftDefault(
-                            event as TPreventDownshiftDefaultEvent
-                          );
-
-                          const numberOfDaysOfPrevMonth =
-                            getDaysInMonth(previousDay);
-                          // then jump to the last day of the previous month
-                          this.jumpMonth(-1, numberOfDaysOfPrevMonth - 1);
-                        }
-                      }
-                    },
-                    // we only do this for readOnly because the input
-                    // doesn't ignore these events, unlike when its disabled
-                    onClick: this.props.isReadOnly
-                      ? undefined
-                      : () => openMenu(),
-                    ...filterDataAttributes(this.props),
-                  })}
-                  hasSelection={this.props.value.length === 2}
-                  isClearable={this.props.isClearable}
-                  onClear={() => {
-                    this.setState({ startDate: null });
-                    this.emit([]);
-                    clearSelection();
-                  }}
-                  isOpen={isOpen}
-                  isDisabled={this.props.isDisabled}
-                  isReadOnly={this.props.isReadOnly}
-                  isCondensed={this.props.isCondensed}
-                  toggleButtonProps={getToggleButtonProps()}
-                  hasError={this.props.hasError}
-                  hasWarning={this.props.hasWarning}
-                />
-                {((isOpen && !this.props.isDisabled) ||
-                  (appearance === 'filter' &&
-                    !this.props.isDisabled &&
-                    !this.props.isReadOnly)) && (
-                  <CalendarMenu
-                    {...getMenuProps()}
-                    hasError={this.props.hasError}
-                    hasWarning={this.props.hasWarning}
-                    appearance={appearance}
+          isOpen={downshiftIsOpen}
+          isDisabled={props.isDisabled}
+          isReadOnly={props.isReadOnly}
+          isCondensed={props.isCondensed}
+          toggleButtonProps={getToggleButtonProps()}
+          hasError={props.hasError}
+          hasWarning={props.hasWarning}
+        />
+        {shouldShowCalendar && (
+          <CalendarMenu
+            {...getMenuProps({}, { suppressRefError: true })}
+            hasError={props.hasError}
+            hasWarning={props.hasWarning}
+            appearance={appearance}
+          >
+            <CalendarHeader
+              monthLabel={getMonthCalendarLabel(calendarDate, intl.locale)}
+              yearLabel={getYearCalendarLabel(calendarDate, intl.locale)}
+              onPrevMonthClick={() => jumpMonth(-1)}
+              onTodayClick={showToday}
+              onNextMonthClick={() => jumpMonth(1)}
+              onPrevYearClick={() => jumpMonth(-12)}
+              onNextYearClick={() => jumpMonth(12)}
+            />
+            <CalendarContent>
+              {weekdays.map((weekday) => (
+                <CalendarDay key={weekday} type="heading">
+                  {weekday}
+                </CalendarDay>
+              ))}
+              {paddingDays.map((_, index) => (
+                <CalendarDay key={index} type="spacing" />
+              ))}
+              {calendarItems.map((item, index) => {
+                const isHighlighted =
+                  suggestedItems.length + index === downshiftHighlightedIndex;
+                const { isRangeStart, isRangeBetween, isRangeEnd } = getRange({
+                  item,
+                  value: props.value,
+                  startDate: startDate,
+                  highlightedItem: allItems[highlightedIndex || 0],
+                });
+                return (
+                  <CalendarDay
+                    key={item}
+                    isToday={isSameDay(today, item)}
+                    {...getItemProps({
+                      item,
+                      onMouseOut: () => {
+                        setDownshiftHighlightedIndex(-1);
+                      },
+                    })}
+                    isHighlighted={isHighlighted}
+                    isRangeStart={isRangeStart}
+                    isRangeBetween={isRangeBetween}
+                    isRangeEnd={isRangeEnd}
                   >
-                    <CalendarHeader
-                      monthLabel={getMonthCalendarLabel(
-                        this.state.calendarDate,
-                        this.props.intl.locale
-                      )}
-                      yearLabel={getYearCalendarLabel(
-                        this.state.calendarDate,
-                        this.props.intl.locale
-                      )}
-                      onPrevMonthClick={() => this.jumpMonth(-1)}
-                      onTodayClick={this.showToday}
-                      onNextMonthClick={() => this.jumpMonth(1)}
-                      onPrevYearClick={() => this.jumpMonth(-12)}
-                      onNextYearClick={() => this.jumpMonth(12)}
-                    />
-                    <CalendarContent>
-                      {weekdays.map((weekday) => (
-                        <CalendarDay key={weekday} type="heading">
-                          {weekday}
-                        </CalendarDay>
-                      ))}
-                      {paddingDays.map((_, index) => (
-                        <CalendarDay key={index} type="spacing" />
-                      ))}
-                      {calendarItems.map((item, index) => {
-                        const isHighlighted =
-                          this.state.suggestedItems.length + index ===
-                          highlightedIndex;
-                        const { isRangeStart, isRangeBetween, isRangeEnd } =
-                          getRange({
-                            item,
-                            value: this.props.value,
-                            startDate: this.state.startDate,
-                            highlightedItem:
-                              allItems[this.state.highlightedIndex || 0],
-                          });
-                        return (
-                          <CalendarDay
-                            key={item}
-                            isToday={isSameDay(today, item)}
-                            {...getItemProps({
-                              disabled: this.props.isDisabled,
-                              item,
-                              onMouseOut: () => {
-                                // @ts-ignore
-                                setHighlightedIndex(null);
-                              },
-                            })}
-                            isHighlighted={isHighlighted}
-                            isRangeStart={isRangeStart}
-                            isRangeBetween={isRangeBetween}
-                            isRangeEnd={isRangeEnd}
-                          >
-                            {getCalendarDayLabel(item)}
-                          </CalendarDay>
-                        );
-                      })}
-                    </CalendarContent>
-                  </CalendarMenu>
-                )}
-              </div>
-            );
-          }}
-        </Downshift>
-      </Constraints.Horizontal>
-    );
-  }
-}
+                    {getCalendarDayLabel(item)}
+                  </CalendarDay>
+                );
+              })}
+            </CalendarContent>
+          </CalendarMenu>
+        )}
+      </div>
+    </Constraints.Horizontal>
+  );
+};
 
-export default injectIntl(DateRangeInput);
+DateRangeInput.displayName = 'DateRangeInput';
+DateRangeInput.isEmpty = (range: number[]) => range.length === 0;
+DateRangeInput.defaultProps = { isClearable: true };
+
+export default DateRangeInput;
