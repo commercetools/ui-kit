@@ -233,11 +233,6 @@ const DateInput = (props: TDateInput) => {
     highlightedIndex: highlightedIndex ?? -1,
     isItemDisabled: (item) =>
       !getIsDateInRange(item, props.minValue, props.maxValue),
-    onHighlightedIndexChange: ({ highlightedIndex: newIndex }) => {
-      if (newIndex !== undefined && newIndex !== -1) {
-        setHighlightedIndex(newIndex);
-      }
-    },
     onSelectedItemChange: ({ selectedItem: newItem }) => {
       handleChange(newItem ?? null);
     },

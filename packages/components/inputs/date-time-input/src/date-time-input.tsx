@@ -292,6 +292,7 @@ const DateTimeInput = (props: TDateTimeInputProps) => {
     stateReducer: (state, { type, changes }) => {
       if (
         type === useCombobox.stateChangeTypes.InputBlur &&
+        typeof document !== 'undefined' &&
         document.activeElement === timeInputRef.current
       ) {
         return { ...changes, isOpen: state.isOpen };
@@ -332,10 +333,10 @@ const DateTimeInput = (props: TDateTimeInputProps) => {
       }
 
       if (changes.hasOwnProperty('isOpen')) {
-        setTimeString(
+        setTimeString((prev) =>
           changes.isOpen && props.value !== ''
             ? formatTime(props.value, intl.locale, props.timeZone)
-            : timeString
+            : prev
         );
         setCalendarDate(
           props.value === ''
@@ -436,7 +437,14 @@ const DateTimeInput = (props: TDateTimeInputProps) => {
               }
             },
             onClick: props.isReadOnly
-              ? (preventDownshiftDefault as unknown as MouseEventHandler<HTMLInputElement>)
+              ? (((event) => {
+                  // Tell downshift not to open the menu in read-only mode
+                  (
+                    event.nativeEvent as unknown as {
+                      preventDownshiftDefault?: boolean;
+                    }
+                  ).preventDownshiftDefault = true;
+                }) satisfies MouseEventHandler<HTMLInputElement>)
               : undefined,
             onBlur: (
               event: TFocusEventWithPreventDefault<HTMLInputElement>

@@ -317,9 +317,6 @@ const DateRangeInput = ({
       }
       return changes;
     },
-    onIsOpenChange: ({ isOpen: newIsOpen }) => {
-      setIsOpen(newIsOpen ?? false);
-    },
     onInputValueChange: ({ inputValue: newInputValue, type }) => {
       // only attempt to parse input when the user typed into the input field
       if (type !== useCombobox.stateChangeTypes.InputChange) return;
@@ -345,13 +342,6 @@ const DateRangeInput = ({
         setCalendarDate(calDate);
       }
     },
-    onSelectedItemChange: ({ selectedItem: newItem }) => {
-      if (startDate && newItem) {
-        emit([startDate, newItem]);
-      } else {
-        emit([]);
-      }
-    },
     onStateChange: (changes) => {
       if (
         changes.type === useCombobox.stateChangeTypes.MenuMouseLeave ||
@@ -371,6 +361,10 @@ const DateRangeInput = ({
           startDate && changes.selectedItem
         );
 
+        // startDate here is from the pre-click render closure — the correct "first date"
+        if (hasFinishedRangeSelection) {
+          emit([startDate, changes.selectedItem as MomentInput]);
+        }
         setHighlightedIndex(highlightedIndex);
         setStartDate(startDate ? null : (changes.selectedItem as MomentInput));
         if (changes.selectedItem) {
@@ -598,6 +592,5 @@ const DateRangeInput = ({
 
 DateRangeInput.displayName = 'DateRangeInput';
 DateRangeInput.isEmpty = (range: number[]) => range.length === 0;
-DateRangeInput.defaultProps = { isClearable: true };
 
 export default DateRangeInput;
