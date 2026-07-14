@@ -133,6 +133,30 @@ const reset = (props: TRichTextBodyStylesProps) => [
       margin: 0;
       line-height: 22px;
     }
+    /*
+     * Lists are rendered as bare <ul>/<ol>/<li> (see rich-text-utils
+     * slate-helpers), so they historically relied on the browser's
+     * user-agent default list styling for their markers and indentation.
+     * A host CSS reset (e.g. Nimbus / Chakra "preflight":
+     * "ol, ul { list-style: none }" plus "* { margin: 0; padding: 0 }")
+     * strips those defaults, hiding bullets/numbers in the preview.
+     * Declare the list styling explicitly so it survives any host reset.
+     * See SUPPORT-41503 / FEC-1126.
+     */
+    ul,
+    ol {
+      margin: ${designTokens.spacing30} 0;
+      padding-left: ${designTokens.spacing40};
+    }
+    ul {
+      list-style: disc outside;
+    }
+    ol {
+      list-style: decimal outside;
+    }
+    li {
+      line-height: 22px;
+    }
   `,
   props.isReadOnly &&
     css`
