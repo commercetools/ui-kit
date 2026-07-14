@@ -1,5 +1,19 @@
 # @commercetools-uikit/rich-text-utils
 
+## 20.6.5
+
+### Patch Changes
+
+- [#3266](https://github.com/commercetools/ui-kit/pull/3266) [`dd5a813`](https://github.com/commercetools/ui-kit/commit/dd5a813b592ef600d63059dc838fbc57abd83697) Thanks [@misama-ct](https://github.com/misama-ct)! - Fix bulleted and numbered lists not displaying their bullets, numbers, and indentation in the rich text editor when it is used inside applications that apply a global CSS reset (for example, apps built on Nimbus). Lists now preview correctly in all environments.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.5
+  - @commercetools-uikit/icons@20.6.5
+  - @commercetools-uikit/input-utils@20.6.5
+  - @commercetools-uikit/spacings-inline@20.6.5
+  - @commercetools-uikit/tooltip@20.6.5
+  - @commercetools-uikit/utils@20.6.5
+
 ## 20.6.4
 
 ### Patch Changes
