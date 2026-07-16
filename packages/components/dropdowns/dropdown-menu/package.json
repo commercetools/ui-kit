@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/dropdown-menu",
   "description": "The Dropdown Menu component represents a component that triggers the rendering of a floating menu.",
-  "version": "20.6.5",
+  "version": "20.6.6",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
