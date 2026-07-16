@@ -157,6 +157,18 @@ const reset = (props: TRichTextBodyStylesProps) => [
     li {
       line-height: 22px;
     }
+    /*
+     * Italic is rendered as bare <em> (see rich-text-utils slate-helpers),
+     * so it historically relied on the browser's user-agent default
+     * font-style for emphasis. A host CSS reset can normalize font-style
+     * on em/i (e.g. as part of a broader typography reset), silently
+     * dropping the italic preview. Declare it explicitly so it survives
+     * any host reset, mirroring the list-styling fix above.
+     */
+    em,
+    i {
+      font-style: italic;
+    }
   `,
   props.isReadOnly &&
     css`
