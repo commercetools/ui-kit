@@ -1,5 +1,19 @@
 # @commercetools-uikit/rich-text-utils
 
+## 20.6.6
+
+### Patch Changes
+
+- [#3268](https://github.com/commercetools/ui-kit/pull/3268) [`7f001fd`](https://github.com/commercetools/ui-kit/commit/7f001fd32de2e40d8a607c52ee91db07740d92a7) Thanks [@rajrdk](https://github.com/rajrdk)! - Fix italic text not rendering correctly in the rich text editor when it is used inside applications that apply a global CSS reset (for example, apps built on Nimbus). The editor now explicitly applies font-style: italic to <em> and <i> elements instead of relying on browser default styling, ensuring italic formatting previews correctly in all embedding environments.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.6
+  - @commercetools-uikit/icons@20.6.6
+  - @commercetools-uikit/input-utils@20.6.6
+  - @commercetools-uikit/spacings-inline@20.6.6
+  - @commercetools-uikit/tooltip@20.6.6
+  - @commercetools-uikit/utils@20.6.6
+
 ## 20.6.5
 
 ### Patch Changes

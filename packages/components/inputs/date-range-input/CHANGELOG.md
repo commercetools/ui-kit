@@ -1,5 +1,24 @@
 # @commercetools-uikit/date-range-input
 
+## 20.6.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.6
+  - @commercetools-uikit/calendar-time-utils@20.6.6
+  - @commercetools-uikit/calendar-utils@20.6.6
+  - @commercetools-uikit/accessible-button@20.6.6
+  - @commercetools-uikit/secondary-icon-button@20.6.6
+  - @commercetools-uikit/constraints@20.6.6
+  - @commercetools-uikit/icons@20.6.6
+  - @commercetools-uikit/select-utils@20.6.6
+  - @commercetools-uikit/spacings-inline@20.6.6
+  - @commercetools-uikit/text@20.6.6
+  - @commercetools-uikit/tooltip@20.6.6
+  - @commercetools-uikit/hooks@20.6.6
+  - @commercetools-uikit/utils@20.6.6
+
 ## 20.6.5
 
 ### Patch Changes
