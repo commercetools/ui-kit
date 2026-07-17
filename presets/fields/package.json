@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/fields",
   "description": "A preset of all the UI-Kit fields components.",
-  "version": "20.6.6",
+  "version": "20.6.7",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
