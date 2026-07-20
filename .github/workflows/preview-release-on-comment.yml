@@ -17,17 +17,17 @@ jobs:
       # Get GitHub token via the CT Changesets App
       - name: Generate GitHub token (via CT Changesets App)
         id: generate_github_token
-        uses: tibdex/github-app-token@v2.1.0
+        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
         with:
           app_id: ${{ secrets.CT_CHANGESETS_APP_ID }}
           private_key: ${{ secrets.CT_CHANGESETS_APP_PEM }}
 
       - name: Get branch of PR
-        uses: xt0rted/pull-request-comment-branch@v1
+        uses: xt0rted/pull-request-comment-branch@653a7d5ca8bd91d3c5cb83286063314d0b063b8e # v1
         id: comment-branch
 
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           # Pass a personal access token (using our `ct-release-bot` account) to be able to trigger
           # other workflows
@@ -37,10 +37,10 @@ jobs:
           token: ${{ steps.generate_github_token.outputs.token }}
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
 
       - name: Setup Node (uses version in .nvmrc)
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
@@ -54,7 +54,7 @@ jobs:
         id: pnpm-store
         run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v5
+      - uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
         with:
           path: ${{ steps.pnpm-store.outputs.dir }}
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml', 'patches/*.patch') }}
