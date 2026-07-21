@@ -2,6 +2,7 @@ import {
   useRef,
   useCallback,
   useState,
+  useEffect,
   type FocusEventHandler,
   type MouseEventHandler,
   type KeyboardEvent,
@@ -357,6 +358,16 @@ const DateTimeInput = (props: TDateTimeInputProps) => {
     },
   });
 
+  // The original <Downshift key={`${timeZone}:${locale}`}> remounted on locale/timezone
+  // change so itemToString would reformat the displayed value. useCombobox doesn't
+  // re-call itemToString when these change without selectedItem changing, so we sync manually.
+  useEffect(() => {
+    setDownshiftInputValue(
+      itemToString(props.value === '' ? null : props.value)
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [intl.locale, props.timeZone]);
+
   const paddingDayCount = getPaddingDayCount(
     calendarDate,
     intl.locale,
@@ -369,6 +380,12 @@ const DateTimeInput = (props: TDateTimeInputProps) => {
   const shouldShowCalendar =
     (isOpen && !props.isDisabled) ||
     (appearance === 'filter' && !props.isDisabled);
+
+  // `getMenuProps` must be called on every render, otherwise downshift's
+  // `useCombobox` logs "You forgot to call the getMenuProps getter function"
+  // on mount. We only spread the props onto the menu when the calendar is
+  // shown, so `suppressRefError` keeps the ref check quiet while it's closed.
+  const menuProps = getMenuProps({}, { suppressRefError: true });
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
@@ -513,7 +530,7 @@ const DateTimeInput = (props: TDateTimeInputProps) => {
         />
         {shouldShowCalendar && (
           <CalendarMenu
-            {...getMenuProps({}, { suppressRefError: true })}
+            {...menuProps}
             hasFooter={true}
             hasError={props.hasError}
             hasWarning={props.hasWarning}

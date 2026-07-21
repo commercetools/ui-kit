@@ -343,10 +343,7 @@ const DateRangeInput = ({
       }
     },
     onStateChange: (changes) => {
-      if (
-        changes.type === useCombobox.stateChangeTypes.MenuMouseLeave ||
-        changes.type === useCombobox.stateChangeTypes.InputBlur
-      ) {
+      if (changes.type === useCombobox.stateChangeTypes.InputBlur) {
         setHighlightedIndex(null);
         setIsOpen(false);
         setInputValue(formatRange(props.value, intl.locale));
@@ -354,40 +351,34 @@ const DateRangeInput = ({
       }
 
       if (changes.hasOwnProperty('selectedItem')) {
-        const hasStartedRangeSelection = Boolean(
-          !startDate && changes.selectedItem
-        );
-        const hasFinishedRangeSelection = Boolean(
-          startDate && changes.selectedItem
-        );
-
-        // startDate here is from the pre-click render closure — the correct "first date"
-        if (hasFinishedRangeSelection) {
-          emit([startDate, changes.selectedItem as MomentInput]);
-        }
-        setHighlightedIndex(highlightedIndex);
-        setStartDate(startDate ? null : (changes.selectedItem as MomentInput));
         if (changes.selectedItem) {
+          // Real date click (first or second of range)
+          // startDate from pre-click closure is the correct "first date"
+          const hasFinishedRangeSelection = Boolean(startDate);
+          if (hasFinishedRangeSelection) {
+            emit([startDate, changes.selectedItem as MomentInput]);
+          }
+          setHighlightedIndex(highlightedIndex);
+          setStartDate(
+            startDate ? null : (changes.selectedItem as MomentInput)
+          );
           setCalendarDate(changes.selectedItem as MomentInput);
+          setIsOpen(!hasFinishedRangeSelection);
+          setInputValue(
+            hasFinishedRangeSelection
+              ? formatRange(
+                  [startDate, changes.selectedItem as MomentInput],
+                  intl.locale
+                )
+              : formatRange([changes.selectedItem as MomentInput], intl.locale)
+          );
+        } else {
+          // selectedItem cleared (Escape key, clearSelection)
+          emit([]);
+          setStartDate(null);
+          setIsOpen(false);
+          setInputValue('');
         }
-        setIsOpen(!hasFinishedRangeSelection);
-        setInputValue(
-          (() => {
-            if (hasFinishedRangeSelection) {
-              return formatRange(
-                [startDate, changes.selectedItem as MomentInput],
-                intl.locale
-              );
-            }
-            if (hasStartedRangeSelection) {
-              return formatRange(
-                [changes.selectedItem as MomentInput],
-                intl.locale
-              );
-            }
-            return '';
-          })()
-        );
         return;
       }
 
@@ -426,6 +417,12 @@ const DateRangeInput = ({
   const shouldShowCalendar =
     (downshiftIsOpen && !props.isDisabled) ||
     (appearance === 'filter' && !props.isDisabled && !props.isReadOnly);
+
+  // `getMenuProps` must be called on every render, otherwise downshift's
+  // `useCombobox` logs "You forgot to call the getMenuProps getter function"
+  // on mount. We only spread the props onto the menu when the calendar is
+  // shown, so `suppressRefError` keeps the ref check quiet while it's closed.
+  const menuProps = getMenuProps({}, { suppressRefError: true });
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
@@ -531,7 +528,7 @@ const DateRangeInput = ({
         />
         {shouldShowCalendar && (
           <CalendarMenu
-            {...getMenuProps({}, { suppressRefError: true })}
+            {...menuProps}
             hasError={props.hasError}
             hasWarning={props.hasWarning}
             appearance={appearance}
