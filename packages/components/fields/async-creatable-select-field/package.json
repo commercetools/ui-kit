@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/async-creatable-select-field",
   "description": "An input component with validation states and a label getting a selection from an asynchronously loaded list from the user, and where options can be created by the user.",
-  "version": "20.6.4",
+  "version": "20.6.7",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

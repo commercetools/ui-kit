@@ -1,5 +1,47 @@
 # @commercetools-uikit/rich-text-utils
 
+## 20.6.7
+
+### Patch Changes
+
+- [#3270](https://github.com/commercetools/ui-kit/pull/3270) [`d5e6168`](https://github.com/commercetools/ui-kit/commit/d5e61683ea788c742f7d4c0f6093e1eb820905ce) Thanks [@rajrdk](https://github.com/rajrdk)! - Fix rich text editor typography styles not applying correctly in applications with global CSS resets. The editor now explicitly defines font size, font weight, and line height for paragraph and heading elements (p, h1-h6) instead of relying on browser defaults. This ensures consistent typography rendering and preserves the intended visual hierarchy when embedded in applications such as Nimbus.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.7
+  - @commercetools-uikit/icons@20.6.7
+  - @commercetools-uikit/input-utils@20.6.7
+  - @commercetools-uikit/spacings-inline@20.6.7
+  - @commercetools-uikit/tooltip@20.6.7
+  - @commercetools-uikit/utils@20.6.7
+
+## 20.6.6
+
+### Patch Changes
+
+- [#3268](https://github.com/commercetools/ui-kit/pull/3268) [`7f001fd`](https://github.com/commercetools/ui-kit/commit/7f001fd32de2e40d8a607c52ee91db07740d92a7) Thanks [@rajrdk](https://github.com/rajrdk)! - Fix italic text not rendering correctly in the rich text editor when it is used inside applications that apply a global CSS reset (for example, apps built on Nimbus). The editor now explicitly applies font-style: italic to <em> and <i> elements instead of relying on browser default styling, ensuring italic formatting previews correctly in all embedding environments.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.6
+  - @commercetools-uikit/icons@20.6.6
+  - @commercetools-uikit/input-utils@20.6.6
+  - @commercetools-uikit/spacings-inline@20.6.6
+  - @commercetools-uikit/tooltip@20.6.6
+  - @commercetools-uikit/utils@20.6.6
+
+## 20.6.5
+
+### Patch Changes
+
+- [#3266](https://github.com/commercetools/ui-kit/pull/3266) [`dd5a813`](https://github.com/commercetools/ui-kit/commit/dd5a813b592ef600d63059dc838fbc57abd83697) Thanks [@misama-ct](https://github.com/misama-ct)! - Fix bulleted and numbered lists not displaying their bullets, numbers, and indentation in the rich text editor when it is used inside applications that apply a global CSS reset (for example, apps built on Nimbus). Lists now preview correctly in all environments.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.5
+  - @commercetools-uikit/icons@20.6.5
+  - @commercetools-uikit/input-utils@20.6.5
+  - @commercetools-uikit/spacings-inline@20.6.5
+  - @commercetools-uikit/tooltip@20.6.5
+  - @commercetools-uikit/utils@20.6.5
+
 ## 20.6.4
 
 ### Patch Changes

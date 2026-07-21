@@ -1,5 +1,68 @@
 # @commercetools-uikit/localized-rich-text-input
 
+## 20.6.7
+
+### Patch Changes
+
+- Updated dependencies [[`d5e6168`](https://github.com/commercetools/ui-kit/commit/d5e61683ea788c742f7d4c0f6093e1eb820905ce)]:
+  - @commercetools-uikit/rich-text-utils@20.6.7
+  - @commercetools-uikit/design-system@20.6.7
+  - @commercetools-uikit/flat-button@20.6.7
+  - @commercetools-uikit/collapsible-motion@20.6.7
+  - @commercetools-uikit/constraints@20.6.7
+  - @commercetools-uikit/icons@20.6.7
+  - @commercetools-uikit/input-utils@20.6.7
+  - @commercetools-uikit/messages@20.6.7
+  - @commercetools-uikit/spacings-inline@20.6.7
+  - @commercetools-uikit/spacings-stack@20.6.7
+  - @commercetools-uikit/text@20.6.7
+  - @commercetools-uikit/tooltip@20.6.7
+  - @commercetools-uikit/hooks@20.6.7
+  - @commercetools-uikit/localized-utils@20.6.7
+  - @commercetools-uikit/utils@20.6.7
+
+## 20.6.6
+
+### Patch Changes
+
+- Updated dependencies [[`7f001fd`](https://github.com/commercetools/ui-kit/commit/7f001fd32de2e40d8a607c52ee91db07740d92a7)]:
+  - @commercetools-uikit/rich-text-utils@20.6.6
+  - @commercetools-uikit/design-system@20.6.6
+  - @commercetools-uikit/flat-button@20.6.6
+  - @commercetools-uikit/collapsible-motion@20.6.6
+  - @commercetools-uikit/constraints@20.6.6
+  - @commercetools-uikit/icons@20.6.6
+  - @commercetools-uikit/input-utils@20.6.6
+  - @commercetools-uikit/messages@20.6.6
+  - @commercetools-uikit/spacings-inline@20.6.6
+  - @commercetools-uikit/spacings-stack@20.6.6
+  - @commercetools-uikit/text@20.6.6
+  - @commercetools-uikit/tooltip@20.6.6
+  - @commercetools-uikit/hooks@20.6.6
+  - @commercetools-uikit/localized-utils@20.6.6
+  - @commercetools-uikit/utils@20.6.6
+
+## 20.6.5
+
+### Patch Changes
+
+- Updated dependencies [[`dd5a813`](https://github.com/commercetools/ui-kit/commit/dd5a813b592ef600d63059dc838fbc57abd83697)]:
+  - @commercetools-uikit/rich-text-utils@20.6.5
+  - @commercetools-uikit/design-system@20.6.5
+  - @commercetools-uikit/flat-button@20.6.5
+  - @commercetools-uikit/collapsible-motion@20.6.5
+  - @commercetools-uikit/constraints@20.6.5
+  - @commercetools-uikit/icons@20.6.5
+  - @commercetools-uikit/input-utils@20.6.5
+  - @commercetools-uikit/messages@20.6.5
+  - @commercetools-uikit/spacings-inline@20.6.5
+  - @commercetools-uikit/spacings-stack@20.6.5
+  - @commercetools-uikit/text@20.6.5
+  - @commercetools-uikit/tooltip@20.6.5
+  - @commercetools-uikit/hooks@20.6.5
+  - @commercetools-uikit/localized-utils@20.6.5
+  - @commercetools-uikit/utils@20.6.5
+
 ## 20.6.4
 
 ### Patch Changes

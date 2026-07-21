@@ -133,6 +133,89 @@ const reset = (props: TRichTextBodyStylesProps) => [
       margin: 0;
       line-height: 22px;
     }
+    /*
+ * Rich text content is rendered as bare semantic HTML elements (see
+ * rich-text-utils slate-helpers), so it historically relied on the
+ * browser's user-agent stylesheet for typography and default formatting.
+ * A host CSS reset (e.g. Nimbus / Chakra "preflight") can normalize or
+ * remove those defaults—flattening heading hierarchy, removing list
+ * markers and indentation, dropping italic and bold emphasis, clearing
+ * underline/strikethrough decorations, normalizing subscript/superscript
+ * alignment, removing blockquote indentation and borders, or overriding
+ * monospace fonts for preformatted text. Declare these styles explicitly
+ * so rich text rendering remains consistent regardless of host styles. 
+ * See SUPPORT-41503 / FEC-1126.
+  */
+    h1 {
+      font-size: ${designTokens.fontSize60};
+      font-weight: ${designTokens.fontWeight600};
+      line-height: ${designTokens.lineHeight60};
+    }
+    h2 {
+      font-size: ${designTokens.fontSize50};
+      font-weight: ${designTokens.fontWeight500};
+      line-height: ${designTokens.lineHeight50};
+    }
+    h3 {
+      font-size: ${designTokens.fontSize40};
+      font-weight: ${designTokens.fontWeight500};
+      line-height: ${designTokens.lineHeight30};
+    }
+    h4,
+    h5 {
+      font-size: ${designTokens.fontSize30};
+      font-weight: ${designTokens.fontWeight500};
+      line-height: ${designTokens.lineHeight20};
+    }
+    h6 {
+      font-size: ${designTokens.fontSize20};
+      font-weight: ${designTokens.fontWeight500};
+      line-height: ${designTokens.lineHeight20};
+    }
+    strong,
+    b {
+      font-weight: ${designTokens.fontWeight600};
+    }
+    u {
+      text-decoration: underline;
+    }
+    s,
+    del {
+      text-decoration: line-through;
+    }
+    sub {
+      vertical-align: sub;
+    }
+    sup {
+      vertical-align: super;
+    }
+
+    blockquote {
+      margin: 0;
+      padding-left: ${designTokens.spacing20};
+      border-left: 2px solid ${designTokens.colorNeutral};
+    }
+    pre {
+      font-family: monospace;
+    }
+    ul,
+    ol {
+      margin: ${designTokens.spacing30} 0;
+      padding-left: ${designTokens.spacing40};
+    }
+    ul {
+      list-style: disc outside;
+    }
+    ol {
+      list-style: decimal outside;
+    }
+    li {
+      line-height: 22px;
+    }
+    em,
+    i {
+      font-style: italic;
+    }
   `,
   props.isReadOnly &&
     css`

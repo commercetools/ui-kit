@@ -1,5 +1,95 @@
 # @commercetools-uikit/inputs
 
+## 20.6.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-input@20.6.7
+  - @commercetools-uikit/async-select-input@20.6.7
+  - @commercetools-uikit/checkbox-input@20.6.7
+  - @commercetools-uikit/creatable-select-input@20.6.7
+  - @commercetools-uikit/date-input@20.6.7
+  - @commercetools-uikit/date-range-input@20.6.7
+  - @commercetools-uikit/date-time-input@20.6.7
+  - @commercetools-uikit/localized-money-input@20.6.7
+  - @commercetools-uikit/localized-multiline-text-input@20.6.7
+  - @commercetools-uikit/localized-rich-text-input@20.6.7
+  - @commercetools-uikit/localized-text-input@20.6.7
+  - @commercetools-uikit/money-input@20.6.7
+  - @commercetools-uikit/multiline-text-input@20.6.7
+  - @commercetools-uikit/number-input@20.6.7
+  - @commercetools-uikit/password-input@20.6.7
+  - @commercetools-uikit/radio-input@20.6.7
+  - @commercetools-uikit/rich-text-input@20.6.7
+  - @commercetools-uikit/search-select-input@20.6.7
+  - @commercetools-uikit/search-text-input@20.6.7
+  - @commercetools-uikit/select-input@20.6.7
+  - @commercetools-uikit/selectable-search-input@20.6.7
+  - @commercetools-uikit/text-input@20.6.7
+  - @commercetools-uikit/time-input@20.6.7
+  - @commercetools-uikit/toggle-input@20.6.7
+
+## 20.6.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-input@20.6.6
+  - @commercetools-uikit/async-select-input@20.6.6
+  - @commercetools-uikit/checkbox-input@20.6.6
+  - @commercetools-uikit/creatable-select-input@20.6.6
+  - @commercetools-uikit/date-input@20.6.6
+  - @commercetools-uikit/date-range-input@20.6.6
+  - @commercetools-uikit/date-time-input@20.6.6
+  - @commercetools-uikit/localized-money-input@20.6.6
+  - @commercetools-uikit/localized-multiline-text-input@20.6.6
+  - @commercetools-uikit/localized-rich-text-input@20.6.6
+  - @commercetools-uikit/localized-text-input@20.6.6
+  - @commercetools-uikit/money-input@20.6.6
+  - @commercetools-uikit/multiline-text-input@20.6.6
+  - @commercetools-uikit/number-input@20.6.6
+  - @commercetools-uikit/password-input@20.6.6
+  - @commercetools-uikit/radio-input@20.6.6
+  - @commercetools-uikit/rich-text-input@20.6.6
+  - @commercetools-uikit/search-select-input@20.6.6
+  - @commercetools-uikit/search-text-input@20.6.6
+  - @commercetools-uikit/select-input@20.6.6
+  - @commercetools-uikit/selectable-search-input@20.6.6
+  - @commercetools-uikit/text-input@20.6.6
+  - @commercetools-uikit/time-input@20.6.6
+  - @commercetools-uikit/toggle-input@20.6.6
+
+## 20.6.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-input@20.6.5
+  - @commercetools-uikit/async-select-input@20.6.5
+  - @commercetools-uikit/checkbox-input@20.6.5
+  - @commercetools-uikit/creatable-select-input@20.6.5
+  - @commercetools-uikit/date-input@20.6.5
+  - @commercetools-uikit/date-range-input@20.6.5
+  - @commercetools-uikit/date-time-input@20.6.5
+  - @commercetools-uikit/localized-money-input@20.6.5
+  - @commercetools-uikit/localized-multiline-text-input@20.6.5
+  - @commercetools-uikit/localized-rich-text-input@20.6.5
+  - @commercetools-uikit/localized-text-input@20.6.5
+  - @commercetools-uikit/money-input@20.6.5
+  - @commercetools-uikit/multiline-text-input@20.6.5
+  - @commercetools-uikit/number-input@20.6.5
+  - @commercetools-uikit/password-input@20.6.5
+  - @commercetools-uikit/radio-input@20.6.5
+  - @commercetools-uikit/rich-text-input@20.6.5
+  - @commercetools-uikit/search-select-input@20.6.5
+  - @commercetools-uikit/search-text-input@20.6.5
+  - @commercetools-uikit/select-input@20.6.5
+  - @commercetools-uikit/selectable-search-input@20.6.5
+  - @commercetools-uikit/text-input@20.6.5
+  - @commercetools-uikit/time-input@20.6.5
+  - @commercetools-uikit/toggle-input@20.6.5
+
 ## 20.6.4
 
 ### Patch Changes

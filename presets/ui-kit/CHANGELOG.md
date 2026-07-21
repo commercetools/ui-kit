@@ -1,5 +1,140 @@
 # @commercetools-frontend/ui-kit
 
+## 20.6.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.7
+  - @commercetools-uikit/accessible-hidden@20.6.7
+  - @commercetools-uikit/avatar@20.6.7
+  - @commercetools-uikit/card@20.6.7
+  - @commercetools-uikit/collapsible@20.6.7
+  - @commercetools-uikit/collapsible-motion@20.6.7
+  - @commercetools-uikit/collapsible-panel@20.6.7
+  - @commercetools-uikit/constraints@20.6.7
+  - @commercetools-uikit/data-table@20.6.7
+  - @commercetools-uikit/data-table-manager@20.6.7
+  - @commercetools-uikit/dropdown-menu@20.6.7
+  - @commercetools-uikit/field-errors@20.6.7
+  - @commercetools-uikit/field-label@20.6.7
+  - @commercetools-uikit/filters@20.6.7
+  - @commercetools-uikit/grid@20.6.7
+  - @commercetools-uikit/icons@20.6.7
+  - @commercetools-uikit/select-utils@20.6.7
+  - @commercetools-uikit/selectable-search-input@20.6.7
+  - @commercetools-uikit/label@20.6.7
+  - @commercetools-uikit/link@20.6.7
+  - @commercetools-uikit/loading-spinner@20.6.7
+  - @commercetools-uikit/messages@20.6.7
+  - @commercetools-uikit/notifications@20.6.7
+  - @commercetools-uikit/pagination@20.6.7
+  - @commercetools-uikit/primary-action-dropdown@20.6.7
+  - @commercetools-uikit/progress-bar@20.6.7
+  - @commercetools-uikit/quick-filters@20.6.7
+  - @commercetools-uikit/stamp@20.6.7
+  - @commercetools-uikit/tag@20.6.7
+  - @commercetools-uikit/text@20.6.7
+  - @commercetools-uikit/tooltip@20.6.7
+  - @commercetools-uikit/view-switcher@20.6.7
+  - @commercetools-uikit/hooks@20.6.7
+  - @commercetools-uikit/i18n@20.6.7
+  - @commercetools-uikit/utils@20.6.7
+  - @commercetools-uikit/buttons@20.6.7
+  - @commercetools-uikit/fields@20.6.7
+  - @commercetools-uikit/inputs@20.6.7
+  - @commercetools-uikit/spacings@20.6.7
+
+## 20.6.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.6
+  - @commercetools-uikit/accessible-hidden@20.6.6
+  - @commercetools-uikit/avatar@20.6.6
+  - @commercetools-uikit/card@20.6.6
+  - @commercetools-uikit/collapsible@20.6.6
+  - @commercetools-uikit/collapsible-motion@20.6.6
+  - @commercetools-uikit/collapsible-panel@20.6.6
+  - @commercetools-uikit/constraints@20.6.6
+  - @commercetools-uikit/data-table@20.6.6
+  - @commercetools-uikit/data-table-manager@20.6.6
+  - @commercetools-uikit/dropdown-menu@20.6.6
+  - @commercetools-uikit/field-errors@20.6.6
+  - @commercetools-uikit/field-label@20.6.6
+  - @commercetools-uikit/filters@20.6.6
+  - @commercetools-uikit/grid@20.6.6
+  - @commercetools-uikit/icons@20.6.6
+  - @commercetools-uikit/select-utils@20.6.6
+  - @commercetools-uikit/selectable-search-input@20.6.6
+  - @commercetools-uikit/label@20.6.6
+  - @commercetools-uikit/link@20.6.6
+  - @commercetools-uikit/loading-spinner@20.6.6
+  - @commercetools-uikit/messages@20.6.6
+  - @commercetools-uikit/notifications@20.6.6
+  - @commercetools-uikit/pagination@20.6.6
+  - @commercetools-uikit/primary-action-dropdown@20.6.6
+  - @commercetools-uikit/progress-bar@20.6.6
+  - @commercetools-uikit/quick-filters@20.6.6
+  - @commercetools-uikit/stamp@20.6.6
+  - @commercetools-uikit/tag@20.6.6
+  - @commercetools-uikit/text@20.6.6
+  - @commercetools-uikit/tooltip@20.6.6
+  - @commercetools-uikit/view-switcher@20.6.6
+  - @commercetools-uikit/hooks@20.6.6
+  - @commercetools-uikit/i18n@20.6.6
+  - @commercetools-uikit/utils@20.6.6
+  - @commercetools-uikit/buttons@20.6.6
+  - @commercetools-uikit/fields@20.6.6
+  - @commercetools-uikit/inputs@20.6.6
+  - @commercetools-uikit/spacings@20.6.6
+
+## 20.6.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.5
+  - @commercetools-uikit/accessible-hidden@20.6.5
+  - @commercetools-uikit/avatar@20.6.5
+  - @commercetools-uikit/card@20.6.5
+  - @commercetools-uikit/collapsible@20.6.5
+  - @commercetools-uikit/collapsible-motion@20.6.5
+  - @commercetools-uikit/collapsible-panel@20.6.5
+  - @commercetools-uikit/constraints@20.6.5
+  - @commercetools-uikit/data-table@20.6.5
+  - @commercetools-uikit/data-table-manager@20.6.5
+  - @commercetools-uikit/dropdown-menu@20.6.5
+  - @commercetools-uikit/field-errors@20.6.5
+  - @commercetools-uikit/field-label@20.6.5
+  - @commercetools-uikit/filters@20.6.5
+  - @commercetools-uikit/grid@20.6.5
+  - @commercetools-uikit/icons@20.6.5
+  - @commercetools-uikit/select-utils@20.6.5
+  - @commercetools-uikit/selectable-search-input@20.6.5
+  - @commercetools-uikit/label@20.6.5
+  - @commercetools-uikit/link@20.6.5
+  - @commercetools-uikit/loading-spinner@20.6.5
+  - @commercetools-uikit/messages@20.6.5
+  - @commercetools-uikit/notifications@20.6.5
+  - @commercetools-uikit/pagination@20.6.5
+  - @commercetools-uikit/primary-action-dropdown@20.6.5
+  - @commercetools-uikit/progress-bar@20.6.5
+  - @commercetools-uikit/quick-filters@20.6.5
+  - @commercetools-uikit/stamp@20.6.5
+  - @commercetools-uikit/tag@20.6.5
+  - @commercetools-uikit/text@20.6.5
+  - @commercetools-uikit/tooltip@20.6.5
+  - @commercetools-uikit/view-switcher@20.6.5
+  - @commercetools-uikit/hooks@20.6.5
+  - @commercetools-uikit/i18n@20.6.5
+  - @commercetools-uikit/utils@20.6.5
+  - @commercetools-uikit/buttons@20.6.5
+  - @commercetools-uikit/fields@20.6.5
+  - @commercetools-uikit/inputs@20.6.5
+  - @commercetools-uikit/spacings@20.6.5
+
 ## 20.6.4
 
 ### Patch Changes
