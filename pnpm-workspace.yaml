@@ -12,15 +12,38 @@ packages:
   - presets/*
   - visual-testing-app
 
+# Strict pnpm — declared deps only, NO shamefully-hoist.
+#
+# One narrow carve-out: hoist the entire @storybook/* namespace. Leaf
+# component workspaces consume Storybook from a "framework-user"
+# perspective (matching the ESLint override for **/docs/**):
+#
+# - every *.stories.tsx imports `Meta` / `StoryObj` / `StoryFn` types
+#   from `@storybook/react-vite`, which re-exports from `@storybook/react`
+# - every *.readme.mdx imports `Meta` / `Markdown` from
+#   `@storybook/addon-docs/blocks`
+#
+# Adding ~15 @storybook/* packages as devDeps on 80+ leaf workspaces would
+# be pure noise — the storybook workspace is the rightful owner of these
+# deps. This pattern is dramatically narrower than `shamefully-hoist=true`
+# (which would hoist 1000+ packages), and avoids the v8-era bug where the
+# stories glob picked up `@storybook/react`'s bundled `template/cli/js/*`
+# (fixed structurally by the Storybook 9 upgrade in this branch).
+publicHoistPattern:
+  - '@storybook/*'
+
 # Postinstall scripts pnpm is allowed to run (strict allow-list).
-onlyBuiltDependencies:
-  - '@percy/core'
-  - '@swc/core'
-  - core-js
-  - core-js-pure
-  - esbuild
-  - puppeteer
-  - unrs-resolver
+# strictDepBuilds causes pnpm to fail immediately if a dep not listed here
+# tries to run a lifecycle script — the pnpm v11 equivalent of onlyBuiltDependencies.
+strictDepBuilds: true
+allowBuilds:
+  '@percy/core': true
+  '@swc/core': true
+  core-js: true
+  core-js-pure: true
+  esbuild: true
+  puppeteer: true
+  unrs-resolver: true
 
 # Transitive-dep pins for Dependabot security advisories and known-good
 # baselines. yarn-style `package@range` keys are preserved so the same
