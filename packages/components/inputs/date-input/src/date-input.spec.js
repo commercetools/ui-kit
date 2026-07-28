@@ -129,6 +129,32 @@ it('should open the date picker on clicking', () => {
   expect(screen.getByText('September')).toBeInTheDocument();
 });
 
+// Regression test for `TypeError: t.contains is not a function`, which was
+// thrown by downshift (>= 9.3.4) when the open calendar closed on a
+// click-outside/blur. downshift stored the menu ref on the `CalendarMenu`
+// class instance (no `.contains()`); it is now a `forwardRef` function
+// component that forwards the ref onto its rendered DOM node.
+it('should close the date picker on click-outside without crashing', () => {
+  renderDateInput({ value: '2020-09-15' });
+
+  const dateInput = screen.getByLabelText('Date');
+
+  // open the calendar
+  fireEvent.click(dateInput);
+  expect(screen.getByText('September')).toBeInTheDocument();
+
+  // downshift resolves the click-outside via `mousedown` + `mouseup` on the
+  // document; this exercises the code path that called `.contains()` on the
+  // menu ref and crashed under downshift >= 9.3.4.
+  expect(() => {
+    fireEvent.mouseDown(document.body);
+    fireEvent.mouseUp(document.body);
+  }).not.toThrow();
+
+  // the calendar is closed again
+  expect(screen.queryByText('September')).not.toBeInTheDocument();
+});
+
 it('should not open the date picker just by gaining focus', () => {
   renderDateInput({ value: '2020-09-15' });
 
