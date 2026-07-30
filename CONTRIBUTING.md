@@ -102,6 +102,12 @@ Some useful commands to work with the repository:
 - `pnpm build`
 - `pnpm lint`
 
+## Dependencies & supply chain security
+
+Dependency management in this repository follows the Merchant Center supply chain security baseline: a pnpm publish cooldown (`minimumReleaseAge`), build-script allowlists, SHA-pinned GitHub Actions, and centralized Renovate configuration. Before adding, updating, or overriding a dependency — or when a `minimumReleaseAge` cooldown or `pnpm audit --fix` blocks you — follow the baseline and override procedures:
+
+[Supply Chain Security — Baseline & Override Procedures](https://commercetools.atlassian.net/wiki/spaces/MCF/pages/3580231746/Supply+Chain+Security+-+Baseline+Override+Procedures)
+
 ## Developing locally
 
 When you develop UI components, it's recommended to start Storybook.
