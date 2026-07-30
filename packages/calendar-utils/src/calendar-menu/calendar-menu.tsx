@@ -1,4 +1,4 @@
-import { Component, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 
@@ -15,58 +15,60 @@ type TCalendarMenu = {
   appearance?: 'default' | 'filter';
 };
 
-export default class CalendarMenu extends Component<TCalendarMenu> {
-  static displayName = 'CalendarMenu';
-  render() {
-    const {
-      hasFooter,
-      hasWarning,
-      hasError,
-      appearance = 'default',
-      ...rest
-    } = this.props;
+const CalendarMenu = forwardRef<HTMLDivElement, TCalendarMenu>((props, ref) => {
+  const {
+    hasFooter,
+    hasWarning,
+    hasError,
+    appearance = 'default',
+    ...rest
+  } = props;
 
-    return (
-      <div
-        {...rest}
-        css={[
+  return (
+    <div
+      ref={ref}
+      {...rest}
+      css={[
+        css`
+          overflow-y: scroll;
+          color: ${designTokens.colorSolid};
+          font-family: inherit;
+          border: none;
+          box-shadow: ${appearance === 'filter'
+            ? 'none'
+            : '0 2px 5px 0px rgba(0, 0, 0, 0.15)'};
+          border-radius: ${designTokens.borderRadiusForInput};
+          margin-top: ${designTokens.spacing10};
+          font-size: ${designTokens.fontSize30};
+          position: ${appearance === 'filter' ? 'inherit' : 'absolute'};
+          box-sizing: border-box;
+          width: 100%;
+          background-color: ${designTokens.colorSurface};
+          min-width: ${designTokens.constraint5};
+          z-index: ${appearance === 'filter'
+            ? 'inherit'
+            : '99999'}; /* copied from flatpickr */
+        `,
+        !hasFooter &&
           css`
-            overflow-y: scroll;
-            color: ${designTokens.colorSolid};
-            font-family: inherit;
-            border: none;
-            box-shadow: ${appearance === 'filter'
-              ? 'none'
-              : '0 2px 5px 0px rgba(0, 0, 0, 0.15)'};
-            border-radius: ${designTokens.borderRadiusForInput};
-            margin-top: ${designTokens.spacing10};
-            font-size: ${designTokens.fontSize30};
-            position: ${appearance === 'filter' ? 'inherit' : 'absolute'};
-            box-sizing: border-box;
-            width: 100%;
-            background-color: ${designTokens.colorSurface};
-            min-width: ${designTokens.constraint5};
-            z-index: ${appearance === 'filter'
-              ? 'inherit'
-              : '99999'}; /* copied from flatpickr */
+            padding-bottom: 10px;
           `,
-          !hasFooter &&
-            css`
-              padding-bottom: 10px;
-            `,
-          hasError &&
-            css`
-              border-color: ${designTokens.borderColorForInputWhenError};
-            `,
-          hasWarning &&
-            css`
-              border-color: ${designTokens.borderColorForInputWhenWarning};
-            `,
-        ]}
-      >
-        {this.props.children}
-        {this.props.footer}
-      </div>
-    );
-  }
-}
+        hasError &&
+          css`
+            border-color: ${designTokens.borderColorForInputWhenError};
+          `,
+        hasWarning &&
+          css`
+            border-color: ${designTokens.borderColorForInputWhenWarning};
+          `,
+      ]}
+    >
+      {props.children}
+      {props.footer}
+    </div>
+  );
+});
+
+CalendarMenu.displayName = 'CalendarMenu';
+
+export default CalendarMenu;

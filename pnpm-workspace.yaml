@@ -42,6 +42,7 @@ allowBuilds:
   core-js: true
   core-js-pure: true
   esbuild: true
+  jest-circus: true
   puppeteer: true
   unrs-resolver: true
 
@@ -278,7 +279,7 @@ catalogs:
     # React-bound utilities
     '@hello-pangea/dnd': ^18.0.0
     '@radix-ui/react-popover': ^1.1.4
-    downshift: 9.3.3
+    downshift: 9.4.0
     formik: ^2.4.6
     prop-types: ^15.8.1
     react-docgen: 5.4.3
