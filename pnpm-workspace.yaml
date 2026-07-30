@@ -32,6 +32,14 @@ packages:
 publicHoistPattern:
   - '@storybook/*'
 
+# Supply-chain hardening — values are pnpm v11 defaults made explicit so
+# behaviour is stable across toolchain upgrades and older local installs.
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - '@commercetools*'
+blockExoticSubdeps: true
+catalogMode: strict
+
 # Postinstall scripts pnpm is allowed to run (strict allow-list).
 # strictDepBuilds causes pnpm to fail immediately if a dep not listed here
 # tries to run a lifecycle script — the pnpm v11 equivalent of onlyBuiltDependencies.
