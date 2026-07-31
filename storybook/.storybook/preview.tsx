@@ -11,6 +11,10 @@ const preview: Preview = {
     locale: intlGlobalType,
   },
   parameters: {
+    // Visual coverage is opt-in: a story is captured only when it overrides this
+    // with `chromatic: { disableSnapshot: false }`. Without the project default,
+    // Chromatic captures every story in the repo.
+    chromatic: { disableSnapshot: true },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: { expanded: true },
 
