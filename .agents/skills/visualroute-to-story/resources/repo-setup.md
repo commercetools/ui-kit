@@ -54,7 +54,7 @@ When to reach for one is in
 `VisualSpecGroup`'s is `label` and `children`. That covers every prop ui-kit's
 `Spec` actually accepts across all 77 route files, so nothing else needs carrying
 over. In particular `size`, `contentAlignment` and `tone` are **not** `Spec` props
-in this repo, whatever a plan or decision doc says.
+in this repo.
 
 **Why the layout is dense.** Percy's `Spec` stacked a purple label bar above the
 component inside a `min-height: 400px` box. Carried over literally, a 35-state

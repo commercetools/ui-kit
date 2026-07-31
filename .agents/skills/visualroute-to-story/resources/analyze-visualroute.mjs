@@ -18,8 +18,8 @@ import { basename, dirname, join, relative, sep } from 'node:path';
 const SPEC_EXTS = ['js', 'ts', 'jsx', 'tsx'];
 const ROUTE_RE = /\.visualroute\.(jsx?|tsx?)$/;
 
-// ui-kit's composite routes are a known, closed set of three, named in plan
-// decision D7 / milestone B1.4 and each verified by hand. Asserting the list
+// ui-kit's composite routes are a known, closed set of three, each verified by
+// hand. Asserting the list
 // beats inferring it: label-prefix clustering false-positives on state names
 // (Tag's "Normal"/"Warning", ToggleInput's "Default"/"Small") and misses both
 // `messages` (one variant per sub-component) and `spacings` (labels built in a
@@ -504,7 +504,7 @@ function analyzeSpec(specFile) {
   }
 
   // Live snapshots come from the comment-blanked source; commented-out ones fall
-  // out of the difference against raw text (plan decision D8's triage list).
+  // out of the difference against raw text; they feed the triage list.
   const collect = (text) => {
     const out = [];
     const names = [...aliases].map((a) => a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
@@ -659,7 +659,7 @@ function buildStoryPlan(route, spec) {
   };
 
   if (route.nestedPages.length > 0) {
-    // app-kit: one story per NestedPages entry. D4's single stacked AllVariants
+    // app-kit: one story per NestedPages entry. A single stacked AllVariants
     // cannot apply here — each entry is a full-viewport modal page or drawer
     // with a backdrop, so two of them can't share a frame.
     for (const page of route.nestedPages) {
@@ -719,7 +719,7 @@ function manualReview(route, spec) {
   if (spec?.commentedOutSnapshots.length) {
     items.push({
       kind: 'commented-out-percy-snapshot',
-      detail: `${spec.commentedOutSnapshots.length} snapshot call(s) are commented out in ${basename(spec.path)} (${spec.commentedOutSnapshots.map((s) => s.name).join(', ')}). These states have no Percy baseline today. Generate the story, but flag it — enabling them is a coverage increase, not parity (plan decision D8).`,
+      detail: `${spec.commentedOutSnapshots.length} snapshot call(s) are commented out in ${basename(spec.path)} (${spec.commentedOutSnapshots.map((s) => s.name).join(', ')}). These states have no Percy baseline today. Generate the story, but flag it — enabling them is a coverage increase, not parity.`,
     });
   }
   if (!spec) {
@@ -752,7 +752,7 @@ function manualReview(route, spec) {
       kind: 'theme-providers',
       detail: `Renders ${route.wrappers.localThemeProviders.join(
         ', '
-      )}. Local theme scoping is what this route tests, so keep the providers inline in the story body rather than delegating to a global decorator, and do not reach for chromatic.modes (modes vary global settings; this route needs several themed scopes in one DOM). Blocker: these helpers are imported from test/percy/, which the Percy teardown deletes. Relocate them out of test/percy/ before F1 or this story breaks.`,
+      )}. Local theme scoping is what this route tests, so keep the providers inline in the story body rather than delegating to a global decorator, and do not reach for chromatic.modes (modes vary global settings; this route needs several themed scopes in one DOM). Blocker: these helpers are imported from test/percy/, which the Percy teardown deletes. Relocate them out of test/percy/ before that teardown or this story breaks.`,
     });
   }
   if (route.variants.some((v) => v.labelIsDynamic)) {
@@ -774,7 +774,7 @@ function manualReview(route, spec) {
     const names = Object.keys(compositeMap);
     items.push({
       kind: 'composite-route',
-      detail: `Composite route covering ${names.length} sub-components (${names.join(', ')}). Per plan decision D7 / B1.4, split per sub-component and append each story export to that sub-component's existing stories file, listed in compositeTargets. Group the <Spec> entries by which sub-component they render.`,
+      detail: `Composite route covering ${names.length} sub-components (${names.join(', ')}). Split per sub-component and append each story export to that sub-component's existing stories file, listed in compositeTargets. Group the <Spec> entries by which sub-component they render.`,
       subComponents: names,
     });
   }

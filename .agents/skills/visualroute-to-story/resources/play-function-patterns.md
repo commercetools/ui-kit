@@ -12,15 +12,14 @@ their last frame, and a native text caret needs hiding.
 
 ## How little of this there is
 
-The plan budgets "review play functions for 15 interactive specs (1d)". Actually:
-**one** play is needed for parity, `DropdownMenu`. The other 16 all sit behind a
+**One** play is needed for parity: `DropdownMenu`. The other 16 all sit behind a
 **commented-out** `percySnapshot` call, so none has a baseline; they are a
-coverage increase, deferrable past the cutover, and must not count toward D6
+coverage increase, deferrable past the cutover, and must not count toward
 parity.
 
 The "72 interaction call sites" figure is misleading. `rich-text-input` holds 41
 and `localized-rich-text-input` 9, so two files hold 50 of them, and
-`rich-text-input` is excluded outright (D-B1-7).
+`rich-text-input` is excluded outright.
 
 **Do not add a play to a story that does not need one.** A resting frame that props
 alone produce is already tested by the snapshot, and each added interaction is
@@ -154,7 +153,7 @@ mixing the two makes sign-off ambiguous.
 Note the `TODO` before assuming these are safe wins. "Issue with Percy" was never
 diagnosed, and an overlay that was flaky under Percy may be flaky under Chromatic
 for the same underlying reason (an unsettled animation, a repositioning
-popper). Triaging these is D8, a separate ticket.
+popper). Triaging them is a separate ticket.
 
 ## Checklist
 

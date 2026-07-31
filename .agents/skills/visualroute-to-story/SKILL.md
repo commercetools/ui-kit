@@ -168,16 +168,13 @@ grep -rln 'AllVariants' --include='*.stories.tsx' packages/components \
 ```
 
 **Consequence for the budget.** Under global opt-out, ui-kit's 92 existing demo
-stories are **not** captured, and neither are generated stories until enabled.
-B1.3 assumed the opposite ("ui-kit's existing stories (92 files) will also be
-captured"), and the plan's ~170 per-build figure was 92 demo + 77 generated. The
-real number is however many stories have been opted in so far, rising toward ~98
-as the rollout proceeds. Two follow-ons: the demo stories carry no visual
-coverage, so they cannot count toward D6 parity; and parity sign-off can only
+stories are **not** captured, and neither are generated stories until enabled, so
+the per-build snapshot count is however many have been opted in so far, rising
+toward ~98 as the rollout proceeds. Two follow-ons: the demo stories carry no
+visual coverage, so they cannot count toward parity; and parity sign-off can only
 consider components whose generated story is actually enabled.
 
 **Light theme only.** No `chromatic.modes` anywhere, in `meta` or per story.
-B1.4 suggests Chromatic modes for the theme-provider route; do not follow it.
 Modes capture a story under different _global_ settings, whereas
 `theme-provider.visualroute.jsx` tests several differently-themed scopes
 coexisting in one DOM via `LocalThemeProvider` and a `parentSelector`. That is
@@ -373,9 +370,8 @@ Two things the analyzer flags but cannot resolve:
   stories. There is no `Visual Regression/*` group.
 - One stacked story per component named `AllVariants`, every `<Spec>` in source
   order, with a JSDoc comment above it that renders as the story description. One
-  story per component is plan decision D4; a per-state split is explicitly
-  deferred to the post-launch enhancement bucket, so do not split a frame just
-  because it is long.
+  story per component is settled; a per-state split is deferred until after the
+  migration, so do not split a frame just because it is long.
 - Runs of states sharing an axis go in a `VisualSpecGroup` with the shared part
   hoisted out of their labels. See
   [resources/conversion-recipe.md](resources/conversion-recipe.md).

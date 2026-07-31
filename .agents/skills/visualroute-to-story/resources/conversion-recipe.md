@@ -171,7 +171,7 @@ component body becomes that story's `render`. Never a numbered suffix.
 Check the visualspec before assuming these are parity: for `select-input` all
 three `open*` snapshots are **commented out**, so those three stories are new
 coverage with no baseline. Bucket them separately and do not count them toward
-D6 parity.
+parity.
 
 ## Secondary route files
 
