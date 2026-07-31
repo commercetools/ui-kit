@@ -5,6 +5,7 @@ import intlGlobalType from './../src/global-types/intl-global';
 import '../../design-system/materials/resets.css';
 import { WithIntlDecorator } from '../src/decorators/intl-decorator';
 import { withThemeDecorator } from '../src/decorators/theme-decorator';
+import { withPaddingDecorator } from '../src/decorators/padding-decorator';
 
 const preview: Preview = {
   globalTypes: {
@@ -56,7 +57,7 @@ const preview: Preview = {
       codePanel: true,
     },
   },
-  decorators: [withThemeDecorator, WithIntlDecorator],
+  decorators: [withThemeDecorator, WithIntlDecorator, withPaddingDecorator],
   tags: ['autodocs'],
 };
 

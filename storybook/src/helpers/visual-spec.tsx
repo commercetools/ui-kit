@@ -67,8 +67,7 @@ VisualSpec.displayName = 'VisualSpec';
 
 /**
  * Heading over a run of `VisualSpec`s that share an axis, so their own labels
- * don't each repeat it. Follows nimbus, which nests item labels under a bolder
- * group heading for the same reason.
+ * don't each repeat it.
  */
 export const VisualSpecGroup = ({ label, children }: TVisualSpecGroupProps) => (
   <GroupContainer>
