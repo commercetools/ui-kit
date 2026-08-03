@@ -11,14 +11,14 @@ for CI, TurboSnap and baseline acceptance.
 
 ## Checklist
 
-| Thing                                                  | State                                                                            | If missing                                                                             |
-| ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `VisualSpec` helper                                    | `storybook/src/helpers/visual-spec.tsx`, exported from `@/storybook-helpers`     | Scaffold once. See below.                                                              |
-| `chromatic: { disableSnapshot: true }` project default | `storybook/.storybook/preview.tsx`                                               | Add it. Without it every story in the repo is captured, including the 92 demo stories. |
-| Intl decorator                                         | `WithIntlDecorator`, registered globally in `preview.tsx`                        | Nothing to do. Replaces Percy's `Suite`.                                               |
-| Theme decorator                                        | `withThemeDecorator`, registered globally                                        | Nothing to do.                                                                         |
-| Stories globs                                          | `packages/components/*/src/**` and `packages/components/*/*/src/**` in `main.ts` | Nothing to do, and no change is needed. See "Output location".                         |
-| Full-height parent                                     | Missing                                                                          | Ticket 2. `card`, `icons` and `spacings` need it; see below.                           |
+| Thing                                                  | What it does                                                                       | State                                                                            | If missing                                                                             |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `VisualSpec` helper                                    | Wraps each captured state with its label. The successor to Percy's `Spec`          | `storybook/src/helpers/visual-spec.tsx`, exported from `@/storybook-helpers`     | Scaffold once. See below.                                                              |
+| `chromatic: { disableSnapshot: true }` project default | Makes capture opt-in, so only stories that override it are screenshotted           | `storybook/.storybook/preview.tsx`                                               | Add it. Without it every story in the repo is captured, including the 92 demo stories. |
+| Intl decorator                                         | Supplies the `IntlProvider` every component needs to render its strings            | `WithIntlDecorator`, registered globally in `preview.tsx`                        | Nothing to do. Replaces Percy's `Suite`.                                               |
+| Theme decorator                                        | Applies the design-token custom properties the styles resolve against              | `withThemeDecorator`, registered globally                                        | Nothing to do.                                                                         |
+| Stories globs                                          | Determines which files Storybook discovers, so an unmatched path is a silent no-op | `packages/components/*/src/**` and `packages/components/*/*/src/**` in `main.ts` | Nothing to do, and no change is needed. See "Output location".                         |
+| Full-height parent                                     | Lets a story that fills the viewport measure correctly instead of collapsing       | Missing                                                                          | Ticket 2. `card`, `icons` and `spacings` need it; see below.                           |
 
 Framework is `@storybook/react-vite`, Storybook `9.1.20`, alias
 `@/storybook-helpers` → `storybook/src/helpers` (declared in both
@@ -86,11 +86,11 @@ parameters: { chromatic: { disableSnapshot: false } },
 Chromatic reads only `disableSnapshot`. `vrt` is a findability label. Omit either
 half and the story silently never gets captured.
 
-**Converting and enabling are separate steps.** Default output is not opted in;
-`--enable-snapshots` adds both lines. The rollout enables stories in reviewable
-batches rather than landing ~98 baselines at once.
+**Generated stories are born opted in.** Both lines are written at conversion
+time; `--no-snapshots` omits them. The reviewable batch is the PR, so baselines
+land a few components at a time rather than ~98 at once.
 
-Find converted stories still awaiting opt-in:
+Catch a story that was converted but never opted in:
 
 ```bash
 grep -rln 'AllVariants' --include='*.stories.tsx' packages/components \
@@ -151,11 +151,10 @@ pnpm --filter storybook build
 Build from the `storybook` workspace. Running the binary from the repo root fails
 on `storybook/manager-api` not resolving.
 
-`.jsx` → `.tsx` surfaces implicit-`any` on local helper components, which is the
-most common failure and does not appear until you typecheck.
-
-A story that throws is worse than no story: Chromatic baselines the error
-overlay.
+`tsc` catches the typing problems listed in
+[conversion-recipe.md](./conversion-recipe.md#typing-the-jsx--tsx-move); the
+build catches a story that throws, which matters because Chromatic would
+baseline the error overlay.
 
 **If `tsc` reports `Module '@storybook/react-vite' has no exported member 'Meta'`
 for every story file in the repo**, the install is stale, not broken. Check

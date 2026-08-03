@@ -29,7 +29,6 @@ export const BasicExample: Story = {
   },
 };
 
-/** Every state Percy baselined for this component, stacked in one frame. */
 export const AllVariants: StoryObj = {
   tags: ['vrt'],
   parameters: { chromatic: { disableSnapshot: false } },

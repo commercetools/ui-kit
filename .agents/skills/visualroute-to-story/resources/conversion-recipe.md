@@ -60,6 +60,38 @@ Rules:
 4. **Add `VisualSpec`** to the existing `@/storybook-helpers` import if the file
    has one (several already import `iconArgType`), otherwise a new line.
 
+## Router context
+
+Four route files render a state that needs react-router: `card`, `link`,
+`secondary-button`, `tag`. Percy got the router from `visual-testing-app`;
+`preview.tsx` registers no router decorator, so without one the story throws and
+Chromatic baselines the error overlay.
+
+Add a story-level decorator, matching the pattern already in `link.stories.tsx`:
+
+```tsx
+import { BrowserRouter as Router } from 'react-router-dom';
+
+export const AllVariants: StoryObj = {
+  decorators: [
+    (Story) => (
+      <Router>
+        <Story />
+      </Router>
+    ),
+  ],
+  render: () => <>{/* ... */}</>,
+};
+```
+
+`BrowserRouter` renders no DOM of its own, so wrapping the whole frame shifts
+nothing.
+
+Watch for `to` without `as`. `<SecondaryButton label="..." to="/" />` is fine in
+`.jsx` and fails in `.tsx`, because the props type admits `to` only through the
+`as` component's own props. Pass `as={Link}` explicitly. The component already
+forced `Link` at runtime whenever `to` was truthy, so the render is unchanged.
+
 ## Flat routes
 
 `storyPlan[].source.kind === 'flat'`. The route exports a single `component`
@@ -92,8 +124,9 @@ import { iconArgType, VisualSpec, VisualSpecGroup } from '@/storybook-helpers';
 
 // ...existing meta and demo stories...
 
-/** Every state Percy baselined for this component, stacked in one frame. */
 export const AllVariants: StoryObj = {
+  tags: ['vrt'],
+  parameters: { chromatic: { disableSnapshot: false } },
   render: () => (
     <>
       <VisualSpecGroup label="as `button` (default)">
@@ -115,8 +148,9 @@ export const AllVariants: StoryObj = {
 which makes `args` mandatory when the component has a required prop, and this
 story is `render`-only.
 
-The JSDoc comment renders as the story's description in autodocs. Add `tags` and
-`parameters` only with `--enable-snapshots`.
+No JSDoc comment above the export. The story name already says what it is, and a
+line repeated across 69 files is noise. Drop the `tags` and `parameters` lines
+only when `--no-snapshots` was passed.
 
 ## Grouping
 
@@ -139,6 +173,12 @@ moving them into the button group was the only way to get two contiguous groups.
 That is a deliberate exception to preserving the body verbatim: the rule exists to
 stop conversions silently dropping coverage, and reordering adjacent states drops
 none. Count the states before and after, and say in the report that you reordered.
+
+**Skip grouping when the labels are already unambiguous.** `secondary-button` has
+17 states, no duplicate labels, and three short prefix runs (`as toggle button`,
+`with theme`, `size`). Headings there would add structure without removing any
+confusion, and leaving the order verbatim keeps the parity check a straight count.
+A repeated prefix on its own is not the trigger; ambiguity is.
 
 ## Sub-routes
 
@@ -235,6 +275,13 @@ analyzer cannot attribute it.
   it is `render`-only with no `args`.
 - Some route files start with `/* eslint-disable react/prop-types */`. Drop it,
   it is meaningless in a `.tsx` file with real types.
+- Route files carry prop values the types reject. `secondary-button` passes
+  `tone="default"`, which is not in `'secondary' | 'info'`. Check what the
+  component does with the invalid value first: both of its style switches only
+  case `'info'`, so `"default"` always fell through to the default and dropping
+  the prop is pixel-identical and needs no cast. Never cast to make an invalid
+  value compile, that carries the bug into a new file. Leave the label text alone
+  either way, it is rendered into the snapshot.
 
 ## Frame-affecting props
 
