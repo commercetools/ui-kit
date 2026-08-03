@@ -29,7 +29,7 @@ export const BasicExample: Story = {
 };
 
 export const AllVariants: StoryObj = {
-  tags: ['vrt'],
+  tags: ['vrt', '!autodocs'],
   parameters: { chromatic: { disableSnapshot: false } },
   render: () => (
     <>
