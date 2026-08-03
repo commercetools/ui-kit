@@ -78,7 +78,7 @@ except to fix a bug you are deliberately carrying across.
 | `SKILL.md`                            | The procedure, step by step. Start here to run a conversion                               |
 | `resources/analyze-visualroute.mjs`   | Reads a route file and its spec, emits a JSON plan. Decides what converts, writes nothing |
 | `resources/conversion-recipe.md`      | Where output goes, the `VisualSpec` API, and how to shape the JSX                         |
-| `resources/play-function-patterns.md` | Puppeteer interactions to a Storybook `play` function                                     |
+| `resources/play-function-patterns.md` | Puppeteer interactions to a Storybook `play`. Only for a story the plan marks `needsPlay` |
 | `README.md`                           | This file: what the migration is, what is done, what is deferred                          |
 
 ## Pipeline
@@ -123,6 +123,11 @@ step 7](SKILL.md#7-verify) covers what each check catches.
 Doing it by hand is the same three steps: run `analyze-visualroute.mjs` for the
 plan, read the route file and its spec, then apply
 [resources/conversion-recipe.md](resources/conversion-recipe.md).
+
+Where Percy clicked or typed before capturing, the plan marks the story
+`needsPlay` and that interaction becomes a Storybook `play` function. Only
+`dropdown-menu` needs one for parity; the rest belong to deferred coverage. See
+[resources/play-function-patterns.md](resources/play-function-patterns.md).
 
 ## What a converted story changes
 

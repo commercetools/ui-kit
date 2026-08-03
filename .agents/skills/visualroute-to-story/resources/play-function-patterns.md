@@ -12,18 +12,13 @@ their last frame, and a native text caret needs hiding.
 
 ## How little of this there is
 
-**One** play is needed for parity: `DropdownMenu`. The other 16 all sit behind a
-**commented-out** `percySnapshot` call, so none has a baseline; they are a
-coverage increase, deferrable past the cutover, and must not count toward
-parity.
+Only `dropdown-menu` needs a play for parity. Every other interaction in the repo
+sits behind a commented-out `percySnapshot`, so it is deferred coverage, not
+migration work.
 
-The "72 interaction call sites" figure is misleading. `rich-text-input` holds 41
-and `localized-rich-text-input` 9, so two files hold 50 of them, and
-`rich-text-input` is excluded outright.
-
-**Do not add a play to a story that does not need one.** A resting frame that props
-alone produce is already tested by the snapshot, and each added interaction is
-another frame to land deliberately.
+**Do not add a play to a story that does not need one.** A resting frame that
+props alone produce is already tested by the snapshot, and each added interaction
+is another frame to land deliberately.
 
 ## Call mapping
 
@@ -34,18 +29,18 @@ imports come from `storybook/test`:
 import { userEvent, within, waitFor, expect } from 'storybook/test';
 ```
 
-| Puppeteer                                | Play equivalent                          | Sites |
-| ---------------------------------------- | ---------------------------------------- | ----- |
-| `page.goto(HOST + '/x')`                 | nothing; the story **is** the page       | 93    |
-| `page.waitForSelector('text/Foo')`       | `await canvas.findByText('Foo')`         | 71    |
-| `queries.findByText(doc, 'Foo')`         | `await canvas.findByText('Foo')`         | 32    |
-| `queries.findByLabelText(doc, 'Foo')`    | `await canvas.findByLabelText('Foo')`    | 16    |
-| `queries.findAllByLabelText(doc, 'Foo')` | `await canvas.findAllByLabelText('Foo')` | 14    |
-| `queries.findByTestId(doc, 'foo')`       | `await canvas.findByTestId('foo')`       | 8     |
-| `await el.click()`                       | `await userEvent.click(el)`              | 9     |
-| `page.click('#css-selector')`            | prefer a semantic query; see below       | 6     |
-| `page.evaluate(fn)`                      | inline DOM access, no wrapper needed     | 4     |
-| `page.waitForFunction(fn)`               | `await waitFor(() => expect(...))`       | 2     |
+| Puppeteer                                | Play equivalent                          |
+| ---------------------------------------- | ---------------------------------------- |
+| `page.goto(HOST + '/x')`                 | nothing; the story **is** the page       |
+| `page.waitForSelector('text/Foo')`       | `await canvas.findByText('Foo')`         |
+| `queries.findByText(doc, 'Foo')`         | `await canvas.findByText('Foo')`         |
+| `queries.findByLabelText(doc, 'Foo')`    | `await canvas.findByLabelText('Foo')`    |
+| `queries.findAllByLabelText(doc, 'Foo')` | `await canvas.findAllByLabelText('Foo')` |
+| `queries.findByTestId(doc, 'foo')`       | `await canvas.findByTestId('foo')`       |
+| `await el.click()`                       | `await userEvent.click(el)`              |
+| `page.click('#css-selector')`            | prefer a semantic query; see below       |
+| `page.evaluate(fn)`                      | inline DOM access, no wrapper needed     |
+| `page.waitForFunction(fn)`               | `await waitFor(() => expect(...))`       |
 
 Two things drop out entirely. `getDocument(page)` and the `pptr-testing-library`
 `queries.*(doc, ...)` shape collapse into one `within(canvasElement)`, and every
@@ -92,8 +87,9 @@ describe('DropdownMenu', () => {
 Converted:
 
 ```tsx
-/** The default menu, captured open. Percy's only DropdownMenu baseline. */
-export const AllVariants: Story = {
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
   render: () => (
     <>
       <VisualSpec label="default dropdown menu">
@@ -132,8 +128,11 @@ worth naming.
 
 ## Interaction states with no baseline
 
-The remaining 16 come from commented-out snapshots, mostly `select-input`-family
-overlays:
+**Not part of the migration.** The remaining plays belong to stories whose
+`percySnapshot` is commented out, so the skill skips them entirely. They are a
+separate ticket. This section is here for whoever picks that up.
+
+They are mostly `select-input`-family overlays:
 
 ```js
 it('Open', async () => {
@@ -145,15 +144,11 @@ it('Open', async () => {
 });
 ```
 
-Scaffold the play, generate the story, and report it as **new coverage**. Do not
-enable its snapshot in the same batch as parity stories: it has nothing to diff
-against, so its first capture is a new baseline rather than a parity check, and
-mixing the two makes sign-off ambiguous.
-
-Note the `TODO` before assuming these are safe wins. "Issue with Percy" was never
-diagnosed, and an overlay that was flaky under Percy may be flaky under Chromatic
-for the same underlying reason (an unsettled animation, a repositioning
-popper). Triaging them is a separate ticket.
+Read that `TODO` before assuming they are safe wins. "Issue with Percy" was never
+diagnosed, and an overlay flaky under Percy may be flaky under Chromatic for the
+same underlying reason: an unsettled animation, a repositioning popper. Each
+first capture is also a new baseline rather than a parity check, so land them
+apart from parity work or sign-off gets ambiguous.
 
 ## Checklist
 

@@ -44,9 +44,9 @@ work: their only story is deferred.
 bare `/icons` route, which the spec never visits. `hasNoLiveBaseline` reads
 `false` only because no segment matched. Skip it.
 
-**Excluded: `rich-text-input.visualroute.jsx`.** Zero live snapshots, 41
-interaction call sites. A behavioral test living in the VRT folder; converting it
-invents coverage that never existed.
+**Excluded: `rich-text-input.visualroute.jsx`.** Zero live snapshots, and it
+holds most of the repo's interaction call sites. A behavioral test living in the
+VRT folder; converting it invents coverage that never existed.
 
 **Excluded: `design-system/src/theme-provider.visualroute.jsx`.** `ThemeProvider`
 returns `null` and works via `target.style.setProperty()` in a `useLayoutEffect`,

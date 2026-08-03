@@ -146,7 +146,7 @@ forced `Link` at runtime whenever `to` was truthy, so the render is unchanged.
 ## Flat routes
 
 `storyPlan[].source.kind === 'flat'`. The route exports a single `component`
-with no react-router. 60-odd of the 77 files.
+with no react-router. The large majority of them.
 
 Before, `primary-button.visualroute.jsx`:
 
