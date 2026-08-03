@@ -150,6 +150,14 @@ function readBalanced(src, start, open, close) {
 /** Escape a value before interpolating it into a `new RegExp` source. */
 const escapeRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
+/** Drop a leading `<base>` and its optional `-` separator. String ops, not a
+ *  regex: `base` comes from a CLI-supplied filename. */
+const stripBasePrefix = (path, base) => {
+  if (!base || !path.startsWith(base)) return path;
+  const rest = path.slice(base.length);
+  return rest.startsWith('-') ? rest.slice(1) : rest;
+};
+
 /**
  * Find every `<TagName ...>` occurrence and return its attribute text. Reads to
  * the matching `>` while tracking braces and strings, so attributes holding JSX
@@ -669,7 +677,7 @@ function buildStoryPlan(route, spec) {
       const seg = segmentFor(`${route.routePath}/${page.path}`, page.path);
       addStory(
         // Entry paths repeat the component name (`drawer-small` under `/drawer`).
-        storyName(page.path.replace(new RegExp(`^${escapeRe(route.base)}-?`), ''), storyName(page.path, 'Page')),
+        storyName(stripBasePrefix(page.path, route.base), storyName(page.path, 'Page')),
         { kind: 'nestedPage', path: page.path, line: page.line },
         'the `spec` JSX for this entry, lifted out of the NestedPages array',
         seg,
