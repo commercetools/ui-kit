@@ -38,7 +38,7 @@ export const AllVariants: StoryObj = {
       </VisualSpec>
 
       <VisualSpec label="Headline - h1 - nowrap">
-        <div style={{ width: 200 }}>
+        <div style={{ width: 200, overflow: 'hidden' }}>
           <HeadlineProxy as="h1" nowrap={true}>
             {'A longer title that should not be new line'}
           </HeadlineProxy>

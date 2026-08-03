@@ -85,7 +85,7 @@ export const AllVariants: StoryObj = {
       </VisualSpec>
 
       <VisualSpec label="Detail - nowrap">
-        <div style={{ width: 200 }}>
+        <div style={{ width: 200, overflow: 'hidden' }}>
           <DetailProxy nowrap={true}>
             A longer title that should not be new line
           </DetailProxy>

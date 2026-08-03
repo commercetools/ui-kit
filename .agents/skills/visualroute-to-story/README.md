@@ -20,7 +20,9 @@ Four departures, none changing what is under test:
 - **Padding.** A global decorator adds `1rem` inside each story: Chromatic crops
   to rendered content, so anything painted at the edge would clip.
 - **Layout.** Label beside the component, smaller per-state min-height, so a long
-  frame stays reviewable.
+  frame stays reviewable. A state whose content overflows its container needs
+  `overflow: hidden` on that container, or the overflow draws over the label:
+  Percy's label sat above the component, ours sits next to it.
 - **Grouping.** Runs of states sharing an axis may get a `VisualSpecGroup`
   heading, only where it removes ambiguity.
 - **Light fixes.** A prop the component's types reject gets corrected, not cast,
