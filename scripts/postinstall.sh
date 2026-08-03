@@ -2,6 +2,12 @@
 
 set -e
 
+# Vercel runs postinstall under its global pnpm (9.x), which trips this repo's engines.pnpm floor; skip dev-only setup there.
+if [ -n "$VERCEL" ]; then
+  echo "Skipping postinstall on Vercel."
+  exit 0
+fi
+
 if [ -n "$SKIP_POSTINSTALL_DEV_SETUP" ]; then
   echo "Skipping development setup."
 

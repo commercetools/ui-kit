@@ -32,15 +32,15 @@ packages:
 publicHoistPattern:
   - '@storybook/*'
 
-# Supply-chain hardening — values are pnpm v11 defaults made explicit so
-# behaviour is stable across toolchain upgrades and older local installs.
+# Supply-chain hardening — pnpm v11's effective behaviour made explicit,
+# with one deliberate tightening noted on minimumReleaseAgeIgnoreMissingTime.
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@commercetools*'
-# minimumReleaseAge set explicitly flips this to hard-fail; false restores pnpm's soft fall-back so clean CI/Vercel installs don't break.
-minimumReleaseAgeStrict: false
-# Skip the age gate for packages whose registry metadata lacks a publish time (pnpm/pnpm#11616).
-minimumReleaseAgeIgnoreMissingTime: true
+# Explicit minimumReleaseAge already makes pnpm hard-fail on a no-mature-match; true keeps that (no silent fall-back or auto-exclude).
+minimumReleaseAgeStrict: true
+# Deliberate tightening: enforce the gate even when registry metadata omits a publish time, so a time-less mirror can't waive the cooldown.
+minimumReleaseAgeIgnoreMissingTime: false
 blockExoticSubdeps: true
 catalogMode: strict
 
