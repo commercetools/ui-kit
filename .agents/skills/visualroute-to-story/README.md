@@ -12,7 +12,7 @@ conversion. See [SKILL.md](SKILL.md) for how to run it.
 add to it. Where a `percySnapshot` call is commented out, no screenshot exists,
 so we convert nothing and record the gap.
 
-### Where we deviate on purpose
+## Where we deviate on purpose
 
 Parity is about which states are covered, not matching Percy pixel for pixel.
 Four departures, none changing what is under test:
@@ -77,8 +77,7 @@ except to fix a bug you are deliberately carrying across.
 | ------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `SKILL.md`                            | The procedure, step by step. Start here to run a conversion                               |
 | `resources/analyze-visualroute.mjs`   | Reads a route file and its spec, emits a JSON plan. Decides what converts, writes nothing |
-| `resources/conversion-recipe.md`      | How to shape the JSX: imports, grouping, routers, sub-routes, composites                  |
-| `resources/repo-setup.md`             | One-time prerequisites and the rationale for what `VisualSpec` keeps and drops            |
+| `resources/conversion-recipe.md`      | Where output goes, the `VisualSpec` API, and how to shape the JSX                         |
 | `resources/play-function-patterns.md` | Puppeteer interactions to a Storybook `play` function                                     |
 | `README.md`                           | This file: what the migration is, what is done, what is deferred                          |
 
@@ -97,21 +96,20 @@ except to fix a bug you are deliberately carrying across.
               ┌──────────────┴──────────────┐
               ▼                             ▼
       live Percy baseline           snapshot commented out
-         → convert (73)                  → skip (17)
+           → convert                      → skip
               │                             │
               ▼                             ▼
-   appended to the component's       recorded in this file
-     existing *.stories.tsx          as deferred coverage
-   with tags: ['vrt'] and
-   chromatic.disableSnapshot: false
+   appended to the component's       recorded in the
+     existing *.stories.tsx          planning doc as
+   already opted in                  deferred coverage
               │
               ▼
       Chromatic baseline, reviewed and accepted in the PR
 ```
 
-The story is written already opted in. Snapshots are opt-out globally, so the two
-lines are what make Chromatic capture it; a converted story missing them renders
-in Storybook and carries no coverage.
+Opted in means `tags: ['vrt', '!autodocs']` plus
+`parameters: { chromatic: { disableSnapshot: false } }`. Without both, the story
+renders in Storybook and Chromatic ignores it.
 
 ## Converting one component
 
@@ -119,27 +117,12 @@ in Storybook and carries no coverage.
 /visualroute-to-story <component-name>
 ```
 
-Then verify, both from the repo root:
+The skill typechecks, builds, and counts states before and after; [SKILL.md
+step 7](SKILL.md#7-verify) covers what each check catches.
 
-```bash
-pnpm exec tsc --noEmit --skipLibCheck
-pnpm --filter storybook build
-```
-
-Then count. A silently dropped state is the failure mode this migration is most
-exposed to, and nothing else catches it:
-
-```bash
-grep -c '<VisualSpec label' <component>.stories.tsx
-grep -c '<Spec ' <component>.visualroute.jsx
-```
-
-Doing it by hand instead of through the skill is the same three steps: run
-`analyze-visualroute.mjs` for the plan, read the route file and its spec, then
-apply [resources/conversion-recipe.md](resources/conversion-recipe.md).
-
-Progress and the per-component list live in
-`planning-files/Chromatic/uikit-vrt-migration-decisions.md`.
+Doing it by hand is the same three steps: run `analyze-visualroute.mjs` for the
+plan, read the route file and its spec, then apply
+[resources/conversion-recipe.md](resources/conversion-recipe.md).
 
 ## What a converted story changes
 
@@ -161,7 +144,7 @@ Percy's `Spec` (`test/percy/spec.jsx`) becomes `VisualSpec`
 The min-height drop is the visible difference, cutting a 35-state frame to about
 a seventh of its height. Why the read-out goes, why the label stays, and the
 measurements behind the 56px are in
-[resources/repo-setup.md](resources/repo-setup.md#visualspec-and-visualspecgroup).
+[resources/conversion-recipe.md](resources/conversion-recipe.md#visualspec-and-visualspecgroup).
 
 **Cross-comparing against Percy.** Every labeled state in the Percy snapshot
 should have a matching row in the story, rendering identically. The frames will
@@ -173,18 +156,14 @@ Chromatic defaults to 1200px unless a story sets `chromatic.viewports`.
 The parity rule, the two exclusions, and what the skill deliberately leaves to
 other work are in [SKILL.md](SKILL.md#scope-and-exclusions).
 
-Counts, the per-component list, and the Percy-captures-to-stories mapping live in
-`planning-files/Chromatic/uikit-vrt-migration-decisions.md`. They move as the
-migration proceeds, so they are not duplicated here.
-
-## Deferred coverage
-
-Where a `percySnapshot` call is commented out, no baseline exists, so nothing is
+Where a `percySnapshot` call is commented out no baseline exists, so nothing is
 converted. Those states are uncovered today and stay uncovered after the
 migration.
 
-The list, and the two other places coverage does not carry across 1:1, are in
-`planning-files/Chromatic/uikit-vrt-migration-decisions.md`. Regenerate it with:
+Everything that moves as the migration proceeds lives in
+`planning-files/Chromatic/uikit-vrt-migration-decisions.md`: counts, progress,
+the per-component list, the deferred coverage list, and the
+Percy-captures-to-stories mapping. Regenerate the underlying data with:
 
 ```bash
 node .agents/skills/visualroute-to-story/resources/analyze-visualroute.mjs --all packages

@@ -28,7 +28,7 @@ conventions this migration settles.
 - `--no-snapshots` (optional): write the stories without opting them into
   Chromatic capture. **Snapshots are on by default**; a generated story exists to
   be screenshotted, and one that is not captured carries no coverage. See
-  [step 2](#2-confirm-one-time-repo-setup).
+  [step 2](#2-repo-conventions).
 
 ## Scope and exclusions
 
@@ -51,7 +51,7 @@ invents coverage that never existed.
 **Excluded: `design-system/src/theme-provider.visualroute.jsx`.** `ThemeProvider`
 returns `null` and works via `target.style.setProperty()` in a `useLayoutEffect`,
 so every visible pixel comes from Percy-only scaffolding. A primitive with no
-painted surface gets no VRT. Replaced by a DOM test (ticket 2).
+painted surface gets no VRT. Replaced by a DOM test.
 
 ## What this skill does not do
 
@@ -102,12 +102,13 @@ Resolve the target in this order:
 If the target is or contains `rich-text-input.visualroute.jsx` or
 `theme-provider.visualroute.jsx`, skip it and say so.
 
-### 2. Confirm one-time repo setup
+### 2. Repo conventions
 
-Read [resources/repo-setup.md](resources/repo-setup.md): the checklist, the
-two-line snapshot opt-in every generated story carries, and where output goes.
-Everything on the checklist is in place except the full-height parent (ticket 2),
-so this step is normally a no-op.
+Everything a generated story depends on is already in place: the `VisualSpec`
+helpers, the Intl and theme decorators, the padding decorator, and
+`disableSnapshot: true` as the project default in `preview.tsx`. Nothing to set
+up. Where output goes and what the story must carry is in
+[resources/conversion-recipe.md](resources/conversion-recipe.md#where-the-output-goes).
 
 **Light theme only.** No `chromatic.modes` anywhere, in `meta` or per story.
 Modes capture a story under different _global_ settings, whereas the route files
@@ -164,7 +165,7 @@ Trust the plan's `component.target` (`{ file, exists, action, title }`), or
 
 Never create a parallel `*.visual.stories.tsx`. Why, plus the two routes that
 need `action: 'create'`, is in
-[resources/repo-setup.md](resources/repo-setup.md#output-location). Composite
+[resources/conversion-recipe.md](resources/conversion-recipe.md#where-the-output-goes). Composite
 targets are in
 [resources/conversion-recipe.md](resources/conversion-recipe.md#composites).
 
@@ -183,9 +184,18 @@ pnpm --filter storybook build
 Then count: `<VisualSpec>` in the output must equal `<Spec>` in the route file,
 unless a preserved `.map()` generates them.
 
-What each command catches, and the stale-install failure that makes both
-meaningless, is in
-[resources/repo-setup.md](resources/repo-setup.md#verifying).
+`tsc` catches the typing problems listed in
+[resources/conversion-recipe.md](resources/conversion-recipe.md#typing-the-jsx--tsx-move).
+The build catches a story that throws, which matters because Chromatic would
+baseline the error overlay. Build from the `storybook` workspace; running the
+binary from the repo root fails on `storybook/manager-api` not resolving.
+
+**If `tsc` reports `Module '@storybook/react-vite' has no exported member 'Meta'`
+for every story file in the repo**, the install is stale, not your conversion.
+Check `storybook/node_modules/storybook`: if it resolves to an `8.x` path or
+dangles, node_modules predates the Storybook 9 upgrade, and in 8.x `Meta` came
+from `@storybook/react`. Neither command above means anything until that is
+fixed.
 
 ### 8. Report
 

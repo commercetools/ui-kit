@@ -1,8 +1,60 @@
 # Conversion recipe
 
-How to turn a route file's JSX into story exports. Read
-[repo-setup.md](./repo-setup.md) first for where output goes and how the opt-in
-works.
+How to turn a route file's JSX into story exports.
+
+## Where the output goes
+
+Append to the component's existing `*.stories.tsx`, alongside its demo stories,
+under that file's existing `title`. One stories file per component; never a
+parallel `*.visual.stories.tsx`.
+
+Two consequences. The target file is already discovered by Storybook, so the
+silent-failure mode of a story that typechecks and never appears cannot happen.
+And the story needs `tags: ['vrt', '!autodocs']` plus
+`parameters: { chromatic: { disableSnapshot: false } }`: without the first tag it
+lands on the component's generated `Props` page as a wall of stacked states,
+without the rest Chromatic ignores it.
+
+Two routes have no stories file to append to, both flagged as
+`no-target-stories-file`:
+
+- **`content-notification`** — its directory has no demo story, and
+  `notification.stories.tsx` is a different component. Create
+  `content-notification.stories.tsx` beside it.
+- **`icons`** — `icons/src/` holds only `.mdx`. Create
+  `icons/src/icon.stories.tsx` for the 9 colors; the `leading-icon`,
+  `inline-svg` and `custom-icon` snapshots append to those sub-directories' own
+  stories files.
+
+## `VisualSpec` and `VisualSpecGroup`
+
+`VisualSpec` replaces Percy's `Spec`. It keeps the variant label, drops the props
+read-out, and renders the component first with the label inline beside it:
+
+```tsx
+import { VisualSpec, VisualSpecGroup } from '@/storybook-helpers';
+
+<VisualSpec label='tone - when "urgent"'>
+  <PrimaryButton label="A label text" tone="urgent" onClick={() => {}} />
+</VisualSpec>;
+```
+
+`VisualSpecGroup` puts a heading over a run of specs that share an axis, so their
+own labels don't each repeat it:
+
+```tsx
+<VisualSpecGroup label="with `as` as Link">
+  <VisualSpec label='size - when "big"'>{/* ... */}</VisualSpec>
+</VisualSpecGroup>
+```
+
+`VisualSpec` takes `label` (required), `backgroundColor` and `children`;
+`VisualSpecGroup` takes `label` and `children`. That covers every prop ui-kit's
+`Spec` actually accepts across all 77 route files. In particular `size`,
+`contentAlignment` and `tone` are **not** `Spec` props in this repo.
+
+`propsToList`, `listPropsOfNestedChild` and `omitPropsList` configured only the
+read-out, so they have no successor. Drop them silently.
 
 ## The governing rule
 
@@ -124,7 +176,7 @@ import { iconArgType, VisualSpec, VisualSpecGroup } from '@/storybook-helpers';
 // ...existing meta and demo stories...
 
 export const AllVariants: StoryObj = {
-  tags: ['vrt'],
+  tags: ['vrt', '!autodocs'],
   parameters: { chromatic: { disableSnapshot: false } },
   render: () => (
     <>
@@ -292,7 +344,7 @@ analyzer cannot attribute it.
 Carry `backgroundColor` onto `<VisualSpec>`. It is load-bearing for inverted-tone
 states, which are invisible against white: `link`, `flat-button`, `field-label`,
 `spacings`×2. Every other `<Spec>` prop is dropped; see
-[repo-setup.md](./repo-setup.md).
+[`VisualSpec` and `VisualSpecGroup`](#visualspec-and-visualspecgroup).
 
 ## Before you finish
 

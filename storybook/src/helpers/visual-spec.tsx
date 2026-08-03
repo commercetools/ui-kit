@@ -54,7 +54,7 @@ type TVisualSpecGroupProps = {
  * Chromatic replacement for Percy's `Spec` (`test/percy/spec.jsx`), wrapped
  * around each captured state in a generated visual-regression story. Rationale
  * for what it keeps and drops:
- * `.agents/skills/visualroute-to-story/resources/repo-setup.md`.
+ * `.agents/skills/visualroute-to-story/resources/conversion-recipe.md`.
  */
 const VisualSpec = ({ label, backgroundColor, children }: TVisualSpecProps) => (
   <SpecRow>
