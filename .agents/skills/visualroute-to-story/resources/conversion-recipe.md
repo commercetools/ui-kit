@@ -29,8 +29,7 @@ coverage. That silent loss is the single largest risk in the migration.
 
 One story per **live `percySnapshot` call**, not per `<Spec>`. A route with 35
 `<Spec>` elements and one `percySnapshot` call is one story, because Percy
-captured the whole scrolling page at once. Repo-wide that is 926 `<Spec>`
-elements and 79 live call sites.
+captured the whole scrolling page at once.
 
 ## Imports
 
@@ -240,6 +239,11 @@ disagree with their contents.
 
 `spacings` is the one that makes splitting mandatory rather than tidy: its own
 directory has no `src/`, so nothing written there is ever discovered.
+
+Expect the snapshot count to multiply: each composite has one live
+`percySnapshot` but produces one story per sub-component. State coverage is
+unchanged, and this is the only place the migration is not 1:1 on snapshot
+counts.
 
 ## Snapshot calls inside a loop
 

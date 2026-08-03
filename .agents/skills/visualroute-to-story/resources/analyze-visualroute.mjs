@@ -147,6 +147,9 @@ function readBalanced(src, start, open, close) {
   return { text: src.slice(start), end: src.length };
 }
 
+/** Escape a value before interpolating it into a `new RegExp` source. */
+const escapeRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 /**
  * Find every `<TagName ...>` occurrence and return its attribute text. Reads to
  * the matching `>` while tracking braces and strings, so attributes holding JSX
@@ -154,7 +157,7 @@ function readBalanced(src, start, open, close) {
  */
 function findJsxTags(src, tagName) {
   const results = [];
-  const re = new RegExp(`<${tagName}(?=[\\s/>])`, 'g');
+  const re = new RegExp(`<${escapeRe(tagName)}(?=[\\s/>])`, 'g');
   let m;
   while ((m = re.exec(src)) !== null) {
     const attrStart = m.index + tagName.length + 1;
@@ -185,7 +188,7 @@ function findJsxTags(src, tagName) {
 
 /** Extract one attribute's value, classifying it as static or dynamic. */
 function readAttr(attrs, name) {
-  const re = new RegExp(`(^|\\s)${name}\\s*=\\s*`);
+  const re = new RegExp(`(^|\\s)${escapeRe(name)}\\s*=\\s*`);
   const m = re.exec(attrs);
   if (!m) return null;
   const start = m.index + m[0].length;
@@ -507,7 +510,7 @@ function analyzeSpec(specFile) {
   // out of the difference against raw text; they feed the triage list.
   const collect = (text) => {
     const out = [];
-    const names = [...aliases].map((a) => a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+    const names = [...aliases].map(escapeRe).join('|');
     const re = new RegExp(`\\b(?:${names})\\s*\\(\\s*[^,)]+,\\s*(['"\`])([\\s\\S]*?)\\1`, 'g');
     let m;
     while ((m = re.exec(text)) !== null) {
@@ -666,7 +669,7 @@ function buildStoryPlan(route, spec) {
       const seg = segmentFor(`${route.routePath}/${page.path}`, page.path);
       addStory(
         // Entry paths repeat the component name (`drawer-small` under `/drawer`).
-        storyName(page.path.replace(new RegExp(`^${route.base}-?`), ''), storyName(page.path, 'Page')),
+        storyName(page.path.replace(new RegExp(`^${escapeRe(route.base)}-?`), ''), storyName(page.path, 'Page')),
         { kind: 'nestedPage', path: page.path, line: page.line },
         'the `spec` JSX for this entry, lifted out of the NestedPages array',
         seg,

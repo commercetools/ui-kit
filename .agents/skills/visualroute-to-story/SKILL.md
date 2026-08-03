@@ -35,10 +35,14 @@ conventions this migration settles.
 **Convert parity only.** A story is parity when its `percySnapshot` call is live,
 which the plan reports as `hasNoLiveBaseline: false`. Skip the rest: those calls
 are commented out, so no baseline exists and generating them would be a coverage
-_increase_, not a migration. They are listed in [README.md](README.md).
+_increase_, not a migration. The list is in the planning doc.
 
-Of 77 route files: 2 excluded below, 6 `*-open` routes whose only story is
-deferred, and 69 with parity work producing 73 story exports.
+Two route files are excluded outright, and the six `*-open` routes have no parity
+work: their only story is deferred.
+
+**`icons` is the one orphan.** Its plan includes an `AllVariants` story for the
+bare `/icons` route, which the spec never visits. `hasNoLiveBaseline` reads
+`false` only because no segment matched. Skip it.
 
 **Excluded: `rich-text-input.visualroute.jsx`.** Zero live snapshots, 41
 interaction call sites. A behavioral test living in the VRT folder; converting it

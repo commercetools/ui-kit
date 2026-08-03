@@ -1,5 +1,8 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { VisualSpec } from '@/storybook-helpers';
 import { WrapProxy } from './../text.proxies';
+
+const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
 
 const meta: Meta<typeof WrapProxy> = {
   title: 'Text & Media/Text/Text.Wrap',
@@ -21,4 +24,33 @@ export const BasicExample: Story = (args) => {
 BasicExample.args = {
   children:
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+};
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="Wrap">
+        <div style={{ width: 200 }}>
+          <WrapProxy>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </WrapProxy>
+        </div>
+      </VisualSpec>
+
+      <VisualSpec label="Wrap (intl message)">
+        <WrapProxy
+          intlMessage={{
+            ...intlMessage,
+            defaultMessage:
+              'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+          }}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

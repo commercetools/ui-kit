@@ -10,8 +10,7 @@ conversion. See [SKILL.md](SKILL.md) for how to run it.
 
 **Parity only.** The goal is to replicate the coverage that exists today, not to
 add to it. Where a `percySnapshot` call is commented out, no screenshot exists,
-so we convert nothing and record the gap under
-[Deferred coverage](#deferred-coverage) below.
+so we convert nothing and record the gap.
 
 ### Where we deviate on purpose
 
@@ -169,86 +168,22 @@ Chromatic defaults to 1200px unless a story sets `chromatic.viewports`.
 
 ## Scope
 
-77 route files: 69 with parity work, 6 `*-open` routes whose only story is
-deferred, 2 excluded. Those 69 produce 73 story exports, or ~81 rendered once
-`Icons.Color` expands across its 9 colors.
-
 The parity rule, the two exclusions, and what the skill deliberately leaves to
 other work are in [SKILL.md](SKILL.md#scope-and-exclusions).
 
+Counts, the per-component list, and the Percy-captures-to-stories mapping live in
+`planning-files/Chromatic/uikit-vrt-migration-decisions.md`. They move as the
+migration proceeds, so they are not duplicated here.
+
 ## Deferred coverage
 
-States the Percy specs describe but do **not** screenshot today, because the
-`percySnapshot` call is commented out.
+Where a `percySnapshot` call is commented out, no baseline exists, so nothing is
+converted. Those states are uncovered today and stay uncovered after the
+migration.
 
-None of this is a regression. These states are uncovered today and stay
-uncovered after the migration. The list exists so the gap is a decision on
-record rather than something rediscovered later.
-
-Regenerate with:
+The list, and the two other places coverage does not carry across 1:1, are in
+`planning-files/Chromatic/uikit-vrt-migration-decisions.md`. Regenerate it with:
 
 ```bash
 node .agents/skills/visualroute-to-story/resources/analyze-visualroute.mjs --all packages
 ```
-
-Every story below is a `storyPlan` entry with `hasNoLiveBaseline: true`.
-
-### Skipped stories (17)
-
-`Play steps` is the number of puppeteer interactions the analyzer found for that
-route. It is the rough cost of writing the story later: each one becomes a step
-in a Storybook `play` function and needs its end state verified by hand.
-
-| Component                   | Story                              | Sub-route                                                           | Play steps | Target stories file                                                                |
-| --------------------------- | ---------------------------------- | ------------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------- |
-| `AsyncCreatableSelectField` | `Interaction`                      | `/async-creatable-select-field/interaction`                         | 1          | `fields/async-creatable-select-field/src/async-creatable-select-field.stories.tsx` |
-| `AsyncCreatableSelectField` | `InteractionWithoutDefaultOptions` | `/async-creatable-select-field/interaction/without-default-options` | 2          | `fields/async-creatable-select-field/src/async-creatable-select-field.stories.tsx` |
-| `AsyncSelectField`          | `Interaction`                      | `/async-select-field/interaction`                                   | 1          | `fields/async-select-field/src/async-select-field.stories.tsx`                     |
-| `AsyncSelectField`          | `InteractionWithoutDefaultOptions` | `/async-select-field/interaction/without-default-options`           | 2          | `fields/async-select-field/src/async-select-field.stories.tsx`                     |
-| `AsyncCreatableSelectInput` | `Open`                             | (whole `-open` route file)                                          | 2          | `inputs/async-creatable-select-input/src/async-creatable-select-input.stories.tsx` |
-| `AsyncSelectInput`          | `Open`                             | (whole `-open` route file)                                          | 2          | `inputs/async-select-input/src/async-select-input.stories.tsx`                     |
-| `CreatableSelectInput`      | `Open`                             | (whole `-open` route file)                                          | 2          | `inputs/creatable-select-input/src/creatable-select-input.stories.tsx`             |
-| `DateInput`                 | `Open`                             | (whole `-open` route file)                                          | 8          | `inputs/date-input/src/date-input.stories.tsx`                                     |
-| `DateTimeInput`             | `Open`                             | (whole `-open` route file)                                          | 2          | `inputs/date-time-input/src/date-time-input.stories.tsx`                           |
-| `SearchSelectInput`         | `Open`                             | (whole `-open` route file)                                          | 2          | `inputs/search-select-input/src/search-select-input.stories.tsx`                   |
-| `SelectInput`               | `Open`                             | `/select-input/open`                                                | 2          | `inputs/select-input/src/select-input.stories.tsx`                                 |
-| `SelectInput`               | `OpenWithOptionGroups`             | `/select-input/open-with-option-groups`                             | 1          | `inputs/select-input/src/select-input.stories.tsx`                                 |
-| `SelectInput`               | `OpenWithOptionGroupsAndDivider`   | `/select-input/open-with-option-groups-and-divider`                 | 1          | `inputs/select-input/src/select-input.stories.tsx`                                 |
-| `LocalizedRichTextInput`    | `Interactive`                      | `/localized-rich-text-input/interactive`                            | 11         | `inputs/localized-rich-text-input/src/localized-rich-text-input.stories.tsx`       |
-| `PrimaryActionDropdown`     | `Interaction`                      | `/primary-action-dropdown/interaction`                              | 0          | `primary-action-dropdown/src/primary-action-dropdown.stories.tsx`                  |
-| `RichTextInput`             | `AllVariants`                      | `/rich-text-input`                                                  | 1          | `inputs/rich-text-input/src/rich-text-input.stories.tsx`                           |
-| `RichTextInput`             | `Interactive`                      | `/rich-text-input/interactive`                                      | 28         | `inputs/rich-text-input/src/rich-text-input.stories.tsx`                           |
-
-Paths are relative to `packages/components/`.
-
-15 of the 17 need a `play` function. `PrimaryActionDropdown.Interaction` needs
-none, and `RichTextInput.AllVariants` is a plain render.
-
-The two `RichTextInput` rows sit inside the excluded
-`rich-text-input.visualspec.js`. Do not revive them as VRT without deciding
-first whether that file should become an interaction test instead.
-
-### Commented-out snapshots with no story planned (1)
-
-`SearchSelectField - open` (`search-select-field.visualspec.js:20`). The spec
-opens the menu and would have screenshotted it, but the route file exposes no
-sub-route for that state, so the analyzer plans nothing to attach it to. Adding
-it later means writing the route state as well as the story.
-
-### Deliberate drop of a live baseline (1)
-
-`design-system/src/theme-provider.visualroute.jsx` has a live Percy baseline and
-is still excluded. `ThemeProvider` returns `null` and works by calling
-`target.style.setProperty()` in a `useLayoutEffect`, so every visible pixel in
-that route comes from `DummyComponent`, scaffolding written for Percy. A
-primitive with no painted surface gets no VRT. It is replaced by a DOM test
-asserting the custom property resolves inside the scoped subtree.
-
-This is the one place where the migration is not 1:1 with Percy, so it needs
-calling out at parity sign-off.
-
-## Before deleting the skill
-
-This file lives beside the `visualroute-to-story` skill, which is deleted at
-Percy teardown. Move the deferred coverage section somewhere durable first, or
-fold it into whatever ticket tracks the follow-up work.
