@@ -1,4 +1,7 @@
+import { BrowserRouter as Router } from 'react-router-dom';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import Constraints from '@commercetools-uikit/constraints';
+import { VisualSpec } from '@/storybook-helpers';
 import TagList from './tag-list';
 import Tag from './../tag';
 
@@ -58,4 +61,53 @@ export const BasicExample: Story = {
   args: {
     children: fruits.map((tag, index) => <Tag key={index}>{tag}</Tag>),
   },
+};
+
+const examplesLong = Array(15)
+  .fill(undefined)
+  .map((_, i) => i + ' fish');
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  decorators: [
+    (Story) => (
+      <Router>
+        <Story />
+      </Router>
+    ),
+  ],
+  render: () => (
+    <>
+      <VisualSpec label="Tag list - with remove">
+        <TagList>
+          {examplesLong.map((tag, index) => (
+            <Tag type="normal" to="foo/bar" onRemove={() => {}} key={index}>
+              {tag}
+            </Tag>
+          ))}
+        </TagList>
+      </VisualSpec>
+      <VisualSpec label="Tag list - no remove">
+        <TagList>
+          {examplesLong.map((tag, index) => (
+            <Tag type="normal" to="foo/bar" key={index}>
+              {tag}
+            </Tag>
+          ))}
+        </TagList>
+      </VisualSpec>
+      <VisualSpec label="Tag list - multi rows">
+        <Constraints.Horizontal max={5}>
+          <TagList>
+            {examplesLong.map((tag, index) => (
+              <Tag type="normal" to="foo/bar" key={index}>
+                {tag}
+              </Tag>
+            ))}
+          </TagList>
+        </Constraints.Horizontal>
+      </VisualSpec>
+    </>
+  ),
 };
