@@ -1,0 +1,154 @@
+name: Chromatic
+
+# Visual regression testing. Ported from commercetools/nimbus; see that repo's
+# docs/chromatic-ci.md for the runbook (triggers, baselines, gating, the manual
+# button) and docs/chromatic-visual-testing.md for authoring rules.
+on:
+  # Manual full build: TurboSnap off, gate bypassed.
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+# Cancel an in-progress run when a newer push lands on the same ref; the latest wins.
+concurrency:
+  group: chromatic-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-24.04
+    # Skip draft PRs; always allow push and manual runs.
+    if:
+      github.event.pull_request.draft == false || github.event_name !=
+      'pull_request'
+    permissions:
+      contents: read
+      # Skip path posts a passing "UI Tests" status so a required check still
+      # reports when Chromatic doesn't run.
+      statuses: write
+    steps:
+      # Full history: Chromatic needs it to find the baseline build to diff against.
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+
+      # Gate: run only when files that affect rendered output change (a manual
+      # dispatch bypasses it via the step `if:` conditions below).
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46
+        with:
+          # push: diff newest commit. PR: diff whole PR (base...head).
+          since_last_remote_commit: ${{ github.event_name == 'push' }}
+          files: |
+            # All of packages/, not just components/: i18n supplies the strings
+            # rendered in every component, and hooks/utils/localized-utils/
+            # calendar-*-utils all affect rendered output.
+            packages/**
+            design-system/**
+            storybook/**
+            # Dep bumps surface via the lockfile; a lockfile change forces a full
+            # snapshot (TurboSnap can't scope it).
+            pnpm-lock.yaml
+          files_ignore: |
+            storybook/chromatic.config.json
+            storybook/.storybook/main.ts
+
+      # No UI changed (or the changesets version PR - version/CHANGELOG bumps
+      # only), so Chromatic is skipped. Post a passing "UI Tests" status
+      # ourselves so a required check still reports.
+      - name: No UI changes detected
+        if:
+          (steps.changed-files.outputs.any_changed != 'true' || github.head_ref
+          == 'changeset-release/main') && github.event_name !=
+          'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "::notice::No UI-affecting changes detected. Skipping the Chromatic visual regression build."
+          gh api --method POST "repos/${{ github.repository }}/statuses/${{ github.event.pull_request.head.sha || github.sha }}" \
+            -f state=success \
+            -f context='UI Tests' \
+            -f description='No UI-affecting changes; Chromatic skipped'
+
+      # ui-kit has no shared composite CI action, so setup is inlined here,
+      # mirroring main.yml.
+      - name: Install pnpm
+        if:
+          (steps.changed-files.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch') && github.head_ref !=
+          'changeset-release/main'
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+
+      - name: Setup Node (uses version in .nvmrc)
+        if:
+          (steps.changed-files.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch') && github.head_ref !=
+          'changeset-release/main'
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Get pnpm store
+        id: pnpm-store
+        if:
+          (steps.changed-files.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch') && github.head_ref !=
+          'changeset-release/main'
+        run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
+        if:
+          (steps.changed-files.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch') && github.head_ref !=
+          'changeset-release/main'
+        with:
+          path: ${{ steps.pnpm-store.outputs.dir }}
+          key:
+            ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml',
+            'patches/*.patch') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Install dependencies
+        if:
+          (steps.changed-files.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch') && github.head_ref !=
+          'changeset-release/main'
+        run: pnpm install --frozen-lockfile
+
+      # Stories import workspace packages, so those have to be built before the
+      # Storybook build the Chromatic action runs.
+      - name: Building packages
+        if:
+          (steps.changed-files.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch') && github.head_ref !=
+          'changeset-release/main'
+        run: pnpm build
+
+      - name: Run Chromatic
+        if:
+          (steps.changed-files.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch') && github.head_ref !=
+          'changeset-release/main'
+        uses: chromaui/action@94713c544284a14195de3b50ef24301579f1877e # v18
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          # Run inside the storybook workspace rather than pointing
+          # buildScriptName at a root wrapper script. Chromatic controls the
+          # build output location by appending `--output-dir`, and that argument
+          # is silently dropped through `pnpm run <root-script> -- <args>`, so a
+          # wrapper would upload from an empty directory. Verified locally.
+          workingDir: storybook
+          storybookBaseDir: storybook
+          buildScriptName: build
+          zip: true
+          # TurboSnap: snapshot only diff-affected stories (full on dispatch).
+          onlyChanged: ${{ github.event_name != 'workflow_dispatch' }}
+          # Return once Storybook is uploaded; Chromatic tests on its servers and
+          # posts the status check when done. Avoids timeouts on full builds.
+          exitOnceUploaded: true

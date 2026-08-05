@@ -5,12 +5,17 @@ import intlGlobalType from './../src/global-types/intl-global';
 import '../../design-system/materials/resets.css';
 import { WithIntlDecorator } from '../src/decorators/intl-decorator';
 import { withThemeDecorator } from '../src/decorators/theme-decorator';
+import { withPaddingDecorator } from '../src/decorators/padding-decorator';
 
 const preview: Preview = {
   globalTypes: {
     locale: intlGlobalType,
   },
   parameters: {
+    // Visual coverage is opt-in: a story is captured only when it overrides this
+    // with `chromatic: { disableSnapshot: false }`. Without the project default,
+    // Chromatic captures every story in the repo.
+    chromatic: { disableSnapshot: true },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: { expanded: true },
 
@@ -26,23 +31,52 @@ const preview: Preview = {
           'Text & Media',
           [
             'Text',
-            ['*', ['Readme', 'Props', '*']],
+            ['*', ['Readme', 'Props', 'Basic Example', '*']],
             'Icons',
-            ['Readme', 'All Icons', '*', ['Readme', 'Props', '*']],
+            [
+              'Readme',
+              'All Icons',
+              '*',
+              ['Readme', 'Props', 'Basic Example', '*'],
+            ],
             '*',
-            ['Readme', 'Props', '*', ['Readme', 'Props', '*']],
+            [
+              'Readme',
+              'Props',
+              'Basic Example',
+              '*',
+              ['Readme', 'Props', 'Basic Example', '*'],
+            ],
           ],
           'layout',
-          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
+          [
+            '*',
+            [
+              'Readme',
+              'Props',
+              'Basic Example',
+              '*',
+              ['Readme', 'Props', 'Basic Example', '*'],
+            ],
+          ],
           'components',
-          ['*', ['Readme', 'Props', '*', ['Readme', 'Props', '*']]],
+          [
+            '*',
+            [
+              'Readme',
+              'Props',
+              'Basic Example',
+              '*',
+              ['Readme', 'Props', 'Basic Example', '*'],
+            ],
+          ],
           'Form',
           [
             'Readme',
             'Inputs',
-            ['Readme', '*', ['Readme', 'Props', '*']],
+            ['Readme', '*', ['Readme', 'Props', 'Basic Example', '*']],
             'Fields',
-            ['Readme', '*', ['Readme', 'Props', '*']],
+            ['Readme', '*', ['Readme', 'Props', 'Basic Example', '*']],
           ],
         ],
       },
@@ -52,7 +86,7 @@ const preview: Preview = {
       codePanel: true,
     },
   },
-  decorators: [withThemeDecorator, WithIntlDecorator],
+  decorators: [withThemeDecorator, WithIntlDecorator, withPaddingDecorator],
   tags: ['autodocs'],
 };
 

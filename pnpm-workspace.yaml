@@ -302,6 +302,9 @@ catalogs:
     '@changesets/changelog-github': 0.5.2
     conventional-changelog-cli: 5.0.0
 
+    # Visual regression testing
+    chromatic: ^17.7.2
+
     # Monorepo tooling
     '@manypkg/cli': 0.25.1
     '@manypkg/find-root': 1.1.0
