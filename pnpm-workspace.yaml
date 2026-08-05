@@ -37,6 +37,8 @@ publicHoistPattern:
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@commercetools*'
+  # Renovate security update: postcss@8.5.23
+  - postcss@8.5.23
 blockExoticSubdeps: true
 catalogMode: strict
 
@@ -214,7 +216,7 @@ catalogs:
     vite: 6.4.3
 
     # PostCSS
-    postcss: 8.5.15
+    postcss: 8.5.23
     postcss-styled-syntax: ^0.7.0
     postcss-syntax: ^0.36.2
     postcss-value-parser: 4.2.0
