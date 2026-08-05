@@ -62,7 +62,7 @@ overrides:
   '@babel/plugin-transform-modules-systemjs': ^7.29.4
   '@types/eslint': ^9.0.0
   '@types/react': ^19.0.3
-  '@types/react-dom': 19.2.1
+  '@types/react-dom': 19.2.4
   '@types/react-router': 5.1.20
   '@types/unist': 3.0.3
   '@typescript-eslint/eslint-plugin': 8.59.4
@@ -263,8 +263,8 @@ catalogs:
 
   react:
     # React core
-    react: 19.2.6
-    react-dom: 19.2.6
+    react: 19.2.8
+    react-dom: 19.2.8
     react-is: 19.2.6
 
     # @types (must match runtime major)

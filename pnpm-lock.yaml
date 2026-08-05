@@ -274,14 +274,14 @@ catalogs:
       specifier: ^15.8.1
       version: 15.8.1
     react:
-      specifier: 19.2.6
-      version: 19.2.6
+      specifier: 19.2.8
+      version: 19.2.8
     react-docgen:
       specifier: 5.4.3
       version: 5.4.3
     react-dom:
-      specifier: 19.2.6
-      version: 19.2.6
+      specifier: 19.2.8
+      version: 19.2.8
     react-intl:
       specifier: ^7.1.4
       version: 7.1.14
@@ -475,7 +475,7 @@ overrides:
   '@babel/plugin-transform-modules-systemjs': ^7.29.4
   '@types/eslint': ^9.0.0
   '@types/react': ^19.0.3
-  '@types/react-dom': 19.2.1
+  '@types/react-dom': 19.2.4
   '@types/react-router': 5.1.20
   '@types/unist': 3.0.3
   '@typescript-eslint/eslint-plugin': 8.59.4
@@ -565,10 +565,10 @@ importers:
         version: 20.0.0
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       '@formatjs/cli':
         specifier: catalog:react
         version: 6.16.0
@@ -613,7 +613,7 @@ importers:
         version: 6.9.1
       '@testing-library/react':
         specifier: catalog:test
-        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@types/history':
         specifier: 'catalog:'
         version: 4.7.11
@@ -639,8 +639,8 @@ importers:
         specifier: ^19.0.3
         version: 19.2.14
       '@types/react-dom':
-        specifier: 19.2.1
-        version: 19.2.1(@types/react@19.2.14)
+        specifier: 19.2.4
+        version: 19.2.4(@types/react@19.2.14)
       '@types/react-router-dom':
         specifier: catalog:react
         version: 5.3.3
@@ -688,7 +688,7 @@ importers:
         version: 9.6.1
       formik:
         specifier: catalog:react
-        version: 2.4.9(@types/react@19.2.14)(react@19.2.6)
+        version: 2.4.9(@types/react@19.2.14)(react@19.2.8)
       glob:
         specifier: 'catalog:'
         version: 13.0.6
@@ -787,19 +787,19 @@ importers:
         version: 1.0.3
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
       react-value:
         specifier: catalog:react
-        version: 0.2.0(react@19.2.6)
+        version: 0.2.0(react@19.2.8)
       replace:
         specifier: 'catalog:'
         version: 1.2.2
@@ -841,7 +841,7 @@ importers:
         version: link:../packages/hooks
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
@@ -860,10 +860,10 @@ importers:
         version: 1.0.3
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-router:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
       yaml:
         specifier: 'catalog:'
         version: 2.8.3
@@ -1043,29 +1043,29 @@ importers:
         version: link:../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       moment:
         specifier: 'catalog:'
         version: 2.30.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/accessible-hidden:
     dependencies:
@@ -1077,11 +1077,11 @@ importers:
         version: 7.29.2
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/avatar:
     dependencies:
@@ -1099,10 +1099,10 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
@@ -1112,7 +1112,7 @@ importers:
         version: link:../icons
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/buttons/accessible-button:
     dependencies:
@@ -1130,10 +1130,10 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       '@types/react-is':
         specifier: catalog:react
         version: 19.2.0
@@ -1146,7 +1146,7 @@ importers:
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/buttons/flat-button:
     dependencies:
@@ -1173,23 +1173,23 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
         version: link:../../icons
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/buttons/icon-button:
     dependencies:
@@ -1216,23 +1216,23 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
         version: link:../../icons
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/buttons/link-button:
     dependencies:
@@ -1259,10 +1259,10 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       history:
         specifier: 'catalog:'
         version: 4.10.1
@@ -1275,13 +1275,13 @@ importers:
         version: link:../../icons
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/buttons/primary-button:
     dependencies:
@@ -1308,23 +1308,23 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
         version: link:../../icons
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/buttons/secondary-button:
     dependencies:
@@ -1351,10 +1351,10 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
@@ -1364,13 +1364,13 @@ importers:
         version: link:../../icons
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/buttons/secondary-icon-button:
     dependencies:
@@ -1397,23 +1397,23 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
         version: link:../../icons
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/card:
     dependencies:
@@ -1434,10 +1434,10 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       '@types/react-router-dom':
         specifier: catalog:react
         version: 5.3.3
@@ -1450,10 +1450,10 @@ importers:
         version: link:../text
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/collapsible:
     dependencies:
@@ -1471,17 +1471,17 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/collapsible-motion:
     dependencies:
@@ -1499,10 +1499,10 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
@@ -1512,7 +1512,7 @@ importers:
         version: link:../buttons/primary-button
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/collapsible-panel:
     dependencies:
@@ -1551,23 +1551,23 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/constraints:
     dependencies:
@@ -1585,14 +1585,14 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/data-table:
     dependencies:
@@ -1625,26 +1625,26 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/spacings':
         specifier: workspace:^
         version: link:../../../presets/spacings
       formik:
         specifier: catalog:react
-        version: 2.4.9(@types/react@19.2.14)(react@19.2.6)
+        version: 2.4.9(@types/react@19.2.14)(react@19.2.8)
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/data-table-manager:
     dependencies:
@@ -1725,13 +1725,13 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       '@hello-pangea/dnd':
         specifier: catalog:react
-        version: 18.0.1(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 18.0.1(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@types/debounce-promise':
         specifier: 'catalog:'
         version: 3.1.9
@@ -1756,16 +1756,16 @@ importers:
         version: link:../inputs/toggle-input
       formik:
         specifier: catalog:react
-        version: 2.4.9(@types/react@19.2.14)(react@19.2.6)
+        version: 2.4.9(@types/react@19.2.14)(react@19.2.8)
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/dropdowns/dropdown-menu:
     dependencies:
@@ -1801,13 +1801,13 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/buttons':
         specifier: workspace:^
@@ -1826,7 +1826,7 @@ importers:
         version: link:../../text
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/field-errors:
     dependencies:
@@ -1841,17 +1841,17 @@ importers:
         version: link:../messages
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/field-label:
     dependencies:
@@ -1893,20 +1893,20 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/flat-button':
         specifier: workspace:^
         version: link:../buttons/flat-button
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/field-warnings:
     dependencies:
@@ -1921,17 +1921,17 @@ importers:
         version: link:../messages
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/fields/async-creatable-select-field:
     dependencies:
@@ -1967,26 +1967,26 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/fields/async-select-field:
     dependencies:
@@ -2022,26 +2022,26 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/fields/creatable-select-field:
     dependencies:
@@ -2077,23 +2077,23 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/date-field:
     dependencies:
@@ -2129,13 +2129,13 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/calendar-utils':
         specifier: workspace:^
@@ -2145,7 +2145,7 @@ importers:
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/date-range-field:
     dependencies:
@@ -2181,20 +2181,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/date-time-field:
     dependencies:
@@ -2230,20 +2230,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/localized-multiline-text-field:
     dependencies:
@@ -2279,20 +2279,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/localized-text-field:
     dependencies:
@@ -2328,20 +2328,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/money-field:
     dependencies:
@@ -2377,26 +2377,26 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/multiline-text-field:
     dependencies:
@@ -2432,20 +2432,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/number-field:
     dependencies:
@@ -2481,20 +2481,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/password-field:
     dependencies:
@@ -2542,20 +2542,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/fields/radio-field:
     dependencies:
@@ -2591,20 +2591,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/search-select-field:
     dependencies:
@@ -2643,23 +2643,23 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/select-field:
     dependencies:
@@ -2695,23 +2695,23 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/text-field:
     dependencies:
@@ -2750,20 +2750,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/fields/time-field:
     dependencies:
@@ -2799,20 +2799,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/filters:
     dependencies:
@@ -2860,16 +2860,16 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       '@radix-ui/react-popover':
         specifier: catalog:react
-        version: 1.1.15(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 1.1.15(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       '@commercetools-uikit/buttons':
         specifier: workspace:^
@@ -2888,10 +2888,10 @@ importers:
         version: link:../inputs/text-input
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
 
   packages/components/grid:
     dependencies:
@@ -2903,17 +2903,17 @@ importers:
         version: 7.29.2
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       '@commercetools-uikit/design-system':
         specifier: workspace:^
         version: link:../../../design-system
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/icons:
     dependencies:
@@ -2931,10 +2931,10 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       '@types/dompurify':
         specifier: 'catalog:'
         version: 2.4.0
@@ -2943,7 +2943,7 @@ importers:
         version: 3.4.9
       react-from-dom:
         specifier: 0.6.2
-        version: 0.6.2(react@19.2.6)
+        version: 0.6.2(react@19.2.8)
     devDependencies:
       '@commercetools-uikit/spacings':
         specifier: workspace:^
@@ -2953,10 +2953,10 @@ importers:
         version: link:../text
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/inputs/async-creatable-select-input:
     dependencies:
@@ -2995,29 +2995,29 @@ importers:
         version: 1.4.0
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/async-select-input:
     dependencies:
@@ -3053,29 +3053,29 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/checkbox-input:
     dependencies:
@@ -3099,17 +3099,17 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/inputs/creatable-select-input:
     dependencies:
@@ -3142,29 +3142,29 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/date-input:
     dependencies:
@@ -3215,13 +3215,13 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       downshift:
         specifier: catalog:react
-        version: 9.4.0(react@19.2.6)
+        version: 9.4.0(react@19.2.8)
       react-is:
         specifier: catalog:react
         version: 19.2.6
@@ -3237,10 +3237,10 @@ importers:
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/date-range-input:
     dependencies:
@@ -3291,13 +3291,13 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       downshift:
         specifier: catalog:react
-        version: 9.4.0(react@19.2.6)
+        version: 9.4.0(react@19.2.8)
       react-is:
         specifier: catalog:react
         version: 19.2.6
@@ -3313,10 +3313,10 @@ importers:
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/date-time-input:
     dependencies:
@@ -3367,13 +3367,13 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       downshift:
         specifier: catalog:react
-        version: 9.4.0(react@19.2.6)
+        version: 9.4.0(react@19.2.8)
       react-is:
         specifier: catalog:react
         version: 19.2.6
@@ -3389,10 +3389,10 @@ importers:
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/input-utils:
     dependencies:
@@ -3416,17 +3416,17 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       react-textarea-autosize:
         specifier: catalog:react
-        version: 8.5.9(@types/react@19.2.14)(react@19.2.6)
+        version: 8.5.9(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/localized-money-input:
     dependencies:
@@ -3477,26 +3477,26 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/localized-multiline-text-input:
     dependencies:
@@ -3541,29 +3541,29 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react-textarea-autosize:
         specifier: catalog:react
-        version: 8.5.9(@types/react@19.2.14)(react@19.2.6)
+        version: 8.5.9(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/localized-rich-text-input:
     dependencies:
@@ -3620,13 +3620,13 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       downshift:
         specifier: catalog:react
-        version: 9.4.0(react@19.2.6)
+        version: 9.4.0(react@19.2.8)
       immutable:
         specifier: ^4.3.8
         version: 4.3.8
@@ -3638,7 +3638,7 @@ importers:
         version: 4.18.1
       react-textarea-autosize:
         specifier: catalog:react
-        version: 8.5.9(@types/react@19.2.14)(react@19.2.6)
+        version: 8.5.9(@types/react@19.2.14)(react@19.2.8)
       slate:
         specifier: catalog:rich-text
         version: 0.75.0
@@ -3647,7 +3647,7 @@ importers:
         version: 0.113.1(slate@0.75.0)
       slate-react:
         specifier: catalog:rich-text
-        version: 0.75.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(slate@0.75.0)
+        version: 0.75.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(slate@0.75.0)
     devDependencies:
       '@commercetools-uikit/collapsible-panel':
         specifier: workspace:^
@@ -3660,16 +3660,16 @@ importers:
         version: link:../../../../presets/spacings
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/inputs/localized-text-input:
     dependencies:
@@ -3717,20 +3717,20 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/money-input:
     dependencies:
@@ -3766,29 +3766,29 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/multiline-text-input:
     dependencies:
@@ -3833,26 +3833,26 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       downshift:
         specifier: catalog:react
-        version: 9.4.0(react@19.2.6)
+        version: 9.4.0(react@19.2.8)
       react-textarea-autosize:
         specifier: catalog:react
-        version: 8.5.9(@types/react@19.2.14)(react@19.2.6)
+        version: 8.5.9(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/number-input:
     dependencies:
@@ -3876,14 +3876,14 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/inputs/password-input:
     dependencies:
@@ -3907,14 +3907,14 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/inputs/radio-input:
     dependencies:
@@ -3950,17 +3950,17 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-is:
         specifier: catalog:react
         version: 19.2.6
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/inputs/rich-text-input:
     dependencies:
@@ -4008,13 +4008,13 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       downshift:
         specifier: catalog:react
-        version: 9.4.0(react@19.2.6)
+        version: 9.4.0(react@19.2.8)
       immutable:
         specifier: ^4.3.8
         version: 4.3.8
@@ -4032,7 +4032,7 @@ importers:
         version: 0.113.1(slate@0.75.0)
       slate-react:
         specifier: catalog:rich-text
-        version: 0.75.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(slate@0.75.0)
+        version: 0.75.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(slate@0.75.0)
     devDependencies:
       '@commercetools-uikit/collapsible-panel':
         specifier: workspace:^
@@ -4048,16 +4048,16 @@ importers:
         version: link:../../text
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/inputs/rich-text-utils:
     dependencies:
@@ -4087,10 +4087,10 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       '@types/dompurify':
         specifier: 'catalog:'
         version: 2.4.0
@@ -4102,7 +4102,7 @@ importers:
         version: 3.4.9
       downshift:
         specifier: catalog:react
-        version: 9.4.0(react@19.2.6)
+        version: 9.4.0(react@19.2.8)
       escape-html:
         specifier: 'catalog:'
         version: 1.0.3
@@ -4126,7 +4126,7 @@ importers:
         version: 0.100.0(slate@0.75.0)
       slate-react:
         specifier: catalog:rich-text
-        version: 0.75.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(slate@0.75.0)
+        version: 0.75.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(slate@0.75.0)
       style-to-object:
         specifier: 'catalog:'
         version: 0.4.4
@@ -4136,13 +4136,13 @@ importers:
         version: 26.1.0
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/search-select-input:
     dependencies:
@@ -4172,26 +4172,26 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/search-text-input:
     dependencies:
@@ -4221,14 +4221,14 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/inputs/select-input:
     dependencies:
@@ -4258,32 +4258,32 @@ importers:
         version: 1.4.0
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       prop-types:
         specifier: catalog:react
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/inputs/select-utils:
     dependencies:
@@ -4316,26 +4316,26 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/selectable-search-input:
     dependencies:
@@ -4374,26 +4374,26 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-select:
         specifier: catalog:react
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/text-input:
     dependencies:
@@ -4417,14 +4417,14 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/inputs/time-input:
     dependencies:
@@ -4463,17 +4463,17 @@ importers:
         version: 1.4.0
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/inputs/toggle-input:
     dependencies:
@@ -4497,14 +4497,14 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/label:
     dependencies:
@@ -4525,17 +4525,17 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/link:
     dependencies:
@@ -4559,10 +4559,10 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       '@types/history':
         specifier: 'catalog:'
         version: 4.7.11
@@ -4575,13 +4575,13 @@ importers:
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/loading-spinner:
     dependencies:
@@ -4605,14 +4605,14 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/messages:
     dependencies:
@@ -4630,17 +4630,17 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/notifications:
     dependencies:
@@ -4664,14 +4664,14 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/pagination:
     dependencies:
@@ -4713,23 +4713,23 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       formik:
         specifier: catalog:react
-        version: 2.4.9(@types/react@19.2.14)(react@19.2.6)
+        version: 2.4.9(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/primary-action-dropdown:
     dependencies:
@@ -4762,23 +4762,23 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/progress-bar:
     dependencies:
@@ -4808,20 +4808,20 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/quick-filters:
     dependencies:
@@ -4839,17 +4839,17 @@ importers:
         version: link:../tag
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/spacings/spacings-inline:
     dependencies:
@@ -4867,14 +4867,14 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/spacings/spacings-inset:
     dependencies:
@@ -4892,14 +4892,14 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/spacings/spacings-inset-squish:
     dependencies:
@@ -4917,14 +4917,14 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/spacings/spacings-stack:
     dependencies:
@@ -4942,14 +4942,14 @@ importers:
         version: link:../../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/stamp:
     dependencies:
@@ -4973,14 +4973,14 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
         version: link:../icons
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/tag:
     dependencies:
@@ -5013,23 +5013,23 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       history:
         specifier: 'catalog:'
         version: 4.10.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   packages/components/text:
     dependencies:
@@ -5047,7 +5047,7 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
@@ -5057,13 +5057,13 @@ importers:
     devDependencies:
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
 
   packages/components/tooltip:
     dependencies:
@@ -5087,10 +5087,10 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
@@ -5102,7 +5102,7 @@ importers:
         version: 19.2.6
       use-popper:
         specifier: 'catalog:'
-        version: 1.1.6(react@19.2.6)
+        version: 1.1.6(react@19.2.8)
     devDependencies:
       '@commercetools-uikit/primary-button':
         specifier: workspace:^
@@ -5115,7 +5115,7 @@ importers:
         version: 15.8.1
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/components/view-switcher:
     dependencies:
@@ -5136,10 +5136,10 @@ importers:
         version: link:../../utils
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
@@ -5149,7 +5149,7 @@ importers:
         version: link:../icons
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   packages/hooks:
     dependencies:
@@ -5177,13 +5177,13 @@ importers:
         version: 10.4.1
       '@testing-library/react':
         specifier: catalog:test
-        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
 
   packages/i18n:
     dependencies:
@@ -5223,7 +5223,7 @@ importers:
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   presets/buttons:
     dependencies:
@@ -5260,13 +5260,13 @@ importers:
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   presets/fields:
     dependencies:
@@ -5330,13 +5330,13 @@ importers:
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   presets/inputs:
     dependencies:
@@ -5421,13 +5421,13 @@ importers:
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   presets/spacings:
     dependencies:
@@ -5452,7 +5452,7 @@ importers:
     devDependencies:
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
 
   presets/ui-kit:
     dependencies:
@@ -5588,13 +5588,13 @@ importers:
         version: 0.6.2
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
 
   storybook:
     devDependencies:
@@ -5618,10 +5618,10 @@ importers:
         version: 11.13.5
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       '@modyfi/vite-plugin-yaml':
         specifier: catalog:build
         version: 1.1.1(rollup@2.80.0)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
@@ -5633,10 +5633,10 @@ importers:
         version: 9.1.20(@types/react@19.2.14)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
       '@storybook/addon-links':
         specifier: catalog:storybook
-        version: 9.1.20(react@19.2.6)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
+        version: 9.1.20(react@19.2.8)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
       '@storybook/react-vite':
         specifier: catalog:storybook
-        version: 9.1.20(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@2.80.0)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(supports-color@5.5.0)(typescript@5.9.3)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
+        version: 9.1.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rollup@2.80.0)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(supports-color@5.5.0)(typescript@5.9.3)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       '@swc/plugin-emotion':
         specifier: catalog:build
         version: 14.7.0
@@ -5651,13 +5651,13 @@ importers:
         version: 9.1.20(eslint@9.39.4(jiti@2.6.1))(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(typescript@5.9.3)
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       remark-gfm:
         specifier: catalog:rich-text
         version: 4.0.1(supports-color@5.5.0)
@@ -5678,10 +5678,10 @@ importers:
         version: link:../design-system
       '@emotion/react':
         specifier: catalog:build
-        version: 11.14.0(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/styled':
         specifier: catalog:build
-        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)
       '@fontsource/inter':
         specifier: 'catalog:'
         version: 5.2.8
@@ -5696,19 +5696,19 @@ importers:
         version: 0.6.2
       react:
         specifier: catalog:react
-        version: 19.2.6
+        version: 19.2.8
       react-dom:
         specifier: catalog:react
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.8(react@19.2.8)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 7.1.14(react@19.2.8)(typescript@5.9.3)
       react-router:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
       react-router-dom:
         specifier: catalog:react
-        version: 5.3.4(react@19.2.6)
+        version: 5.3.4(react@19.2.8)
     devDependencies:
       '@vitejs/plugin-react':
         specifier: catalog:build
@@ -7480,7 +7480,7 @@ packages:
     resolution: {integrity: sha512-F+M1tLhO+mlQaOWspE8Wstg+z6PwxwRd8oQ8IXceWz92kfAmalTRf0EjrouQeo7QssEPfCn05B4Ihs1K9WQ/7w==}
     peerDependencies:
       '@types/react': ^19.0.3
-      '@types/react-dom': 19.2.1
+      '@types/react-dom': 19.2.4
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
@@ -7511,7 +7511,7 @@ packages:
     resolution: {integrity: sha512-Nqcp+t5cTB8BinFkZgXiMJniQH0PsUt2k51FUhbdfeKvc4ACcG2uQniY/8+h1Yv6Kza4Q7lD7PQV0z0oicE0Mg==}
     peerDependencies:
       '@types/react': ^19.0.3
-      '@types/react-dom': 19.2.1
+      '@types/react-dom': 19.2.4
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
@@ -7533,7 +7533,7 @@ packages:
     resolution: {integrity: sha512-t2ODlkXBQyn7jkl6TNaw/MtVEVvIGelJDCG41Okq/KwUsJBwQ4XVZsHAVUkK4mBv3ewiAS3PGuUWuY2BoK4ZUw==}
     peerDependencies:
       '@types/react': ^19.0.3
-      '@types/react-dom': 19.2.1
+      '@types/react-dom': 19.2.4
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
@@ -7555,7 +7555,7 @@ packages:
     resolution: {integrity: sha512-kr0X2+6Yy/vJzLYJUPCZEc8SfQcf+1COFoAqauJm74umQhta9M7lNJHP7QQS3vkvcGLQUbWpMzwrXYwrYztHKA==}
     peerDependencies:
       '@types/react': ^19.0.3
-      '@types/react-dom': 19.2.1
+      '@types/react-dom': 19.2.4
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
@@ -7568,7 +7568,7 @@ packages:
     resolution: {integrity: sha512-0NJQ4LFFUuWkE7Oxf0htBKS6zLkkjBH+hM1uk7Ng705ReR8m/uelduy1DBo0PyBXPKVnBA6YBlU94MBGXrSBCw==}
     peerDependencies:
       '@types/react': ^19.0.3
-      '@types/react-dom': 19.2.1
+      '@types/react-dom': 19.2.4
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
@@ -7581,7 +7581,7 @@ packages:
     resolution: {integrity: sha512-bpIxvq03if6UNwXZ+HTK71JLh4APvnXntDc6XOX8UVq4XQOVl7lwok0AvIl+b8zgCw3fSaVTZMpAPPagXbKmHQ==}
     peerDependencies:
       '@types/react': ^19.0.3
-      '@types/react-dom': 19.2.1
+      '@types/react-dom': 19.2.4
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
@@ -7594,7 +7594,7 @@ packages:
     resolution: {integrity: sha512-/jfEwNDdQVBCNvjkGit4h6pMOzq8bHkopq458dPt2lMjx+eBQUohZNG9A7DtO/O5ukSbxuaNGXMjHicgwy6rQQ==}
     peerDependencies:
       '@types/react': ^19.0.3
-      '@types/react-dom': 19.2.1
+      '@types/react-dom': 19.2.4
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
@@ -7607,7 +7607,7 @@ packages:
     resolution: {integrity: sha512-m9gTwRkhy2lvCPe6QJp4d3G1TYEUHn/FzJUtq9MjH46an1wJU+GdoGC5VLof8RX8Ft/DlpshApkhswDLZzHIcQ==}
     peerDependencies:
       '@types/react': ^19.0.3
-      '@types/react-dom': 19.2.1
+      '@types/react-dom': 19.2.4
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
@@ -8200,7 +8200,7 @@ packages:
     peerDependencies:
       '@testing-library/dom': ^10.0.0
       '@types/react': ^19.0.3
-      '@types/react-dom': 19.2.1
+      '@types/react-dom': 19.2.4
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
     peerDependenciesMeta:
@@ -8355,8 +8355,8 @@ packages:
   '@types/raf-schd@4.0.3':
     resolution: {integrity: sha512-dXFOLpls9K3eXBupCtMhvtbPtWVAkwa5tkqdMj1uVwYBYdPu2kVX1mGVp2qFpfeNNub85B0vzFfxA4URA0TnPA==}
 
-  '@types/react-dom@19.2.1':
-    resolution: {integrity: sha512-/EEvYBdT3BflCWvTMO7YkYBHVE9Ci6XdqZciZANQgKpaiDRGOLIlRo91jbTNRQjgPFWVaRxcYc0luVNFitz57A==}
+  '@types/react-dom@19.2.4':
+    resolution: {integrity: sha512-Bsc+QHgp+P/F02XDzNCY9jnZNCUuLki36KT7VKrTXXLdHf+vHMNZnW1rVu5DNW/rCK+fya3DATySbLM4yhtKUw==}
     peerDependencies:
       '@types/react': ^19.0.3
 
@@ -12333,10 +12333,10 @@ packages:
     resolution: {integrity: sha512-aEZ9qP+/M+58x2qgfSFEWH1BxLyHe5+qkLNJOZQb5iGS017jpbRnoKhNRrXPeA6RfBrZO5wZrT9DMC1UqE1f1w==}
     engines: {node: ^20.9.0 || >=22}
 
-  react-dom@19.2.6:
-    resolution: {integrity: sha512-0prMI+hvBbPjsWnxDLxlCGyM8PN6UuWjEUCYmZhO67xIV9Xasa/r/vDnq+Xyq4Lo27g8QSbO5YzARu0D1Sps3g==}
+  react-dom@19.2.8:
+    resolution: {integrity: sha512-rVprimfGBG3DR+Tq0IQG2DT5PxKth1WIGDmj5yPmlzr4YBe7uyE+Du4oVqTDXZSHGGGXRtTJEGSSePyQCMBglQ==}
     peerDependencies:
-      react: ^19.2.6
+      react: ^19.2.8
 
   react-fast-compare@2.0.4:
     resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
@@ -12446,8 +12446,8 @@ packages:
     peerDependencies:
       react: ^15.0 || ^16.0
 
-  react@19.2.6:
-    resolution: {integrity: sha512-sfWGGfavi0xr8Pg0sVsyHMAOziVYKgPLNrS7ig+ivMNb3wbCBw3KxtflsGBAwD3gYQlE/AEZsTLgToRrSCjb0Q==}
+  react@19.2.8:
+    resolution: {integrity: sha512-PWaYA1L/q9u2u7xYQi+Y3L3Yfnie7XyLeaJICV1MGD6LprsBxcAqGjYyr0eY3p+QdsA+x/Irkt4Qif8D63+Sbw==}
     engines: {node: '>=0.10.0'}
 
   read-package-up@11.0.0:
@@ -15361,17 +15361,17 @@ snapshots:
 
   '@emotion/memoize@0.9.0': {}
 
-  '@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)':
+  '@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
       '@babel/runtime': 7.29.2
       '@emotion/babel-plugin': 11.13.5
       '@emotion/cache': 11.14.0
       '@emotion/serialize': 1.3.3
-      '@emotion/use-insertion-effect-with-fallbacks': 1.2.0(react@19.2.6)
+      '@emotion/use-insertion-effect-with-fallbacks': 1.2.0(react@19.2.8)
       '@emotion/utils': 1.4.2
       '@emotion/weak-memoize': 0.4.0
       hoist-non-react-statics: 3.3.2
-      react: 19.2.6
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
     transitivePeerDependencies:
@@ -15387,16 +15387,16 @@ snapshots:
 
   '@emotion/sheet@1.4.0': {}
 
-  '@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6))(@types/react@19.2.14)(react@19.2.6)':
+  '@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.8))(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
       '@babel/runtime': 7.29.2
       '@emotion/babel-plugin': 11.13.5
       '@emotion/is-prop-valid': 1.4.0
-      '@emotion/react': 11.14.0(@types/react@19.2.14)(react@19.2.6)
+      '@emotion/react': 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@emotion/serialize': 1.3.3
-      '@emotion/use-insertion-effect-with-fallbacks': 1.2.0(react@19.2.6)
+      '@emotion/use-insertion-effect-with-fallbacks': 1.2.0(react@19.2.8)
       '@emotion/utils': 1.4.2
-      react: 19.2.6
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
     transitivePeerDependencies:
@@ -15404,9 +15404,9 @@ snapshots:
 
   '@emotion/unitless@0.10.0': {}
 
-  '@emotion/use-insertion-effect-with-fallbacks@1.2.0(react@19.2.6)':
+  '@emotion/use-insertion-effect-with-fallbacks@1.2.0(react@19.2.8)':
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
 
   '@emotion/utils@1.4.2': {}
 
@@ -15552,11 +15552,11 @@ snapshots:
       '@floating-ui/core': 1.7.5
       '@floating-ui/utils': 0.2.11
 
-  '@floating-ui/react-dom@2.1.8(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@floating-ui/react-dom@2.1.8(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@floating-ui/dom': 1.7.6
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
 
   '@floating-ui/utils@0.2.11': {}
 
@@ -15646,14 +15646,14 @@ snapshots:
     dependencies:
       '@hapi/hoek': 11.0.7
 
-  '@hello-pangea/dnd@18.0.1(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@hello-pangea/dnd@18.0.1(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@babel/runtime': 7.29.2
       css-box-model: 1.2.1
       raf-schd: 4.0.3
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
-      react-redux: 9.2.0(@types/react@19.2.14)(react@19.2.6)(redux@5.0.1)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+      react-redux: 9.2.0(@types/react@19.2.14)(react@19.2.8)(redux@5.0.1)
       redux: 5.0.1
     transitivePeerDependencies:
       - '@types/react'
@@ -16022,11 +16022,11 @@ snapshots:
       js-yaml: 4.1.1
       tinyglobby: 0.2.15
 
-  '@mdx-js/react@3.1.1(@types/react@19.2.14)(react@19.2.6)':
+  '@mdx-js/react@3.1.1(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 19.2.14
-      react: 19.2.6
+      react: 19.2.8
 
   '@mdx-js/util@1.6.22': {}
 
@@ -16350,186 +16350,186 @@ snapshots:
 
   '@radix-ui/primitive@1.1.3': {}
 
-  '@radix-ui/react-arrow@1.1.7(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@radix-ui/react-arrow@1.1.7(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
-      '@types/react-dom': 19.2.1(@types/react@19.2.14)
+      '@types/react-dom': 19.2.4(@types/react@19.2.14)
 
-  '@radix-ui/react-compose-refs@1.1.2(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-compose-refs@1.1.2(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
-      react: 19.2.6
-    optionalDependencies:
-      '@types/react': 19.2.14
-
-  '@radix-ui/react-context@1.1.2(@types/react@19.2.14)(react@19.2.6)':
-    dependencies:
-      react: 19.2.6
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-dismissable-layer@1.1.11(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@radix-ui/react-context@1.1.2(@types/react@19.2.14)(react@19.2.8)':
+    dependencies:
+      react: 19.2.8
+    optionalDependencies:
+      '@types/react': 19.2.14
+
+  '@radix-ui/react-dismissable-layer@1.1.11(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@radix-ui/primitive': 1.1.3
-      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-use-callback-ref': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-use-escape-keydown': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-use-callback-ref': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-use-escape-keydown': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
-      '@types/react-dom': 19.2.1(@types/react@19.2.14)
+      '@types/react-dom': 19.2.4(@types/react@19.2.14)
 
-  '@radix-ui/react-focus-guards@1.1.3(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-focus-guards@1.1.3(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-focus-scope@1.1.7(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@radix-ui/react-focus-scope@1.1.7(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-use-callback-ref': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-use-callback-ref': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
-      '@types/react-dom': 19.2.1(@types/react@19.2.14)
+      '@types/react-dom': 19.2.4(@types/react@19.2.14)
 
-  '@radix-ui/react-id@1.1.1(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-id@1.1.1(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
+      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-popover@1.1.15(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@radix-ui/react-popover@1.1.15(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@radix-ui/primitive': 1.1.3
-      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-context': 1.1.2(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-dismissable-layer': 1.1.11(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-focus-guards': 1.1.3(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-focus-scope': 1.1.7(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-id': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-popper': 1.2.8(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-portal': 1.1.9(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-presence': 1.1.5(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-slot': 1.2.3(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-use-controllable-state': 1.2.2(@types/react@19.2.14)(react@19.2.6)
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-context': 1.1.2(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-dismissable-layer': 1.1.11(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-focus-guards': 1.1.3(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-focus-scope': 1.1.7(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-id': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-popper': 1.2.8(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-portal': 1.1.9(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-presence': 1.1.5(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-slot': 1.2.3(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-use-controllable-state': 1.2.2(@types/react@19.2.14)(react@19.2.8)
       aria-hidden: 1.2.6
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
-      react-remove-scroll: 2.7.2(@types/react@19.2.14)(react@19.2.6)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+      react-remove-scroll: 2.7.2(@types/react@19.2.14)(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
-      '@types/react-dom': 19.2.1(@types/react@19.2.14)
+      '@types/react-dom': 19.2.4(@types/react@19.2.14)
 
-  '@radix-ui/react-popper@1.2.8(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@radix-ui/react-popper@1.2.8(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@floating-ui/react-dom': 2.1.8(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-arrow': 1.1.7(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-context': 1.1.2(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-use-callback-ref': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-use-rect': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-use-size': 1.1.1(@types/react@19.2.14)(react@19.2.6)
+      '@floating-ui/react-dom': 2.1.8(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-arrow': 1.1.7(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-context': 1.1.2(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-use-callback-ref': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-use-rect': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-use-size': 1.1.1(@types/react@19.2.14)(react@19.2.8)
       '@radix-ui/rect': 1.1.1
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
-      '@types/react-dom': 19.2.1(@types/react@19.2.14)
+      '@types/react-dom': 19.2.4(@types/react@19.2.14)
 
-  '@radix-ui/react-portal@1.1.9(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@radix-ui/react-portal@1.1.9(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
-      '@types/react-dom': 19.2.1(@types/react@19.2.14)
+      '@types/react-dom': 19.2.4(@types/react@19.2.14)
 
-  '@radix-ui/react-presence@1.1.5(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@radix-ui/react-presence@1.1.5(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
-      '@types/react-dom': 19.2.1(@types/react@19.2.14)
+      '@types/react-dom': 19.2.4(@types/react@19.2.14)
 
-  '@radix-ui/react-primitive@2.1.3(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@radix-ui/react-primitive@2.1.3(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-slot': 1.2.3(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      '@radix-ui/react-slot': 1.2.3(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
-      '@types/react-dom': 19.2.1(@types/react@19.2.14)
+      '@types/react-dom': 19.2.4(@types/react@19.2.14)
 
-  '@radix-ui/react-slot@1.2.3(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-slot@1.2.3(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-use-callback-ref@1.1.1(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-use-callback-ref@1.1.1(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-use-controllable-state@1.2.2(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-use-controllable-state@1.2.2(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-use-effect-event': 0.0.2(@types/react@19.2.14)(react@19.2.6)
-      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
+      '@radix-ui/react-use-effect-event': 0.0.2(@types/react@19.2.14)(react@19.2.8)
+      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-use-effect-event@0.0.2(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-use-effect-event@0.0.2(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
+      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-use-escape-keydown@1.1.1(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-use-escape-keydown@1.1.1(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-use-callback-ref': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
+      '@radix-ui/react-use-callback-ref': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-use-layout-effect@1.1.1(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-use-layout-effect@1.1.1(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-use-rect@1.1.1(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-use-rect@1.1.1(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
       '@radix-ui/rect': 1.1.1
-      react: 19.2.6
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-use-size@1.1.1(@types/react@19.2.14)(react@19.2.6)':
+  '@radix-ui/react-use-size@1.1.1(@types/react@19.2.14)(react@19.2.8)':
     dependencies:
-      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.6)
-      react: 19.2.6
+      '@radix-ui/react-use-layout-effect': 1.1.1(@types/react@19.2.14)(react@19.2.8)
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
@@ -16714,23 +16714,23 @@ snapshots:
 
   '@storybook/addon-docs@9.1.20(@types/react@19.2.14)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))':
     dependencies:
-      '@mdx-js/react': 3.1.1(@types/react@19.2.14)(react@19.2.6)
+      '@mdx-js/react': 3.1.1(@types/react@19.2.14)(react@19.2.8)
       '@storybook/csf-plugin': 9.1.20(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
-      '@storybook/icons': 1.6.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@storybook/react-dom-shim': 9.1.20(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      '@storybook/icons': 1.6.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@storybook/react-dom-shim': 9.1.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
       storybook: 9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addon-links@9.1.20(react@19.2.6)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))':
+  '@storybook/addon-links@9.1.20(react@19.2.8)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))':
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
     optionalDependencies:
-      react: 19.2.6
+      react: 19.2.8
 
   '@storybook/builder-vite@9.1.20(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))':
     dependencies:
@@ -16746,28 +16746,28 @@ snapshots:
 
   '@storybook/global@5.0.0': {}
 
-  '@storybook/icons@1.6.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@storybook/icons@1.6.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
 
-  '@storybook/react-dom-shim@9.1.20(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))':
+  '@storybook/react-dom-shim@9.1.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))':
     dependencies:
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
       storybook: 9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
 
-  '@storybook/react-vite@9.1.20(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@2.80.0)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(supports-color@5.5.0)(typescript@5.9.3)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))':
+  '@storybook/react-vite@9.1.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rollup@2.80.0)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(supports-color@5.5.0)(typescript@5.9.3)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))':
     dependencies:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.6.1(typescript@5.9.3)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       '@rollup/pluginutils': 5.3.0(rollup@2.80.0)
       '@storybook/builder-vite': 9.1.20(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
-      '@storybook/react': 9.1.20(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(typescript@5.9.3)
+      '@storybook/react': 9.1.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(typescript@5.9.3)
       find-up: 7.0.0
       magic-string: 0.30.21
-      react: 19.2.6
+      react: 19.2.8
       react-docgen: 8.0.3(supports-color@5.5.0)
-      react-dom: 19.2.6(react@19.2.6)
+      react-dom: 19.2.8(react@19.2.8)
       resolve: 1.22.11
       storybook: 9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       tsconfig-paths: 4.2.0
@@ -16777,12 +16777,12 @@ snapshots:
       - supports-color
       - typescript
 
-  '@storybook/react@9.1.20(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(typescript@5.9.3)':
+  '@storybook/react@9.1.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))(typescript@5.9.3)':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/react-dom-shim': 9.1.20(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      '@storybook/react-dom-shim': 9.1.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)))
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
       storybook: 9.1.20(@testing-library/dom@10.4.1)(prettier@3.8.1)(vite@6.4.3(@types/node@22.19.15)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
     optionalDependencies:
       typescript: 5.9.3
@@ -16994,15 +16994,15 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@babel/runtime': 7.29.2
       '@testing-library/dom': 10.4.1
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
-      '@types/react-dom': 19.2.1(@types/react@19.2.14)
+      '@types/react-dom': 19.2.4(@types/react@19.2.14)
 
   '@testing-library/user-event@14.6.1(@testing-library/dom@10.4.1)':
     dependencies:
@@ -17151,7 +17151,7 @@ snapshots:
 
   '@types/raf-schd@4.0.3': {}
 
-  '@types/react-dom@19.2.1(@types/react@19.2.14)':
+  '@types/react-dom@19.2.4(@types/react@19.2.14)':
     dependencies:
       '@types/react': 19.2.14
 
@@ -18634,12 +18634,12 @@ snapshots:
 
   dotenv@8.6.0: {}
 
-  downshift@9.4.0(react@19.2.6):
+  downshift@9.4.0(react@19.2.8):
     dependencies:
       '@babel/runtime': 7.29.2
       compute-scroll-into-view: 3.1.1
       prop-types: 15.8.1
-      react: 19.2.6
+      react: 19.2.8
       react-is: 18.3.1
       tslib: 2.8.1
 
@@ -19371,14 +19371,14 @@ snapshots:
       hasown: 2.0.2
       mime-types: 2.1.35
 
-  formik@2.4.9(@types/react@19.2.14)(react@19.2.6):
+  formik@2.4.9(@types/react@19.2.14)(react@19.2.8):
     dependencies:
       '@types/hoist-non-react-statics': 3.3.7(@types/react@19.2.14)
       deepmerge: 2.2.1
       hoist-non-react-statics: 3.3.2
       lodash: 4.18.1
       lodash-es: 4.18.1
-      react: 19.2.6
+      react: 19.2.8
       react-fast-compare: 2.0.4
       tiny-warning: 1.0.3
       tslib: 2.8.1
@@ -21905,18 +21905,18 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  react-dom@19.2.6(react@19.2.6):
+  react-dom@19.2.8(react@19.2.8):
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
       scheduler: 0.27.0
 
   react-fast-compare@2.0.4: {}
 
-  react-from-dom@0.6.2(react@19.2.6):
+  react-from-dom@0.6.2(react@19.2.8):
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
 
-  react-intl@7.1.14(react@19.2.6)(typescript@5.9.3):
+  react-intl@7.1.14(react@19.2.8)(typescript@5.9.3):
     dependencies:
       '@formatjs/ecma402-abstract': 2.3.6
       '@formatjs/icu-messageformat-parser': 2.11.4
@@ -21925,7 +21925,7 @@ snapshots:
       '@types/react': 19.2.14
       hoist-non-react-statics: 3.3.2
       intl-messageformat: 10.7.18
-      react: 19.2.6
+      react: 19.2.8
       tslib: 2.8.1
     optionalDependencies:
       typescript: 5.9.3
@@ -21938,48 +21938,48 @@ snapshots:
 
   react-is@19.2.6: {}
 
-  react-redux@9.2.0(@types/react@19.2.14)(react@19.2.6)(redux@5.0.1):
+  react-redux@9.2.0(@types/react@19.2.14)(react@19.2.8)(redux@5.0.1):
     dependencies:
       '@types/use-sync-external-store': 0.0.6
-      react: 19.2.6
-      use-sync-external-store: 1.6.0(react@19.2.6)
+      react: 19.2.8
+      use-sync-external-store: 1.6.0(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
       redux: 5.0.1
 
   react-refresh@0.18.0: {}
 
-  react-remove-scroll-bar@2.3.8(@types/react@19.2.14)(react@19.2.6):
+  react-remove-scroll-bar@2.3.8(@types/react@19.2.14)(react@19.2.8):
     dependencies:
-      react: 19.2.6
-      react-style-singleton: 2.2.3(@types/react@19.2.14)(react@19.2.6)
+      react: 19.2.8
+      react-style-singleton: 2.2.3(@types/react@19.2.14)(react@19.2.8)
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.14
 
-  react-remove-scroll@2.7.2(@types/react@19.2.14)(react@19.2.6):
+  react-remove-scroll@2.7.2(@types/react@19.2.14)(react@19.2.8):
     dependencies:
-      react: 19.2.6
-      react-remove-scroll-bar: 2.3.8(@types/react@19.2.14)(react@19.2.6)
-      react-style-singleton: 2.2.3(@types/react@19.2.14)(react@19.2.6)
+      react: 19.2.8
+      react-remove-scroll-bar: 2.3.8(@types/react@19.2.14)(react@19.2.8)
+      react-style-singleton: 2.2.3(@types/react@19.2.14)(react@19.2.8)
       tslib: 2.8.1
-      use-callback-ref: 1.3.3(@types/react@19.2.14)(react@19.2.6)
-      use-sidecar: 1.1.3(@types/react@19.2.14)(react@19.2.6)
+      use-callback-ref: 1.3.3(@types/react@19.2.14)(react@19.2.8)
+      use-sidecar: 1.1.3(@types/react@19.2.14)(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
 
-  react-router-dom@5.3.4(react@19.2.6):
+  react-router-dom@5.3.4(react@19.2.8):
     dependencies:
       '@babel/runtime': 7.29.2
       history: 4.10.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
-      react: 19.2.6
-      react-router: 5.3.4(react@19.2.6)
+      react: 19.2.8
+      react-router: 5.3.4(react@19.2.8)
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
 
-  react-router@5.3.4(react@19.2.6):
+  react-router@5.3.4(react@19.2.8):
     dependencies:
       '@babel/runtime': 7.29.2
       history: 4.10.1
@@ -21987,59 +21987,59 @@ snapshots:
       loose-envify: 1.4.0
       path-to-regexp: 3.3.0
       prop-types: 15.8.1
-      react: 19.2.6
+      react: 19.2.8
       react-is: 16.13.1
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
 
-  react-select@5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
+  react-select@5.10.2(@types/react@19.2.14)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
       '@babel/runtime': 7.29.2
       '@emotion/cache': 11.14.0
-      '@emotion/react': 11.14.0(@types/react@19.2.14)(react@19.2.6)
+      '@emotion/react': 11.14.0(@types/react@19.2.14)(react@19.2.8)
       '@floating-ui/dom': 1.7.6
       '@types/react-transition-group': 4.4.12(@types/react@19.2.14)
       memoize-one: 6.0.0
       prop-types: 15.8.1
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
-      react-transition-group: 4.4.5(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      use-isomorphic-layout-effect: 1.2.1(@types/react@19.2.14)(react@19.2.6)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+      react-transition-group: 4.4.5(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      use-isomorphic-layout-effect: 1.2.1(@types/react@19.2.14)(react@19.2.8)
     transitivePeerDependencies:
       - '@types/react'
       - supports-color
 
-  react-style-singleton@2.2.3(@types/react@19.2.14)(react@19.2.6):
+  react-style-singleton@2.2.3(@types/react@19.2.14)(react@19.2.8):
     dependencies:
       get-nonce: 1.0.1
-      react: 19.2.6
+      react: 19.2.8
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.14
 
-  react-textarea-autosize@8.5.9(@types/react@19.2.14)(react@19.2.6):
+  react-textarea-autosize@8.5.9(@types/react@19.2.14)(react@19.2.8):
     dependencies:
       '@babel/runtime': 7.29.2
-      react: 19.2.6
-      use-composed-ref: 1.4.0(@types/react@19.2.14)(react@19.2.6)
-      use-latest: 1.3.0(@types/react@19.2.14)(react@19.2.6)
+      react: 19.2.8
+      use-composed-ref: 1.4.0(@types/react@19.2.14)(react@19.2.8)
+      use-latest: 1.3.0(@types/react@19.2.14)(react@19.2.8)
     transitivePeerDependencies:
       - '@types/react'
 
-  react-transition-group@4.4.5(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
+  react-transition-group@4.4.5(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
       '@babel/runtime': 7.29.2
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
 
-  react-value@0.2.0(react@19.2.6):
+  react-value@0.2.0(react@19.2.8):
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
 
-  react@19.2.6: {}
+  react@19.2.8: {}
 
   read-package-up@11.0.0:
     dependencies:
@@ -22511,7 +22511,7 @@ snapshots:
       is-plain-object: 5.0.0
       slate: 0.75.0
 
-  slate-react@0.75.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(slate@0.75.0):
+  slate-react@0.75.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(slate@0.75.0):
     dependencies:
       '@types/is-hotkey': 0.1.10
       '@types/lodash': 4.17.24
@@ -22519,8 +22519,8 @@ snapshots:
       is-hotkey: 0.1.8
       is-plain-object: 5.0.0
       lodash: 4.18.1
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
       scroll-into-view-if-needed: 2.2.31
       slate: 0.75.0
       tiny-invariant: 1.0.6
@@ -23320,54 +23320,54 @@ snapshots:
 
   urlpattern-polyfill@10.0.0: {}
 
-  use-callback-ref@1.3.3(@types/react@19.2.14)(react@19.2.6):
+  use-callback-ref@1.3.3(@types/react@19.2.14)(react@19.2.8):
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.14
 
-  use-composed-ref@1.4.0(@types/react@19.2.14)(react@19.2.6):
+  use-composed-ref@1.4.0(@types/react@19.2.14)(react@19.2.8):
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  use-deep-compare@0.1.0(react@19.2.6):
+  use-deep-compare@0.1.0(react@19.2.8):
     dependencies:
       dequal: 1.0.0
-      react: 19.2.6
+      react: 19.2.8
 
-  use-isomorphic-layout-effect@1.2.1(@types/react@19.2.14)(react@19.2.6):
+  use-isomorphic-layout-effect@1.2.1(@types/react@19.2.14)(react@19.2.8):
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
     optionalDependencies:
       '@types/react': 19.2.14
 
-  use-latest@1.3.0(@types/react@19.2.14)(react@19.2.6):
+  use-latest@1.3.0(@types/react@19.2.14)(react@19.2.8):
     dependencies:
-      react: 19.2.6
-      use-isomorphic-layout-effect: 1.2.1(@types/react@19.2.14)(react@19.2.6)
+      react: 19.2.8
+      use-isomorphic-layout-effect: 1.2.1(@types/react@19.2.14)(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.14
 
-  use-popper@1.1.6(react@19.2.6):
+  use-popper@1.1.6(react@19.2.8):
     dependencies:
       popper.js: 1.15.0
-      react: 19.2.6
-      use-deep-compare: 0.1.0(react@19.2.6)
+      react: 19.2.8
+      use-deep-compare: 0.1.0(react@19.2.8)
 
-  use-sidecar@1.1.3(@types/react@19.2.14)(react@19.2.6):
+  use-sidecar@1.1.3(@types/react@19.2.14)(react@19.2.8):
     dependencies:
       detect-node-es: 1.1.0
-      react: 19.2.6
+      react: 19.2.8
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.14
 
-  use-sync-external-store@1.6.0(react@19.2.6):
+  use-sync-external-store@1.6.0(react@19.2.8):
     dependencies:
-      react: 19.2.6
+      react: 19.2.8
 
   util-deprecate@1.0.2: {}
 
