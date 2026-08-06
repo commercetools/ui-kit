@@ -278,7 +278,7 @@ catalogs:
     '@types/react-router-dom': ^5.3.3
 
     # i18n (formatjs)
-    '@formatjs/cli': 6.16.0
+    '@formatjs/cli': 6.16.16
     '@formatjs/intl-relativetimeformat': 11.4.13
     babel-plugin-formatjs: ^10.0.0
     intl-pluralrules: 2.0.1
