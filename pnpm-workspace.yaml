@@ -38,7 +38,21 @@ minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@commercetools*'
 blockExoticSubdeps: true
-catalogMode: strict
+# `prefer`, not `strict`: pnpm's strict mode requires the requested version to be
+# string-identical to the catalog specifier, even when the catalog entry is a range
+# (e.g. `^7.20.13`) that the requested version already satisfies. This breaks
+# Renovate's artifact-update flow, since `pnpm update <pkg>@<version> --recursive
+# --lockfile-only` against any range-pinned catalog entry always fails with
+# ERR_PNPM_CATALOG_VERSION_MISMATCH, even for in-range versions. pnpm/pnpm#11706
+# preserved this behavior deliberately rather than fixing it, so it is not
+# transient. `prefer` warns on drift instead of hard-failing; scripts/check-
+# workspace-constraints.js still enforces "must be in a catalog" in CI, so that
+# guarantee is unaffected.
+#
+# Filed upstream: https://github.com/pnpm/pnpm/issues/13715, proposing
+# `semver.satisfies` for a range catalog entry under strict mode. When that
+# lands and ships, revisit switching this back to `strict`.
+catalogMode: prefer
 
 # Postinstall scripts pnpm is allowed to run (strict allow-list).
 # strictDepBuilds causes pnpm to fail immediately if a dep not listed here
