@@ -40,6 +40,11 @@
     {
       "matchPackageNames": ["node-fetch"],
       "allowedVersions": "<3.0.0"
+    },
+    {
+      "description": "pnpm is pinned to 11.17.0 via packageManager. Versions past 11.14.0 have broken `deploy: legacy` support (pnpm/pnpm#13618, fixed by pnpm/pnpm#13755, not yet released). Hold here until that ships, then remove this rule.",
+      "matchPackageNames": ["pnpm"],
+      "enabled": false
     }
   ],
   "ignoreDeps": ["slate", "slate-html-serializer", "slate-react"]
