@@ -351,6 +351,19 @@ states, which are invisible against white: `link`, `flat-button`, `field-label`,
 `spacings`×2. Every other `<Spec>` prop is dropped; see
 [`VisualSpec` and `VisualSpecGroup`](#visualspec-and-visualspecgroup).
 
+## States that relied on the full viewport
+
+`VisualSpec` puts the label beside the content, so the box shrink-wraps and any
+state needing free space (`justifyContent`, `width: 100%`, a percentage)
+collapses. Every value in the run then renders identically: the states are all
+there, the axis under test is invisible. If frames whose labels differ only by a
+layout prop look the same, this is why.
+
+Give that state's own wrapper an explicit width. Do **not** make the box grow;
+that stretches every converted component and pushes their labels to the right
+edge. `spacings` fixed its six `justifyContent` states with `width: 600px` on the
+route's local `View`.
+
 ## Before you finish
 
 - Every `<Spec>` label from the plan appears in the output, or is produced by a

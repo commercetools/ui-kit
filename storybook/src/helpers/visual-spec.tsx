@@ -12,10 +12,11 @@ const SpecRow = styled.div`
     component in the repo: at 400px a 35-state stack was 83% whitespace.
   */
   min-height: 56px;
+  padding: ${designTokens.spacing30} 0;
 
-  /* min-height stops separating rows once the content outgrows it. */
+  /* Separator between states, so a tall one cannot read as two. */
   & + & {
-    margin-top: ${designTokens.spacing30};
+    border-top: 1px solid ${designTokens.colorNeutral90};
   }
 `;
 
