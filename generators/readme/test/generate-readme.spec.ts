@@ -4,6 +4,15 @@ import shelljs from 'shelljs';
 import vfile from 'vfile';
 import { transformDocument } from '../src';
 
+// `@manypkg/get-packages` is pure ESM (since v3), which Jest's CJS module
+// runtime can't `require()` directly (unlike Node's native `require()`,
+// which supports it since Node 22.12). It isn't exercised by these tests
+// (only `transformDocument` is), so stub it out to avoid a module-load-time
+// `SyntaxError: Cannot use import statement outside a module`.
+jest.mock('@manypkg/get-packages', () => ({
+  getPackagesSync: jest.fn(),
+}));
+
 const tmpFolder = os.tmpdir();
 const testPackages = path.join(tmpFolder, 'packages');
 

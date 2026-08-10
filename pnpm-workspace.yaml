@@ -172,6 +172,7 @@ catalog:
   dompurify: 3.4.9
   escape-html: 1.0.3
   execa: 10.0.1
+  find-up: 5.0.0
   glob: 13.0.6
   global: 4.4.0
   history: 4.10.1

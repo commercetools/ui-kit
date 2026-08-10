@@ -145,6 +145,9 @@ catalogs:
     execa:
       specifier: 10.0.1
       version: 10.0.1
+    find-up:
+      specifier: 5.0.0
+      version: 5.0.0
     glob:
       specifier: 13.0.6
       version: 13.0.6
@@ -686,6 +689,9 @@ importers:
       execa:
         specifier: 'catalog:'
         version: 10.0.1
+      find-up:
+        specifier: 'catalog:'
+        version: 5.0.0
       formik:
         specifier: catalog:react
         version: 2.4.9(@types/react@19.2.14)(react@19.2.6)
