@@ -93,7 +93,9 @@ export async function generate(
   flags: CommandFlags
 ) {
   const options: GeneratorPackageJsonOptions = {
-    workspaceRoot: findRootSync(process.cwd()),
+    // `findRootSync` returns a `MonorepoRoot` object since @manypkg/find-root v3
+    // (previously it returned the root path as a plain string).
+    workspaceRoot: findRootSync(process.cwd()).rootDir,
     dryRun: flags.dryRun,
   };
 
