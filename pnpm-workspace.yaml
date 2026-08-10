@@ -37,6 +37,12 @@ publicHoistPattern:
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@commercetools*'
+  # Renovate security update: dompurify@3.4.12
+  - dompurify@3.4.12
+  # Renovate security update: immutable@4.3.9
+  - immutable@4.3.9
+  # Renovate security update: postcss@8.5.23
+  - postcss@8.5.23
 blockExoticSubdeps: true
 # `prefer`, not `strict`: pnpm's strict mode requires the requested version to be
 # string-identical to the catalog specifier, even when the catalog entry is a range
@@ -76,7 +82,7 @@ overrides:
   '@babel/plugin-transform-modules-systemjs': ^7.29.4
   '@types/eslint': ^9.0.0
   '@types/react': ^19.0.3
-  '@types/react-dom': 19.2.1
+  '@types/react-dom': 19.2.4
   '@types/react-router': 5.1.20
   '@types/unist': 3.0.3
   '@typescript-eslint/eslint-plugin': 8.59.4
@@ -169,13 +175,13 @@ catalog:
   commander: ^13.1.0
   cross-env: 10.1.0
   debounce-promise: ^3.1.2
-  dompurify: 3.4.9
+  dompurify: 3.4.12
   escape-html: 1.0.3
   execa: 9.6.1
   glob: 13.0.6
   global: 4.4.0
   history: 4.10.1
-  immutable: 4.3.8
+  immutable: 4.3.9
   is-hotkey: 0.2.0
   is-url: ^1.2.4
   listr: 0.14.3
@@ -187,7 +193,7 @@ catalog:
   omit-empty-es: 1.2.0
   'popper.js': ^1.15.0
   publint: ^0.3.21
-  qs: 6.15.2
+  qs: 6.15.3
   raf-schd: ^4.0.3
   rcfile: 1.0.3
   replace: 1.2.2
@@ -228,7 +234,7 @@ catalogs:
     vite: 6.4.3
 
     # PostCSS
-    postcss: 8.5.15
+    postcss: 8.5.26
     postcss-styled-syntax: ^0.7.0
     postcss-syntax: ^0.36.2
     postcss-value-parser: 4.2.0
@@ -240,7 +246,7 @@ catalogs:
 
     # Output / bundling
     '@preconstruct/cli': 2.8.13
-    browserslist: 4.28.2
+    browserslist: 4.28.7
     bundlewatch: ^0.4.1
 
   lint:
@@ -277,8 +283,8 @@ catalogs:
 
   react:
     # React core
-    react: 19.2.6
-    react-dom: 19.2.6
+    react: 19.2.8
+    react-dom: 19.2.8
     react-is: 19.2.6
 
     # @types (must match runtime major)
@@ -292,7 +298,7 @@ catalogs:
     '@types/react-router-dom': ^5.3.3
 
     # i18n (formatjs)
-    '@formatjs/cli': 6.16.0
+    '@formatjs/cli': 6.16.16
     '@formatjs/intl-relativetimeformat': 11.4.13
     babel-plugin-formatjs: ^10.0.0
     intl-pluralrules: 2.0.1
@@ -302,7 +308,7 @@ catalogs:
     '@hello-pangea/dnd': ^18.0.0
     '@radix-ui/react-popover': ^1.1.4
     downshift: 9.4.0
-    formik: ^2.4.6
+    formik: ^2.4.9
     prop-types: ^15.8.1
     react-docgen: 5.4.3
     react-from-dom: 0.7.5
@@ -312,8 +318,8 @@ catalogs:
 
   repo:
     # Versioning / release
-    '@changesets/cli': 2.31.0
-    '@changesets/changelog-github': 0.5.2
+    '@changesets/cli': 2.31.1
+    '@changesets/changelog-github': 0.7.0
     conventional-changelog-cli: 5.0.0
 
     # Visual regression testing
