@@ -193,7 +193,7 @@ catalog:
   omit-empty-es: 1.2.0
   'popper.js': ^1.15.0
   publint: ^0.3.21
-  qs: 6.15.2
+  qs: 6.15.3
   raf-schd: ^4.0.3
   rcfile: 1.0.3
   replace: 1.2.2
