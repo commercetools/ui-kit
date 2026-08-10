@@ -234,7 +234,7 @@ catalogs:
     vite: 6.4.3
 
     # PostCSS
-    postcss: 8.5.23
+    postcss: 8.5.26
     postcss-styled-syntax: ^0.7.0
     postcss-syntax: ^0.36.2
     postcss-value-parser: 4.2.0
