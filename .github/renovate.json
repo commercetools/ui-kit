@@ -40,6 +40,11 @@
     {
       "matchPackageNames": ["node-fetch"],
       "allowedVersions": "<3.0.0"
+    },
+    {
+      "description": "pnpm is pinned to 11.14.0 via packageManager. As a precaution, hold here until pnpm/pnpm#13618 is fixed in a published release: pnpm 11.19.0 and later (including the current latest, 11.20.0) leave a workspace dependency that has peerDependencies as a symlink escaping the deploy directory instead of packing it in when running `pnpm deploy --legacy`, which would break a Docker `COPY` deploy flow. We have not confirmed this repo currently uses `pnpm deploy --legacy` in its Docker builds, but we hold the pnpm version anyway to avoid introducing the regression. The fix (pnpm/pnpm#13755) has merged upstream but has not shipped in a release yet. Remove this rule once a released pnpm version includes the fix.",
+      "matchPackageNames": ["pnpm"],
+      "enabled": false
     }
   ],
   "ignoreDeps": ["slate", "slate-html-serializer", "slate-react"]
