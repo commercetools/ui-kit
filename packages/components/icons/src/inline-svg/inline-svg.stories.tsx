@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import styled from '@emotion/styled';
+import { designTokens } from '@commercetools-uikit/design-system';
+import Spacings from '@commercetools-uikit/spacings';
+import { VisualSpec } from '@/storybook-helpers';
 import InlineSvg from './inline-svg';
+import rawSvg from './../fixtures/raw-svg';
 
 const meta: Meta<typeof InlineSvg> = {
   title: 'Text & Media/Icons/InlineSvg',
@@ -22,4 +27,49 @@ export const BasicExample: Story = {
     size: '40',
     color: 'solid',
   },
+};
+
+const IconList = styled.div<{ columns: number }>`
+  display: grid;
+  grid-template-columns: repeat(${(props) => props.columns}, 1fr);
+`;
+
+const sizes = ['10', '20', '30', '40', 'scale'] as const;
+const colors = [
+  'solid',
+  'neutral60',
+  'surface',
+  'info',
+  'primary',
+  'primary40',
+  'warning',
+  'error',
+  'success',
+] as const;
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <Spacings.Stack>
+      {sizes.map((size) => (
+        <VisualSpec key={size} label={`Inline SVG - Size: ${size}`}>
+          <IconList columns={colors.length}>
+            {colors.map((color) => (
+              <div
+                style={{
+                  height: '100%',
+                  backgroundColor:
+                    color === 'surface' ? designTokens.colorSolid : 'inherit',
+                }}
+                key={`${size}-${color}`}
+              >
+                <InlineSvg data={rawSvg.clock} color={color} size={size} />
+              </div>
+            ))}
+          </IconList>
+        </VisualSpec>
+      ))}
+    </Spacings.Stack>
+  ),
 };

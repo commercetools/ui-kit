@@ -177,12 +177,28 @@ Under `--dry-run`, print the diff instead of applying it.
 ### 7. Verify
 
 ```bash
-pnpm exec tsc --noEmit --skipLibCheck
+./node_modules/.bin/tsc --noEmit --skipLibCheck
 pnpm --filter storybook build
 ```
 
+Call `tsc` through its binary, not `pnpm exec`, which runs the install lifecycle
+first.
+
 Then count: `<VisualSpec>` in the output must equal `<Spec>` in the route file,
 unless a preserved `.map()` generates them.
+
+Then confirm the tags reached the index. Both commands above pass on a story that
+indexed without `vrt`, so this is the only place that failure is visible:
+
+```bash
+node -e "const j=require('./storybook/storybook-static/index.json');
+  Object.values(j.entries).filter((e) => /<Title>/.test(e.title))
+    .forEach((e) => console.log(e.name, '|', (e.tags || []).join(',')))"
+```
+
+Every converted story must list `vrt`. One that does not has non-literal `tags`;
+see
+[resources/conversion-recipe.md](resources/conversion-recipe.md#where-the-output-goes).
 
 `tsc` catches the typing problems listed in
 [resources/conversion-recipe.md](resources/conversion-recipe.md#typing-the-jsx--tsx-move).

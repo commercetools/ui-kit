@@ -15,6 +15,11 @@ And the story needs `tags: ['vrt', '!autodocs']` plus
 lands on the component's generated `Props` page as a wall of stacked states,
 without the rest Chromatic ignores it.
 
+**`tags` must be a literal array, on the export or on `meta`.** Storybook indexes
+by parsing, not running, so a factory or a spread indexes as no tags: it
+typechecks, it renders, and `vrt` is silently absent. In an all-VRT file put the
+tags and `chromatic` parameters on `meta` rather than per export.
+
 Two routes have no stories file to append to, both flagged as
 `no-target-stories-file`:
 
