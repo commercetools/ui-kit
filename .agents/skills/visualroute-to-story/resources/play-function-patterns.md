@@ -12,9 +12,10 @@ their last frame, and a native text caret needs hiding.
 
 ## How little of this there is
 
-Only `dropdown-menu` needs a play for parity. Every other interaction in the repo
-sits behind a commented-out `percySnapshot`, so it is deferred coverage, not
-migration work.
+**No parity story needs a play.** Every interaction in the repo either sits
+behind a commented-out `percySnapshot`, making it deferred coverage rather than
+migration work, or never reaches the baseline at all. See
+[Check the dashboard, not the spec](#check-the-dashboard-not-the-spec).
 
 **Do not add a play to a story that does not need one.** A resting frame that
 props alone produce is already tested by the snapshot, and each added interaction
@@ -60,68 +61,25 @@ story's canvas. Query `document.body` instead of `canvasElement`. Keep any inlin
 portal target div, its `id`, and its selector callback verbatim; that wiring is
 the thing under test.
 
-## The one parity play
+## Check the dashboard, not the spec
 
-`dropdown-menu.visualspec.js`, in full:
+`dropdown-menu` was planned as the one parity play. Its visualspec clicks the
+trigger before a live, uncommented `percySnapshot`:
 
 ```js
-describe('DropdownMenu', () => {
-  beforeAll(async () => {
-    await page.goto(`${globalThis.HOST}/dropdown-menu`);
-  });
-
-  it('Default', async () => {
-    await page.waitForSelector('text/Trigger');
-    const doc = await getDocument(page);
-    const triggetButton = await queries.findByLabelText(
-      doc,
-      'Trigger default dropdown'
-    );
-    await triggetButton.click();
-    await queries.findByText(doc, 'Some headline');
-    await percySnapshot(page, 'DropdownMenu');
-  });
-});
+await triggetButton.click();
+await queries.findByText(doc, 'Some headline');
+await percySnapshot(page, 'DropdownMenu');
 ```
 
-Converted:
+The Percy baseline shows both menus **closed**. `.percy.yml` sets
+`enable-javascript: true`, so Percy re-renders the serialized DOM and React
+remounts with the menu shut. The click is real in the source and never reaches
+the image.
 
-```tsx
-export const AllVariants: StoryObj = {
-  tags: ['vrt', '!autodocs'],
-  parameters: { chromatic: { disableSnapshot: false } },
-  render: () => (
-    <>
-      <VisualSpec label="default dropdown menu">
-        {/* ...verbatim... */}
-      </VisualSpec>
-      <VisualSpec label="list type dropdown menu">
-        {/* ...verbatim... */}
-      </VisualSpec>
-    </>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await userEvent.click(
-      await canvas.findByLabelText('Trigger default dropdown')
-    );
-    await canvas.findByText('Some headline');
-  },
-};
-```
-
-Three things to notice, each generalizable:
-
-1. **The final `findByText` is the settle, not an assertion.** Percy used it to
-   wait for the menu before shooting. Keep it: without it the snapshot can land
-   before the menu paints. Dropping "redundant-looking" waits is how a play
-   captures an empty frame.
-2. **The play opens one menu; the frame still contains both `<VisualSpec>`
-   rows.** The whole story is captured, so the second menu appears closed in the
-   same image. That is what Percy baselined, so it is correct here.
-3. **The click leaves the trigger focused**, and its focus ring lands in the
-   baseline. Percy's did too, so keep it for parity. For a _new_ story, blur
-   first.
+So the parity frame is the resting state and the story carries no play. **A spec
+that clicks is not evidence that Percy captured the result.** Open the baseline
+and look before writing one.
 
 Nothing here needs `step()`. Use it once a play has more than about three actions
 worth naming.
