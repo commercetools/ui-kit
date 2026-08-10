@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Stack, { TStackProps, TAlignItem } from './stack';
 import styled from '@emotion/styled';
 import Text from '@commercetools-uikit/text';
-import Inline from '@commercetools-uikit/spacings-inline';
-import Inset from '@commercetools-uikit/spacings-inset';
+import Inline from '../../spacings-inline/src/inline';
+import Inset from '../../spacings-inset/src/inset';
 import { VisualSpec } from '@/storybook-helpers';
 
 const meta: Meta<typeof Stack> = {

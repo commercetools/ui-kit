@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import styled from '@emotion/styled';
 import Text from '@commercetools-uikit/text';
-import Inline from '@commercetools-uikit/spacings-inline';
+import Inline from '../../spacings-inline/src/inline';
 import { VisualSpec } from '@/storybook-helpers';
 import SpacingInset, { TInsetProps } from './inset';
 
