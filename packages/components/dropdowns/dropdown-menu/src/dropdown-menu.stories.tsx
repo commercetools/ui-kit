@@ -1,4 +1,5 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { VisualSpec } from '@/storybook-helpers';
 import DropdownMenu from './dropdown-menu';
 import { SecondaryButton, IconButton } from '@commercetools-uikit/buttons';
 import { ColumnsIcon, FilterIcon } from '@commercetools-uikit/icons';
@@ -214,4 +215,35 @@ export const AutoAdjustPositions: Story = ({ triggerElement, ...args }) => {
 AutoAdjustPositions.args = {
   menuType: 'list',
   menuHorizontalConstraint: 10,
+};
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="default dropdown menu">
+        <DropdownMenu
+          triggerElement={<SecondaryButton label="Trigger default dropdown" />}
+        >
+          <SpacingsStack>
+            <h2>Some headline</h2>
+            <p>Some content</p>
+          </SpacingsStack>
+        </DropdownMenu>
+      </VisualSpec>
+
+      <VisualSpec label="list type dropdown menu">
+        <DropdownMenu
+          menuType="list"
+          triggerElement={<SecondaryButton label="Trigger list dropdown" />}
+        >
+          <DropdownMenu.ListMenuItem>Option 1</DropdownMenu.ListMenuItem>
+          <DropdownMenu.ListMenuItem isDisabled>
+            Option 2
+          </DropdownMenu.ListMenuItem>
+        </DropdownMenu>
+      </VisualSpec>
+    </>
+  ),
 };
