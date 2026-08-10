@@ -1,7 +1,8 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { WorldIcon } from '@commercetools-uikit/icons';
 import CreatableSelectInput from './creatable-select-input';
 import Spacings from '@commercetools-uikit/spacings';
-import { iconArgType } from '@/storybook-helpers';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 import { useEffect, useState } from 'react';
 
 const meta: Meta<typeof CreatableSelectInput> = {
@@ -161,4 +162,112 @@ BasicExample.args = {
   allowCreateWhileLoading: false,
   createOptionPosition: 'last',
   showOptionGroupDivider: false,
+};
+
+// The route file calls these `options` and `value`; renamed because `options`
+// above is a different, much longer list used by the demo story.
+const visualOptions = [
+  { value: 'one', label: 'One' },
+  { value: 'two', label: 'Two' },
+];
+
+const visualValue = { value: 'one', label: 'One' };
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <CreatableSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <CreatableSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is shown">
+        <CreatableSelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          placeholder="Select something"
+        />
+      </VisualSpec>
+      <VisualSpec label="with error">
+        <CreatableSelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning">
+        <CreatableSelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error and warning">
+        <CreatableSelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          hasError={true}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only">
+        <CreatableSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft">
+        <CreatableSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft and no selected value">
+        <CreatableSelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="is condensed">
+        <CreatableSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          isCondensed={true}
+          options={visualOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

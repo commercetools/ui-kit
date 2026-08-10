@@ -116,6 +116,28 @@ Rules:
 4. **Add `VisualSpec`** to the existing `@/storybook-helpers` import if the file
    has one (several already import `iconArgType`), otherwise a new line.
 
+## When the package does not declare what the story imports
+
+Check the target `package.json` before importing by package name. CI installs
+strictly, so an undeclared import fails `typecheck` and the Storybook build while
+local `tsc` passes on the hoisted tree. Route files never hit this: they imported
+the `@commercetools-frontend/ui-kit` barrel, which the root declares.
+
+Either add a `devDependency`, which needs `pnpm install` and the lockfile in the
+same commit, or import the source path relatively, which needs neither. Relative
+must point at a file, not a package directory: `../../spacings-inset/src/inset`
+resolves, `../../spacings-inset` resolves to an unbuilt `dist`.
+
+| Package                                     | Needs                 | Handled by                      |
+| ------------------------------------------- | --------------------- | ------------------------------- |
+| `spacings-inline`                           | `constraints`, `text` | declared                        |
+| `spacings-inset`, `-inset-squish`, `-stack` | `text`                | declared                        |
+| `spacings-*`                                | each other            | relative, declaring would cycle |
+| `search-select-input`                       | `icons` (`WorldIcon`) | relative                        |
+
+The other three select inputs already declare `icons`; use the package name
+there.
+
 ## Router context
 
 Four route files render a state that needs react-router: `card`, `link`,

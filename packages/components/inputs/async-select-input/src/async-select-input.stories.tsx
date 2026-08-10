@@ -1,7 +1,8 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { WorldIcon } from '@commercetools-uikit/icons';
 import AsyncSelectInput from './async-select-input';
 import { useEffect, useState } from 'react';
-import { iconArgType } from '@/storybook-helpers';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 import { GroupBase, OptionsOrGroups } from 'react-select';
 import Spacings from '@commercetools-uikit/spacings';
 
@@ -175,4 +176,122 @@ CheckboxOptionStyle.args = {
   closeMenuOnSelect: false,
   optionStyle: 'checkbox',
   appearance: 'filter',
+};
+
+// The route file calls these `loadOptions` and `value`; renamed because
+// `loadOptions` above is a different, delayed implementation.
+const visualLoadOptions = () =>
+  Promise.resolve([
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+  ]);
+
+const visualValue = { value: 'one', label: 'One' };
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <AsyncSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <AsyncSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when input has an error">
+        <AsyncSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when input has an warning">
+        <AsyncSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when clearable">
+        <AsyncSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isClearable={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when input has an error and a warning">
+        <AsyncSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasError={true}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is shown">
+        <AsyncSelectInput
+          value={null}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          placeholder="Select a state"
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only">
+        <AsyncSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft">
+        <AsyncSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft and no selected value">
+        <AsyncSelectInput
+          value={null}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="is condensed">
+        <AsyncSelectInput
+          value={visualValue}
+          isCondensed={true}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+    </>
+  ),
 };
