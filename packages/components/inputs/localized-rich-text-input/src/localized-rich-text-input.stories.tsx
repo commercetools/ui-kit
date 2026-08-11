@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { VisualSpec } from '@/storybook-helpers';
 import LocalizedRichTextInput, {
   type TLocalizedRichTextInputProps,
   type TCustomEvent,
@@ -179,4 +180,234 @@ WithErrors.args = {
     en: 'Error messages look like this',
     'nan-Hant-TW': '錯誤訊息看起來像這樣',
   },
+};
+
+// The route file calls this `initialValue`; renamed because `initialValue`
+// above is a different, single-locale string used by the demo stories.
+const visualLorem =
+  '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>';
+
+const visualInitialValue = {
+  en: visualLorem,
+  de: visualLorem,
+  es: visualLorem,
+};
+
+const complexMarkup =
+  '<ol><li><span style="font-weight: bold; font-family: &quot;Comic Sans MS&quot;;">Computermouse for <span style="text-decoration-line: underline;">controlling</span></span></li></ol><span><table class="table table-bordered"><tbody><tr><td>hello</td></tr><tr><td><p>world<img src="https://www.rollingstone.com/wp-content/uploads/2019/01/shutterstock_10010937aj.jpg" style="width: 100%; float: right;" class="pull-right img-circle"></p></td></tr></tbody></table></span><ol><li><span style="font-weight: bold; font-family: &quot;Comic Sans MS&quot;;">';
+
+const visualInitialValueWithComplexMarkup = {
+  en: complexMarkup,
+  de: complexMarkup,
+  es: complexMarkup,
+};
+
+const emptyValue = '';
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <LocalizedRichTextInput
+          onChange={() => {}}
+          value={{
+            en: emptyValue,
+            de: emptyValue,
+            es: emptyValue,
+          }}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when multiline text is expanded by default">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          defaultExpandMultilineText={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when multiline text and languages are expanded by default">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          defaultExpandMultilineText={true}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when language controls are hidden">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          hideLanguageExpansionControls={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when languages are opened by default">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only and open">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isReadOnly={true}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only and closed">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled and open">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isDisabled={true}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled and closed">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is an error for a specific language (first one)">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          errors={{ en: 'foo' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is an error for a specific language (second one)">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          errors={{ de: 'foo' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a general error">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a warning for a specific language (first one)">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          warnings={{ en: 'foo' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a warning for a specific language (second one)">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          warnings={{ de: 'foo' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a general warning">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when showExpandIcon is enabled">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          showExpandIcon={true}
+          onClickExpand={() => false}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isDisabled={true}
+          onClickExpand={() => false}
+        />
+      </VisualSpec>
+      <VisualSpec label="when readonly">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isReadOnly={true}
+          onClickExpand={() => false}
+        />
+      </VisualSpec>
+      <VisualSpec label="with complex markup">
+        <LocalizedRichTextInput
+          onChange={() => {}}
+          value={visualInitialValueWithComplexMarkup}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          defaultExpandMultilineText={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a additional info set for a locale">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          additionalInfo={{ en: 'This is a foo field' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a additional info and error for a locale">
+        <LocalizedRichTextInput
+          value={visualInitialValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          errors={{ en: 'Error error error e e e' }}
+          additionalInfo={{ en: 'This is a foo field' }}
+        />
+      </VisualSpec>
+    </>
+  ),
 };
