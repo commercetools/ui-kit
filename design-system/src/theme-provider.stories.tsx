@@ -14,9 +14,8 @@ export default meta;
 
 const scopedSelector = (id: string) => () => document.getElementById(id);
 
-/* Copied from `test/percy/local-theme-provider.jsx`, which is deleted with
-   Percy. There is no `dark` entry in `themes`, so the dark states are overrides,
-   not a theme name. */
+/* There is no `dark` entry in `themes`, so these states are overrides rather
+   than a theme name. */
 const darkThemeOverrides = {
   colorSurface: 'black',
   colorSolid: 'white',
@@ -32,7 +31,7 @@ type TThemedTitleProps = {
 };
 
 /* `ThemeProvider` returns null, so the capture needs a child painted with the
-   custom properties it writes. */
+   properties it writes. */
 const ThemedTitle = ({
   parentSelector,
   color,

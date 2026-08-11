@@ -7,8 +7,7 @@ const SpecRow = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: ${designTokens.spacing50};
-  /* Absorbs a small height change so it doesn't shift every state below it and
-     light up the whole diff. Percy used 400px, which was 83% whitespace. */
+  /* Absorbs a small height change so it can't shift every state below it. */
   min-height: 120px;
   padding: ${designTokens.spacing50} 0;
 
@@ -19,7 +18,7 @@ const SpecRow = styled.div`
 `;
 
 /* A definite width, or Constraints.Horizontal's `width: 100%` resolves against
-   a shrink-to-fit box and every constrained input collapses to its text width. */
+   a shrink-to-fit box and constrained inputs collapse to their text width. */
 const Box = styled.div<{ backgroundColor?: string }>`
   min-width: ${designTokens.constraint16};
   width: max-content;
@@ -28,8 +27,8 @@ const Box = styled.div<{ backgroundColor?: string }>`
     props.backgroundColor ?? designTokens.colorSurface};
 `;
 
-/* Gray, not a tinted family: every other family carries meaning, and a colored
-   band above a component reads as part of that component's state. */
+/* Gray, not a tinted family: a colored band above a component reads as part of
+   that component's state. */
 const Label = styled.div`
   align-self: flex-start;
   font-family: ${designTokens.fontFamily};
@@ -69,12 +68,7 @@ type TVisualSpecGroupProps = {
   children?: ReactNode;
 };
 
-/**
- * Chromatic replacement for Percy's `Spec` (`test/percy/spec.jsx`), wrapped
- * around each captured state in a generated visual-regression story. Rationale
- * for what it keeps and drops:
- * `.agents/skills/visualroute-to-story/resources/conversion-recipe.md`.
- */
+/** Wraps one captured state in a visual-regression story, with its label. */
 const VisualSpec = ({ label, backgroundColor, children }: TVisualSpecProps) => (
   <SpecRow>
     <Label>{label}</Label>
@@ -84,10 +78,7 @@ const VisualSpec = ({ label, backgroundColor, children }: TVisualSpecProps) => (
 
 VisualSpec.displayName = 'VisualSpec';
 
-/**
- * Heading over a run of `VisualSpec`s that share an axis, so their own labels
- * don't each repeat it.
- */
+/** Heading over a run of `VisualSpec`s that share an axis. */
 export const VisualSpecGroup = ({ label, children }: TVisualSpecGroupProps) => (
   <GroupContainer>
     <GroupLabel>{label}</GroupLabel>

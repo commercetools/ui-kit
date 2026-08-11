@@ -26,9 +26,8 @@ conventions this migration settles.
 - `--dry-run` (optional): print the conversion plan and the story file that
   _would_ be written, without writing anything.
 - `--no-snapshots` (optional): write the stories without opting them into
-  Chromatic capture. **Snapshots are on by default**; a generated story exists to
-  be screenshotted, and one that is not captured carries no coverage. See
-  [step 2](#2-repo-conventions).
+  Chromatic capture. **Snapshots are on by default**; an uncaptured story carries
+  no coverage. See [step 2](#2-repo-conventions).
 
 ## Scope and exclusions
 
@@ -37,7 +36,7 @@ which the plan reports as `hasNoLiveBaseline: false`. Skip the rest: those calls
 are commented out, so no baseline exists and generating them would be a coverage
 _increase_, not a migration. The list is in the planning doc.
 
-Two route files are excluded outright, and the six `*-open` routes have no parity
+One route file is excluded outright, and the six `*-open` routes have no parity
 work: their only story is deferred.
 
 **`icons` is the one orphan.** Its plan includes an `AllVariants` story for the
@@ -48,10 +47,9 @@ bare `/icons` route, which the spec never visits. `hasNoLiveBaseline` reads
 holds most of the repo's interaction call sites. A behavioral test living in the
 VRT folder; converting it invents coverage that never existed.
 
-**Excluded: `design-system/src/theme-provider.visualroute.jsx`.** `ThemeProvider`
-returns `null` and works via `target.style.setProperty()` in a `useLayoutEffect`,
-so every visible pixel comes from Percy-only scaffolding. A primitive with no
-painted surface gets no VRT. Replaced by a DOM test.
+**`theme-provider` was excluded, then converted.** `ThemeProvider` returns `null`
+and paints nothing, so its story renders a themed child, the way the route did.
+`theme-provider.spec.tsx` covers the property writes that a picture can't assert.
 
 ## What this skill does not do
 
@@ -99,8 +97,8 @@ Resolve the target in this order:
    Never pick one silently. If this finds nothing either, say so and stop; do not
    guess at a near-miss.
 
-If the target is or contains `rich-text-input.visualroute.jsx` or
-`theme-provider.visualroute.jsx`, skip it and say so.
+If the target is or contains `rich-text-input.visualroute.jsx`, skip it and say
+so.
 
 ### 2. Repo conventions
 
@@ -110,11 +108,10 @@ helpers, the Intl and theme decorators, the padding decorator, and
 up. Where output goes and what the story must carry is in
 [resources/conversion-recipe.md](resources/conversion-recipe.md#where-the-output-goes).
 
-**Light theme only.** No `chromatic.modes` anywhere, in `meta` or per story.
-Modes capture a story under different _global_ settings, whereas the route files
-that use `LocalThemeProvider` are testing several themed scopes coexisting in one
-DOM. That is the component's own behavior and it captures correctly in a single
-light-mode snapshot. Keep the local providers inline in the story body.
+**Light theme only.** No `chromatic.modes` anywhere. Modes vary _global_
+settings, but routes using `LocalThemeProvider` test several themed scopes
+coexisting in one DOM, which captures correctly in a single light-mode snapshot.
+Keep the local providers inline in the story body.
 
 ### 3. Run the analyzer
 
@@ -147,12 +144,11 @@ against the imports before continuing.
 Read [resources/conversion-recipe.md](resources/conversion-recipe.md) and apply
 the recipe matching the plan's `storyPlan[].source.kind` (`flat` or `subRoute`).
 
-The governing rule, which the recipe expands into a table of exactly what
-changes: **preserve the file body, replace only the Percy scaffolding.**
-Extracting variants into a fresh template loses the loops, local components and
-styling these files depend on, and is the main way a conversion silently drops
-coverage. Grouping is the one sanctioned exception, and even then the state count
-must match before and after.
+The governing rule: **preserve the file body, replace only the Percy
+scaffolding.** Extracting variants into a fresh template loses the loops, local
+components and styling these files depend on, and is the main way a conversion
+silently drops coverage. Grouping is the one exception, and the state count must
+still match before and after.
 
 For a `needsPlay` story, read
 [resources/play-function-patterns.md](resources/play-function-patterns.md).
@@ -207,11 +203,10 @@ baseline the error overlay. Build from the `storybook` workspace; running the
 binary from the repo root fails on `storybook/manager-api` not resolving.
 
 **If `tsc` reports `Module '@storybook/react-vite' has no exported member 'Meta'`
-for every story file in the repo**, the install is stale, not your conversion.
-Check `storybook/node_modules/storybook`: if it resolves to an `8.x` path or
-dangles, node_modules predates the Storybook 9 upgrade, and in 8.x `Meta` came
-from `@storybook/react`. Neither command above means anything until that is
-fixed.
+for every story file**, the install is stale, not your conversion. Check
+`storybook/node_modules/storybook`: an `8.x` path or a dangling link means
+node_modules predates the Storybook 9 upgrade. Neither command above means
+anything until that is fixed.
 
 ### 8. Report
 
@@ -233,10 +228,10 @@ Per converted file:
 **Needs review:** <manualReview entries, or "none">
 ```
 
-State the snapshot column plainly, because "converted" and "covered by Chromatic"
-are different things and conflating them is how a component gets signed off with
-no baseline behind it. With `--no-snapshots` the column reads `off`, and that
-story cannot count toward parity until it is enabled.
+State the snapshot column plainly: "converted" and "covered by Chromatic" are
+different things, and conflating them is how a component gets signed off with no
+baseline. With `--no-snapshots` it reads `off`, and that story cannot count
+toward parity until it is enabled.
 
 For a bulk run, finish with totals and the union of `manualReview` kinds with
 counts, keeping the parity and new-coverage tiers separate.
@@ -273,9 +268,8 @@ Two things the analyzer flags but cannot resolve:
   (`components/Buttons/PrimaryButton`), so they sit beside that component's demo
   stories. There is no `Visual Regression/*` group.
 - One stacked story per component named `AllVariants`, every `<Spec>` in source
-  order, and no JSDoc comment above it. One story per component is settled; a
-  per-state split is deferred until after the migration, so do not split a frame
-  just because it is long.
+  order, and no JSDoc comment above it. A per-state split is deferred until after
+  the migration, so do not split a frame just because it is long.
 - Runs of states sharing an axis go in a `VisualSpecGroup` with the shared part
   hoisted out of their labels. See
   [resources/conversion-recipe.md](resources/conversion-recipe.md).

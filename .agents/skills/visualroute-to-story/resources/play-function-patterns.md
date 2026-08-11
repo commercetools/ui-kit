@@ -14,11 +14,10 @@ their last frame, and a native text caret needs hiding.
 
 **No parity story needs a play.** Every interaction in the repo either sits
 behind a commented-out `percySnapshot`, making it deferred coverage rather than
-migration work, or never reaches the baseline at all. See
+migration work, or never reaches the baseline. See
 [Check the dashboard, not the spec](#check-the-dashboard-not-the-spec).
 
-**Do not add a play to a story that does not need one.** A resting frame that
-props alone produce is already tested by the snapshot, and each added interaction
+**Do not add a play to a story that does not need one.** Each added interaction
 is another frame to land deliberately.
 
 ## Call mapping
@@ -104,9 +103,9 @@ it('Open', async () => {
 
 Read that `TODO` before assuming they are safe wins. "Issue with Percy" was never
 diagnosed, and an overlay flaky under Percy may be flaky under Chromatic for the
-same underlying reason: an unsettled animation, a repositioning popper. Each
-first capture is also a new baseline rather than a parity check, so land them
-apart from parity work or sign-off gets ambiguous.
+same reason: an unsettled animation, a repositioning popper. Each first capture
+is a new baseline rather than a parity check, so land them apart from parity work
+or sign-off gets ambiguous.
 
 ## Checklist
 

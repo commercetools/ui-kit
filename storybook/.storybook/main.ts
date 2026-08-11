@@ -23,9 +23,8 @@ function getAbsolutePath(value: string) {
 const config: StorybookConfig = {
   stories: [
     '../src/docs/**/**.mdx',
-    // Anchored to `src/` literal segment so the glob can't traverse into
-    // strict-pnpm's nested <pkg>/node_modules/@commercetools-uikit/* symlinks
-    // and re-discover the same stories under a different path.
+    // Anchored to a literal `src/` so the glob can't traverse strict-pnpm's
+    // nested node_modules symlinks and re-discover the same stories.
     '../../packages/components/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../../packages/components/*/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../../packages/components/*/src/**/*.mdx',

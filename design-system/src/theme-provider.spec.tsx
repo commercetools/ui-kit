@@ -28,8 +28,8 @@ const ThemeReader = (props: { parentSelector?: () => HTMLElement | null }) => {
 };
 
 afterEach(() => {
-  // The provider writes to the inline style of `:root`, which jsdom keeps for
-  // the whole file, so the "root untouched" assertions need this reset.
+  // jsdom keeps `:root` for the whole file, so the "root untouched" assertions
+  // need this reset.
   document.documentElement.removeAttribute('style');
   document.documentElement.removeAttribute('data-theme');
 });

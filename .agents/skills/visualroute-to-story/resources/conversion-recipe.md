@@ -23,13 +23,12 @@ tags and `chromatic` parameters on `meta` rather than per export.
 Two routes have no stories file to append to, both flagged as
 `no-target-stories-file`:
 
-- **`content-notification`** — its directory has no demo story, and
-  `notification.stories.tsx` is a different component. Create
-  `content-notification.stories.tsx` beside it.
-- **`icons`** — `icons/src/` holds only `.mdx`. Create
-  `icons/src/icon.stories.tsx` for the 9 colors; the `leading-icon`,
-  `inline-svg` and `custom-icon` snapshots append to those sub-directories' own
-  stories files.
+- **`content-notification`** — its own directory has no demo story, so the
+  export went to `notifications/src/notification.stories.tsx`, under the
+  `components/Notification/ContentNotification` title already there.
+- **`icons`** — `icons/src/` held only `.mdx`, so `icons/src/icons.stories.tsx`
+  was created for the 9 colors. The `leading-icon`, `inline-svg` and
+  `custom-icon` snapshots append to those sub-directories' own stories files.
 
 ## `VisualSpec` and `VisualSpecGroup`
 
@@ -343,11 +342,11 @@ colors.map((color) => it(`Color ${color}`, async () => {
 }));
 ```
 
-Nine real screenshots, so **nine** stories, not one, and each carries
-`parameters: { chromatic: { viewports: [1600] } }`. Enumerate the loop values
-from the visualspec; the route's `<Route path>` interpolates the variable and
-cannot tell you them. This is parity coverage, not new coverage, even though the
-analyzer cannot attribute it.
+Nine real screenshots, so **nine** stories, not one, with
+`viewports: [1600]` on the file's `meta.parameters.chromatic`. Enumerate the loop
+values from the visualspec; the route's `<Route path>` interpolates the variable
+and cannot tell you them. This is parity coverage, even though the analyzer
+cannot attribute it.
 
 ## Typing the `.jsx` → `.tsx` move
 
