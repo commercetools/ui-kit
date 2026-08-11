@@ -26,6 +26,7 @@
     "@emotion/react": "catalog:build"
   },
   "devDependencies": {
+    "@commercetools-uikit/text": "workspace:^",
     "@emotion/styled": "catalog:build",
     "react": "catalog:react"
   },

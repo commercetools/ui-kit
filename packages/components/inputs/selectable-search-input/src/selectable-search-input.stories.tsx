@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { CodeViewIcon } from '@commercetools-uikit/icons';
 import SelectableSearchInput from './selectable-search-input';
-import { iconArgType } from '@/storybook-helpers';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 
 const meta: Meta<typeof SelectableSearchInput> = {
   title: 'Form/Inputs/SelectableSearchInput',
@@ -106,4 +107,204 @@ export const BasicExample: Story = {
     },
     options,
   },
+};
+
+// The route file calls these `value` and `options`; renamed because `options`
+// above is a different list used by the demo story.
+const visualValue = {
+  text: 'hello world',
+  option: 'one',
+};
+const visualOptions = [
+  { value: 'one', label: 'One' },
+  { value: 'two', label: 'Two' },
+];
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <SelectableSearchInput
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <SelectableSearchInput
+          isDisabled={true}
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only">
+        <SelectableSearchInput
+          isReadOnly={true}
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is visible">
+        <SelectableSearchInput
+          value={{ text: '', option: '' }}
+          placeholder="Enter a text"
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is visible and input is disabled">
+        <SelectableSearchInput
+          isDisabled={true}
+          value={{ text: '', option: '' }}
+          placeholder="Enter a text"
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error">
+        <SelectableSearchInput
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning">
+        <SelectableSearchInput
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error and warning">
+        <SelectableSearchInput
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+          hasError={true}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled with error">
+        <SelectableSearchInput
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+          isDisabled={true}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled with warning">
+        <SelectableSearchInput
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+          isDisabled={true}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when isClearable is false">
+        <SelectableSearchInput
+          isReadOnly={true}
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+          isClearable={false}
+        />
+      </VisualSpec>
+      <VisualSpec label="when showSubmitButton is false">
+        <SelectableSearchInput
+          isReadOnly={true}
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+          isClearable={false}
+          showSubmitButton={false}
+        />
+      </VisualSpec>
+      <VisualSpec label="is condensed">
+        <SelectableSearchInput
+          value={visualValue}
+          onChange={() => {}}
+          isCondensed={true}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+        />
+      </VisualSpec>
+      <VisualSpec label="with right action">
+        <SelectableSearchInput
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+          rightActionIcon={<CodeViewIcon />}
+          rightActionProps={{
+            label: 'Click me',
+            onClick: () => {},
+          }}
+        />
+      </VisualSpec>
+      <VisualSpec label="with right action + condensed">
+        <SelectableSearchInput
+          value={visualValue}
+          onChange={() => {}}
+          isCondensed={true}
+          horizontalConstraint={16}
+          onSubmit={() => {}}
+          onReset={() => {}}
+          options={visualOptions}
+          rightActionIcon={<CodeViewIcon />}
+          rightActionProps={{
+            label: 'Click me',
+            onClick: () => {},
+          }}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

@@ -1,4 +1,5 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { VisualSpec } from '@/storybook-helpers';
 import LocalizedMultilineTextInput, {
   TLocalizedMultilineTextInputProps,
 } from './localized-multiline-text-input';
@@ -77,4 +78,197 @@ BasicExample.args = {
   defaultExpandLanguages: false,
   selectedLanguage: 'en',
   hideLanguageExpansionControls: false,
+};
+
+const lorem =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
+
+const value = {
+  en: lorem,
+  de: lorem,
+  es: lorem,
+};
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+        />
+      </VisualSpec>
+      <VisualSpec label="when language controls are hidden">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          hideLanguageExpansionControls={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when languages are opened by default">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only and open">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isReadOnly={true}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only and closed">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled and open">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isDisabled={true}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled and closed">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when isCondensed and open">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isCondensed={true}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when isCondensed and closed">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isCondensed={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is an error for a specific language (first one)">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          errors={{ en: 'foo' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is an error for a specific language (second one)">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          errors={{ de: 'foo' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a general error">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a warning for a specific language (first one)">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          warnings={{ en: 'foo' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a warning for a specific language (second one)">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          warnings={{ de: 'foo' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a general warning">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a additional info set for a locale">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          additionalInfo={{ en: 'This is a foo field' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a additional info and error for a locale">
+        <LocalizedMultilineTextInput
+          value={value}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          hasError={true}
+          errors={{ en: 'Error error error e e e' }}
+          additionalInfo={{ en: 'This is a foo field' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a additional info set for a locale without collapse control btn">
+        <LocalizedMultilineTextInput
+          value={{ en: 'short text' }}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          additionalInfo={{ en: 'This is a foo field' }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is a additional info set for a locale without collapse control btn and an error">
+        <LocalizedMultilineTextInput
+          value={{ en: 'short text' }}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          additionalInfo={{ en: 'This is a foo field' }}
+          errors={{ en: 'Error error error e e e' }}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

@@ -15,6 +15,11 @@ And the story needs `tags: ['vrt', '!autodocs']` plus
 lands on the component's generated `Props` page as a wall of stacked states,
 without the rest Chromatic ignores it.
 
+**`tags` must be a literal array, on the export or on `meta`.** Storybook indexes
+by parsing, not running, so a factory or a spread indexes as no tags: it
+typechecks, it renders, and `vrt` is silently absent. In an all-VRT file put the
+tags and `chromatic` parameters on `meta` rather than per export.
+
 Two routes have no stories file to append to, both flagged as
 `no-target-stories-file`:
 
@@ -110,6 +115,28 @@ Rules:
    (`from '../../../icons'`), adjusting depth if the target file sits elsewhere.
 4. **Add `VisualSpec`** to the existing `@/storybook-helpers` import if the file
    has one (several already import `iconArgType`), otherwise a new line.
+
+## When the package does not declare what the story imports
+
+Check the target `package.json` before importing by package name. CI installs
+strictly, so an undeclared import fails `typecheck` and the Storybook build while
+local `tsc` passes on the hoisted tree. Route files never hit this: they imported
+the `@commercetools-frontend/ui-kit` barrel, which the root declares.
+
+Either add a `devDependency`, which needs `pnpm install` and the lockfile in the
+same commit, or import the source path relatively, which needs neither. Relative
+must point at a file, not a package directory: `../../spacings-inset/src/inset`
+resolves, `../../spacings-inset` resolves to an unbuilt `dist`.
+
+| Package                                     | Needs                 | Handled by                      |
+| ------------------------------------------- | --------------------- | ------------------------------- |
+| `spacings-inline`                           | `constraints`, `text` | declared                        |
+| `spacings-inset`, `-inset-squish`, `-stack` | `text`                | declared                        |
+| `spacings-*`                                | each other            | relative, declaring would cycle |
+| `search-select-input`                       | `icons` (`WorldIcon`) | relative                        |
+
+The other three select inputs already declare `icons`; use the package name
+there.
 
 ## Router context
 
@@ -345,6 +372,19 @@ Carry `backgroundColor` onto `<VisualSpec>`. It is load-bearing for inverted-ton
 states, which are invisible against white: `link`, `flat-button`, `field-label`,
 `spacings`×2. Every other `<Spec>` prop is dropped; see
 [`VisualSpec` and `VisualSpecGroup`](#visualspec-and-visualspecgroup).
+
+## States that relied on the full viewport
+
+`VisualSpec` puts the label beside the content, so the box shrink-wraps and any
+state needing free space (`justifyContent`, `width: 100%`, a percentage)
+collapses. Every value in the run then renders identically: the states are all
+there, the axis under test is invisible. If frames whose labels differ only by a
+layout prop look the same, this is why.
+
+Give that state's own wrapper an explicit width. Do **not** make the box grow;
+that stretches every converted component and pushes their labels to the right
+edge. `spacings` fixed its six `justifyContent` states with `width: 600px` on the
+route's local `View`.
 
 ## Before you finish
 

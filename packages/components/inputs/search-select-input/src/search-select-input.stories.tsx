@@ -1,8 +1,11 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import SearchSelectInput from './search-select-input';
-import { iconArgType } from '@/storybook-helpers';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 import { useState, useEffect } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
+// Source path, not `@commercetools-uikit/icons`: this package does not declare
+// icons as a dependency, and CI installs strictly.
+import WorldIcon from '../../../icons/src/generated/WorldReact';
 
 const meta: Meta<typeof SearchSelectInput> = {
   title: 'Form/Inputs/SearchSelectInput',
@@ -213,4 +216,134 @@ CheckboxOptionStyle.args = {
   optionType: 'single-property',
   appearance: 'filter',
   optionStyle: 'checkbox',
+};
+
+// The route file calls these `loadOptions` and `value`; renamed because
+// `loadOptions` above is a different, delayed implementation.
+const visualLoadOptions = (input: string) =>
+  input
+    ? Promise.resolve([])
+    : Promise.resolve([
+        { value: 'one', label: 'One' },
+        { value: 'two', label: 'Two' },
+      ]);
+
+const visualValue = { value: 'one', label: 'One' };
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <SearchSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <SearchSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when input has an error">
+        <SearchSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when input has an warning">
+        <SearchSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when clearable">
+        <SearchSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isClearable={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when condensed">
+        <SearchSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isCondensed={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when input has an error and a warning">
+        <SearchSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasError={true}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is shown">
+        <SearchSelectInput
+          value={null}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          placeholder="Select a state"
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only">
+        <SearchSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft">
+        <SearchSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft and no selected value">
+        <SearchSelectInput
+          value={null}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="with auto-fouced and no input value">
+        <SearchSelectInput
+          value={null}
+          onChange={() => {}}
+          isAutofocussed={true}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

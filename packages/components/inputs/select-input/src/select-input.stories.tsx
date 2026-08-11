@@ -1,6 +1,7 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { WorldIcon } from '@commercetools-uikit/icons';
 import SelectInput from './select-input';
-import { iconArgType } from '@/storybook-helpers';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 import { useEffect, useState } from 'react';
 
 const meta: Meta<typeof SelectInput> = {
@@ -37,8 +38,10 @@ const meta: Meta<typeof SelectInput> = {
     value: { control: false },
   },
   decorators: [
+    // minHeight, not height: identical for the demo stories, but a fixed height
+    // would leave the 22-state stack overflowing a 350px box.
     (Story) => (
-      <div style={{ height: 350 }}>
+      <div style={{ minHeight: 350 }}>
         <Story />
       </div>
     ),
@@ -173,4 +176,228 @@ CheckboxOptionStyle.args = {
   optionStyle: 'checkbox',
   isMulti: true,
   appearance: 'filter',
+};
+
+// The route file calls these `options` and `value`; renamed because `options`
+// above is a different, much longer list used by the demo stories.
+const visualOptions = [
+  { value: 'one', label: 'One' },
+  { value: 'two', label: 'Two' },
+];
+const visualValue = 'one';
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when condensed">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          isCondensed={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is shown">
+        <SelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          placeholder="Select something"
+        />
+      </VisualSpec>
+      <VisualSpec label="with a long placeholder">
+        <SelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        />
+      </VisualSpec>
+      <VisualSpec label="with error">
+        <SelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning">
+        <SelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error and warning">
+        <SelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          hasError={true}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with multiple values selected">
+        <SelectInput
+          value={['one', 'two']}
+          onChange={() => {}}
+          options={visualOptions}
+          isMulti={true}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="with multiple values selected and disabled">
+        <SelectInput
+          value={['one', 'two']}
+          onChange={() => {}}
+          options={visualOptions}
+          isMulti={true}
+          isDisabled={true}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="with multiple values selected and condensed">
+        <SelectInput
+          value={['one', 'two']}
+          onChange={() => {}}
+          options={visualOptions}
+          isMulti={true}
+          isCondensed={true}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with multiple values selected and read-only">
+        <SelectInput
+          value={['one', 'two']}
+          onChange={() => {}}
+          options={visualOptions}
+          isMulti={true}
+          isReadOnly={true}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft and no selected value">
+        <SelectInput
+          value={null}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="Quiet appearance">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={'auto'}
+          appearance="quiet"
+        />
+      </VisualSpec>
+      <VisualSpec label="Quiet disabled">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={'auto'}
+          appearance="quiet"
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="Quiet read-only">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={'auto'}
+          appearance="quiet"
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="Quiet error">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={'auto'}
+          appearance="quiet"
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="Quiet warning">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={'auto'}
+          appearance="quiet"
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="Quiet with multiple values selected">
+        <SelectInput
+          value={['one', 'two']}
+          onChange={() => {}}
+          options={visualOptions}
+          isMulti={true}
+          horizontalConstraint={'auto'}
+          appearance="quiet"
+        />
+      </VisualSpec>
+      <VisualSpec label="Quiet with iconLeft">
+        <SelectInput
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={'auto'}
+          iconLeft={<WorldIcon />}
+          appearance="quiet"
+        />
+      </VisualSpec>
+    </>
+  ),
 };

@@ -3,7 +3,15 @@ import styled from '@emotion/styled';
 import { designTokens } from '../../../design-system';
 
 const SpecRow = styled.div`
-  display: flex;
+  display: grid;
+  /*
+    The content column needs a definite width, not a shrink-to-fit one, because
+    percentage widths resolve against it. Constraints.Horizontal is width 100%
+    capped by a token, so a fit-content column collapses every constrained input
+    to its text width. constraint16 is the widest ui-kit offers; max-content lets
+    wider content, like the icon grids, still grow past it.
+  */
+  grid-template-columns: minmax(${designTokens.constraint16}, max-content) max-content;
   align-items: center;
   gap: ${designTokens.spacing30};
   /*
@@ -12,14 +20,16 @@ const SpecRow = styled.div`
     component in the repo: at 400px a 35-state stack was 83% whitespace.
   */
   min-height: 56px;
+  padding: ${designTokens.spacing30} 0;
 
-  /* min-height stops separating rows once the content outgrows it. */
+  /* Separator between states, so a tall one cannot read as two. */
   & + & {
-    margin-top: ${designTokens.spacing30};
+    border-top: 1px solid ${designTokens.colorNeutral90};
   }
 `;
 
 const Box = styled.div<{ backgroundColor?: string }>`
+  min-width: 0;
   background-color: ${(props) =>
     props.backgroundColor ?? designTokens.colorSurface};
 `;

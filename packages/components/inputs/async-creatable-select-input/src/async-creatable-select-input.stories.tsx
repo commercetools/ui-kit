@@ -1,5 +1,6 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
-import { iconArgType } from '@/storybook-helpers';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
+import { WorldIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
 import { useEffect, useState } from 'react';
@@ -193,4 +194,110 @@ BasicExample.args = {
   createOptionPosition: 'last',
   showOptionGroupDivider: false,
   defaultOptions: defaultOptions,
+};
+
+// The route file calls these `loadOptions` and `value`; renamed because
+// `loadOptions` above is a different, delayed implementation.
+const visualLoadOptions = () =>
+  Promise.resolve([
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+  ]);
+
+const visualValue = { value: 'one', label: 'One' };
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <AsyncCreatableSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <AsyncCreatableSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error">
+        <AsyncCreatableSelectInput
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning">
+        <AsyncCreatableSelectInput
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error and warning">
+        <AsyncCreatableSelectInput
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasError={true}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with placeholder">
+        <AsyncCreatableSelectInput
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          placeholder="Select a state"
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only">
+        <AsyncCreatableSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft">
+        <AsyncCreatableSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft and no selected value">
+        <AsyncCreatableSelectInput
+          value={null}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="is condensed">
+        <AsyncCreatableSelectInput
+          value={visualValue}
+          onChange={() => {}}
+          isCondensed={true}
+          defaultOptions={true}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

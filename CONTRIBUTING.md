@@ -70,6 +70,8 @@ Components in UI Kit are integration tested to ensure they meet requirements ove
 
 It is crucial for a Design System to not introduce visual regressions. To achieve this UI Kit performs Visual Regression Testing using [Percy](https://percy.io/). Every component must have a so called visual specification alongside it. This is just a React component conveniently defining all visual states such placeholder being filled, a warning being triggered or a component being in readonly state. An example can be found here. This specification is rendered and sent to Percy via a GitHub Action. Once regressions are detected, they will be reported on a subsequent change and have to be approved by a UI/UX Designer.
 
+> **Migrating to Chromatic (Q3 2026).** Visual regression testing is moving from Percy to [Chromatic](https://www.chromatic.com/), which captures Storybook stories instead of the `.visualroute.jsx` / `.visualspec.js` pair. Percy remains the system of record until the migration is signed off, so keep adding visual specifications as described above. New components will also want a stacked `AllVariants` story; see the existing converted components for the shape.
+
 ## Opening an Issue
 
 In general, it's a good idea to open an issue first, no matter if it's a bug report, a new feature, etc. Doing so allows maintainers and other contributors to be aware of the context when an associated pull request is provided. It also gives a chance to provide early feedback and suggestions on what the pull request should focus on and what the expectations, avoiding unnecessary work during a pull request.

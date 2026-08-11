@@ -125,8 +125,9 @@ plan, read the route file and its spec, then apply
 [resources/conversion-recipe.md](resources/conversion-recipe.md).
 
 Where Percy clicked or typed before capturing, the plan marks the story
-`needsPlay` and that interaction becomes a Storybook `play` function. Only
-`dropdown-menu` needs one for parity; the rest belong to deferred coverage. See
+`needsPlay` and that interaction becomes a Storybook `play` function. No parity
+story needs one: the interactions either sit behind a commented-out
+`percySnapshot`, or never reach the baseline. See
 [resources/play-function-patterns.md](resources/play-function-patterns.md).
 
 ## What a converted story changes
