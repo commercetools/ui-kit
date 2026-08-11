@@ -1,5 +1,8 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
-import { iconArgType } from '@/storybook-helpers';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
+// Source path, not `@commercetools-uikit/icons`: this package does not declare
+// icons as a dependency, and CI installs strictly.
+import WorldIcon from '../../../icons/src/generated/WorldReact';
 import SearchSelectField from './search-select-field';
 import { useEffect, useState } from 'react';
 
@@ -141,4 +144,146 @@ BasicExample.args = {
   description: '',
   onInfoButtonClick: () => alert('Info button clicked'),
   badge: '',
+};
+
+// The route file calls these `loadOptions` and `value`; renamed to avoid the
+// module-scope names the demo stories already use.
+const visualLoadOptions = (input: string) =>
+  input
+    ? Promise.resolve([])
+    : Promise.resolve([
+        { value: 'one', label: 'One' },
+        { value: 'two', label: 'Two' },
+      ]);
+
+const visualValue = { value: 'one', label: 'One' };
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <SearchSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="with iconLeft">
+        <SearchSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          iconLeft={<WorldIcon />}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <SearchSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when condensed">
+        <SearchSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isCondensed={true}
+        />
+      </VisualSpec>
+      <VisualSpec label={'with "missing" error when not touched'}>
+        <SearchSelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+        />
+      </VisualSpec>
+      <VisualSpec label={'with "missing" error when touched'}>
+        <SearchSelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+          touched={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with hint">
+        <SearchSelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hint="Select a state"
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only">
+        <SearchSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when has warning">
+        <SearchSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when not touched">
+        <SearchSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when touched">
+        <SearchSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          touched={true}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+    </>
+  ),
 };
