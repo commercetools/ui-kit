@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import ContentNotification from './content-notification';
+import { VisualSpec } from '@/storybook-helpers';
 
 const meta: Meta<typeof ContentNotification> = {
   title: 'components/Notification/ContentNotification',
@@ -27,4 +28,35 @@ export const DismissableNotification: Story = {
     type: 'success',
     onRemove: () => alert('Notification close clicked!'),
   },
+};
+
+const intlMessage = { id: 'intl-message', defaultMessage: 'Hello' };
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="when type is error">
+        <ContentNotification type="error">A Notification</ContentNotification>
+      </VisualSpec>
+      <VisualSpec label="when type is info">
+        <ContentNotification type="info">A Notification</ContentNotification>
+      </VisualSpec>
+      <VisualSpec label="when type is warning">
+        <ContentNotification type="warning">A Notification</ContentNotification>
+      </VisualSpec>
+      <VisualSpec label="when type is success">
+        <ContentNotification type="success">A Notification</ContentNotification>
+      </VisualSpec>
+      <VisualSpec label="intlMessage">
+        <ContentNotification type="success" intlMessage={intlMessage} />
+      </VisualSpec>
+      <VisualSpec label="onRemove">
+        <ContentNotification type="error" onRemove={() => false}>
+          A Notification
+        </ContentNotification>
+      </VisualSpec>
+    </>
+  ),
 };

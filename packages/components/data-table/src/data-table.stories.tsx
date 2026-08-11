@@ -1,5 +1,7 @@
-import { useMemo, useState } from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import { useMemo, useState, type ReactNode } from 'react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import sortBy from 'lodash/sortBy';
+import { VisualSpec } from '@/storybook-helpers';
 import DataTable, { type TColumn } from './data-table';
 
 import CheckboxInput from '../../inputs/checkbox-input';
@@ -278,4 +280,642 @@ BasicExample.args = {
     },
   ],
   footer: <div>Display any React component as footer.</div>,
+};
+
+type FakeMovie = {
+  id: string;
+  title: string;
+  year: number;
+  director: string;
+  country: string;
+};
+
+const testRows = [
+  {
+    id: '1-parasite',
+    title: 'Parasite',
+    year: 2019,
+    director: 'Bong',
+    country: 'South Korea',
+  },
+  {
+    id: '2-woman',
+    title: 'Woman At War',
+    year: 2018,
+    director: 'Erlingsson',
+    country: 'Iceland',
+  },
+  {
+    id: '3-gems',
+    title: 'Uncut Gems',
+    year: 2019,
+    director: 'Safdie',
+    country: 'USA',
+  },
+];
+
+const testColumns = [
+  {
+    key: 'title',
+    label: 'Title',
+  },
+  {
+    key: 'year',
+    label: 'Year',
+  },
+  {
+    key: 'director',
+    label: 'Directed By',
+  },
+  {
+    key: 'country',
+    label: 'Country',
+  },
+];
+
+const countryFlagRenderer = (country: string) => {
+  if (country === 'South Korea') return 'KR';
+  if (country === 'Iceland') return 'IS';
+  if (country === 'USA') return 'US';
+  return 'idk lol';
+};
+
+const customItemRenderer = (
+  item: FakeMovie,
+  column: TColumn<FakeMovie>
+): ReactNode => {
+  if (column.key === 'country') {
+    return countryFlagRenderer(item.country);
+  }
+  return item[column.key as keyof FakeMovie];
+};
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="default">
+        <DataTable rows={testRows} columns={testColumns} />
+      </VisualSpec>
+      <VisualSpec label="default - in a narrow container">
+        <div style={{ width: 300, overflow: 'scroll' }}>
+          <DataTable rows={testRows} columns={testColumns} />
+        </div>
+      </VisualSpec>
+      <VisualSpec label="default - in a short container">
+        <div style={{ height: 150, overflow: 'scroll' }}>
+          <DataTable rows={testRows} columns={testColumns} />
+        </div>
+      </VisualSpec>
+      <VisualSpec label="default - in a container with a background">
+        <div style={{ backgroundColor: 'gray' }}>
+          <DataTable rows={testRows} columns={testColumns} />
+        </div>
+      </VisualSpec>
+      <VisualSpec label="Non condensed mode">
+        <DataTable rows={testRows} columns={testColumns} isCondensed={false} />
+      </VisualSpec>
+      <VisualSpec label="with a numeric max-width">
+        <DataTable rows={testRows} columns={testColumns} maxWidth={300} />
+      </VisualSpec>
+      <VisualSpec label="with a numeric max-height">
+        <DataTable rows={testRows} columns={testColumns} maxHeight={150} />
+      </VisualSpec>
+      <VisualSpec label="with a css string max-width">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          maxWidth="calc(200px + 10%)"
+        />
+      </VisualSpec>
+      <VisualSpec label="with a css string max-height">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          maxHeight="calc(70px + 10%)"
+        />
+      </VisualSpec>
+      <VisualSpec label="with max-width and max-height">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          maxWidth={300}
+          maxHeight={150}
+        />
+      </VisualSpec>
+      <VisualSpec label="Non condensed mode with max-width">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          isCondensed={false}
+          maxWidth={300}
+        />
+      </VisualSpec>
+      <VisualSpec label="horizontalCellAlignment - center">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          horizontalCellAlignment="center"
+        />
+      </VisualSpec>
+      <VisualSpec label="horizontalCellAlignment - right">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          horizontalCellAlignment="right"
+        />
+      </VisualSpec>
+      <VisualSpec label="verticalCellAlignment - center">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          verticalCellAlignment="center"
+        />
+      </VisualSpec>
+      <VisualSpec label="verticalCellAlignment - bottom">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          verticalCellAlignment="bottom"
+        />
+      </VisualSpec>
+      <VisualSpec label="not wrapping header labels">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          wrapHeaderLabels={false}
+        />
+      </VisualSpec>
+      <VisualSpec label="with maxWidth and not wrapping header labels">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          maxWidth={300}
+          wrapHeaderLabels={false}
+        />
+      </VisualSpec>
+      <VisualSpec label="with header stickiness disabled">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          disableHeaderStickiness={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with a footer">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          footer={<div>This is a Footer</div>}
+        />
+      </VisualSpec>
+      <VisualSpec label="with a footer - non condensed mode">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          isCondensed={false}
+          footer={<div>This is a Footer</div>}
+        />
+      </VisualSpec>
+      <VisualSpec label="with custom item renderer">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          itemRenderer={customItemRenderer}
+        />
+      </VisualSpec>
+      <VisualSpec label="with onRowClick">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          onRowClick={() => null}
+        />
+      </VisualSpec>
+      <VisualSpec label="with sortable columns (title and year)">
+        <DataTable
+          rows={testRows}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              isSortable: true,
+            },
+            {
+              key: 'year',
+              label: 'Year',
+              isSortable: true,
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+            },
+          ]}
+          onSortChange={() => null}
+        />
+      </VisualSpec>
+      <VisualSpec label="with a column (title) pre-sorted in ascending order">
+        <DataTable
+          rows={sortBy(testRows, 'title')}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              isSortable: true,
+            },
+            {
+              key: 'year',
+              label: 'Year',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+            },
+          ]}
+          sortedBy="title"
+          sortDirection="asc"
+          onSortChange={() => null}
+        />
+      </VisualSpec>
+      <VisualSpec label="with a column (title) pre-sorted in descending order">
+        <DataTable
+          rows={sortBy(testRows, 'title').reverse()}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+            },
+            {
+              key: 'year',
+              label: 'Year',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+            },
+          ]}
+          sortedBy="title"
+          sortDirection="desc"
+          onSortChange={() => null}
+        />
+      </VisualSpec>
+      <VisualSpec label="with sortable columns (title and year) aligned to right">
+        <DataTable
+          rows={testRows}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              isSortable: true,
+              align: 'right',
+            },
+            {
+              key: 'year',
+              label: 'Year',
+              isSortable: true,
+              align: 'right',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+            },
+          ]}
+          onSortChange={() => null}
+        />
+      </VisualSpec>
+      <VisualSpec label="with sortable columns (title and year) aligned center">
+        <DataTable
+          rows={testRows}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              isSortable: true,
+              align: 'center',
+            },
+            {
+              key: 'year',
+              label: 'Year',
+              isSortable: true,
+              align: 'center',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+            },
+          ]}
+          onSortChange={() => null}
+        />
+      </VisualSpec>
+      <VisualSpec label="with a column of truncated cells">
+        <DataTable
+          rows={testRows}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              isTruncated: true,
+            },
+            {
+              key: 'year',
+              label: 'Year',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+            },
+          ]}
+        />
+      </VisualSpec>
+      <VisualSpec label="with maxWidth and a column of truncated cells">
+        <DataTable
+          rows={testRows}
+          maxWidth={300}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              isTruncated: true,
+            },
+            {
+              key: 'year',
+              label: 'Year',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+            },
+          ]}
+        />
+      </VisualSpec>
+      <VisualSpec label="with defined per-column widths">
+        <DataTable
+          rows={testRows}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              width: '1fr',
+            },
+            {
+              key: 'year',
+              label: 'Year',
+              width: '100px',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+              width: 'minmax(100px, 200px)',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+              width: 'minmax(auto, 100px)',
+            },
+          ]}
+        />
+      </VisualSpec>
+      <VisualSpec label="with defined per-column alignments">
+        <DataTable
+          rows={testRows}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              align: 'left',
+            },
+            {
+              key: 'year',
+              label: 'Year',
+              align: 'center',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+              align: 'right',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+            },
+          ]}
+        />
+      </VisualSpec>
+      <VisualSpec label="with maxWidth and defined per-column widths">
+        <DataTable
+          rows={testRows}
+          maxWidth={300}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              width: '1fr',
+            },
+            {
+              key: 'year',
+              label: 'Year',
+              width: '100px',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+              width: 'minmax(100px, 200px)',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+              width: 'minmax(auto, 100px)',
+            },
+          ]}
+        />
+      </VisualSpec>
+      <VisualSpec label="with maxWidth, defined per-column widths, and truncated columns">
+        <DataTable
+          rows={testRows}
+          maxWidth={300}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              width: '1fr',
+              isTruncated: true,
+            },
+            {
+              key: 'year',
+              label: 'Year',
+              width: '100px',
+              isTruncated: true,
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+              width: 'minmax(100px, 200px)',
+              isTruncated: true,
+            },
+            {
+              key: 'country',
+              label: 'Country',
+              width: 'minmax(auto, 100px)',
+              isTruncated: true,
+            },
+          ]}
+        />
+      </VisualSpec>
+      <VisualSpec label="with maxWidth, defined per-column widths, and truncated columns - non condensed mode">
+        <DataTable
+          rows={testRows}
+          maxWidth={300}
+          isCondensed={false}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+              width: '1fr',
+              isTruncated: true,
+            },
+            {
+              key: 'year',
+              label: 'Year',
+              width: '100px',
+              isTruncated: true,
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+              width: 'minmax(100px, 200px)',
+              isTruncated: true,
+            },
+            {
+              key: 'country',
+              label: 'Country',
+              width: 'minmax(auto, 100px)',
+              isTruncated: true,
+            },
+          ]}
+        />
+      </VisualSpec>
+      <VisualSpec label="column with custom renderItem">
+        <DataTable
+          rows={testRows}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+            },
+            {
+              key: 'year',
+              label: 'Year',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+              renderItem: (row) => countryFlagRenderer(row.country),
+            },
+          ]}
+        />
+      </VisualSpec>
+      <VisualSpec label="column with headerIcon">
+        <DataTable
+          rows={testRows}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+            },
+            {
+              key: 'year',
+              label: 'Year',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+            },
+            {
+              key: 'country',
+              label: 'Country',
+              headerIcon: (
+                <IconButton
+                  icon={<InformationIcon />}
+                  label="Country Info"
+                  size="small"
+                  onClick={() => null}
+                />
+              ),
+            },
+          ]}
+        />
+      </VisualSpec>
+      <VisualSpec label="with disabledSelfContainment">
+        <DataTable
+          rows={testRows}
+          columns={testColumns}
+          maxWidth={300}
+          maxHeight={300}
+          disableSelfContainment={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="column with headerIcon and no label">
+        <DataTable
+          rows={testRows}
+          columns={[
+            {
+              key: 'title',
+              label: 'Title',
+            },
+            {
+              key: 'year',
+              label: 'Year',
+            },
+            {
+              key: 'director',
+              label: 'Directed By',
+            },
+            {
+              key: 'country',
+              label: '',
+              headerIcon: (
+                <IconButton
+                  icon={<InformationIcon />}
+                  label="Country Info"
+                  size="small"
+                  onClick={() => null}
+                />
+              ),
+            },
+          ]}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

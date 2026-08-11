@@ -4,6 +4,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Tooltip, { TTooltipProps } from './tooltip';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import styled from '@emotion/styled';
+import Spacings from '@commercetools-uikit/spacings';
+import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
+import { VisualSpec } from '@/storybook-helpers';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'components/Tooltip',
@@ -137,3 +140,69 @@ export const ExampleWithCustomPortal = () => (
     <PrimaryButton onClick={() => {}} label={"I'm using my own Portal"} />
   </Tooltip>
 );
+
+const visualTitle = 'What kind of bear is best';
+const visualLongTitle =
+  'What kind of bear is best? Everyones knows its a panda.';
+const noop = () => {};
+
+const Body = styled.div`
+  color: red;
+  margin-top: 12px;
+`;
+
+const ContainerWithPadding = styled.div`
+  padding-top: 50px;
+`;
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="Closed">
+        <Tooltip title={visualTitle}>
+          <PrimaryButton onClick={noop} label="Hello" />
+        </Tooltip>
+      </VisualSpec>
+      <VisualSpec label="Open">
+        <ContainerWithPadding>
+          <Tooltip title={visualTitle} isOpen={true}>
+            <PrimaryButton onClick={noop} label="Hello" />
+          </Tooltip>
+        </ContainerWithPadding>
+      </VisualSpec>
+      <VisualSpec label="Open with custom body component">
+        <ContainerWithPadding>
+          <Tooltip
+            title={visualTitle}
+            isOpen={true}
+            components={{ BodyComponent: Body }}
+          >
+            <PrimaryButton onClick={noop} label="Hello" />
+          </Tooltip>
+        </ContainerWithPadding>
+      </VisualSpec>
+      <VisualSpec label="CollapsiblePanel as a parent">
+        <CollapsiblePanel
+          theme="dark"
+          header={
+            <Spacings.Inline scale="m" alignItems="center">
+              <CollapsiblePanel.Header>Header</CollapsiblePanel.Header>
+              <Tooltip
+                title={visualLongTitle}
+                isOpen={true}
+                horizontalConstraint={6}
+                placement="bottom"
+              >
+                <PrimaryButton onClick={noop} label="Hello" />
+              </Tooltip>
+            </Spacings.Inline>
+          }
+        >
+          <div>Some content</div>
+        </CollapsiblePanel>
+      </VisualSpec>
+    </>
+  ),
+};
