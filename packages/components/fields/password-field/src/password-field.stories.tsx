@@ -1,5 +1,5 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
-import { iconArgType } from '@/storybook-helpers';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 import PasswordField from './password-field';
 import { useState } from 'react';
 
@@ -69,4 +69,118 @@ BasicExample.args = {
   onInfoButtonClick: () => alert('info button clicked'),
   badge: '',
   renderShowHideButton: true,
+};
+
+const value = 'hello world, how are you?';
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <PasswordField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when required">
+        <PasswordField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isRequired={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <PasswordField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is shown">
+        <PasswordField
+          title="Welcome Text"
+          value=""
+          onChange={() => {}}
+          horizontalConstraint={7}
+          placeholder="Enter a text"
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is shown and disabled">
+        <PasswordField
+          title="Welcome Text"
+          value=""
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isDisabled={true}
+          placeholder="Enter a text"
+        />
+      </VisualSpec>
+      <VisualSpec label="with error when not touched">
+        <PasswordField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error when touched">
+        <PasswordField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+          touched={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with description and hint">
+        <PasswordField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          hint="Make sure the Caps Lock is disabled"
+          description="Your secret password"
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when not touched">
+        <PasswordField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when touched">
+        <PasswordField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          touched={true}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with not rendered show/hide password button">
+        <PasswordField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          renderShowHideButton={false}
+        />
+      </VisualSpec>
+    </>
+  ),
 };
