@@ -4,6 +4,19 @@ import shelljs from 'shelljs';
 import { GeneratorPackageJsonOptions } from '../src/types';
 import { transformDocument } from '../src';
 
+// `@manypkg/find-root` and `@manypkg/get-packages` are pure ESM (since their
+// respective v3 majors), which Jest's CJS module runtime can't `require()`
+// directly (unlike Node's native `require()`, which supports it since
+// Node 22.12). Neither function is exercised by these tests (only
+// `transformDocument` is), so stub them out to avoid a module-load-time
+// `SyntaxError: Cannot use import statement outside a module`.
+jest.mock('@manypkg/find-root', () => ({
+  findRootSync: jest.fn(),
+}));
+jest.mock('@manypkg/get-packages', () => ({
+  getPackagesSync: jest.fn(),
+}));
+
 const tmpFolder = os.tmpdir();
 const testPackages = path.join(tmpFolder, 'packages');
 

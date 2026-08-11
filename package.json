@@ -130,6 +130,7 @@
     "eslint": "catalog:lint",
     "eslint-formatter-pretty": "catalog:lint",
     "execa": "catalog:",
+    "find-up": "catalog:",
     "formik": "catalog:react",
     "glob": "catalog:",
     "global": "catalog:",
