@@ -12,5 +12,7 @@ module.exports = {
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleDirectories: ['generators', 'node_modules'],
-  testPathIgnorePatterns: ['packages', '/node_modules/'],
+  // Component and design-system specs need a DOM; they belong to the jsdom
+  // project in jest.test.config.js.
+  testPathIgnorePatterns: ['packages', 'design-system', '/node_modules/'],
 };
