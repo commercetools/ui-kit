@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import DateInput from './date-input';
+import { VisualSpec } from '@/storybook-helpers';
 import { useEffect, useState } from 'react';
 
 const meta: Meta<typeof DateInput> = {
@@ -78,4 +79,131 @@ export const FilterAppearance: Story = {
     value: '',
     appearance: 'filter',
   },
+};
+
+const value = '2018-11-13';
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <DateInput value={value} onChange={() => {}} horizontalConstraint={7} />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is shown">
+        <DateInput
+          value=""
+          onChange={() => {}}
+          horizontalConstraint={7}
+          placeholder="Select something"
+        />
+      </VisualSpec>
+      <VisualSpec label="with error">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled with error">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isDisabled={true}
+          hasError={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled with warning">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isDisabled={true}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error and warning">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          hasError={true}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when readonly">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isReadOnly
+        />
+      </VisualSpec>
+      <VisualSpec label="when readonly and disabled">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isReadOnly
+          isDisabled
+        />
+      </VisualSpec>
+      <VisualSpec label="when readonly and warning">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isReadOnly
+          hasWarning
+        />
+      </VisualSpec>
+      <VisualSpec label="when readonly and error">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isReadOnly
+          hasError
+        />
+      </VisualSpec>
+      <VisualSpec label="with isCondensed">
+        <DateInput
+          value=""
+          onChange={() => {}}
+          isCondensed={true}
+          horizontalConstraint={7}
+          placeholder="Select something"
+        />
+      </VisualSpec>
+      <VisualSpec label="with filter appearance">
+        <DateInput
+          value={value}
+          onChange={() => {}}
+          isCondensed={true}
+          horizontalConstraint={7}
+          placeholder="Select something"
+          appearance="filter"
+        />
+      </VisualSpec>
+    </>
+  ),
 };
