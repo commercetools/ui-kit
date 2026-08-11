@@ -1,5 +1,5 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
-import { iconArgType } from '@/storybook-helpers';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 import TimeField from './time-field';
 import { useState } from 'react';
 
@@ -71,4 +71,107 @@ BasicExample.args = {
   description: '',
   onInfoButtonClick: () => alert('Info button clicked'),
   badge: '',
+};
+
+const value = '15:30';
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <TimeField
+          title="Release Time"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <TimeField
+          title="Release Time"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when required">
+        <TimeField
+          title="Release Time"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+          isRequired={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with description">
+        <TimeField
+          title="Release Time"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+          description="At which time will the product be avialable?"
+        />
+      </VisualSpec>
+      <VisualSpec label="with placeholder">
+        <TimeField
+          title="Release Time"
+          horizontalConstraint={7}
+          value=""
+          onChange={() => {}}
+          placeholder="Select release time"
+        />
+      </VisualSpec>
+      <VisualSpec label="with error when not touched">
+        <TimeField
+          title="Release Time"
+          horizontalConstraint={7}
+          value=""
+          onChange={() => {}}
+          errors={{ missing: true }}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error when touched">
+        <TimeField
+          title="Release Time"
+          horizontalConstraint={7}
+          value=""
+          onChange={() => {}}
+          errors={{ missing: true }}
+          touched={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when not touched">
+        <TimeField
+          title="Release Time"
+          horizontalConstraint={7}
+          value=""
+          onChange={() => {}}
+          warnings={{ customWarning: true }}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when touched">
+        <TimeField
+          title="Release Time"
+          horizontalConstraint={7}
+          value=""
+          onChange={() => {}}
+          warnings={{ customWarning: true }}
+          touched={true}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="minimal">
+        <TimeField
+          title="Release Time"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+          isCondensed={true}
+        />
+      </VisualSpec>
+    </>
+  ),
 };
