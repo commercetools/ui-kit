@@ -6,7 +6,7 @@ const SpecRow = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: ${designTokens.spacing30};
+  gap: ${designTokens.spacing50};
   /* Absorbs a small height change so it doesn't shift every state below it and
      light up the whole diff. Percy used 400px, which was 83% whitespace. */
   min-height: 120px;

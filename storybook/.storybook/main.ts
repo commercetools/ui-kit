@@ -30,6 +30,7 @@ const config: StorybookConfig = {
     '../../packages/components/*/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../../packages/components/*/src/**/*.mdx',
     '../../packages/components/*/*/src/**/*.mdx',
+    '../../design-system/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   // head = the manager-header.html file contents
   managerHead: (head) => `
