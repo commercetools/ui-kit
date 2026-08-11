@@ -97,9 +97,8 @@ export const AllVariants: StoryObj = {
           labelPosition="left"
           label={`${25}% completed`}
           progress={25}
-          /* labelWidth's union starts at 6, but the route passed 4 and the
-             label names it. Constraints.Horizontal resolves constraint4 fine,
-             so the render matches Percy. */
+          /* labelWidth's union starts at 6, but this state is 4 and the label
+             names it. Constraints.Horizontal resolves constraint4 fine. */
           labelWidth={4 as TProgressBarProps['labelWidth']}
         />
       </VisualSpec>

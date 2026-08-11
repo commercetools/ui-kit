@@ -23,8 +23,8 @@ export const BasicExample: Story = {
   },
 };
 
-// `gravatarHash` is required on Avatar's props, but 10 of the 17 Percy states
-// omit it and render fine. Cast here rather than change the component's type.
+// `gravatarHash` is required on Avatar's props, but 10 of these 17 states omit
+// it and render fine. Cast here rather than change the component's type.
 const AvatarSpec = Avatar as ComponentType<
   Partial<ComponentProps<typeof Avatar>>
 >;

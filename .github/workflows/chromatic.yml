@@ -1,8 +1,7 @@
 name: Chromatic
 
-# Visual regression testing, ported from commercetools/nimbus. Runbook and
-# authoring rules: that repo's docs/chromatic-ci.md and
-# docs/chromatic-visual-testing.md.
+# Visual regression testing: build Storybook, upload to Chromatic, gate on
+# whether anything that affects rendered output changed.
 on:
   # Manual full build: TurboSnap off, gate bypassed.
   workflow_dispatch:

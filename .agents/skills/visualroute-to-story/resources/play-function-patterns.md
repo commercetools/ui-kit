@@ -3,12 +3,9 @@
 Translating a visualspec's puppeteer steps into a Storybook `play`. Read this
 only for a story the plan marks `needsPlay`.
 
-The rules for whether a play lands a usable frame are not restated here. They are
-section 4 of
-[`nimbus/docs/chromatic-visual-testing.md`](https://github.com/commercetools/nimbus/blob/main/docs/chromatic-visual-testing.md),
-"Does the play land the frame?", and they apply unchanged: the snapshot is the
-play's **end state**, a click leaves the element focused, animations settle on
-their last frame, and a native text caret needs hiding.
+Whether a play lands a usable frame comes down to four things: the snapshot is
+the play's **end state**, a click leaves the element focused, animations settle
+on their last frame, and a native text caret needs hiding.
 
 ## How little of this there is
 
