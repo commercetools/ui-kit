@@ -1,5 +1,5 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
-import { iconArgType } from '@/storybook-helpers';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 import RadioField from './radio-field';
 import { useState } from 'react';
 import RadioInput from '@commercetools-uikit/radio-input';
@@ -107,4 +107,113 @@ BasicExample.args = {
   directionProps: {
     scale: 'm',
   },
+};
+
+const visualValue = 'apple';
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <RadioField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={7}
+        >
+          <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+          <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
+        </RadioField>
+      </VisualSpec>
+      <VisualSpec label="when required">
+        <RadioField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isRequired={true}
+        >
+          <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+          <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
+        </RadioField>
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <RadioField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isDisabled={true}
+        >
+          <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+          <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
+        </RadioField>
+      </VisualSpec>
+      <VisualSpec label="when readonly">
+        <RadioField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isReadOnly={true}
+        >
+          <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+          <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
+        </RadioField>
+      </VisualSpec>
+      <VisualSpec label="with error when not touched">
+        <RadioField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+        >
+          <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+          <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
+        </RadioField>
+      </VisualSpec>
+      <VisualSpec label="with error when touched">
+        <RadioField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+          touched={true}
+        >
+          <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+          <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
+        </RadioField>
+      </VisualSpec>
+      <VisualSpec label="with warning when not touched">
+        <RadioField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          renderWarning={() => 'Custom warning'}
+        >
+          <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+          <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
+        </RadioField>
+      </VisualSpec>
+      <VisualSpec label="with warning when touched">
+        <RadioField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          touched={true}
+          renderWarning={() => 'Custom warning'}
+        >
+          <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+          <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
+        </RadioField>
+      </VisualSpec>
+    </>
+  ),
 };

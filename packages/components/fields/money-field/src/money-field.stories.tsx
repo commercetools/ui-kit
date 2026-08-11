@@ -1,5 +1,7 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import MoneyField from './money-field';
+import { type TCurrencyCode } from '@commercetools-uikit/money-input';
+import { VisualSpec } from '@/storybook-helpers';
 import { useState } from 'react';
 import { iconArgType } from '@/storybook-helpers';
 
@@ -111,4 +113,161 @@ WithError.args = {
         return null;
     }
   },
+};
+
+// The route file calls these `value` and `currencies`; renamed because
+// `currencies` above is a longer list used by the demo stories.
+const visualValue = {
+  amount: '13.50',
+  currencyCode: 'EUR',
+} as const;
+
+const highPrecisionValue = {
+  amount: '13.501',
+  currencyCode: 'EUR',
+} as const;
+
+// MoneyField types currencyCode as TCurrencyCode with no empty member, but the
+// route file passed '' for the empty-value states and the component handles it.
+const emptyValue = { amount: '', currencyCode: '' as TCurrencyCode };
+
+const visualCurrencies = ['EUR', 'USD'];
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={visualValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+        />
+      </VisualSpec>
+      <VisualSpec label="without currency selection">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={visualValue}
+          onChange={() => {}}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={visualValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when only the currency select input is disabled">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={visualValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          isCurrencyInputDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with description">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={visualValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          description="How much is the fish?"
+        />
+      </VisualSpec>
+      <VisualSpec label="with high precision badge and regular price">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={visualValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          hasHighPrecisionBadge={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with high precision badge and high precision price">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={highPrecisionValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          hasHighPrecisionBadge={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with placeholder">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={emptyValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          placeholder="Please enter a price"
+        />
+      </VisualSpec>
+      <VisualSpec label="with error when not touched">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={emptyValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          errors={{ missing: true }}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error when touched">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={emptyValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          errors={{ missing: true }}
+          touched={{ amount: true, currencyCode: true }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when readonly">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={visualValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when not touched">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={emptyValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          warnings={{ customWarning: true }}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when touched">
+        <MoneyField
+          title="Price"
+          horizontalConstraint={7}
+          value={emptyValue}
+          onChange={() => {}}
+          currencies={visualCurrencies}
+          warnings={{ customWarning: true }}
+          touched={{ amount: true, currencyCode: true }}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+    </>
+  ),
 };
