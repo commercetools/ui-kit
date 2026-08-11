@@ -4,8 +4,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Tooltip, { TTooltipProps } from './tooltip';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import styled from '@emotion/styled';
-import Spacings from '@commercetools-uikit/spacings';
-import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
+// Source paths, not package names: tooltip declares neither of these, and CI
+// and Vercel install strictly.
+import SpacingsInline from '../../spacings/spacings-inline/src/inline';
+import CollapsiblePanel from '../../collapsible-panel/src/collapsible-panel';
 import { VisualSpec } from '@/storybook-helpers';
 
 const meta: Meta<typeof Tooltip> = {
@@ -187,7 +189,7 @@ export const AllVariants: StoryObj = {
         <CollapsiblePanel
           theme="dark"
           header={
-            <Spacings.Inline scale="m" alignItems="center">
+            <SpacingsInline scale="m" alignItems="center">
               <CollapsiblePanel.Header>Header</CollapsiblePanel.Header>
               <Tooltip
                 title={visualLongTitle}
@@ -197,7 +199,7 @@ export const AllVariants: StoryObj = {
               >
                 <PrimaryButton onClick={noop} label="Hello" />
               </Tooltip>
-            </Spacings.Inline>
+            </SpacingsInline>
           }
         >
           <div>Some content</div>
