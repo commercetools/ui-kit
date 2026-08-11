@@ -183,8 +183,7 @@ BasicExample.args = {
     `Nothing found for "${inputValue}"`,
 };
 
-// The route file calls these `options`/`loadOptions` and `value`; renamed to
-// avoid the module-scope names the demo stories already use.
+// Renamed to avoid the `loadOptions` the demo stories declare above.
 const visualLoadOptions = () =>
   Promise.resolve([
     { value: 'one', label: 'One' },

@@ -45,10 +45,8 @@ const Row = styled.div`
   display: block;
 `;
 
-// Percy got its width from the viewport. VisualSpec lays the label beside the
-// content, so the box shrink-wraps and justifyContent has no space to distribute.
-// The outline marks the container edges, without which the justifications are
-// indistinguishable; it takes no layout space so it cannot shift the content.
+// A bounded width gives justifyContent a fixed space to distribute. The dashed
+// outline shows those edges and takes no layout space, so it shifts nothing.
 const View = styled.div`
   display: flex;
   width: 600px;

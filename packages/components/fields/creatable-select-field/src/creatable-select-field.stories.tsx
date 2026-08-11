@@ -172,8 +172,7 @@ BasicExample.args = {
   badge: '',
 };
 
-// The route file calls these `options`/`loadOptions` and `value`; renamed to
-// avoid the module-scope names the demo stories already use.
+// Renamed to avoid the `options` the demo stories declare above.
 const visualOptions = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },

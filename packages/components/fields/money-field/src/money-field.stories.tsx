@@ -115,8 +115,7 @@ WithError.args = {
   },
 };
 
-// The route file calls these `value` and `currencies`; renamed because
-// `currencies` above is a longer list used by the demo stories.
+// Renamed to avoid the `currencies` the demo stories declare above.
 const visualValue = {
   amount: '13.50',
   currencyCode: 'EUR',
