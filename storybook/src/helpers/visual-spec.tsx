@@ -12,7 +12,11 @@ const SpecRow = styled.div`
     wider content, like the icon grids, still grow past it.
   */
   grid-template-columns: minmax(${designTokens.constraint16}, max-content) max-content;
-  align-items: center;
+  /*
+    Top, not center: centering puts the label at the vertical midpoint of its
+    row, which strands it in the middle of a tall state like the icon grids.
+  */
+  align-items: start;
   gap: ${designTokens.spacing30};
   /*
     Absorbs a small height change in one state so it doesn't shift every state

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import styled from '@emotion/styled';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import Text from '@commercetools-uikit/text';
 import Inset from '../../spacings-inset/src/inset';
@@ -46,9 +47,12 @@ const Row = styled.div`
 
 // Percy got its width from the viewport. VisualSpec lays the label beside the
 // content, so the box shrink-wraps and justifyContent has no space to distribute.
+// The outline marks the container edges, without which the justifications are
+// indistinguishable; it takes no layout space so it cannot shift the content.
 const View = styled.div`
   display: flex;
   width: 600px;
+  outline: 1px dashed ${designTokens.colorNeutral90};
 `;
 
 const InlineColorWrapper = styled.div`

@@ -9,7 +9,9 @@ import * as icons from './index';
 // `!dev` keeps these out of the sidebar: every color/size combination is
 // snapshot coverage, not something to navigate.
 const meta: Meta = {
-  title: 'Text & Media/Icons/Colors',
+  // Pinned so renaming the title does not orphan the existing baselines.
+  id: 'text-media-icons-colors',
+  title: 'Text & Media/Icons/IconColors',
   tags: ['vrt', '!autodocs', '!dev'],
   parameters: { chromatic: { disableSnapshot: false, viewports: [1600] } },
 };
