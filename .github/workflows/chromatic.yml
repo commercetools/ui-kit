@@ -49,9 +49,9 @@ jobs:
             design-system/**
             storybook/**
             pnpm-lock.yaml
+          # Ignored only if it cannot change what a story renders.
           files_ignore: |
             storybook/chromatic.config.json
-            storybook/.storybook/main.ts
 
       # Nothing UI-affecting, or the changesets version PR. Posts a passing
       # status itself so a required "UI Tests" check still reports.
@@ -139,5 +139,8 @@ jobs:
           zip: true
           # TurboSnap: snapshot only diff-affected stories (full on dispatch).
           onlyChanged: ${{ github.event_name != 'workflow_dispatch' }}
+          # Keeps main the accepted baseline, so a PR diffs against the current
+          # state of main rather than the last build someone accepted by hand.
+          autoAcceptChanges: main
           # Return at upload; Chromatic posts the status when its run finishes.
           exitOnceUploaded: true
