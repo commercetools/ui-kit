@@ -11,14 +11,16 @@ parallel `*.visual.stories.tsx`.
 Two consequences. The target file is already discovered by Storybook, so the
 silent-failure mode of a story that typechecks and never appears cannot happen.
 And the story needs `tags: ['vrt', '!autodocs']` plus
-`parameters: { chromatic: { disableSnapshot: false } }`: without the first tag it
-lands on the component's generated `Props` page as a wall of stacked states,
-without the rest Chromatic ignores it.
+`parameters: { chromatic: { disableSnapshot: false } }`. Each does one thing:
+`disableSnapshot: false` is the only opt-in to capture, `!autodocs` keeps the
+stacked frame off the component's generated `Props` page, and `vrt` is a marker
+no config reads.
 
 **`tags` must be a literal array, on the export or on `meta`.** Storybook indexes
 by parsing, not running, so a factory or a spread indexes as no tags: it
-typechecks, it renders, and `vrt` is silently absent. In an all-VRT file put the
-tags and `chromatic` parameters on `meta` rather than per export.
+typechecks, it renders, and both tags are silently absent, putting the frame on
+the `Props` page. In an all-VRT file put the tags and `chromatic` parameters on
+`meta` rather than per export.
 
 Two routes have no stories file to append to, both flagged as
 `no-target-stories-file`:
@@ -30,10 +32,21 @@ Two routes have no stories file to append to, both flagged as
   was created for the 9 colors. The `leading-icon`, `inline-svg` and
   `custom-icon` snapshots append to those sub-directories' own stories files.
 
+A file created for VRT only carries two things an appended story does not, both
+on `meta`, and `icons.stories.tsx` is the one example:
+
+- **A pinned `id`** (`id: 'text-media-icons-colors'`). Chromatic keys a baseline
+  to the story id, which is otherwise derived from the title, so renaming the
+  title orphans every baseline in the file. Do not remove it in a later tidy-up.
+- **`'!dev'` in `tags`**, which keeps the frame out of the sidebar. Justified
+  where every state is snapshot coverage rather than something to navigate; an
+  appended story shares a sidebar entry with the demo stories, so it does not
+  apply there.
+
 ## `VisualSpec` and `VisualSpecGroup`
 
 `VisualSpec` replaces Percy's `Spec`. It keeps the variant label, drops the props
-read-out, and renders the component first with the label inline beside it:
+read-out, and renders the label above the component:
 
 ```tsx
 import { VisualSpec, VisualSpecGroup } from '@/storybook-helpers';
@@ -226,8 +239,9 @@ which makes `args` mandatory when the component has a required prop, and this
 story is `render`-only.
 
 No JSDoc comment above the export. The story name already says what it is, and a
-line repeated across 69 files is noise. Drop the `tags` and `parameters` lines
-only when `--no-snapshots` was passed.
+line repeated across 69 files is noise. Under `--no-snapshots` drop only the
+`parameters` line; the tags stay, or the uncaptured story lands on the `Props`
+page.
 
 ## Grouping
 
@@ -374,15 +388,15 @@ states, which are invisible against white: `link`, `flat-button`, `field-label`,
 
 ## States that relied on the full viewport
 
-`VisualSpec` puts the label beside the content, so the box shrink-wraps and any
-state needing free space (`justifyContent`, `width: 100%`, a percentage)
-collapses. Every value in the run then renders identically: the states are all
-there, the axis under test is invisible. If frames whose labels differ only by a
-layout prop look the same, this is why.
+`VisualSpec`'s box is `width: max-content`, so it shrink-wraps and any state
+needing free space (`justifyContent`, `width: 100%`, a percentage) collapses.
+Every value in the run then renders identically: the states are all there, the
+axis under test is invisible. If frames whose labels differ only by a layout prop
+look the same, this is why.
 
 Give that state's own wrapper an explicit width. Do **not** make the box grow;
-that stretches every converted component and pushes their labels to the right
-edge. `spacings` fixed its six `justifyContent` states with `width: 600px` on the
+that stretches every converted component's surface band across the full frame.
+`spacings` fixed its six `justifyContent` states with `width: 600px` on the
 route's local `View`.
 
 ## Before you finish

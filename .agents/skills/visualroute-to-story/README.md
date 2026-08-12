@@ -15,35 +15,43 @@ converted and the gap is recorded in the planning doc.
 ## Where we deviate on purpose
 
 Parity is about which states are covered, not matching Percy pixel for pixel.
-Four departures, none changing what is under test:
+The scaffolding differences are in
+[What a converted story changes](#what-a-converted-story-changes). Two more
+departures, neither changing what is under test:
 
-- **Padding.** A global decorator adds `1rem` inside each story: Chromatic crops
-  to rendered content, so anything painted at the edge would clip.
-- **Layout.** Label beside the component, smaller per-state min-height, so a long
-  frame stays reviewable. A state whose content overflows its container needs
-  `overflow: hidden` on that container, or the overflow draws over the label.
-- **Grouping.** Runs of states sharing an axis may get a `VisualSpecGroup`
-  heading, only where it removes ambiguity.
+- **Padding.** A global decorator adds `1rem` inside each story, except where a
+  story sets `layout: 'fullscreen'`: Chromatic crops to rendered content, so
+  anything painted at the edge would clip.
 - **Light fixes.** A prop the component's types reject gets corrected, not cast,
   and called out in the PR. If the fix moves pixels, the route file gets it too,
   so Percy and Chromatic stay comparable while both run.
 
+One consequence of the label moving above the component: a state whose content
+overflows its container needs `overflow: hidden` on that container, or the
+overflow draws over a neighboring label.
+
 ## Percy vs Storybook + Chromatic
 
-| Concern                 | Percy                                                  | Storybook + Chromatic                                    |
-| ----------------------- | ------------------------------------------------------ | -------------------------------------------------------- |
-| Page under test         | `*.visualroute.jsx`, served by `visual-testing-app`    | a story export in `*.stories.tsx`, served by Storybook   |
-| Per-state wrapper       | `<Spec>` (`test/percy/spec.jsx`)                       | `<VisualSpec>` (`storybook/src/helpers/visual-spec.tsx`) |
-| What triggers a capture | a live `percySnapshot()` call in `*.visualspec.js`     | a story with `chromatic: { disableSnapshot: false }`     |
-| Interactions first      | puppeteer, in the visualspec                           | a Storybook `play` function                              |
-| Captured area           | the whole route page                                   | the story canvas                                         |
-| Snapshot identity       | the name passed to `percySnapshot()`                   | story title + export name                                |
-| Global config           | `.percy.yml` (widths `[1024]`)                         | `preview.tsx` + `storybook/chromatic.config.json`        |
-| Per-capture config      | options on the `percySnapshot()` call                  | `parameters.chromatic` on the story                      |
-| Run locally             | `visual-testing-app:start`, then `pnpm vrt:components` | `pnpm start`, then `pnpm --filter storybook chromatic`   |
-| CI                      | a step in `main.yml`                                   | `.github/workflows/chromatic.yml`                        |
-| Token                   | `PERCY_TOKEN`                                          | `CHROMATIC_PROJECT_TOKEN`                                |
-| Cost control            | none, every live snapshot every run                    | TurboSnap (`onlyChanged`) plus a changed-files gate      |
+| Concern                 | Percy                                                  | Storybook + Chromatic                                                   |
+| ----------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------- |
+| Page under test         | `*.visualroute.jsx`, served by `visual-testing-app`    | a story export in `*.stories.tsx`, served by Storybook                  |
+| Per-state wrapper       | `<Spec>` (`test/percy/spec.jsx`)                       | `<VisualSpec>` (`storybook/src/helpers/visual-spec.tsx`)                |
+| What triggers a capture | a live `percySnapshot()` call in `*.visualspec.js`     | a story with `chromatic: { disableSnapshot: false }`                    |
+| Interactions first      | puppeteer, in the visualspec                           | a Storybook `play` function                                             |
+| Captured area           | the whole route page                                   | the story canvas                                                        |
+| Snapshot identity       | the name passed to `percySnapshot()`                   | the story id, derived from title + export name unless `meta.id` pins it |
+| Global config           | `.percy.yml` (widths `[1024]`)                         | `preview.tsx` + `storybook/chromatic.config.json`                       |
+| Per-capture config      | options on the `percySnapshot()` call                  | `parameters.chromatic` on the story                                     |
+| Run locally             | `visual-testing-app:start`, then `pnpm vrt:components` | `pnpm --filter storybook chromatic` (see below)                         |
+| CI                      | a step in `main.yml`                                   | `.github/workflows/chromatic.yml`                                       |
+| Token                   | `PERCY_TOKEN`                                          | `CHROMATIC_PROJECT_TOKEN`                                               |
+| Cost control            | none, every live snapshot every run                    | TurboSnap (`onlyChanged`) plus a changed-files gate                     |
+
+**Running Chromatic locally.** `CHROMATIC_PROJECT_TOKEN` has to be in the
+environment. No dev server is involved: the CLI runs `buildScriptName` from
+`storybook/chromatic.config.json` and builds its own static Storybook. TurboSnap
+is set by the workflow, not that config, so a local run snapshots everything
+unless you pass `--only-changed` yourself.
 
 ## The pieces
 
@@ -59,13 +67,14 @@ Four departures, none changing what is under test:
 
 **Chromatic side.** Already in place; you should not need to touch any of it.
 
-| File                                    | What it is                                                         |
-| --------------------------------------- | ------------------------------------------------------------------ |
-| `storybook/src/helpers/visual-spec.tsx` | `VisualSpec` and `VisualSpecGroup`, the successors to `<Spec>`     |
-| `storybook/.storybook/preview.tsx`      | Global `disableSnapshot: true`, plus the Intl and theme decorators |
-| `storybook/chromatic.config.json`       | TurboSnap and build settings                                       |
-| `.github/workflows/chromatic.yml`       | CI: changed-files gate, then the Chromatic build                   |
-| `<component>.stories.tsx`               | Where a converted story is appended, beside the demo stories       |
+| File                                             | What it is                                                              |
+| ------------------------------------------------ | ----------------------------------------------------------------------- |
+| `storybook/src/helpers/visual-spec.tsx`          | `VisualSpec` and `VisualSpecGroup`, the successors to `<Spec>`          |
+| `storybook/.storybook/preview.tsx`               | Global `disableSnapshot: true` and `autodocs`, and the three decorators |
+| `storybook/src/decorators/padding-decorator.tsx` | The `1rem` of breathing room around every non-`fullscreen` story        |
+| `storybook/chromatic.config.json`                | TurboSnap and build settings                                            |
+| `.github/workflows/chromatic.yml`                | CI: changed-files gate, then the Chromatic build                        |
+| `<component>.stories.tsx`                        | Where a converted story is appended, beside the demo stories            |
 
 **The skill**, in this directory.
 
@@ -83,9 +92,16 @@ Four departures, none changing what is under test:
 /visualroute-to-story <component-name>
 ```
 
-Opted in means `tags: ['vrt', '!autodocs']` plus
-`parameters: { chromatic: { disableSnapshot: false } }`. Without both, the story
-renders in Storybook and Chromatic ignores it.
+A converted story carries `tags: ['vrt', '!autodocs']` plus
+`parameters: { chromatic: { disableSnapshot: false } }`. Three separate effects:
+
+- `disableSnapshot: false` is what opts the story into capture, overriding the
+  global default in `preview.tsx`. Nothing else does.
+- `!autodocs` keeps the stacked frame off the component's generated `Props` page,
+  countering the global `autodocs` tag.
+- `vrt` marks the story as migration output. Nothing in the repo reads it; it is
+  there to filter by hand and as the canary in
+  [SKILL.md step 7](SKILL.md#7-verify).
 
 The skill typechecks, builds, and counts states before and after;
 [SKILL.md step 7](SKILL.md#7-verify) covers what each check catches. By hand it
@@ -102,13 +118,13 @@ commented-out `percySnapshot`. See
 
 Same states, same props, same source order. Only Percy's scaffolding differs:
 
-|                      | Percy `Spec`                             | `VisualSpec`               |
-| -------------------- | ---------------------------------------- | -------------------------- |
-| Layout               | column: label bar, prop table, component | row: component, then label |
-| Label                | purple bar, bold, full width             | plain text                 |
-| Prop read-out        | monospace table of every prop            | dropped                    |
-| min-height per state | 400px                                    | 120px                      |
-| Grouping             | none                                     | `VisualSpecGroup` headings |
+|                      | Percy `Spec`                             | `VisualSpec`                  |
+| -------------------- | ---------------------------------------- | ----------------------------- |
+| Layout               | column: label bar, prop table, component | column: label, then component |
+| Label                | purple bar, bold, full width             | gray chip, shrink-wrapped     |
+| Prop read-out        | monospace table of every prop            | dropped                       |
+| min-height per state | 400px                                    | 120px                         |
+| Grouping             | none                                     | `VisualSpecGroup` headings    |
 
 The min-height drop is the visible difference, cutting a long frame to about a
 third of its height.

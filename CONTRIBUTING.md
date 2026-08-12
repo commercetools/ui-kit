@@ -68,9 +68,27 @@ Components in UI Kit are integration tested to ensure they meet requirements ove
 
 ### Testing visuals
 
-It is crucial for a Design System to not introduce visual regressions. To achieve this UI Kit performs Visual Regression Testing using [Percy](https://percy.io/). Every component must have a so called visual specification alongside it. This is just a React component conveniently defining all visual states such placeholder being filled, a warning being triggered or a component being in readonly state. An example can be found here. This specification is rendered and sent to Percy via a GitHub Action. Once regressions are detected, they will be reported on a subsequent change and have to be approved by a UI/UX Designer.
+A Design System must not introduce visual regressions, so UI Kit runs Visual Regression Testing, currently on [Percy](https://percy.io/) and migrating to [Chromatic](https://www.chromatic.com/). Until the migration is signed off, a new component needs both.
 
-> **Migrating to Chromatic (Q3 2026).** Visual regression testing is moving from Percy to [Chromatic](https://www.chromatic.com/), which captures Storybook stories instead of the `.visualroute.jsx` / `.visualspec.js` pair. Percy remains the system of record until the migration is signed off, so keep adding visual specifications as described above. New components will also want a stacked `AllVariants` story; see the existing converted components for the shape.
+#### Percy (current system of record)
+
+Every component needs a visual specification alongside it: a React component rendering each visual state, such as a filled placeholder, a triggered warning, or a read-only field. See [`primary-button.visualroute.jsx`](packages/components/buttons/primary-button/src/primary-button.visualroute.jsx) and its companion `primary-button.visualspec.js`. A GitHub Action renders it and sends it to Percy; regressions surface on the next change and need a UI/UX Designer's approval.
+
+#### Chromatic (in migration, Q3 2026)
+
+Chromatic captures Storybook stories instead of the `.visualroute.jsx` / `.visualspec.js` pair. Add one `AllVariants` story to the component's `*.stories.tsx`, one `<VisualSpec>` per state:
+
+```tsx
+import { VisualSpec } from '@/storybook-helpers';
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => <>{/* <VisualSpec label="..."> per state */}</>,
+};
+```
+
+Snapshots are off by default, so `disableSnapshot: false` is the opt-in; `!autodocs` keeps the stacked frame off the generated `Props` page. Accept or reject diffs in the Chromatic UI, where the `UI Tests` check stays red until you do. `.github/workflows/chromatic.yml` skips the build entirely when nothing under `packages/`, `design-system/`, `storybook/` or the lockfile changed, posting a passing `UI Tests` status instead, so a green check can mean "not run"; it also uses TurboSnap, so trigger it manually for a full rebuild. Locally: `CHROMATIC_PROJECT_TOKEN=... pnpm --filter storybook chromatic`.
 
 ## Opening an Issue
 

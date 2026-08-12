@@ -116,7 +116,7 @@ Keep the local providers inline in the story body.
 ### 3. Run the analyzer
 
 ```bash
-node .claude/skills/visualroute-to-story/resources/analyze-visualroute.mjs <route-file> --pretty
+node .agents/skills/visualroute-to-story/resources/analyze-visualroute.mjs <route-file> --pretty
 ```
 
 It emits a JSON conversion plan: component name, the resolved target stories file
@@ -184,7 +184,7 @@ Then count: `<VisualSpec>` in the output must equal `<Spec>` in the route file,
 unless a preserved `.map()` generates them.
 
 Then confirm the tags reached the index. Both commands above pass on a story that
-indexed without `vrt`, so this is the only place that failure is visible:
+indexed with no tags at all, so this is the only place that failure is visible:
 
 ```bash
 node -e "const j=require('./storybook/storybook-static/index.json');
@@ -192,8 +192,10 @@ node -e "const j=require('./storybook/storybook-static/index.json');
     .forEach((e) => console.log(e.name, '|', (e.tags || []).join(',')))"
 ```
 
-Every converted story must list `vrt`. One that does not has non-literal `tags`;
-see
+Every converted story must list `vrt`. Missing means the `tags` array is
+non-literal, so `!autodocs` did not apply either and the stacked frame is on the
+component's `Props` page. Capture itself is unaffected, since Chromatic reads
+`parameters` at runtime. See
 [resources/conversion-recipe.md](resources/conversion-recipe.md#where-the-output-goes).
 
 `tsc` catches the typing problems listed in
