@@ -240,7 +240,7 @@ catalogs:
 
     # Output / bundling
     '@preconstruct/cli': 2.8.13
-    browserslist: 4.28.2
+    browserslist: 4.28.7
     bundlewatch: ^0.4.1
 
   lint:
