@@ -4,6 +4,7 @@ import PrimaryActionDropdown, {
   type TPrimaryActionDropdown,
 } from './index';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
+import { VisualSpec } from '@/storybook-helpers';
 
 const meta: Meta<typeof PrimaryActionDropdown> = {
   title: 'components/Dropdowns/PrimaryActionDropdown',
@@ -42,3 +43,34 @@ export const BasicExample: Story = (args: TPrimaryActionDropdown) => {
 };
 
 BasicExample.args = {};
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="regular">
+        <PrimaryActionDropdown>
+          <Option iconLeft={<PlusBoldIcon />} onClick={() => {}}>
+            Primary option
+          </Option>
+          <Option onClick={() => {}}>Another option</Option>
+        </PrimaryActionDropdown>
+      </VisualSpec>
+      <VisualSpec label="when all options are disabled">
+        <PrimaryActionDropdown>
+          <Option
+            isDisabled={true}
+            iconLeft={<PlusBoldIcon />}
+            onClick={() => {}}
+          >
+            Primary option
+          </Option>
+          <Option isDisabled={true} onClick={() => {}}>
+            Another option
+          </Option>
+        </PrimaryActionDropdown>
+      </VisualSpec>
+    </>
+  ),
+};

@@ -1,5 +1,5 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
-import { iconArgType } from '@/storybook-helpers';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 import TextField from './text-field';
 import { useState } from 'react';
 
@@ -74,4 +74,118 @@ BasicExample.args = {
   onInfoButtonClick: () => alert('info button clicked'),
   additionalInfo: 'Only use letters, numbers, and underscores',
   badge: '',
+};
+
+const value = 'hello world, how are you?';
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <TextField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when required">
+        <TextField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isRequired={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <TextField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is shown">
+        <TextField
+          title="Welcome Text"
+          value=""
+          onChange={() => {}}
+          horizontalConstraint={7}
+          placeholder="Enter a text"
+        />
+      </VisualSpec>
+      <VisualSpec label="when placeholder is shown and disabled">
+        <TextField
+          title="Welcome Text"
+          value=""
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isDisabled={true}
+          placeholder="Enter a text"
+        />
+      </VisualSpec>
+      <VisualSpec label="with error when not touched">
+        <TextField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error when touched">
+        <TextField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+          touched={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when not touched">
+        <TextField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when touched">
+        <TextField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          touched={true}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with isCondensed">
+        <TextField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isCondensed={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with additionalInfo prop">
+        <TextField
+          title="Welcome Text"
+          value={value}
+          onChange={() => {}}
+          horizontalConstraint={7}
+          isCondensed={true}
+          additionalInfo="A string containing additional information"
+        />
+      </VisualSpec>
+    </>
+  ),
 };

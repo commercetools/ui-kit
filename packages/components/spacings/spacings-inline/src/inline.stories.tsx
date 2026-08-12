@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import styled from '@emotion/styled';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import Text from '@commercetools-uikit/text';
 import Inset from '../../spacings-inset/src/inset';
@@ -44,11 +45,32 @@ const Row = styled.div`
   display: block;
 `;
 
-// Percy got its width from the viewport. VisualSpec lays the label beside the
-// content, so the box shrink-wraps and justifyContent has no space to distribute.
+// A bounded width gives justifyContent a fixed space to distribute. The edge
+// rules mark it without taking layout space, so they shift nothing.
 const View = styled.div`
+  position: relative;
   display: flex;
   width: 600px;
+  padding: 0 ${designTokens.spacing10};
+  outline: 1px dashed ${designTokens.colorNeutral90};
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    width: 1px;
+    background-color: ${designTokens.colorNeutral60};
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
 `;
 
 const InlineColorWrapper = styled.div`
@@ -131,17 +153,14 @@ export const AllVariants: StoryObj = {
   render: () => (
     <>
       {flexProps.map((prop: TAlignItem) => (
-        <VisualSpec
-          key={`inline-${prop}`}
-          label={`Inline - when alignItems is ${prop}`}
-        >
+        <VisualSpec key={`inline-${prop}`} label={`when alignItems is ${prop}`}>
           <InlineExample alignItems={prop} />
         </VisualSpec>
       ))}
       {justifyProps.map((prop: TJustifyContent) => (
         <VisualSpec
           key={`inline-justify-${prop}`}
-          label={`Inline - when justifyContent is ${prop}`}
+          label={`when justifyContent is ${prop}`}
         >
           <View>
             <Constraints.Horizontal>

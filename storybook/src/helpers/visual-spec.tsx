@@ -3,24 +3,13 @@ import styled from '@emotion/styled';
 import { designTokens } from '../../../design-system';
 
 const SpecRow = styled.div`
-  display: grid;
-  /*
-    The content column needs a definite width, not a shrink-to-fit one, because
-    percentage widths resolve against it. Constraints.Horizontal is width 100%
-    capped by a token, so a fit-content column collapses every constrained input
-    to its text width. constraint16 is the widest ui-kit offers; max-content lets
-    wider content, like the icon grids, still grow past it.
-  */
-  grid-template-columns: minmax(${designTokens.constraint16}, max-content) max-content;
-  align-items: center;
-  gap: ${designTokens.spacing30};
-  /*
-    Absorbs a small height change in one state so it doesn't shift every state
-    below it and light up the whole diff. Sized to a control, not to the tallest
-    component in the repo: at 400px a 35-state stack was 83% whitespace.
-  */
-  min-height: 56px;
-  padding: ${designTokens.spacing30} 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: ${designTokens.spacing50};
+  /* Absorbs a small height change so it can't shift every state below it. */
+  min-height: 120px;
+  padding: ${designTokens.spacing50} 0;
 
   /* Separator between states, so a tall one cannot read as two. */
   & + & {
@@ -28,16 +17,30 @@ const SpecRow = styled.div`
   }
 `;
 
+/* A definite width, or Constraints.Horizontal's `width: 100%` resolves against
+   a shrink-to-fit box and constrained inputs collapse to their text width. */
 const Box = styled.div<{ backgroundColor?: string }>`
-  min-width: 0;
+  min-width: ${designTokens.constraint16};
+  width: max-content;
+  max-width: 100%;
   background-color: ${(props) =>
     props.backgroundColor ?? designTokens.colorSurface};
 `;
 
+/* Gray, not a tinted family: a colored band above a component reads as part of
+   that component's state. */
 const Label = styled.div`
+  align-self: flex-start;
   font-family: ${designTokens.fontFamily};
   font-size: ${designTokens.fontSize30};
   color: ${designTokens.colorSolid};
+  background-color: ${designTokens.colorNeutral90};
+  border-radius: ${designTokens.borderRadius4};
+  padding: ${designTokens.spacing10} ${designTokens.spacing20};
+
+  &::after {
+    content: ':';
+  }
 `;
 
 const GroupContainer = styled.div`
@@ -65,25 +68,17 @@ type TVisualSpecGroupProps = {
   children?: ReactNode;
 };
 
-/**
- * Chromatic replacement for Percy's `Spec` (`test/percy/spec.jsx`), wrapped
- * around each captured state in a generated visual-regression story. Rationale
- * for what it keeps and drops:
- * `.agents/skills/visualroute-to-story/resources/conversion-recipe.md`.
- */
+/** Wraps one captured state in a visual-regression story, with its label. */
 const VisualSpec = ({ label, backgroundColor, children }: TVisualSpecProps) => (
   <SpecRow>
-    <Box backgroundColor={backgroundColor}>{children}</Box>
     <Label>{label}</Label>
+    <Box backgroundColor={backgroundColor}>{children}</Box>
   </SpecRow>
 );
 
 VisualSpec.displayName = 'VisualSpec';
 
-/**
- * Heading over a run of `VisualSpec`s that share an axis, so their own labels
- * don't each repeat it.
- */
+/** Heading over a run of `VisualSpec`s that share an axis. */
 export const VisualSpecGroup = ({ label, children }: TVisualSpecGroupProps) => (
   <GroupContainer>
     <GroupLabel>{label}</GroupLabel>

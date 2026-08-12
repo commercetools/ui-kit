@@ -1,6 +1,5 @@
 {
   "storybookBaseDir": "storybook",
   "buildScriptName": "build",
-  "onlyChanged": true,
   "zip": true
 }

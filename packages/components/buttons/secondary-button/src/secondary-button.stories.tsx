@@ -79,8 +79,8 @@ export const AllVariants: StoryObj = {
         />
       </VisualSpec>
 
-      {/* Percy passed tone="default", which is not a valid tone and always fell
-          through to the secondary styles. Omitted, not renamed: same pixels. */}
+      {/* The label names tone="default", which is not a valid tone and always
+          fell through to the secondary styles. Omitted, not renamed. */}
       <VisualSpec label='with theme - when toggled with tone "default"'>
         <SecondaryButton
           label="A label text"

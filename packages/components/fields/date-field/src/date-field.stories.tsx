@@ -1,5 +1,6 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import DateField from './date-field';
+import { VisualSpec } from '@/storybook-helpers';
 import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
 import { useState } from 'react';
 import { iconArgType } from '@/storybook-helpers';
@@ -73,4 +74,116 @@ BasicExample.args = {
   hint: 'Select the date of publication',
   description: '',
   badge: '',
+};
+
+const value = '2018-09-20';
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when required">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+          isRequired={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with description">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+          description="When will the product be avialable?"
+        />
+      </VisualSpec>
+      <VisualSpec label="with placeholder">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value=""
+          onChange={() => {}}
+          placeholder="Select release date"
+        />
+      </VisualSpec>
+      <VisualSpec label="with error when not touched">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value=""
+          onChange={() => {}}
+          errors={{ missing: true }}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error when touched">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value=""
+          onChange={() => {}}
+          errors={{ missing: true }}
+          touched={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+          isReadOnly
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when not touched">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value=""
+          onChange={() => {}}
+          warnings={{ customWarning: true }}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when touched">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value=""
+          onChange={() => {}}
+          warnings={{ customWarning: true }}
+          touched={true}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="is condensed">
+        <DateField
+          title="Release Date"
+          horizontalConstraint={7}
+          value={value}
+          onChange={() => {}}
+          isCondensed={true}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

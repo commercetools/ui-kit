@@ -1,11 +1,7 @@
 import type { Decorator } from '@storybook/react-vite';
 
-/*
-  Chromatic crops each snapshot to the story's rendered content, so anything
-  painted at the very edge clips: a group heading's ascenders, a focus ring, a
-  box-shadow. Body or `layout: 'padded'` padding sits outside the crop and can't
-  reach in, so the room has to come from inside the story.
-*/
+// Chromatic crops to rendered content, so focus rings and shadows painted at
+// the edge clip. Padding outside the story can't reach in.
 const paddedStyle = { padding: '1rem' };
 
 export const withPaddingDecorator: Decorator = (Story, context) =>

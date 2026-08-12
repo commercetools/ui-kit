@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { VisualSpec } from '@/storybook-helpers';
+import { FiltersWithState } from './fixtures/filters-with-state';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import Filters, { type TFiltersProps } from './filters';
 import {
@@ -737,4 +739,89 @@ export const WithMultipleMenuInputs: Story = () => {
       />
     </div>
   );
+};
+
+const selectedPrimaryColors = [
+  'Test label that is very very long for testing',
+  'green',
+  'yellow',
+  'orange',
+  'red',
+];
+
+const selectedSecondaryColors = ['purple', 'forest'];
+
+// FiltersWithState types these four as required, but coalesces undefined
+// internally. The route file omitted them; these are the same runtime values.
+const filtersDefaults = {
+  selectedPrimaryColors: [],
+  selectedSecondaryColors: [],
+  isDisabled: false,
+  isPersistent: false,
+};
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="Filters - closed with 0 filters selected">
+        <FiltersWithState {...filtersDefaults} />
+      </VisualSpec>
+      <VisualSpec label="opened with 0 filters selected">
+        <FiltersWithState {...filtersDefaults} defaultOpen={true} />
+      </VisualSpec>
+      <VisualSpec label="closed with 1 filter selected">
+        <FiltersWithState
+          {...filtersDefaults}
+          selectedSecondaryColors={selectedSecondaryColors}
+        />
+      </VisualSpec>
+      <VisualSpec label="opened with 1 filters selected">
+        <FiltersWithState
+          {...filtersDefaults}
+          defaultOpen={true}
+          selectedPrimaryColors={selectedPrimaryColors}
+        />
+      </VisualSpec>
+      <VisualSpec label="closed with 2 filters selected">
+        <FiltersWithState
+          {...filtersDefaults}
+          selectedPrimaryColors={selectedPrimaryColors}
+          selectedSecondaryColors={selectedSecondaryColors}
+        />
+      </VisualSpec>
+      <VisualSpec label="opened with 2 filters selected">
+        <FiltersWithState
+          {...filtersDefaults}
+          defaultOpen={true}
+          selectedPrimaryColors={selectedPrimaryColors}
+          selectedSecondaryColors={selectedSecondaryColors}
+        />
+      </VisualSpec>
+      <VisualSpec label="opened with 1 persistent filter and 0 filters selected">
+        <FiltersWithState
+          {...filtersDefaults}
+          defaultOpen={true}
+          isPersistent={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="opened with 1 persistent filter and 1 filter selected">
+        <FiltersWithState
+          {...filtersDefaults}
+          defaultOpen={true}
+          isPersistent={true}
+          selectedSecondaryColors={selectedSecondaryColors}
+        />
+      </VisualSpec>
+      <VisualSpec label="opened with 1 disabled filter with selected values">
+        <FiltersWithState
+          {...filtersDefaults}
+          defaultOpen={true}
+          isDisabled={true}
+          selectedPrimaryColors={selectedPrimaryColors}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

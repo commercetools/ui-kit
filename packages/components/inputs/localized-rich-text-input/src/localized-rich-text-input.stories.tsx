@@ -182,8 +182,7 @@ WithErrors.args = {
   },
 };
 
-// The route file calls this `initialValue`; renamed because `initialValue`
-// above is a different, single-locale string used by the demo stories.
+// Renamed to avoid the `initialValue` the demo stories declare above.
 const visualLorem =
   '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>';
 

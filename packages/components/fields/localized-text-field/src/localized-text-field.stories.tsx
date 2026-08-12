@@ -1,4 +1,5 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { VisualSpec } from '@/storybook-helpers';
 import LocalizedTextField, {
   TLocalizedTextFieldProps,
 } from './localized-text-field';
@@ -99,4 +100,166 @@ WithError.args = {
     en: 'An error for language en',
     de: 'Ein Fehler für die Sprache de',
   },
+};
+
+const visualValue = {
+  en: 'hello world',
+  de: 'hallo welt',
+  es: 'hola mundo',
+};
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when languages are opened by default">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when expansion controls are hidden">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          hideLanguageExpansionControls={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only and open">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isReadOnly={true}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only and closed">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled and open">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isDisabled={true}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled and closed">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when condensed and open">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isCondensed={true}
+          defaultExpandLanguages={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when condensed and closed">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          isCondensed={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is an error and the field is not touched">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+        />
+      </VisualSpec>
+      <VisualSpec label="when there is an error and the field is touched">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+          touched={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when not touched">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when touched">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          touched={true}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with error and additional info when touched">
+        <LocalizedTextField
+          title="Welcome Text"
+          value={visualValue}
+          onChange={() => {}}
+          selectedLanguage="en"
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+          additionalInfo={{ en: 'Some intel' }}
+          touched={true}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

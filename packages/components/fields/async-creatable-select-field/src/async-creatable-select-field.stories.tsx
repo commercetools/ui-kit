@@ -1,7 +1,7 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import AsyncCreatableSelectField from './async-creatable-select-field';
 import { useEffect, useState } from 'react';
-import { iconArgType } from '@/storybook-helpers';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 
 const meta: Meta<typeof AsyncCreatableSelectField> = {
   title: 'Form/Fields/AsyncCreatableSelectField',
@@ -190,4 +190,130 @@ BasicExample.args = {
   createOptionPosition: 'last',
   isCondensed: false,
   noOptionsMessage: (str: string) => `There are no animals matching "${str}"`,
+};
+
+// Renamed to avoid the `loadOptions` the demo stories declare above.
+const visualLoadOptions = () =>
+  Promise.resolve([
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+  ]);
+
+const visualValue = { value: 'one', label: 'One' };
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <AsyncCreatableSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <AsyncCreatableSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label={'with "missing" error when not touched'}>
+        <AsyncCreatableSelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+        />
+      </VisualSpec>
+      <VisualSpec label={'with "missing" error when touched'}>
+        <AsyncCreatableSelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+          touched={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with hint">
+        <AsyncCreatableSelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hint="Select a state"
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only">
+        <AsyncCreatableSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when has warning">
+        <AsyncCreatableSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when not touched">
+        <AsyncCreatableSelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when touched">
+        <AsyncCreatableSelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          touched={true}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="is condensed">
+        <AsyncCreatableSelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          loadOptions={visualLoadOptions}
+          horizontalConstraint={7}
+          isCondensed={true}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

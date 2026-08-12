@@ -4,6 +4,7 @@ import QuickFilters, {
   TQuickFiltersProps,
 } from './quick-filters';
 import { useState } from 'react';
+import { VisualSpec } from '@/storybook-helpers';
 
 const meta: Meta<typeof QuickFilters> = {
   title: 'components/QuickFilters',
@@ -54,4 +55,28 @@ export const BasicExample: Story = {
     return <QuickFilters {...args} items={items} onItemClick={onItemClick} />;
   },
   args: {},
+};
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <VisualSpec label="Renders an active + inactive item">
+      <QuickFilters
+        items={[
+          {
+            id: '1',
+            label: 'Accepted',
+            isActive: true,
+          },
+          {
+            id: '2',
+            label: 'Rejected',
+            isActive: false,
+          },
+        ]}
+        onItemClick={() => {}}
+      />
+    </VisualSpec>
+  ),
 };

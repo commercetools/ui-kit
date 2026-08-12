@@ -1,5 +1,5 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
-import { iconArgType } from '@/storybook-helpers';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { iconArgType, VisualSpec } from '@/storybook-helpers';
 import SelectField from './select-field';
 import { useEffect, useState } from 'react';
 
@@ -154,4 +154,131 @@ BasicExample.args = {
   onInfoButtonClick: () => alert('info button clicked'),
   hasWarning: false,
   badge: '',
+};
+
+// Renamed to avoid the `options` the demo stories declare above.
+const visualOptions = [
+  { value: 'one', label: 'One' },
+  { value: 'two', label: 'Two' },
+];
+
+const visualValue = 'one';
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="minimal">
+        <SelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+        />
+      </VisualSpec>
+      <VisualSpec label="when disabled">
+        <SelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          isDisabled={true}
+        />
+      </VisualSpec>
+      <VisualSpec label={'with "missing" error when not touched'}>
+        <SelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+        />
+      </VisualSpec>
+      <VisualSpec label={'with "missing" error when touched'}>
+        <SelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          errors={{ missing: true }}
+          touched={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with hint">
+        <SelectField
+          title="State"
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          hint="Select a state"
+        />
+      </VisualSpec>
+      <VisualSpec label="when read-only">
+        <SelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          isReadOnly={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when is condensed">
+        <SelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          isCondensed={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="when has warning">
+        <SelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          hasWarning={true}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when not touched">
+        <SelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+      <VisualSpec label="with warning when touched">
+        <SelectField
+          title="State"
+          name="form-field-name"
+          value={visualValue}
+          onChange={() => {}}
+          options={visualOptions}
+          horizontalConstraint={7}
+          warnings={{ customWarning: true }}
+          touched={true}
+          renderWarning={() => 'Custom warning'}
+        />
+      </VisualSpec>
+    </>
+  ),
 };

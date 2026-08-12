@@ -1,5 +1,6 @@
 import type { ComponentProps } from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { VisualSpec } from '@/storybook-helpers';
 import Constraints from './../index';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -99,4 +100,109 @@ export const VisualizeConstraints: StoryFn<ConstraintsHorizontalProps> = () => {
       </Stack>
     </Wrapper>
   );
+};
+
+const GreenBox = styled.div`
+  width: 100%;
+  height: 20px;
+  background-color: green;
+`;
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="when max is 1">
+        <Constraints.Horizontal max={1}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 2">
+        <Constraints.Horizontal max={2}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 3">
+        <Constraints.Horizontal max={3}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 4">
+        <Constraints.Horizontal max={4}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 5">
+        <Constraints.Horizontal max={5}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 6">
+        <Constraints.Horizontal max={6}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 7">
+        <Constraints.Horizontal max={7}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 8">
+        <Constraints.Horizontal max={8}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 9">
+        <Constraints.Horizontal max={9}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 10">
+        <Constraints.Horizontal max={10}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 11">
+        <Constraints.Horizontal max={11}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 12">
+        <Constraints.Horizontal max={12}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 13">
+        <Constraints.Horizontal max={13}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 14">
+        <Constraints.Horizontal max={14}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 15">
+        <Constraints.Horizontal max={15}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label="when max is 16">
+        <Constraints.Horizontal max={16}>
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label='when max is "scale"'>
+        <Constraints.Horizontal max="scale">
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+      <VisualSpec label='when max is "auto"'>
+        <Constraints.Horizontal max="auto">
+          <GreenBox />
+        </Constraints.Horizontal>
+      </VisualSpec>
+    </>
+  ),
 };

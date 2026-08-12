@@ -164,8 +164,7 @@ BasicExample.args = {
   showOptionGroupDivider: false,
 };
 
-// The route file calls these `options` and `value`; renamed because `options`
-// above is a different, much longer list used by the demo story.
+// Renamed to avoid the `options` the demo stories declare above.
 const visualOptions = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },

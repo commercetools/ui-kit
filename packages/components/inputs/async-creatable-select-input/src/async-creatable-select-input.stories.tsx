@@ -196,8 +196,7 @@ BasicExample.args = {
   defaultOptions: defaultOptions,
 };
 
-// The route file calls these `loadOptions` and `value`; renamed because
-// `loadOptions` above is a different, delayed implementation.
+// Renamed to avoid the `loadOptions` the demo stories declare above.
 const visualLoadOptions = () =>
   Promise.resolve([
     { value: 'one', label: 'One' },

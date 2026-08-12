@@ -61,8 +61,7 @@ const leadingIconColors = [
 ] as const;
 const leadingIconSizes = ['10', '20', '30', '40'] as const;
 
-// Percy rendered `Object.keys(icons).sort()[0]`, pinned here so the frame does
-// not silently change icon when the icon set grows.
+// Pinned so the frame doesn't silently change icon when the icon set grows.
 const IconForLeadingIcon = AngleDownIcon;
 
 export const AllVariants: StoryObj = {

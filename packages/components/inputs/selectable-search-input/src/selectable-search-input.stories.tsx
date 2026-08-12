@@ -109,8 +109,7 @@ export const BasicExample: Story = {
   },
 };
 
-// The route file calls these `value` and `options`; renamed because `options`
-// above is a different list used by the demo story.
+// Renamed to avoid the `options` the demo stories declare above.
 const visualValue = {
   text: 'hello world',
   option: 'one',

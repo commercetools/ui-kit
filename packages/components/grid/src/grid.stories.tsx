@@ -1,6 +1,8 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import styled from '@emotion/styled';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Grid from './grid';
+import { VisualSpec } from '@/storybook-helpers';
 
 const meta: Meta<typeof Grid> = {
   title: 'layout/Grid',
@@ -116,4 +118,52 @@ export const ResponsiveColumnsWithMinimumAndMaximumSizes = BasicExample.bind(
 ResponsiveColumnsWithMinimumAndMaximumSizes.args = {
   gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
   gridGap: '16px',
+};
+
+const createList = (size: number) =>
+  Array.from({ length: size }).map((_, index) => index + 1);
+
+const VisualPlaceholder = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: pink;
+  padding: 16px;
+  font-size: 16px;
+  font-family: ${designTokens.fontFamily};
+`;
+
+export const AllVariants: StoryObj = {
+  tags: ['vrt', '!autodocs'],
+  parameters: { chromatic: { disableSnapshot: false } },
+  render: () => (
+    <>
+      <VisualSpec label="With fixed columns">
+        <Grid
+          gridGap="16px"
+          gridAutoColumns="1fr"
+          gridTemplateColumns="repeat(3, 1fr)"
+        >
+          {createList(6).map((el, index) => (
+            <Grid.Item key={index}>
+              <VisualPlaceholder>{el}</VisualPlaceholder>
+            </Grid.Item>
+          ))}
+        </Grid>
+      </VisualSpec>
+      <VisualSpec label="With auto-sizing columns">
+        <Grid
+          gridGap="16px"
+          gridAutoColumns="1fr"
+          gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+        >
+          {createList(6).map((el, index) => (
+            <Grid.Item key={index}>
+              <VisualPlaceholder>{el}</VisualPlaceholder>
+            </Grid.Item>
+          ))}
+        </Grid>
+      </VisualSpec>
+    </>
+  ),
 };
