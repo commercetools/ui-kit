@@ -42,10 +42,10 @@ module.exports = [
     },
   },
 
-  // React display-name override for visual routes and docs
+  // React display-name override for docs
   // (react plugin is registered for *.js, *.jsx, *.tsx)
   {
-    files: ['**/*.visualroute.js', '**/docs/*.js'],
+    files: ['**/docs/*.js'],
     rules: {
       'react/display-name': 'off',
     },
@@ -58,19 +58,6 @@ module.exports = [
     rules: {
       'import/no-unresolved': 'off',
       'import/no-extraneous-dependencies': 'off',
-    },
-  },
-
-  // Globals for visual spec files
-  {
-    files: ['**/*.visualspec.js'],
-    languageOptions: {
-      globals: {
-        ...globals.jest,
-        page: 'readonly',
-        HOST: 'readonly',
-        globalThis: 'readonly',
-      },
     },
   },
 

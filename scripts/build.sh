@@ -8,7 +8,7 @@ pnpm compile-intl
 
 # --- declaration-emit leak workaround (FEC-938) ---
 # `@commercetools-frontend/ui-kit` (the aggregate preset) is a root
-# devDependency because the .visualroute/bundlespec fixtures import it. Under
+# devDependency because the bundlespec fixture imports it. Under
 # strict pnpm that puts a `node_modules/@commercetools-frontend/ui-kit` symlink
 # in place, and preconstruct's declaration emit then prefers that resolvable
 # bare specifier over the in-package relative path — leaking
