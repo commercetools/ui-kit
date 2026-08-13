@@ -35,9 +35,8 @@ This is a pnpm workspaces monorepo. Packages fall into these categories:
 - **`presets/`** — Convenience packages that re-export groups of component
   packages (e.g. `@commercetools-uikit/buttons` re-exports all button types).
   `presets/ui-kit` is the all-in-one `@commercetools-frontend/ui-kit` package.
-- **`storybook/`** — Storybook playground (private, not published).
-- **`visual-testing-app/`** — Vite app used by Percy for visual regression
-  testing (private).
+- **`storybook/`** — Storybook playground (private, not published). Also the
+  source of visual regression tests: Chromatic captures stories from here.
 - **`generators/`** — Scaffolding tools for package.json and README generation
   (private).
 
@@ -62,13 +61,12 @@ packages are in a fixed version group (they share the same version number).
 
 ### Verify your work
 
-| Task              | Command                                             | Notes                                        |
-| ----------------- | --------------------------------------------------- | -------------------------------------------- |
-| Test one package  | `pnpm --filter @commercetools-uikit/<pkg> run test` | Fastest feedback for a single package        |
-| Test by path      | `pnpm test packages/components/buttons`             | Positional path; matches any tests under it  |
-| Typecheck         | `pnpm typecheck`                                    | Runs `tsc --noEmit --skipLibCheck`           |
-| Lint              | `pnpm lint`                                         | Uses Jest runner for ESLint                  |
-| Visual test suite | `pnpm test:visual`                                  | Runs `--runInBand`; needs visual-testing-app |
+| Task             | Command                                             | Notes                                       |
+| ---------------- | --------------------------------------------------- | ------------------------------------------- |
+| Test one package | `pnpm --filter @commercetools-uikit/<pkg> run test` | Fastest feedback for a single package       |
+| Test by path     | `pnpm test packages/components/buttons`             | Positional path; matches any tests under it |
+| Typecheck        | `pnpm typecheck`                                    | Runs `tsc --noEmit --skipLibCheck`          |
+| Lint             | `pnpm lint`                                         | Uses Jest runner for ESLint                 |
 
 ### Common workflows
 
@@ -108,8 +106,8 @@ Run `pnpm build` — wraps codegen and `preconstruct build` into one step.
 - All `@commercetools-uikit/*` and `@commercetools-frontend/ui-kit` packages are
   **published to npm** under a fixed version group — every semver bump applies to
   all packages. Treat all public API changes as semver-significant.
-- `storybook/`, `visual-testing-app/`, and `generators/` are **private** — not
-  published, no semver obligations.
+- `storybook/` and `generators/` are **private** — not published, no semver
+  obligations.
 - Components should be **domain-agnostic** — no commercetools business logic.
   They implement the design system, not product features.
 - Peer dependencies: consumers must provide `react`, `react-dom`, and typically
@@ -131,9 +129,9 @@ Run `pnpm build` — wraps codegen and `preconstruct build` into one step.
   `pnpm lint:js` or `pnpm lint`, not `npx eslint`.
 - **Pre-commit hooks** run Prettier, lint (via Jest), and `tsc-files` on staged
   `.ts`/`.tsx` files. Expect these to block if types are broken.
-- **Visual specs** (`.visualspec.js` / `.visualroute.jsx`) are consumed by Percy
-  for visual regression testing. If you change component appearance, the visual
-  spec may need updating and Percy snapshots must be approved.
+- **Changing appearance means updating a Chromatic story and accepting the new
+  baseline**, or the required `UI Tests` check stays red. See
+  [CONTRIBUTING.md](CONTRIBUTING.md#testing-visuals).
 - **Workspace constraints** enforce metadata consistency (license,
   repository fields, publishConfig) across all public packages.
 
@@ -144,8 +142,7 @@ Run `pnpm build` — wraps codegen and `preconstruct build` into one step.
   `refactor(app/my-component): ...`).
 - Component files follow a naming pattern:
   `<component-name>.tsx`, `<component-name>.spec.js`,
-  `<component-name>.stories.tsx`, `<component-name>.styles.ts`,
-  `<component-name>.visualroute.jsx`, `<component-name>.visualspec.js`.
+  `<component-name>.stories.tsx`, `<component-name>.styles.ts`.
 - Each component has an `export-types.ts` that re-exports its public types and
   a `version.ts` that re-exports the package version.
 - Tests use `@testing-library/react` — behavior-driven, no shallow rendering.
