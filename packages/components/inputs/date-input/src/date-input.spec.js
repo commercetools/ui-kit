@@ -54,6 +54,24 @@ it('should render an input', () => {
   expect(getByLabelText('Date')).toBeTruthy();
 });
 
+// Regression test for the class-based Downshift -> useCombobox migration.
+// downshift's useCombobox requires getMenuProps to be called on every render;
+// if it is only called when the calendar is open, downshift logs
+// "You forgot to call the getMenuProps getter function" on mount. This test
+// fails deterministically (in CI and locally) if that regression returns,
+// instead of relying on the CI-only console.error-throws behavior.
+it('should not log the downshift getMenuProps warning on mount (closed calendar)', () => {
+  const consoleErrorSpy = jest
+    .spyOn(console, 'error')
+    .mockImplementation(() => {});
+  renderDateInput();
+  const getMenuPropsWarning = consoleErrorSpy.mock.calls.find((call) =>
+    call.some((arg) => typeof arg === 'string' && arg.includes('getMenuProps'))
+  );
+  expect(getMenuPropsWarning).toBeUndefined();
+  consoleErrorSpy.mockRestore();
+});
+
 it('should forward data-attributes', () => {
   const { container } = renderDateInput({ 'data-foo': 'bar' });
   expect(container.querySelector('[data-foo="bar"]')).toBeTruthy();
