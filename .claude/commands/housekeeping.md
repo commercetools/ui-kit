@@ -56,6 +56,10 @@ just edited — no bisecting required. A failed cohort is rolled back locally
 and the run continues with the next one; the failure is recorded in the
 final report and PR body. Do NOT batch validation across cohorts.
 
+Visual regressions are not covered by that suite. Because any bump changes
+`pnpm-lock.yaml`, the PR triggers a full Chromatic run needing review; see
+`CONTRIBUTING.md`, "Testing visuals".
+
 ### **Phase 1: Git Setup & Pre-flight Checks**
 
 1. **Authentication / Permission Check:**
@@ -130,10 +134,9 @@ prettier 2 output formatting; never break that contract from housekeeping.
 
 #### 🧪 `test` (Low Risk)
 
-Jest core (`30.x`), `jest-environment-jsdom`, `@testing-library/*`,
-`@percy/*`, `puppeteer`, `pptr-testing-library`. Jest runs through several
-specialized runners here (`jest-runner-eslint`, `jest-runner-stylelint`) so
-verify these still load after a bump.
+Jest core (`30.x`), `jest-environment-jsdom`, `@testing-library/*`. Jest runs
+through several specialized runners here (`jest-runner-eslint`,
+`jest-runner-stylelint`) so verify these still load after a bump.
 
 #### 📚 `storybook` (Low Risk, Strict Lockstep)
 
@@ -166,7 +169,7 @@ Compile/bundle/style toolchain consumed by published packages at build time
   bump to `12.x`, halt and classify as manual.
 - **SVGR** (`@svgr/*`) — code-gen pipeline for icons.
 - **Vite** (`vite`, `@vitejs/plugin-react`, `@vitejs/plugin-react-swc`,
-  `@modyfi/vite-plugin-yaml`) — used by `storybook` and `visual-testing-app`.
+  `@modyfi/vite-plugin-yaml`) — used by `storybook`.
 - **PostCSS** (`postcss`, `postcss-styled-syntax`, `postcss-syntax`,
   `postcss-value-parser`).
 - **TypeScript** (`typescript`, `ts-node`, `tsc-files`) — TS major moves

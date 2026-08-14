@@ -10,7 +10,6 @@ packages:
   - packages/components/inputs/*
   - packages/components/spacings/*
   - presets/*
-  - visual-testing-app
 
 # Strict pnpm — declared deps only, NO shamefully-hoist.
 #
@@ -59,13 +58,11 @@ catalogMode: prefer
 # tries to run a lifecycle script — the pnpm v11 equivalent of onlyBuiltDependencies.
 strictDepBuilds: true
 allowBuilds:
-  '@percy/core': true
   '@swc/core': true
   core-js: true
   core-js-pure: true
   esbuild: true
   jest-circus: true
-  puppeteer: true
   unrs-resolver: true
 
 # Transitive-dep pins for Dependabot security advisories and known-good
@@ -92,12 +89,6 @@ overrides:
   handlebars: ^4.7.9
   immutable: ^4.3.8
   ip-address: ^10.1.1
-  # jest-environment-puppeteer pulls jest-environment-node@29.7.0 (which
-  # bundles jest-mock@29.7.0, missing `clearMocksOnScope`). pnpm hoists 29.7.0
-  # into .pnpm/node_modules/, which is what Jest's `testEnvironment: 'node'`
-  # resolver finds. Jest 30 then crashes in Runtime.resetModules. Forcing the
-  # whole tree to a jest-mock@30.4.x-compatible version fixes the resolution.
-  jest-environment-node: ^30.4.1
   'js-yaml@^4.0.0': ^4.1.1
   json5: ^2.0.0
   lodash: ^4.18.1
@@ -137,7 +128,7 @@ patchedDependencies:
 #   repo       — monorepo plumbing & release tooling (changesets, manypkg, husky, ...)
 #   rich-text  — slate + remark/unified/vfile (rich-text editor stack)
 #   storybook  — storybook dev environment (must move in lockstep)
-#   test       — jest, testing library, percy, puppeteer, jsdom
+#   test       — jest, testing library, jsdom
 #
 # Entries inside each named catalog are grouped by sub-cohort (separator
 # comments + blank lines) rather than alphabetized. Keep new entries in
@@ -152,7 +143,6 @@ patchedDependencies:
 # comments anywhere inside a catalog block.
 
 catalog:
-  '@fontsource/inter': 5.2.8
   '@types/debounce-promise': ^3.1.6
   '@types/dompurify': ^2.4.0
   '@types/escape-html': 1.0.4
@@ -223,7 +213,6 @@ catalogs:
 
     # Vite
     '@modyfi/vite-plugin-yaml': ^1.1.0
-    '@vitejs/plugin-react': 5.2.0
     '@vitejs/plugin-react-swc': ^4.2.2
     vite: 6.4.3
 
@@ -382,7 +371,6 @@ catalogs:
 
     # Jest plugins / runners
     jest-localstorage-mock: 2.4.26
-    jest-puppeteer: 11.0.0
     jest-runner-eslint: 2.3.0
     jest-runner-stylelint: 2.3.7
     jest-silent-reporter: 0.6.0
@@ -396,9 +384,3 @@ catalogs:
     '@testing-library/dom': ^10.4.0
     '@testing-library/jest-dom': 6.9.1
     '@testing-library/react': ^16.2.0
-
-    # Visual regression / Puppeteer
-    '@percy/cli': 1.31.13
-    '@percy/puppeteer': 2.0.2
-    puppeteer: 22.15.0
-    pptr-testing-library: 0.8.0

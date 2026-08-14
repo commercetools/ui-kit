@@ -26,10 +26,6 @@
       "allowedVersions": "<8.0.0"
     },
     {
-      "matchPackageNames": ["@percy/puppeteer"],
-      "allowedVersions": "<=2.0.0"
-    },
-    {
       "matchPackageNames": ["react-textarea-autosize"],
       "allowedVersions": "<8.4.1"
     },

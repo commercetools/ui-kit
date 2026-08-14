@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-<a href="https://www.npmjs.com/package/@commercetools-frontend/ui-kit"><img src="https://badgen.net/npm/v/@commercetools-frontend/ui-kit" alt="Latest release (latest dist-tag)" /></a> <a href="https://www.npmjs.com/package/@commercetools-frontend/ui-kit"><img src="https://badgen.net/npm/v/@commercetools-frontend/ui-kit/next" alt="Latest release (next dist-tag)" /></a> <a href="https://percy.io/commercetools-GmbH/merchant-center-application-kit"><img src="https://percy.io/static/images/percy-badge.svg" alt="This project is using Percy.io for visual regression testing" /></a>
+<a href="https://www.npmjs.com/package/@commercetools-frontend/ui-kit"><img src="https://badgen.net/npm/v/@commercetools-frontend/ui-kit" alt="Latest release (latest dist-tag)" /></a> <a href="https://www.npmjs.com/package/@commercetools-frontend/ui-kit"><img src="https://badgen.net/npm/v/@commercetools-frontend/ui-kit/next" alt="Latest release (next dist-tag)" /></a>
 <a href="https://bundlephobia.com/result?p=@commercetools-frontend/ui-kit"><img src="https://badgen.net/bundlephobia/minzip/@commercetools-frontend/ui-kit" alt="Minified + GZipped size" /></a> <a href="https://github.com/commercetools/ui-kit/blob/main/LICENSE"><img src="https://badgen.net/github/license/commercetools/ui-kit" alt="GitHub license" /></a>
 </p>
 <p align="center">

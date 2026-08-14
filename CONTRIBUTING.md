@@ -68,15 +68,11 @@ Components in UI Kit are integration tested to ensure they meet requirements ove
 
 ### Testing visuals
 
-A Design System must not introduce visual regressions, so UI Kit runs Visual Regression Testing, currently on [Percy](https://percy.io/) and migrating to [Chromatic](https://www.chromatic.com/). Until the migration is signed off, a new component needs both.
+A Design System must not introduce visual regressions, so UI Kit runs Visual Regression Testing on [Chromatic](https://www.chromatic.com/), which captures Storybook stories.
 
-#### Percy (current system of record)
+#### Writing a captured story
 
-Every component needs a visual specification alongside it: a React component rendering each visual state, such as a filled placeholder, a triggered warning, or a read-only field. See [`primary-button.visualroute.jsx`](packages/components/buttons/primary-button/src/primary-button.visualroute.jsx) and its companion `primary-button.visualspec.js`. A GitHub Action renders it and sends it to Percy; regressions surface on the next change and need a UI/UX Designer's approval.
-
-#### Chromatic (in migration, Q3 2026)
-
-Chromatic captures Storybook stories instead of the `.visualroute.jsx` / `.visualspec.js` pair. Add one `AllVariants` story to the component's `*.stories.tsx`, one `<VisualSpec>` per state:
+Every component needs a story enumerating its visual states, such as a filled placeholder, a triggered warning, or a read-only field. Add one `AllVariants` story to the component's `*.stories.tsx`, with one `<VisualSpec>` per state:
 
 ```tsx
 import { VisualSpec } from '@/storybook-helpers';
@@ -88,7 +84,28 @@ export const AllVariants: StoryObj = {
 };
 ```
 
-Snapshots are off by default, so `disableSnapshot: false` is the opt-in; `!autodocs` keeps the stacked frame off the generated `Props` page. Accept or reject diffs in the Chromatic UI, where the `UI Tests` check stays red until you do. `.github/workflows/chromatic.yml` skips the build entirely when nothing under `packages/`, `design-system/`, `storybook/` or the lockfile changed, posting a passing `UI Tests` status instead, so a green check can mean "not run"; it also uses TurboSnap, so trigger it manually for a full rebuild. Locally: `CHROMATIC_PROJECT_TOKEN=... pnpm --filter storybook chromatic`.
+Capture is opt-in: `preview.tsx` sets `chromatic: { disableSnapshot: true }` globally, so `disableSnapshot: false` is what enrolls the story. `!autodocs` keeps the stacked frame off the generated `Props` page. A snapshot is identified by story id (title plus export name), so renaming either resets its baseline. Group related states under a `<VisualSpecGroup label="...">` heading where they share an axis.
+
+A snapshot is one frame, so render every state declaratively, including states a user reaches by interacting: pass the prop that gets there, as [`filters.stories.tsx`](packages/components/filters/src/filters.stories.tsx) does with `defaultOpen`.
+
+A global decorator adds `1rem` of padding inside every story except those setting `layout: 'fullscreen'`. Chromatic crops to rendered content, so focus rings and shadows painted at the edge would otherwise clip.
+
+#### Gotchas
+
+- **`<VisualSpec>` shrink-wraps** (`width: max-content`), so a state testing free space (`justifyContent`, `width: 100%`, a percentage) collapses and every state in the run renders identically. The states are all there; the axis under test is invisible. Give that state's own wrapper an explicit width, as [`inline.stories.tsx`](packages/components/spacings/spacings-inline/src/inline.stories.tsx) does. Widening `VisualSpec` instead stretches every component's label band across the frame.
+- **Inverted-tone states need `backgroundColor` on `<VisualSpec>`**, or they are invisible against white. See `flat-button`, `field-label`, `link`.
+- **No router decorator is registered globally.** A component given a `to` prop renders a react-router `Link`, which throws without one, and Chromatic baselines the error overlay. Add a story-level `BrowserRouter`, as `link.stories.tsx` does. In `.tsx`, `to` also needs an explicit `as={Link}`.
+- **Import from the leaf package, not the `@commercetools-frontend/ui-kit` barrel.** The barrel pulls the whole library into the story's module graph, inflating what TurboSnap treats as changed.
+- **An undeclared import passes locally and fails CI**, because local `tsc` resolves through the hoisted tree while CI installs strictly. Add the `devDependency` with the lockfile in the same commit, or import the source relatively, targeting a file rather than a package directory: `../../spacings-inset/src/inset` resolves, `../../spacings-inset` hits an unbuilt `dist`.
+- **Pin a wider capture** with `viewports` alongside `disableSnapshot`, as [`icons.stories.tsx`](packages/components/icons/src/icons.stories.tsx) does with `[1600]`.
+
+#### Reviewing and CI
+
+Diffs are accepted or rejected in the Chromatic UI; the required `UI Tests` check stays red until someone does. Because `.github/workflows/chromatic.yml` uses `exitOnceUploaded`, the `chromatic` job goes green at upload and Chromatic reports the real verdict asynchronously.
+
+The workflow skips the build when nothing under `packages/`, `design-system/`, `storybook/` or `pnpm-lock.yaml` changed, posting a passing `UI Tests` status itself, so a green check can mean "not run". It also uses TurboSnap, snapshotting only diff-affected stories; run the workflow manually via `workflow_dispatch` for a full rebuild.
+
+To run it locally: `CHROMATIC_PROJECT_TOKEN=... pnpm --filter @commercetools-local/storybook run chromatic`. No dev server is involved, the CLI builds its own static Storybook. TurboSnap is set by the workflow rather than `chromatic.config.json`, so a local run snapshots everything unless you append `-- --only-changed`.
 
 ## Opening an Issue
 

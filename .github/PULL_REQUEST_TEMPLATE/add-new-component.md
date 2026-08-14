@@ -33,7 +33,7 @@
 
   - [ ] Supports `data` attributes
   - [ ] Uses [@testing-library/react](https://github.com/testing-library/react-testing-library) tests
-  - [ ] Has visual regression tests
+  - [ ] Has an `AllVariants` story captured by Chromatic
 
 - Accessibility (optional)
   - [ ] Supports `aria` attributes
