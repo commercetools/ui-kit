@@ -4,6 +4,9 @@
     "github>commercetools/renovate-config//composite/component-library"
   ],
   "rebaseWhen": "never",
+  "gitIgnoredAuthors": [
+    "41898282+github-actions[bot]@users.noreply.github.com"
+  ],
   "packageRules": [
     {
       "matchSourceUrls": ["https://github.com/gregberge/svgr{/,}**"],
