@@ -1,5 +1,36 @@
 # @commercetools-uikit/date-input
 
+## 20.6.8
+
+### Patch Changes
+
+- [#3273](https://github.com/commercetools/ui-kit/pull/3273) [`6ded70c`](https://github.com/commercetools/ui-kit/commit/6ded70c8a7416a551bb50308ba2bd37c0f8908d9) Thanks [@kterry1](https://github.com/kterry1)! - Fix `TypeError: t.contains is not a function` crash thrown when a date-input,
+  date-range-input, or date-time-input calendar closes on blur / click-outside
+  under `downshift` >= 9.3.4 (verified against `downshift` 9.4.0).
+
+  `CalendarMenu` (shared by all three inputs) received downshift's menu ref via
+  `getMenuProps()`, but as a class component the ref pointed at the class instance
+  — which has no `.contains()`. downshift 9.3.4 removed the guard that previously
+  tolerated non-DOM refs, so any consumer resolving downshift >= 9.3.4 crashed.
+  `CalendarMenu` is now a `forwardRef` function component that forwards the ref
+  onto the DOM node it already renders, so downshift's ref lands on a real element
+  with `.contains()`. The rendered DOM, roles, ARIA, and behavior are unchanged.
+
+- Updated dependencies [[`6ded70c`](https://github.com/commercetools/ui-kit/commit/6ded70c8a7416a551bb50308ba2bd37c0f8908d9)]:
+  - @commercetools-uikit/calendar-utils@20.6.8
+  - @commercetools-uikit/design-system@20.6.8
+  - @commercetools-uikit/calendar-time-utils@20.6.8
+  - @commercetools-uikit/accessible-button@20.6.8
+  - @commercetools-uikit/secondary-icon-button@20.6.8
+  - @commercetools-uikit/constraints@20.6.8
+  - @commercetools-uikit/icons@20.6.8
+  - @commercetools-uikit/select-utils@20.6.8
+  - @commercetools-uikit/spacings-inline@20.6.8
+  - @commercetools-uikit/text@20.6.8
+  - @commercetools-uikit/tooltip@20.6.8
+  - @commercetools-uikit/hooks@20.6.8
+  - @commercetools-uikit/utils@20.6.8
+
 ## 20.6.7
 
 ### Patch Changes
