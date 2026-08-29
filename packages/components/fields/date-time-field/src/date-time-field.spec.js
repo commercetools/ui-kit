@@ -163,7 +163,7 @@ describe('when field is touched and has errors', () => {
       touched: true,
       errors: { missing: true },
     });
-    expect(getByRole('textbox')).toHaveAccessibleErrorMessage(
+    expect(getByRole('combobox')).toHaveAccessibleErrorMessage(
       /field is required/i
     );
   });
