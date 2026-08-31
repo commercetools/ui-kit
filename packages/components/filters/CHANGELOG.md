@@ -1,5 +1,23 @@
 # @commercetools-uikit/filters
 
+## 20.6.8
+
+### Patch Changes
+
+- Updated dependencies [[`6ded70c`](https://github.com/commercetools/ui-kit/commit/6ded70c8a7416a551bb50308ba2bd37c0f8908d9)]:
+  - @commercetools-uikit/date-input@20.6.8
+  - @commercetools-uikit/date-range-input@20.6.8
+  - @commercetools-uikit/date-time-input@20.6.8
+  - @commercetools-uikit/design-system@20.6.8
+  - @commercetools-uikit/flat-button@20.6.8
+  - @commercetools-uikit/icon-button@20.6.8
+  - @commercetools-uikit/secondary-icon-button@20.6.8
+  - @commercetools-uikit/collapsible-motion@20.6.8
+  - @commercetools-uikit/icons@20.6.8
+  - @commercetools-uikit/select-input@20.6.8
+  - @commercetools-uikit/utils@20.6.8
+  - @commercetools-uikit/spacings@20.6.8
+
 ## 20.6.7
 
 ### Patch Changes
