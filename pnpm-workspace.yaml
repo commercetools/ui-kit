@@ -319,9 +319,9 @@ catalogs:
 
     # Git hooks / commit lint
     husky: 9.1.7
-    lint-staged: 16.2.4
-    '@commitlint/cli': 20.1.0
-    '@commitlint/config-conventional': 20.0.0
+    lint-staged: 16.4.0
+    '@commitlint/cli': 20.5.3
+    '@commitlint/config-conventional': 20.5.3
 
     # Shared commercetools configs
     '@commercetools-frontend/babel-preset-mc-app': 27.6.2
