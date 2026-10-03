@@ -36,6 +36,8 @@ publicHoistPattern:
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@commercetools*'
+  # Renovate security update: moment@2.31.0
+  - moment@2.31.0
 # Explicit minimumReleaseAge already makes pnpm hard-fail on a no-mature-match; true keeps that (no silent fall-back or auto-exclude).
 minimumReleaseAgeStrict: true
 # Deliberate tightening: enforce the gate even when registry metadata omits a publish time, so a time-less mirror can't waive the cooldown.
@@ -175,7 +177,7 @@ catalog:
   listr: 0.14.3
   listr-verbose-renderer: 0.6.0
   lodash: 4.18.1
-  moment: 2.30.1
+  moment: 2.31.0
   moment-timezone: 0.6.2
   nodemon: ^3.0.0
   omit-empty-es: 1.2.0
