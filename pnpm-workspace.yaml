@@ -36,6 +36,8 @@ publicHoistPattern:
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@commercetools*'
+  # Renovate security update: browserslist@4.28.7
+  - browserslist@4.28.7
 # Explicit minimumReleaseAge already makes pnpm hard-fail on a no-mature-match; true keeps that (no silent fall-back or auto-exclude).
 minimumReleaseAgeStrict: true
 # Deliberate tightening: enforce the gate even when registry metadata omits a publish time, so a time-less mirror can't waive the cooldown.
@@ -233,7 +235,7 @@ catalogs:
 
     # Output / bundling
     '@preconstruct/cli': 2.8.13
-    browserslist: 4.28.2
+    browserslist: 4.28.7
     bundlewatch: ^0.4.1
 
   lint:
