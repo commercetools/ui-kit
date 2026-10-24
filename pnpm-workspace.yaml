@@ -36,6 +36,8 @@ publicHoistPattern:
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@commercetools*'
+  # Renovate security update: storybook@9.1.21
+  - storybook@9.1.21
 # Explicit minimumReleaseAge already makes pnpm hard-fail on a no-mature-match; true keeps that (no silent fall-back or auto-exclude).
 minimumReleaseAgeStrict: true
 # Deliberate tightening: enforce the gate even when registry metadata omits a publish time, so a time-less mirror can't waive the cooldown.
@@ -354,7 +356,7 @@ catalogs:
 
   storybook:
     # Core
-    storybook: 9.1.20
+    storybook: 9.1.21
     '@storybook/react-vite': 9.1.20
 
     # Addons
