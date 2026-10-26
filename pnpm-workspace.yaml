@@ -257,7 +257,7 @@ catalogs:
     # React stack
     react: '19.x'
     react-dom: '19.x'
-    react-intl: '7.x'
+    react-intl: '10.x'
     react-router-dom: '5.x'
 
     # Toolchain
@@ -286,10 +286,10 @@ catalogs:
 
     # i18n (formatjs)
     '@formatjs/cli': 6.16.0
-    '@formatjs/intl-relativetimeformat': 11.4.13
+    '@formatjs/intl-relativetimeformat': 12.3.13
     babel-plugin-formatjs: ^10.0.0
     intl-pluralrules: 2.0.1
-    react-intl: ^7.1.4
+    react-intl: ^10.0.0
 
     # React-bound utilities
     '@hello-pangea/dnd': ^18.0.0
