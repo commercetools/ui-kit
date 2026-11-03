@@ -36,6 +36,8 @@ publicHoistPattern:
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@commercetools*'
+  # Renovate security update: vite@6.4.4
+  - vite@6.4.4
 # Explicit minimumReleaseAge already makes pnpm hard-fail on a no-mature-match; true keeps that (no silent fall-back or auto-exclude).
 minimumReleaseAgeStrict: true
 # Deliberate tightening: enforce the gate even when registry metadata omits a publish time, so a time-less mirror can't waive the cooldown.
@@ -218,7 +220,7 @@ catalogs:
     # Vite
     '@modyfi/vite-plugin-yaml': ^1.1.0
     '@vitejs/plugin-react-swc': ^4.2.2
-    vite: 6.4.3
+    vite: 6.4.4
 
     # PostCSS
     postcss: 8.5.15
