@@ -1,5 +1,12 @@
 # @commercetools-uikit/design-system
 
+## 20.6.8
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@20.6.8
+
 ## 20.6.7
 
 ### Patch Changes
