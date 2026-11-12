@@ -36,6 +36,8 @@ publicHoistPattern:
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@commercetools*'
+  # Renovate security update: qs@6.16.1
+  - qs@6.16.1
 # Explicit minimumReleaseAge already makes pnpm hard-fail on a no-mature-match; true keeps that (no silent fall-back or auto-exclude).
 minimumReleaseAgeStrict: true
 # Deliberate tightening: enforce the gate even when registry metadata omits a publish time, so a time-less mirror can't waive the cooldown.
@@ -181,7 +183,7 @@ catalog:
   omit-empty-es: 1.2.0
   'popper.js': ^1.15.0
   publint: ^0.3.21
-  qs: 6.15.2
+  qs: 6.16.1
   raf-schd: ^4.0.3
   rcfile: 1.0.3
   replace: 1.2.2
