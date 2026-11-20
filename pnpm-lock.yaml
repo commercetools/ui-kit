@@ -238,8 +238,8 @@ catalogs:
       specifier: 6.16.0
       version: 6.16.0
     '@formatjs/intl-relativetimeformat':
-      specifier: 11.4.13
-      version: 11.4.13
+      specifier: 12.3.13
+      version: 12.3.13
     '@hello-pangea/dnd':
       specifier: ^18.0.0
       version: 18.0.1
@@ -277,8 +277,8 @@ catalogs:
       specifier: 19.2.6
       version: 19.2.6
     react-intl:
-      specifier: ^7.1.4
-      version: 7.1.14
+      specifier: ^10.0.0
+      version: 10.1.25
     react-is:
       specifier: 19.2.6
       version: 19.2.6
@@ -552,7 +552,7 @@ importers:
         version: 6.16.0
       '@formatjs/intl-relativetimeformat':
         specifier: catalog:react
-        version: 11.4.13
+        version: 12.3.13
       '@manypkg/cli':
         specifier: catalog:repo
         version: 0.25.1
@@ -756,7 +756,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router-dom:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -1028,7 +1028,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/accessible-hidden:
     dependencies:
@@ -1145,7 +1145,7 @@ importers:
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
@@ -1188,7 +1188,7 @@ importers:
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
@@ -1241,7 +1241,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router-dom:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -1280,7 +1280,7 @@ importers:
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
@@ -1330,7 +1330,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router-dom:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -1369,7 +1369,7 @@ importers:
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       '@commercetools-uikit/icons':
         specifier: workspace:^
@@ -1523,7 +1523,7 @@ importers:
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       prop-types:
         specifier: catalog:react
@@ -1597,7 +1597,7 @@ importers:
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       '@commercetools-uikit/spacings':
         specifier: workspace:^
@@ -1728,7 +1728,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/dropdowns/dropdown-menu:
     dependencies:
@@ -1770,7 +1770,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       '@commercetools-uikit/buttons':
         specifier: workspace:^
@@ -1814,7 +1814,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/field-label:
     dependencies:
@@ -1862,7 +1862,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       '@commercetools-uikit/flat-button':
         specifier: workspace:^
@@ -1894,7 +1894,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/fields/async-creatable-select-field:
     dependencies:
@@ -1936,7 +1936,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-select:
         specifier: catalog:react
         version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(supports-color@10.2.2)
@@ -1991,7 +1991,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-select:
         specifier: catalog:react
         version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(supports-color@10.2.2)
@@ -2046,7 +2046,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-select:
         specifier: catalog:react
         version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(supports-color@10.2.2)
@@ -2098,7 +2098,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       '@commercetools-uikit/calendar-utils':
         specifier: workspace:^
@@ -2150,7 +2150,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       prop-types:
         specifier: catalog:react
@@ -2199,7 +2199,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       prop-types:
         specifier: catalog:react
@@ -2248,7 +2248,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       prop-types:
         specifier: catalog:react
@@ -2297,7 +2297,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       prop-types:
         specifier: catalog:react
@@ -2349,7 +2349,7 @@ importers:
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-select:
         specifier: catalog:react
         version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(supports-color@10.2.2)
@@ -2401,7 +2401,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       prop-types:
         specifier: catalog:react
@@ -2450,7 +2450,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       prop-types:
         specifier: catalog:react
@@ -2518,7 +2518,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/fields/radio-field:
     dependencies:
@@ -2560,7 +2560,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       prop-types:
         specifier: catalog:react
@@ -2612,7 +2612,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-select:
         specifier: catalog:react
         version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(supports-color@10.2.2)
@@ -2664,7 +2664,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-select:
         specifier: catalog:react
         version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(supports-color@10.2.2)
@@ -2719,7 +2719,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       prop-types:
         specifier: catalog:react
@@ -2768,7 +2768,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       prop-types:
         specifier: catalog:react
@@ -2832,7 +2832,7 @@ importers:
         version: 1.1.15(@types/react-dom@19.2.1(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       '@commercetools-uikit/buttons':
         specifier: workspace:^
@@ -2980,7 +2980,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/async-select-input:
     dependencies:
@@ -3038,7 +3038,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/checkbox-input:
     dependencies:
@@ -3068,7 +3068,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       react:
         specifier: catalog:react
@@ -3127,7 +3127,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/date-input:
     dependencies:
@@ -3203,7 +3203,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/date-range-input:
     dependencies:
@@ -3279,7 +3279,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/date-time-input:
     dependencies:
@@ -3355,7 +3355,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/input-utils:
     dependencies:
@@ -3389,7 +3389,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/localized-money-input:
     dependencies:
@@ -3459,7 +3459,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/localized-multiline-text-input:
     dependencies:
@@ -3526,7 +3526,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/localized-rich-text-input:
     dependencies:
@@ -3629,7 +3629,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router-dom:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -3693,7 +3693,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/money-input:
     dependencies:
@@ -3751,7 +3751,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/multiline-text-input:
     dependencies:
@@ -3815,7 +3815,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/number-input:
     dependencies:
@@ -4017,7 +4017,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -4105,7 +4105,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/search-select-input:
     dependencies:
@@ -4154,7 +4154,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/search-text-input:
     dependencies:
@@ -4243,7 +4243,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router-dom:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -4298,7 +4298,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/selectable-search-input:
     dependencies:
@@ -4356,7 +4356,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/text-input:
     dependencies:
@@ -4436,7 +4436,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/inputs/toggle-input:
     dependencies:
@@ -4498,7 +4498,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/link:
     dependencies:
@@ -4541,7 +4541,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router-dom:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -4571,7 +4571,7 @@ importers:
         version: 11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       react:
         specifier: catalog:react
@@ -4599,7 +4599,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       react:
         specifier: catalog:react
@@ -4634,7 +4634,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/pagination:
     dependencies:
@@ -4692,7 +4692,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/primary-action-dropdown:
     dependencies:
@@ -4734,7 +4734,7 @@ importers:
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       react:
         specifier: catalog:react
@@ -4777,7 +4777,7 @@ importers:
         version: 4.18.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       '@emotion/styled':
         specifier: catalog:build
@@ -4808,7 +4808,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2))(@types/react@19.2.14)(react@19.2.6)(supports-color@10.2.2)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       react:
         specifier: catalog:react
@@ -5000,7 +5000,7 @@ importers:
         version: 4.10.1
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
     devDependencies:
       react:
         specifier: catalog:react
@@ -5041,7 +5041,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
 
   packages/components/tooltip:
     dependencies:
@@ -5241,7 +5241,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router-dom:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -5311,7 +5311,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router-dom:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -5402,7 +5402,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router-dom:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -5569,7 +5569,7 @@ importers:
         version: 19.2.6
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       react-router-dom:
         specifier: catalog:react
         version: 5.3.4(react@19.2.6)
@@ -5635,7 +5635,7 @@ importers:
         version: 19.2.6(react@19.2.6)
       react-intl:
         specifier: catalog:react
-        version: 7.1.14(react@19.2.6)(typescript@5.9.3)
+        version: 10.1.25(@types/react@19.2.14)(react@19.2.6)
       remark-gfm:
         specifier: catalog:rich-text
         version: 4.0.1(supports-color@10.2.2)
@@ -6953,25 +6953,32 @@ packages:
   '@formatjs/fast-memoize@2.2.7':
     resolution: {integrity: sha512-Yabmi9nSvyOMrlSeGGWDiH7rf3a7sIwplbvo/dlz9WCIjzIQAfy1RMf4S0X3yG724n5Ghu2GmEl5NJIV6O9sZQ==}
 
+  '@formatjs/fast-memoize@3.1.7':
+    resolution: {integrity: sha512-zXfhLpvA6T7+efdt9JLbBwZ00tT7NsBMDVnDu8rpHeNNv8KfRZAMo2gkG0k9lK/Nzc//3kJ9pImsfuJxk3KhUA==}
+
   '@formatjs/icu-messageformat-parser@2.11.4':
     resolution: {integrity: sha512-7kR78cRrPNB4fjGFZg3Rmj5aah8rQj9KPzuLsmcSn4ipLXQvC04keycTI1F7kJYDwIXtT2+7IDEto842CfZBtw==}
+
+  '@formatjs/icu-messageformat-parser@3.5.17':
+    resolution: {integrity: sha512-cN9jhVqT7u0K9tix43fhjoUwL0nazyW6zsNIXs2QdPADr+nurPfYyssUiMqcSCGlPcCiqnYVxgSn7zBSuI+5Bg==}
 
   '@formatjs/icu-skeleton-parser@1.8.16':
     resolution: {integrity: sha512-H13E9Xl+PxBd8D5/6TVUluSpxGNvFSlN/b3coUp0e0JpuWXXnQDiavIpY3NnvSp4xhEMoXyyBvVfdFX8jglOHQ==}
 
+  '@formatjs/icu-skeleton-parser@2.1.11':
+    resolution: {integrity: sha512-j8cUmOJzVgkHuS0QiQ6ga76UIoLOFSAMWhs7aZJztH3aAdCOAE6vpC8KVvFB4cU10ON0y2/5oOVmPJ43s2lTwA==}
+
   '@formatjs/intl-localematcher@0.6.2':
     resolution: {integrity: sha512-XOMO2Hupl0wdd172Y06h6kLpBz6Dv+J4okPLl4LPtzbr8f66WbIoy4ev98EBuZ6ZK4h5ydTN6XneT4QVpD7cdA==}
 
-  '@formatjs/intl-relativetimeformat@11.4.13':
-    resolution: {integrity: sha512-fNs6cpz9zIUEgTlE3kPSEyRfslxeMG19dT7sLz2C6U7Jxkx8xK/IH1ImZzCeqd6JlqE81O7uNW4oZTb1pz8lUw==}
+  '@formatjs/intl-localematcher@0.8.13':
+    resolution: {integrity: sha512-kHEAFOkeJSPNi7c5PaKaRjxcBrJwzzt81ifUu+8uve1EDW/VJl83KsxmqgqNZLzcFEhSliZGvx3+pk/RH0IOmg==}
 
-  '@formatjs/intl@3.1.8':
-    resolution: {integrity: sha512-LWXgwI5zTMatvR8w8kCNh/priDTOF/ZssokMBHJ7ZWXFoYLVOYo0EJERD9Eajv+xsfQO1QkuAt77KWQ1OI4mOQ==}
-    peerDependencies:
-      typescript: ^5.6.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
+  '@formatjs/intl-relativetimeformat@12.3.13':
+    resolution: {integrity: sha512-qgH6XQugzCrFyZIMvhi5xlk6JcJxyF87kcWzH8XT6X8oJQpdljt4xQSsF55TjaRHhi+iK1Nu7YAI9QkNGF7L2g==}
+
+  '@formatjs/intl@4.1.20':
+    resolution: {integrity: sha512-q3gaFvc1mXrl0fcSY2QKSS+WzJxpbIXs48O+QLA3UsRtIwVhazvxtLrLGKEse5Mq4U8hAYyTB6Y9buU2ZRFz/w==}
 
   '@formatjs/ts-transformer@3.14.2':
     resolution: {integrity: sha512-c47ij+2Xi4jMDO3Hz01BDF3yB4575Gkoq24sFzVw1K1kpHvITsFfdlXQbhxScBwJi2gBhMpuZ++XsTUZ9O0Law==}
@@ -9749,6 +9756,7 @@ packages:
   eslint@9.39.4:
     resolution: {integrity: sha512-XoMjdBOwe/esVgEvLmNsD3IRHkm7fbKIUGvrleloJXUZgDHig2IPWNniv+GwjyJXzuNqVjlr5+4yVUZjycJwfQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -10310,8 +10318,8 @@ packages:
     resolution: {integrity: sha512-4gd7VpWNQNB4UKKCFFVcp1AVv+FMOgs9NKzjHKusc8jTMhd5eL1NqQqOpE0KzMds804/yHlglp3uxgluOqAPLw==}
     engines: {node: '>= 0.4'}
 
-  intl-messageformat@10.7.18:
-    resolution: {integrity: sha512-m3Ofv/X/tV8Y3tHXLohcuVuhWKo7BBq62cqY15etqmLxg2DZ34AGGgQDeR+SCta2+zICb1NX83af0GJmbQ1++g==}
+  intl-messageformat@11.2.14:
+    resolution: {integrity: sha512-9f2VD1HFuxUvMw0RxsaP8WmMns6JRTnsNB/zghTFrp11ZktiXWwVDeZBPQchBKEmo+Gx/ZhxI7Qht7YglFD4PA==}
 
   intl-pluralrules@2.0.1:
     resolution: {integrity: sha512-astxTLzIdXPeN0K9Rumi6LfMpm3rvNO0iJE+h/k8Kr/is+wPbRe4ikyDjlLr6VTh/mEfNv8RjN+gu3KwDiuhqg==}
@@ -11843,14 +11851,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
-  react-intl@7.1.14:
-    resolution: {integrity: sha512-VE/0Wi/lHJlBC7APQpCzLUdIt3GB5B0GZrRW8Q+ACbkHI4j+Wwgg9J1TniN6zmLHmPH5gxXcMy+fkSPfw5p1WQ==}
+  react-intl@10.1.25:
+    resolution: {integrity: sha512-otONc4Dqk0HNDdM1xVtjVm1pfeADRDZUnNMOiDZBYCYTz4FxYcid6Y2PrzeY3+FspW6ieObXtc3+VFUJYbDDGg==}
     peerDependencies:
-      react: 16 || 17 || 18 || 19
-      typescript: ^5.6.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
+      '@types/react': ^19.0.3
+      react: '>=18.0.0'
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -15051,36 +15056,42 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@formatjs/fast-memoize@3.1.7': {}
+
   '@formatjs/icu-messageformat-parser@2.11.4':
     dependencies:
       '@formatjs/ecma402-abstract': 2.3.6
       '@formatjs/icu-skeleton-parser': 1.8.16
       tslib: 2.8.1
 
+  '@formatjs/icu-messageformat-parser@3.5.17':
+    dependencies:
+      '@formatjs/icu-skeleton-parser': 2.1.11
+
   '@formatjs/icu-skeleton-parser@1.8.16':
     dependencies:
       '@formatjs/ecma402-abstract': 2.3.6
       tslib: 2.8.1
 
+  '@formatjs/icu-skeleton-parser@2.1.11': {}
+
   '@formatjs/intl-localematcher@0.6.2':
     dependencies:
       tslib: 2.8.1
 
-  '@formatjs/intl-relativetimeformat@11.4.13':
+  '@formatjs/intl-localematcher@0.8.13':
     dependencies:
-      '@formatjs/ecma402-abstract': 2.3.6
-      '@formatjs/intl-localematcher': 0.6.2
-      tslib: 2.8.1
+      '@formatjs/fast-memoize': 3.1.7
 
-  '@formatjs/intl@3.1.8(typescript@5.9.3)':
+  '@formatjs/intl-relativetimeformat@12.3.13':
     dependencies:
-      '@formatjs/ecma402-abstract': 2.3.6
-      '@formatjs/fast-memoize': 2.2.7
-      '@formatjs/icu-messageformat-parser': 2.11.4
-      intl-messageformat: 10.7.18
-      tslib: 2.8.1
-    optionalDependencies:
-      typescript: 5.9.3
+      '@formatjs/intl-localematcher': 0.8.13
+
+  '@formatjs/intl@4.1.20':
+    dependencies:
+      '@formatjs/fast-memoize': 3.1.7
+      '@formatjs/icu-messageformat-parser': 3.5.17
+      intl-messageformat: 11.2.14
 
   '@formatjs/ts-transformer@3.14.2(ts-jest@29.4.5(@babel/core@7.29.7(supports-color@10.2.2))(@jest/transform@30.4.1(supports-color@10.2.2))(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2))(esbuild@0.25.12)(jest-util@30.4.1)(jest@30.4.2(@types/node@22.19.15)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.25.12)(supports-color@10.2.2))(supports-color@10.2.2)(ts-node@10.9.2(@swc/core@1.15.21)(@types/node@22.19.15)(typescript@5.9.3)))(typescript@5.9.3))':
     dependencies:
@@ -15168,7 +15179,7 @@ snapshots:
     dependencies:
       '@jest/console': 30.4.1
       '@jest/pattern': 30.4.0
-      '@jest/reporters': 30.4.1(supports-color@5.5.0)
+      '@jest/reporters': 30.4.1(supports-color@10.2.2)
       '@jest/test-result': 30.4.1
       '@jest/transform': 30.4.1(supports-color@10.2.2)
       '@jest/types': 30.4.1
@@ -15261,7 +15272,7 @@ snapshots:
       '@types/node': 22.19.15
       jest-regex-util: 30.4.0
 
-  '@jest/reporters@30.4.1(supports-color@5.5.0)':
+  '@jest/reporters@30.4.1(supports-color@10.2.2)':
     dependencies:
       '@bcoe/v8-coverage': 0.2.3
       '@jest/console': 30.4.1
@@ -15278,7 +15289,7 @@ snapshots:
       istanbul-lib-coverage: 3.2.2
       istanbul-lib-instrument: 6.0.3(supports-color@10.2.2)
       istanbul-lib-report: 3.0.1
-      istanbul-lib-source-maps: 5.0.6(supports-color@5.5.0)
+      istanbul-lib-source-maps: 5.0.6(supports-color@10.2.2)
       istanbul-reports: 3.2.0
       jest-message-util: 30.4.1
       jest-util: 30.4.1
@@ -18835,12 +18846,10 @@ snapshots:
       hasown: 2.0.2
       side-channel: 1.1.0
 
-  intl-messageformat@10.7.18:
+  intl-messageformat@11.2.14:
     dependencies:
-      '@formatjs/ecma402-abstract': 2.3.6
-      '@formatjs/fast-memoize': 2.2.7
-      '@formatjs/icu-messageformat-parser': 2.11.4
-      tslib: 2.8.1
+      '@formatjs/fast-memoize': 3.1.7
+      '@formatjs/icu-messageformat-parser': 3.5.17
 
   intl-pluralrules@2.0.1: {}
 
@@ -19084,10 +19093,10 @@ snapshots:
       make-dir: 4.0.0
       supports-color: 7.2.0
 
-  istanbul-lib-source-maps@5.0.6(supports-color@5.5.0):
+  istanbul-lib-source-maps@5.0.6(supports-color@10.2.2):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
-      debug: 4.4.3(supports-color@5.5.0)
+      debug: 4.4.3(supports-color@10.2.2)
       istanbul-lib-coverage: 3.2.2
     transitivePeerDependencies:
       - supports-color
@@ -20847,19 +20856,13 @@ snapshots:
     dependencies:
       react: 19.2.6
 
-  react-intl@7.1.14(react@19.2.6)(typescript@5.9.3):
+  react-intl@10.1.25(@types/react@19.2.14)(react@19.2.6):
     dependencies:
-      '@formatjs/ecma402-abstract': 2.3.6
-      '@formatjs/icu-messageformat-parser': 2.11.4
-      '@formatjs/intl': 3.1.8(typescript@5.9.3)
-      '@types/hoist-non-react-statics': 3.3.7(@types/react@19.2.14)
+      '@formatjs/icu-messageformat-parser': 3.5.17
+      '@formatjs/intl': 4.1.20
       '@types/react': 19.2.14
-      hoist-non-react-statics: 3.3.2
-      intl-messageformat: 10.7.18
+      intl-messageformat: 11.2.14
       react: 19.2.6
-      tslib: 2.8.1
-    optionalDependencies:
-      typescript: 5.9.3
 
   react-is@16.13.1: {}
 
