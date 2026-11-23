@@ -272,7 +272,7 @@ catalogs:
     # React core
     react: 19.2.6
     react-dom: 19.2.6
-    react-is: 19.2.6
+    react-is: 19.2.8
 
     # @types (must match runtime major)
     '@types/react': ^19.0.7
