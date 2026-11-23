@@ -1,5 +1,15 @@
 # @commercetools-uikit/icons
 
+## 20.6.8
+
+### Patch Changes
+
+- [#3316](https://github.com/commercetools/ui-kit/pull/3316) [`239da2a`](https://github.com/commercetools/ui-kit/commit/239da2a42ecf70ef061aa3f898f0c358a8a31a6a) Thanks [@Rombelirk](https://github.com/Rombelirk)! - Bump `dompurify` from `3.4.9` to `3.4.17` to fix GHSA-cg2g-xh64-v4q7 (critical, `SAFE_FOR_TEMPLATES` with `RETURN_DOM` / `RETURN_DOM_FRAGMENT`) and GHSA-mrv2-3pqr-j5jr (incomplete fix for `IN_PLACE` hook handling). No API changes.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@20.6.8
+  - @commercetools-uikit/utils@20.6.8
+
 ## 20.6.7
 
 ### Patch Changes
