@@ -127,7 +127,7 @@ jobs:
           (steps.changed-files.outputs.any_changed == 'true' ||
           github.event_name == 'workflow_dispatch') && github.head_ref !=
           'changeset-release/main'
-        uses: chromaui/action@94713c544284a14195de3b50ef24301579f1877e # v18
+        uses: chromaui/action@14cfaef73576e69f95f47f60058063f46ca38719 # v18
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           # Runs in the storybook workspace, not via a root wrapper script:
